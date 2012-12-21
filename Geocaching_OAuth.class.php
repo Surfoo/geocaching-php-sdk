@@ -24,6 +24,18 @@ class Geocaching_OAuth {
      */
     public function __construct($consumer_key, $consumer_secret, $callback_url, $live = false)
     {
+        if(empty($consumer_key))
+        {
+            throw new Exception("consumer_key is missing.");
+        }
+        if(empty($consumer_secret))
+        {
+            throw new Exception("consumer_secret is missing");
+        }
+        if(empty($callback_url))
+        {
+            throw new Exception("callback_url is missing");
+        }
         $this->consumer_key    = $consumer_key;
 
         $this->consumer_secret = $consumer_secret;
