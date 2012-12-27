@@ -6,7 +6,7 @@ abstract class Geocaching_Api {
     const XML_FORMAT  = 1;
 
     protected $_staging_api_url = 'https://staging.api.groundspeak.com/Live/V6Beta/geocaching.svc/%s';
-    protected $_live_api_url    = 'https://staging.api.groundspeak.com/Live/V6Beta/geocaching.svc/%s';// FIXME with the right URL
+    protected $_live_api_url    = 'https://api.groundspeak.com/LiveV6/geocaching.svc/%s';
 
     protected $token = null;
     protected $output_format = null;
@@ -54,11 +54,11 @@ abstract class Geocaching_Api {
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_URL, $url);
         //curl_setopt($ch, CURLOPT_VERBOSE, true);
-		//curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 20);
-		//curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-		//curl_setopt($ch, CURLOPT_FRESH_CONNECT, true);
-		//curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-		//curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        //curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 20);
+        //curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        //curl_setopt($ch, CURLOPT_FRESH_CONNECT, true);
+        //curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        //curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
 
         $output = curl_exec($ch);
         $status = curl_getinfo($ch);
@@ -86,7 +86,6 @@ abstract class Geocaching_Api {
         $url = sprintf($this->_staging_api_url, $request) . $query_string;
         if($this->output_format == self::JSON_FORMAT) {
             $data = array_merge(array('AccessToken' => $this->token), $data);
-            //print_r($data);
             if (version_compare(phpversion(), '5.4', '>=')) {
                 $data = json_encode($data, JSON_UNESCAPED_SLASHES);
             }
@@ -104,8 +103,8 @@ abstract class Geocaching_Api {
         //curl_setopt($ch, CURLOPT_TIMEOUT, 30);
         //curl_setopt($ch, CURLOPT_BINARYTRANSFER, true);
         curl_setopt($ch, CURLOPT_POST, true);
-		//curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-		//curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        //curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        //curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
         //curl_setopt($ch, CURLOPT_VERBOSE, true);
         curl_setopt($ch, CURLOPT_URL, $url);
         $output = curl_exec($ch);

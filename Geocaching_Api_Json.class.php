@@ -26,7 +26,7 @@ class Geocaching_Api_Json extends Geocaching_Api {
     protected function checkRequestStatus($content)
     {
         if(!empty($content->Status->StatusCode)) {
-            throw new Exception($content->Status->StatusMessage);
+            throw new Exception($content->Status->StatusMessage . ' (StatusCode: ' . $content->Status->StatusCode . ')');
         }
     }
 
@@ -203,7 +203,13 @@ class Geocaching_Api_Json extends Geocaching_Api {
      */
     public function getUsersCacheCounts($params = array())
     {
+        if(!array_key_exists('Username', $params))
+            throw new Exception('Username is missing.');
+        if(!is_array($params['Username']))
+            throw new Exception('Username must be an array.');
 
+        $post_params['Username'] = $params['Username'];
+        return $this->post_request(__FUNCTION__, $post_params);
     }
 
     /**
@@ -235,6 +241,28 @@ class Geocaching_Api_Json extends Geocaching_Api {
      */
     public function getUsersGeocacheLogs($params = array())
     {
+        if(!array_key_exists('Username', $params))
+            throw new Exception('Username is missing.');
+        if(!array_key_exists('LogTypes', $params))
+            throw new Exception('LogTypes is missing.');
+        if(!is_array($params['LogTypes']))
+            throw new Exception('Username must be an array.');
+        if(!array_key_exists('MaxPerPage', $params))
+            throw new Exception('MaxPerPage is missing.');
+
+        $post_params['MaxPerPage'] = (int) $params['MaxPerPage'];
+        if(array_key_exists('StartIndex', $params))
+            $post_params['StartIndex'] = (int) $params['StartIndex'];
+        $post_params['Username'] = $params['Username'];
+        $post_params['LogTypes'] = $params['LogTypes'];
+
+        if(array_key_exists('EndDate', $params))
+            $post_params['Range']['EndDate'] = '/Date('.((int) $params['EndDate'] * 1000).')/'; //EndDate is a timestamp,
+        if(array_key_exists('StartDate', $params))
+            $post_params['Range']['StartDate'] = '/Date('.((int) $params['StartDate'] * 1000).')/'; //StartDate is a timestamp,
+        if(array_key_exists('ExcludeArchived', $params))
+            $post_params['ExcludeArchived'] = (boolean) $params['ExcludeArchived'];
+
         return $this->post_request(__FUNCTION__, $post_params);
     }
 
@@ -247,12 +275,6 @@ class Geocaching_Api_Json extends Geocaching_Api {
     {
         if(!array_key_exists('MaxPerPage', $params))
             throw new Exception('MaxPerPage is missing.');
-
-        $post_params['MaxPerPage'] = (int) $params['MaxPerPage'];
-        if(array_key_exists('StartIndex', $params))
-            $post_params['StartIndex'] = (int) $params['StartIndex'];
-        if(array_key_exists('TrackableLogCount', $params))
-            $post_params['TrackableLogCount'] = (int) (boolean) $params['TrackableLogCount'];
 
         $post_params['MaxPerPage'] = (int) $params['MaxPerPage'];
         if(array_key_exists('StartIndex', $params))
