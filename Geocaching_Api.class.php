@@ -488,9 +488,9 @@ abstract class Geocaching_Api {
     }
 
     /**
-     * [GetUsersCacheNotes description]
+     * [getUsersCacheNotes description]
      */
-    public function GetUsersCacheNotes()
+    public function getUsersCacheNotes($params = array())
     {
         if(!array_key_exists('MaxPerPage', $params))
             throw new Exception('MaxPerPage is missing.');

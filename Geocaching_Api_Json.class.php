@@ -337,7 +337,7 @@ class Geocaching_Api_Json extends Geocaching_Api {
     /**
      * [searchForGeocaches description]
      * @param  array  $params [description]
-     * @return [type]         [description]
+     * @return object         [description]
      */
     public function searchForGeocaches($params = array())
     {
@@ -353,11 +353,11 @@ class Geocaching_Api_Json extends Geocaching_Api {
             $post_params['TrackableLogCount'] = (int) $params['TrackableLogCount'];
 
         if(array_key_exists('DistanceInMeters', $params))
-            $post_params['PointRadius']['TrackableLogCount'] = (int) $params['DistanceInMeters'];
+            $post_params['PointRadius']['DistanceInMeters'] = (int) $params['DistanceInMeters'];
         if(array_key_exists('PointRadiusLatitude', $params))
-            $post_params['PointRadius']['PointRadius']['Latitude'] = (float) $params['PointRadiusLatitude'];
-        if(array_key_exists('PointRadius', $params))
-            $post_params['PointRadius']['PointRadius']['Longitude'] = (float) $params['PointRadiusLongitude'];
+            $post_params['PointRadius']['Point']['Latitude'] = (float) $params['PointRadiusLatitude'];
+        if(array_key_exists('PointRadiusLongitude', $params))
+            $post_params['PointRadius']['Point']['Longitude'] = (float) $params['PointRadiusLongitude'];
 
         if(array_key_exists('NotFoundByUsers', $params) && is_array($params['NotFoundByUsers']))
             $post_params['NotFoundByUsers']['UserNames'] = $params['NotFoundByUsers'];
@@ -424,7 +424,6 @@ class Geocaching_Api_Json extends Geocaching_Api {
         if(!array_key_exists('MaxPerPage', $post_params))
             throw new Exception('MaxPerPage is missing.');
 
-        $post_params = $params;
         return $this->post_request(__FUNCTION__, $post_params);
     }
 
