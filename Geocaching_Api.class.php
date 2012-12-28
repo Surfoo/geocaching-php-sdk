@@ -30,32 +30,40 @@ abstract class Geocaching_Api {
     /**
      * Staging URL of Groundspeak API
      *
-     * @var string $_staging_api_url
      * @access protected
+     * @var string $staging_api_url
      */
-    protected $_staging_api_url = 'https://staging.api.groundspeak.com/Live/V6Beta/geocaching.svc/%s';
+    protected $staging_api_url = 'https://staging.api.groundspeak.com/Live/V6Beta/geocaching.svc/%s';
 
     /**
      * Production URL of Groundspeak API
      *
-     * @var string $_live_api_url
      * @access protected
+     * @var string $live_api_url
      */
-    protected $_live_api_url    = 'https://api.groundspeak.com/LiveV6/geocaching.svc/%s';
+    protected $live_api_url    = 'https://api.groundspeak.com/LiveV6/geocaching.svc/%s';
+
+    /**
+     * API URL
+     *
+     * @access protected
+     * @var string $api_url
+     */
+    protected $api_url = null;
 
     /**
      * OAuth token sent by the client
      *
-     * @var string $oauth_token
      * @access protected
+     * @var string $oauth_token
      */
     protected $oauth_token = null;
 
     /**
      * Type of output expected format, JSON or XML
      *
-     * @var string $output_format
      * @access protected
+     * @var string $output_format
      */
     protected $output_format = null;
 
@@ -64,8 +72,9 @@ abstract class Geocaching_Api {
      *
      * @abstract
      * @param string $oauth_token
+     * @param boolean $live
      */
-    abstract public function __construct($oauth_token);
+    abstract public function __construct($oauth_token, $live);
 
     /**
      * Check the status of the POST or GET request
@@ -250,7 +259,7 @@ abstract class Geocaching_Api {
     {
         $params = array_merge(array('format' => $this->output_format, 'AccessToken' => $this->oauth_token), $params);
         $query_string = '?' . urldecode(http_build_query($params, '', '&'));
-        $url = sprintf($this->_staging_api_url, ucfirst($request)) . $query_string;
+        $url = sprintf($this->api_url, ucfirst($request)) . $query_string;
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_HTTPHEADER, $this->http_headers);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -287,7 +296,7 @@ abstract class Geocaching_Api {
     {
         $params = array('format' => $this->output_format);
         $query_string = '?' . urldecode(http_build_query($params, '', '&'));
-        $url = sprintf($this->_staging_api_url, ucfirst($request)) . $query_string;
+        $url = sprintf($this->api_url, ucfirst($request)) . $query_string;
         if($this->output_format == self::JSON_FORMAT) {
             $data = array_merge(array('AccessToken' => $this->oauth_token), $data);
             if (version_compare(phpversion(), '5.4', '>=')) {

@@ -23,9 +23,10 @@ class Geocaching_Api_Json extends Geocaching_Api {
      *
      * @access public
      * @param string $oauth_token OAuth token provided by the application
+     * @param boolean $live production = true, staging = false
      * @return void
      */
-    public function __construct($oauth_token)
+    public function __construct($oauth_token, $live = false)
     {
         if(!isset($oauth_token))
             throw new Exception('oauth_token is missing.');
@@ -33,6 +34,12 @@ class Geocaching_Api_Json extends Geocaching_Api {
         $this->oauth_token   = $oauth_token;
         $this->output_format = 'json';
         $this->http_headers  = array('Content-Type: application/json');
+        if($live) {
+            $this->api_url = $this->live_api_url;
+        }
+        else {
+            $this->api_url = $this->staging_api_url;
+        }
     }
 
     /**

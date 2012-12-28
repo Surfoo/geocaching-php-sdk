@@ -3,7 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 <meta charset="utf-8">
-<title>phpDocumentor » \Geocaching_OAuth</title>
+<title>Geocaching API with PHP 5.3 » \Geocaching_OAuth</title>
 <meta name="author" content="Mike van Riel">
 <meta name="description" content="">
 <link href="../css/template.css" rel="stylesheet" media="all">
@@ -15,7 +15,7 @@
 <body>
 <div class="navbar navbar-fixed-top">
 <div class="navbar-inner"><div class="container">
-<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">phpDocumentor</a><div class="nav-collapse"><ul class="nav">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">Geocaching API with PHP 5.3</a><div class="nav-collapse"><ul class="nav">
 <li class="dropdown">
 <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
                                     API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
@@ -77,21 +77,24 @@
 </li>
 <li class="nav-header">
 <i class="icon-custom icon-property"></i> Properties
+                    <ul></ul>
+</li>
+<li class="nav-header protected">» Protected
                     <ul>
-<li class="property public "><a href="#property_geocaching_live_url" title="$geocaching_live_url :: Production URL of Groundspeak OAuth"><span class="description"></span><pre>$geocaching_live_url</pre></a></li>
-<li class="property public "><a href="#property_geocaching_staging_url" title="$geocaching_staging_url :: Staging URL of Groundspeak OAuth"><span class="description"></span><pre>$geocaching_staging_url</pre></a></li>
-<li class="property public "><a href="#property_oauth_signature_method" title="$oauth_signature_method :: OAuth Signature Method"><span class="description"></span><pre>$oauth_signature_method</pre></a></li>
-<li class="property public "><a href="#property_oauth_version" title="$oauth_version :: OAuth version"><span class="description"></span><pre>$oauth_version</pre></a></li>
+<li class="property protected "><a href="#property_live_oauth_url" title="$live_oauth_url :: Production URL of Groundspeak OAuth"><span class="description"></span><pre>$live_oauth_url</pre></a></li>
+<li class="property protected "><a href="#property_oauth_signature_method" title="$oauth_signature_method :: OAuth Signature Method"><span class="description"></span><pre>$oauth_signature_method</pre></a></li>
+<li class="property protected "><a href="#property_oauth_version" title="$oauth_version :: OAuth version"><span class="description"></span><pre>$oauth_version</pre></a></li>
+<li class="property protected "><a href="#property_staging_oauth_url" title="$staging_oauth_url :: Staging URL of Groundspeak OAuth"><span class="description"></span><pre>$staging_oauth_url</pre></a></li>
 </ul>
 </li>
 <li class="nav-header private">» Private
                     <ul>
 <li class="property private "><a href="#property_access_params" title="$access_params :: Access parameters"><span class="description"></span><pre>$access_params</pre></a></li>
-<li class="property private "><a href="#property_api_url" title="$api_url :: Api URL"><span class="description"></span><pre>$api_url</pre></a></li>
 <li class="property private "><a href="#property_callback_url" title="$callback_url :: Callback URL"><span class="description"></span><pre>$callback_url</pre></a></li>
 <li class="property private "><a href="#property_consumer_key" title="$consumer_key :: Consumer key"><span class="description"></span><pre>$consumer_key</pre></a></li>
 <li class="property private "><a href="#property_consumer_secret" title="$consumer_secret :: Consumer secret"><span class="description"></span><pre>$consumer_secret</pre></a></li>
 <li class="property private "><a href="#property_oauth_token_access" title="$oauth_token_access :: Oauth token access"><span class="description"></span><pre>$oauth_token_access</pre></a></li>
+<li class="property private "><a href="#property_oauth_url" title="$oauth_url :: OAuth URL"><span class="description"></span><pre>$oauth_url</pre></a></li>
 <li class="property private "><a href="#property_request_params" title="$request_params :: Request parameters"><span class="description"></span><pre>$request_params</pre></a></li>
 </ul>
 </li>
@@ -136,19 +139,16 @@
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$consumer_key</h4>
-<code>string</code>
-</div>
+<code>string</code><p>OAuth Key</p></div>
 <div class="subelement argument">
 <h4>$consumer_secret</h4>
-<code>string</code>
-</div>
+<code>string</code><p>OAuth Secret</p></div>
 <div class="subelement argument">
 <h4>$callback_url</h4>
-<code>string</code>
-</div>
+<code>string</code><p>Callbak URL</p></div>
 <div class="subelement argument">
 <h4>$live</h4>
-<code>boolean</code>
+<code>boolean</code><p>production = true, staging = false</p>
 </div>
 </div></div>
 </div>
@@ -336,31 +336,19 @@ and MUST be properly decoded"</p></div>
 </div>
 <h3>
 <i class="icon-custom icon-property"></i> Properties</h3>
-<a id="property_geocaching_live_url"> </a><div class="element clickable property public property_geocaching_live_url" data-toggle="collapse" data-target=".property_geocaching_live_url .collapse">
+<a id="property_live_oauth_url"> </a><div class="element clickable property protected property_live_oauth_url" data-toggle="collapse" data-target=".property_live_oauth_url .collapse">
 <h2></h2>
-<pre>$geocaching_live_url : string</pre>
+<pre>$live_oauth_url : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
 <th>access</th>
-<td>public</td>
+<td>protected</td>
 </tr></table>
 </div></div>
 </div>
-<a id="property_geocaching_staging_url"> </a><div class="element clickable property public property_geocaching_staging_url" data-toggle="collapse" data-target=".property_geocaching_staging_url .collapse">
-<h2></h2>
-<pre>$geocaching_staging_url : string</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<table class="table table-bordered"><tr>
-<th>access</th>
-<td>public</td>
-</tr></table>
-</div></div>
-</div>
-<a id="property_oauth_signature_method"> </a><div class="element clickable property public property_oauth_signature_method" data-toggle="collapse" data-target=".property_oauth_signature_method .collapse">
+<a id="property_oauth_signature_method"> </a><div class="element clickable property protected property_oauth_signature_method" data-toggle="collapse" data-target=".property_oauth_signature_method .collapse">
 <h2></h2>
 <pre>$oauth_signature_method : string</pre>
 <div class="labels"></div>
@@ -368,11 +356,11 @@ and MUST be properly decoded"</p></div>
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
 <th>access</th>
-<td>public</td>
+<td>protected</td>
 </tr></table>
 </div></div>
 </div>
-<a id="property_oauth_version"> </a><div class="element clickable property public property_oauth_version" data-toggle="collapse" data-target=".property_oauth_version .collapse">
+<a id="property_oauth_version"> </a><div class="element clickable property protected property_oauth_version" data-toggle="collapse" data-target=".property_oauth_version .collapse">
 <h2></h2>
 <pre>$oauth_version : string</pre>
 <div class="labels"></div>
@@ -380,25 +368,25 @@ and MUST be properly decoded"</p></div>
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
 <th>access</th>
-<td>public</td>
+<td>protected</td>
+</tr></table>
+</div></div>
+</div>
+<a id="property_staging_oauth_url"> </a><div class="element clickable property protected property_staging_oauth_url" data-toggle="collapse" data-target=".property_staging_oauth_url .collapse">
+<h2></h2>
+<pre>$staging_oauth_url : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>protected</td>
 </tr></table>
 </div></div>
 </div>
 <a id="property_access_params"> </a><div class="element clickable property private property_access_params" data-toggle="collapse" data-target=".property_access_params .collapse">
 <h2></h2>
 <pre>$access_params : array</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<table class="table table-bordered"><tr>
-<th>access</th>
-<td>private</td>
-</tr></table>
-</div></div>
-</div>
-<a id="property_api_url"> </a><div class="element clickable property private property_api_url" data-toggle="collapse" data-target=".property_api_url .collapse">
-<h2></h2>
-<pre>$api_url : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
@@ -456,6 +444,18 @@ and MUST be properly decoded"</p></div>
 </tr></table>
 </div></div>
 </div>
+<a id="property_oauth_url"> </a><div class="element clickable property private property_oauth_url" data-toggle="collapse" data-target=".property_oauth_url .collapse">
+<h2></h2>
+<pre>$oauth_url : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>private</td>
+</tr></table>
+</div></div>
+</div>
 <a id="property_request_params"> </a><div class="element clickable property private property_request_params" data-toggle="collapse" data-target=".property_request_params .collapse">
 <h2></h2>
 <pre>$request_params : array</pre>
@@ -475,7 +475,7 @@ and MUST be properly decoded"</p></div>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
-            generated on 2012-12-28T16:42:29+01:00.<br></footer></div>
+            generated on 2012-12-28T23:58:50+01:00.<br></footer></div>
 </div>
 </body>
 </html>

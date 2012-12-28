@@ -18,34 +18,34 @@ class Geocaching_OAuth {
     /**
      * Staging URL of Groundspeak OAuth
      *
-     * @access public
+     * @access protected
      * @var string
      */
-    public $geocaching_staging_url = 'http://staging.geocaching.com/OAuth/oauth.ashx';
+    protected $staging_oauth_url = 'http://staging.geocaching.com/OAuth/oauth.ashx';
 
     /**
      * Production URL of Groundspeak OAuth
      *
-     * @access public
+     * @access protected
      * @var string
      */
-    public $geocaching_live_url    = 'http://staging.geocaching.com/OAuth/oauth.ashx';// FIXME with the right URL
+    protected $live_oauth_url    = 'http://staging.geocaching.com/OAuth/oauth.ashx';// FIXME with the right URL
 
     /**
      * OAuth Signature Method
      *
-     * @access public
+     * @access protected
      * @var string
      */
-    public $oauth_signature_method = 'HMAC-SHA1';
+    protected $oauth_signature_method = 'HMAC-SHA1';
 
     /**
      * OAuth version
      *
-     * @access public
+     * @access protected
      * @var string
      */
-    public $oauth_version          = '1.0';
+    protected $oauth_version          = '1.0';
 
     /**
      * Consumer key
@@ -80,12 +80,12 @@ class Geocaching_OAuth {
     private $oauth_token_access = null;
 
     /**
-     * Api URL
+     * OAuth URL
      *
      * @access private
      * @var string
      */
-    private $api_url            = null;
+    private $oauth_url            = null;
 
     /**
      * Request parameters
@@ -107,10 +107,10 @@ class Geocaching_OAuth {
      * Constructor
      *
      * @access public
-     * @param string  $consumer_key
-     * @param string  $consumer_secret
-     * @param string  $callback_url
-     * @param boolean $live
+     * @param string  $consumer_key OAuth Key
+     * @param string  $consumer_secret OAuth Secret
+     * @param string  $callback_url Callbak URL
+     * @param boolean $live production = true, staging = false
      */
     public function __construct($consumer_key, $consumer_secret, $callback_url, $live = false)
     {
@@ -133,10 +133,10 @@ class Geocaching_OAuth {
         $this->callback_url    = $callback_url;
 
         if($live) {
-            $this->api_url = $this->geocaching_live_url;
+            $this->oauth_url = $this->live_oauth_url;
         }
         else {
-            $this->api_url = $this->geocaching_staging_url;
+            $this->oauth_url = $this->staging_oauth_url;
         }
     }
 
@@ -169,7 +169,7 @@ class Geocaching_OAuth {
         }
         $concatenatedUrlParams = implode('&', $urlPairs);
 
-        $authpage = $this->curl_request($this->api_url."?".$concatenatedUrlParams);
+        $authpage = $this->curl_request($this->oauth_url."?".$concatenatedUrlParams);
         $data = $this->http_explode_data($authpage);
         $this->auth_token = $data['oauth_token'];
         $this->auth_token_secret = $data['oauth_token_secret'];
@@ -214,7 +214,7 @@ class Geocaching_OAuth {
         }
         $concatenatedUrlParams = implode('&', $urlPairs);
 
-        $url = $this->curl_request($this->api_url."?".$concatenatedUrlParams);
+        $url = $this->curl_request($this->oauth_url."?".$concatenatedUrlParams);
         $data = $this->http_explode_data($url);
 
         $this->oauth_token_access = $data['oauth_token'];
@@ -237,7 +237,7 @@ class Geocaching_OAuth {
         }
         $query_string = implode('&', $pairs);
 
-        $base_url = "GET&".$this->rfc3986_encode($this->api_url)."&".$this->rfc3986_encode($query_string);
+        $base_url = "GET&".$this->rfc3986_encode($this->oauth_url)."&".$this->rfc3986_encode($query_string);
 
         $secret_part = implode('&', $this->rfc3986_encode($secret));
         if(count($secret) == 1)
@@ -254,7 +254,7 @@ class Geocaching_OAuth {
      */
     public function redirect()
     {
-        $redirecturl = $this->api_url . '?oauth_token=' . urlencode($this->auth_token) . '&force_login=true';
+        $redirecturl = $this->oauth_url . '?oauth_token=' . urlencode($this->auth_token) . '&force_login=true';
         header('Location: ' . $redirecturl);
         exit(0);
     }
