@@ -10,6 +10,7 @@
 
 /**
  * Geocaching API
+ *
  * @category Geocaching
  * @package Geocaching_Api
  * @abstract
@@ -28,6 +29,7 @@ abstract class Geocaching_Api {
 
     /**
      * Staging URL of Groundspeak API
+     *
      * @var string $_staging_api_url
      * @access protected
      */
@@ -35,6 +37,7 @@ abstract class Geocaching_Api {
 
     /**
      * Production URL of Groundspeak API
+     *
      * @var string $_live_api_url
      * @access protected
      */
@@ -42,6 +45,7 @@ abstract class Geocaching_Api {
 
     /**
      * OAuth token sent by the client
+     *
      * @var string $oauth_token
      * @access protected
      */
@@ -49,6 +53,7 @@ abstract class Geocaching_Api {
 
     /**
      * Type of output expected format, JSON or XML
+     *
      * @var string $output_format
      * @access protected
      */
@@ -56,6 +61,7 @@ abstract class Geocaching_Api {
 
     /**
      * Constructor
+     *
      * @abstract
      * @param string $oauth_token
      */
@@ -63,6 +69,7 @@ abstract class Geocaching_Api {
 
     /**
      * Check the status of the POST or GET request
+     *
      * @abstract
      * @param  string $content
      * @return void
@@ -71,6 +78,7 @@ abstract class Geocaching_Api {
 
     /**
      * Add Geocaches to a bookmark list
+     *
      * @abstract
      * @param array $params
      * @return void
@@ -79,6 +87,7 @@ abstract class Geocaching_Api {
 
     /**
      * Create Field Note And Publish
+     *
      * @abstract
      * @param  array $params
      * @return void
@@ -87,6 +96,7 @@ abstract class Geocaching_Api {
 
     /**
      * Create Trackable Log
+     *
      * @abstract
      * @param  array $params
      * @return void
@@ -95,6 +105,7 @@ abstract class Geocaching_Api {
 
     /**
      * Get Another Users Profile
+     *
      * @abstract
      * @param  array $params
      * @return void
@@ -103,6 +114,7 @@ abstract class Geocaching_Api {
 
     /**
      * Get Bookmark List By Guid
+     *
      * @abstract
      * @param  array $params
      * @return void
@@ -111,6 +123,7 @@ abstract class Geocaching_Api {
 
     /**
      * Get Geocache Status
+     *
      * @abstract
      * @param  array $params
      * @return void
@@ -119,6 +132,7 @@ abstract class Geocaching_Api {
 
     /**
      * Get More Geocaches
+     *
      * @abstract
      * @param  array $params
      * @return void
@@ -127,6 +141,7 @@ abstract class Geocaching_Api {
 
     /**
      * Get Owned Trackables
+     *
      * @abstract
      * @param  array $params
      * @return void
@@ -135,6 +150,7 @@ abstract class Geocaching_Api {
 
     /**
      * Get User Gallery
+     *
      * @abstract
      * @param  array $params
      * @return void
@@ -143,6 +159,7 @@ abstract class Geocaching_Api {
 
     /**
      * Get Users Cache Counts
+     *
      * @abstract
      * @param  array $params
      * @return void
@@ -151,6 +168,7 @@ abstract class Geocaching_Api {
 
     /**
      * Get Users Geocache Logs
+     *
      * @abstract
      * @param  array $params
      * @return void
@@ -159,6 +177,7 @@ abstract class Geocaching_Api {
 
     /**
      * get Users Trackables
+     *
      * @abstract
      * @param  array $params
      * @return void
@@ -167,6 +186,7 @@ abstract class Geocaching_Api {
 
     /**
      * Get Your User Profile
+     *
      * @abstract
      * @param  array $params
      * @return void
@@ -175,6 +195,7 @@ abstract class Geocaching_Api {
 
     /**
      * Save User Waypoint
+     *
      * @abstract
      * @param  array $params
      * @return void
@@ -183,6 +204,7 @@ abstract class Geocaching_Api {
 
     /**
      * Search For Geocaches
+     *
      * @abstract
      * @param  array $params
      * @return void
@@ -191,6 +213,7 @@ abstract class Geocaching_Api {
 
     /**
      * Search For Souvenirs By Public Guid
+     *
      * @abstract
      * @param  array $params
      * @return void
@@ -199,6 +222,7 @@ abstract class Geocaching_Api {
 
     /**
      * Update Cache Note
+     *
      * @abstract
      * @param  array $params
      * @return void
@@ -207,6 +231,7 @@ abstract class Geocaching_Api {
 
     /**
      * Upload Image To Geocache Log
+     *
      * @abstract
      * @param  array $params
      * @return void
@@ -215,6 +240,7 @@ abstract class Geocaching_Api {
 
     /**
      * Make a GET request
+     *
      * @access protected
      * @param  string $request
      * @param  array $params
@@ -251,6 +277,7 @@ abstract class Geocaching_Api {
 
     /**
      * Make a POST request
+     *
      * @access protected
      * @param  string $request
      * @param  array $data
@@ -302,6 +329,7 @@ abstract class Geocaching_Api {
 
     /**
      * Add Favorite Point To a Cache
+     *
      * @access public
      * @param array $params
      * @return object|string JSON : Object, XML : String
@@ -317,6 +345,7 @@ abstract class Geocaching_Api {
 
     /**
      * Delete Cache Note
+     *
      * @access public
      * @param  array $params
      * @return object|string JSON : Object, XML : String
@@ -332,6 +361,7 @@ abstract class Geocaching_Api {
 
     /**
      * Delete User Waypoint
+     *
      * @access public
      * @param  array $params
      * @return object|string JSON : Object, XML : String
@@ -347,6 +377,7 @@ abstract class Geocaching_Api {
 
     /**
      * Get API Limits
+     *
      * @access public
      * @return object|string JSON : Object, XML : String
      */
@@ -357,6 +388,7 @@ abstract class Geocaching_Api {
 
     /**
      * Get Attribute Types Data
+     *
      * @access public
      * @return object|string JSON : Object, XML : String
      */
@@ -367,6 +399,7 @@ abstract class Geocaching_Api {
 
     /**
      * Get Bookmark Lists By User ID
+     *
      * @access public
      * @param  array $params
      * @return object|string JSON : Object, XML : String
@@ -382,6 +415,7 @@ abstract class Geocaching_Api {
 
     /**
      * Get Bookmark Lists For User
+     *
      * @access public
      * @return object|string JSON : Object, XML : String
      */
@@ -392,6 +426,7 @@ abstract class Geocaching_Api {
 
     /**
      * Get Cache By Tile Guid
+     *
      * @access public
      * @param array $params
      * @return object|string JSON : Object, XML : String
@@ -407,6 +442,7 @@ abstract class Geocaching_Api {
 
     /**
      * Get Cache Ids Favorited By User
+     *
      * @access public
      * @return object|string JSON : Object, XML : String
      */
@@ -417,6 +453,7 @@ abstract class Geocaching_Api {
 
     /**
      * Get Caches Favorited By User
+     *
      * @access public
      * @return object|string JSON : Object, XML : String
      */
@@ -427,6 +464,7 @@ abstract class Geocaching_Api {
 
     /**
      * Get Geocache Data Types
+     *
      * @access public
      * @param  array $params
      * @return object|string JSON : Object, XML : String
@@ -446,6 +484,7 @@ abstract class Geocaching_Api {
 
     /**
      * Get Geocache Logs By Cache Code
+     *
      * @access public
      * @param  array $params
      * @return object|string JSON : Object, XML : String
@@ -467,6 +506,7 @@ abstract class Geocaching_Api {
 
     /**
      * Get Geocache Types
+     *
      * @access public
      * @return object|string JSON : Object, XML : String
      */
@@ -477,6 +517,7 @@ abstract class Geocaching_Api {
 
     /**
      * Get Images For Geocache
+     *
      * @access public
      * @param  array $params
      * @return object|string JSON : Object, XML : String
@@ -492,6 +533,7 @@ abstract class Geocaching_Api {
 
     /**
      * Get Membership Types
+     *
      * @access public
      * @return object|string JSON : Object, XML : String
      */
@@ -502,6 +544,7 @@ abstract class Geocaching_Api {
 
     /**
      * Get Pocket Query Data
+     *
      * @access public
      * @param  array $params
      * @return object|string JSON : Object, XML : String
@@ -525,6 +568,7 @@ abstract class Geocaching_Api {
 
     /**
      * Get Pocket Query List
+     *
      * @access public
      * @return object|string JSON : Object, XML : String
      */
@@ -535,6 +579,7 @@ abstract class Geocaching_Api {
 
     /**
      * Get Pocket Query Urls
+     *
      * @access public
      * @param  array $params
      * @return object|string JSON : Object, XML : String
@@ -550,6 +595,7 @@ abstract class Geocaching_Api {
 
     /**
      * Get Pocket Query Zipped File
+     *
      * @access public
      * @param  array $params
      * @return object|string JSON : Object, XML : String
@@ -565,6 +611,7 @@ abstract class Geocaching_Api {
 
     /**
      * Get Server Details
+     *
      * @access public
      * @return object|string JSON : Object, XML : String
      */
@@ -575,6 +622,7 @@ abstract class Geocaching_Api {
 
     /**
      * Get Site Stats
+     *
      * @access public
      * @return object|string JSON : Object, XML : String
      */
@@ -585,6 +633,7 @@ abstract class Geocaching_Api {
 
     /**
      * Get Status Messages
+     *
      * @access public
      * @return object|string JSON : Object, XML : String
      */
@@ -595,6 +644,7 @@ abstract class Geocaching_Api {
 
     /**
      * Get Trackable Logs By TB Code
+     *
      * @access public
      * @param  array $params
      * @return object|string JSON : Object, XML : String
@@ -616,6 +666,7 @@ abstract class Geocaching_Api {
 
     /**
      * Get Trackables By TB Code
+     *
      * @access public
      * @param  array $params
      * @return object|string JSON : Object, XML : String
@@ -634,6 +685,7 @@ abstract class Geocaching_Api {
 
     /**
      * Get Trackables By Tracking Number
+     *
      * @access public
      * @param  array $params
      * @return object|string JSON : Object, XML : String
@@ -652,6 +704,7 @@ abstract class Geocaching_Api {
 
     /**
      * Get Trackables In Cache
+     *
      * @access public
      * @param  array $params
      * @return object|string JSON : Object, XML : String
@@ -675,6 +728,7 @@ abstract class Geocaching_Api {
 
     /**
      * Get Trackable Travel List
+     *
      * @access public
      * @param  array $params
      * @return object|string JSON : Object, XML : String
@@ -690,6 +744,7 @@ abstract class Geocaching_Api {
 
     /**
      * Get Users Favorite Points
+     *
      * @access public
      * @return object|string JSON : Object, XML : String
      */
@@ -700,6 +755,7 @@ abstract class Geocaching_Api {
 
     /**
      * Get Users Cache Notes
+     *
      * @access public
      * @param  array $params
      * @return object|string JSON : Object, XML : String
@@ -718,6 +774,7 @@ abstract class Geocaching_Api {
 
     /**
      * Get Users Who Favorited Cache
+     *
      * @access public
      * @param  array $params
      * @return object|string JSON : Object, XML : String
@@ -733,6 +790,7 @@ abstract class Geocaching_Api {
 
     /**
      * Get User Waypoints
+     *
      * @access public
      * @param  array $params
      * @return object|string JSON : Object, XML : String
@@ -748,6 +806,7 @@ abstract class Geocaching_Api {
 
     /**
      * Get Wpt Log Types
+     *
      * @access public
      * @return object|string JSON : Object, XML : String
      */
@@ -758,6 +817,7 @@ abstract class Geocaching_Api {
 
     /**
      * Remove Favorite Point From Cache
+     *
      * @access public
      * @param  array $params
      * @return object|string JSON : Object, XML : String

@@ -12,6 +12,7 @@ require_once 'Geocaching_Api.class.php';
 
 /**
  * Geocaching API for JSON format
+ *
  * @category Geocaching
  * @package Geocaching_Api
  */
@@ -19,6 +20,7 @@ class Geocaching_Api_Json extends Geocaching_Api {
 
     /**
      * Constructor
+     *
      * @access public
      * @param string $oauth_token OAuth token provided by the application
      * @return void
@@ -35,6 +37,7 @@ class Geocaching_Api_Json extends Geocaching_Api {
 
     /**
      * Check the status of the POST or GET request in JSON
+     *
      * @access protected
      * @param  object $content
      * @return void

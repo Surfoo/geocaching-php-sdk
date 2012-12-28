@@ -12,6 +12,7 @@ require_once 'Geocaching_Api.class.php';
 
 /**
  * Geocaching API for XML format
+ *
  * @category Geocaching
  * @package Geocaching_Api
  */
@@ -19,6 +20,7 @@ class Geocaching_Api_Xml extends Geocaching_Api {
 
     /**
      * Geocaching XML Namespace
+     *
      * @var string
      * @access private
      */
@@ -26,6 +28,7 @@ class Geocaching_Api_Xml extends Geocaching_Api {
 
     /**
      * Geocaching XML namespace schema
+     *
      * @var string
      * @access private
      */
@@ -33,6 +36,7 @@ class Geocaching_Api_Xml extends Geocaching_Api {
 
     /**
      * Constructor
+     *
      * @access public
      * @param string $oauth_token OAuth token provided by the application
      * @return void
@@ -49,6 +53,7 @@ class Geocaching_Api_Xml extends Geocaching_Api {
 
     /**
      * Check the status of the POST or GET request in XML
+     *
      * @access protected
      * @param  object $content
      * @return void
@@ -57,6 +62,7 @@ class Geocaching_Api_Xml extends Geocaching_Api {
 
     /**
      * [prependXml description]
+     *
      * @access protected
      * @param  [type] $method [description]
      * @return object Dom Document
@@ -82,6 +88,7 @@ class Geocaching_Api_Xml extends Geocaching_Api {
 
     /**
      * [addGeocachesToBookmarkList description]
+     *
      * @access public
      * @param array $params [description]
      */
@@ -89,6 +96,7 @@ class Geocaching_Api_Xml extends Geocaching_Api {
 
     /**
      * [createFieldNoteAndPublish description]
+     *
      * @access public
      * @param  array  $params [description]
      * @return [type]         [description]
@@ -97,6 +105,7 @@ class Geocaching_Api_Xml extends Geocaching_Api {
 
     /**
      * [createTrackableLog description]
+     *
      * @access public
      * @param  array  $params [description]
      * @return [type]         [description]
@@ -105,6 +114,7 @@ class Geocaching_Api_Xml extends Geocaching_Api {
 
     /**
      * [getAnotherUsersProfile description]
+     *
      * @access public
      * @param  array  $params [description]
      * @return [type]         [description]
@@ -113,6 +123,7 @@ class Geocaching_Api_Xml extends Geocaching_Api {
 
     /**
      * [getBookmarkListByGuid description]
+     *
      * @access public
      * @param  array  $params [description]
      * @return [type]         [description]
@@ -121,6 +132,7 @@ class Geocaching_Api_Xml extends Geocaching_Api {
 
     /**
      * [getGeocacheStatus description]
+     *
      * @access public
      * @param  array  $params [description]
      * @return [type]         [description]
@@ -129,6 +141,7 @@ class Geocaching_Api_Xml extends Geocaching_Api {
 
     /**
      * [getMoreGeocaches description]
+     *
      * @access public
      * @param  array  $params [description]
      * @return [type]         [description]
@@ -137,6 +150,7 @@ class Geocaching_Api_Xml extends Geocaching_Api {
 
     /**
      * [getYourUserProfile description]
+     *
      * @access public
      * @param  array  $params [description]
      * @return [type]         [description]
@@ -160,6 +174,7 @@ class Geocaching_Api_Xml extends Geocaching_Api {
 
     /**
      * [saveUserWaypoint description]
+     *
      * @access public
      * @param  array  $params [description]
      * @return [type]         [description]
@@ -168,6 +183,7 @@ class Geocaching_Api_Xml extends Geocaching_Api {
 
     /**
      * [searchForGeocaches description]
+     *
      * @access public
      * @param  array  $params [description]
      * @return [type]         [description]
@@ -176,6 +192,7 @@ class Geocaching_Api_Xml extends Geocaching_Api {
 
     /**
      * [searchForSouvenirsByPublicGuid description]
+     *
      * @access public
      * @param  array  $params [description]
      * @return [type]         [description]
@@ -184,6 +201,7 @@ class Geocaching_Api_Xml extends Geocaching_Api {
 
     /**
      * [updateCacheNote description]
+     *
      * @access public
      * @param  array  $params [description]
      * @return [type]         [description]
@@ -192,6 +210,7 @@ class Geocaching_Api_Xml extends Geocaching_Api {
 
     /**
      * [uploadImageToGeocacheLog description]
+     *
      * @access public
      * @param  array  $params [description]
      * @return [type]         [description]
