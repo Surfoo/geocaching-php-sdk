@@ -361,7 +361,7 @@ class Geocaching_Api_Json extends Geocaching_Api {
      * @param  array $params
      * @return object
      */
-    public function getYourUserProfile(array $params)
+    public function getYourUserProfile($params = array())
     {
         return $this->getUserProfile(__FUNCTION__, $params);
     }
@@ -373,7 +373,7 @@ class Geocaching_Api_Json extends Geocaching_Api {
      * @param  array $params
      * @return object
      */
-    public function getAnotherUsersProfile(array $params)
+    public function getAnotherUsersProfile($params = array())
     {
         return $this->getUserProfile(__FUNCTION__, $params);
     }
@@ -595,7 +595,7 @@ class Geocaching_Api_Json extends Geocaching_Api {
      * @param  array $params
      * @return object
      */
-    protected function getUserProfile($function, array $params)
+    protected function getUserProfile($function, $params = array())
     {
         $post_params = array();
         if(array_key_exists('UserID', $params))

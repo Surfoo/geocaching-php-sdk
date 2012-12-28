@@ -110,7 +110,7 @@ abstract class Geocaching_Api {
      * @param  array $params
      * @return void
      */
-    abstract public function getAnotherUsersProfile(array $params);
+    abstract public function getAnotherUsersProfile($params = array());
 
     /**
      * Get Bookmark List By Guid
@@ -191,7 +191,7 @@ abstract class Geocaching_Api {
      * @param  array $params
      * @return void
      */
-    abstract public function getYourUserProfile(array $params);
+    abstract public function getYourUserProfile($params = array());
 
     /**
      * Save User Waypoint
