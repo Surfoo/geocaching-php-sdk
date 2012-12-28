@@ -1,32 +1,65 @@
 <?php
+/**
+ * Geocaching API with PHP
+ *
+ * @author  Surfoo <surfooo@gmail.com>
+ * @link    https://github.com/Surfoo/geocaching-api
+ * @license http://opensource.org/licenses/eclipse-1.0.php
+ * @package Geocaching_Api
+ */
 
 require_once 'Geocaching_Api.class.php';
 
+/**
+ * Geocaching API for XML format
+ * @category Geocaching
+ * @package Geocaching_Api
+ */
 class Geocaching_Api_Xml extends Geocaching_Api {
 
+    /**
+     * Geocaching XML Namespace
+     * @var string
+     * @access private
+     */
     private $xmlns_geocaching = 'http://www.geocaching.com/Geocaching.Live/data';
+
+    /**
+     * Geocaching XML namespace schema
+     * @var string
+     * @access private
+     */
     private $xmlns_schema     = 'http://schemas.datacontract.org/2004/07/Tucson.Geocaching.WCF.API.Geocaching.Types';
 
     /**
-     * [__construct description]
-     * @param [type] $token [description]
+     * Constructor
+     * @access public
+     * @param string $oauth_token OAuth token provided by the application
+     * @return void
      */
-    public function __construct($token)
+    public function __construct($oauth_token)
     {
-        if(!isset($token))
-            throw new Exception('token is missing.');
+        if(!isset($oauth_token))
+            throw new Exception('oauth_token is missing.');
 
-        $this->token         = $token;
+        $this->oauth_token   = $oauth_token;
         $this->output_format = 'xml';
         $this->http_headers  = array('Content-Type: application/xml');
     }
 
+    /**
+     * Check the status of the POST or GET request in XML
+     * @access protected
+     * @param  object $content
+     * @return void
+     */
     protected function checkRequestStatus($content) {}
 
     /**
      * [prependXml description]
+     * @access protected
      * @param  [type] $method [description]
-     * @return [type]         [description]
+     * @return object Dom Document
      */
     protected function prependXml($method)
     {
@@ -38,7 +71,7 @@ class Geocaching_Api_Xml extends Geocaching_Api {
 
         $eAccessToken = $dom->createElement('AccessToken');
         $root->appendChild($eAccessToken);
-        $text = $dom->createTextNode(utf8_encode($this->token));
+        $text = $dom->createTextNode(utf8_encode($this->oauth_token));
         $eAccessToken->appendChild($text);
         return $dom;
     }
@@ -46,26 +79,69 @@ class Geocaching_Api_Xml extends Geocaching_Api {
     /**
      * List of POST methods from Geocaching API
      */
-    public function addGeocachesToBookmarkList($params = array()) {}
-
-    public function createFieldNoteAndPublish($params = array()) {}
-
-    public function createTrackableLog($params = array()) {}
-
-    public function getAnotherUsersProfile($params = array()) {}
-
-    public function getBookmarkListByGuid($params = array()) {}
-
-    public function getGeocacheStatus($params = array()) {}
-
-    public function getMoreGeocaches($params = array()) {}
 
     /**
-     * [getYourUserProfile description]
+     * [addGeocachesToBookmarkList description]
+     * @access public
+     * @param array $params [description]
+     */
+    public function addGeocachesToBookmarkList(array $params) {}
+
+    /**
+     * [createFieldNoteAndPublish description]
+     * @access public
      * @param  array  $params [description]
      * @return [type]         [description]
      */
-    public function getYourUserProfile($params = array())
+    public function createFieldNoteAndPublish(array $params) {}
+
+    /**
+     * [createTrackableLog description]
+     * @access public
+     * @param  array  $params [description]
+     * @return [type]         [description]
+     */
+    public function createTrackableLog(array $params) {}
+
+    /**
+     * [getAnotherUsersProfile description]
+     * @access public
+     * @param  array  $params [description]
+     * @return [type]         [description]
+     */
+    public function getAnotherUsersProfile(array $params) {}
+
+    /**
+     * [getBookmarkListByGuid description]
+     * @access public
+     * @param  array  $params [description]
+     * @return [type]         [description]
+     */
+    public function getBookmarkListByGuid(array $params) {}
+
+    /**
+     * [getGeocacheStatus description]
+     * @access public
+     * @param  array  $params [description]
+     * @return [type]         [description]
+     */
+    public function getGeocacheStatus(array $params) {}
+
+    /**
+     * [getMoreGeocaches description]
+     * @access public
+     * @param  array  $params [description]
+     * @return [type]         [description]
+     */
+    public function getMoreGeocaches(array $params) {}
+
+    /**
+     * [getYourUserProfile description]
+     * @access public
+     * @param  array  $params [description]
+     * @return [type]         [description]
+     */
+    public function getYourUserProfile(array $params)
     {
         $dom = $this->prependXml('GetYourUserProfileRequest');
         $eProfileOptions = $dom->createElement('ProfileOptions');
@@ -82,14 +158,44 @@ class Geocaching_Api_Xml extends Geocaching_Api {
         return $this->post_request(__FUNCTION__, $dom->saveXML());
     }
 
-    public function saveUserWaypoint($params = array()) {}
+    /**
+     * [saveUserWaypoint description]
+     * @access public
+     * @param  array  $params [description]
+     * @return [type]         [description]
+     */
+    public function saveUserWaypoint(array $params) {}
 
-    public function searchForGeocaches($params = array()) {}
+    /**
+     * [searchForGeocaches description]
+     * @access public
+     * @param  array  $params [description]
+     * @return [type]         [description]
+     */
+    public function searchForGeocaches(array $params) {}
 
-    public function searchForSouvenirsByPublicGuid($params = array()) {}
+    /**
+     * [searchForSouvenirsByPublicGuid description]
+     * @access public
+     * @param  array  $params [description]
+     * @return [type]         [description]
+     */
+    public function searchForSouvenirsByPublicGuid(array $params) {}
 
-    public function updateCacheNote($params = array()) {}
+    /**
+     * [updateCacheNote description]
+     * @access public
+     * @param  array  $params [description]
+     * @return [type]         [description]
+     */
+    public function updateCacheNote(array $params) {}
 
-    public function uploadImageToGeocacheLog($params = array()) {}
+    /**
+     * [uploadImageToGeocacheLog description]
+     * @access public
+     * @param  array  $params [description]
+     * @return [type]         [description]
+     */
+    public function uploadImageToGeocacheLog(array $params) {}
 
 }

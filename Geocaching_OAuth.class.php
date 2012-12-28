@@ -1,26 +1,116 @@
 <?php
+/**
+ * Geocaching API with PHP
+ *
+ * @author  Surfoo <surfooo@gmail.com>
+ * @link    https://github.com/Surfoo/geocaching-api
+ * @license http://opensource.org/licenses/eclipse-1.0.php
+ * @package Geocaching_OAuth
+ */
 
+/**
+ * OAuth for the Geocaching API
+ * @category Geocaching
+ * @package Geocaching_OAuth
+ */
 class Geocaching_OAuth {
 
+    /**
+     * Staging URL of Groundspeak OAuth
+     *
+     * @access public
+     * @var string
+     */
     public $geocaching_staging_url = 'http://staging.geocaching.com/OAuth/oauth.ashx';
+
+    /**
+     * Production URL of Groundspeak OAuth
+     *
+     * @access public
+     * @var string
+     */
     public $geocaching_live_url    = 'http://staging.geocaching.com/OAuth/oauth.ashx';// FIXME with the right URL
+
+    /**
+     * OAuth Signature Method
+     *
+     * @access public
+     * @var string
+     */
     public $oauth_signature_method = 'HMAC-SHA1';
+
+    /**
+     * OAuth version
+     *
+     * @access public
+     * @var string
+     */
     public $oauth_version          = '1.0';
 
+    /**
+     * Consumer key
+     *
+     * @access private
+     * @var string
+     */
     private $consumer_key       = null;
+
+    /**
+     * Consumer secret
+     *
+     * @access private
+     * @var string
+     */
     private $consumer_secret    = null;
+
+    /**
+     * Callback URL
+     *
+     * @access private
+     * @var string
+     */
     private $callback_url       = null;
+
+    /**
+     * Oauth token access
+     *
+     * @access private
+     * @var string
+     */
     private $oauth_token_access = null;
+
+    /**
+     * Api URL
+     *
+     * @access private
+     * @var string
+     */
     private $api_url            = null;
+
+    /**
+     * Request parameters
+     *
+     * @access private
+     * @var array
+     */
     private $request_params     = array();
+
+    /**
+     * Access parameters
+     *
+     * @access private
+     * @var array
+     */
     private $access_params      = array();
 
     /**
-     * [__construct description]
-     * @param [type]  $consumer_key    [description]
-     * @param [type]  $consumer_secret [description]
-     * @param [type]  $callback_url    [description]
-     * @param boolean $live            [description]
+     * Constructor
+     *
+     * @access public
+     * @param string  $consumer_key
+     * @param string  $consumer_secret
+     * @param string  $callback_url
+     * @param boolean $live
      */
     public function __construct($consumer_key, $consumer_secret, $callback_url, $live = false)
     {
@@ -42,7 +132,6 @@ class Geocaching_OAuth {
 
         $this->callback_url    = $callback_url;
 
-
         if($live) {
             $this->api_url = $this->geocaching_live_url;
         }
@@ -52,8 +141,10 @@ class Geocaching_OAuth {
     }
 
     /**
-     * [getRequestToken description]
-     * @return [type] [description]
+     * Get Request Token
+     *
+     * @access public
+     * @return array
      */
     public function getRequestToken()
     {
@@ -69,7 +160,7 @@ class Geocaching_OAuth {
         $values = $this->rfc3986_encode(array_values($this->request_params));
         $this->request_params = array_combine(array_keys($this->request_params), $values);
         uksort($this->request_params, 'strcmp');
-        
+
         $this->request_params['oauth_signature'] = $this->signature_hmac_sha1($this->request_params, array($this->consumer_secret));
         uksort($this->request_params, 'strcmp');
 
@@ -92,10 +183,12 @@ class Geocaching_OAuth {
     }
 
     /**
-     * [getAccessToken description]
-     * @param  [type] $queryData [description]
-     * @param  [type] $token     [description]
-     * @return [type]            [description]
+     * Get Access Token
+     *
+     * @access public
+     * @param  array $queryData
+     * @param  string $token
+     * @return string
      */
     public function getAccessToken($queryData, $token)
     {
@@ -130,10 +223,12 @@ class Geocaching_OAuth {
     }
 
     /**
-     * [signature_hmac_sha1 description]
-     * @param  [type] $params [description]
-     * @param  array  $secret [description]
-     * @return [type]         [description]
+     * Signature hmac_sha1
+     *
+     * @access protected
+     * @param  array $params
+     * @param  array $secret
+     * @return string
      */
     protected function signature_hmac_sha1($params, $secret = array())
     {
@@ -141,19 +236,21 @@ class Geocaching_OAuth {
             $pairs[] = $k.'='.$v;
         }
         $query_string = implode('&', $pairs);
-        
+
         $base_url = "GET&".$this->rfc3986_encode($this->api_url)."&".$this->rfc3986_encode($query_string);
-        
+
         $secret_part = implode('&', $this->rfc3986_encode($secret));
         if(count($secret) == 1)
             $secret_part .= '&';
-            
+
         return $this->rfc3986_encode(base64_encode(hash_hmac('sha1', $base_url, $secret_part, true)));
     }
 
     /**
-     * [redirect description]
-     * @return [type] [description]
+     * Make a redirection to API URL
+     *
+     * @access public
+     * @return void
      */
     public function redirect()
     {
@@ -163,7 +260,9 @@ class Geocaching_OAuth {
     }
 
     /**
-     * [setNonce description]
+     * Set a nonce
+     * @access protected
+     * @return string
      */
     protected function setNonce()
     {
@@ -171,9 +270,11 @@ class Geocaching_OAuth {
     }
 
     /**
-     * [curl_request description]
-     * @param  [type] $url [description]
-     * @return [type]      [description]
+     * Make a curl request
+     *
+     * @access protected
+     * @param  string $url
+     * @return string
      */
     protected function curl_request($url)
     {
@@ -185,7 +286,7 @@ class Geocaching_OAuth {
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
-        
+
         $response = curl_exec($ch);
         $status = curl_getinfo($ch);
         if($status['http_code'] != 200)
@@ -196,65 +297,68 @@ class Geocaching_OAuth {
 
         return $response;
     }
-    
+
     /**
      * Explode an http data string (like key1=value1&key2[]=value2 etc.)
      *
      * We need this function because parse_str will delete doublon keys.
      * This function makes it easier to find the sent string exactly as it was sent.
      *
+     * @access protected
      * @param string $string
-     * @returns string
+     * @return string
      */
     protected function http_explode_data($string)
     {
         $string = explode('&', $string);
         $out = array();
         $i = 0;
-        
+
         foreach ($string as $line)
         {
             $parts = explode('=', $line);
-            
+
             $key = $this->oauth_loosy_decode($parts[0]);
             $value = isset($parts[1]) ? $this->oauth_loosy_decode($parts[1]) : '';
-            
+
             $out[$key] = $value;
         }
-        
+
         return $out;
     }
-    
+
     /**
-     * Returns a string encoded according to RFC 3986.
+     * Return a string encoded according to RFC 3986.
      * In PHP 5.3+ you'll just need to do rawurlencode.
      *
+     * @access protected
      * @param string $str
-     * @returns string
+     * @return string
      */
     protected function rfc3986_encode($str)
     {
         if (is_array($str)) {
             return array_map(array(__CLASS__, __FUNCTION__), $str);
         }
-        
+
         if (version_compare(phpversion(), '5.3', '>=')) {
             return rawurlencode($str);
         }
         return str_replace('%7E', '~', rawurlencode($str));
     }
-    
+
     /**
-     * Returns a string decoded according OAuth spec.
+     * Return a string decoded according OAuth spec.
      *
-     * "While the encoding rules specified in this specification for the 
-     * purpose of constructing the signature base string exclude the of 
+     * "While the encoding rules specified in this specification for the
+     * purpose of constructing the signature base string exclude the of
      * a "+" character to represent an encoded space character, this pratice
      * is widely used in application/x-www-form-urlencoded encoded values,
      * and MUST be properly decoded"
      *
+     * @access protected
      * @param string $str
-     * @returns string
+     * @return string
      */
     protected function oauth_loosy_decode($str)
     {
@@ -264,6 +368,7 @@ class Geocaching_OAuth {
 
     /**
      * [getRequestUri description]
+     * @access public
      * @return [type] [description]
      */
     public static function getRequestUri()

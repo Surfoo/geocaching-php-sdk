@@ -1,27 +1,43 @@
 <?php
+/**
+ * Geocaching API with PHP
+ *
+ * @author  Surfoo <surfooo@gmail.com>
+ * @link    https://github.com/Surfoo/geocaching-api
+ * @license http://opensource.org/licenses/eclipse-1.0.php
+ * @package Geocaching_Api
+ */
 
 require_once 'Geocaching_Api.class.php';
 
+/**
+ * Geocaching API for JSON format
+ * @category Geocaching
+ * @package Geocaching_Api
+ */
 class Geocaching_Api_Json extends Geocaching_Api {
 
     /**
-     * [__construct description]
-     * @param [type] $token [description]
+     * Constructor
+     * @access public
+     * @param string $oauth_token OAuth token provided by the application
+     * @return void
      */
-    public function __construct($token)
+    public function __construct($oauth_token)
     {
-        if(!isset($token))
-            throw new Exception('token is missing.');
+        if(!isset($oauth_token))
+            throw new Exception('oauth_token is missing.');
 
-        $this->token         = $token;
+        $this->oauth_token   = $oauth_token;
         $this->output_format = 'json';
         $this->http_headers  = array('Content-Type: application/json');
     }
 
     /**
-     * [checkRequestStatus description]
-     * @param  [type] $content [description]
-     * @return [type]          [description]
+     * Check the status of the POST or GET request in JSON
+     * @access protected
+     * @param  object $content
+     * @return void
      */
     protected function checkRequestStatus($content)
     {
@@ -35,10 +51,15 @@ class Geocaching_Api_Json extends Geocaching_Api {
     */
 
     /**
-     * [addGeocachesToBookmarkList description]
-     * @param array $params [description]
+     * Add Geocaches To Bookmark List
+     *
+     * Required params: BookmarkListGuid, CacheCodes
+     *
+     * @access public
+     * @param array $params
+     * @return object
      */
-    public function addGeocachesToBookmarkList($params = array())
+    public function addGeocachesToBookmarkList(array $params)
     {
         if(!array_key_exists('BookmarkListGuid', $params))
             throw new Exception('BookmarkListGuid is missing.');
@@ -54,11 +75,16 @@ class Geocaching_Api_Json extends Geocaching_Api {
     }
 
     /**
-     * [createFieldNoteAndPublish description]
-     * @param  array  $params [description]
-     * @return [type]         [description]
+     * Create Field Note And Publish
+     *
+     * Required params: CacheCode, WptLogTypeId, UTCDateLogged, Note<br>
+     * Optional params: PromoteToLog, FavoriteThisCache, EncryptLogText, UpdatedLatitude, UpdatedLongitude, base64ImageData, FileCaption, FileDescription, FileName
+     *
+     * @access public
+     * @param  array $params
+     * @return object
      */
-    public function createFieldNoteAndPublish($params = array())
+    public function createFieldNoteAndPublish(array $params)
     {
         if(!array_key_exists('CacheCode', $params))
             throw new Exception('CacheCode is missing.');
@@ -99,11 +125,15 @@ class Geocaching_Api_Json extends Geocaching_Api {
     }
 
     /**
-     * [createTrackableLog description]
-     * @param  array  $params [description]
-     * @return [type]         [description]
+     * Create Trackable Log
+     *
+     * Required params: TrackingNumber, UTCDateLogged, Note, LogType
+     *
+     * @access public
+     * @param  array $params
+     * @return object
      */
-    public function createTrackableLog($params = array())
+    public function createTrackableLog(array $params)
     {
         if(!array_key_exists('TrackingNumber', $params))
             throw new Exception('TrackingNumber is missing.');
@@ -123,11 +153,15 @@ class Geocaching_Api_Json extends Geocaching_Api {
     }
 
     /**
-     * [getBookmarkListByGuid description]
-     * @param  array  $params [description]
-     * @return [type]         [description]
+     * Get Bookmark List By Guid
+     *
+     * required param: BookmarkListGuid
+     *
+     * @access public
+     * @param  array $params
+     * @return object
      */
-    public function getBookmarkListByGuid($params = array())
+    public function getBookmarkListByGuid(array $params)
     {
         if(!array_key_exists('BookmarkListGuid', $params))
             throw new Exception('BookmarkListGuid is missing.');
@@ -137,25 +171,33 @@ class Geocaching_Api_Json extends Geocaching_Api {
     }
 
     /**
-     * [getGeocacheStatus description]
-     * @param  array  $params [description]
-     * @return [type]         [description]
+     * Get Geocache Status
+     *
+     * required param: CacheCodes
+     *
+     * @access public
+     * @param  array $params
+     * @return object
      */
-    public function getGeocacheStatus($params = array())
+    public function getGeocacheStatus(array $params)
     {
-        if(empty($params))
-            throw new Exception('cacheCodes is missing.');
+        if(!array_key_exists('CacheCodes', $params))
+            throw new Exception('CacheCodes is missing.');
 
         $post_params['CacheCodes'] = $params;
         return $this->post_request(__FUNCTION__, $post_params);
     }
 
     /**
-     * [getMoreGeocaches description]
-     * @param  array  $params [description]
-     * @return [type]         [description]
+     * Get More Geocaches
+     *
+     * required params: IsLite, StartIndex, MaxPerPage, GeocacheLogCount, TrackableLogCount
+     *
+     * @access public
+     * @param  array $params
+     * @return object
      */
-    public function getMoreGeocaches($params = array())
+    public function getMoreGeocaches(array $params)
     {
         if(!array_key_exists('IsLite', $params))
             throw new Exception('IsLite is missing.');
@@ -178,11 +220,15 @@ class Geocaching_Api_Json extends Geocaching_Api {
     }
 
     /**
-     * [getUserGallery description]
-     * @param  array  $params [description]
-     * @return [type]         [description]
+     * Get User Gallery
+     *
+     * required params: Username, StartIndex, MaxPerPage
+     *
+     * @access public
+     * @param  array $params
+     * @return object
      */
-    public function getUserGallery($params = array())
+    public function getUserGallery(array $params)
     {
         if(!array_key_exists('Username', $params))
             throw new Exception('Username is missing.');
@@ -197,11 +243,15 @@ class Geocaching_Api_Json extends Geocaching_Api {
     }
 
     /**
-     * [getUsersCacheCounts description]
-     * @param  array  $params [description]
-     * @return [type]         [description]
+     * Get Users Cache Counts
+     *
+     * required param: Username
+     *
+     * @access public
+     * @param  array $params
+     * @return object
      */
-    public function getUsersCacheCounts($params = array())
+    public function getUsersCacheCounts(array $params)
     {
         if(!array_key_exists('Username', $params))
             throw new Exception('Username is missing.');
@@ -213,11 +263,16 @@ class Geocaching_Api_Json extends Geocaching_Api {
     }
 
     /**
-     * [getOwnedTrackables description]
-     * @param  array  $params [description]
-     * @return [type]         [description]
+     * Get Owned Trackables
+     *
+     * required params: StartIndex, MaxPerPage<br>
+     * optional params: TrackableLogCount, CollectionOnly
+     *
+     * @access public
+     * @param  array $params
+     * @return object
      */
-    public function getOwnedTrackables($params = array())
+    public function getOwnedTrackables(array $params)
     {
         if(!array_key_exists('StartIndex', $params))
             throw new Exception('StartIndex is missing.');
@@ -235,11 +290,16 @@ class Geocaching_Api_Json extends Geocaching_Api {
     }
 
     /**
-     * [getUsersGeocacheLogs description]
-     * @param  array  $params [description]
-     * @return [type]         [description]
+     * Get Users Geocache Logs
+     *
+     * required params: Username, LogTypes, MaxPerPage<br>
+     * optional params: StartIndex, EndDate, StartDate, ExcludeArchived
+     *
+     * @access public
+     * @param  array $params
+     * @return object
      */
-    public function getUsersGeocacheLogs($params = array())
+    public function getUsersGeocacheLogs(array $params)
     {
         if(!array_key_exists('Username', $params))
             throw new Exception('Username is missing.');
@@ -257,9 +317,9 @@ class Geocaching_Api_Json extends Geocaching_Api {
         $post_params['LogTypes'] = $params['LogTypes'];
 
         if(array_key_exists('EndDate', $params))
-            $post_params['Range']['EndDate'] = '/Date('.((int) $params['EndDate'] * 1000).')/'; //EndDate is a timestamp,
+            $post_params['Range']['EndDate'] = '/Date('.((int) $params['EndDate'] * 1000).')/'; //EndDate is a timestamp
         if(array_key_exists('StartDate', $params))
-            $post_params['Range']['StartDate'] = '/Date('.((int) $params['StartDate'] * 1000).')/'; //StartDate is a timestamp,
+            $post_params['Range']['StartDate'] = '/Date('.((int) $params['StartDate'] * 1000).')/'; //StartDate is a timestamp
         if(array_key_exists('ExcludeArchived', $params))
             $post_params['ExcludeArchived'] = (boolean) $params['ExcludeArchived'];
 
@@ -267,11 +327,15 @@ class Geocaching_Api_Json extends Geocaching_Api {
     }
 
     /**
-     * [getUsersTrackables description]
-     * @param  array  $params [description]
-     * @return [type]         [description]
+     * Get Users Trackables
+     *
+     * required param: MaxPerPage<br>
+     * optional params: StartIndex, TrackableLogCount, CollectionOnly
+     * @access public
+     * @param  array $params
+     * @return object
      */
-    public function getUsersTrackables($params = array())
+    public function getUsersTrackables(array $params)
     {
         if(!array_key_exists('MaxPerPage', $params))
             throw new Exception('MaxPerPage is missing.');
@@ -288,31 +352,40 @@ class Geocaching_Api_Json extends Geocaching_Api {
     }
 
     /**
-     * [getYourUserProfile description]
-     * @param  array  $params [description]
-     * @return [type]         [description]
+     * Get Your User Profile
+     *
+     * @access public
+     * @param  array $params
+     * @return object
      */
-    public function getYourUserProfile($params = array())
+    public function getYourUserProfile(array $params)
     {
         return $this->getUserProfile(__FUNCTION__, $params);
     }
 
     /**
-     * [getAnotherUsersProfile description]
-     * @param  array  $params [description]
-     * @return [type]         [description]
+     * Get Another Users Profile
+     *
+     * @access public
+     * @param  array $params
+     * @return object
      */
-    public function getAnotherUsersProfile($params = array())
+    public function getAnotherUsersProfile(array $params)
     {
         return $this->getUserProfile(__FUNCTION__, $params);
     }
 
     /**
-     * [saveUserWaypoint description]
-     * @param  array  $params [description]
-     * @return [type]         [description]
+     * Save User Waypoint
+     *
+     * required params: CacheCode, Latitude, Longitude
+     * optional param: Description
+     *
+     * @access public
+     * @param  array $params
+     * @return object
      */
-    public function saveUserWaypoint($params = array())
+    public function saveUserWaypoint(array $params)
     {
         if(!array_key_exists('CacheCode', $params))
             throw new Exception('CacheCode is missing.');
@@ -335,11 +408,19 @@ class Geocaching_Api_Json extends Geocaching_Api {
     }
 
     /**
-     * [searchForGeocaches description]
-     * @param  array  $params [description]
-     * @return object         [description]
+     * Search For Geocaches
+     *
+     * required params: PointRadius or CacheCode, MaxPerPage<br>
+     * optional params: IsLite, StartIndex, MaxPerPage, GeocacheLogCount, TrackableLogCount, DistanceInMeters, PointRadiusLatitude
+     * PointRadiusLongitude, NotFoundByUsers, MinTerrain, MaxTerrain, GeocacheName, MinDifficulty, MaxDifficulty, CacheCodes, GeocacheTypeIds
+     * GeocacheContainerSizeIds, Archived, Available, Premium, MinFavoritePoints, MaxFavoritePoints, HiddenByUsers, NotHiddenByUsers,
+     * BottomRightLatitude, BottomRightLongitude, TopLeftLatitude, TopLeftLongitude, BookmarkListIDs, MinTrackables, MaxTrackables
+     *
+     * @access public
+     * @param  array $params
+     * @return object
      */
-    public function searchForGeocaches($params = array())
+    public function searchForGeocaches(array $params)
     {
         if(array_key_exists('IsLite', $params))
             $post_params['IsLite'] = (boolean) $params['IsLite'];
@@ -364,7 +445,7 @@ class Geocaching_Api_Json extends Geocaching_Api {
 
         if(array_key_exists('MinTerrain', $params))
             $post_params['Terrain']['MinTerrain'] = (float) $params['MinTerrain'];
-        if(array_key_exists('MinTerrain', $params))
+        if(array_key_exists('MaxTerrain', $params))
             $post_params['Terrain']['MaxTerrain'] = (float) $params['MaxTerrain'];
 
         if(array_key_exists('GeocacheName', $params))
@@ -373,7 +454,7 @@ class Geocaching_Api_Json extends Geocaching_Api {
         if(array_key_exists('MinDifficulty', $params))
             $post_params['Difficulty']['MinDifficulty'] = (float) $params['MinDifficulty'];
         if(array_key_exists('MaxDifficulty', $params))
-            $post_params['Difficulty']['MaxTerrain'] = (float) $params['MaxDifficulty'];
+            $post_params['Difficulty']['MaxDifficulty'] = (float) $params['MaxDifficulty'];
 
         if(array_key_exists('CacheCodes', $params) && is_array($params['CacheCodes']))
             $post_params['CacheCode']['CacheCodes'] = $params['CacheCodes'];
@@ -416,7 +497,7 @@ class Geocaching_Api_Json extends Geocaching_Api {
 
         if(array_key_exists('MinTrackables', $params))
             $post_params['TrackableCount']['MinTrackables'] = (int) $params['MinTrackables'];
-        if(array_key_exists('MaxFavoritePoints', $params))
+        if(array_key_exists('MaxTrackables', $params))
             $post_params['TrackableCount']['MaxTrackables'] = (int) $params['MaxTrackables'];
 
         if(!array_key_exists('PointRadius', $post_params) && !array_key_exists('CacheCode', $post_params))
@@ -428,11 +509,16 @@ class Geocaching_Api_Json extends Geocaching_Api {
     }
 
     /**
-     * [searchForSouvenirsByPublicGuid description]
-     * @param  array  $params [description]
-     * @return [type]         [description]
+     * Search For Souvenirs By Public Guid
+     *
+     * required param: PublicGuid<br>
+     * optional param: ExistingSouvenirIDs
+     *
+     * @access public
+     * @param  array $params
+     * @return object
      */
-    public function searchForSouvenirsByPublicGuid($params = array())
+    public function searchForSouvenirsByPublicGuid(array $params)
     {
         if(!array_key_exists('PublicGuid', $params))
             throw new Exception('PublicGuid is missing.');
@@ -445,11 +531,15 @@ class Geocaching_Api_Json extends Geocaching_Api {
     }
 
     /**
-     * [updateCacheNote description]
-     * @param  array  $params [description]
-     * @return [type]         [description]
+     * Update Cache Note
+     *
+     * required params: CacheCode, Note
+     *
+     * @access public
+     * @param  array $params
+     * @return object
      */
-    public function updateCacheNote($params = array())
+    public function updateCacheNote(array $params)
     {
         if(!array_key_exists('CacheCode', $params))
             throw new Exception('CacheCode is missing.');
@@ -462,11 +552,16 @@ class Geocaching_Api_Json extends Geocaching_Api {
     }
 
     /**
-     * [uploadImageToGeocacheLog description]
-     * @param  array  $params [description]
-     * @return [type]         [description]
+     * Upload Image To Geocache Log
+     *
+     * required params: LogGuid, base64ImageData<br>
+     * optional params: FileCaption, FileDescription, FileName
+     *
+     * @access public
+     * @param  array $params
+     * @return object
      */
-    public function uploadImageToGeocacheLog($params = array())
+    public function uploadImageToGeocacheLog(array $params)
     {
         if(!array_key_exists('LogGuid', $params))
             throw new Exception('LogGuid is missing.');
@@ -486,57 +581,22 @@ class Geocaching_Api_Json extends Geocaching_Api {
     }
 
     /**
-     * [registerUsersMobileDevice description]
-     * @param  array  $params [description]
-     * @return [type]         [description]
+     * Get User Profile
+     *
+     * Internal method for getYourUserProfile or getAnotherUsersProfile<br>
+     * optional params: UserID, FavoritePointsData, GeocacheData, PublicProfileData, ProfileOptions, SouvenirData, ProfileOptions<br>
+     * if the method is getYourUserProfile, there are some required params (DeviceInfo) but are useful only for mobile application
+     *
+     * @access protected
+     * @param  string $function
+     * @param  array $params
+     * @return object
      */
-    public function registerUsersMobileDevice($params = array())
-    {
-        
-    }
-
-    /**
-     * [registerWP7DeviceTile description]
-     * @param  array  $params [description]
-     * @return [type]         [description]
-     */
-    public function registerWP7DeviceTile($params = array())
-    {
-        
-    }
-
-    /**
-     * [unregisterUsersMobileDevice description]
-     * @param  array  $params [description]
-     * @return [type]         [description]
-     */
-    public function unregisterUsersMobileDevice($params = array())
-    {
-        
-    }
-
-    /**
-     * [windowsPhoneTileSearch description]
-     * @param  array  $params [description]
-     * @return [type]         [description]
-     */
-    public function windowsPhoneTileSearch($params = array())
-    {
-        
-    }
-
-    /**
-     * [getUserProfile description]
-     * @param  [type] $function [description]
-     * @param  [type] $params   [description]
-     * @return [type]           [description]
-     */
-    protected function getUserProfile($function, $params)
+    protected function getUserProfile($function, array $params)
     {
         $post_params = array();
         if(array_key_exists('UserID', $params))
             $post_params['UserID'] = $userID;
-
         if(array_key_exists('FavoritePointsData', $params))
             $post_params['ProfileOptions']['FavoritePointsData'] = (boolean) $params['FavoritePointsData'];
         if(array_key_exists('GeocacheData', $params))
