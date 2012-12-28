@@ -194,7 +194,7 @@
 <pre>addFavoritePointToCache(array $params) : object | string</pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
+<div class="long_description"><p>required param: CacheCode</p></div>
 <table class="table table-bordered">
 <tr>
 <th>access</th>
@@ -277,7 +277,7 @@
 <pre>deleteCacheNote(array $params) : object | string</pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
+<div class="long_description"><p>required param: CacheCode</p></div>
 <table class="table table-bordered">
 <tr>
 <th>access</th>
@@ -303,7 +303,7 @@
 <pre>deleteUserWaypoint(array $params) : object | string</pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
+<div class="long_description"><p>required param: WaypointID</p></div>
 <table class="table table-bordered">
 <tr>
 <th>access</th>
@@ -411,7 +411,7 @@
 <pre>getBookmarkListsByUserID(array $params) : object | string</pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
+<div class="long_description"><p>required param: UserID</p></div>
 <table class="table table-bordered">
 <tr>
 <th>access</th>
@@ -458,7 +458,7 @@
 <pre>getCacheByTileGuid(array $params) : object | string</pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
+<div class="long_description"><p>required param: tileGuid</p></div>
 <table class="table table-bordered">
 <tr>
 <th>access</th>
@@ -526,7 +526,7 @@
 <pre>getGeocacheDataTypes(array $params) : object | string</pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
+<div class="long_description"><p>optional params: GeocacheTypes, LogTypes, AttributeTypes</p></div>
 <table class="table table-bordered">
 <tr>
 <th>access</th>
@@ -552,7 +552,8 @@
 <pre>getGeocacheLogsByCacheCode(array $params) : object | string</pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
+<div class="long_description"><p>required params: CacheCode, MaxPerPage<br>
+optional param: StartIndex</p></div>
 <table class="table table-bordered">
 <tr>
 <th>access</th>
@@ -619,7 +620,7 @@
 <pre>getImagesForGeocache(array $params) : object | string</pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
+<div class="long_description"><p>required param: CacheCode</p></div>
 <table class="table table-bordered">
 <tr>
 <th>access</th>
@@ -709,7 +710,8 @@
 <pre>getPocketQueryData(array $params) : object | string</pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
+<div class="long_description"><p>required params: PocketQueryGuid, MaxItems<br>
+optional params: StartItem, GCListOnly</p></div>
 <table class="table table-bordered">
 <tr>
 <th>access</th>
@@ -756,7 +758,7 @@
 <pre>getPocketQueryUrls(array $params) : object | string</pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
+<div class="long_description"><p>required param: PocketQueryGuid</p></div>
 <table class="table table-bordered">
 <tr>
 <th>access</th>
@@ -782,7 +784,7 @@
 <pre>getPocketQueryZippedFile(array $params) : object | string</pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
+<div class="long_description"><p>required param: PocketQueryGuid</p></div>
 <table class="table table-bordered">
 <tr>
 <th>access</th>
@@ -871,7 +873,8 @@
 <pre>getTrackableLogsByTBCode(array $params) : object | string</pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
+<div class="long_description"><p>required params: TBCode, MaxPerPage<br>
+optional param: StartIndex</p></div>
 <table class="table table-bordered">
 <tr>
 <th>access</th>
@@ -897,7 +900,7 @@
 <pre>getTrackableTravelList(array $params) : object | string</pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
+<div class="long_description"><p>required param: TBCode</p></div>
 <table class="table table-bordered">
 <tr>
 <th>access</th>
@@ -923,7 +926,8 @@
 <pre>getTrackablesByTBCode(array $params) : object | string</pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
+<div class="long_description"><p>required param: TBCode
+optional param: TrackableLogCount</p></div>
 <table class="table table-bordered">
 <tr>
 <th>access</th>
@@ -949,7 +953,8 @@
 <pre>getTrackablesByTrackingNumber(array $params) : object | string</pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
+<div class="long_description"><p>required param: TrackingNumber<br>
+optional param: TrackableLogCount</p></div>
 <table class="table table-bordered">
 <tr>
 <th>access</th>
@@ -975,7 +980,8 @@
 <pre>getTrackablesInCache(array $params) : object | string</pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
+<div class="long_description"><p>required params: CacheCode, MaxPerPage<br>
+optional params: StartIndex, TrackableLogCount</p></div>
 <table class="table table-bordered">
 <tr>
 <th>access</th>
@@ -1024,7 +1030,7 @@
 <pre>getUserWaypoints(array $params) : object | string</pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
+<div class="long_description"><p>required param: CacheCode</p></div>
 <table class="table table-bordered">
 <tr>
 <th>access</th>
@@ -1073,7 +1079,8 @@
 <pre>getUsersCacheNotes(array $params) : object | string</pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
+<div class="long_description"><p>required param: MaxPerPage<br>
+optional param: StartIndex</p></div>
 <table class="table table-bordered">
 <tr>
 <th>access</th>
@@ -1166,7 +1173,7 @@
 <pre>getUsersWhoFavoritedCache(array $params) : object | string</pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
+<div class="long_description"><p>required param: CacheCode</p></div>
 <table class="table table-bordered">
 <tr>
 <th>access</th>
@@ -1233,7 +1240,7 @@
 <pre>removeFavoritePointFromCache(array $params) : object | string</pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
+<div class="long_description"><p>required param: CacheCode</p></div>
 <table class="table table-bordered">
 <tr>
 <th>access</th>
@@ -1582,7 +1589,7 @@
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
-            generated on 2012-12-28T16:15:02+01:00.<br></footer></div>
+            generated on 2012-12-28T16:42:29+01:00.<br></footer></div>
 </div>
 </body>
 </html>

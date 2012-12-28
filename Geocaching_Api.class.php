@@ -330,6 +330,8 @@ abstract class Geocaching_Api {
     /**
      * Add Favorite Point To a Cache
      *
+     * required param: CacheCode
+     *
      * @access public
      * @param array $params
      * @return object|string JSON : Object, XML : String
@@ -346,6 +348,8 @@ abstract class Geocaching_Api {
     /**
      * Delete Cache Note
      *
+     * required param: CacheCode
+     *
      * @access public
      * @param  array $params
      * @return object|string JSON : Object, XML : String
@@ -361,6 +365,8 @@ abstract class Geocaching_Api {
 
     /**
      * Delete User Waypoint
+     *
+     * required param: WaypointID
      *
      * @access public
      * @param  array $params
@@ -400,6 +406,8 @@ abstract class Geocaching_Api {
     /**
      * Get Bookmark Lists By User ID
      *
+     * required param: UserID
+     *
      * @access public
      * @param  array $params
      * @return object|string JSON : Object, XML : String
@@ -426,6 +434,8 @@ abstract class Geocaching_Api {
 
     /**
      * Get Cache By Tile Guid
+     *
+     * required param: tileGuid
      *
      * @access public
      * @param array $params
@@ -465,6 +475,8 @@ abstract class Geocaching_Api {
     /**
      * Get Geocache Data Types
      *
+     * optional params: GeocacheTypes, LogTypes, AttributeTypes
+     *
      * @access public
      * @param  array $params
      * @return object|string JSON : Object, XML : String
@@ -484,6 +496,9 @@ abstract class Geocaching_Api {
 
     /**
      * Get Geocache Logs By Cache Code
+     *
+     * required params: CacheCode, MaxPerPage<br>
+     * optional param: StartIndex
      *
      * @access public
      * @param  array $params
@@ -518,6 +533,8 @@ abstract class Geocaching_Api {
     /**
      * Get Images For Geocache
      *
+     * required param: CacheCode
+     *
      * @access public
      * @param  array $params
      * @return object|string JSON : Object, XML : String
@@ -544,6 +561,9 @@ abstract class Geocaching_Api {
 
     /**
      * Get Pocket Query Data
+     *
+     * required params: PocketQueryGuid, MaxItems<br>
+     * optional params: StartItem, GCListOnly
      *
      * @access public
      * @param  array $params
@@ -580,6 +600,8 @@ abstract class Geocaching_Api {
     /**
      * Get Pocket Query Urls
      *
+     * required param: PocketQueryGuid
+     *
      * @access public
      * @param  array $params
      * @return object|string JSON : Object, XML : String
@@ -595,6 +617,8 @@ abstract class Geocaching_Api {
 
     /**
      * Get Pocket Query Zipped File
+     *
+     * required param: PocketQueryGuid
      *
      * @access public
      * @param  array $params
@@ -645,6 +669,9 @@ abstract class Geocaching_Api {
     /**
      * Get Trackable Logs By TB Code
      *
+     * required params: TBCode, MaxPerPage<br>
+     * optional param: StartIndex
+     *
      * @access public
      * @param  array $params
      * @return object|string JSON : Object, XML : String
@@ -667,6 +694,9 @@ abstract class Geocaching_Api {
     /**
      * Get Trackables By TB Code
      *
+     * required param: TBCode
+     * optional param: TrackableLogCount
+     *
      * @access public
      * @param  array $params
      * @return object|string JSON : Object, XML : String
@@ -686,6 +716,9 @@ abstract class Geocaching_Api {
     /**
      * Get Trackables By Tracking Number
      *
+     * required param: TrackingNumber<br>
+     * optional param: TrackableLogCount
+     *
      * @access public
      * @param  array $params
      * @return object|string JSON : Object, XML : String
@@ -704,6 +737,9 @@ abstract class Geocaching_Api {
 
     /**
      * Get Trackables In Cache
+     *
+     * required params: CacheCode, MaxPerPage<br>
+     * optional params: StartIndex, TrackableLogCount
      *
      * @access public
      * @param  array $params
@@ -728,6 +764,8 @@ abstract class Geocaching_Api {
 
     /**
      * Get Trackable Travel List
+     *
+     * required param: TBCode
      *
      * @access public
      * @param  array $params
@@ -756,6 +794,9 @@ abstract class Geocaching_Api {
     /**
      * Get Users Cache Notes
      *
+     * required param: MaxPerPage<br>
+     * optional param: StartIndex
+     *
      * @access public
      * @param  array $params
      * @return object|string JSON : Object, XML : String
@@ -775,6 +816,8 @@ abstract class Geocaching_Api {
     /**
      * Get Users Who Favorited Cache
      *
+     * required param: CacheCode
+     *
      * @access public
      * @param  array $params
      * @return object|string JSON : Object, XML : String
@@ -790,6 +833,8 @@ abstract class Geocaching_Api {
 
     /**
      * Get User Waypoints
+     *
+     * required param: CacheCode
      *
      * @access public
      * @param  array $params
@@ -817,6 +862,8 @@ abstract class Geocaching_Api {
 
     /**
      * Remove Favorite Point From Cache
+     *
+     * required param: CacheCode
      *
      * @access public
      * @param  array $params
