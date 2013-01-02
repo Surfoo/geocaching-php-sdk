@@ -32,6 +32,14 @@ class Geocaching_OAuth {
     protected $live_oauth_url    = 'http://staging.geocaching.com/OAuth/oauth.ashx';// FIXME with the right URL
 
     /**
+     * Log OAuth requests in a file
+     *
+     * @access protected
+     * @var string $log
+     */
+    protected $log = false;
+
+    /**
      * OAuth Signature Method
      *
      * @access protected
@@ -141,6 +149,40 @@ class Geocaching_OAuth {
     }
 
     /**
+     * Enable or disable log messages
+     *
+     * @param string $directory
+     * @return void
+     */
+    public function setLogging($directory)
+    {
+        if($directory)
+        {
+            $this->logger = new KLogger($directory, KLogger::INFO);
+            $this->logging = true;
+        }
+        if($this->logging && !$directory)
+        {
+            unset($this->logger);
+            $this->logging = false;
+        }
+    }
+
+    /**
+     * Log informations into the log file
+     * @param  string $infos 
+     * @param  array $obj
+     * @return void
+     */
+    protected function log($infos, $obj)
+    {
+        if(!$this->logging)
+        {
+            return false;
+        }
+        $this->logger->logInfo('OAUTH: ' . $infos, $obj);
+    }
+    /**
      * Get Request Token
      *
      * @access public
@@ -167,10 +209,13 @@ class Geocaching_OAuth {
         foreach ($this->request_params as $k => $v) {
             $urlPairs[] = $k."=".$v;
         }
+        $this->log(__FUNCTION__ . ' params', $urlPairs);
         $concatenatedUrlParams = implode('&', $urlPairs);
 
         $authpage = $this->curl_request($this->oauth_url."?".$concatenatedUrlParams);
+        $this->log(__FUNCTION__ . ' authpage', $authpage);
         $data = $this->http_explode_data($authpage);
+        $this->log(__FUNCTION__ . ' data', $data);
         $this->auth_token = $data['oauth_token'];
         $this->auth_token_secret = $data['oauth_token_secret'];
         $this->oauth_callback_confirmed = (bool) $data['oauth_callback_confirmed'];
@@ -212,11 +257,13 @@ class Geocaching_OAuth {
         foreach ($this->access_params as $k => $v) {
             $urlPairs[] = $k."=".$v;
         }
+        $this->log(__FUNCTION__ . ' params', $urlPairs);
         $concatenatedUrlParams = implode('&', $urlPairs);
 
         $url = $this->curl_request($this->oauth_url."?".$concatenatedUrlParams);
+        $this->log(__FUNCTION__ . ' url', $this->oauth_url."?".$concatenatedUrlParams);
         $data = $this->http_explode_data($url);
-
+        $this->log(__FUNCTION__ . ' data', $data);
         $this->oauth_token_access = $data['oauth_token'];
 
         return $data;
@@ -255,12 +302,14 @@ class Geocaching_OAuth {
     public function redirect()
     {
         $redirecturl = $this->oauth_url . '?oauth_token=' . urlencode($this->auth_token) . '&force_login=true';
+        $this->log(__FUNCTION__ , $redirecturl);
         header('Location: ' . $redirecturl);
         exit(0);
     }
 
     /**
      * Set a nonce
+     *
      * @access protected
      * @return string
      */
@@ -367,9 +416,10 @@ class Geocaching_OAuth {
     }
 
     /**
-     * [getRequestUri description]
+     * Get Request URI
+     *
      * @access public
-     * @return [type] [description]
+     * @return string
      */
     public static function getRequestUri()
     {

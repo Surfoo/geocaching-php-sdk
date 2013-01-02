@@ -108,6 +108,7 @@
 <li class="method public "><a href="#method_saveUserWaypoint" title="saveUserWaypoint :: [saveUserWaypoint description]"><span class="description">[saveUserWaypoint description]</span><pre>saveUserWaypoint()</pre></a></li>
 <li class="method public "><a href="#method_searchForGeocaches" title="searchForGeocaches :: [searchForGeocaches description]"><span class="description">[searchForGeocaches description]</span><pre>searchForGeocaches()</pre></a></li>
 <li class="method public "><a href="#method_searchForSouvenirsByPublicGuid" title="searchForSouvenirsByPublicGuid :: [searchForSouvenirsByPublicGuid description]"><span class="description">[searchForSouvenirsByPublicGuid description]</span><pre>searchForSouvenirsByPublicGuid()</pre></a></li>
+<li class="method public inherited"><a href="#method_setLogging" title="setLogging :: Enable or disable log messages"><span class="description">Enable or disable log messages</span><pre>setLogging()</pre></a></li>
 <li class="method public "><a href="#method_updateCacheNote" title="updateCacheNote :: [updateCacheNote description]"><span class="description">[updateCacheNote description]</span><pre>updateCacheNote()</pre></a></li>
 <li class="method public "><a href="#method_uploadImageToGeocacheLog" title="uploadImageToGeocacheLog :: [uploadImageToGeocacheLog description]"><span class="description">[uploadImageToGeocacheLog description]</span><pre>uploadImageToGeocacheLog()</pre></a></li>
 </ul>
@@ -116,6 +117,7 @@
                     <ul>
 <li class="method protected "><a href="#method_checkRequestStatus" title="checkRequestStatus :: Check the status of the POST or GET request in XML"><span class="description">Check the status of the POST or GET request in XML</span><pre>checkRequestStatus()</pre></a></li>
 <li class="method protected inherited"><a href="#method_get_request" title="get_request :: Make a GET request"><span class="description">Make a GET request</span><pre>get_request()</pre></a></li>
+<li class="method protected inherited"><a href="#method_log" title="log :: Log informations into the log file"><span class="description">Log informations into the log file</span><pre>log()</pre></a></li>
 <li class="method protected inherited"><a href="#method_post_request" title="post_request :: Make a POST request"><span class="description">Make a POST request</span><pre>post_request()</pre></a></li>
 <li class="method protected "><a href="#method_prependXml" title="prependXml :: [prependXml description]"><span class="description">[prependXml description]</span><pre>prependXml()</pre></a></li>
 </ul>
@@ -128,6 +130,7 @@
                     <ul>
 <li class="property protected inherited"><a href="#property_api_url" title="$api_url :: API URL"><span class="description"></span><pre>$api_url</pre></a></li>
 <li class="property protected inherited"><a href="#property_live_api_url" title="$live_api_url :: Production URL of Groundspeak API"><span class="description"></span><pre>$live_api_url</pre></a></li>
+<li class="property protected inherited"><a href="#property_logging" title="$logging :: Log API requests in a file"><span class="description"></span><pre>$logging</pre></a></li>
 <li class="property protected inherited"><a href="#property_oauth_token" title="$oauth_token :: OAuth token sent by the client"><span class="description"></span><pre>$oauth_token</pre></a></li>
 <li class="property protected inherited"><a href="#property_output_format" title="$output_format :: Type of output expected format, JSON or XML"><span class="description"></span><pre>$output_format</pre></a></li>
 <li class="property protected inherited"><a href="#property_staging_api_url" title="$staging_api_url :: Staging URL of Groundspeak API"><span class="description"></span><pre>$staging_api_url</pre></a></li>
@@ -1326,6 +1329,23 @@ optional param: StartIndex</p></div>
 <code>\[type]</code>[description]</div>
 </div></div>
 </div>
+<a id="method_setLogging"></a><div class="element clickable method public method_setLogging" data-toggle="collapse" data-target=".method_setLogging .collapse">
+<h2>Enable or disable log messages</h2>
+<pre>setLogging(string $directory) : void</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Geocaching_Api::setLogging()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$directory</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
 <a id="method_updateCacheNote"></a><div class="element clickable method public method_updateCacheNote" data-toggle="collapse" data-target=".method_updateCacheNote .collapse">
 <h2>[updateCacheNote description]</h2>
 <pre>updateCacheNote(array $params) : \[type]</pre>
@@ -1413,6 +1433,27 @@ optional param: StartIndex</p></div>
 <code>object</code><code>string</code>JSON : Object, XML : String</div>
 </div></div>
 </div>
+<a id="method_log"></a><div class="element clickable method protected method_log" data-toggle="collapse" data-target=".method_log .collapse">
+<h2>Log informations into the log file</h2>
+<pre>log(string $infos, array $obj) : void</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Geocaching_Api::log()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$infos</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$obj</h4>
+<code>array</code>
+</div>
+</div></div>
+</div>
 <a id="method_post_request"></a><div class="element clickable method protected method_post_request" data-toggle="collapse" data-target=".method_post_request .collapse">
 <h2>Make a POST request</h2>
 <pre>post_request(string $request, array $data) : object | string</pre>
@@ -1497,6 +1538,24 @@ optional param: StartIndex</p></div>
 <tr>
 <th>inherited_from</th>
 <td>\Geocaching_Api::$$live_api_url</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a id="property_logging"> </a><div class="element clickable property protected property_logging" data-toggle="collapse" data-target=".property_logging .collapse">
+<h2></h2>
+<pre>$logging : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered">
+<tr>
+<th>access</th>
+<td>protected</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\Geocaching_Api::$$logging</td>
 </tr>
 </table>
 </div></div>
@@ -1612,7 +1671,7 @@ optional param: StartIndex</p></div>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
-            generated on 2012-12-28T23:58:50+01:00.<br></footer></div>
+            generated on 2013-01-02T17:35:58+01:00.<br></footer></div>
 </div>
 </body>
 </html>

@@ -8,6 +8,8 @@
  * @package Geocaching_Api
  */
 
+require_once 'KLogger.class.php';
+
 /**
  * Geocaching API
  *
@@ -66,6 +68,14 @@ abstract class Geocaching_Api {
      * @var string $output_format
      */
     protected $output_format = null;
+
+    /**
+     * Log API requests in a file
+     *
+     * @access protected
+     * @var string $log
+     */
+    protected $logging = false;
 
     /**
      * Constructor
@@ -257,9 +267,15 @@ abstract class Geocaching_Api {
      */
     protected function get_request($request, $params = array())
     {
+        $this->log($request, $params);
+        
         $params = array_merge(array('format' => $this->output_format, 'AccessToken' => $this->oauth_token), $params);
         $query_string = '?' . urldecode(http_build_query($params, '', '&'));
         $url = sprintf($this->api_url, ucfirst($request)) . $query_string;
+
+        $this->log('curl_params', $params);
+        $this->log('curl_url', $url);
+
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_HTTPHEADER, $this->http_headers);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -272,7 +288,11 @@ abstract class Geocaching_Api {
         //curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         //curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
         $output = curl_exec($ch);
+        $this->log('curl_exec', $output);
+
         $status = curl_getinfo($ch);
+        $this->log('curl_getinfo', $status);
+
         curl_close($ch);
         if($status['http_code'] != 200) {
             throw new Exception('HTTP error : ' . $status['http_code']);
@@ -294,6 +314,8 @@ abstract class Geocaching_Api {
      */
     protected function post_request($request, array $data)
     {
+        $this->log($request);
+
         $params = array('format' => $this->output_format);
         $query_string = '?' . urldecode(http_build_query($params, '', '&'));
         $url = sprintf($this->api_url, ucfirst($request)) . $query_string;
@@ -306,6 +328,11 @@ abstract class Geocaching_Api {
                 $data = json_encode($data);
             }
         }
+
+        $this->log('curl_params', $params);
+        $this->log('curl_url', $url);
+        $this->log('curl_data', $data);
+
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_HTTPHEADER, $this->http_headers);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -320,7 +347,11 @@ abstract class Geocaching_Api {
         //curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
         //curl_setopt($ch, CURLOPT_VERBOSE, true);
         $output = curl_exec($ch);
+        $this->log('curl_exec', $output);
+
         $status = curl_getinfo($ch);
+        $this->log('curl_getinfo', $status);
+
         curl_close($ch);
         if($status['http_code'] != 200) {
             throw new Exception('HTTP error : ' . $status['http_code']);
@@ -330,6 +361,41 @@ abstract class Geocaching_Api {
 
         $this->checkRequestStatus($output);
         return $output;
+    }
+
+    /**
+     * Enable or disable log messages
+     *
+     * @param string $directory
+     * @return void
+     */
+    public function setLogging($directory)
+    {
+        if($directory)
+        {
+            $this->logger = new KLogger($directory, KLogger::INFO);
+            $this->logging = true;
+        }
+        if($this->logging && !$directory)
+        {
+            unset($this->logger);
+            $this->logging = false;
+        }
+    }
+
+    /**
+     * Log informations into the log file
+     * @param  string $infos
+     * @param  array $obj
+     * @return void
+     */
+    protected function log($infos, $obj = false)
+    {
+        if(!$this->logging)
+        {
+            return false;
+        }
+        $this->logger->logInfo('API: ' . $infos, $obj);
     }
 
     /**

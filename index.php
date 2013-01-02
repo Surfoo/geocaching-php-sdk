@@ -5,7 +5,7 @@ session_start();
 
 define('PRODUCTION', false);
 
-require_once __DIR__ . '/Geocaching_Api_Json.class.php';
+require_once __DIR__ . '/src/Geocaching_Api_Json.class.php';
 
 if(isset($_POST['reset']))
 {
@@ -22,7 +22,7 @@ if(isset($_POST['reset']))
 
 if (!isset($_SESSION['ACCESS_TOKEN']))
 {
-    require_once __DIR__ . '/Geocaching_OAuth.class.php';
+    require_once __DIR__ . '/src/Geocaching_OAuth.class.php';
 
     $callback_url = 'http://' . $_SERVER['HTTP_HOST'] . Geocaching_OAuth::getRequestUri();
 
@@ -30,6 +30,7 @@ if (!isset($_SESSION['ACCESS_TOKEN']))
     if(isset($_POST['oauth']) && isset($_POST['oauth_key']) && isset($_POST['oauth_secret']))
     {
         $consumer = new Geocaching_OAuth($_POST['oauth_key'], $_POST['oauth_secret'], $callback_url, PRODUCTION);
+        $consumer->setLogging('/tmp/');
         $token = $consumer->getRequestToken();
         $_SESSION['OAUTH_KEY'] = $_POST['oauth_key'];
         $_SESSION['OAUTH_SECRET'] = $_POST['oauth_secret'];
@@ -41,6 +42,7 @@ if (!isset($_SESSION['ACCESS_TOKEN']))
     if(!empty($_GET) && isset($_SESSION['REQUEST_TOKEN']))
     {
         $consumer = new Geocaching_OAuth($_SESSION['OAUTH_KEY'], $_SESSION['OAUTH_SECRET'], $callback_url, PRODUCTION);
+        $consumer->setLogging('/tmp/');
         $token = $consumer->getAccessToken($_GET, unserialize($_SESSION['REQUEST_TOKEN']));
         $_SESSION['ACCESS_TOKEN'] = serialize($token);
         header('Location: index.php');
@@ -89,6 +91,7 @@ if (!isset($_SESSION['ACCESS_TOKEN']))
         {
             $token = unserialize($_SESSION['ACCESS_TOKEN']);
             $api   = new Geocaching_Api_Json($token['oauth_token'], PRODUCTION);
+            $api->setLogging('/tmp/');
 
             $params = array('PublicProfileData'=>true);
             $user   = $api->getYourUserProfile($params);

@@ -61,14 +61,16 @@
 <li class="method public "><a href="#method___construct" title="__construct :: Constructor"><span class="description">Constructor</span><pre>__construct()</pre></a></li>
 <li class="method public "><a href="#method_getAccessToken" title="getAccessToken :: Get Access Token"><span class="description">Get Access Token</span><pre>getAccessToken()</pre></a></li>
 <li class="method public "><a href="#method_getRequestToken" title="getRequestToken :: Get Request Token"><span class="description">Get Request Token</span><pre>getRequestToken()</pre></a></li>
-<li class="method public "><a href="#method_getRequestUri" title="getRequestUri :: [getRequestUri description]"><span class="description">[getRequestUri description]</span><pre>getRequestUri()</pre></a></li>
+<li class="method public "><a href="#method_getRequestUri" title="getRequestUri :: Get Request URI"><span class="description">Get Request URI</span><pre>getRequestUri()</pre></a></li>
 <li class="method public "><a href="#method_redirect" title="redirect :: Make a redirection to API URL"><span class="description">Make a redirection to API URL</span><pre>redirect()</pre></a></li>
+<li class="method public "><a href="#method_setLogging" title="setLogging :: Enable or disable log messages"><span class="description">Enable or disable log messages</span><pre>setLogging()</pre></a></li>
 </ul>
 </li>
 <li class="nav-header protected">» Protected
                     <ul>
 <li class="method protected "><a href="#method_curl_request" title="curl_request :: Make a curl request"><span class="description">Make a curl request</span><pre>curl_request()</pre></a></li>
 <li class="method protected "><a href="#method_http_explode_data" title="http_explode_data :: Explode an http data string (like key1=value1&amp;key2[]=value2 etc.)"><span class="description">Explode an http data string (like key1=value1&amp;key2[]=value2 etc.)</span><pre>http_explode_data()</pre></a></li>
+<li class="method protected "><a href="#method_log" title="log :: Log informations into the log file"><span class="description">Log informations into the log file</span><pre>log()</pre></a></li>
 <li class="method protected "><a href="#method_oauth_loosy_decode" title="oauth_loosy_decode :: Return a string decoded according OAuth spec."><span class="description">Return a string decoded according OAuth spec.</span><pre>oauth_loosy_decode()</pre></a></li>
 <li class="method protected "><a href="#method_rfc3986_encode" title="rfc3986_encode :: Return a string encoded according to RFC 3986."><span class="description">Return a string encoded according to RFC 3986.</span><pre>rfc3986_encode()</pre></a></li>
 <li class="method protected "><a href="#method_setNonce" title="setNonce :: Set a nonce"><span class="description">Set a nonce</span><pre>setNonce()</pre></a></li>
@@ -82,6 +84,7 @@
 <li class="nav-header protected">» Protected
                     <ul>
 <li class="property protected "><a href="#property_live_oauth_url" title="$live_oauth_url :: Production URL of Groundspeak OAuth"><span class="description"></span><pre>$live_oauth_url</pre></a></li>
+<li class="property protected "><a href="#property_log" title="$log :: Log OAuth requests in a file"><span class="description"></span><pre>$log</pre></a></li>
 <li class="property protected "><a href="#property_oauth_signature_method" title="$oauth_signature_method :: OAuth Signature Method"><span class="description"></span><pre>$oauth_signature_method</pre></a></li>
 <li class="property protected "><a href="#property_oauth_version" title="$oauth_version :: OAuth version"><span class="description"></span><pre>$oauth_version</pre></a></li>
 <li class="property protected "><a href="#property_staging_oauth_url" title="$staging_oauth_url :: Staging URL of Groundspeak OAuth"><span class="description"></span><pre>$staging_oauth_url</pre></a></li>
@@ -190,8 +193,8 @@
 </div></div>
 </div>
 <a id="method_getRequestUri"></a><div class="element clickable method public method_getRequestUri" data-toggle="collapse" data-target=".method_getRequestUri .collapse">
-<h2>[getRequestUri description]</h2>
-<pre>getRequestUri() : \[type]</pre>
+<h2>Get Request URI</h2>
+<pre>getRequestUri() : string</pre>
 <div class="labels"><span class="label">Static</span></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
@@ -200,8 +203,7 @@
 <td>public</td>
 </tr></table>
 <h3>Returns</h3>
-<div class="subelement response">
-<code>\[type]</code>[description]</div>
+<div class="subelement response"><code>string</code></div>
 </div></div>
 </div>
 <a id="method_redirect"></a><div class="element clickable method public method_redirect" data-toggle="collapse" data-target=".method_redirect .collapse">
@@ -214,6 +216,19 @@
 <th>access</th>
 <td>public</td>
 </tr></table>
+</div></div>
+</div>
+<a id="method_setLogging"></a><div class="element clickable method public method_setLogging" data-toggle="collapse" data-target=".method_setLogging .collapse">
+<h2>Enable or disable log messages</h2>
+<pre>setLogging(string $directory) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$directory</h4>
+<code>string</code>
+</div>
 </div></div>
 </div>
 <a id="method_curl_request"></a><div class="element clickable method protected method_curl_request" data-toggle="collapse" data-target=".method_curl_request .collapse">
@@ -253,6 +268,23 @@ This function makes it easier to find the sent string exactly as it was sent.</p
 </div>
 <h3>Returns</h3>
 <div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_log"></a><div class="element clickable method protected method_log" data-toggle="collapse" data-target=".method_log .collapse">
+<h2>Log informations into the log file</h2>
+<pre>log(string $infos, array $obj) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$infos</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$obj</h4>
+<code>array</code>
+</div>
 </div></div>
 </div>
 <a id="method_oauth_loosy_decode"></a><div class="element clickable method protected method_oauth_loosy_decode" data-toggle="collapse" data-target=".method_oauth_loosy_decode .collapse">
@@ -339,6 +371,18 @@ and MUST be properly decoded"</p></div>
 <a id="property_live_oauth_url"> </a><div class="element clickable property protected property_live_oauth_url" data-toggle="collapse" data-target=".property_live_oauth_url .collapse">
 <h2></h2>
 <pre>$live_oauth_url : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>protected</td>
+</tr></table>
+</div></div>
+</div>
+<a id="property_log"> </a><div class="element clickable property protected property_log" data-toggle="collapse" data-target=".property_log .collapse">
+<h2></h2>
+<pre>$log : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
@@ -475,7 +519,7 @@ and MUST be properly decoded"</p></div>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
-            generated on 2012-12-28T23:58:50+01:00.<br></footer></div>
+            generated on 2013-01-02T17:35:58+01:00.<br></footer></div>
 </div>
 </body>
 </html>
