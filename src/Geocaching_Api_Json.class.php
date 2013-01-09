@@ -78,8 +78,8 @@ class Geocaching_Api_Json extends Geocaching_Api {
         if(!is_array($params['cacheCodes']))
             throw new Exception('cacheCodes must be an array.');
 
-        $post_params['BookmarkListGuid'] = $bookmarkListGuid;
-        $post_params['CacheCodes'] = $cacheCodes;
+        $post_params['BookmarkListGuid'] = $params['BookmarkListGuid'];
+        $post_params['CacheCodes'] = $params['CacheCodes'];
 
         return $this->post_request(__FUNCTION__, $post_params);
     }
@@ -176,7 +176,7 @@ class Geocaching_Api_Json extends Geocaching_Api {
         if(!array_key_exists('BookmarkListGuid', $params))
             throw new Exception('BookmarkListGuid is missing.');
 
-        $post_params['BookmarkListGuid'] = $bookmarkListGuid;
+        $post_params['BookmarkListGuid'] = $params['BookmarkListGuid'];
         return $this->post_request(__FUNCTION__, $post_params);
     }
 
@@ -194,7 +194,7 @@ class Geocaching_Api_Json extends Geocaching_Api {
         if(!array_key_exists('CacheCodes', $params))
             throw new Exception('CacheCodes is missing.');
 
-        $post_params['CacheCodes'] = $params;
+        $post_params['CacheCodes'] = $params['CacheCodes'];
         return $this->post_request(__FUNCTION__, $post_params);
     }
 
