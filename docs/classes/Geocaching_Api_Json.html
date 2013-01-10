@@ -3,7 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 <meta charset="utf-8">
-<title>Geocaching API with PHP 5.3 » \Geocaching_Api_Json</title>
+<title>Geocaching API with PHP 5 » \Geocaching_Api_Json</title>
 <meta name="author" content="Mike van Riel">
 <meta name="description" content="">
 <link href="../css/template.css" rel="stylesheet" media="all">
@@ -15,7 +15,7 @@
 <body>
 <div class="navbar navbar-fixed-top">
 <div class="navbar-inner"><div class="container">
-<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">Geocaching API with PHP 5.3</a><div class="nav-collapse"><ul class="nav">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">Geocaching API with PHP 5</a><div class="nav-collapse"><ul class="nav">
 <li class="dropdown">
 <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
                                     API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
@@ -353,7 +353,8 @@ Optional params: PromoteToLog, FavoriteThisCache, EncryptLogText, UpdatedLatitud
 <pre>getAnotherUsersProfile(array $params) : object</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
+<div class="long_description"><p>required param: UserID
+optionals params: ChallengesData, FavoritePointsData, GeocacheData, PublicProfileData, SouvenirData, TrackableData</p></div>
 <table class="table table-bordered"><tr>
 <th>access</th>
 <td>public</td>
@@ -1202,7 +1203,7 @@ optional params: StartIndex, TrackableLogCount, CollectionOnly</p></div>
 <pre>getYourUserProfile(array $params) : object</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
+<div class="long_description"><p>optionals params: ChallengesData, FavoritePointsData, GeocacheData, PublicProfileData, SouvenirData, TrackableData</p></div>
 <table class="table table-bordered"><tr>
 <th>access</th>
 <td>public</td>
@@ -1267,11 +1268,11 @@ optional param: Description</p></div>
 <pre>searchForGeocaches(array $params) : object</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>required params: PointRadius or CacheCode, MaxPerPage<br>
-optional params: IsLite, StartIndex, MaxPerPage, GeocacheLogCount, TrackableLogCount, DistanceInMeters, PointRadiusLatitude
-PointRadiusLongitude, NotFoundByUsers, MinTerrain, MaxTerrain, GeocacheName, MinDifficulty, MaxDifficulty, CacheCodes, GeocacheTypeIds
-GeocacheContainerSizeIds, Archived, Available, Premium, MinFavoritePoints, MaxFavoritePoints, HiddenByUsers, NotHiddenByUsers,
-BottomRightLatitude, BottomRightLongitude, TopLeftLatitude, TopLeftLongitude, BookmarkListIDs, MinTrackables, MaxTrackables</p></div>
+<div class="long_description"><p>required params: DistanceInMeters &amp;&amp; PointRadiusLatitude &amp;&amp; PointRadiusLongitude OR CacheCode, MaxPerPage.<br>
+optional params: IsLite, StartIndex, MaxPerPage, GeocacheLogCount, TrackableLogCount, NotFoundByUsers, MinTerrain,
+MaxTerrain, GeocacheName, MinDifficulty, MaxDifficulty, CacheCodes, GeocacheTypeIds, GeocacheContainerSizeIds,
+Archived, Available, Premium, MinFavoritePoints, MaxFavoritePoints, HiddenByUsers, NotHiddenByUsers, BottomRightLatitude,
+BottomRightLongitude, TopLeftLatitude, TopLeftLongitude, BookmarkListIDs, MinTrackables, MaxTrackables.</p></div>
 <table class="table table-bordered"><tr>
 <th>access</th>
 <td>public</td>
@@ -1627,7 +1628,7 @@ if the method is getYourUserProfile, there are some required params (DeviceInfo)
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
-            generated on 2013-01-02T17:35:58+01:00.<br></footer></div>
+            generated on 2013-01-10T10:28:30+01:00.<br></footer></div>
 </div>
 </body>
 </html>

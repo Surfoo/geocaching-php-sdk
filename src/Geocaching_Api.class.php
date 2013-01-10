@@ -279,14 +279,8 @@ abstract class Geocaching_Api {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_HTTPHEADER, $this->http_headers);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSLVERSION, 3);
         curl_setopt($ch, CURLOPT_URL, $url);
-        //curl_setopt($ch, CURLOPT_HEADER, true);
-        //curl_setopt($ch, CURLOPT_VERBOSE, true);
-        //curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 20);
-        //curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-        //curl_setopt($ch, CURLOPT_FRESH_CONNECT, true);
-        //curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        //curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
         $output = curl_exec($ch);
         $this->log('curl_exec', $output);
 
@@ -294,13 +288,14 @@ abstract class Geocaching_Api {
         $this->log('curl_getinfo', $status);
 
         curl_close($ch);
-        if($status['http_code'] != 200) {
+
+        if($status['http_code'] != 200)
             throw new Exception('HTTP error : ' . $status['http_code']);
-        }
+
         if($this->output_format == self::JSON_FORMAT)
             $output = json_decode($output);
-        $this->checkRequestStatus($output);
 
+        $this->checkRequestStatus($output);
         return $output;
     }
 
@@ -321,12 +316,7 @@ abstract class Geocaching_Api {
         $url = sprintf($this->api_url, ucfirst($request)) . $query_string;
         if($this->output_format == self::JSON_FORMAT) {
             $data = array_merge(array('AccessToken' => $this->oauth_token), $data);
-            if (version_compare(phpversion(), '5.4', '>=')) {
-                $data = json_encode($data, JSON_UNESCAPED_SLASHES);
-            }
-            else {
-                $data = json_encode($data);
-            }
+            $data = json_encode($data);
         }
 
         $this->log('curl_params', $params);
@@ -338,14 +328,8 @@ abstract class Geocaching_Api {
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
         curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_SSLVERSION, 3);
         curl_setopt($ch, CURLOPT_URL, $url);
-        //curl_setopt($ch, CURLOPT_HEADER, true);
-        //curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
-        //curl_setopt($ch, CURLOPT_TIMEOUT, 30);
-        //curl_setopt($ch, CURLOPT_BINARYTRANSFER, true);
-        //curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-        //curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-        //curl_setopt($ch, CURLOPT_VERBOSE, true);
         $output = curl_exec($ch);
         $this->log('curl_exec', $output);
 
@@ -353,9 +337,10 @@ abstract class Geocaching_Api {
         $this->log('curl_getinfo', $status);
 
         curl_close($ch);
-        if($status['http_code'] != 200) {
+
+        if($status['http_code'] != 200)
             throw new Exception('HTTP error : ' . $status['http_code']);
-        }
+
         if($this->output_format == self::JSON_FORMAT)
             $output = json_decode($output);
 
@@ -371,13 +356,11 @@ abstract class Geocaching_Api {
      */
     public function setLogging($directory)
     {
-        if($directory)
-        {
+        if($directory) {
             $this->logger = new KLogger($directory, KLogger::INFO);
             $this->logging = true;
         }
-        if($this->logging && !$directory)
-        {
+        if($this->logging && !$directory) {
             unset($this->logger);
             $this->logging = false;
         }
@@ -392,9 +375,8 @@ abstract class Geocaching_Api {
     protected function log($infos, $obj = false)
     {
         if(!$this->logging)
-        {
             return false;
-        }
+
         $this->logger->logInfo('API: ' . $infos, $obj);
     }
 

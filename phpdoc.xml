@@ -6,7 +6,7 @@
   <transformer>
     <target>docs</target>
   </transformer>
-  <title><![CDATA[Geocaching API with PHP 5.3]]></title>
+  <title><![CDATA[Geocaching API with PHP 5]]></title>
   <files>
     <file>src/Geocaching_Api.class.php</file>
     <file>src/Geocaching_Api_Json.class.php</file>

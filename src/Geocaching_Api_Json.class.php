@@ -51,14 +51,13 @@ class Geocaching_Api_Json extends Geocaching_Api {
      */
     protected function checkRequestStatus($content)
     {
-        if(!empty($content->Status->StatusCode)) {
+        if(!empty($content->Status->StatusCode))
             throw new Exception($content->Status->StatusMessage . ' (StatusCode: ' . $content->Status->StatusCode . ')');
-        }
     }
 
     /**
-    * List of POST methods from Geocaching API
-    */
+     * List of POST methods from Geocaching API
+     */
 
     /**
      * Add Geocaches To Bookmark List
@@ -364,6 +363,8 @@ class Geocaching_Api_Json extends Geocaching_Api {
     /**
      * Get Your User Profile
      *
+     * optionals params: ChallengesData, FavoritePointsData, GeocacheData, PublicProfileData, SouvenirData, TrackableData
+     *
      * @access public
      * @param  array $params
      * @return object
@@ -375,6 +376,9 @@ class Geocaching_Api_Json extends Geocaching_Api {
 
     /**
      * Get Another Users Profile
+     *
+     * required param: UserID
+     * optionals params: ChallengesData, FavoritePointsData, GeocacheData, PublicProfileData, SouvenirData, TrackableData
      *
      * @access public
      * @param  array $params
@@ -420,11 +424,11 @@ class Geocaching_Api_Json extends Geocaching_Api {
     /**
      * Search For Geocaches
      *
-     * required params: PointRadius or CacheCode, MaxPerPage<br>
-     * optional params: IsLite, StartIndex, MaxPerPage, GeocacheLogCount, TrackableLogCount, DistanceInMeters, PointRadiusLatitude
-     * PointRadiusLongitude, NotFoundByUsers, MinTerrain, MaxTerrain, GeocacheName, MinDifficulty, MaxDifficulty, CacheCodes, GeocacheTypeIds
-     * GeocacheContainerSizeIds, Archived, Available, Premium, MinFavoritePoints, MaxFavoritePoints, HiddenByUsers, NotHiddenByUsers,
-     * BottomRightLatitude, BottomRightLongitude, TopLeftLatitude, TopLeftLongitude, BookmarkListIDs, MinTrackables, MaxTrackables
+     * required params: DistanceInMeters && PointRadiusLatitude && PointRadiusLongitude OR CacheCode, MaxPerPage.<br>
+     * optional params: IsLite, StartIndex, MaxPerPage, GeocacheLogCount, TrackableLogCount, NotFoundByUsers, MinTerrain,
+     * MaxTerrain, GeocacheName, MinDifficulty, MaxDifficulty, CacheCodes, GeocacheTypeIds, GeocacheContainerSizeIds,
+     * Archived, Available, Premium, MinFavoritePoints, MaxFavoritePoints, HiddenByUsers, NotHiddenByUsers, BottomRightLatitude,
+     * BottomRightLongitude, TopLeftLatitude, TopLeftLongitude, BookmarkListIDs, MinTrackables, MaxTrackables.
      *
      * @access public
      * @param  array $params
