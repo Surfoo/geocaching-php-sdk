@@ -3,7 +3,7 @@
   <file path="Geocaching_Api.class.php" hash="cd716da7a1c1d71866838566e1381787" package="Geocaching\Api">
     <docblock line="2">
       <description>Geocaching API with PHP</description>
-      <long-description></long-description>
+      <long-description/>
       <tag line="2" name="author" description="Surfoo &lt;surfooo@gmail.com&gt;"/>
       <tag line="2" name="link" description="https://github.com/Surfoo/geocaching-api" link="https://github.com/Surfoo/geocaching-api"/>
       <tag line="2" name="license" description="http://opensource.org/licenses/eclipse-1.0.php"/>
@@ -18,7 +18,7 @@
       <full_name>\Geocaching_Api</full_name>
       <docblock line="13">
         <description>Geocaching API</description>
-        <long-description></long-description>
+        <long-description/>
         <tag line="13" name="category" description="Geocaching"/>
         <tag line="13" name="package" description="Geocaching_Api"/>
         <tag line="13" name="abstract" description=""/>
@@ -29,7 +29,7 @@
         <value>0</value>
         <docblock line="22">
           <description>JSON Format</description>
-          <long-description></long-description>
+          <long-description/>
         </docblock>
       </constant>
       <constant namespace="global" line="30" package="Geocaching\Api">
@@ -38,7 +38,7 @@
         <value>1</value>
         <docblock line="27">
           <description>XML Format</description>
-          <long-description></long-description>
+          <long-description/>
         </docblock>
       </constant>
       <property final="false" static="false" visibility="protected" line="38" namespace="global" package="Default">
@@ -46,7 +46,7 @@
         <default>'https://staging.api.groundspeak.com/Live/V6Beta/geocaching.svc/%s'</default>
         <docblock line="32">
           <description>Staging URL of Groundspeak API</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="32" name="access" description="protected"/>
           <tag line="32" name="var" description="" type="string">
             <type by_reference="false">string</type>
@@ -58,7 +58,7 @@
         <default>'https://api.groundspeak.com/LiveV6/geocaching.svc/%s'</default>
         <docblock line="40">
           <description>Production URL of Groundspeak API</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="40" name="access" description="protected"/>
           <tag line="40" name="var" description="" type="string">
             <type by_reference="false">string</type>
@@ -70,7 +70,7 @@
         <default>null</default>
         <docblock line="48">
           <description>API URL</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="48" name="access" description="protected"/>
           <tag line="48" name="var" description="" type="string">
             <type by_reference="false">string</type>
@@ -82,7 +82,7 @@
         <default>null</default>
         <docblock line="56">
           <description>OAuth token sent by the client</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="56" name="access" description="protected"/>
           <tag line="56" name="var" description="" type="string">
             <type by_reference="false">string</type>
@@ -94,7 +94,7 @@
         <default>null</default>
         <docblock line="64">
           <description>Type of output expected format, JSON or XML</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="64" name="access" description="protected"/>
           <tag line="64" name="var" description="" type="string">
             <type by_reference="false">string</type>
@@ -106,7 +106,7 @@
         <default>false</default>
         <docblock line="72">
           <description>Log API requests in a file</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="72" name="access" description="protected"/>
           <tag line="72" name="var" description="" type="string">
             <type by_reference="false">string</type>
@@ -118,7 +118,7 @@
         <full_name>__construct</full_name>
         <docblock line="80">
           <description>Constructor</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="80" name="abstract" description=""/>
           <tag line="80" name="param" description="" type="string" variable="$oauth_token">
             <type by_reference="false">string</type>
@@ -129,12 +129,12 @@
         </docblock>
         <argument line="87">
           <name>$oauth_token</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="87">
           <name>$live</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -143,7 +143,7 @@
         <full_name>checkRequestStatus</full_name>
         <docblock line="89">
           <description>Check the status of the POST or GET request</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="89" name="abstract" description=""/>
           <tag line="89" name="param" description="" type="string" variable="$content">
             <type by_reference="false">string</type>
@@ -154,7 +154,7 @@
         </docblock>
         <argument line="96">
           <name>$content</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -163,7 +163,7 @@
         <full_name>addGeocachesToBookmarkList</full_name>
         <docblock line="98">
           <description>Add Geocaches to a bookmark list</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="98" name="abstract" description=""/>
           <tag line="98" name="param" description="" type="array" variable="$params">
             <type by_reference="false">array</type>
@@ -174,7 +174,7 @@
         </docblock>
         <argument line="105">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -183,7 +183,7 @@
         <full_name>createFieldNoteAndPublish</full_name>
         <docblock line="107">
           <description>Create Field Note And Publish</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="107" name="abstract" description=""/>
           <tag line="107" name="param" description="" type="array" variable="$params">
             <type by_reference="false">array</type>
@@ -194,7 +194,7 @@
         </docblock>
         <argument line="114">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -203,7 +203,7 @@
         <full_name>createTrackableLog</full_name>
         <docblock line="116">
           <description>Create Trackable Log</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="116" name="abstract" description=""/>
           <tag line="116" name="param" description="" type="array" variable="$params">
             <type by_reference="false">array</type>
@@ -214,7 +214,7 @@
         </docblock>
         <argument line="123">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -223,7 +223,7 @@
         <full_name>getAnotherUsersProfile</full_name>
         <docblock line="125">
           <description>Get Another Users Profile</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="125" name="abstract" description=""/>
           <tag line="125" name="param" description="" type="array" variable="$params">
             <type by_reference="false">array</type>
@@ -243,7 +243,7 @@
         <full_name>getBookmarkListByGuid</full_name>
         <docblock line="134">
           <description>Get Bookmark List By Guid</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="134" name="abstract" description=""/>
           <tag line="134" name="param" description="" type="array" variable="$params">
             <type by_reference="false">array</type>
@@ -254,7 +254,7 @@
         </docblock>
         <argument line="141">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -263,7 +263,7 @@
         <full_name>getGeocacheStatus</full_name>
         <docblock line="143">
           <description>Get Geocache Status</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="143" name="abstract" description=""/>
           <tag line="143" name="param" description="" type="array" variable="$params">
             <type by_reference="false">array</type>
@@ -274,7 +274,7 @@
         </docblock>
         <argument line="150">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -283,7 +283,7 @@
         <full_name>getMoreGeocaches</full_name>
         <docblock line="152">
           <description>Get More Geocaches</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="152" name="abstract" description=""/>
           <tag line="152" name="param" description="" type="array" variable="$params">
             <type by_reference="false">array</type>
@@ -294,7 +294,7 @@
         </docblock>
         <argument line="159">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -303,7 +303,7 @@
         <full_name>getOwnedTrackables</full_name>
         <docblock line="161">
           <description>Get Owned Trackables</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="161" name="abstract" description=""/>
           <tag line="161" name="param" description="" type="array" variable="$params">
             <type by_reference="false">array</type>
@@ -314,7 +314,7 @@
         </docblock>
         <argument line="168">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -323,7 +323,7 @@
         <full_name>getUserGallery</full_name>
         <docblock line="170">
           <description>Get User Gallery</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="170" name="abstract" description=""/>
           <tag line="170" name="param" description="" type="array" variable="$params">
             <type by_reference="false">array</type>
@@ -334,7 +334,7 @@
         </docblock>
         <argument line="177">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -343,7 +343,7 @@
         <full_name>getUsersCacheCounts</full_name>
         <docblock line="179">
           <description>Get Users Cache Counts</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="179" name="abstract" description=""/>
           <tag line="179" name="param" description="" type="array" variable="$params">
             <type by_reference="false">array</type>
@@ -354,7 +354,7 @@
         </docblock>
         <argument line="186">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -363,7 +363,7 @@
         <full_name>getUsersGeocacheLogs</full_name>
         <docblock line="188">
           <description>Get Users Geocache Logs</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="188" name="abstract" description=""/>
           <tag line="188" name="param" description="" type="array" variable="$params">
             <type by_reference="false">array</type>
@@ -374,7 +374,7 @@
         </docblock>
         <argument line="195">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -383,7 +383,7 @@
         <full_name>getUsersTrackables</full_name>
         <docblock line="197">
           <description>get Users Trackables</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="197" name="abstract" description=""/>
           <tag line="197" name="param" description="" type="array" variable="$params">
             <type by_reference="false">array</type>
@@ -394,7 +394,7 @@
         </docblock>
         <argument line="204">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -403,7 +403,7 @@
         <full_name>getYourUserProfile</full_name>
         <docblock line="206">
           <description>Get Your User Profile</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="206" name="abstract" description=""/>
           <tag line="206" name="param" description="" type="array" variable="$params">
             <type by_reference="false">array</type>
@@ -423,7 +423,7 @@
         <full_name>saveUserWaypoint</full_name>
         <docblock line="215">
           <description>Save User Waypoint</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="215" name="abstract" description=""/>
           <tag line="215" name="param" description="" type="array" variable="$params">
             <type by_reference="false">array</type>
@@ -434,7 +434,7 @@
         </docblock>
         <argument line="222">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -443,7 +443,7 @@
         <full_name>searchForGeocaches</full_name>
         <docblock line="224">
           <description>Search For Geocaches</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="224" name="abstract" description=""/>
           <tag line="224" name="param" description="" type="array" variable="$params">
             <type by_reference="false">array</type>
@@ -454,7 +454,7 @@
         </docblock>
         <argument line="231">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -463,7 +463,7 @@
         <full_name>searchForSouvenirsByPublicGuid</full_name>
         <docblock line="233">
           <description>Search For Souvenirs By Public Guid</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="233" name="abstract" description=""/>
           <tag line="233" name="param" description="" type="array" variable="$params">
             <type by_reference="false">array</type>
@@ -474,7 +474,7 @@
         </docblock>
         <argument line="240">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -483,7 +483,7 @@
         <full_name>updateCacheNote</full_name>
         <docblock line="242">
           <description>Update Cache Note</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="242" name="abstract" description=""/>
           <tag line="242" name="param" description="" type="array" variable="$params">
             <type by_reference="false">array</type>
@@ -494,7 +494,7 @@
         </docblock>
         <argument line="249">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -503,7 +503,7 @@
         <full_name>uploadImageToGeocacheLog</full_name>
         <docblock line="251">
           <description>Upload Image To Geocache Log</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="251" name="abstract" description=""/>
           <tag line="251" name="param" description="" type="array" variable="$params">
             <type by_reference="false">array</type>
@@ -514,7 +514,7 @@
         </docblock>
         <argument line="258">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -523,7 +523,7 @@
         <full_name>get_request</full_name>
         <docblock line="260">
           <description>Make a GET request</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="260" name="access" description="protected"/>
           <tag line="260" name="param" description="" type="string" variable="$request">
             <type by_reference="false">string</type>
@@ -538,7 +538,7 @@
         </docblock>
         <argument line="268">
           <name>$request</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="268">
@@ -552,7 +552,7 @@
         <full_name>post_request</full_name>
         <docblock line="302">
           <description>Make a POST request</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="302" name="access" description="protected"/>
           <tag line="302" name="param" description="" type="string" variable="$request">
             <type by_reference="false">string</type>
@@ -567,12 +567,12 @@
         </docblock>
         <argument line="310">
           <name>$request</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="310">
           <name>$data</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -581,7 +581,7 @@
         <full_name>setLogging</full_name>
         <docblock line="351">
           <description>Enable or disable log messages</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="351" name="param" description="" type="string" variable="$directory">
             <type by_reference="false">string</type>
           </tag>
@@ -591,7 +591,7 @@
         </docblock>
         <argument line="357">
           <name>$directory</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -600,7 +600,7 @@
         <full_name>log</full_name>
         <docblock line="369">
           <description>Log informations into the log file</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="369" name="param" description="" type="string" variable="$infos">
             <type by_reference="false">string</type>
           </tag>
@@ -613,7 +613,7 @@
         </docblock>
         <argument line="375">
           <name>$infos</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="375">
@@ -639,7 +639,7 @@
         </docblock>
         <argument line="396">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -660,7 +660,7 @@
         </docblock>
         <argument line="414">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -681,7 +681,7 @@
         </docblock>
         <argument line="432">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -690,7 +690,7 @@
         <full_name>getAPILimits</full_name>
         <docblock line="441">
           <description>Get API Limits</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="441" name="access" description="public"/>
           <tag line="441" name="return" description="JSON : Object, XML : String" type="object|string">
             <type by_reference="false">object</type>
@@ -703,7 +703,7 @@
         <full_name>getAttributeTypesData</full_name>
         <docblock line="452">
           <description>Get Attribute Types Data</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="452" name="access" description="public"/>
           <tag line="452" name="return" description="JSON : Object, XML : String" type="object|string">
             <type by_reference="false">object</type>
@@ -728,7 +728,7 @@
         </docblock>
         <argument line="472">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -737,7 +737,7 @@
         <full_name>getBookmarkListsForUser</full_name>
         <docblock line="481">
           <description>Get Bookmark Lists For User</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="481" name="access" description="public"/>
           <tag line="481" name="return" description="JSON : Object, XML : String" type="object|string">
             <type by_reference="false">object</type>
@@ -762,7 +762,7 @@
         </docblock>
         <argument line="501">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -771,7 +771,7 @@
         <full_name>getCacheIdsFavoritedByUser</full_name>
         <docblock line="510">
           <description>Get Cache Ids Favorited By User</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="510" name="access" description="public"/>
           <tag line="510" name="return" description="JSON : Object, XML : String" type="object|string">
             <type by_reference="false">object</type>
@@ -784,7 +784,7 @@
         <full_name>getCachesFavoritedByUser</full_name>
         <docblock line="521">
           <description>Get Caches Favorited By User</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="521" name="access" description="public"/>
           <tag line="521" name="return" description="JSON : Object, XML : String" type="object|string">
             <type by_reference="false">object</type>
@@ -809,7 +809,7 @@
         </docblock>
         <argument line="541">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -831,7 +831,7 @@ optional param: StartIndex&lt;/p&gt;</long-description>
         </docblock>
         <argument line="564">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -840,7 +840,7 @@ optional param: StartIndex&lt;/p&gt;</long-description>
         <full_name>getGeocacheTypes</full_name>
         <docblock line="579">
           <description>Get Geocache Types</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="579" name="access" description="public"/>
           <tag line="579" name="return" description="JSON : Object, XML : String" type="object|string">
             <type by_reference="false">object</type>
@@ -865,7 +865,7 @@ optional param: StartIndex&lt;/p&gt;</long-description>
         </docblock>
         <argument line="599">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -874,7 +874,7 @@ optional param: StartIndex&lt;/p&gt;</long-description>
         <full_name>getMembershipTypes</full_name>
         <docblock line="608">
           <description>Get Membership Types</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="608" name="access" description="public"/>
           <tag line="608" name="return" description="JSON : Object, XML : String" type="object|string">
             <type by_reference="false">object</type>
@@ -900,7 +900,7 @@ optional params: StartItem, GCListOnly&lt;/p&gt;</long-description>
         </docblock>
         <argument line="629">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -909,7 +909,7 @@ optional params: StartItem, GCListOnly&lt;/p&gt;</long-description>
         <full_name>getPocketQueryList</full_name>
         <docblock line="646">
           <description>Get Pocket Query List</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="646" name="access" description="public"/>
           <tag line="646" name="return" description="JSON : Object, XML : String" type="object|string">
             <type by_reference="false">object</type>
@@ -934,7 +934,7 @@ optional params: StartItem, GCListOnly&lt;/p&gt;</long-description>
         </docblock>
         <argument line="666">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -955,7 +955,7 @@ optional params: StartItem, GCListOnly&lt;/p&gt;</long-description>
         </docblock>
         <argument line="684">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -964,7 +964,7 @@ optional params: StartItem, GCListOnly&lt;/p&gt;</long-description>
         <full_name>getServerDetails</full_name>
         <docblock line="693">
           <description>Get Server Details</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="693" name="access" description="public"/>
           <tag line="693" name="return" description="JSON : Object, XML : String" type="object|string">
             <type by_reference="false">object</type>
@@ -977,7 +977,7 @@ optional params: StartItem, GCListOnly&lt;/p&gt;</long-description>
         <full_name>getSiteStats</full_name>
         <docblock line="704">
           <description>Get Site Stats</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="704" name="access" description="public"/>
           <tag line="704" name="return" description="JSON : Object, XML : String" type="object|string">
             <type by_reference="false">object</type>
@@ -990,7 +990,7 @@ optional params: StartItem, GCListOnly&lt;/p&gt;</long-description>
         <full_name>getStatusMessages</full_name>
         <docblock line="715">
           <description>Get Status Messages</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="715" name="access" description="public"/>
           <tag line="715" name="return" description="JSON : Object, XML : String" type="object|string">
             <type by_reference="false">object</type>
@@ -1016,7 +1016,7 @@ optional param: StartIndex&lt;/p&gt;</long-description>
         </docblock>
         <argument line="736">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -1038,7 +1038,7 @@ optional param: TrackableLogCount&lt;/p&gt;</long-description>
         </docblock>
         <argument line="761">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -1060,7 +1060,7 @@ optional param: TrackableLogCount&lt;/p&gt;</long-description>
         </docblock>
         <argument line="783">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -1082,7 +1082,7 @@ optional params: StartIndex, TrackableLogCount&lt;/p&gt;</long-description>
         </docblock>
         <argument line="805">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -1103,7 +1103,7 @@ optional params: StartIndex, TrackableLogCount&lt;/p&gt;</long-description>
         </docblock>
         <argument line="831">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -1112,7 +1112,7 @@ optional params: StartIndex, TrackableLogCount&lt;/p&gt;</long-description>
         <full_name>getUsersFavoritePoints</full_name>
         <docblock line="840">
           <description>Get Users Favorite Points</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="840" name="access" description="public"/>
           <tag line="840" name="return" description="JSON : Object, XML : String" type="object|string">
             <type by_reference="false">object</type>
@@ -1138,7 +1138,7 @@ optional param: StartIndex&lt;/p&gt;</long-description>
         </docblock>
         <argument line="861">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -1159,7 +1159,7 @@ optional param: StartIndex&lt;/p&gt;</long-description>
         </docblock>
         <argument line="882">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -1180,7 +1180,7 @@ optional param: StartIndex&lt;/p&gt;</long-description>
         </docblock>
         <argument line="900">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -1189,7 +1189,7 @@ optional param: StartIndex&lt;/p&gt;</long-description>
         <full_name>getWptLogTypes</full_name>
         <docblock line="909">
           <description>Get Wpt Log Types</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="909" name="access" description="public"/>
           <tag line="909" name="return" description="JSON : Object, XML : String" type="object|string">
             <type by_reference="false">object</type>
@@ -1214,7 +1214,7 @@ optional param: StartIndex&lt;/p&gt;</long-description>
         </docblock>
         <argument line="929">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -1223,7 +1223,7 @@ optional param: StartIndex&lt;/p&gt;</long-description>
   <file path="Geocaching_Api_Json.class.php" hash="b4e4903052e9e8c9c844804cb898b691" package="Geocaching\Api">
     <docblock line="2">
       <description>Geocaching API with PHP</description>
-      <long-description></long-description>
+      <long-description/>
       <tag line="2" name="author" description="Surfoo &lt;surfooo@gmail.com&gt;"/>
       <tag line="2" name="link" description="https://github.com/Surfoo/geocaching-api" link="https://github.com/Surfoo/geocaching-api"/>
       <tag line="2" name="license" description="http://opensource.org/licenses/eclipse-1.0.php"/>
@@ -1238,7 +1238,7 @@ optional param: StartIndex&lt;/p&gt;</long-description>
       <full_name>\Geocaching_Api_Json</full_name>
       <docblock line="13">
         <description>Geocaching API for JSON format</description>
-        <long-description></long-description>
+        <long-description/>
         <tag line="13" name="category" description="Geocaching"/>
         <tag line="13" name="package" description="Geocaching_Api"/>
       </docblock>
@@ -1247,7 +1247,7 @@ optional param: StartIndex&lt;/p&gt;</long-description>
         <full_name>__construct</full_name>
         <docblock line="21">
           <description>Constructor</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="21" name="access" description="public"/>
           <tag line="21" name="param" description="OAuth token provided by the application" type="string" variable="$oauth_token">
             <type by_reference="false">string</type>
@@ -1261,7 +1261,7 @@ optional param: StartIndex&lt;/p&gt;</long-description>
         </docblock>
         <argument line="29">
           <name>$oauth_token</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="29">
@@ -1275,7 +1275,7 @@ optional param: StartIndex&lt;/p&gt;</long-description>
         <full_name>checkRequestStatus</full_name>
         <docblock line="45">
           <description>Check the status of the POST or GET request in JSON</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="45" name="access" description="protected"/>
           <tag line="45" name="param" description="" type="object" variable="$content">
             <type by_reference="false">object</type>
@@ -1286,7 +1286,7 @@ optional param: StartIndex&lt;/p&gt;</long-description>
         </docblock>
         <argument line="52">
           <name>$content</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -1306,7 +1306,7 @@ optional param: StartIndex&lt;/p&gt;</long-description>
         </docblock>
         <argument line="71">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -1327,7 +1327,7 @@ Optional params: PromoteToLog, FavoriteThisCache, EncryptLogText, UpdatedLatitud
         </docblock>
         <argument line="96">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -1347,7 +1347,7 @@ Optional params: PromoteToLog, FavoriteThisCache, EncryptLogText, UpdatedLatitud
         </docblock>
         <argument line="145">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -1367,7 +1367,7 @@ Optional params: PromoteToLog, FavoriteThisCache, EncryptLogText, UpdatedLatitud
         </docblock>
         <argument line="173">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -1387,7 +1387,7 @@ Optional params: PromoteToLog, FavoriteThisCache, EncryptLogText, UpdatedLatitud
         </docblock>
         <argument line="191">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -1407,7 +1407,7 @@ Optional params: PromoteToLog, FavoriteThisCache, EncryptLogText, UpdatedLatitud
         </docblock>
         <argument line="209">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -1427,7 +1427,7 @@ Optional params: PromoteToLog, FavoriteThisCache, EncryptLogText, UpdatedLatitud
         </docblock>
         <argument line="240">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -1447,7 +1447,7 @@ Optional params: PromoteToLog, FavoriteThisCache, EncryptLogText, UpdatedLatitud
         </docblock>
         <argument line="263">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -1468,7 +1468,7 @@ optional params: TrackableLogCount, CollectionOnly&lt;/p&gt;</long-description>
         </docblock>
         <argument line="284">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -1489,7 +1489,7 @@ optional params: StartIndex, EndDate, StartDate, ExcludeArchived&lt;/p&gt;</long
         </docblock>
         <argument line="311">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -1510,7 +1510,7 @@ optional params: StartIndex, TrackableLogCount, CollectionOnly&lt;/p&gt;</long-d
         </docblock>
         <argument line="347">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -1572,7 +1572,7 @@ optional param: Description&lt;/p&gt;</long-description>
         </docblock>
         <argument line="402">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -1596,7 +1596,7 @@ BottomRightLongitude, TopLeftLatitude, TopLeftLongitude, BookmarkListIDs, MinTra
         </docblock>
         <argument line="437">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -1617,7 +1617,7 @@ optional param: ExistingSouvenirIDs&lt;/p&gt;</long-description>
         </docblock>
         <argument line="535">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -1637,7 +1637,7 @@ optional param: ExistingSouvenirIDs&lt;/p&gt;</long-description>
         </docblock>
         <argument line="556">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -1658,7 +1658,7 @@ optional params: FileCaption, FileDescription, FileName&lt;/p&gt;</long-descript
         </docblock>
         <argument line="578">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -1683,7 +1683,7 @@ if the method is getYourUserProfile, there are some required params (DeviceInfo)
         </docblock>
         <argument line="609">
           <name>$function</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="609">
@@ -2067,10 +2067,10 @@ if the method is getYourUserProfile, there are some required params (DeviceInfo)
       </method>
     </class>
   </file>
-  <file path="Geocaching_OAuth.class.php" hash="ad95df833170c9d0bb9164b2befc2418" package="Geocaching\OAuth">
+  <file path="Geocaching_OAuth.class.php" hash="971a5b447db2ea40aff4f27a08ff627b" package="Geocaching\OAuth">
     <docblock line="2">
       <description>Geocaching API with PHP</description>
-      <long-description/>
+      <long-description></long-description>
       <tag line="2" name="author" description="Surfoo &lt;surfooo@gmail.com&gt;"/>
       <tag line="2" name="link" description="https://github.com/Surfoo/geocaching-api" link="https://github.com/Surfoo/geocaching-api"/>
       <tag line="2" name="license" description="http://opensource.org/licenses/eclipse-1.0.php"/>
@@ -2082,7 +2082,7 @@ if the method is getYourUserProfile, there are some required params (DeviceInfo)
       <full_name>\Geocaching_OAuth</full_name>
       <docblock line="11">
         <description>OAuth for the Geocaching API</description>
-        <long-description/>
+        <long-description></long-description>
         <tag line="11" name="category" description="Geocaching"/>
         <tag line="11" name="package" description="Geocaching_OAuth"/>
       </docblock>
@@ -2091,7 +2091,7 @@ if the method is getYourUserProfile, there are some required params (DeviceInfo)
         <default>'http://staging.geocaching.com/OAuth/oauth.ashx'</default>
         <docblock line="18">
           <description>Staging URL of Groundspeak OAuth</description>
-          <long-description/>
+          <long-description></long-description>
           <tag line="18" name="access" description="protected"/>
           <tag line="18" name="var" description="" type="string">
             <type by_reference="false">string</type>
@@ -2100,10 +2100,10 @@ if the method is getYourUserProfile, there are some required params (DeviceInfo)
       </property>
       <property final="false" static="false" visibility="protected" line="32" namespace="global" package="Default">
         <name>$live_oauth_url</name>
-        <default>'http://staging.geocaching.com/OAuth/oauth.ashx'</default>
+        <default>'https://www.geocaching.com/OAuth/Authorize.aspx'</default>
         <docblock line="26">
           <description>Production URL of Groundspeak OAuth</description>
-          <long-description/>
+          <long-description></long-description>
           <tag line="26" name="access" description="protected"/>
           <tag line="26" name="var" description="" type="string">
             <type by_reference="false">string</type>
@@ -2111,11 +2111,11 @@ if the method is getYourUserProfile, there are some required params (DeviceInfo)
         </docblock>
       </property>
       <property final="false" static="false" visibility="protected" line="40" namespace="global" package="Default">
-        <name>$log</name>
-        <default>false</default>
+        <name>$live_mobile_oauth_url</name>
+        <default>'https://www.geocaching.com/oauth/mobileoauth.ashx'</default>
         <docblock line="34">
-          <description>Log OAuth requests in a file</description>
-          <long-description/>
+          <description>Production URL for mobile of Groundspeak OAuth</description>
+          <long-description></long-description>
           <tag line="34" name="access" description="protected"/>
           <tag line="34" name="var" description="" type="string">
             <type by_reference="false">string</type>
@@ -2123,11 +2123,11 @@ if the method is getYourUserProfile, there are some required params (DeviceInfo)
         </docblock>
       </property>
       <property final="false" static="false" visibility="protected" line="48" namespace="global" package="Default">
-        <name>$oauth_signature_method</name>
-        <default>'HMAC-SHA1'</default>
+        <name>$log</name>
+        <default>false</default>
         <docblock line="42">
-          <description>OAuth Signature Method</description>
-          <long-description/>
+          <description>Log OAuth requests in a file</description>
+          <long-description></long-description>
           <tag line="42" name="access" description="protected"/>
           <tag line="42" name="var" description="" type="string">
             <type by_reference="false">string</type>
@@ -2135,35 +2135,35 @@ if the method is getYourUserProfile, there are some required params (DeviceInfo)
         </docblock>
       </property>
       <property final="false" static="false" visibility="protected" line="56" namespace="global" package="Default">
-        <name>$oauth_version</name>
-        <default>'1.0'</default>
+        <name>$oauth_signature_method</name>
+        <default>'HMAC-SHA1'</default>
         <docblock line="50">
-          <description>OAuth version</description>
-          <long-description/>
+          <description>OAuth Signature Method</description>
+          <long-description></long-description>
           <tag line="50" name="access" description="protected"/>
           <tag line="50" name="var" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
         </docblock>
       </property>
-      <property final="false" static="false" visibility="private" line="64" namespace="global" package="Default">
-        <name>$consumer_key</name>
-        <default>null</default>
+      <property final="false" static="false" visibility="protected" line="64" namespace="global" package="Default">
+        <name>$oauth_version</name>
+        <default>'1.0'</default>
         <docblock line="58">
-          <description>Consumer key</description>
-          <long-description/>
-          <tag line="58" name="access" description="private"/>
+          <description>OAuth version</description>
+          <long-description></long-description>
+          <tag line="58" name="access" description="protected"/>
           <tag line="58" name="var" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
         </docblock>
       </property>
       <property final="false" static="false" visibility="private" line="72" namespace="global" package="Default">
-        <name>$consumer_secret</name>
+        <name>$consumer_key</name>
         <default>null</default>
         <docblock line="66">
-          <description>Consumer secret</description>
-          <long-description/>
+          <description>Consumer key</description>
+          <long-description></long-description>
           <tag line="66" name="access" description="private"/>
           <tag line="66" name="var" description="" type="string">
             <type by_reference="false">string</type>
@@ -2171,11 +2171,11 @@ if the method is getYourUserProfile, there are some required params (DeviceInfo)
         </docblock>
       </property>
       <property final="false" static="false" visibility="private" line="80" namespace="global" package="Default">
-        <name>$callback_url</name>
+        <name>$consumer_secret</name>
         <default>null</default>
         <docblock line="74">
-          <description>Callback URL</description>
-          <long-description/>
+          <description>Consumer secret</description>
+          <long-description></long-description>
           <tag line="74" name="access" description="private"/>
           <tag line="74" name="var" description="" type="string">
             <type by_reference="false">string</type>
@@ -2183,11 +2183,11 @@ if the method is getYourUserProfile, there are some required params (DeviceInfo)
         </docblock>
       </property>
       <property final="false" static="false" visibility="private" line="88" namespace="global" package="Default">
-        <name>$oauth_token_access</name>
+        <name>$callback_url</name>
         <default>null</default>
         <docblock line="82">
-          <description>Oauth token access</description>
-          <long-description/>
+          <description>Callback URL</description>
+          <long-description></long-description>
           <tag line="82" name="access" description="private"/>
           <tag line="82" name="var" description="" type="string">
             <type by_reference="false">string</type>
@@ -2195,11 +2195,11 @@ if the method is getYourUserProfile, there are some required params (DeviceInfo)
         </docblock>
       </property>
       <property final="false" static="false" visibility="private" line="96" namespace="global" package="Default">
-        <name>$oauth_url</name>
+        <name>$oauth_token_access</name>
         <default>null</default>
         <docblock line="90">
-          <description>OAuth URL</description>
-          <long-description/>
+          <description>Oauth token access</description>
+          <long-description></long-description>
           <tag line="90" name="access" description="private"/>
           <tag line="90" name="var" description="" type="string">
             <type by_reference="false">string</type>
@@ -2207,309 +2207,318 @@ if the method is getYourUserProfile, there are some required params (DeviceInfo)
         </docblock>
       </property>
       <property final="false" static="false" visibility="private" line="104" namespace="global" package="Default">
-        <name>$request_params</name>
-        <default>array()</default>
+        <name>$oauth_url</name>
+        <default>null</default>
         <docblock line="98">
-          <description>Request parameters</description>
-          <long-description/>
+          <description>OAuth URL</description>
+          <long-description></long-description>
           <tag line="98" name="access" description="private"/>
-          <tag line="98" name="var" description="" type="array">
-            <type by_reference="false">array</type>
+          <tag line="98" name="var" description="" type="string">
+            <type by_reference="false">string</type>
           </tag>
         </docblock>
       </property>
       <property final="false" static="false" visibility="private" line="112" namespace="global" package="Default">
-        <name>$access_params</name>
+        <name>$request_params</name>
         <default>array()</default>
         <docblock line="106">
-          <description>Access parameters</description>
-          <long-description/>
+          <description>Request parameters</description>
+          <long-description></long-description>
           <tag line="106" name="access" description="private"/>
           <tag line="106" name="var" description="" type="array">
             <type by_reference="false">array</type>
           </tag>
         </docblock>
       </property>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="123" package="Geocaching\OAuth">
+      <property final="false" static="false" visibility="private" line="120" namespace="global" package="Default">
+        <name>$access_params</name>
+        <default>array()</default>
+        <docblock line="114">
+          <description>Access parameters</description>
+          <long-description></long-description>
+          <tag line="114" name="access" description="private"/>
+          <tag line="114" name="var" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="131" package="Geocaching\OAuth">
         <name>__construct</name>
         <full_name>__construct</full_name>
-        <docblock line="114">
+        <docblock line="122">
           <description>Constructor</description>
-          <long-description/>
-          <tag line="114" name="access" description="public"/>
-          <tag line="114" name="param" description="OAuth Key" type="string" variable="$consumer_key">
+          <long-description></long-description>
+          <tag line="122" name="access" description="public"/>
+          <tag line="122" name="param" description="OAuth Key" type="string" variable="$consumer_key">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="114" name="param" description="OAuth Secret" type="string" variable="$consumer_secret">
+          <tag line="122" name="param" description="OAuth Secret" type="string" variable="$consumer_secret">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="114" name="param" description="Callbak URL" type="string" variable="$callback_url">
+          <tag line="122" name="param" description="Callbak URL" type="string" variable="$callback_url">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="114" name="param" description="production = true, staging = false" type="boolean" variable="$live">
+          <tag line="122" name="param" description="production = true, staging = false" type="boolean" variable="$live">
             <type by_reference="false">boolean</type>
           </tag>
         </docblock>
-        <argument line="123">
+        <argument line="131">
           <name>$consumer_key</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
-        <argument line="123">
+        <argument line="131">
           <name>$consumer_secret</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
-        <argument line="123">
+        <argument line="131">
           <name>$callback_url</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
-        <argument line="123">
+        <argument line="131">
           <name>$live</name>
           <default>false</default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="157" package="Geocaching\OAuth">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="165" package="Geocaching\OAuth">
         <name>setLogging</name>
         <full_name>setLogging</full_name>
-        <docblock line="151">
+        <docblock line="159">
           <description>Enable or disable log messages</description>
-          <long-description/>
-          <tag line="151" name="param" description="" type="string" variable="$directory">
+          <long-description></long-description>
+          <tag line="159" name="param" description="" type="string" variable="$directory">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="151" name="return" description="" type="void">
+          <tag line="159" name="return" description="" type="void">
             <type by_reference="false">void</type>
           </tag>
         </docblock>
-        <argument line="157">
+        <argument line="165">
           <name>$directory</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="177" package="Geocaching\OAuth">
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="185" package="Geocaching\OAuth">
         <name>log</name>
         <full_name>log</full_name>
-        <docblock line="171">
+        <docblock line="179">
           <description>Log informations into the log file</description>
-          <long-description/>
-          <tag line="171" name="param" description="" type="string" variable="$infos">
+          <long-description></long-description>
+          <tag line="179" name="param" description="" type="string" variable="$infos">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="171" name="param" description="" type="array" variable="$obj">
+          <tag line="179" name="param" description="" type="array" variable="$obj">
             <type by_reference="false">array</type>
           </tag>
-          <tag line="171" name="return" description="" type="void">
+          <tag line="179" name="return" description="" type="void">
             <type by_reference="false">void</type>
           </tag>
         </docblock>
-        <argument line="177">
+        <argument line="185">
           <name>$infos</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
-        <argument line="177">
+        <argument line="185">
           <name>$obj</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="191" package="Geocaching\OAuth">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="199" package="Geocaching\OAuth">
         <name>getRequestToken</name>
         <full_name>getRequestToken</full_name>
-        <docblock line="185">
+        <docblock line="193">
           <description>Get Request Token</description>
-          <long-description/>
-          <tag line="185" name="access" description="public"/>
-          <tag line="185" name="return" description="" type="array">
+          <long-description></long-description>
+          <tag line="193" name="access" description="public"/>
+          <tag line="193" name="return" description="" type="array">
             <type by_reference="false">array</type>
           </tag>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="238" package="Geocaching\OAuth">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="246" package="Geocaching\OAuth">
         <name>getAccessToken</name>
         <full_name>getAccessToken</full_name>
-        <docblock line="230">
+        <docblock line="238">
           <description>Get Access Token</description>
-          <long-description/>
-          <tag line="230" name="access" description="public"/>
-          <tag line="230" name="param" description="" type="array" variable="$queryData">
+          <long-description></long-description>
+          <tag line="238" name="access" description="public"/>
+          <tag line="238" name="param" description="" type="array" variable="$queryData">
             <type by_reference="false">array</type>
           </tag>
-          <tag line="230" name="param" description="" type="string" variable="$token">
+          <tag line="238" name="param" description="" type="string" variable="$token">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="230" name="return" description="" type="string">
+          <tag line="238" name="return" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
         </docblock>
-        <argument line="238">
+        <argument line="246">
           <name>$queryData</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
-        <argument line="238">
+        <argument line="246">
           <name>$token</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="280" package="Geocaching\OAuth">
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="288" package="Geocaching\OAuth">
         <name>signature_hmac_sha1</name>
         <full_name>signature_hmac_sha1</full_name>
-        <docblock line="272">
+        <docblock line="280">
           <description>Signature hmac_sha1</description>
-          <long-description/>
-          <tag line="272" name="access" description="protected"/>
-          <tag line="272" name="param" description="" type="array" variable="$params">
+          <long-description></long-description>
+          <tag line="280" name="access" description="protected"/>
+          <tag line="280" name="param" description="" type="array" variable="$params">
             <type by_reference="false">array</type>
           </tag>
-          <tag line="272" name="param" description="" type="array" variable="$secret">
+          <tag line="280" name="param" description="" type="array" variable="$secret">
             <type by_reference="false">array</type>
           </tag>
-          <tag line="272" name="return" description="" type="string">
+          <tag line="280" name="return" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
         </docblock>
-        <argument line="280">
+        <argument line="288">
           <name>$params</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
-        <argument line="280">
+        <argument line="288">
           <name>$secret</name>
           <default>array()</default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="302" package="Geocaching\OAuth">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="310" package="Geocaching\OAuth">
         <name>redirect</name>
         <full_name>redirect</full_name>
-        <docblock line="296">
+        <docblock line="304">
           <description>Make a redirection to API URL</description>
-          <long-description/>
-          <tag line="296" name="access" description="public"/>
-          <tag line="296" name="return" description="" type="void">
+          <long-description></long-description>
+          <tag line="304" name="access" description="public"/>
+          <tag line="304" name="return" description="" type="void">
             <type by_reference="false">void</type>
           </tag>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="316" package="Geocaching\OAuth">
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="324" package="Geocaching\OAuth">
         <name>setNonce</name>
         <full_name>setNonce</full_name>
-        <docblock line="310">
+        <docblock line="318">
           <description>Set a nonce</description>
-          <long-description/>
-          <tag line="310" name="access" description="protected"/>
-          <tag line="310" name="return" description="" type="string">
+          <long-description></long-description>
+          <tag line="318" name="access" description="protected"/>
+          <tag line="318" name="return" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="328" package="Geocaching\OAuth">
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="336" package="Geocaching\OAuth">
         <name>curl_request</name>
         <full_name>curl_request</full_name>
-        <docblock line="321">
+        <docblock line="329">
           <description>Make a curl request</description>
-          <long-description/>
-          <tag line="321" name="access" description="protected"/>
-          <tag line="321" name="param" description="" type="string" variable="$url">
+          <long-description></long-description>
+          <tag line="329" name="access" description="protected"/>
+          <tag line="329" name="param" description="" type="string" variable="$url">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="321" name="return" description="" type="string">
+          <tag line="329" name="return" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
         </docblock>
-        <argument line="328">
+        <argument line="336">
           <name>$url</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="360" package="Geocaching\OAuth">
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="368" package="Geocaching\OAuth">
         <name>http_explode_data</name>
         <full_name>http_explode_data</full_name>
-        <docblock line="350">
+        <docblock line="358">
           <description>Explode an http data string (like key1=value1&amp;key2[]=value2 etc.)</description>
           <long-description>&lt;p&gt;We need this function because parse_str will delete doublon keys.
 This function makes it easier to find the sent string exactly as it was sent.&lt;/p&gt;</long-description>
-          <tag line="350" name="access" description="protected"/>
-          <tag line="350" name="param" description="" type="string" variable="$string">
+          <tag line="358" name="access" description="protected"/>
+          <tag line="358" name="param" description="" type="string" variable="$string">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="350" name="return" description="" type="string">
+          <tag line="358" name="return" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
         </docblock>
-        <argument line="360">
+        <argument line="368">
           <name>$string</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="387" package="Geocaching\OAuth">
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="395" package="Geocaching\OAuth">
         <name>rfc3986_encode</name>
         <full_name>rfc3986_encode</full_name>
-        <docblock line="379">
+        <docblock line="387">
           <description>Return a string encoded according to RFC 3986.</description>
           <long-description>&lt;p&gt;In PHP 5.3+ you'll just need to do rawurlencode.&lt;/p&gt;</long-description>
-          <tag line="379" name="access" description="protected"/>
-          <tag line="379" name="param" description="" type="string" variable="$str">
+          <tag line="387" name="access" description="protected"/>
+          <tag line="387" name="param" description="" type="string" variable="$str">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="379" name="return" description="" type="string">
+          <tag line="387" name="return" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
         </docblock>
-        <argument line="387">
+        <argument line="395">
           <name>$str</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="412" package="Geocaching\OAuth">
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="420" package="Geocaching\OAuth">
         <name>oauth_loosy_decode</name>
         <full_name>oauth_loosy_decode</full_name>
-        <docblock line="399">
+        <docblock line="407">
           <description>Return a string decoded according OAuth spec.</description>
           <long-description>&lt;p&gt;"While the encoding rules specified in this specification for the
 purpose of constructing the signature base string exclude the of
 a "+" character to represent an encoded space character, this pratice
 is widely used in application/x-www-form-urlencoded encoded values,
 and MUST be properly decoded"&lt;/p&gt;</long-description>
-          <tag line="399" name="access" description="protected"/>
-          <tag line="399" name="param" description="" type="string" variable="$str">
+          <tag line="407" name="access" description="protected"/>
+          <tag line="407" name="param" description="" type="string" variable="$str">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="399" name="return" description="" type="string">
+          <tag line="407" name="return" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
         </docblock>
-        <argument line="412">
+        <argument line="420">
           <name>$str</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="424" package="Geocaching\OAuth">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="432" package="Geocaching\OAuth">
         <name>getRequestUri</name>
         <full_name>getRequestUri</full_name>
-        <docblock line="418">
+        <docblock line="426">
           <description>Get Request URI</description>
-          <long-description/>
-          <tag line="418" name="access" description="public"/>
-          <tag line="418" name="return" description="" type="string">
+          <long-description></long-description>
+          <tag line="426" name="access" description="public"/>
+          <tag line="426" name="return" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
         </docblock>
       </method>
     </class>
-    <markers>
-      <fixme line="32">with the right URL</fixme>
-    </markers>
   </file>
   <package name="Default" full_name="Default"/>
   <package name="Geocaching" full_name="Geocaching">
@@ -2518,6 +2527,6 @@ and MUST be properly decoded"&lt;/p&gt;</long-description>
   </package>
   <namespace name="global" full_name="global"/>
   <marker count="0">todo</marker>
-  <marker count="1">fixme</marker>
+  <marker count="0">fixme</marker>
   <deprecated count="0"/>
 </project>

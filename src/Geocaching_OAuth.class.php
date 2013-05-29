@@ -29,7 +29,15 @@ class Geocaching_OAuth {
      * @access protected
      * @var string
      */
-    protected $live_oauth_url    = 'http://staging.geocaching.com/OAuth/oauth.ashx';// FIXME with the right URL
+    protected $live_oauth_url    = 'https://www.geocaching.com/OAuth/Authorize.aspx';
+
+    /**
+     * Production URL for mobile of Groundspeak OAuth
+     *
+     * @access protected
+     * @var string
+     */
+    protected $live_mobile_oauth_url = 'https://www.geocaching.com/oauth/mobileoauth.ashx';
 
     /**
      * Log OAuth requests in a file
