@@ -45,7 +45,7 @@ class Geocaching_OAuth {
      * @access protected
      * @var string $log
      */
-    protected $log = false;
+    protected $logging = false;
 
     /**
      * OAuth Signature Method
