@@ -3,15 +3,19 @@
 error_reporting(E_ALL | E_STRICT);
 session_start();
 
-define('PRODUCTION', false);
+spl_autoload_register(function ($classname) {
+    $classname = ltrim($classname, "\\");
+    preg_match('/^(.+)?([^\\\\]+)$/U', $classname, $match);
+    $classname = str_replace("\\", "/", $match[1]). str_replace(["\\", "_"], "/", $match[2]) . ".php";
+    include_once __DIR__ . '/src/' . $classname;
+});
 
-require_once __DIR__ . '/src/Geocaching_Api_Json.class.php';
+use Geocaching\OAuth\OAuth as OAuth,
+    Geocaching\Api\Json as Json;
 
-if(isset($_POST['reset']))
-{
+if(isset($_POST['reset'])) {
     $_SESSION = array();
-    if (ini_get("session.use_cookies"))
-    {
+    if (ini_get("session.use_cookies")) {
         $params = session_get_cookie_params();
         setcookie(session_name(), '', 0);
     }
@@ -20,17 +24,17 @@ if(isset($_POST['reset']))
     exit(0);
 }
 
-if (!isset($_SESSION['ACCESS_TOKEN']))
-{
-    require_once __DIR__ . '/src/Geocaching_OAuth.class.php';
+$live = (array_key_exists('mode', $_POST) && $_POST['mode'] == 'production') ? true : false;
 
-    $callback_url = 'http://' . $_SERVER['HTTP_HOST'] . Geocaching_OAuth::getRequestUri();
+if (!isset($_SESSION['ACCESS_TOKEN'])) {
 
-    //Ask a token, go to the Geocaching OAuth URL
-    if(isset($_POST['oauth']) && isset($_POST['oauth_key']) && isset($_POST['oauth_secret']))
-    {
-        $consumer = new Geocaching_OAuth($_POST['oauth_key'], $_POST['oauth_secret'], $callback_url, PRODUCTION);
+    $callback_url = 'http://' . $_SERVER['HTTP_HOST'] . OAuth::getRequestUri();
+
+    //First step : Ask a token, go to the Geocaching OAuth URL
+    if(isset($_POST['oauth']) && isset($_POST['oauth_key']) && isset($_POST['oauth_secret'])) {
+        $consumer = new OAuth($_POST['oauth_key'], $_POST['oauth_secret'], $callback_url, $live);
         $consumer->setLogging('/tmp/');
+
         $token = $consumer->getRequestToken();
         $_SESSION['OAUTH_KEY'] = $_POST['oauth_key'];
         $_SESSION['OAUTH_SECRET'] = $_POST['oauth_secret'];
@@ -38,10 +42,9 @@ if (!isset($_SESSION['ACCESS_TOKEN']))
         $consumer->redirect();
     }
 
-    //Go back from Geocaching OAuth URL, retrieve the token
-    if(!empty($_GET) && isset($_SESSION['REQUEST_TOKEN']))
-    {
-        $consumer = new Geocaching_OAuth($_SESSION['OAUTH_KEY'], $_SESSION['OAUTH_SECRET'], $callback_url, PRODUCTION);
+    //Second step : Go back from Geocaching OAuth URL, retrieve the token
+    if(!empty($_GET) && isset($_SESSION['REQUEST_TOKEN'])) {
+        $consumer = new OAuth($_SESSION['OAUTH_KEY'], $_SESSION['OAUTH_SECRET'], $callback_url, $live);
         $consumer->setLogging('/tmp/');
         $token = $consumer->getAccessToken($_GET, unserialize($_SESSION['REQUEST_TOKEN']));
         $_SESSION['ACCESS_TOKEN'] = serialize($token);
@@ -82,18 +85,23 @@ if (!isset($_SESSION['ACCESS_TOKEN']))
                            <?php if(isset($_SESSION['OAUTH_SECRET'])) echo 'readonly="readonly"' ?>
                            <?php if(!isset($_SESSION['ACCESS_TOKEN'])) echo 'required'; ?> />
                 </p>
+                <p>
+                    <label>Test mode:</label><br/>
+                    <input type="radio" name="mode" value="staging" id="staging" checked="checked"> <label for="staging">Staging</label>
+                    <input type="radio" name="mode" value="production" id="production"> <label for="production">Production</label>
+                </p>
                 <input type="submit" name="oauth" value="OAuth dance!" <?php if(isset($_SESSION['ACCESS_TOKEN'])) echo 'disabled="disabled"'; ?>/>
-                <input type="submit" name="reset" value="Reset OAuth Token" <?php if(!isset($_SESSION['ACCESS_TOKEN'])) echo 'disabled="disabled"'; ?> />
+                <input type="submit" name="reset" value="Reset OAuth Token" />
             </fieldset>
         </form>
         <?php
         if (isset($_SESSION['ACCESS_TOKEN']))
         {
             $token = unserialize($_SESSION['ACCESS_TOKEN']);
-            $api   = new Geocaching_Api_Json($token['oauth_token'], PRODUCTION);
+            $api   = new Json($token['oauth_token'], $live);
             $api->setLogging('/tmp/');
 
-            $params = array('PublicProfileData'=>true);
+            $params = array('PublicProfileData' => true);
             $user   = $api->getYourUserProfile($params);
 
             echo "<p><strong>Token:</strong> " . $token['oauth_token']."<br/>";
