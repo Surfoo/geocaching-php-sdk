@@ -25,4 +25,4 @@ geocaching-api is distributed under [Apache License, Version 2.0.](http://www.ap
 Contact & Questions
 -------------------
 
-- author: Surfoo <surfooo at gmail dot com>
+- author: Surfoo : surfooo at gmail dot com
