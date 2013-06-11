@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+    <meta charset="utf-8"/>
+    <title>     &raquo; \Geocaching\Log\KLogger
+</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    <script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script>
+    <script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script>
+    <script src="../js/bootstrap.js" type="text/javascript"></script>
+    <script src="../js/template.js" type="text/javascript"></script>
+    <script src="../js/prettify/prettify.min.js" type="text/javascript"></script>
+
+    <link rel="shortcut icon" href="../img/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../img/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span> <span class="icon-bar"></span>
+                <span class="icon-bar"></span> </a>
+            <a class="brand" href="../index.html">Geocaching API with PHP 5</a>
+
+            <div class="nav-collapse">
+                <ul class="nav">
+                    <li class="dropdown">
+                        <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                                                </ul>
+                    </li>
+                    <li class="dropdown" id="charts-menu">
+                        <a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graph_class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../errors.html"><i class="icon-list-alt"></i>&#160;Errors</a></li>
+                            <li><a href="../markers.html"><i class="icon-list-alt"></i>&#160;Markers</a></li>
+                            <li><a href="../deprecated.html"><i class="icon-list-alt"></i>&#160;Deprecated</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="go_to_top">
+        <a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>
+    </div>
+</div>
+
+<div id="___" class="container">
+    <noscript>
+        <div class="alert alert-warning">
+            Javascript is disabled; several features are only available if Javascript is enabled.
+        </div>
+    </noscript>
+
+        
+    <div class="row">
+        <div class="span4">
+            <span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+                <button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+            </div>
+            <ul class="side-nav nav nav-list">
+                <li class="nav-header">
+                    <i class="icon-custom icon-method"></i> Methods
+                    <ul>
+                                                                                <li class="method public">
+                                <a href="#method_instance" title="instance :: Partially implements the Singleton pattern. Each $logDirectory gets one
+instance.">
+                                    <span class="description">Partially implements the Singleton pattern. Each $logDirectory gets one
+instance.</span><pre>instance</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method___construct" title="__construct :: Class constructor">
+                                    <span class="description">Class constructor</span><pre>__construct</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method___destruct" title="__destruct :: Class destructor">
+                                    <span class="description">Class destructor</span><pre>__destruct</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_logDebug" title="logDebug :: Writes a $line to the log with a severity level of DEBUG">
+                                    <span class="description">Writes a $line to the log with a severity level of DEBUG</span><pre>logDebug</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_getMessage" title="getMessage :: Returns (and removes) the last message from the queue.">
+                                    <span class="description">Returns (and removes) the last message from the queue.</span><pre>getMessage</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_getMessages" title="getMessages :: Returns the entire message queue (leaving it intact)">
+                                    <span class="description">Returns the entire message queue (leaving it intact)</span><pre>getMessages</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_clearMessages" title="clearMessages :: Empties the message queue">
+                                    <span class="description">Empties the message queue</span><pre>clearMessages</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_setDateFormat" title="setDateFormat :: Sets the date format used by all instances of KLogger">
+                                    <span class="description">Sets the date format used by all instances of KLogger</span><pre>setDateFormat</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_logInfo" title="logInfo :: Writes a $line to the log with a severity level of INFO. Any information
+can be used here, or it could be used with E_STRICT errors">
+                                    <span class="description">Writes a $line to the log with a severity level of INFO. Any information
+can be used here, or it could be used with E_STRICT errors</span><pre>logInfo</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_logNotice" title="logNotice :: Writes a $line to the log with a severity level of NOTICE. Generally
+corresponds to E_STRICT, E_NOTICE, or E_USER_NOTICE errors">
+                                    <span class="description">Writes a $line to the log with a severity level of NOTICE. Generally
+corresponds to E_STRICT, E_NOTICE, or E_USER_NOTICE errors</span><pre>logNotice</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_logWarn" title="logWarn :: Writes a $line to the log with a severity level of WARN. Generally
+corresponds to E_WARNING, E_USER_WARNING, E_CORE_WARNING, or
+E_COMPILE_WARNING">
+                                    <span class="description">Writes a $line to the log with a severity level of WARN. Generally
+corresponds to E_WARNING, E_USER_WARNING, E_CORE_WARNING, or
+E_COMPILE_WARNING</span><pre>logWarn</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_logError" title="logError :: Writes a $line to the log with a severity level of ERR. Most likely used
+with E_RECOVERABLE_ERROR">
+                                    <span class="description">Writes a $line to the log with a severity level of ERR. Most likely used
+with E_RECOVERABLE_ERROR</span><pre>logError</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_logFatal" title="logFatal :: Writes a $line to the log with a severity level of FATAL. Generally
+corresponds to E_ERROR, E_USER_ERROR, E_CORE_ERROR, or E_COMPILE_ERROR">
+                                    <span class="description">Writes a $line to the log with a severity level of FATAL. Generally
+corresponds to E_ERROR, E_USER_ERROR, E_CORE_ERROR, or E_COMPILE_ERROR</span><pre>logFatal</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_logAlert" title="logAlert :: Writes a $line to the log with a severity level of ALERT.">
+                                    <span class="description">Writes a $line to the log with a severity level of ALERT.</span><pre>logAlert</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_logCrit" title="logCrit :: Writes a $line to the log with a severity level of CRIT.">
+                                    <span class="description">Writes a $line to the log with a severity level of CRIT.</span><pre>logCrit</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_logEmerg" title="logEmerg :: Writes a $line to the log with a severity level of EMERG.">
+                                    <span class="description">Writes a $line to the log with a severity level of EMERG.</span><pre>logEmerg</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_log" title="log :: Writes a $line to the log with the given severity">
+                                    <span class="description">Writes a $line to the log with the given severity</span><pre>log</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_writeFreeFormLine" title="writeFreeFormLine :: Writes a line to the log without prepending a status or timestamp">
+                                    <span class="description">Writes a line to the log without prepending a status or timestamp</span><pre>writeFreeFormLine</pre>
+                                </a>
+                            </li>
+                                                                                                                            </ul>
+                </li>
+                <li class="nav-header protected">» Protected
+                    <ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </ul>
+                </li>
+                <li class="nav-header private">» Private
+                    <ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <li class="method private">
+                                    <a href="#method__getTimeLine" title="_getTimeLine :: ">
+                                        <span class="description"></span><pre>_getTimeLine</pre>
+                                    </a>
+                                </li>
+                                                                        </ul>
+                </li>
+                <li class="nav-header">
+                    <i class="icon-custom icon-constant"></i> Constants
+                    <ul>
+                                                <li class="constant ">
+                            <a href="#constant_EMERG" title="EMERG :: Error severity, from low to high. From BSD syslog RFC, secion 4.1.1">
+                                <span class="description">Error severity, from low to high. From BSD syslog RFC, secion 4.1.1</span><pre>EMERG</pre>
+                            </a>
+                        </li>
+                                                <li class="constant ">
+                            <a href="#constant_ALERT" title="ALERT :: ">
+                                <span class="description"></span><pre>ALERT</pre>
+                            </a>
+                        </li>
+                                                <li class="constant ">
+                            <a href="#constant_CRIT" title="CRIT :: ">
+                                <span class="description"></span><pre>CRIT</pre>
+                            </a>
+                        </li>
+                                                <li class="constant ">
+                            <a href="#constant_ERR" title="ERR :: ">
+                                <span class="description"></span><pre>ERR</pre>
+                            </a>
+                        </li>
+                                                <li class="constant ">
+                            <a href="#constant_WARN" title="WARN :: ">
+                                <span class="description"></span><pre>WARN</pre>
+                            </a>
+                        </li>
+                                                <li class="constant ">
+                            <a href="#constant_NOTICE" title="NOTICE :: ">
+                                <span class="description"></span><pre>NOTICE</pre>
+                            </a>
+                        </li>
+                                                <li class="constant ">
+                            <a href="#constant_INFO" title="INFO :: ">
+                                <span class="description"></span><pre>INFO</pre>
+                            </a>
+                        </li>
+                                                <li class="constant ">
+                            <a href="#constant_DEBUG" title="DEBUG :: ">
+                                <span class="description"></span><pre>DEBUG</pre>
+                            </a>
+                        </li>
+                                                <li class="constant ">
+                            <a href="#constant_OFF" title="OFF :: Log nothing at all">
+                                <span class="description">Log nothing at all</span><pre>OFF</pre>
+                            </a>
+                        </li>
+                                                <li class="constant ">
+                            <a href="#constant_FATAL" title="FATAL :: Alias for CRIT">
+                                <span class="description">Alias for CRIT</span><pre>FATAL</pre>
+                            </a>
+                        </li>
+                                                <li class="constant ">
+                            <a href="#constant_STATUS_LOG_OPEN" title="STATUS_LOG_OPEN :: Internal status codes">
+                                <span class="description">Internal status codes</span><pre>STATUS_LOG_OPEN</pre>
+                            </a>
+                        </li>
+                                                <li class="constant ">
+                            <a href="#constant_STATUS_OPEN_FAILED" title="STATUS_OPEN_FAILED :: ">
+                                <span class="description"></span><pre>STATUS_OPEN_FAILED</pre>
+                            </a>
+                        </li>
+                                                <li class="constant ">
+                            <a href="#constant_STATUS_LOG_CLOSED" title="STATUS_LOG_CLOSED :: ">
+                                <span class="description"></span><pre>STATUS_LOG_CLOSED</pre>
+                            </a>
+                        </li>
+                                                <li class="constant ">
+                            <a href="#constant_NO_ARGUMENTS" title="NO_ARGUMENTS :: We need a default argument value in order to add the ability to easily
+print out objects etc. But we can&#039;t use NULL, 0, FALSE, etc, because those
+are often the values the developers will test for. So we&#039;ll make one up.">
+                                <span class="description">We need a default argument value in order to add the ability to easily
+print out objects etc. But we can&#039;t use NULL, 0, FALSE, etc, because those
+are often the values the developers will test for. So we&#039;ll make one up.</span><pre>NO_ARGUMENTS</pre>
+                            </a>
+                        </li>
+                                            </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="span8">
+            <div class="element class">
+                <h1>KLogger</h1>
+                <small style="display: block; text-align: right">
+                                                        </small>
+                <p class="short_description">Logging for the Geocaching API</p>
+                <div class="details">
+                    <div class="long_description">
+                        
+
+                    </div>
+                    <table class="table table-bordered">
+                                                                                    <tr>
+                                    <th>
+                                        package
+                                                                            </th>
+                                    <td>Geocaching\Log</td>
+                                </tr>
+                                                                                                                            </table>
+
+                    <h3><i class="icon-custom icon-method"></i> Methods</h3>
+                                            <a id="method_instance"></a>
+                        <div class="element clickable method public method_instance" data-toggle="collapse" data-target=".method_instance .collapse">
+                            <h2>Partially implements the Singleton pattern. Each $logDirectory gets one
+instance.</h2>
+                            <pre>instance(string $logDirectory = false, integer $severity = false) </pre>
+                            <div class="labels">
+                                                                <span class="label">static</span>                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$logDirectory</h4>
+                                                <code>string</code><p><p>File path to the logging directory</p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$severity</h4>
+                                                <code>integer</code><p><p>One of the pre-defined severity constants</p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method___construct"></a>
+                        <div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
+                            <h2>Class constructor</h2>
+                            <pre>__construct(string $logDirectory, integer $severity) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$logDirectory</h4>
+                                                <code>string</code><p><p>File path to the logging directory</p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$severity</h4>
+                                                <code>integer</code><p><p>One of the pre-defined severity constants</p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method___destruct"></a>
+                        <div class="element clickable method public method___destruct" data-toggle="collapse" data-target=".method___destruct .collapse">
+                            <h2>Class destructor</h2>
+                            <pre>__destruct() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_logDebug"></a>
+                        <div class="element clickable method public method_logDebug" data-toggle="collapse" data-target=".method_logDebug .collapse">
+                            <h2>Writes a $line to the log with a severity level of DEBUG</h2>
+                            <pre>logDebug(string $line, $args = self::NO_ARGUMENTS) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$line</h4>
+                                                <code>string</code><p><p>Information to log</p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$args</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getMessage"></a>
+                        <div class="element clickable method public method_getMessage" data-toggle="collapse" data-target=".method_getMessage .collapse">
+                            <h2>Returns (and removes) the last message from the queue.</h2>
+                            <pre>getMessage() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getMessages"></a>
+                        <div class="element clickable method public method_getMessages" data-toggle="collapse" data-target=".method_getMessages .collapse">
+                            <h2>Returns the entire message queue (leaving it intact)</h2>
+                            <pre>getMessages() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_clearMessages"></a>
+                        <div class="element clickable method public method_clearMessages" data-toggle="collapse" data-target=".method_clearMessages .collapse">
+                            <h2>Empties the message queue</h2>
+                            <pre>clearMessages() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_setDateFormat"></a>
+                        <div class="element clickable method public method_setDateFormat" data-toggle="collapse" data-target=".method_setDateFormat .collapse">
+                            <h2>Sets the date format used by all instances of KLogger</h2>
+                            <pre>setDateFormat(string $dateFormat) </pre>
+                            <div class="labels">
+                                                                <span class="label">static</span>                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$dateFormat</h4>
+                                                <code>string</code><p><p>Valid format string for date()</p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_logInfo"></a>
+                        <div class="element clickable method public method_logInfo" data-toggle="collapse" data-target=".method_logInfo .collapse">
+                            <h2>Writes a $line to the log with a severity level of INFO. Any information
+can be used here, or it could be used with E_STRICT errors</h2>
+                            <pre>logInfo(string $line, $args = self::NO_ARGUMENTS) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$line</h4>
+                                                <code>string</code><p><p>Information to log</p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$args</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_logNotice"></a>
+                        <div class="element clickable method public method_logNotice" data-toggle="collapse" data-target=".method_logNotice .collapse">
+                            <h2>Writes a $line to the log with a severity level of NOTICE. Generally
+corresponds to E_STRICT, E_NOTICE, or E_USER_NOTICE errors</h2>
+                            <pre>logNotice(string $line, $args = self::NO_ARGUMENTS) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$line</h4>
+                                                <code>string</code><p><p>Information to log</p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$args</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_logWarn"></a>
+                        <div class="element clickable method public method_logWarn" data-toggle="collapse" data-target=".method_logWarn .collapse">
+                            <h2>Writes a $line to the log with a severity level of WARN. Generally
+corresponds to E_WARNING, E_USER_WARNING, E_CORE_WARNING, or
+E_COMPILE_WARNING</h2>
+                            <pre>logWarn(string $line, $args = self::NO_ARGUMENTS) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$line</h4>
+                                                <code>string</code><p><p>Information to log</p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$args</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_logError"></a>
+                        <div class="element clickable method public method_logError" data-toggle="collapse" data-target=".method_logError .collapse">
+                            <h2>Writes a $line to the log with a severity level of ERR. Most likely used
+with E_RECOVERABLE_ERROR</h2>
+                            <pre>logError(string $line, $args = self::NO_ARGUMENTS) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$line</h4>
+                                                <code>string</code><p><p>Information to log</p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$args</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_logFatal"></a>
+                        <div class="element clickable method public method_logFatal" data-toggle="collapse" data-target=".method_logFatal .collapse">
+                            <h2>Writes a $line to the log with a severity level of FATAL. Generally
+corresponds to E_ERROR, E_USER_ERROR, E_CORE_ERROR, or E_COMPILE_ERROR</h2>
+                            <pre>logFatal(string $line, $args = self::NO_ARGUMENTS) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    deprecated
+                                                </th>
+                                                <td>
+                                                                                                            <p>Use logCrit</p>
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$line</h4>
+                                                <code>string</code><p><p>Information to log</p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$args</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_logAlert"></a>
+                        <div class="element clickable method public method_logAlert" data-toggle="collapse" data-target=".method_logAlert .collapse">
+                            <h2>Writes a $line to the log with a severity level of ALERT.</h2>
+                            <pre>logAlert(string $line, $args = self::NO_ARGUMENTS) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$line</h4>
+                                                <code>string</code><p><p>Information to log</p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$args</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_logCrit"></a>
+                        <div class="element clickable method public method_logCrit" data-toggle="collapse" data-target=".method_logCrit .collapse">
+                            <h2>Writes a $line to the log with a severity level of CRIT.</h2>
+                            <pre>logCrit(string $line, $args = self::NO_ARGUMENTS) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$line</h4>
+                                                <code>string</code><p><p>Information to log</p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$args</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_logEmerg"></a>
+                        <div class="element clickable method public method_logEmerg" data-toggle="collapse" data-target=".method_logEmerg .collapse">
+                            <h2>Writes a $line to the log with a severity level of EMERG.</h2>
+                            <pre>logEmerg(string $line, $args = self::NO_ARGUMENTS) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$line</h4>
+                                                <code>string</code><p><p>Information to log</p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$args</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_log"></a>
+                        <div class="element clickable method public method_log" data-toggle="collapse" data-target=".method_log .collapse">
+                            <h2>Writes a $line to the log with the given severity</h2>
+                            <pre>log(string $line, integer $severity, $args = self::NO_ARGUMENTS) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$line</h4>
+                                                <code>string</code><p><p>Text to add to the log</p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$severity</h4>
+                                                <code>integer</code><p><p>Severity level of log message (use constants)</p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$args</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_writeFreeFormLine"></a>
+                        <div class="element clickable method public method_writeFreeFormLine" data-toggle="collapse" data-target=".method_writeFreeFormLine .collapse">
+                            <h2>Writes a line to the log without prepending a status or timestamp</h2>
+                            <pre>writeFreeFormLine(string $line) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$line</h4>
+                                                <code>string</code><p><p>Line to write to the log</p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method__getTimeLine"></a>
+                        <div class="element clickable method private method__getTimeLine" data-toggle="collapse" data-target=".method__getTimeLine .collapse">
+                            <h2>_getTimeLine</h2>
+                            <pre>_getTimeLine($level) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$level</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                    
+                                            <h3><i class="icon-custom icon-constant"></i> Constants</h3>
+                                                    <a id="constant_EMERG"> </a>
+                            <div class="element clickable constant  constant_EMERG" data-toggle="collapse" data-target=".constant_EMERG .collapse">
+                                <h2>Error severity, from low to high. From BSD syslog RFC, secion 4.1.1</h2>
+                                <pre>EMERG</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_ALERT"> </a>
+                            <div class="element clickable constant  constant_ALERT" data-toggle="collapse" data-target=".constant_ALERT .collapse">
+                                <h2>ALERT</h2>
+                                <pre>ALERT</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_CRIT"> </a>
+                            <div class="element clickable constant  constant_CRIT" data-toggle="collapse" data-target=".constant_CRIT .collapse">
+                                <h2>CRIT</h2>
+                                <pre>CRIT</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_ERR"> </a>
+                            <div class="element clickable constant  constant_ERR" data-toggle="collapse" data-target=".constant_ERR .collapse">
+                                <h2>ERR</h2>
+                                <pre>ERR</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_WARN"> </a>
+                            <div class="element clickable constant  constant_WARN" data-toggle="collapse" data-target=".constant_WARN .collapse">
+                                <h2>WARN</h2>
+                                <pre>WARN</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_NOTICE"> </a>
+                            <div class="element clickable constant  constant_NOTICE" data-toggle="collapse" data-target=".constant_NOTICE .collapse">
+                                <h2>NOTICE</h2>
+                                <pre>NOTICE</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_INFO"> </a>
+                            <div class="element clickable constant  constant_INFO" data-toggle="collapse" data-target=".constant_INFO .collapse">
+                                <h2>INFO</h2>
+                                <pre>INFO</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_DEBUG"> </a>
+                            <div class="element clickable constant  constant_DEBUG" data-toggle="collapse" data-target=".constant_DEBUG .collapse">
+                                <h2>DEBUG</h2>
+                                <pre>DEBUG</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_OFF"> </a>
+                            <div class="element clickable constant  constant_OFF" data-toggle="collapse" data-target=".constant_OFF .collapse">
+                                <h2>Log nothing at all</h2>
+                                <pre>OFF</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_FATAL"> </a>
+                            <div class="element clickable constant  constant_FATAL" data-toggle="collapse" data-target=".constant_FATAL .collapse">
+                                <h2>Alias for CRIT</h2>
+                                <pre>FATAL</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_STATUS_LOG_OPEN"> </a>
+                            <div class="element clickable constant  constant_STATUS_LOG_OPEN" data-toggle="collapse" data-target=".constant_STATUS_LOG_OPEN .collapse">
+                                <h2>Internal status codes</h2>
+                                <pre>STATUS_LOG_OPEN</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_STATUS_OPEN_FAILED"> </a>
+                            <div class="element clickable constant  constant_STATUS_OPEN_FAILED" data-toggle="collapse" data-target=".constant_STATUS_OPEN_FAILED .collapse">
+                                <h2>STATUS_OPEN_FAILED</h2>
+                                <pre>STATUS_OPEN_FAILED</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_STATUS_LOG_CLOSED"> </a>
+                            <div class="element clickable constant  constant_STATUS_LOG_CLOSED" data-toggle="collapse" data-target=".constant_STATUS_LOG_CLOSED .collapse">
+                                <h2>STATUS_LOG_CLOSED</h2>
+                                <pre>STATUS_LOG_CLOSED</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_NO_ARGUMENTS"> </a>
+                            <div class="element clickable constant  constant_NO_ARGUMENTS" data-toggle="collapse" data-target=".constant_NO_ARGUMENTS .collapse">
+                                <h2>We need a default argument value in order to add the ability to easily
+print out objects etc. But we can&#039;t use NULL, 0, FALSE, etc, because those
+are often the values the developers will test for. So we&#039;ll make one up.</h2>
+                                <pre>NO_ARGUMENTS</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                    </div>
+                                </div>
+                            </div>
+                                            
+                                            <h3><i class="icon-custom icon-property"></i> Properties</h3>
+                                                    <a id="property__logStatus"> </a>
+                            <div class="element clickable property private property__logStatus" data-toggle="collapse" data-target=".property__logStatus .collapse">
+                                <h2>Current status of the log file</h2>
+                                <pre>_logStatus</pre>
+                                <div class="labels">
+                                                                                                        </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="property__messageQueue"> </a>
+                            <div class="element clickable property private property__messageQueue" data-toggle="collapse" data-target=".property__messageQueue .collapse">
+                                <h2>Holds messages generated by the class</h2>
+                                <pre>_messageQueue</pre>
+                                <div class="labels">
+                                                                                                        </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="property__logFilePath"> </a>
+                            <div class="element clickable property private property__logFilePath" data-toggle="collapse" data-target=".property__logFilePath .collapse">
+                                <h2>Path to the log file</h2>
+                                <pre>_logFilePath</pre>
+                                <div class="labels">
+                                                                                                        </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="property__severityThreshold"> </a>
+                            <div class="element clickable property private property__severityThreshold" data-toggle="collapse" data-target=".property__severityThreshold .collapse">
+                                <h2>Current minimum logging threshold</h2>
+                                <pre>_severityThreshold</pre>
+                                <div class="labels">
+                                                                                                        </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="property__fileHandle"> </a>
+                            <div class="element clickable property private property__fileHandle" data-toggle="collapse" data-target=".property__fileHandle .collapse">
+                                <h2>This holds the file handle for this instance&#039;s log file</h2>
+                                <pre>_fileHandle</pre>
+                                <div class="labels">
+                                                                                                        </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="property__messages"> </a>
+                            <div class="element clickable property private property__messages" data-toggle="collapse" data-target=".property__messages .collapse">
+                                <h2>Standard messages produced by the class. Can be modified for il8n</h2>
+                                <pre>_messages</pre>
+                                <div class="labels">
+                                                                                                        </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="property__defaultSeverity"> </a>
+                            <div class="element clickable property private property__defaultSeverity" data-toggle="collapse" data-target=".property__defaultSeverity .collapse">
+                                <h2>Default severity of log messages, if not specified</h2>
+                                <pre>_defaultSeverity</pre>
+                                <div class="labels">
+                                                                        <span class="label">static</span>                                </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="property__dateFormat"> </a>
+                            <div class="element clickable property private property__dateFormat" data-toggle="collapse" data-target=".property__dateFormat .collapse">
+                                <h2>Valid PHP date() format string for log timestamps</h2>
+                                <pre>_dateFormat</pre>
+                                <div class="labels">
+                                                                        <span class="label">static</span>                                </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="property__defaultPermissions"> </a>
+                            <div class="element clickable property private property__defaultPermissions" data-toggle="collapse" data-target=".property__defaultPermissions .collapse">
+                                <h2>Octal notation for default permissions of the log file</h2>
+                                <pre>_defaultPermissions</pre>
+                                <div class="labels">
+                                                                        <span class="label">static</span>                                </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="property_instances"> </a>
+                            <div class="element clickable property private property_instances" data-toggle="collapse" data-target=".property_instances .collapse">
+                                <h2>Array of KLogger instances, part of Singleton pattern</h2>
+                                <pre>instances</pre>
+                                <div class="labels">
+                                                                        <span class="label">static</span>                                </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                    </div>
+                                </div>
+                            </div>
+                                                            </div>
+            </div>
+            <a id="\Geocaching\Log\KLogger"></a>
+            <ul class="breadcrumb">
+                <li><a href="../index.html"><i class="icon-custom icon-class"></i></a></li>
+                    
+    
+    <li>
+        <span class="divider">\</span><a href="../namespaces/Geocaching.Log.html">Log</a>
+    </li>
+
+                <li class="active"><span class="divider">\</span><a href="../classes/Geocaching.Log.KLogger.html">KLogger</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<footer class="span12">
+    Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
+    <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
+    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
+    generated on Tue, 11 Jun 2013 15:45:59 +0200.<br/>
+</footer>
+</body>
+</html>

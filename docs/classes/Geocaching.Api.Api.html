@@ -1,0 +1,2792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+    <meta charset="utf-8"/>
+    <title>     &raquo; \Geocaching\Api\Api
+</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    <script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script>
+    <script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script>
+    <script src="../js/bootstrap.js" type="text/javascript"></script>
+    <script src="../js/template.js" type="text/javascript"></script>
+    <script src="../js/prettify/prettify.min.js" type="text/javascript"></script>
+
+    <link rel="shortcut icon" href="../img/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../img/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span> <span class="icon-bar"></span>
+                <span class="icon-bar"></span> </a>
+            <a class="brand" href="../index.html">Geocaching API with PHP 5</a>
+
+            <div class="nav-collapse">
+                <ul class="nav">
+                    <li class="dropdown">
+                        <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                                                </ul>
+                    </li>
+                    <li class="dropdown" id="charts-menu">
+                        <a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graph_class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../errors.html"><i class="icon-list-alt"></i>&#160;Errors</a></li>
+                            <li><a href="../markers.html"><i class="icon-list-alt"></i>&#160;Markers</a></li>
+                            <li><a href="../deprecated.html"><i class="icon-list-alt"></i>&#160;Deprecated</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="go_to_top">
+        <a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>
+    </div>
+</div>
+
+<div id="___" class="container">
+    <noscript>
+        <div class="alert alert-warning">
+            Javascript is disabled; several features are only available if Javascript is enabled.
+        </div>
+    </noscript>
+
+        
+    <div class="row">
+        <div class="span4">
+            <span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+                <button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+            </div>
+            <ul class="side-nav nav nav-list">
+                <li class="nav-header">
+                    <i class="icon-custom icon-method"></i> Methods
+                    <ul>
+                                                                                <li class="method public">
+                                <a href="#method___construct" title="__construct :: Constructor">
+                                    <span class="description">Constructor</span><pre>__construct</pre>
+                                </a>
+                            </li>
+                                                                                                                                                                <li class="method public">
+                                <a href="#method_addGeocachesToBookmarkList" title="addGeocachesToBookmarkList :: Add Geocaches to a bookmark list">
+                                    <span class="description">Add Geocaches to a bookmark list</span><pre>addGeocachesToBookmarkList</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_createFieldNoteAndPublish" title="createFieldNoteAndPublish :: Create Field Note And Publish">
+                                    <span class="description">Create Field Note And Publish</span><pre>createFieldNoteAndPublish</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_createTrackableLog" title="createTrackableLog :: Create Trackable Log">
+                                    <span class="description">Create Trackable Log</span><pre>createTrackableLog</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_getAnotherUsersProfile" title="getAnotherUsersProfile :: Get Another Users Profile">
+                                    <span class="description">Get Another Users Profile</span><pre>getAnotherUsersProfile</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_getBookmarkListByGuid" title="getBookmarkListByGuid :: Get Bookmark List By Guid">
+                                    <span class="description">Get Bookmark List By Guid</span><pre>getBookmarkListByGuid</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_getGeocacheStatus" title="getGeocacheStatus :: Get Geocache Status">
+                                    <span class="description">Get Geocache Status</span><pre>getGeocacheStatus</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_getMoreGeocaches" title="getMoreGeocaches :: Get More Geocaches">
+                                    <span class="description">Get More Geocaches</span><pre>getMoreGeocaches</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_getOwnedTrackables" title="getOwnedTrackables :: Get Owned Trackables">
+                                    <span class="description">Get Owned Trackables</span><pre>getOwnedTrackables</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_getUserGallery" title="getUserGallery :: Get User Gallery">
+                                    <span class="description">Get User Gallery</span><pre>getUserGallery</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_getUsersCacheCounts" title="getUsersCacheCounts :: Get Users Cache Counts">
+                                    <span class="description">Get Users Cache Counts</span><pre>getUsersCacheCounts</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_getUsersGeocacheLogs" title="getUsersGeocacheLogs :: Get Users Geocache Logs">
+                                    <span class="description">Get Users Geocache Logs</span><pre>getUsersGeocacheLogs</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_getUsersTrackables" title="getUsersTrackables :: get Users Trackables">
+                                    <span class="description">get Users Trackables</span><pre>getUsersTrackables</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_getYourUserProfile" title="getYourUserProfile :: Get Your User Profile">
+                                    <span class="description">Get Your User Profile</span><pre>getYourUserProfile</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_saveUserWaypoint" title="saveUserWaypoint :: Save User Waypoint">
+                                    <span class="description">Save User Waypoint</span><pre>saveUserWaypoint</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_searchForGeocaches" title="searchForGeocaches :: Search For Geocaches">
+                                    <span class="description">Search For Geocaches</span><pre>searchForGeocaches</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_searchForSouvenirsByPublicGuid" title="searchForSouvenirsByPublicGuid :: Search For Souvenirs By Public Guid">
+                                    <span class="description">Search For Souvenirs By Public Guid</span><pre>searchForSouvenirsByPublicGuid</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_updateCacheNote" title="updateCacheNote :: Update Cache Note">
+                                    <span class="description">Update Cache Note</span><pre>updateCacheNote</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_uploadImageToGeocacheLog" title="uploadImageToGeocacheLog :: Upload Image To Geocache Log">
+                                    <span class="description">Upload Image To Geocache Log</span><pre>uploadImageToGeocacheLog</pre>
+                                </a>
+                            </li>
+                                                                                                                                                                                                                    <li class="method public">
+                                <a href="#method_setLogging" title="setLogging :: Enable or disable log messages">
+                                    <span class="description">Enable or disable log messages</span><pre>setLogging</pre>
+                                </a>
+                            </li>
+                                                                                                                                                                <li class="method public">
+                                <a href="#method_addFavoritePointToCache" title="addFavoritePointToCache :: Add Favorite Point To a Cache">
+                                    <span class="description">Add Favorite Point To a Cache</span><pre>addFavoritePointToCache</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_deleteCacheNote" title="deleteCacheNote :: Delete Cache Note">
+                                    <span class="description">Delete Cache Note</span><pre>deleteCacheNote</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_deleteUserWaypoint" title="deleteUserWaypoint :: Delete User Waypoint">
+                                    <span class="description">Delete User Waypoint</span><pre>deleteUserWaypoint</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_getAPILimits" title="getAPILimits :: Get API Limits">
+                                    <span class="description">Get API Limits</span><pre>getAPILimits</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_getAttributeTypesData" title="getAttributeTypesData :: Get Attribute Types Data">
+                                    <span class="description">Get Attribute Types Data</span><pre>getAttributeTypesData</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_getBookmarkListsByUserID" title="getBookmarkListsByUserID :: Get Bookmark Lists By User ID">
+                                    <span class="description">Get Bookmark Lists By User ID</span><pre>getBookmarkListsByUserID</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_getBookmarkListsForUser" title="getBookmarkListsForUser :: Get Bookmark Lists For User">
+                                    <span class="description">Get Bookmark Lists For User</span><pre>getBookmarkListsForUser</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_getCacheByTileGuid" title="getCacheByTileGuid :: Get Cache By Tile Guid">
+                                    <span class="description">Get Cache By Tile Guid</span><pre>getCacheByTileGuid</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_getCacheIdsFavoritedByUser" title="getCacheIdsFavoritedByUser :: Get Cache Ids Favorited By User">
+                                    <span class="description">Get Cache Ids Favorited By User</span><pre>getCacheIdsFavoritedByUser</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_getCachesFavoritedByUser" title="getCachesFavoritedByUser :: Get Caches Favorited By User">
+                                    <span class="description">Get Caches Favorited By User</span><pre>getCachesFavoritedByUser</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_getGeocacheDataTypes" title="getGeocacheDataTypes :: Get Geocache Data Types">
+                                    <span class="description">Get Geocache Data Types</span><pre>getGeocacheDataTypes</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_getGeocacheLogsByCacheCode" title="getGeocacheLogsByCacheCode :: Get Geocache Logs By Cache Code">
+                                    <span class="description">Get Geocache Logs By Cache Code</span><pre>getGeocacheLogsByCacheCode</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_getGeocacheTypes" title="getGeocacheTypes :: Get Geocache Types">
+                                    <span class="description">Get Geocache Types</span><pre>getGeocacheTypes</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_getImagesForGeocache" title="getImagesForGeocache :: Get Images For Geocache">
+                                    <span class="description">Get Images For Geocache</span><pre>getImagesForGeocache</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_getMembershipTypes" title="getMembershipTypes :: Get Membership Types">
+                                    <span class="description">Get Membership Types</span><pre>getMembershipTypes</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_getPocketQueryData" title="getPocketQueryData :: Get Pocket Query Data">
+                                    <span class="description">Get Pocket Query Data</span><pre>getPocketQueryData</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_getPocketQueryList" title="getPocketQueryList :: Get Pocket Query List">
+                                    <span class="description">Get Pocket Query List</span><pre>getPocketQueryList</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_getPocketQueryUrls" title="getPocketQueryUrls :: Get Pocket Query Urls">
+                                    <span class="description">Get Pocket Query Urls</span><pre>getPocketQueryUrls</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_getPocketQueryZippedFile" title="getPocketQueryZippedFile :: Get Pocket Query Zipped File">
+                                    <span class="description">Get Pocket Query Zipped File</span><pre>getPocketQueryZippedFile</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_getServerDetails" title="getServerDetails :: Get Server Details">
+                                    <span class="description">Get Server Details</span><pre>getServerDetails</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_getSiteStats" title="getSiteStats :: Get Site Stats">
+                                    <span class="description">Get Site Stats</span><pre>getSiteStats</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_getStatusMessages" title="getStatusMessages :: Get Status Messages">
+                                    <span class="description">Get Status Messages</span><pre>getStatusMessages</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_getTrackableLogsByTBCode" title="getTrackableLogsByTBCode :: Get Trackable Logs By TB Code">
+                                    <span class="description">Get Trackable Logs By TB Code</span><pre>getTrackableLogsByTBCode</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_getTrackablesByTBCode" title="getTrackablesByTBCode :: Get Trackables By TB Code">
+                                    <span class="description">Get Trackables By TB Code</span><pre>getTrackablesByTBCode</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_getTrackablesByTrackingNumber" title="getTrackablesByTrackingNumber :: Get Trackables By Tracking Number">
+                                    <span class="description">Get Trackables By Tracking Number</span><pre>getTrackablesByTrackingNumber</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_getTrackablesInCache" title="getTrackablesInCache :: Get Trackables In Cache">
+                                    <span class="description">Get Trackables In Cache</span><pre>getTrackablesInCache</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_getTrackableTravelList" title="getTrackableTravelList :: Get Trackable Travel List">
+                                    <span class="description">Get Trackable Travel List</span><pre>getTrackableTravelList</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_getUsersFavoritePoints" title="getUsersFavoritePoints :: Get Users Favorite Points">
+                                    <span class="description">Get Users Favorite Points</span><pre>getUsersFavoritePoints</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_getUsersCacheNotes" title="getUsersCacheNotes :: Get Users Cache Notes">
+                                    <span class="description">Get Users Cache Notes</span><pre>getUsersCacheNotes</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_getUsersWhoFavoritedCache" title="getUsersWhoFavoritedCache :: Get Users Who Favorited Cache">
+                                    <span class="description">Get Users Who Favorited Cache</span><pre>getUsersWhoFavoritedCache</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_getUserWaypoints" title="getUserWaypoints :: Get User Waypoints">
+                                    <span class="description">Get User Waypoints</span><pre>getUserWaypoints</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_getWptLogTypes" title="getWptLogTypes :: Get Wpt Log Types">
+                                    <span class="description">Get Wpt Log Types</span><pre>getWptLogTypes</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_removeFavoritePointFromCache" title="removeFavoritePointFromCache :: Remove Favorite Point From Cache">
+                                    <span class="description">Remove Favorite Point From Cache</span><pre>removeFavoritePointFromCache</pre>
+                                </a>
+                            </li>
+                                                                        </ul>
+                </li>
+                <li class="nav-header protected">» Protected
+                    <ul>
+                                                                                                                                        <li class="method protected">
+                                    <a href="#method_checkRequestStatus" title="checkRequestStatus :: Check the status of the POST or GET request">
+                                        <span class="description">Check the status of the POST or GET request</span><pre>checkRequestStatus</pre>
+                                    </a>
+                                </li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <li class="method protected">
+                                    <a href="#method_get_request" title="get_request :: Make a GET request">
+                                        <span class="description">Make a GET request</span><pre>get_request</pre>
+                                    </a>
+                                </li>
+                                                                                                                <li class="method protected">
+                                    <a href="#method_post_request" title="post_request :: Make a POST request">
+                                        <span class="description">Make a POST request</span><pre>post_request</pre>
+                                    </a>
+                                </li>
+                                                                                                                                                                    <li class="method protected">
+                                    <a href="#method_log" title="log :: Log informations into the log file">
+                                        <span class="description">Log informations into the log file</span><pre>log</pre>
+                                    </a>
+                                </li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </ul>
+                </li>
+                <li class="nav-header private">» Private
+                    <ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </ul>
+                </li>
+                <li class="nav-header">
+                    <i class="icon-custom icon-constant"></i> Constants
+                    <ul>
+                                                <li class="constant ">
+                            <a href="#constant_JSON_FORMAT" title="JSON_FORMAT :: JSON Format">
+                                <span class="description">JSON Format</span><pre>JSON_FORMAT</pre>
+                            </a>
+                        </li>
+                                                <li class="constant ">
+                            <a href="#constant_XML_FORMAT" title="XML_FORMAT :: XML Format">
+                                <span class="description">XML Format</span><pre>XML_FORMAT</pre>
+                            </a>
+                        </li>
+                                            </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="span8">
+            <div class="element class">
+                <h1>Api</h1>
+                <small style="display: block; text-align: right">
+                                                        </small>
+                <p class="short_description">Geocaching API</p>
+                <div class="details">
+                    <div class="long_description">
+                        
+
+                    </div>
+                    <table class="table table-bordered">
+                                                                                    <tr>
+                                    <th>
+                                        category
+                                                                            </th>
+                                    <td>Geocaching</td>
+                                </tr>
+                                                                                                                <tr>
+                                    <th>
+                                        package
+                                                                            </th>
+                                    <td>Geocaching_Api</td>
+                                </tr>
+                                                                                                                <tr>
+                                    <th>
+                                        abstract
+                                                                            </th>
+                                    <td></td>
+                                </tr>
+                                                                                                                            </table>
+
+                    <h3><i class="icon-custom icon-method"></i> Methods</h3>
+                                            <a id="method___construct"></a>
+                        <div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
+                            <h2>Constructor</h2>
+                            <pre>__construct(string $oauth_token, boolean $live) </pre>
+                            <div class="labels">
+                                                                                                                                <span class="label">abstract</span>                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    abstract
+                                                </th>
+                                                <td>
+                                                                                                            
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$oauth_token</h4>
+                                                <code>string</code><p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$live</h4>
+                                                <code>boolean</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_checkRequestStatus"></a>
+                        <div class="element clickable method protected method_checkRequestStatus" data-toggle="collapse" data-target=".method_checkRequestStatus .collapse">
+                            <h2>Check the status of the POST or GET request</h2>
+                            <pre>checkRequestStatus(string $content) </pre>
+                            <div class="labels">
+                                                                                                                                <span class="label">abstract</span>                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    abstract
+                                                </th>
+                                                <td>
+                                                                                                            
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$content</h4>
+                                                <code>string</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_addGeocachesToBookmarkList"></a>
+                        <div class="element clickable method public method_addGeocachesToBookmarkList" data-toggle="collapse" data-target=".method_addGeocachesToBookmarkList .collapse">
+                            <h2>Add Geocaches to a bookmark list</h2>
+                            <pre>addGeocachesToBookmarkList(array $params) </pre>
+                            <div class="labels">
+                                                                                                                                <span class="label">abstract</span>                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    abstract
+                                                </th>
+                                                <td>
+                                                                                                            
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$params</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_createFieldNoteAndPublish"></a>
+                        <div class="element clickable method public method_createFieldNoteAndPublish" data-toggle="collapse" data-target=".method_createFieldNoteAndPublish .collapse">
+                            <h2>Create Field Note And Publish</h2>
+                            <pre>createFieldNoteAndPublish(array $params) </pre>
+                            <div class="labels">
+                                                                                                                                <span class="label">abstract</span>                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    abstract
+                                                </th>
+                                                <td>
+                                                                                                            
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$params</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_createTrackableLog"></a>
+                        <div class="element clickable method public method_createTrackableLog" data-toggle="collapse" data-target=".method_createTrackableLog .collapse">
+                            <h2>Create Trackable Log</h2>
+                            <pre>createTrackableLog(array $params) </pre>
+                            <div class="labels">
+                                                                                                                                <span class="label">abstract</span>                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    abstract
+                                                </th>
+                                                <td>
+                                                                                                            
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$params</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getAnotherUsersProfile"></a>
+                        <div class="element clickable method public method_getAnotherUsersProfile" data-toggle="collapse" data-target=".method_getAnotherUsersProfile .collapse">
+                            <h2>Get Another Users Profile</h2>
+                            <pre>getAnotherUsersProfile(array $params = array()) </pre>
+                            <div class="labels">
+                                                                                                                                <span class="label">abstract</span>                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    abstract
+                                                </th>
+                                                <td>
+                                                                                                            
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$params</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getBookmarkListByGuid"></a>
+                        <div class="element clickable method public method_getBookmarkListByGuid" data-toggle="collapse" data-target=".method_getBookmarkListByGuid .collapse">
+                            <h2>Get Bookmark List By Guid</h2>
+                            <pre>getBookmarkListByGuid(array $params) </pre>
+                            <div class="labels">
+                                                                                                                                <span class="label">abstract</span>                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    abstract
+                                                </th>
+                                                <td>
+                                                                                                            
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$params</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getGeocacheStatus"></a>
+                        <div class="element clickable method public method_getGeocacheStatus" data-toggle="collapse" data-target=".method_getGeocacheStatus .collapse">
+                            <h2>Get Geocache Status</h2>
+                            <pre>getGeocacheStatus(array $params) </pre>
+                            <div class="labels">
+                                                                                                                                <span class="label">abstract</span>                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    abstract
+                                                </th>
+                                                <td>
+                                                                                                            
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$params</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getMoreGeocaches"></a>
+                        <div class="element clickable method public method_getMoreGeocaches" data-toggle="collapse" data-target=".method_getMoreGeocaches .collapse">
+                            <h2>Get More Geocaches</h2>
+                            <pre>getMoreGeocaches(array $params) </pre>
+                            <div class="labels">
+                                                                                                                                <span class="label">abstract</span>                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    abstract
+                                                </th>
+                                                <td>
+                                                                                                            
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$params</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getOwnedTrackables"></a>
+                        <div class="element clickable method public method_getOwnedTrackables" data-toggle="collapse" data-target=".method_getOwnedTrackables .collapse">
+                            <h2>Get Owned Trackables</h2>
+                            <pre>getOwnedTrackables(array $params) </pre>
+                            <div class="labels">
+                                                                                                                                <span class="label">abstract</span>                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    abstract
+                                                </th>
+                                                <td>
+                                                                                                            
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$params</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getUserGallery"></a>
+                        <div class="element clickable method public method_getUserGallery" data-toggle="collapse" data-target=".method_getUserGallery .collapse">
+                            <h2>Get User Gallery</h2>
+                            <pre>getUserGallery(array $params) </pre>
+                            <div class="labels">
+                                                                                                                                <span class="label">abstract</span>                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    abstract
+                                                </th>
+                                                <td>
+                                                                                                            
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$params</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getUsersCacheCounts"></a>
+                        <div class="element clickable method public method_getUsersCacheCounts" data-toggle="collapse" data-target=".method_getUsersCacheCounts .collapse">
+                            <h2>Get Users Cache Counts</h2>
+                            <pre>getUsersCacheCounts(array $params) </pre>
+                            <div class="labels">
+                                                                                                                                <span class="label">abstract</span>                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    abstract
+                                                </th>
+                                                <td>
+                                                                                                            
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$params</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getUsersGeocacheLogs"></a>
+                        <div class="element clickable method public method_getUsersGeocacheLogs" data-toggle="collapse" data-target=".method_getUsersGeocacheLogs .collapse">
+                            <h2>Get Users Geocache Logs</h2>
+                            <pre>getUsersGeocacheLogs(array $params) </pre>
+                            <div class="labels">
+                                                                                                                                <span class="label">abstract</span>                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    abstract
+                                                </th>
+                                                <td>
+                                                                                                            
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$params</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getUsersTrackables"></a>
+                        <div class="element clickable method public method_getUsersTrackables" data-toggle="collapse" data-target=".method_getUsersTrackables .collapse">
+                            <h2>get Users Trackables</h2>
+                            <pre>getUsersTrackables(array $params) </pre>
+                            <div class="labels">
+                                                                                                                                <span class="label">abstract</span>                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    abstract
+                                                </th>
+                                                <td>
+                                                                                                            
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$params</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getYourUserProfile"></a>
+                        <div class="element clickable method public method_getYourUserProfile" data-toggle="collapse" data-target=".method_getYourUserProfile .collapse">
+                            <h2>Get Your User Profile</h2>
+                            <pre>getYourUserProfile(array $params = array()) </pre>
+                            <div class="labels">
+                                                                                                                                <span class="label">abstract</span>                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    abstract
+                                                </th>
+                                                <td>
+                                                                                                            
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$params</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_saveUserWaypoint"></a>
+                        <div class="element clickable method public method_saveUserWaypoint" data-toggle="collapse" data-target=".method_saveUserWaypoint .collapse">
+                            <h2>Save User Waypoint</h2>
+                            <pre>saveUserWaypoint(array $params) </pre>
+                            <div class="labels">
+                                                                                                                                <span class="label">abstract</span>                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    abstract
+                                                </th>
+                                                <td>
+                                                                                                            
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$params</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_searchForGeocaches"></a>
+                        <div class="element clickable method public method_searchForGeocaches" data-toggle="collapse" data-target=".method_searchForGeocaches .collapse">
+                            <h2>Search For Geocaches</h2>
+                            <pre>searchForGeocaches(array $params) </pre>
+                            <div class="labels">
+                                                                                                                                <span class="label">abstract</span>                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    abstract
+                                                </th>
+                                                <td>
+                                                                                                            
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$params</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_searchForSouvenirsByPublicGuid"></a>
+                        <div class="element clickable method public method_searchForSouvenirsByPublicGuid" data-toggle="collapse" data-target=".method_searchForSouvenirsByPublicGuid .collapse">
+                            <h2>Search For Souvenirs By Public Guid</h2>
+                            <pre>searchForSouvenirsByPublicGuid(array $params) </pre>
+                            <div class="labels">
+                                                                                                                                <span class="label">abstract</span>                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    abstract
+                                                </th>
+                                                <td>
+                                                                                                            
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$params</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_updateCacheNote"></a>
+                        <div class="element clickable method public method_updateCacheNote" data-toggle="collapse" data-target=".method_updateCacheNote .collapse">
+                            <h2>Update Cache Note</h2>
+                            <pre>updateCacheNote(array $params) </pre>
+                            <div class="labels">
+                                                                                                                                <span class="label">abstract</span>                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    abstract
+                                                </th>
+                                                <td>
+                                                                                                            
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$params</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_uploadImageToGeocacheLog"></a>
+                        <div class="element clickable method public method_uploadImageToGeocacheLog" data-toggle="collapse" data-target=".method_uploadImageToGeocacheLog .collapse">
+                            <h2>Upload Image To Geocache Log</h2>
+                            <pre>uploadImageToGeocacheLog(array $params) </pre>
+                            <div class="labels">
+                                                                                                                                <span class="label">abstract</span>                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    abstract
+                                                </th>
+                                                <td>
+                                                                                                            
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$params</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_get_request"></a>
+                        <div class="element clickable method protected method_get_request" data-toggle="collapse" data-target=".method_get_request .collapse">
+                            <h2>Make a GET request</h2>
+                            <pre>get_request(string $request, array $params = array()) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    access
+                                                </th>
+                                                <td>
+                                                                                                            <p>protected</p>
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$request</h4>
+                                                <code>string</code><p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$params</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_post_request"></a>
+                        <div class="element clickable method protected method_post_request" data-toggle="collapse" data-target=".method_post_request .collapse">
+                            <h2>Make a POST request</h2>
+                            <pre>post_request(string $request, array $data) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    access
+                                                </th>
+                                                <td>
+                                                                                                            <p>protected</p>
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$request</h4>
+                                                <code>string</code><p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$data</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_setLogging"></a>
+                        <div class="element clickable method public method_setLogging" data-toggle="collapse" data-target=".method_setLogging .collapse">
+                            <h2>Enable or disable log messages</h2>
+                            <pre>setLogging(string $directory) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$directory</h4>
+                                                <code>string</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_log"></a>
+                        <div class="element clickable method protected method_log" data-toggle="collapse" data-target=".method_log .collapse">
+                            <h2>Log informations into the log file</h2>
+                            <pre>log(string $infos, array $obj = false) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$infos</h4>
+                                                <code>string</code><p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$obj</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_addFavoritePointToCache"></a>
+                        <div class="element clickable method public method_addFavoritePointToCache" data-toggle="collapse" data-target=".method_addFavoritePointToCache .collapse">
+                            <h2>Add Favorite Point To a Cache</h2>
+                            <pre>addFavoritePointToCache(array $params) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>required param: CacheCode</p>
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    access
+                                                </th>
+                                                <td>
+                                                                                                            <p>public</p>
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$params</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_deleteCacheNote"></a>
+                        <div class="element clickable method public method_deleteCacheNote" data-toggle="collapse" data-target=".method_deleteCacheNote .collapse">
+                            <h2>Delete Cache Note</h2>
+                            <pre>deleteCacheNote(array $params) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>required param: CacheCode</p>
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    access
+                                                </th>
+                                                <td>
+                                                                                                            <p>public</p>
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$params</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_deleteUserWaypoint"></a>
+                        <div class="element clickable method public method_deleteUserWaypoint" data-toggle="collapse" data-target=".method_deleteUserWaypoint .collapse">
+                            <h2>Delete User Waypoint</h2>
+                            <pre>deleteUserWaypoint(array $params) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>required param: WaypointID</p>
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    access
+                                                </th>
+                                                <td>
+                                                                                                            <p>public</p>
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$params</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getAPILimits"></a>
+                        <div class="element clickable method public method_getAPILimits" data-toggle="collapse" data-target=".method_getAPILimits .collapse">
+                            <h2>Get API Limits</h2>
+                            <pre>getAPILimits() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    access
+                                                </th>
+                                                <td>
+                                                                                                            <p>public</p>
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getAttributeTypesData"></a>
+                        <div class="element clickable method public method_getAttributeTypesData" data-toggle="collapse" data-target=".method_getAttributeTypesData .collapse">
+                            <h2>Get Attribute Types Data</h2>
+                            <pre>getAttributeTypesData() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    access
+                                                </th>
+                                                <td>
+                                                                                                            <p>public</p>
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getBookmarkListsByUserID"></a>
+                        <div class="element clickable method public method_getBookmarkListsByUserID" data-toggle="collapse" data-target=".method_getBookmarkListsByUserID .collapse">
+                            <h2>Get Bookmark Lists By User ID</h2>
+                            <pre>getBookmarkListsByUserID(array $params) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>required param: UserID</p>
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    access
+                                                </th>
+                                                <td>
+                                                                                                            <p>public</p>
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$params</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getBookmarkListsForUser"></a>
+                        <div class="element clickable method public method_getBookmarkListsForUser" data-toggle="collapse" data-target=".method_getBookmarkListsForUser .collapse">
+                            <h2>Get Bookmark Lists For User</h2>
+                            <pre>getBookmarkListsForUser() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    access
+                                                </th>
+                                                <td>
+                                                                                                            <p>public</p>
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getCacheByTileGuid"></a>
+                        <div class="element clickable method public method_getCacheByTileGuid" data-toggle="collapse" data-target=".method_getCacheByTileGuid .collapse">
+                            <h2>Get Cache By Tile Guid</h2>
+                            <pre>getCacheByTileGuid(array $params) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>required param: tileGuid</p>
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    access
+                                                </th>
+                                                <td>
+                                                                                                            <p>public</p>
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$params</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getCacheIdsFavoritedByUser"></a>
+                        <div class="element clickable method public method_getCacheIdsFavoritedByUser" data-toggle="collapse" data-target=".method_getCacheIdsFavoritedByUser .collapse">
+                            <h2>Get Cache Ids Favorited By User</h2>
+                            <pre>getCacheIdsFavoritedByUser() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    access
+                                                </th>
+                                                <td>
+                                                                                                            <p>public</p>
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getCachesFavoritedByUser"></a>
+                        <div class="element clickable method public method_getCachesFavoritedByUser" data-toggle="collapse" data-target=".method_getCachesFavoritedByUser .collapse">
+                            <h2>Get Caches Favorited By User</h2>
+                            <pre>getCachesFavoritedByUser() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    access
+                                                </th>
+                                                <td>
+                                                                                                            <p>public</p>
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getGeocacheDataTypes"></a>
+                        <div class="element clickable method public method_getGeocacheDataTypes" data-toggle="collapse" data-target=".method_getGeocacheDataTypes .collapse">
+                            <h2>Get Geocache Data Types</h2>
+                            <pre>getGeocacheDataTypes(array $params) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>optional params: GeocacheTypes, LogTypes, AttributeTypes</p>
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    access
+                                                </th>
+                                                <td>
+                                                                                                            <p>public</p>
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$params</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getGeocacheLogsByCacheCode"></a>
+                        <div class="element clickable method public method_getGeocacheLogsByCacheCode" data-toggle="collapse" data-target=".method_getGeocacheLogsByCacheCode .collapse">
+                            <h2>Get Geocache Logs By Cache Code</h2>
+                            <pre>getGeocacheLogsByCacheCode(array $params) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>required params: CacheCode, MaxPerPage<br>
+optional param: StartIndex</p>
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    access
+                                                </th>
+                                                <td>
+                                                                                                            <p>public</p>
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$params</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getGeocacheTypes"></a>
+                        <div class="element clickable method public method_getGeocacheTypes" data-toggle="collapse" data-target=".method_getGeocacheTypes .collapse">
+                            <h2>Get Geocache Types</h2>
+                            <pre>getGeocacheTypes() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    access
+                                                </th>
+                                                <td>
+                                                                                                            <p>public</p>
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getImagesForGeocache"></a>
+                        <div class="element clickable method public method_getImagesForGeocache" data-toggle="collapse" data-target=".method_getImagesForGeocache .collapse">
+                            <h2>Get Images For Geocache</h2>
+                            <pre>getImagesForGeocache(array $params) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>required param: CacheCode</p>
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    access
+                                                </th>
+                                                <td>
+                                                                                                            <p>public</p>
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$params</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getMembershipTypes"></a>
+                        <div class="element clickable method public method_getMembershipTypes" data-toggle="collapse" data-target=".method_getMembershipTypes .collapse">
+                            <h2>Get Membership Types</h2>
+                            <pre>getMembershipTypes() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    access
+                                                </th>
+                                                <td>
+                                                                                                            <p>public</p>
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getPocketQueryData"></a>
+                        <div class="element clickable method public method_getPocketQueryData" data-toggle="collapse" data-target=".method_getPocketQueryData .collapse">
+                            <h2>Get Pocket Query Data</h2>
+                            <pre>getPocketQueryData(array $params) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>required params: PocketQueryGuid, MaxItems<br>
+optional params: StartItem, GCListOnly</p>
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    access
+                                                </th>
+                                                <td>
+                                                                                                            <p>public</p>
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$params</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getPocketQueryList"></a>
+                        <div class="element clickable method public method_getPocketQueryList" data-toggle="collapse" data-target=".method_getPocketQueryList .collapse">
+                            <h2>Get Pocket Query List</h2>
+                            <pre>getPocketQueryList() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    access
+                                                </th>
+                                                <td>
+                                                                                                            <p>public</p>
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getPocketQueryUrls"></a>
+                        <div class="element clickable method public method_getPocketQueryUrls" data-toggle="collapse" data-target=".method_getPocketQueryUrls .collapse">
+                            <h2>Get Pocket Query Urls</h2>
+                            <pre>getPocketQueryUrls(array $params) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>required param: PocketQueryGuid</p>
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    access
+                                                </th>
+                                                <td>
+                                                                                                            <p>public</p>
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$params</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getPocketQueryZippedFile"></a>
+                        <div class="element clickable method public method_getPocketQueryZippedFile" data-toggle="collapse" data-target=".method_getPocketQueryZippedFile .collapse">
+                            <h2>Get Pocket Query Zipped File</h2>
+                            <pre>getPocketQueryZippedFile(array $params) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>required param: PocketQueryGuid</p>
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    access
+                                                </th>
+                                                <td>
+                                                                                                            <p>public</p>
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$params</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getServerDetails"></a>
+                        <div class="element clickable method public method_getServerDetails" data-toggle="collapse" data-target=".method_getServerDetails .collapse">
+                            <h2>Get Server Details</h2>
+                            <pre>getServerDetails() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    access
+                                                </th>
+                                                <td>
+                                                                                                            <p>public</p>
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getSiteStats"></a>
+                        <div class="element clickable method public method_getSiteStats" data-toggle="collapse" data-target=".method_getSiteStats .collapse">
+                            <h2>Get Site Stats</h2>
+                            <pre>getSiteStats() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    access
+                                                </th>
+                                                <td>
+                                                                                                            <p>public</p>
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getStatusMessages"></a>
+                        <div class="element clickable method public method_getStatusMessages" data-toggle="collapse" data-target=".method_getStatusMessages .collapse">
+                            <h2>Get Status Messages</h2>
+                            <pre>getStatusMessages() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    access
+                                                </th>
+                                                <td>
+                                                                                                            <p>public</p>
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getTrackableLogsByTBCode"></a>
+                        <div class="element clickable method public method_getTrackableLogsByTBCode" data-toggle="collapse" data-target=".method_getTrackableLogsByTBCode .collapse">
+                            <h2>Get Trackable Logs By TB Code</h2>
+                            <pre>getTrackableLogsByTBCode(array $params) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>required params: TBCode, MaxPerPage<br>
+optional param: StartIndex</p>
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    access
+                                                </th>
+                                                <td>
+                                                                                                            <p>public</p>
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$params</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getTrackablesByTBCode"></a>
+                        <div class="element clickable method public method_getTrackablesByTBCode" data-toggle="collapse" data-target=".method_getTrackablesByTBCode .collapse">
+                            <h2>Get Trackables By TB Code</h2>
+                            <pre>getTrackablesByTBCode(array $params) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>required param: TBCode
+optional param: TrackableLogCount</p>
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    access
+                                                </th>
+                                                <td>
+                                                                                                            <p>public</p>
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$params</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getTrackablesByTrackingNumber"></a>
+                        <div class="element clickable method public method_getTrackablesByTrackingNumber" data-toggle="collapse" data-target=".method_getTrackablesByTrackingNumber .collapse">
+                            <h2>Get Trackables By Tracking Number</h2>
+                            <pre>getTrackablesByTrackingNumber(array $params) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>required param: TrackingNumber<br>
+optional param: TrackableLogCount</p>
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    access
+                                                </th>
+                                                <td>
+                                                                                                            <p>public</p>
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$params</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getTrackablesInCache"></a>
+                        <div class="element clickable method public method_getTrackablesInCache" data-toggle="collapse" data-target=".method_getTrackablesInCache .collapse">
+                            <h2>Get Trackables In Cache</h2>
+                            <pre>getTrackablesInCache(array $params) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>required params: CacheCode, MaxPerPage<br>
+optional params: StartIndex, TrackableLogCount</p>
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    access
+                                                </th>
+                                                <td>
+                                                                                                            <p>public</p>
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$params</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getTrackableTravelList"></a>
+                        <div class="element clickable method public method_getTrackableTravelList" data-toggle="collapse" data-target=".method_getTrackableTravelList .collapse">
+                            <h2>Get Trackable Travel List</h2>
+                            <pre>getTrackableTravelList(array $params) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>required param: TBCode</p>
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    access
+                                                </th>
+                                                <td>
+                                                                                                            <p>public</p>
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$params</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getUsersFavoritePoints"></a>
+                        <div class="element clickable method public method_getUsersFavoritePoints" data-toggle="collapse" data-target=".method_getUsersFavoritePoints .collapse">
+                            <h2>Get Users Favorite Points</h2>
+                            <pre>getUsersFavoritePoints() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    access
+                                                </th>
+                                                <td>
+                                                                                                            <p>public</p>
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getUsersCacheNotes"></a>
+                        <div class="element clickable method public method_getUsersCacheNotes" data-toggle="collapse" data-target=".method_getUsersCacheNotes .collapse">
+                            <h2>Get Users Cache Notes</h2>
+                            <pre>getUsersCacheNotes(array $params) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>required param: MaxPerPage<br>
+optional param: StartIndex</p>
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    access
+                                                </th>
+                                                <td>
+                                                                                                            <p>public</p>
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$params</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getUsersWhoFavoritedCache"></a>
+                        <div class="element clickable method public method_getUsersWhoFavoritedCache" data-toggle="collapse" data-target=".method_getUsersWhoFavoritedCache .collapse">
+                            <h2>Get Users Who Favorited Cache</h2>
+                            <pre>getUsersWhoFavoritedCache(array $params) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>required param: CacheCode</p>
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    access
+                                                </th>
+                                                <td>
+                                                                                                            <p>public</p>
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$params</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getUserWaypoints"></a>
+                        <div class="element clickable method public method_getUserWaypoints" data-toggle="collapse" data-target=".method_getUserWaypoints .collapse">
+                            <h2>Get User Waypoints</h2>
+                            <pre>getUserWaypoints(array $params) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>required param: CacheCode</p>
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    access
+                                                </th>
+                                                <td>
+                                                                                                            <p>public</p>
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$params</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getWptLogTypes"></a>
+                        <div class="element clickable method public method_getWptLogTypes" data-toggle="collapse" data-target=".method_getWptLogTypes .collapse">
+                            <h2>Get Wpt Log Types</h2>
+                            <pre>getWptLogTypes() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    access
+                                                </th>
+                                                <td>
+                                                                                                            <p>public</p>
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_removeFavoritePointFromCache"></a>
+                        <div class="element clickable method public method_removeFavoritePointFromCache" data-toggle="collapse" data-target=".method_removeFavoritePointFromCache .collapse">
+                            <h2>Remove Favorite Point From Cache</h2>
+                            <pre>removeFavoritePointFromCache(array $params) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>required param: CacheCode</p>
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    access
+                                                </th>
+                                                <td>
+                                                                                                            <p>public</p>
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$params</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                    
+                                            <h3><i class="icon-custom icon-constant"></i> Constants</h3>
+                                                    <a id="constant_JSON_FORMAT"> </a>
+                            <div class="element clickable constant  constant_JSON_FORMAT" data-toggle="collapse" data-target=".constant_JSON_FORMAT .collapse">
+                                <h2>JSON Format</h2>
+                                <pre>JSON_FORMAT</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_XML_FORMAT"> </a>
+                            <div class="element clickable constant  constant_XML_FORMAT" data-toggle="collapse" data-target=".constant_XML_FORMAT .collapse">
+                                <h2>XML Format</h2>
+                                <pre>XML_FORMAT</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                    </div>
+                                </div>
+                            </div>
+                                            
+                                            <h3><i class="icon-custom icon-property"></i> Properties</h3>
+                                                    <a id="property_staging_api_url"> </a>
+                            <div class="element clickable property protected property_staging_api_url" data-toggle="collapse" data-target=".property_staging_api_url .collapse">
+                                <h2>Staging URL of Groundspeak API</h2>
+                                <pre>staging_api_url</pre>
+                                <div class="labels">
+                                                                                                        </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="property_live_api_url"> </a>
+                            <div class="element clickable property protected property_live_api_url" data-toggle="collapse" data-target=".property_live_api_url .collapse">
+                                <h2>Production URL of Groundspeak API</h2>
+                                <pre>live_api_url</pre>
+                                <div class="labels">
+                                                                                                        </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="property_api_url"> </a>
+                            <div class="element clickable property protected property_api_url" data-toggle="collapse" data-target=".property_api_url .collapse">
+                                <h2>API URL</h2>
+                                <pre>api_url</pre>
+                                <div class="labels">
+                                                                                                        </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="property_oauth_token"> </a>
+                            <div class="element clickable property protected property_oauth_token" data-toggle="collapse" data-target=".property_oauth_token .collapse">
+                                <h2>OAuth token sent by the client</h2>
+                                <pre>oauth_token</pre>
+                                <div class="labels">
+                                                                                                        </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="property_output_format"> </a>
+                            <div class="element clickable property protected property_output_format" data-toggle="collapse" data-target=".property_output_format .collapse">
+                                <h2>Type of output expected format, JSON or XML</h2>
+                                <pre>output_format</pre>
+                                <div class="labels">
+                                                                                                        </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="property_logging"> </a>
+                            <div class="element clickable property protected property_logging" data-toggle="collapse" data-target=".property_logging .collapse">
+                                <h2>Log API requests in a file</h2>
+                                <pre>logging</pre>
+                                <div class="labels">
+                                                                                                        </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                    </div>
+                                </div>
+                            </div>
+                                                            </div>
+            </div>
+            <a id="\Geocaching\Api\Api"></a>
+            <ul class="breadcrumb">
+                <li><a href="../index.html"><i class="icon-custom icon-class"></i></a></li>
+                    
+    
+    <li>
+        <span class="divider">\</span><a href="../namespaces/Geocaching.Api.html">Api</a>
+    </li>
+
+                <li class="active"><span class="divider">\</span><a href="../classes/Geocaching.Api.Api.html">Api</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<footer class="span12">
+    Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
+    <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
+    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
+    generated on Tue, 11 Jun 2013 15:45:59 +0200.<br/>
+</footer>
+</body>
+</html>

@@ -8,9 +8,10 @@
   </transformer>
   <title><![CDATA[Geocaching API with PHP 5]]></title>
   <files>
-    <file>src/Geocaching_Api.class.php</file>
-    <file>src/Geocaching_Api_Json.class.php</file>
-    <file>src/Geocaching_Api_Xml.class.php</file>
-    <file>src/Geocaching_OAuth.class.php</file>
+    <file>src/Geocaching/Api/Api.php</file>
+    <file>src/Geocaching/Api/Json.php</file>
+    <file>src/Geocaching/Api/Xml.php</file>
+    <file>src/Geocaching/OAuth/OAuth.php</file>
+    <file>src/Geocaching/Log/KLogger.php</file>
   </files>
 </phpdoc>
