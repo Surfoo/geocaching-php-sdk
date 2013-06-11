@@ -4,8 +4,8 @@
  *
  * @author  Surfoo <surfooo@gmail.com>
  * @link    https://github.com/Surfoo/geocaching-api
- * @license http://opensource.org/licenses/eclipse-1.0.php
- * @package Geocaching_Api
+ * @license http://opensource.org/licenses/eclipse-2.0.php
+ * @package Geocaching\Api
  */
 
 namespace Geocaching\Api;
@@ -15,8 +15,7 @@ use Geocaching\Log\KLogger as KLogger;
 /**
  * Geocaching API
  *
- * @category Geocaching
- * @package Geocaching_Api
+ * @package Geocaching\Api
  * @abstract
  */
 abstract class Api
