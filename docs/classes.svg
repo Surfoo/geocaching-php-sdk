@@ -42,38 +42,38 @@
 <path fill="none" stroke="gray" d="M24,-200C24,-194 30,-188 36,-188"/>
 <text text-anchor="middle" x="140.5" y="-302.1" font-family="Times Roman,serif" font-size="11.00" fill="gray">Api</text>
 </g>
-<g id="graph5" class="cluster"><title>cluster_\Geocaching\OAuth</title>
-<polyline fill="none" stroke="gray" points="199,-106 245,-106 "/>
-<path fill="none" stroke="gray" d="M245,-106C251,-106 257,-112 257,-118"/>
-<polyline fill="none" stroke="gray" points="257,-118 257,-168 "/>
-<path fill="none" stroke="gray" d="M257,-168C257,-174 251,-180 245,-180"/>
-<polyline fill="none" stroke="gray" points="245,-180 199,-180 "/>
-<path fill="none" stroke="gray" d="M199,-180C193,-180 187,-174 187,-168"/>
-<polyline fill="none" stroke="gray" points="187,-168 187,-118 "/>
-<path fill="none" stroke="gray" d="M187,-118C187,-112 193,-106 199,-106"/>
-<text text-anchor="middle" x="222" y="-166.1" font-family="Times Roman,serif" font-size="11.00" fill="gray">OAuth</text>
+<g id="graph5" class="cluster"><title>cluster_\Geocaching\Log</title>
+<polyline fill="none" stroke="gray" points="194,-106 250,-106 "/>
+<path fill="none" stroke="gray" d="M250,-106C256,-106 262,-112 262,-118"/>
+<polyline fill="none" stroke="gray" points="262,-118 262,-168 "/>
+<path fill="none" stroke="gray" d="M262,-168C262,-174 256,-180 250,-180"/>
+<polyline fill="none" stroke="gray" points="250,-180 194,-180 "/>
+<path fill="none" stroke="gray" d="M194,-180C188,-180 182,-174 182,-168"/>
+<polyline fill="none" stroke="gray" points="182,-168 182,-118 "/>
+<path fill="none" stroke="gray" d="M182,-118C182,-112 188,-106 194,-106"/>
+<text text-anchor="middle" x="222" y="-166.1" font-family="Times Roman,serif" font-size="11.00" fill="gray">Log</text>
 </g>
-<g id="graph6" class="cluster"><title>cluster_\Geocaching\Log</title>
-<polyline fill="none" stroke="gray" points="194,-24 250,-24 "/>
-<path fill="none" stroke="gray" d="M250,-24C256,-24 262,-30 262,-36"/>
-<polyline fill="none" stroke="gray" points="262,-36 262,-86 "/>
-<path fill="none" stroke="gray" d="M262,-86C262,-92 256,-98 250,-98"/>
-<polyline fill="none" stroke="gray" points="250,-98 194,-98 "/>
-<path fill="none" stroke="gray" d="M194,-98C188,-98 182,-92 182,-86"/>
-<polyline fill="none" stroke="gray" points="182,-86 182,-36 "/>
-<path fill="none" stroke="gray" d="M182,-36C182,-30 188,-24 194,-24"/>
-<text text-anchor="middle" x="222" y="-84.1" font-family="Times Roman,serif" font-size="11.00" fill="gray">Log</text>
+<g id="graph6" class="cluster"><title>cluster_\Geocaching\OAuth</title>
+<polyline fill="none" stroke="gray" points="199,-24 245,-24 "/>
+<path fill="none" stroke="gray" d="M245,-24C251,-24 257,-30 257,-36"/>
+<polyline fill="none" stroke="gray" points="257,-36 257,-86 "/>
+<path fill="none" stroke="gray" d="M257,-86C257,-92 251,-98 245,-98"/>
+<polyline fill="none" stroke="gray" points="245,-98 199,-98 "/>
+<path fill="none" stroke="gray" d="M199,-98C193,-98 187,-92 187,-86"/>
+<polyline fill="none" stroke="gray" points="187,-86 187,-36 "/>
+<path fill="none" stroke="gray" d="M187,-36C187,-30 193,-24 199,-24"/>
+<text text-anchor="middle" x="222" y="-84.1" font-family="Times Roman,serif" font-size="11.00" fill="gray">OAuth</text>
+</g>
+<!-- \\Geocaching\\Api\\Json -->
+<g id="node4" class="node"><title>\\Geocaching\\Api\\Json</title>
+<polygon fill="none" stroke="black" points="249,-286 195,-286 195,-250 249,-250 249,-286"/>
+<text text-anchor="middle" x="222" y="-265.1" font-family="Courier,monospace" font-size="11.00">Json</text>
 </g>
 <!-- \\Geocaching\\Api\\Api -->
-<g id="node4" class="node"><title>\\Geocaching\\Api\\Api</title>
+<g id="node5" class="node"><title>\\Geocaching\\Api\\Api</title>
 <polygon fill="none" stroke="black" points="117,-259 33,-259 33,-223 117,-223 117,-259"/>
 <text text-anchor="start" x="41" y="-246.433" font-family="Courier,monospace" font-size="11.00">«abstract»</text>
 <text text-anchor="start" x="64.5" y="-233.233" font-family="Courier,monospace" font-size="11.00">Api</text>
-</g>
-<!-- \\Geocaching\\Api\\Json -->
-<g id="node5" class="node"><title>\\Geocaching\\Api\\Json</title>
-<polygon fill="none" stroke="black" points="249,-286 195,-286 195,-250 249,-250 249,-286"/>
-<text text-anchor="middle" x="222" y="-265.1" font-family="Courier,monospace" font-size="11.00">Json</text>
 </g>
 <!-- \\Geocaching\\Api\\Json&#45;&gt;\\Geocaching\\Api\\Api -->
 <g id="edge7" class="edge"><title>\\Geocaching\\Api\\Json&#45;&gt;\\Geocaching\\Api\\Api</title>
@@ -90,15 +90,15 @@
 <path fill="none" stroke="black" d="M194.695,-219.015C175.89,-222.469 150.3,-227.169 127.608,-231.337"/>
 <polygon fill="none" stroke="black" points="126.959,-227.898 117.756,-233.147 128.224,-234.783 126.959,-227.898"/>
 </g>
-<!-- \\Geocaching\\OAuth\\OAuth -->
-<g id="node8" class="node"><title>\\Geocaching\\OAuth\\OAuth</title>
-<polygon fill="none" stroke="black" points="249,-150 195,-150 195,-114 249,-114 249,-150"/>
-<text text-anchor="middle" x="222" y="-129.1" font-family="Courier,monospace" font-size="11.00">OAuth</text>
-</g>
 <!-- \\Geocaching\\Log\\KLogger -->
-<g id="node10" class="node"><title>\\Geocaching\\Log\\KLogger</title>
-<polygon fill="none" stroke="black" points="254,-68 190,-68 190,-32 254,-32 254,-68"/>
-<text text-anchor="middle" x="222" y="-47.1" font-family="Courier,monospace" font-size="11.00">KLogger</text>
+<g id="node8" class="node"><title>\\Geocaching\\Log\\KLogger</title>
+<polygon fill="none" stroke="black" points="254,-150 190,-150 190,-114 254,-114 254,-150"/>
+<text text-anchor="middle" x="222" y="-129.1" font-family="Courier,monospace" font-size="11.00">KLogger</text>
+</g>
+<!-- \\Geocaching\\OAuth\\OAuth -->
+<g id="node10" class="node"><title>\\Geocaching\\OAuth\\OAuth</title>
+<polygon fill="none" stroke="black" points="249,-68 195,-68 195,-32 249,-32 249,-68"/>
+<text text-anchor="middle" x="222" y="-47.1" font-family="Courier,monospace" font-size="11.00">OAuth</text>
 </g>
 </g>
 </svg>
