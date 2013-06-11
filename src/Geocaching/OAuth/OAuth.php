@@ -5,15 +5,18 @@
  * @author  Surfoo <surfooo@gmail.com>
  * @link    https://github.com/Surfoo/geocaching-api
  * @license http://opensource.org/licenses/eclipse-1.0.php
- * @package Geocaching_OAuth
+ * @package Geocaching\OAuth
  */
+
+namespace Geocaching\OAuth;
+
+use Geocaching\Log\KLogger as KLogger;
 
 /**
  * OAuth for the Geocaching API
- * @category Geocaching
- * @package Geocaching_OAuth
+ * @package Geocaching\OAuth
  */
-class Geocaching_OAuth {
+class OAuth {
 
     /**
      * Staging URL of Groundspeak OAuth
@@ -126,7 +129,7 @@ class Geocaching_OAuth {
      * @param string  $consumer_key OAuth Key
      * @param string  $consumer_secret OAuth Secret
      * @param string  $callback_url Callbak URL
-     * @param boolean $live production = true, staging = false
+     * @param boolean $live true => production, false => staging
      */
     public function __construct($consumer_key, $consumer_secret, $callback_url, $live = false)
     {

@@ -5,25 +5,24 @@
  * @author  Surfoo <surfooo@gmail.com>
  * @link    https://github.com/Surfoo/geocaching-api
  * @license http://opensource.org/licenses/eclipse-1.0.php
- * @package Geocaching_Api
+ * @package Geocaching\Api
  */
 
-require_once 'Geocaching_Api.class.php';
+namespace Geocaching\Api;
 
 /**
  * Geocaching API for JSON format
  *
- * @category Geocaching
- * @package Geocaching_Api
+ * @package Geocaching\Api
  */
-class Geocaching_Api_Json extends Geocaching_Api {
-
+class Json extends Api
+{
     /**
      * Constructor
      *
      * @access public
-     * @param string $oauth_token OAuth token provided by the application
-     * @param boolean $live production = true, staging = false
+     * @param  string  $oauth_token OAuth token provided by the application
+     * @param  boolean $live        production = true, staging = false
      * @return void
      */
     public function __construct($oauth_token, $live = false)
@@ -34,10 +33,9 @@ class Geocaching_Api_Json extends Geocaching_Api {
         $this->oauth_token   = $oauth_token;
         $this->output_format = 'json';
         $this->http_headers  = array('Content-Type: application/json');
-        if($live) {
+        if ($live) {
             $this->api_url = $this->live_api_url;
-        }
-        else {
+        } else {
             $this->api_url = $this->staging_api_url;
         }
     }
@@ -65,7 +63,7 @@ class Geocaching_Api_Json extends Geocaching_Api {
      * Required params: BookmarkListGuid, CacheCodes
      *
      * @access public
-     * @param array $params
+     * @param  array  $params
      * @return object
      */
     public function addGeocachesToBookmarkList(array $params)
@@ -90,7 +88,7 @@ class Geocaching_Api_Json extends Geocaching_Api {
      * Optional params: PromoteToLog, FavoriteThisCache, EncryptLogText, UpdatedLatitude, UpdatedLongitude, base64ImageData, FileCaption, FileDescription, FileName
      *
      * @access public
-     * @param  array $params
+     * @param  array  $params
      * @return object
      */
     public function createFieldNoteAndPublish(array $params)
@@ -120,7 +118,7 @@ class Geocaching_Api_Json extends Geocaching_Api {
         if(array_key_exists('UpdatedLongitude', $params))
             $post_params['UpdatedLongitude'] = (float) $params['UpdatedLongitude'];
 
-        if(array_key_exists('base64ImageData', $params)) {
+        if (array_key_exists('base64ImageData', $params)) {
             $post_params['ImageData']['base64ImageData'] = $params['base64ImageData'];
             if(array_key_exists('FileCaption', $params))
                 $post_params['ImageData']['FileCaption'] = $params['FileCaption'];
@@ -139,7 +137,7 @@ class Geocaching_Api_Json extends Geocaching_Api {
      * Required params: TrackingNumber, UTCDateLogged, Note, LogType
      *
      * @access public
-     * @param  array $params
+     * @param  array  $params
      * @return object
      */
     public function createTrackableLog(array $params)
@@ -167,7 +165,7 @@ class Geocaching_Api_Json extends Geocaching_Api {
      * required param: BookmarkListGuid
      *
      * @access public
-     * @param  array $params
+     * @param  array  $params
      * @return object
      */
     public function getBookmarkListByGuid(array $params)
@@ -176,6 +174,7 @@ class Geocaching_Api_Json extends Geocaching_Api {
             throw new Exception('BookmarkListGuid is missing.');
 
         $post_params['BookmarkListGuid'] = $params['BookmarkListGuid'];
+
         return $this->post_request(__FUNCTION__, $post_params);
     }
 
@@ -185,7 +184,7 @@ class Geocaching_Api_Json extends Geocaching_Api {
      * required param: CacheCodes
      *
      * @access public
-     * @param  array $params
+     * @param  array  $params
      * @return object
      */
     public function getGeocacheStatus(array $params)
@@ -194,6 +193,7 @@ class Geocaching_Api_Json extends Geocaching_Api {
             throw new Exception('CacheCodes is missing.');
 
         $post_params['CacheCodes'] = $params['CacheCodes'];
+
         return $this->post_request(__FUNCTION__, $post_params);
     }
 
@@ -203,7 +203,7 @@ class Geocaching_Api_Json extends Geocaching_Api {
      * required params: IsLite, StartIndex, MaxPerPage, GeocacheLogCount, TrackableLogCount
      *
      * @access public
-     * @param  array $params
+     * @param  array  $params
      * @return object
      */
     public function getMoreGeocaches(array $params)
@@ -234,7 +234,7 @@ class Geocaching_Api_Json extends Geocaching_Api {
      * required params: Username, StartIndex, MaxPerPage
      *
      * @access public
-     * @param  array $params
+     * @param  array  $params
      * @return object
      */
     public function getUserGallery(array $params)
@@ -257,7 +257,7 @@ class Geocaching_Api_Json extends Geocaching_Api {
      * required param: Username
      *
      * @access public
-     * @param  array $params
+     * @param  array  $params
      * @return object
      */
     public function getUsersCacheCounts(array $params)
@@ -268,6 +268,7 @@ class Geocaching_Api_Json extends Geocaching_Api {
             throw new Exception('Username must be an array.');
 
         $post_params['Username'] = $params['Username'];
+
         return $this->post_request(__FUNCTION__, $post_params);
     }
 
@@ -278,7 +279,7 @@ class Geocaching_Api_Json extends Geocaching_Api {
      * optional params: TrackableLogCount, CollectionOnly
      *
      * @access public
-     * @param  array $params
+     * @param  array  $params
      * @return object
      */
     public function getOwnedTrackables(array $params)
@@ -305,7 +306,7 @@ class Geocaching_Api_Json extends Geocaching_Api {
      * optional params: StartIndex, EndDate, StartDate, ExcludeArchived
      *
      * @access public
-     * @param  array $params
+     * @param  array  $params
      * @return object
      */
     public function getUsersGeocacheLogs(array $params)
@@ -341,7 +342,7 @@ class Geocaching_Api_Json extends Geocaching_Api {
      * required param: MaxPerPage<br>
      * optional params: StartIndex, TrackableLogCount, CollectionOnly
      * @access public
-     * @param  array $params
+     * @param  array  $params
      * @return object
      */
     public function getUsersTrackables(array $params)
@@ -366,7 +367,7 @@ class Geocaching_Api_Json extends Geocaching_Api {
      * optionals params: ChallengesData, FavoritePointsData, GeocacheData, PublicProfileData, SouvenirData, TrackableData
      *
      * @access public
-     * @param  array $params
+     * @param  array  $params
      * @return object
      */
     public function getYourUserProfile($params = array())
@@ -381,7 +382,7 @@ class Geocaching_Api_Json extends Geocaching_Api {
      * optionals params: ChallengesData, FavoritePointsData, GeocacheData, PublicProfileData, SouvenirData, TrackableData
      *
      * @access public
-     * @param  array $params
+     * @param  array  $params
      * @return object
      */
     public function getAnotherUsersProfile($params = array())
@@ -396,7 +397,7 @@ class Geocaching_Api_Json extends Geocaching_Api {
      * optional param: Description
      *
      * @access public
-     * @param  array $params
+     * @param  array  $params
      * @return object
      */
     public function saveUserWaypoint(array $params)
@@ -417,7 +418,6 @@ class Geocaching_Api_Json extends Geocaching_Api {
         if(array_key_exists('Description', $params))
             $post_params['Description'] = $params['Description'];
         //$post_params['ID']          = (int) $params['ID'];*/
-
         return $this->post_request(__FUNCTION__, $params);
     }
 
@@ -431,7 +431,7 @@ class Geocaching_Api_Json extends Geocaching_Api {
      * BottomRightLongitude, TopLeftLatitude, TopLeftLongitude, BookmarkListIDs, MinTrackables, MaxTrackables.
      *
      * @access public
-     * @param  array $params
+     * @param  array  $params
      * @return object
      */
     public function searchForGeocaches(array $params)
@@ -529,7 +529,7 @@ class Geocaching_Api_Json extends Geocaching_Api {
      * optional param: ExistingSouvenirIDs
      *
      * @access public
-     * @param  array $params
+     * @param  array  $params
      * @return object
      */
     public function searchForSouvenirsByPublicGuid(array $params)
@@ -550,7 +550,7 @@ class Geocaching_Api_Json extends Geocaching_Api {
      * required params: CacheCode, Note
      *
      * @access public
-     * @param  array $params
+     * @param  array  $params
      * @return object
      */
     public function updateCacheNote(array $params)
@@ -562,6 +562,7 @@ class Geocaching_Api_Json extends Geocaching_Api {
 
         $post_params['CacheCode'] = $params['CacheCode'];
         $post_params['Note']      = $params['Note'];
+
         return $this->post_request(__FUNCTION__, $post_params);
     }
 
@@ -572,7 +573,7 @@ class Geocaching_Api_Json extends Geocaching_Api {
      * optional params: FileCaption, FileDescription, FileName
      *
      * @access public
-     * @param  array $params
+     * @param  array  $params
      * @return object
      */
     public function uploadImageToGeocacheLog(array $params)
@@ -603,7 +604,7 @@ class Geocaching_Api_Json extends Geocaching_Api {
      *
      * @access protected
      * @param  string $function
-     * @param  array $params
+     * @param  array  $params
      * @return object
      */
     protected function getUserProfile($function, $params = array())
@@ -621,8 +622,7 @@ class Geocaching_Api_Json extends Geocaching_Api {
             $post_params['ProfileOptions']['SouvenirData'] = (boolean) $params['SouvenirData'];
         if(array_key_exists('TrackableData', $params))
             $post_params['ProfileOptions']['TrackableData'] = (boolean) $params['TrackableData'];
-        if($function == 'getYourUserProfile')
-        {
+        if ($function == 'getYourUserProfile') {
             $post_params['DeviceInfo']['ApplicationCurrentMemoryUsage'] = 2048*1024;
             $post_params['DeviceInfo']['ApplicationPeakMemoryUsage']    = 2048*1024;
             $post_params['DeviceInfo']['ApplicationSoftwareVersion']    = 'blabla';
@@ -634,6 +634,7 @@ class Geocaching_Api_Json extends Geocaching_Api {
             $post_params['DeviceInfo']['MobileHardwareVersion']         = 'blabla';
             $post_params['DeviceInfo']['WebBrowserVersion']             = 'blabla';
         }
+
         return $this->post_request($function, $post_params);
     }
 }

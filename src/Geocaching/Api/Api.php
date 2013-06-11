@@ -8,7 +8,9 @@
  * @package Geocaching_Api
  */
 
-require_once 'KLogger.class.php';
+namespace Geocaching\Api;
+
+use Geocaching\Log\KLogger as KLogger;
 
 /**
  * Geocaching API
@@ -17,8 +19,8 @@ require_once 'KLogger.class.php';
  * @package Geocaching_Api
  * @abstract
  */
-abstract class Geocaching_Api {
-
+abstract class Api
+{
     /**
      * JSON Format
      */
@@ -81,7 +83,7 @@ abstract class Geocaching_Api {
      * Constructor
      *
      * @abstract
-     * @param string $oauth_token
+     * @param string  $oauth_token
      * @param boolean $live
      */
     abstract public function __construct($oauth_token, $live);
@@ -99,7 +101,7 @@ abstract class Geocaching_Api {
      * Add Geocaches to a bookmark list
      *
      * @abstract
-     * @param array $params
+     * @param  array $params
      * @return void
      */
     abstract public function addGeocachesToBookmarkList(array $params);
@@ -261,14 +263,14 @@ abstract class Geocaching_Api {
      * Make a GET request
      *
      * @access protected
-     * @param  string $request
-     * @param  array $params
+     * @param  string        $request
+     * @param  array         $params
      * @return object|string JSON : Object, XML : String
      */
     protected function get_request($request, $params = array())
     {
         $this->log($request, $params);
-        
+
         $params = array_merge(array('format' => $this->output_format, 'AccessToken' => $this->oauth_token), $params);
         $query_string = '?' . urldecode(http_build_query($params, '', '&'));
         $url = sprintf($this->api_url, ucfirst($request)) . $query_string;
@@ -296,6 +298,7 @@ abstract class Geocaching_Api {
             $output = json_decode($output);
 
         $this->checkRequestStatus($output);
+
         return $output;
     }
 
@@ -303,8 +306,8 @@ abstract class Geocaching_Api {
      * Make a POST request
      *
      * @access protected
-     * @param  string $request
-     * @param  array $data
+     * @param  string        $request
+     * @param  array         $data
      * @return object|string JSON : Object, XML : String
      */
     protected function post_request($request, array $data)
@@ -314,7 +317,7 @@ abstract class Geocaching_Api {
         $params = array('format' => $this->output_format);
         $query_string = '?' . urldecode(http_build_query($params, '', '&'));
         $url = sprintf($this->api_url, ucfirst($request)) . $query_string;
-        if($this->output_format == self::JSON_FORMAT) {
+        if ($this->output_format == self::JSON_FORMAT) {
             $data = array_merge(array('AccessToken' => $this->oauth_token), $data);
             $data = json_encode($data);
         }
@@ -345,22 +348,23 @@ abstract class Geocaching_Api {
             $output = json_decode($output);
 
         $this->checkRequestStatus($output);
+
         return $output;
     }
 
     /**
      * Enable or disable log messages
      *
-     * @param string $directory
+     * @param  string $directory
      * @return void
      */
     public function setLogging($directory)
     {
-        if($directory) {
+        if ($directory) {
             $this->logger = new KLogger($directory, KLogger::INFO);
             $this->logging = true;
         }
-        if($this->logging && !$directory) {
+        if ($this->logging && !$directory) {
             unset($this->logger);
             $this->logging = false;
         }
@@ -369,12 +373,13 @@ abstract class Geocaching_Api {
     /**
      * Log informations into the log file
      * @param  string $infos
-     * @param  array $obj
+     * @param  array  $obj
      * @return void
      */
     protected function log($infos, $obj = false)
     {
         if(!$this->logging)
+
             return false;
 
         $this->logger->logInfo('API: ' . $infos, $obj);
@@ -390,7 +395,7 @@ abstract class Geocaching_Api {
      * required param: CacheCode
      *
      * @access public
-     * @param array $params
+     * @param  array         $params
      * @return object|string JSON : Object, XML : String
      */
     public function addFavoritePointToCache(array $params)
@@ -399,6 +404,7 @@ abstract class Geocaching_Api {
             throw new Exception('CacheCode is missing.');
 
         $get_params = array('CacheCode' => $params['CacheCode']);
+
         return $this->get_request(__FUNCTION__, $get_params);
     }
 
@@ -408,7 +414,7 @@ abstract class Geocaching_Api {
      * required param: CacheCode
      *
      * @access public
-     * @param  array $params
+     * @param  array         $params
      * @return object|string JSON : Object, XML : String
      */
     public function deleteCacheNote(array $params)
@@ -417,6 +423,7 @@ abstract class Geocaching_Api {
             throw new Exception('CacheCode is missing.');
 
         $get_params = array('CacheCode' => $params['CacheCode']);
+
         return $this->get_request(__FUNCTION__, $get_params);
     }
 
@@ -426,7 +433,7 @@ abstract class Geocaching_Api {
      * required param: WaypointID
      *
      * @access public
-     * @param  array $params
+     * @param  array         $params
      * @return object|string JSON : Object, XML : String
      */
     public function deleteUserWaypoint(array $params)
@@ -435,6 +442,7 @@ abstract class Geocaching_Api {
             throw new Exception('WaypointID is missing.');
 
         $get_params = array('WaypointID' => (int) $params['WaypointID']);
+
         return $this->get_request(__FUNCTION__, $get_params);
     }
 
@@ -466,7 +474,7 @@ abstract class Geocaching_Api {
      * required param: UserID
      *
      * @access public
-     * @param  array $params
+     * @param  array         $params
      * @return object|string JSON : Object, XML : String
      */
     public function getBookmarkListsByUserID(array $params)
@@ -475,6 +483,7 @@ abstract class Geocaching_Api {
             throw new Exception('UserID is missing.');
 
         $get_params = array('UserID' => (int) $params['UserID']);
+
         return $this->get_request(__FUNCTION__, $get_params);
     }
 
@@ -495,7 +504,7 @@ abstract class Geocaching_Api {
      * required param: tileGuid
      *
      * @access public
-     * @param array $params
+     * @param  array         $params
      * @return object|string JSON : Object, XML : String
      */
     public function getCacheByTileGuid(array $params)
@@ -504,6 +513,7 @@ abstract class Geocaching_Api {
             throw new Exception('tileGuid is missing.');
 
         $get_params = array('tileGuid' => $params['tileGuid']);
+
         return $this->get_request(__FUNCTION__, $get_params);
     }
 
@@ -535,7 +545,7 @@ abstract class Geocaching_Api {
      * optional params: GeocacheTypes, LogTypes, AttributeTypes
      *
      * @access public
-     * @param  array $params
+     * @param  array         $params
      * @return object|string JSON : Object, XML : String
      */
     public function getGeocacheDataTypes(array $params)
@@ -558,7 +568,7 @@ abstract class Geocaching_Api {
      * optional param: StartIndex
      *
      * @access public
-     * @param  array $params
+     * @param  array         $params
      * @return object|string JSON : Object, XML : String
      */
     public function getGeocacheLogsByCacheCode(array $params)
@@ -593,7 +603,7 @@ abstract class Geocaching_Api {
      * required param: CacheCode
      *
      * @access public
-     * @param  array $params
+     * @param  array         $params
      * @return object|string JSON : Object, XML : String
      */
     public function getImagesForGeocache(array $params)
@@ -602,6 +612,7 @@ abstract class Geocaching_Api {
             throw new Exception('CacheCode is missing.');
 
         $get_params['CacheCode'] = $params['CacheCode'];
+
         return $this->get_request(__FUNCTION__, $get_params);
     }
 
@@ -623,7 +634,7 @@ abstract class Geocaching_Api {
      * optional params: StartItem, GCListOnly
      *
      * @access public
-     * @param  array $params
+     * @param  array         $params
      * @return object|string JSON : Object, XML : String
      */
     public function getPocketQueryData(array $params)
@@ -660,7 +671,7 @@ abstract class Geocaching_Api {
      * required param: PocketQueryGuid
      *
      * @access public
-     * @param  array $params
+     * @param  array         $params
      * @return object|string JSON : Object, XML : String
      */
     public function getPocketQueryUrls(array $params)
@@ -669,6 +680,7 @@ abstract class Geocaching_Api {
             throw new Exception('PocketQueryGuid is missing.');
 
         $get_params['PocketQueryGuid'] = $params['PocketQueryGuid'];
+
         return $this->get_request(__FUNCTION__, $get_params);
     }
 
@@ -678,7 +690,7 @@ abstract class Geocaching_Api {
      * required param: PocketQueryGuid
      *
      * @access public
-     * @param  array $params
+     * @param  array         $params
      * @return object|string JSON : Object, XML : String
      */
     public function getPocketQueryZippedFile(array $params)
@@ -687,6 +699,7 @@ abstract class Geocaching_Api {
             throw new Exception('PocketQueryGuid is missing.');
 
         $get_params['PocketQueryGuid'] = $params['PocketQueryGuid'];
+
         return $this->get_request(__FUNCTION__, $get_params);
     }
 
@@ -730,7 +743,7 @@ abstract class Geocaching_Api {
      * optional param: StartIndex
      *
      * @access public
-     * @param  array $params
+     * @param  array         $params
      * @return object|string JSON : Object, XML : String
      */
     public function getTrackableLogsByTBCode(array $params)
@@ -755,7 +768,7 @@ abstract class Geocaching_Api {
      * optional param: TrackableLogCount
      *
      * @access public
-     * @param  array $params
+     * @param  array         $params
      * @return object|string JSON : Object, XML : String
      */
     public function getTrackablesByTBCode(array $params)
@@ -777,7 +790,7 @@ abstract class Geocaching_Api {
      * optional param: TrackableLogCount
      *
      * @access public
-     * @param  array $params
+     * @param  array         $params
      * @return object|string JSON : Object, XML : String
      */
     public function getTrackablesByTrackingNumber(array $params)
@@ -799,7 +812,7 @@ abstract class Geocaching_Api {
      * optional params: StartIndex, TrackableLogCount
      *
      * @access public
-     * @param  array $params
+     * @param  array         $params
      * @return object|string JSON : Object, XML : String
      */
     public function getTrackablesInCache(array $params)
@@ -825,7 +838,7 @@ abstract class Geocaching_Api {
      * required param: TBCode
      *
      * @access public
-     * @param  array $params
+     * @param  array         $params
      * @return object|string JSON : Object, XML : String
      */
     public function getTrackableTravelList(array $params)
@@ -834,6 +847,7 @@ abstract class Geocaching_Api {
             throw new Exception('TBCode is missing.');
 
         $get_params['TBCode'] = $params['TBCode'];
+
         return $this->get_request(__FUNCTION__, $get_params);
     }
 
@@ -855,7 +869,7 @@ abstract class Geocaching_Api {
      * optional param: StartIndex
      *
      * @access public
-     * @param  array $params
+     * @param  array         $params
      * @return object|string JSON : Object, XML : String
      */
     public function getUsersCacheNotes(array $params)
@@ -876,7 +890,7 @@ abstract class Geocaching_Api {
      * required param: CacheCode
      *
      * @access public
-     * @param  array $params
+     * @param  array         $params
      * @return object|string JSON : Object, XML : String
      */
     public function getUsersWhoFavoritedCache(array $params)
@@ -885,6 +899,7 @@ abstract class Geocaching_Api {
             throw new Exception('CacheCode is missing.');
 
         $get_params['CacheCode'] = $params['CacheCode'];
+
         return $this->get_request(__FUNCTION__, $get_params);
     }
 
@@ -894,7 +909,7 @@ abstract class Geocaching_Api {
      * required param: CacheCode
      *
      * @access public
-     * @param  array $params
+     * @param  array         $params
      * @return object|string JSON : Object, XML : String
      */
     public function getUserWaypoints(array $params)
@@ -903,6 +918,7 @@ abstract class Geocaching_Api {
             throw new Exception('CacheCode is missing.');
 
         $get_params['CacheCode'] = $params['CacheCode'];
+
         return $this->get_request(__FUNCTION__, $get_params);
     }
 
@@ -923,7 +939,7 @@ abstract class Geocaching_Api {
      * required param: CacheCode
      *
      * @access public
-     * @param  array $params
+     * @param  array         $params
      * @return object|string JSON : Object, XML : String
      */
     public function removeFavoritePointFromCache(array $params)
@@ -932,6 +948,7 @@ abstract class Geocaching_Api {
             throw new Exception('CacheCode is missing.');
 
         $get_params['CacheCode'] = $params['CacheCode'];
+
         return $this->get_request(__FUNCTION__, $get_params);
     }
 }

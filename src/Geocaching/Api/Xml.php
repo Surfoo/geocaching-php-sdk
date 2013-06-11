@@ -5,19 +5,18 @@
  * @author  Surfoo <surfooo@gmail.com>
  * @link    https://github.com/Surfoo/geocaching-api
  * @license http://opensource.org/licenses/eclipse-1.0.php
- * @package Geocaching_Api
+ * @package Geocaching\Api
  */
 
-require_once 'Geocaching_Api.class.php';
+namespace Geocaching\Api;
 
 /**
  * Geocaching API for XML format
  *
- * @category Geocaching
- * @package Geocaching_Api
+ * @package Geocaching\Api
  */
-class Geocaching_Api_Xml extends Geocaching_Api {
-
+class Xml extends Api
+{
     /**
      * Geocaching XML Namespace
      *
@@ -38,8 +37,8 @@ class Geocaching_Api_Xml extends Geocaching_Api {
      * Constructor
      *
      * @access public
-     * @param string $oauth_token OAuth token provided by the application
-     * @param boolean $live production = true, staging = false
+     * @param  string  $oauth_token OAuth token provided by the application
+     * @param  boolean $live        production = true, staging = false
      * @return void
      */
     public function __construct($oauth_token, $live = false)
@@ -50,10 +49,9 @@ class Geocaching_Api_Xml extends Geocaching_Api {
         $this->oauth_token   = $oauth_token;
         $this->output_format = 'xml';
         $this->http_headers  = array('Content-Type: application/xml');
-        if($live) {
+        if ($live) {
             $this->api_url = $this->live_api_url;
-        }
-        else {
+        } else {
             $this->api_url = $this->staging_api_url;
         }
     }
@@ -86,6 +84,7 @@ class Geocaching_Api_Xml extends Geocaching_Api {
         $root->appendChild($eAccessToken);
         $text = $dom->createTextNode(utf8_encode($this->oauth_token));
         $eAccessToken->appendChild($text);
+
         return $dom;
     }
 
@@ -106,7 +105,7 @@ class Geocaching_Api_Xml extends Geocaching_Api {
      *
      * @access public
      * @param  array  $params [description]
-     * @return [type]         [description]
+     * @return [type] [description]
      */
     public function createFieldNoteAndPublish(array $params) {}
 
@@ -115,7 +114,7 @@ class Geocaching_Api_Xml extends Geocaching_Api {
      *
      * @access public
      * @param  array  $params [description]
-     * @return [type]         [description]
+     * @return [type] [description]
      */
     public function createTrackableLog(array $params) {}
 
@@ -124,7 +123,7 @@ class Geocaching_Api_Xml extends Geocaching_Api {
      *
      * @access public
      * @param  array  $params [description]
-     * @return [type]         [description]
+     * @return [type] [description]
      */
     public function getAnotherUsersProfile(array $params) {}
 
@@ -133,7 +132,7 @@ class Geocaching_Api_Xml extends Geocaching_Api {
      *
      * @access public
      * @param  array  $params [description]
-     * @return [type]         [description]
+     * @return [type] [description]
      */
     public function getBookmarkListByGuid(array $params) {}
 
@@ -142,7 +141,7 @@ class Geocaching_Api_Xml extends Geocaching_Api {
      *
      * @access public
      * @param  array  $params [description]
-     * @return [type]         [description]
+     * @return [type] [description]
      */
     public function getGeocacheStatus(array $params) {}
 
@@ -151,7 +150,7 @@ class Geocaching_Api_Xml extends Geocaching_Api {
      *
      * @access public
      * @param  array  $params [description]
-     * @return [type]         [description]
+     * @return [type] [description]
      */
     public function getMoreGeocaches(array $params) {}
 
@@ -160,7 +159,7 @@ class Geocaching_Api_Xml extends Geocaching_Api {
      *
      * @access public
      * @param  array  $params [description]
-     * @return [type]         [description]
+     * @return [type] [description]
      */
     public function getYourUserProfile(array $params)
     {
@@ -168,14 +167,14 @@ class Geocaching_Api_Xml extends Geocaching_Api {
         $eProfileOptions = $dom->createElement('ProfileOptions');
         $method = $dom->getElementsByTagName('GetYourUserProfileRequest')->item(0);
         $method->appendChild($eProfileOptions);
-        foreach($params as $option => $value)
-        {
+        foreach ($params as $option => $value) {
             $eOption = $dom->createElement($option);
             $eProfileOptions->appendChild($eOption);
             $text = $dom->createTextNode(utf8_encode($value ? 'true':'false'));
             $eOption->appendChild($text);
             $eOption->setAttribute("xmlns", $this->xmlns_schema);
         }
+
         return $this->post_request(__FUNCTION__, $dom->saveXML());
     }
 
@@ -184,7 +183,7 @@ class Geocaching_Api_Xml extends Geocaching_Api {
      *
      * @access public
      * @param  array  $params [description]
-     * @return [type]         [description]
+     * @return [type] [description]
      */
     public function saveUserWaypoint(array $params) {}
 
@@ -193,7 +192,7 @@ class Geocaching_Api_Xml extends Geocaching_Api {
      *
      * @access public
      * @param  array  $params [description]
-     * @return [type]         [description]
+     * @return [type] [description]
      */
     public function searchForGeocaches(array $params) {}
 
@@ -202,7 +201,7 @@ class Geocaching_Api_Xml extends Geocaching_Api {
      *
      * @access public
      * @param  array  $params [description]
-     * @return [type]         [description]
+     * @return [type] [description]
      */
     public function searchForSouvenirsByPublicGuid(array $params) {}
 
@@ -211,7 +210,7 @@ class Geocaching_Api_Xml extends Geocaching_Api {
      *
      * @access public
      * @param  array  $params [description]
-     * @return [type]         [description]
+     * @return [type] [description]
      */
     public function updateCacheNote(array $params) {}
 
@@ -220,7 +219,7 @@ class Geocaching_Api_Xml extends Geocaching_Api {
      *
      * @access public
      * @param  array  $params [description]
-     * @return [type]         [description]
+     * @return [type] [description]
      */
     public function uploadImageToGeocacheLog(array $params) {}
 
