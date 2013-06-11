@@ -32,7 +32,7 @@ class OAuth {
      * @access protected
      * @var string
      */
-    protected $live_oauth_url    = 'https://www.geocaching.com/OAuth/Authorize.aspx';
+    protected $live_oauth_url    = 'https://www.geocaching.com/OAuth/oauth.ashx';
 
     /**
      * Production URL for mobile of Groundspeak OAuth
