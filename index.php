@@ -104,7 +104,7 @@ if (!isset($_SESSION['ACCESS_TOKEN'])) {
                     <input type="radio" name="url" value="live_mobile" id="live_mobile" <?php if(isset($_SESSION['ACCESS_TOKEN'])) echo 'disabled="disabled"'; ?>> <label for="live_mobile">Live Mobile</label>
                 </p>
                 <input type="submit" name="oauth" value="OAuth dance!" <?php if(isset($_SESSION['ACCESS_TOKEN'])) echo 'disabled="disabled"'; ?>/>
-                <input type="submit" name="reset" value="Reset OAuth Token" />
+                <input type="submit" name="reset" value="Reset OAuth Token" <?php if(!isset($_SESSION['ACCESS_TOKEN'])) echo 'disabled="disabled"'; ?>/>
             </fieldset>
         </form>
         <?php
