@@ -24,7 +24,19 @@ if(isset($_POST['reset'])) {
     exit(0);
 }
 
-$live = (array_key_exists('mode', $_POST) && $_POST['mode'] == 'production') ? true : false;
+if(!array_key_exists('production', $_SESSION) && array_key_exists('url', $_POST)) {
+    switch ($_POST['url']) {
+        case 'live_mobile':
+        case 'live':
+            $_SESSION['production'] = true;
+            $_SESSION['url'] = $_POST['url'];
+            break;
+        case 'staging':
+        default:
+            $_SESSION['production'] = false;
+            $_SESSION['url'] = $_POST['url'];
+    }
+}
 
 if (!isset($_SESSION['ACCESS_TOKEN'])) {
 
@@ -32,7 +44,7 @@ if (!isset($_SESSION['ACCESS_TOKEN'])) {
 
     //First step : Ask a token, go to the Geocaching OAuth URL
     if(isset($_POST['oauth']) && isset($_POST['oauth_key']) && isset($_POST['oauth_secret'])) {
-        $consumer = new OAuth($_POST['oauth_key'], $_POST['oauth_secret'], $callback_url, $live);
+        $consumer = new OAuth($_POST['oauth_key'], $_POST['oauth_secret'], $callback_url, $_SESSION['url']);
         $consumer->setLogging('/tmp/');
 
         $token = $consumer->getRequestToken();
@@ -44,7 +56,7 @@ if (!isset($_SESSION['ACCESS_TOKEN'])) {
 
     //Second step : Go back from Geocaching OAuth URL, retrieve the token
     if(!empty($_GET) && isset($_SESSION['REQUEST_TOKEN'])) {
-        $consumer = new OAuth($_SESSION['OAUTH_KEY'], $_SESSION['OAUTH_SECRET'], $callback_url, $live);
+        $consumer = new OAuth($_SESSION['OAUTH_KEY'], $_SESSION['OAUTH_SECRET'], $callback_url, $_SESSION['url']);
         $consumer->setLogging('/tmp/');
         $token = $consumer->getAccessToken($_GET, unserialize($_SESSION['REQUEST_TOKEN']));
         $_SESSION['ACCESS_TOKEN'] = serialize($token);
@@ -86,9 +98,10 @@ if (!isset($_SESSION['ACCESS_TOKEN'])) {
                            <?php if(!isset($_SESSION['ACCESS_TOKEN'])) echo 'required'; ?> />
                 </p>
                 <p>
-                    <label>Test mode:</label><br/>
-                    <input type="radio" name="mode" value="staging" id="staging" checked="checked"> <label for="staging">Staging</label>
-                    <input type="radio" name="mode" value="production" id="production"> <label for="production">Production</label>
+                    <label>OAuth URL:</label><br/>
+                    <input type="radio" name="url" value="staging" id="staging" checked="checked" <?php if(isset($_SESSION['ACCESS_TOKEN'])) echo 'disabled="disabled"'; ?>> <label for="staging">Staging</label>
+                    <input type="radio" name="url" value="live" id="live" <?php if(isset($_SESSION['ACCESS_TOKEN'])) echo 'disabled="disabled"'; ?>> <label for="live">Live</label>
+                    <input type="radio" name="url" value="live_mobile" id="live_mobile" <?php if(isset($_SESSION['ACCESS_TOKEN'])) echo 'disabled="disabled"'; ?>> <label for="live_mobile">Live Mobile</label>
                 </p>
                 <input type="submit" name="oauth" value="OAuth dance!" <?php if(isset($_SESSION['ACCESS_TOKEN'])) echo 'disabled="disabled"'; ?>/>
                 <input type="submit" name="reset" value="Reset OAuth Token" />
@@ -98,13 +111,19 @@ if (!isset($_SESSION['ACCESS_TOKEN'])) {
         if (isset($_SESSION['ACCESS_TOKEN']))
         {
             $token = unserialize($_SESSION['ACCESS_TOKEN']);
-            $api   = new Json($token['oauth_token'], $live);
+            echo "<p><strong>Token:</strong> " . $token['oauth_token']."<br/>";
+
+            $api   = new Json($token['oauth_token'], $_SESSION['production']);
             $api->setLogging('/tmp/');
 
             $params = array('PublicProfileData' => true);
-            $user   = $api->getYourUserProfile($params);
+            try {
+                $user   = $api->getYourUserProfile($params);
+            }
+            catch(Exception $e) {
+                echo '<p>' . $e->getMessage() . '</p>';
+            }
 
-            echo "<p><strong>Token:</strong> " . $token['oauth_token']."<br/>";
             echo "<strong>Connected as:</strong> " . $user->Profile->User->UserName . " (Id = " . $user->Profile->User->Id . ")<br/>";
 
             preg_match('/([0-9]+)/', $user->Profile->PublicProfile->MemberSince, $matches);
