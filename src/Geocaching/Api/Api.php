@@ -11,10 +11,14 @@
 namespace Geocaching\Api;
 
 use Geocaching\Log\KLogger as KLogger;
+use Exception;
 
 /**
- * Geocaching API
+ * Abstract class for Geocaching API
  *
+ * @author  Surfoo <surfooo@gmail.com>
+ * @link    https://github.com/Surfoo/geocaching-api
+ * @license http://opensource.org/licenses/eclipse-2.0.php
  * @package Geocaching\Api
  * @abstract
  */

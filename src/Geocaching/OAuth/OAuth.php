@@ -11,36 +11,22 @@
 namespace Geocaching\OAuth;
 
 use Geocaching\Log\KLogger as KLogger;
+use Exception;
 
 /**
  * OAuth for the Geocaching API
  * @package Geocaching\OAuth
  */
-class OAuth {
-
+class OAuth
+{
     /**
-     * Staging URL of Groundspeak OAuth
-     *
+     * List of OAuth URL
      * @access protected
-     * @var string
+     * @var array
      */
-    protected $staging_oauth_url = 'http://staging.geocaching.com/OAuth/oauth.ashx';
-
-    /**
-     * Production URL of Groundspeak OAuth
-     *
-     * @access protected
-     * @var string
-     */
-    protected $live_oauth_url    = 'https://www.geocaching.com/OAuth/oauth.ashx';
-
-    /**
-     * Production URL for mobile of Groundspeak OAuth
-     *
-     * @access protected
-     * @var string
-     */
-    protected $live_mobile_oauth_url = 'https://www.geocaching.com/oauth/mobileoauth.ashx';
+    protected $list_oauth_url = array('staging'     => 'http://staging.geocaching.com/OAuth/oauth.ashx',
+                                      'live'        => 'https://www.geocaching.com/OAuth/oauth.ashx',
+                                      'live_mobile' => 'https://www.geocaching.com/oauth/mobileoauth.ashx');
 
     /**
      * Log OAuth requests in a file
@@ -126,54 +112,48 @@ class OAuth {
      * Constructor
      *
      * @access public
-     * @param string  $consumer_key OAuth Key
+     * @param string  $consumer_key    OAuth Key
      * @param string  $consumer_secret OAuth Secret
-     * @param string  $callback_url Callbak URL
-     * @param boolean $live true => production, false => staging
+     * @param string  $callback_url    Callbak URL
+     * @param boolean $live            true => production, false => staging
      */
-    public function __construct($consumer_key, $consumer_secret, $callback_url, $live = false)
+    public function __construct($consumer_key, $consumer_secret, $callback_url, $url = 'staging')
     {
-        if(empty($consumer_key))
-        {
-            throw new Exception("consumer_key is missing.");
+        if (empty($consumer_key)) {
+            throw new Exception("consumer_key is missing");
         }
-        if(empty($consumer_secret))
-        {
+        if (empty($consumer_secret)) {
             throw new Exception("consumer_secret is missing");
         }
-        if(empty($callback_url))
-        {
+        if (empty($callback_url)) {
             throw new Exception("callback_url is missing");
         }
+        if (!in_array($url, array_keys($this->list_oauth_url))) {
+            throw new Exception("OAuth URL is invalid");
+        }
+
         $this->consumer_key    = $consumer_key;
 
         $this->consumer_secret = $consumer_secret;
 
         $this->callback_url    = $callback_url;
 
-        if($live) {
-            $this->oauth_url = $this->live_oauth_url;
-        }
-        else {
-            $this->oauth_url = $this->staging_oauth_url;
-        }
+        $this->oauth_url       = $this->list_oauth_url[$url];
     }
 
     /**
      * Enable or disable log messages
      *
-     * @param string $directory
+     * @param  string $directory
      * @return void
      */
     public function setLogging($directory)
     {
-        if($directory)
-        {
+        if ($directory) {
             $this->logger = new KLogger($directory, KLogger::INFO);
             $this->logging = true;
         }
-        if($this->logging && !$directory)
-        {
+        if ($this->logging && !$directory) {
             unset($this->logger);
             $this->logging = false;
         }
@@ -181,14 +161,13 @@ class OAuth {
 
     /**
      * Log informations into the log file
-     * @param  string $infos 
-     * @param  array $obj
+     * @param  string $infos
+     * @param  array  $obj
      * @return void
      */
     protected function log($infos, $obj)
     {
-        if(!$this->logging)
-        {
+        if (!$this->logging) {
             return false;
         }
         $this->logger->logInfo('OAUTH: ' . $infos, $obj);
@@ -234,6 +213,7 @@ class OAuth {
         if (!$this->oauth_callback_confirmed) {
             return array();
         }
+
         return array('auth_token' => $this->auth_token,
                      'auth_token_secret' => $this->auth_token_secret);
     }
@@ -242,7 +222,7 @@ class OAuth {
      * Get Access Token
      *
      * @access public
-     * @param  array $queryData
+     * @param  array  $queryData
      * @param  string $token
      * @return string
      */
@@ -284,8 +264,8 @@ class OAuth {
      * Signature hmac_sha1
      *
      * @access protected
-     * @param  array $params
-     * @param  array $secret
+     * @param  array  $params
+     * @param  array  $secret
      * @return string
      */
     protected function signature_hmac_sha1($params, $secret = array())
@@ -349,8 +329,7 @@ class OAuth {
 
         $response = curl_exec($ch);
         $status = curl_getinfo($ch);
-        if($status['http_code'] != 200)
-        {
+        if ($status['http_code'] != 200) {
             throw new Exception(curl_errno($ch));
         }
         curl_close($ch);
@@ -365,7 +344,7 @@ class OAuth {
      * This function makes it easier to find the sent string exactly as it was sent.
      *
      * @access protected
-     * @param string $string
+     * @param  string $string
      * @return string
      */
     protected function http_explode_data($string)
@@ -374,8 +353,7 @@ class OAuth {
         $out = array();
         $i = 0;
 
-        foreach ($string as $line)
-        {
+        foreach ($string as $line) {
             $parts = explode('=', $line);
 
             $key = $this->oauth_loosy_decode($parts[0]);
@@ -392,7 +370,7 @@ class OAuth {
      * In PHP 5.3+ you'll just need to do rawurlencode.
      *
      * @access protected
-     * @param string $str
+     * @param  string $str
      * @return string
      */
     protected function rfc3986_encode($str)
@@ -404,6 +382,7 @@ class OAuth {
         if (version_compare(phpversion(), '5.3', '>=')) {
             return rawurlencode($str);
         }
+
         return str_replace('%7E', '~', rawurlencode($str));
     }
 
@@ -417,12 +396,13 @@ class OAuth {
      * and MUST be properly decoded"
      *
      * @access protected
-     * @param string $str
+     * @param  string $str
      * @return string
      */
     protected function oauth_loosy_decode($str)
     {
         $str = str_replace('+', '%20', $str);
+
         return rawurldecode($str);
     }
 
@@ -434,48 +414,44 @@ class OAuth {
      */
     public static function getRequestUri()
     {
-        if (!empty($_SERVER['HTTP_X_REQUESTED_HOST']))
-        {
+        if (!empty($_SERVER['HTTP_X_REQUESTED_HOST'])) {
             $path = $_SERVER['HTTP_X_REQUESTED_PATH'];
-            if (isset($_SERVER['HTTP_X_REQUESTED_QUERY_STRING']))
-            {
+            if (isset($_SERVER['HTTP_X_REQUESTED_QUERY_STRING'])) {
                 $tmp_get = array();
                 parse_str($_SERVER['HTTP_X_REQUESTED_QUERY_STRING'], $tmp_get);
 
-                if (is_array($tmp_get))
-                {
+                if (is_array($tmp_get)) {
                     $path .= '?' . http_build_query($tmp_get, '', '&');
                 }
                 unset($tmp_get);
             }
             $path = preg_replace('/^[\/]+/', '/', $path);
+
             return $path;
         }
-        if (isset($_SERVER['REQUEST_URI']))
-        {
+        if (isset($_SERVER['REQUEST_URI'])) {
             $url = explode('?', $_SERVER['REQUEST_URI']);
             $url = $url[0];
             $parsed_url = @parse_url($url);
             $path = '';
-            if (isset($parsed_url['path']))
-            {
+            if (isset($parsed_url['path'])) {
                 $parsed_url['path'] = preg_replace('/^([\/]+)/', '/', $parsed_url['path']);
                 $path .= $parsed_url['path'];
             }
-            if (!empty($_SERVER['QUERY_STRING']))
-            {
+            if (!empty($_SERVER['QUERY_STRING'])) {
                 $tmp_get = array();
                 parse_str($_SERVER['QUERY_STRING'], $tmp_get);
 
-                if (is_array($tmp_get))
-                {
+                if (is_array($tmp_get)) {
                     $path .= '?' . http_build_query($tmp_get, '', '&');
                 }
                 unset($tmp_get);
             }
             $path = preg_replace('/^[\/]+/', '/', $path);
+
             return $path;
         }
+
         return '';
     }
 }

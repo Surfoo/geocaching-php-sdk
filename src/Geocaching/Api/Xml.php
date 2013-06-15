@@ -10,6 +10,8 @@
 
 namespace Geocaching\Api;
 
+use Exception;
+
 /**
  * Geocaching API for XML format
  *
