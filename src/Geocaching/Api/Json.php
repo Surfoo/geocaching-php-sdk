@@ -613,7 +613,7 @@ class Json extends Api
     {
         $post_params = array();
         if(array_key_exists('UserID', $params))
-            $post_params['UserID'] = $userID;
+            $post_params['UserID'] = (int) $params['UserID'];
         if(array_key_exists('FavoritePointsData', $params))
             $post_params['ProfileOptions']['FavoritePointsData'] = (boolean) $params['FavoritePointsData'];
         if(array_key_exists('GeocacheData', $params))
