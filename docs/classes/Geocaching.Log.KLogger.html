@@ -3,294 +3,335 @@
 <head>
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
     <meta charset="utf-8"/>
-    <title>     &raquo; \Geocaching\Log\KLogger
+    <title>    Geocaching API with PHP 5 &raquo; \Geocaching\Log\KLogger
 </title>
     <meta name="author" content=""/>
     <meta name="description" content=""/>
-
-    <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
-    <![endif]-->
-
-    <link href="../css/template.css" rel="stylesheet" media="all"/>
-    <script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
-    <script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script>
-    <script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script>
-    <script src="../js/bootstrap.js" type="text/javascript"></script>
-    <script src="../js/template.js" type="text/javascript"></script>
-    <script src="../js/prettify/prettify.min.js" type="text/javascript"></script>
-
-    <link rel="shortcut icon" href="../img/favicon.ico"/>
-    <link rel="apple-touch-icon" href="../img/apple-touch-icon.png"/>
-    <link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png"/>
-    <link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png"/>
-</head>
+            <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+        <![endif]-->
+        <script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+        <script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script>
+        <script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script>
+        <script src="../js/bootstrap.js" type="text/javascript"></script>
+        <script src="../js/template.js" type="text/javascript"></script>
+        <script src="../js/prettify/prettify.min.js" type="text/javascript"></script>
+    
+            <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+            <link rel="shortcut icon" href="../img/favicon.ico"/>
+        <link rel="apple-touch-icon" href="../img/apple-touch-icon.png"/>
+        <link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png"/>
+        <link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png"/>
+    </head>
 <body>
 
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span> <span class="icon-bar"></span>
-                <span class="icon-bar"></span> </a>
-            <a class="brand" href="../index.html">Geocaching API with PHP 5</a>
+        <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span> <span class="icon-bar"></span>
+                    <span class="icon-bar"></span> </a>
+                <a class="brand" href="../index.html">Geocaching API with PHP 5</a>
 
-            <div class="nav-collapse">
-                <ul class="nav">
-                    <li class="dropdown">
-                        <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
-                            API Documentation <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu">
-                                                                                </ul>
-                    </li>
-                    <li class="dropdown" id="charts-menu">
-                        <a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
-                            Charts <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="../graph_class.html">
-                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown" id="reports-menu">
-                        <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
-                            Reports <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="../errors.html"><i class="icon-list-alt"></i>&#160;Errors</a></li>
-                            <li><a href="../markers.html"><i class="icon-list-alt"></i>&#160;Markers</a></li>
-                            <li><a href="../deprecated.html"><i class="icon-list-alt"></i>&#160;Deprecated</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="go_to_top">
-        <a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>
-    </div>
-</div>
-
-<div id="___" class="container">
-    <noscript>
-        <div class="alert alert-warning">
-            Javascript is disabled; several features are only available if Javascript is enabled.
-        </div>
-    </noscript>
-
-        
-    <div class="row">
-        <div class="span4">
-            <span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
-                <button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
-            </div>
-            <ul class="side-nav nav nav-list">
-                <li class="nav-header">
-                    <i class="icon-custom icon-method"></i> Methods
-                    <ul>
-                                                                                <li class="method public">
-                                <a href="#method_instance" title="instance :: Partially implements the Singleton pattern. Each $logDirectory gets one
-instance.">
-                                    <span class="description">Partially implements the Singleton pattern. Each $logDirectory gets one
-instance.</span><pre>instance</pre>
-                                </a>
-                            </li>
-                                                                                                            <li class="method public">
-                                <a href="#method___construct" title="__construct :: Class constructor">
-                                    <span class="description">Class constructor</span><pre>__construct</pre>
-                                </a>
-                            </li>
-                                                                                                            <li class="method public">
-                                <a href="#method___destruct" title="__destruct :: Class destructor">
-                                    <span class="description">Class destructor</span><pre>__destruct</pre>
-                                </a>
-                            </li>
-                                                                                                            <li class="method public">
-                                <a href="#method_logDebug" title="logDebug :: Writes a $line to the log with a severity level of DEBUG">
-                                    <span class="description">Writes a $line to the log with a severity level of DEBUG</span><pre>logDebug</pre>
-                                </a>
-                            </li>
-                                                                                                            <li class="method public">
-                                <a href="#method_getMessage" title="getMessage :: Returns (and removes) the last message from the queue.">
-                                    <span class="description">Returns (and removes) the last message from the queue.</span><pre>getMessage</pre>
-                                </a>
-                            </li>
-                                                                                                            <li class="method public">
-                                <a href="#method_getMessages" title="getMessages :: Returns the entire message queue (leaving it intact)">
-                                    <span class="description">Returns the entire message queue (leaving it intact)</span><pre>getMessages</pre>
-                                </a>
-                            </li>
-                                                                                                            <li class="method public">
-                                <a href="#method_clearMessages" title="clearMessages :: Empties the message queue">
-                                    <span class="description">Empties the message queue</span><pre>clearMessages</pre>
-                                </a>
-                            </li>
-                                                                                                            <li class="method public">
-                                <a href="#method_setDateFormat" title="setDateFormat :: Sets the date format used by all instances of KLogger">
-                                    <span class="description">Sets the date format used by all instances of KLogger</span><pre>setDateFormat</pre>
-                                </a>
-                            </li>
-                                                                                                            <li class="method public">
-                                <a href="#method_logInfo" title="logInfo :: Writes a $line to the log with a severity level of INFO. Any information
-can be used here, or it could be used with E_STRICT errors">
-                                    <span class="description">Writes a $line to the log with a severity level of INFO. Any information
-can be used here, or it could be used with E_STRICT errors</span><pre>logInfo</pre>
-                                </a>
-                            </li>
-                                                                                                            <li class="method public">
-                                <a href="#method_logNotice" title="logNotice :: Writes a $line to the log with a severity level of NOTICE. Generally
-corresponds to E_STRICT, E_NOTICE, or E_USER_NOTICE errors">
-                                    <span class="description">Writes a $line to the log with a severity level of NOTICE. Generally
-corresponds to E_STRICT, E_NOTICE, or E_USER_NOTICE errors</span><pre>logNotice</pre>
-                                </a>
-                            </li>
-                                                                                                            <li class="method public">
-                                <a href="#method_logWarn" title="logWarn :: Writes a $line to the log with a severity level of WARN. Generally
-corresponds to E_WARNING, E_USER_WARNING, E_CORE_WARNING, or
-E_COMPILE_WARNING">
-                                    <span class="description">Writes a $line to the log with a severity level of WARN. Generally
-corresponds to E_WARNING, E_USER_WARNING, E_CORE_WARNING, or
-E_COMPILE_WARNING</span><pre>logWarn</pre>
-                                </a>
-                            </li>
-                                                                                                            <li class="method public">
-                                <a href="#method_logError" title="logError :: Writes a $line to the log with a severity level of ERR. Most likely used
-with E_RECOVERABLE_ERROR">
-                                    <span class="description">Writes a $line to the log with a severity level of ERR. Most likely used
-with E_RECOVERABLE_ERROR</span><pre>logError</pre>
-                                </a>
-                            </li>
-                                                                                                            <li class="method public">
-                                <a href="#method_logFatal" title="logFatal :: Writes a $line to the log with a severity level of FATAL. Generally
-corresponds to E_ERROR, E_USER_ERROR, E_CORE_ERROR, or E_COMPILE_ERROR">
-                                    <span class="description">Writes a $line to the log with a severity level of FATAL. Generally
-corresponds to E_ERROR, E_USER_ERROR, E_CORE_ERROR, or E_COMPILE_ERROR</span><pre>logFatal</pre>
-                                </a>
-                            </li>
-                                                                                                            <li class="method public">
-                                <a href="#method_logAlert" title="logAlert :: Writes a $line to the log with a severity level of ALERT.">
-                                    <span class="description">Writes a $line to the log with a severity level of ALERT.</span><pre>logAlert</pre>
-                                </a>
-                            </li>
-                                                                                                            <li class="method public">
-                                <a href="#method_logCrit" title="logCrit :: Writes a $line to the log with a severity level of CRIT.">
-                                    <span class="description">Writes a $line to the log with a severity level of CRIT.</span><pre>logCrit</pre>
-                                </a>
-                            </li>
-                                                                                                            <li class="method public">
-                                <a href="#method_logEmerg" title="logEmerg :: Writes a $line to the log with a severity level of EMERG.">
-                                    <span class="description">Writes a $line to the log with a severity level of EMERG.</span><pre>logEmerg</pre>
-                                </a>
-                            </li>
-                                                                                                            <li class="method public">
-                                <a href="#method_log" title="log :: Writes a $line to the log with the given severity">
-                                    <span class="description">Writes a $line to the log with the given severity</span><pre>log</pre>
-                                </a>
-                            </li>
-                                                                                                            <li class="method public">
-                                <a href="#method_writeFreeFormLine" title="writeFreeFormLine :: Writes a line to the log without prepending a status or timestamp">
-                                    <span class="description">Writes a line to the log without prepending a status or timestamp</span><pre>writeFreeFormLine</pre>
-                                </a>
-                            </li>
-                                                                                                                            </ul>
-                </li>
-                <li class="nav-header protected">» Protected
-                    <ul>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </ul>
-                </li>
-                <li class="nav-header private">» Private
-                    <ul>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <li class="method private">
-                                    <a href="#method__getTimeLine" title="_getTimeLine :: ">
-                                        <span class="description"></span><pre>_getTimeLine</pre>
+                <div class="nav-collapse">
+                    <ul class="nav">
+                        <li class="dropdown">
+                            <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                API Documentation <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                                                    <li><a>Namespaces</a></li>
+                                                                        <li><a href="../namespaces/Geocaching.html">Geocaching</a></li>
+                                                                                                                                </ul>
+                        </li>
+                        <li class="dropdown" id="charts-menu">
+                            <a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                Charts <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="../graph_class.html">
+                                        <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
                                     </a>
                                 </li>
-                                                                        </ul>
+                            </ul>
+                        </li>
+                        <li class="dropdown" id="reports-menu">
+                            <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                Reports <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="../errors.html">
+                                        <i class="icon-list-alt"></i>&#160;Errors
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../markers.html">
+                                        <i class="icon-list-alt"></i>&#160;Markers
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../deprecated.html">
+                                        <i class="icon-list-alt"></i>&#160;Deprecated
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="go_to_top">
+            <a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>
+        </div>
+    </div>
+    
+    <div id="___" class="container">
+        <noscript>
+            <div class="alert alert-warning">
+                Javascript is disabled; several features are only available if Javascript is enabled.
+            </div>
+        </noscript>
+
+        
+            <div class="row">
+        <div class="span4">
+                    <span class="btn-group visibility" data-toggle="buttons-checkbox">
+        <button class="btn public active" title="Show public elements">Public</button>
+        <button class="btn protected" title="Show protected elements">Protected</button>
+        <button class="btn private" title="Show private elements">Private</button>
+        <button class="btn inherited active" title="Show inherited elements">Inherited</button>
+    </span>
+    <div class="btn-group view pull-right" data-toggle="buttons-radio">
+        <button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button>
+        <button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+    </div>
+
+        <ul class="side-nav nav nav-list">
+        <li class="nav-header">
+            <i class="icon-custom icon-method"></i> Methods
+            <ul>
+                                                                                    <li class="method public">
+        <a href="#method_instance" title="instance :: Partially implements the Singleton pattern. Each $logDirectory gets one
+instance.">
+            <span class="description">Partially implements the Singleton pattern. Each $logDirectory gets one
+instance.</span><pre>instance</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method___construct" title="__construct :: Class constructor">
+            <span class="description">Class constructor</span><pre>__construct</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method___destruct" title="__destruct :: Class destructor">
+            <span class="description">Class destructor</span><pre>__destruct</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_logDebug" title="logDebug :: Writes a $line to the log with a severity level of DEBUG">
+            <span class="description">Writes a $line to the log with a severity level of DEBUG</span><pre>logDebug</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_getMessage" title="getMessage :: Returns (and removes) the last message from the queue.">
+            <span class="description">Returns (and removes) the last message from the queue.</span><pre>getMessage</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_getMessages" title="getMessages :: Returns the entire message queue (leaving it intact)">
+            <span class="description">Returns the entire message queue (leaving it intact)</span><pre>getMessages</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_clearMessages" title="clearMessages :: Empties the message queue">
+            <span class="description">Empties the message queue</span><pre>clearMessages</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_setDateFormat" title="setDateFormat :: Sets the date format used by all instances of KLogger">
+            <span class="description">Sets the date format used by all instances of KLogger</span><pre>setDateFormat</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_logInfo" title="logInfo :: Writes a $line to the log with a severity level of INFO. Any information
+can be used here, or it could be used with E_STRICT errors">
+            <span class="description">Writes a $line to the log with a severity level of INFO. Any information
+can be used here, or it could be used with E_STRICT errors</span><pre>logInfo</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_logNotice" title="logNotice :: Writes a $line to the log with a severity level of NOTICE. Generally
+corresponds to E_STRICT, E_NOTICE, or E_USER_NOTICE errors">
+            <span class="description">Writes a $line to the log with a severity level of NOTICE. Generally
+corresponds to E_STRICT, E_NOTICE, or E_USER_NOTICE errors</span><pre>logNotice</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_logWarn" title="logWarn :: Writes a $line to the log with a severity level of WARN. Generally
+corresponds to E_WARNING, E_USER_WARNING, E_CORE_WARNING, or
+E_COMPILE_WARNING">
+            <span class="description">Writes a $line to the log with a severity level of WARN. Generally
+corresponds to E_WARNING, E_USER_WARNING, E_CORE_WARNING, or
+E_COMPILE_WARNING</span><pre>logWarn</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_logError" title="logError :: Writes a $line to the log with a severity level of ERR. Most likely used
+with E_RECOVERABLE_ERROR">
+            <span class="description">Writes a $line to the log with a severity level of ERR. Most likely used
+with E_RECOVERABLE_ERROR</span><pre>logError</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_logFatal" title="logFatal :: Writes a $line to the log with a severity level of FATAL. Generally
+corresponds to E_ERROR, E_USER_ERROR, E_CORE_ERROR, or E_COMPILE_ERROR">
+            <span class="description">Writes a $line to the log with a severity level of FATAL. Generally
+corresponds to E_ERROR, E_USER_ERROR, E_CORE_ERROR, or E_COMPILE_ERROR</span><pre>logFatal</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_logAlert" title="logAlert :: Writes a $line to the log with a severity level of ALERT.">
+            <span class="description">Writes a $line to the log with a severity level of ALERT.</span><pre>logAlert</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_logCrit" title="logCrit :: Writes a $line to the log with a severity level of CRIT.">
+            <span class="description">Writes a $line to the log with a severity level of CRIT.</span><pre>logCrit</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_logEmerg" title="logEmerg :: Writes a $line to the log with a severity level of EMERG.">
+            <span class="description">Writes a $line to the log with a severity level of EMERG.</span><pre>logEmerg</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_log" title="log :: Writes a $line to the log with the given severity">
+            <span class="description">Writes a $line to the log with the given severity</span><pre>log</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_writeFreeFormLine" title="writeFreeFormLine :: Writes a line to the log without prepending a status or timestamp">
+            <span class="description">Writes a line to the log without prepending a status or timestamp</span><pre>writeFreeFormLine</pre>
+        </a>
+    </li>
+
+                                                                                                        </ul>
+        </li>
+        <li class="nav-header protected">» Protected
+            <ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </ul>
+        </li>
+        <li class="nav-header private">» Private
+            <ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <li class="method private">
+                            <a href="#method__getTimeLine" title="_getTimeLine :: getTimeLine">
+                                <span class="description">getTimeLine</span><pre>_getTimeLine</pre>
+                            </a>
+                        </li>
+                                                </ul>
+        </li>
+        <li class="nav-header">
+            <i class="icon-custom icon-constant"></i> Constants
+            <ul>
+                                <li class="constant ">
+                    <a href="#constant_EMERG" title="EMERG :: Error severity, from low to high. From BSD syslog RFC, secion 4.1.1">
+                        <span class="description">Error severity, from low to high. From BSD syslog RFC, secion 4.1.1</span><pre>EMERG</pre>
+                    </a>
                 </li>
-                <li class="nav-header">
-                    <i class="icon-custom icon-constant"></i> Constants
-                    <ul>
-                                                <li class="constant ">
-                            <a href="#constant_EMERG" title="EMERG :: Error severity, from low to high. From BSD syslog RFC, secion 4.1.1">
-                                <span class="description">Error severity, from low to high. From BSD syslog RFC, secion 4.1.1</span><pre>EMERG</pre>
-                            </a>
-                        </li>
-                                                <li class="constant ">
-                            <a href="#constant_ALERT" title="ALERT :: ">
-                                <span class="description"></span><pre>ALERT</pre>
-                            </a>
-                        </li>
-                                                <li class="constant ">
-                            <a href="#constant_CRIT" title="CRIT :: ">
-                                <span class="description"></span><pre>CRIT</pre>
-                            </a>
-                        </li>
-                                                <li class="constant ">
-                            <a href="#constant_ERR" title="ERR :: ">
-                                <span class="description"></span><pre>ERR</pre>
-                            </a>
-                        </li>
-                                                <li class="constant ">
-                            <a href="#constant_WARN" title="WARN :: ">
-                                <span class="description"></span><pre>WARN</pre>
-                            </a>
-                        </li>
-                                                <li class="constant ">
-                            <a href="#constant_NOTICE" title="NOTICE :: ">
-                                <span class="description"></span><pre>NOTICE</pre>
-                            </a>
-                        </li>
-                                                <li class="constant ">
-                            <a href="#constant_INFO" title="INFO :: ">
-                                <span class="description"></span><pre>INFO</pre>
-                            </a>
-                        </li>
-                                                <li class="constant ">
-                            <a href="#constant_DEBUG" title="DEBUG :: ">
-                                <span class="description"></span><pre>DEBUG</pre>
-                            </a>
-                        </li>
-                                                <li class="constant ">
-                            <a href="#constant_OFF" title="OFF :: Log nothing at all">
-                                <span class="description">Log nothing at all</span><pre>OFF</pre>
-                            </a>
-                        </li>
-                                                <li class="constant ">
-                            <a href="#constant_FATAL" title="FATAL :: Alias for CRIT">
-                                <span class="description">Alias for CRIT</span><pre>FATAL</pre>
-                            </a>
-                        </li>
-                                                <li class="constant ">
-                            <a href="#constant_STATUS_LOG_OPEN" title="STATUS_LOG_OPEN :: Internal status codes">
-                                <span class="description">Internal status codes</span><pre>STATUS_LOG_OPEN</pre>
-                            </a>
-                        </li>
-                                                <li class="constant ">
-                            <a href="#constant_STATUS_OPEN_FAILED" title="STATUS_OPEN_FAILED :: ">
-                                <span class="description"></span><pre>STATUS_OPEN_FAILED</pre>
-                            </a>
-                        </li>
-                                                <li class="constant ">
-                            <a href="#constant_STATUS_LOG_CLOSED" title="STATUS_LOG_CLOSED :: ">
-                                <span class="description"></span><pre>STATUS_LOG_CLOSED</pre>
-                            </a>
-                        </li>
-                                                <li class="constant ">
-                            <a href="#constant_NO_ARGUMENTS" title="NO_ARGUMENTS :: We need a default argument value in order to add the ability to easily
+                                <li class="constant ">
+                    <a href="#constant_ALERT" title="ALERT :: ">
+                        <span class="description"></span><pre>ALERT</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_CRIT" title="CRIT :: ">
+                        <span class="description"></span><pre>CRIT</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_ERR" title="ERR :: ">
+                        <span class="description"></span><pre>ERR</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_WARN" title="WARN :: ">
+                        <span class="description"></span><pre>WARN</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_NOTICE" title="NOTICE :: ">
+                        <span class="description"></span><pre>NOTICE</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_INFO" title="INFO :: ">
+                        <span class="description"></span><pre>INFO</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_DEBUG" title="DEBUG :: ">
+                        <span class="description"></span><pre>DEBUG</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_OFF" title="OFF :: Log nothing at all">
+                        <span class="description">Log nothing at all</span><pre>OFF</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_FATAL" title="FATAL :: Alias for CRIT">
+                        <span class="description">Alias for CRIT</span><pre>FATAL</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_STATUS_LOG_OPEN" title="STATUS_LOG_OPEN :: Internal status codes">
+                        <span class="description">Internal status codes</span><pre>STATUS_LOG_OPEN</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_STATUS_OPEN_FAILED" title="STATUS_OPEN_FAILED :: ">
+                        <span class="description"></span><pre>STATUS_OPEN_FAILED</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_STATUS_LOG_CLOSED" title="STATUS_LOG_CLOSED :: ">
+                        <span class="description"></span><pre>STATUS_LOG_CLOSED</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_NO_ARGUMENTS" title="NO_ARGUMENTS :: We need a default argument value in order to add the ability to easily
 print out objects etc. But we can&#039;t use NULL, 0, FALSE, etc, because those
 are often the values the developers will test for. So we&#039;ll make one up.">
-                                <span class="description">We need a default argument value in order to add the ability to easily
+                        <span class="description">We need a default argument value in order to add the ability to easily
 print out objects etc. But we can&#039;t use NULL, 0, FALSE, etc, because those
 are often the values the developers will test for. So we&#039;ll make one up.</span><pre>NO_ARGUMENTS</pre>
-                            </a>
-                        </li>
-                                            </ul>
+                    </a>
                 </li>
-            </ul>
+                            </ul>
+        </li>
+    </ul>
+
+
         </div>
 
         <div class="span8">
@@ -309,16 +350,19 @@ are often the values the developers will test for. So we&#039;ll make one up.</s
                                     <th>
                                         package
                                                                             </th>
-                                    <td>Geocaching\Log</td>
+                                    <td>
+                                                                                <p>Geocaching\Log</p>
+
+                                    </td>
                                 </tr>
-                                                                                                                            </table>
+                                                                        </table>
 
                     <h3><i class="icon-custom icon-method"></i> Methods</h3>
-                                            <a id="method_instance"></a>
+                                                                <a id="method_instance"></a>
                         <div class="element clickable method public method_instance" data-toggle="collapse" data-target=".method_instance .collapse">
                             <h2>Partially implements the Singleton pattern. Each $logDirectory gets one
 instance.</h2>
-                            <pre>instance(string $logDirectory = false, integer $severity = false) </pre>
+                            <pre>instance(string $logDirectory = false, integer $severity = false) : \Geocaching\Log\KLogger</pre>
                             <div class="labels">
                                                                 <span class="label">static</span>                                                                                                                            </div>
                             <div class="row collapse">
@@ -348,13 +392,16 @@ instance.</h2>
 </p>
                                             </div>
                                                                             
+                                                                            <h3>Response</h3>
+                                        <code><a href="../classes/Geocaching.Log.KLogger.html">\Geocaching\Log\KLogger</a></code><p>
+</p>
                                                                     </div>
                             </div>
                         </div>
                                             <a id="method___construct"></a>
                         <div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
                             <h2>Class constructor</h2>
-                            <pre>__construct(string $logDirectory, integer $severity) </pre>
+                            <pre>__construct(string $logDirectory, integer $severity) : void</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
                             <div class="row collapse">
@@ -422,7 +469,7 @@ instance.</h2>
                                             <a id="method_logDebug"></a>
                         <div class="element clickable method public method_logDebug" data-toggle="collapse" data-target=".method_logDebug .collapse">
                             <h2>Writes a $line to the log with a severity level of DEBUG</h2>
-                            <pre>logDebug(string $line, $args = self::NO_ARGUMENTS) </pre>
+                            <pre>logDebug(string $line, $args = self::NO_ARGUMENTS) : void</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
                             <div class="row collapse">
@@ -458,7 +505,7 @@ instance.</h2>
                                             <a id="method_getMessage"></a>
                         <div class="element clickable method public method_getMessage" data-toggle="collapse" data-target=".method_getMessage .collapse">
                             <h2>Returns (and removes) the last message from the queue.</h2>
-                            <pre>getMessage() </pre>
+                            <pre>getMessage() : string</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
                             <div class="row collapse">
@@ -477,13 +524,16 @@ instance.</h2>
                                                                             </table>
 
                                     
+                                                                            <h3>Response</h3>
+                                        <code>string</code><p>
+</p>
                                                                     </div>
                             </div>
                         </div>
                                             <a id="method_getMessages"></a>
                         <div class="element clickable method public method_getMessages" data-toggle="collapse" data-target=".method_getMessages .collapse">
                             <h2>Returns the entire message queue (leaving it intact)</h2>
-                            <pre>getMessages() </pre>
+                            <pre>getMessages() : array</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
                             <div class="row collapse">
@@ -502,13 +552,16 @@ instance.</h2>
                                                                             </table>
 
                                     
+                                                                            <h3>Response</h3>
+                                        <code>array</code><p>
+</p>
                                                                     </div>
                             </div>
                         </div>
                                             <a id="method_clearMessages"></a>
                         <div class="element clickable method public method_clearMessages" data-toggle="collapse" data-target=".method_clearMessages .collapse">
                             <h2>Empties the message queue</h2>
-                            <pre>clearMessages() </pre>
+                            <pre>clearMessages() : void</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
                             <div class="row collapse">
@@ -572,7 +625,7 @@ instance.</h2>
                         <div class="element clickable method public method_logInfo" data-toggle="collapse" data-target=".method_logInfo .collapse">
                             <h2>Writes a $line to the log with a severity level of INFO. Any information
 can be used here, or it could be used with E_STRICT errors</h2>
-                            <pre>logInfo(string $line, $args = self::NO_ARGUMENTS) </pre>
+                            <pre>logInfo(string $line, $args = self::NO_ARGUMENTS) : void</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
                             <div class="row collapse">
@@ -609,7 +662,7 @@ can be used here, or it could be used with E_STRICT errors</h2>
                         <div class="element clickable method public method_logNotice" data-toggle="collapse" data-target=".method_logNotice .collapse">
                             <h2>Writes a $line to the log with a severity level of NOTICE. Generally
 corresponds to E_STRICT, E_NOTICE, or E_USER_NOTICE errors</h2>
-                            <pre>logNotice(string $line, $args = self::NO_ARGUMENTS) </pre>
+                            <pre>logNotice(string $line, $args = self::NO_ARGUMENTS) : void</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
                             <div class="row collapse">
@@ -647,7 +700,7 @@ corresponds to E_STRICT, E_NOTICE, or E_USER_NOTICE errors</h2>
                             <h2>Writes a $line to the log with a severity level of WARN. Generally
 corresponds to E_WARNING, E_USER_WARNING, E_CORE_WARNING, or
 E_COMPILE_WARNING</h2>
-                            <pre>logWarn(string $line, $args = self::NO_ARGUMENTS) </pre>
+                            <pre>logWarn(string $line, $args = self::NO_ARGUMENTS) : void</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
                             <div class="row collapse">
@@ -684,7 +737,7 @@ E_COMPILE_WARNING</h2>
                         <div class="element clickable method public method_logError" data-toggle="collapse" data-target=".method_logError .collapse">
                             <h2>Writes a $line to the log with a severity level of ERR. Most likely used
 with E_RECOVERABLE_ERROR</h2>
-                            <pre>logError(string $line, $args = self::NO_ARGUMENTS) </pre>
+                            <pre>logError(string $line, $args = self::NO_ARGUMENTS) : void</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
                             <div class="row collapse">
@@ -721,7 +774,7 @@ with E_RECOVERABLE_ERROR</h2>
                         <div class="element clickable method public method_logFatal" data-toggle="collapse" data-target=".method_logFatal .collapse">
                             <h2>Writes a $line to the log with a severity level of FATAL. Generally
 corresponds to E_ERROR, E_USER_ERROR, E_CORE_ERROR, or E_COMPILE_ERROR</h2>
-                            <pre>logFatal(string $line, $args = self::NO_ARGUMENTS) </pre>
+                            <pre>logFatal(string $line, $args = self::NO_ARGUMENTS) : void</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
                             <div class="row collapse">
@@ -735,8 +788,8 @@ corresponds to E_ERROR, E_USER_ERROR, E_CORE_ERROR, or E_COMPILE_ERROR</h2>
                                                     deprecated
                                                 </th>
                                                 <td>
-                                                                                                            <p>Use logCrit</p>
-<br />
+                                                                                                                                                                    <p>Use logCrit</p>
+
                                                                                                     </td>
                                             </tr>
                                                                                     <tr>
@@ -766,7 +819,7 @@ corresponds to E_ERROR, E_USER_ERROR, E_CORE_ERROR, or E_COMPILE_ERROR</h2>
                                             <a id="method_logAlert"></a>
                         <div class="element clickable method public method_logAlert" data-toggle="collapse" data-target=".method_logAlert .collapse">
                             <h2>Writes a $line to the log with a severity level of ALERT.</h2>
-                            <pre>logAlert(string $line, $args = self::NO_ARGUMENTS) </pre>
+                            <pre>logAlert(string $line, $args = self::NO_ARGUMENTS) : void</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
                             <div class="row collapse">
@@ -802,7 +855,7 @@ corresponds to E_ERROR, E_USER_ERROR, E_CORE_ERROR, or E_COMPILE_ERROR</h2>
                                             <a id="method_logCrit"></a>
                         <div class="element clickable method public method_logCrit" data-toggle="collapse" data-target=".method_logCrit .collapse">
                             <h2>Writes a $line to the log with a severity level of CRIT.</h2>
-                            <pre>logCrit(string $line, $args = self::NO_ARGUMENTS) </pre>
+                            <pre>logCrit(string $line, $args = self::NO_ARGUMENTS) : void</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
                             <div class="row collapse">
@@ -838,7 +891,7 @@ corresponds to E_ERROR, E_USER_ERROR, E_CORE_ERROR, or E_COMPILE_ERROR</h2>
                                             <a id="method_logEmerg"></a>
                         <div class="element clickable method public method_logEmerg" data-toggle="collapse" data-target=".method_logEmerg .collapse">
                             <h2>Writes a $line to the log with a severity level of EMERG.</h2>
-                            <pre>logEmerg(string $line, $args = self::NO_ARGUMENTS) </pre>
+                            <pre>logEmerg(string $line, $args = self::NO_ARGUMENTS) : void</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
                             <div class="row collapse">
@@ -922,7 +975,7 @@ corresponds to E_ERROR, E_USER_ERROR, E_CORE_ERROR, or E_COMPILE_ERROR</h2>
                                             <a id="method_writeFreeFormLine"></a>
                         <div class="element clickable method public method_writeFreeFormLine" data-toggle="collapse" data-target=".method_writeFreeFormLine .collapse">
                             <h2>Writes a line to the log without prepending a status or timestamp</h2>
-                            <pre>writeFreeFormLine(string $line) </pre>
+                            <pre>writeFreeFormLine(string $line) : void</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
                             <div class="row collapse">
@@ -952,30 +1005,16 @@ corresponds to E_ERROR, E_USER_ERROR, E_CORE_ERROR, or E_COMPILE_ERROR</h2>
                         </div>
                                             <a id="method__getTimeLine"></a>
                         <div class="element clickable method private method__getTimeLine" data-toggle="collapse" data-target=".method__getTimeLine .collapse">
-                            <h2>_getTimeLine</h2>
-                            <pre>_getTimeLine($level) </pre>
+                            <h2>getTimeLine</h2>
+                            <pre>_getTimeLine(int $level) : string</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description">
+                                    <div class="long_description"><p>Return the current time with the error level</p>
 </div>
 
                                     <table class="table">
-                                                                                    <tr>
-                                                <th>
-                                                    
-                                                </th>
-                                                <td>
-                                                                                                    </td>
-                                            </tr>
-                                                                                    <tr>
-                                                <th>
-                                                    
-                                                </th>
-                                                <td>
-                                                                                                    </td>
-                                            </tr>
                                                                                     <tr>
                                                 <th>
                                                     
@@ -988,10 +1027,13 @@ corresponds to E_ERROR, E_USER_ERROR, E_CORE_ERROR, or E_COMPILE_ERROR</h2>
                                                                             <h3>Arguments</h3>
                                                                                     <div class="subelement argument">
                                                 <h4>$level</h4>
-                                                <code></code><p>
+                                                <code>int</code><p>
 </p>
                                             </div>
                                                                             
+                                                                            <h3>Response</h3>
+                                        <code>string</code><p>
+</p>
                                                                     </div>
                             </div>
                         </div>
@@ -1007,6 +1049,33 @@ corresponds to E_ERROR, E_USER_ERROR, E_CORE_ERROR, or E_COMPILE_ERROR</h2>
                                     <div class="detail-description">
                                         <div class="long_description">
 </div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        link
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>http://www.faqs.org/rfcs/rfc3164.html</p>
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
                                     </div>
                                 </div>
                             </div>
@@ -1020,6 +1089,24 @@ corresponds to E_ERROR, E_USER_ERROR, E_CORE_ERROR, or E_COMPILE_ERROR</h2>
                                     <div class="detail-description">
                                         <div class="long_description">
 </div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
                                     </div>
                                 </div>
                             </div>
@@ -1033,6 +1120,24 @@ corresponds to E_ERROR, E_USER_ERROR, E_CORE_ERROR, or E_COMPILE_ERROR</h2>
                                     <div class="detail-description">
                                         <div class="long_description">
 </div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
                                     </div>
                                 </div>
                             </div>
@@ -1046,6 +1151,24 @@ corresponds to E_ERROR, E_USER_ERROR, E_CORE_ERROR, or E_COMPILE_ERROR</h2>
                                     <div class="detail-description">
                                         <div class="long_description">
 </div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
                                     </div>
                                 </div>
                             </div>
@@ -1059,6 +1182,24 @@ corresponds to E_ERROR, E_USER_ERROR, E_CORE_ERROR, or E_COMPILE_ERROR</h2>
                                     <div class="detail-description">
                                         <div class="long_description">
 </div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
                                     </div>
                                 </div>
                             </div>
@@ -1072,6 +1213,24 @@ corresponds to E_ERROR, E_USER_ERROR, E_CORE_ERROR, or E_COMPILE_ERROR</h2>
                                     <div class="detail-description">
                                         <div class="long_description">
 </div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
                                     </div>
                                 </div>
                             </div>
@@ -1085,6 +1244,24 @@ corresponds to E_ERROR, E_USER_ERROR, E_CORE_ERROR, or E_COMPILE_ERROR</h2>
                                     <div class="detail-description">
                                         <div class="long_description">
 </div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
                                     </div>
                                 </div>
                             </div>
@@ -1098,6 +1275,24 @@ corresponds to E_ERROR, E_USER_ERROR, E_CORE_ERROR, or E_COMPILE_ERROR</h2>
                                     <div class="detail-description">
                                         <div class="long_description">
 </div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
                                     </div>
                                 </div>
                             </div>
@@ -1111,6 +1306,24 @@ corresponds to E_ERROR, E_USER_ERROR, E_CORE_ERROR, or E_COMPILE_ERROR</h2>
                                     <div class="detail-description">
                                         <div class="long_description">
 </div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
                                     </div>
                                 </div>
                             </div>
@@ -1124,6 +1337,33 @@ corresponds to E_ERROR, E_USER_ERROR, E_CORE_ERROR, or E_COMPILE_ERROR</h2>
                                     <div class="detail-description">
                                         <div class="long_description">
 </div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        deprecated
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
                                     </div>
                                 </div>
                             </div>
@@ -1137,6 +1377,24 @@ corresponds to E_ERROR, E_USER_ERROR, E_CORE_ERROR, or E_COMPILE_ERROR</h2>
                                     <div class="detail-description">
                                         <div class="long_description">
 </div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
                                     </div>
                                 </div>
                             </div>
@@ -1150,6 +1408,24 @@ corresponds to E_ERROR, E_USER_ERROR, E_CORE_ERROR, or E_COMPILE_ERROR</h2>
                                     <div class="detail-description">
                                         <div class="long_description">
 </div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
                                     </div>
                                 </div>
                             </div>
@@ -1163,6 +1439,24 @@ corresponds to E_ERROR, E_USER_ERROR, E_CORE_ERROR, or E_COMPILE_ERROR</h2>
                                     <div class="detail-description">
                                         <div class="long_description">
 </div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
                                     </div>
                                 </div>
                             </div>
@@ -1178,11 +1472,29 @@ are often the values the developers will test for. So we&#039;ll make one up.</h
                                     <div class="detail-description">
                                         <div class="long_description">
 </div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
                                     </div>
                                 </div>
                             </div>
                                             
-                                            <h3><i class="icon-custom icon-property"></i> Properties</h3>
+                                                                <h3><i class="icon-custom icon-property"></i> Properties</h3>
                                                     <a id="property__logStatus"> </a>
                             <div class="element clickable property private property__logStatus" data-toggle="collapse" data-target=".property__logStatus .collapse">
                                 <h2>Current status of the log file</h2>
@@ -1193,6 +1505,25 @@ are often the values the developers will test for. So we&#039;ll make one up.</h
                                     <div class="detail-description">
                                         <div class="long_description">
 </div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
                                     </div>
                                 </div>
                             </div>
@@ -1206,6 +1537,25 @@ are often the values the developers will test for. So we&#039;ll make one up.</h
                                     <div class="detail-description">
                                         <div class="long_description">
 </div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
                                     </div>
                                 </div>
                             </div>
@@ -1219,6 +1569,25 @@ are often the values the developers will test for. So we&#039;ll make one up.</h
                                     <div class="detail-description">
                                         <div class="long_description">
 </div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
                                     </div>
                                 </div>
                             </div>
@@ -1232,6 +1601,25 @@ are often the values the developers will test for. So we&#039;ll make one up.</h
                                     <div class="detail-description">
                                         <div class="long_description">
 </div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
                                     </div>
                                 </div>
                             </div>
@@ -1245,6 +1633,25 @@ are often the values the developers will test for. So we&#039;ll make one up.</h
                                     <div class="detail-description">
                                         <div class="long_description">
 </div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
                                     </div>
                                 </div>
                             </div>
@@ -1258,6 +1665,25 @@ are often the values the developers will test for. So we&#039;ll make one up.</h
                                     <div class="detail-description">
                                         <div class="long_description">
 </div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
                                     </div>
                                 </div>
                             </div>
@@ -1271,6 +1697,25 @@ are often the values the developers will test for. So we&#039;ll make one up.</h
                                     <div class="detail-description">
                                         <div class="long_description">
 </div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
                                     </div>
                                 </div>
                             </div>
@@ -1284,6 +1729,25 @@ are often the values the developers will test for. So we&#039;ll make one up.</h
                                     <div class="detail-description">
                                         <div class="long_description">
 </div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
                                     </div>
                                 </div>
                             </div>
@@ -1297,6 +1761,25 @@ are often the values the developers will test for. So we&#039;ll make one up.</h
                                     <div class="detail-description">
                                         <div class="long_description">
 </div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
                                     </div>
                                 </div>
                             </div>
@@ -1310,6 +1793,25 @@ are often the values the developers will test for. So we&#039;ll make one up.</h
                                     <div class="detail-description">
                                         <div class="long_description">
 </div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
                                     </div>
                                 </div>
                             </div>
@@ -1320,22 +1822,20 @@ are often the values the developers will test for. So we&#039;ll make one up.</h
                 <li><a href="../index.html"><i class="icon-custom icon-class"></i></a></li>
                     
     
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Geocaching.Log.html">Log</a>
-    </li>
+    <li><span class="divider">\</span><a href="../namespaces/Geocaching.Log.html">Log</a></li>
 
                 <li class="active"><span class="divider">\</span><a href="../classes/Geocaching.Log.KLogger.html">KLogger</a></li>
             </ul>
         </div>
     </div>
 
-</div>
+    </div>
 
-<footer class="span12">
-    Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
-    <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
-    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-    generated on Sat, 15 Jun 2013 14:45:02 +0200.<br/>
-</footer>
-</body>
+        <footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
+            <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
+            generated on Thu, 27 Jun 2013 22:41:24 +0200.<br/>
+    </footer>
+    </body>
 </html>

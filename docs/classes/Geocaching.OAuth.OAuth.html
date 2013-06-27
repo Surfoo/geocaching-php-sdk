@@ -3,176 +3,205 @@
 <head>
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
     <meta charset="utf-8"/>
-    <title>     &raquo; \Geocaching\OAuth\OAuth
+    <title>    Geocaching API with PHP 5 &raquo; \Geocaching\OAuth\OAuth
 </title>
     <meta name="author" content=""/>
     <meta name="description" content=""/>
-
-    <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
-    <![endif]-->
-
-    <link href="../css/template.css" rel="stylesheet" media="all"/>
-    <script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
-    <script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script>
-    <script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script>
-    <script src="../js/bootstrap.js" type="text/javascript"></script>
-    <script src="../js/template.js" type="text/javascript"></script>
-    <script src="../js/prettify/prettify.min.js" type="text/javascript"></script>
-
-    <link rel="shortcut icon" href="../img/favicon.ico"/>
-    <link rel="apple-touch-icon" href="../img/apple-touch-icon.png"/>
-    <link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png"/>
-    <link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png"/>
-</head>
+            <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+        <![endif]-->
+        <script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+        <script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script>
+        <script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script>
+        <script src="../js/bootstrap.js" type="text/javascript"></script>
+        <script src="../js/template.js" type="text/javascript"></script>
+        <script src="../js/prettify/prettify.min.js" type="text/javascript"></script>
+    
+            <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+            <link rel="shortcut icon" href="../img/favicon.ico"/>
+        <link rel="apple-touch-icon" href="../img/apple-touch-icon.png"/>
+        <link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png"/>
+        <link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png"/>
+    </head>
 <body>
 
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span> <span class="icon-bar"></span>
-                <span class="icon-bar"></span> </a>
-            <a class="brand" href="../index.html">Geocaching API with PHP 5</a>
+        <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span> <span class="icon-bar"></span>
+                    <span class="icon-bar"></span> </a>
+                <a class="brand" href="../index.html">Geocaching API with PHP 5</a>
 
-            <div class="nav-collapse">
-                <ul class="nav">
-                    <li class="dropdown">
-                        <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
-                            API Documentation <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu">
-                                                                                </ul>
-                    </li>
-                    <li class="dropdown" id="charts-menu">
-                        <a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
-                            Charts <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="../graph_class.html">
-                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown" id="reports-menu">
-                        <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
-                            Reports <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="../errors.html"><i class="icon-list-alt"></i>&#160;Errors</a></li>
-                            <li><a href="../markers.html"><i class="icon-list-alt"></i>&#160;Markers</a></li>
-                            <li><a href="../deprecated.html"><i class="icon-list-alt"></i>&#160;Deprecated</a></li>
-                        </ul>
-                    </li>
-                </ul>
+                <div class="nav-collapse">
+                    <ul class="nav">
+                        <li class="dropdown">
+                            <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                API Documentation <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                                                    <li><a>Namespaces</a></li>
+                                                                        <li><a href="../namespaces/Geocaching.html">Geocaching</a></li>
+                                                                                                                                </ul>
+                        </li>
+                        <li class="dropdown" id="charts-menu">
+                            <a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                Charts <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="../graph_class.html">
+                                        <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown" id="reports-menu">
+                            <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                Reports <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="../errors.html">
+                                        <i class="icon-list-alt"></i>&#160;Errors
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../markers.html">
+                                        <i class="icon-list-alt"></i>&#160;Markers
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../deprecated.html">
+                                        <i class="icon-list-alt"></i>&#160;Deprecated
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="go_to_top">
-        <a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>
-    </div>
-</div>
-
-<div id="___" class="container">
-    <noscript>
-        <div class="alert alert-warning">
-            Javascript is disabled; several features are only available if Javascript is enabled.
+        <div class="go_to_top">
+            <a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>
         </div>
-    </noscript>
+    </div>
+    
+    <div id="___" class="container">
+        <noscript>
+            <div class="alert alert-warning">
+                Javascript is disabled; several features are only available if Javascript is enabled.
+            </div>
+        </noscript>
 
         
-    <div class="row">
+            <div class="row">
         <div class="span4">
-            <span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
-                <button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
-            </div>
-            <ul class="side-nav nav nav-list">
-                <li class="nav-header">
-                    <i class="icon-custom icon-method"></i> Methods
-                    <ul>
-                                                                                <li class="method public">
-                                <a href="#method___construct" title="__construct :: Constructor">
-                                    <span class="description">Constructor</span><pre>__construct</pre>
-                                </a>
-                            </li>
-                                                                                                            <li class="method public">
-                                <a href="#method_setLogging" title="setLogging :: Enable or disable log messages">
-                                    <span class="description">Enable or disable log messages</span><pre>setLogging</pre>
-                                </a>
-                            </li>
+                    <span class="btn-group visibility" data-toggle="buttons-checkbox">
+        <button class="btn public active" title="Show public elements">Public</button>
+        <button class="btn protected" title="Show protected elements">Protected</button>
+        <button class="btn private" title="Show private elements">Private</button>
+        <button class="btn inherited active" title="Show inherited elements">Inherited</button>
+    </span>
+    <div class="btn-group view pull-right" data-toggle="buttons-radio">
+        <button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button>
+        <button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+    </div>
+
+        <ul class="side-nav nav nav-list">
+        <li class="nav-header">
+            <i class="icon-custom icon-method"></i> Methods
+            <ul>
+                                                                                    <li class="method public">
+        <a href="#method___construct" title="__construct :: Constructor">
+            <span class="description">Constructor</span><pre>__construct</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_setLogging" title="setLogging :: Enable or disable log messages">
+            <span class="description">Enable or disable log messages</span><pre>setLogging</pre>
+        </a>
+    </li>
+
                                                                                                                                                                 <li class="method public">
-                                <a href="#method_getRequestToken" title="getRequestToken :: Get Request Token">
-                                    <span class="description">Get Request Token</span><pre>getRequestToken</pre>
-                                </a>
-                            </li>
-                                                                                                            <li class="method public">
-                                <a href="#method_getAccessToken" title="getAccessToken :: Get Access Token">
-                                    <span class="description">Get Access Token</span><pre>getAccessToken</pre>
-                                </a>
-                            </li>
+        <a href="#method_getRequestToken" title="getRequestToken :: Get Request Token">
+            <span class="description">Get Request Token</span><pre>getRequestToken</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_getAccessToken" title="getAccessToken :: Get Access Token">
+            <span class="description">Get Access Token</span><pre>getAccessToken</pre>
+        </a>
+    </li>
+
                                                                                                                                                                 <li class="method public">
-                                <a href="#method_redirect" title="redirect :: Make a redirection to API URL">
-                                    <span class="description">Make a redirection to API URL</span><pre>redirect</pre>
-                                </a>
-                            </li>
-                                                                                                                                                                                                                                                                                                                                                                                <li class="method public">
-                                <a href="#method_getRequestUri" title="getRequestUri :: Get Request URI">
-                                    <span class="description">Get Request URI</span><pre>getRequestUri</pre>
-                                </a>
-                            </li>
-                                                                        </ul>
-                </li>
-                <li class="nav-header protected">» Protected
-                    <ul>
-                                                                                                                                                                                            <li class="method protected">
-                                    <a href="#method_log" title="log :: Log informations into the log file">
-                                        <span class="description">Log informations into the log file</span><pre>log</pre>
-                                    </a>
-                                </li>
-                                                                                                                                                                                                                        <li class="method protected">
-                                    <a href="#method_signature_hmac_sha1" title="signature_hmac_sha1 :: Signature hmac_sha1">
-                                        <span class="description">Signature hmac_sha1</span><pre>signature_hmac_sha1</pre>
-                                    </a>
-                                </li>
-                                                                                                                                                                    <li class="method protected">
-                                    <a href="#method_setNonce" title="setNonce :: Set a nonce">
-                                        <span class="description">Set a nonce</span><pre>setNonce</pre>
-                                    </a>
-                                </li>
-                                                                                                                <li class="method protected">
-                                    <a href="#method_curl_request" title="curl_request :: Make a curl request">
-                                        <span class="description">Make a curl request</span><pre>curl_request</pre>
-                                    </a>
-                                </li>
-                                                                                                                <li class="method protected">
-                                    <a href="#method_http_explode_data" title="http_explode_data :: Explode an http data string (like key1=value1&amp;key2[]=value2 etc.)">
-                                        <span class="description">Explode an http data string (like key1=value1&amp;key2[]=value2 etc.)</span><pre>http_explode_data</pre>
-                                    </a>
-                                </li>
-                                                                                                                <li class="method protected">
-                                    <a href="#method_rfc3986_encode" title="rfc3986_encode :: Return a string encoded according to RFC 3986.">
-                                        <span class="description">Return a string encoded according to RFC 3986.</span><pre>rfc3986_encode</pre>
-                                    </a>
-                                </li>
-                                                                                                                <li class="method protected">
-                                    <a href="#method_oauth_loosy_decode" title="oauth_loosy_decode :: Return a string decoded according OAuth spec.">
-                                        <span class="description">Return a string decoded according OAuth spec.</span><pre>oauth_loosy_decode</pre>
-                                    </a>
-                                </li>
-                                                                                                                            </ul>
-                </li>
-                <li class="nav-header private">» Private
-                    <ul>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </ul>
-                </li>
-                <li class="nav-header">
-                    <i class="icon-custom icon-constant"></i> Constants
-                    <ul>
-                                            </ul>
-                </li>
-            </ul>
+        <a href="#method_redirect" title="redirect :: Make a redirection to API URL">
+            <span class="description">Make a redirection to API URL</span><pre>redirect</pre>
+        </a>
+    </li>
+
+                                                                                                                                                                                                                                                                                                                                                                                                <li class="method public">
+        <a href="#method_getRequestUri" title="getRequestUri :: Get Request URI">
+            <span class="description">Get Request URI</span><pre>getRequestUri</pre>
+        </a>
+    </li>
+
+                                                </ul>
+        </li>
+        <li class="nav-header protected">» Protected
+            <ul>
+                                                                                                                                    <li class="method protected">
+                            <a href="#method_log" title="log :: Log informations into the log file">
+                                <span class="description">Log informations into the log file</span><pre>log</pre>
+                            </a>
+                        </li>
+                                                                                                                                                        <li class="method protected">
+                            <a href="#method_signature_hmac_sha1" title="signature_hmac_sha1 :: Signature hmac_sha1">
+                                <span class="description">Signature hmac_sha1</span><pre>signature_hmac_sha1</pre>
+                            </a>
+                        </li>
+                                                                                                                    <li class="method protected">
+                            <a href="#method_setNonce" title="setNonce :: Set a nonce">
+                                <span class="description">Set a nonce</span><pre>setNonce</pre>
+                            </a>
+                        </li>
+                                                                                <li class="method protected">
+                            <a href="#method_curl_request" title="curl_request :: Make a curl request">
+                                <span class="description">Make a curl request</span><pre>curl_request</pre>
+                            </a>
+                        </li>
+                                                                                <li class="method protected">
+                            <a href="#method_http_explode_data" title="http_explode_data :: Explode an http data string (like key1=value1&amp;key2[]=value2 etc.)">
+                                <span class="description">Explode an http data string (like key1=value1&amp;key2[]=value2 etc.)</span><pre>http_explode_data</pre>
+                            </a>
+                        </li>
+                                                                                <li class="method protected">
+                            <a href="#method_rfc3986_encode" title="rfc3986_encode :: Return a string encoded according to RFC 3986.">
+                                <span class="description">Return a string encoded according to RFC 3986.</span><pre>rfc3986_encode</pre>
+                            </a>
+                        </li>
+                                                                                <li class="method protected">
+                            <a href="#method_oauth_loosy_decode" title="oauth_loosy_decode :: Return a string decoded according OAuth spec.">
+                                <span class="description">Return a string decoded according OAuth spec.</span><pre>oauth_loosy_decode</pre>
+                            </a>
+                        </li>
+                                                                                    </ul>
+        </li>
+        <li class="nav-header private">» Private
+            <ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </ul>
+        </li>
+        <li class="nav-header">
+            <i class="icon-custom icon-constant"></i> Constants
+            <ul>
+                            </ul>
+        </li>
+    </ul>
+
+
         </div>
 
         <div class="span8">
@@ -191,15 +220,18 @@
                                     <th>
                                         package
                                                                             </th>
-                                    <td>Geocaching\OAuth</td>
+                                    <td>
+                                                                                <p>Geocaching\OAuth</p>
+
+                                    </td>
                                 </tr>
-                                                                                                                            </table>
+                                                                        </table>
 
                     <h3><i class="icon-custom icon-method"></i> Methods</h3>
-                                            <a id="method___construct"></a>
+                                                                <a id="method___construct"></a>
                         <div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
                             <h2>Constructor</h2>
-                            <pre>__construct(string $consumer_key, string $consumer_secret, string $callback_url, $url = &#039;staging&#039;) </pre>
+                            <pre>__construct(string $consumer_key, string $consumer_secret, string $callback_url, string $url = &#039;staging&#039;) </pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
                             <div class="row collapse">
@@ -213,8 +245,8 @@
                                                     access
                                                 </th>
                                                 <td>
-                                                                                                            <p>public</p>
-<br />
+                                                                                                                                                                    <p>public</p>
+
                                                                                                     </td>
                                             </tr>
                                                                                     <tr>
@@ -251,7 +283,7 @@
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$url</h4>
-                                                <code></code><p>
+                                                <code>string</code><p><p>Array key from the $list_oauth_url array</p>
 </p>
                                             </div>
                                                                             
@@ -261,7 +293,7 @@
                                             <a id="method_setLogging"></a>
                         <div class="element clickable method public method_setLogging" data-toggle="collapse" data-target=".method_setLogging .collapse">
                             <h2>Enable or disable log messages</h2>
-                            <pre>setLogging(string $directory) </pre>
+                            <pre>setLogging(string $directory) : void</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
                             <div class="row collapse">
@@ -292,7 +324,7 @@
                                             <a id="method_log"></a>
                         <div class="element clickable method protected method_log" data-toggle="collapse" data-target=".method_log .collapse">
                             <h2>Log informations into the log file</h2>
-                            <pre>log(string $infos, array $obj) </pre>
+                            <pre>log(string $infos, array $obj) : void</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
                             <div class="row collapse">
@@ -328,7 +360,7 @@
                                             <a id="method_getRequestToken"></a>
                         <div class="element clickable method public method_getRequestToken" data-toggle="collapse" data-target=".method_getRequestToken .collapse">
                             <h2>Get Request Token</h2>
-                            <pre>getRequestToken() </pre>
+                            <pre>getRequestToken() : array</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
                             <div class="row collapse">
@@ -342,8 +374,8 @@
                                                     access
                                                 </th>
                                                 <td>
-                                                                                                            <p>public</p>
-<br />
+                                                                                                                                                                    <p>public</p>
+
                                                                                                     </td>
                                             </tr>
                                                                                     <tr>
@@ -356,13 +388,16 @@
                                                                             </table>
 
                                     
+                                                                            <h3>Response</h3>
+                                        <code>array</code><p>
+</p>
                                                                     </div>
                             </div>
                         </div>
                                             <a id="method_getAccessToken"></a>
                         <div class="element clickable method public method_getAccessToken" data-toggle="collapse" data-target=".method_getAccessToken .collapse">
                             <h2>Get Access Token</h2>
-                            <pre>getAccessToken(array $queryData, string $token) </pre>
+                            <pre>getAccessToken(array $queryData, string $token) : string</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
                             <div class="row collapse">
@@ -376,8 +411,8 @@
                                                     access
                                                 </th>
                                                 <td>
-                                                                                                            <p>public</p>
-<br />
+                                                                                                                                                                    <p>public</p>
+
                                                                                                     </td>
                                             </tr>
                                                                                     <tr>
@@ -401,13 +436,16 @@
 </p>
                                             </div>
                                                                             
+                                                                            <h3>Response</h3>
+                                        <code>string</code><p>
+</p>
                                                                     </div>
                             </div>
                         </div>
                                             <a id="method_signature_hmac_sha1"></a>
                         <div class="element clickable method protected method_signature_hmac_sha1" data-toggle="collapse" data-target=".method_signature_hmac_sha1 .collapse">
                             <h2>Signature hmac_sha1</h2>
-                            <pre>signature_hmac_sha1(array $params, array $secret = array()) </pre>
+                            <pre>signature_hmac_sha1(array $params, array $secret = array()) : string</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
                             <div class="row collapse">
@@ -421,8 +459,8 @@
                                                     access
                                                 </th>
                                                 <td>
-                                                                                                            <p>protected</p>
-<br />
+                                                                                                                                                                    <p>protected</p>
+
                                                                                                     </td>
                                             </tr>
                                                                                     <tr>
@@ -446,13 +484,16 @@
 </p>
                                             </div>
                                                                             
+                                                                            <h3>Response</h3>
+                                        <code>string</code><p>
+</p>
                                                                     </div>
                             </div>
                         </div>
                                             <a id="method_redirect"></a>
                         <div class="element clickable method public method_redirect" data-toggle="collapse" data-target=".method_redirect .collapse">
                             <h2>Make a redirection to API URL</h2>
-                            <pre>redirect() </pre>
+                            <pre>redirect() : void</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
                             <div class="row collapse">
@@ -466,8 +507,8 @@
                                                     access
                                                 </th>
                                                 <td>
-                                                                                                            <p>public</p>
-<br />
+                                                                                                                                                                    <p>public</p>
+
                                                                                                     </td>
                                             </tr>
                                                                                     <tr>
@@ -486,7 +527,7 @@
                                             <a id="method_setNonce"></a>
                         <div class="element clickable method protected method_setNonce" data-toggle="collapse" data-target=".method_setNonce .collapse">
                             <h2>Set a nonce</h2>
-                            <pre>setNonce() </pre>
+                            <pre>setNonce() : string</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
                             <div class="row collapse">
@@ -500,8 +541,8 @@
                                                     access
                                                 </th>
                                                 <td>
-                                                                                                            <p>protected</p>
-<br />
+                                                                                                                                                                    <p>protected</p>
+
                                                                                                     </td>
                                             </tr>
                                                                                     <tr>
@@ -514,13 +555,16 @@
                                                                             </table>
 
                                     
+                                                                            <h3>Response</h3>
+                                        <code>string</code><p>
+</p>
                                                                     </div>
                             </div>
                         </div>
                                             <a id="method_curl_request"></a>
                         <div class="element clickable method protected method_curl_request" data-toggle="collapse" data-target=".method_curl_request .collapse">
                             <h2>Make a curl request</h2>
-                            <pre>curl_request(string $url) </pre>
+                            <pre>curl_request(string $url) : string</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
                             <div class="row collapse">
@@ -534,8 +578,8 @@
                                                     access
                                                 </th>
                                                 <td>
-                                                                                                            <p>protected</p>
-<br />
+                                                                                                                                                                    <p>protected</p>
+
                                                                                                     </td>
                                             </tr>
                                                                                     <tr>
@@ -554,13 +598,16 @@
 </p>
                                             </div>
                                                                             
+                                                                            <h3>Response</h3>
+                                        <code>string</code><p>
+</p>
                                                                     </div>
                             </div>
                         </div>
                                             <a id="method_http_explode_data"></a>
                         <div class="element clickable method protected method_http_explode_data" data-toggle="collapse" data-target=".method_http_explode_data .collapse">
                             <h2>Explode an http data string (like key1=value1&amp;key2[]=value2 etc.)</h2>
-                            <pre>http_explode_data(string $string) </pre>
+                            <pre>http_explode_data(string $string) : string</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
                             <div class="row collapse">
@@ -575,8 +622,8 @@ This function makes it easier to find the sent string exactly as it was sent.</p
                                                     access
                                                 </th>
                                                 <td>
-                                                                                                            <p>protected</p>
-<br />
+                                                                                                                                                                    <p>protected</p>
+
                                                                                                     </td>
                                             </tr>
                                                                                     <tr>
@@ -595,13 +642,16 @@ This function makes it easier to find the sent string exactly as it was sent.</p
 </p>
                                             </div>
                                                                             
+                                                                            <h3>Response</h3>
+                                        <code>string</code><p>
+</p>
                                                                     </div>
                             </div>
                         </div>
                                             <a id="method_rfc3986_encode"></a>
                         <div class="element clickable method protected method_rfc3986_encode" data-toggle="collapse" data-target=".method_rfc3986_encode .collapse">
                             <h2>Return a string encoded according to RFC 3986.</h2>
-                            <pre>rfc3986_encode(string $str) </pre>
+                            <pre>rfc3986_encode(string $str) : string</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
                             <div class="row collapse">
@@ -615,8 +665,8 @@ This function makes it easier to find the sent string exactly as it was sent.</p
                                                     access
                                                 </th>
                                                 <td>
-                                                                                                            <p>protected</p>
-<br />
+                                                                                                                                                                    <p>protected</p>
+
                                                                                                     </td>
                                             </tr>
                                                                                     <tr>
@@ -635,13 +685,16 @@ This function makes it easier to find the sent string exactly as it was sent.</p
 </p>
                                             </div>
                                                                             
+                                                                            <h3>Response</h3>
+                                        <code>string</code><p>
+</p>
                                                                     </div>
                             </div>
                         </div>
                                             <a id="method_oauth_loosy_decode"></a>
                         <div class="element clickable method protected method_oauth_loosy_decode" data-toggle="collapse" data-target=".method_oauth_loosy_decode .collapse">
                             <h2>Return a string decoded according OAuth spec.</h2>
-                            <pre>oauth_loosy_decode(string $str) </pre>
+                            <pre>oauth_loosy_decode(string $str) : string</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
                             <div class="row collapse">
@@ -659,8 +712,8 @@ and MUST be properly decoded"</p>
                                                     access
                                                 </th>
                                                 <td>
-                                                                                                            <p>protected</p>
-<br />
+                                                                                                                                                                    <p>protected</p>
+
                                                                                                     </td>
                                             </tr>
                                                                                     <tr>
@@ -679,13 +732,16 @@ and MUST be properly decoded"</p>
 </p>
                                             </div>
                                                                             
+                                                                            <h3>Response</h3>
+                                        <code>string</code><p>
+</p>
                                                                     </div>
                             </div>
                         </div>
                                             <a id="method_getRequestUri"></a>
                         <div class="element clickable method public method_getRequestUri" data-toggle="collapse" data-target=".method_getRequestUri .collapse">
                             <h2>Get Request URI</h2>
-                            <pre>getRequestUri() </pre>
+                            <pre>getRequestUri() : string</pre>
                             <div class="labels">
                                                                 <span class="label">static</span>                                                                                                                            </div>
                             <div class="row collapse">
@@ -699,8 +755,8 @@ and MUST be properly decoded"</p>
                                                     access
                                                 </th>
                                                 <td>
-                                                                                                            <p>public</p>
-<br />
+                                                                                                                                                                    <p>public</p>
+
                                                                                                     </td>
                                             </tr>
                                                                                     <tr>
@@ -713,12 +769,15 @@ and MUST be properly decoded"</p>
                                                                             </table>
 
                                     
+                                                                            <h3>Response</h3>
+                                        <code>string</code><p>
+</p>
                                                                     </div>
                             </div>
                         </div>
                     
                     
-                                            <h3><i class="icon-custom icon-property"></i> Properties</h3>
+                                                                <h3><i class="icon-custom icon-property"></i> Properties</h3>
                                                     <a id="property_list_oauth_url"> </a>
                             <div class="element clickable property protected property_list_oauth_url" data-toggle="collapse" data-target=".property_list_oauth_url .collapse">
                                 <h2>List of OAuth URL</h2>
@@ -729,6 +788,34 @@ and MUST be properly decoded"</p>
                                     <div class="detail-description">
                                         <div class="long_description">
 </div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        access
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>protected</p>
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
                                     </div>
                                 </div>
                             </div>
@@ -742,6 +829,34 @@ and MUST be properly decoded"</p>
                                     <div class="detail-description">
                                         <div class="long_description">
 </div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        access
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>protected</p>
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
                                     </div>
                                 </div>
                             </div>
@@ -755,6 +870,34 @@ and MUST be properly decoded"</p>
                                     <div class="detail-description">
                                         <div class="long_description">
 </div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        access
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>protected</p>
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
                                     </div>
                                 </div>
                             </div>
@@ -768,6 +911,34 @@ and MUST be properly decoded"</p>
                                     <div class="detail-description">
                                         <div class="long_description">
 </div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        access
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>protected</p>
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
                                     </div>
                                 </div>
                             </div>
@@ -781,6 +952,34 @@ and MUST be properly decoded"</p>
                                     <div class="detail-description">
                                         <div class="long_description">
 </div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        access
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>private</p>
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
                                     </div>
                                 </div>
                             </div>
@@ -794,6 +993,34 @@ and MUST be properly decoded"</p>
                                     <div class="detail-description">
                                         <div class="long_description">
 </div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        access
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>private</p>
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
                                     </div>
                                 </div>
                             </div>
@@ -807,6 +1034,34 @@ and MUST be properly decoded"</p>
                                     <div class="detail-description">
                                         <div class="long_description">
 </div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        access
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>private</p>
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
                                     </div>
                                 </div>
                             </div>
@@ -820,6 +1075,34 @@ and MUST be properly decoded"</p>
                                     <div class="detail-description">
                                         <div class="long_description">
 </div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        access
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>private</p>
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
                                     </div>
                                 </div>
                             </div>
@@ -833,6 +1116,34 @@ and MUST be properly decoded"</p>
                                     <div class="detail-description">
                                         <div class="long_description">
 </div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        access
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>private</p>
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
                                     </div>
                                 </div>
                             </div>
@@ -846,6 +1157,34 @@ and MUST be properly decoded"</p>
                                     <div class="detail-description">
                                         <div class="long_description">
 </div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        access
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>private</p>
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
                                     </div>
                                 </div>
                             </div>
@@ -859,6 +1198,34 @@ and MUST be properly decoded"</p>
                                     <div class="detail-description">
                                         <div class="long_description">
 </div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        access
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>private</p>
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
                                     </div>
                                 </div>
                             </div>
@@ -869,22 +1236,20 @@ and MUST be properly decoded"</p>
                 <li><a href="../index.html"><i class="icon-custom icon-class"></i></a></li>
                     
     
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Geocaching.OAuth.html">OAuth</a>
-    </li>
+    <li><span class="divider">\</span><a href="../namespaces/Geocaching.OAuth.html">OAuth</a></li>
 
                 <li class="active"><span class="divider">\</span><a href="../classes/Geocaching.OAuth.OAuth.html">OAuth</a></li>
             </ul>
         </div>
     </div>
 
-</div>
+    </div>
 
-<footer class="span12">
-    Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
-    <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
-    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-    generated on Sat, 15 Jun 2013 14:45:02 +0200.<br/>
-</footer>
-</body>
+        <footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
+            <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
+            generated on Thu, 27 Jun 2013 22:41:25 +0200.<br/>
+    </footer>
+    </body>
 </html>
