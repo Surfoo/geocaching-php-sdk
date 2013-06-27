@@ -112,10 +112,10 @@ class OAuth
      * Constructor
      *
      * @access public
-     * @param string  $consumer_key    OAuth Key
-     * @param string  $consumer_secret OAuth Secret
-     * @param string  $callback_url    Callbak URL
-     * @param boolean $live            true => production, false => staging
+     * @param string $consumer_key    OAuth Key
+     * @param string $consumer_secret OAuth Secret
+     * @param string $callback_url    Callbak URL
+     * @param string $url             Array key from the $list_oauth_url array
      */
     public function __construct($consumer_key, $consumer_secret, $callback_url, $url = 'staging')
     {

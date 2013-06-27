@@ -385,6 +385,13 @@ class KLogger
         }
     }
 
+    /**
+     * getTimeLine
+     *
+     * Return the current time with the error level
+     * @param  int    $level
+     * @return string
+     */
     private function _getTimeLine($level)
     {
         $time = date(self::$_dateFormat);
