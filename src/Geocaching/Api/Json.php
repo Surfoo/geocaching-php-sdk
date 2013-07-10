@@ -162,6 +162,25 @@ class Json extends Api
     }
 
     /**
+     * geocode String
+     *
+     * required param: GeocodeString
+     *
+     * @access public
+     * @param  array  $params
+     * @return object
+     */
+    public function geocodeString(array $params)
+    {
+        if(!array_key_exists('GeocodeString', $params))
+            throw new Exception('GeocodeString is missing.');
+
+        $post_params['GeocodeString'] = $params['GeocodeString'];
+
+        return $this->post_request(__FUNCTION__, $post_params);
+    }
+
+    /**
      * Get Bookmark List By Guid
      *
      * required param: BookmarkListGuid
