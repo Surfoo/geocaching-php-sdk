@@ -21,7 +21,55 @@
     <script src="../js/jquery.smooth-scroll.js"></script>
     <script src="../js/prism.min.js"></script>
     <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
-    
+        <script type="text/javascript">
+        function loadExternalCodeSnippets() {
+            Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+                var src = pre.getAttribute('data-src');
+                var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+                var language = 'php';
+
+                var code = document.createElement('code');
+                code.className = 'language-' + language;
+
+                pre.textContent = '';
+
+                code.textContent = 'Loading…';
+
+                pre.appendChild(code);
+
+                var xhr = new XMLHttpRequest();
+
+                xhr.open('GET', src, true);
+
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4) {
+
+                        if (xhr.status < 400 && xhr.responseText) {
+                            code.textContent = xhr.responseText;
+
+                            Prism.highlightElement(code);
+                        }
+                        else if (xhr.status >= 400) {
+                            code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                        }
+                        else {
+                            code.textContent = '✖ Error: File does not exist or is empty';
+                        }
+                    }
+                };
+
+                xhr.send(null);
+            });
+        }
+
+        $(document).ready(function(){
+            loadExternalCodeSnippets();
+        });
+        $('#source-view').on('shown', function () {
+            loadExternalCodeSnippets();
+        })
+    </script>
+
     <link rel="shortcut icon" href="../images/favicon.ico"/>
     <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
     <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
@@ -91,28 +139,28 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1778845745"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1479138833"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-1778845745" class="accordion-body collapse in">
+            <div id="namespace-1479138833" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-623923636"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-225334776"></a>
                                 <a href="../namespaces/Geocaching.html" style="margin-left: 30px; padding-left: 0">Geocaching</a>
             </div>
-            <div id="namespace-623923636" class="accordion-body collapse ">
+            <div id="namespace-225334776" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1108864832"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2021190600"></a>
                                 <a href="../namespaces/Geocaching.Api.html" style="margin-left: 30px; padding-left: 0">Api</a>
             </div>
-            <div id="namespace-1108864832" class="accordion-body collapse ">
+            <div id="namespace-2021190600" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -129,10 +177,10 @@
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-122111309"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1233722391"></a>
                                 <a href="../namespaces/Geocaching.OAuth.html" style="margin-left: 30px; padding-left: 0">OAuth</a>
             </div>
-            <div id="namespace-122111309" class="accordion-body collapse ">
+            <div id="namespace-1233722391" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -147,10 +195,10 @@
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-609634771"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2080546946"></a>
                                 <a href="../namespaces/Geocaching.Log.html" style="margin-left: 30px; padding-left: 0">Log</a>
             </div>
-            <div id="namespace-609634771" class="accordion-body collapse ">
+            <div id="namespace-2080546946" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -183,35 +231,73 @@
     <section class="row-fluid">
         <div class="span10 offset2">
             <div class="row-fluid">
-                <div class="span8 content namespace">
+                <div class="span8 content file">
                     <nav>
-                                                <a href="../namespaces/Geocaching.html">\Geocaching</a>
-                                            </nav>
-                    <h1><small>\Geocaching</small>OAuth</h1>
+                                                                    </nav>
 
-                    
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+                    <h1><small>Log</small>KLogger.php</h1>
+                    <p><em>Finally, a light, permissions-checking logging class.</em></p>
+                    <p>Originally written for use with wpSearch</p>
+
+<p>Usage:
+$log = new KLogger('/var/log/', KLogger::INFO);
+$log->logInfo('Returned a million search results'); //Prints to the log file
+$log->logFatal('Oh dear.'); //Prints to the log file
+$log->logDebug('x = 5'); //Prints nothing due to current severity threshhold</p>
+
+
                     
                     
                                         <h2>Classes</h2>
                     <table class="table table-hover">
                                             <tr>
-                            <td><a href="../classes/Geocaching.OAuth.OAuth.html">OAuth</a></td>
-                            <td><em>OAuth for the Geocaching API</em></td>
+                            <td><a href="../classes/Geocaching.Log.KLogger.html">KLogger</a></td>
+                            <td><em>Logging for the Geocaching API</em></td>
                         </tr>
                                         </table>
                                     </div>
 
                 <aside class="span4 detailsbar">
                     <dl>
-                        <dt>Namespace hierarchy</dt>
-                        <dd class="hierarchy">
-                                                                                                                                                                                                                                                                                                                                                                                                            
-                                    <div class="namespace-wrapper"><a href="../namespaces/default.html">\</a></div>
-                                                            
-                                    <div class="namespace-wrapper"><a href="../namespaces/Geocaching.html">\Geocaching</a></div>
-                                                                                        <div class="namespace-wrapper">\Geocaching\OAuth</div>
-                        </dd>
+                                                    <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Geocaching\Log</div></dd>
+                        
+                                                                                    <dt>See also</dt>
+                                                                                        <dd><a href="http://codefury.net"><div class="namespace-wrapper">http://codefury.net</div></a></dd>
+                                                    
                     </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                                    <tr>
+                                <th>
+                                    author
+                                </th>
+                                <td>
+                                                                            <p>Kenny Katzgrau <a href="&#109;a&#105;l&#116;o&#x3a;k&#x61;&#116;&#x7a;&#103;&#x72;&#97;&#x75;&#64;&#x67;&#109;&#x61;&#105;&#x6c;&#46;&#x63;&#111;&#x6d;">k&#x61;&#116;&#x7a;&#103;&#x72;&#97;&#x75;&#64;&#x67;&#109;&#x61;&#105;&#x6c;&#46;&#x63;&#111;&#x6d;</a></p>
+
+                                                                    </td>
+                            </tr>
+                                                    <tr>
+                                <th>
+                                    since
+                                </th>
+                                <td>
+                                                                            <p>July 26, 2008 — Last update July 1, 2012</p>
+
+                                                                    </td>
+                            </tr>
+                                                    <tr>
+                                <th>
+                                    version
+                                </th>
+                                <td>
+                                                                            
+
+                                                                    </td>
+                            </tr>
+                                            </table>
+
                 </aside>
             </div>
 
@@ -219,6 +305,16 @@
             
         </div>
     </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label"></h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/Log/KLogger.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
 
     <footer class="row-fluid">
         <section class="span10 offset2">

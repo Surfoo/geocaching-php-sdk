@@ -1,1255 +1,1165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
     <meta charset="utf-8"/>
-    <title>    Geocaching API with PHP 5 &raquo; \Geocaching\OAuth\OAuth
-</title>
+    <title>API Documentation</title>
     <meta name="author" content=""/>
     <meta name="description" content=""/>
-            <!--[if lt IE 9]>
-        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
-        <![endif]-->
-        <script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
-        <script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script>
-        <script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script>
-        <script src="../js/bootstrap.js" type="text/javascript"></script>
-        <script src="../js/template.js" type="text/javascript"></script>
-        <script src="../js/prettify/prettify.min.js" type="text/javascript"></script>
+
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
     
-            <link href="../css/template.css" rel="stylesheet" media="all"/>
-    
-            <link rel="shortcut icon" href="../img/favicon.ico"/>
-        <link rel="apple-touch-icon" href="../img/apple-touch-icon.png"/>
-        <link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png"/>
-        <link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png"/>
-    </head>
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
 <body>
 
-        <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container">
-                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar"></span> <span class="icon-bar"></span>
-                    <span class="icon-bar"></span> </a>
-                <a class="brand" href="../index.html">Geocaching API with PHP 5</a>
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
 
-                <div class="nav-collapse">
-                    <ul class="nav">
-                        <li class="dropdown">
-                            <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
-                                API Documentation <b class="caret"></b>
-                            </a>
-                            <ul class="dropdown-menu">
-                                                                    <li><a>Namespaces</a></li>
-                                                                        <li><a href="../namespaces/Geocaching.html">Geocaching</a></li>
-                                                                                                                                </ul>
-                        </li>
-                        <li class="dropdown" id="charts-menu">
-                            <a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
-                                Charts <b class="caret"></b>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="../graph_class.html">
-                                        <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown" id="reports-menu">
-                            <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
-                                Reports <b class="caret"></b>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="../errors.html">
-                                        <i class="icon-list-alt"></i>&#160;Errors
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="../markers.html">
-                                        <i class="icon-list-alt"></i>&#160;Markers
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="../deprecated.html">
-                                        <i class="icon-list-alt"></i>&#160;Deprecated
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                    <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/Geocaching.html">\Geocaching</a></li>
+                                                    </ul>
+                    </li>
+                    <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                    <i class="icon-list-alt"></i>&#160;Errors
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                    <i class="icon-list-alt"></i>&#160;Markers
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1567227330"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-1567227330" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-936749588"></a>
+                                <a href="../namespaces/Geocaching.html" style="margin-left: 30px; padding-left: 0">Geocaching</a>
+            </div>
+            <div id="namespace-936749588" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2097264472"></a>
+                                <a href="../namespaces/Geocaching.Api.html" style="margin-left: 30px; padding-left: 0">Api</a>
+            </div>
+            <div id="namespace-2097264472" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Geocaching.Api.Api.html">Api</a></li>
+                                                    <li class="class"><a href="../classes/Geocaching.Api.Json.html">Json</a></li>
+                                                    <li class="class"><a href="../classes/Geocaching.Api.Xml.html">Xml</a></li>
+                                            </ul>
                 </div>
             </div>
         </div>
-        <div class="go_to_top">
-            <a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>
-        </div>
     </div>
-    
-    <div id="___" class="container">
-        <noscript>
-            <div class="alert alert-warning">
-                Javascript is disabled; several features are only available if Javascript is enabled.
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-237849245"></a>
+                                <a href="../namespaces/Geocaching.OAuth.html" style="margin-left: 30px; padding-left: 0">OAuth</a>
             </div>
-        </noscript>
+            <div id="namespace-237849245" class="accordion-body collapse ">
+                <div class="accordion-inner">
 
-        
-            <div class="row">
-        <div class="span4">
-                    <span class="btn-group visibility" data-toggle="buttons-checkbox">
-        <button class="btn public active" title="Show public elements">Public</button>
-        <button class="btn protected" title="Show protected elements">Protected</button>
-        <button class="btn private" title="Show private elements">Private</button>
-        <button class="btn inherited active" title="Show inherited elements">Inherited</button>
-    </span>
-    <div class="btn-group view pull-right" data-toggle="buttons-radio">
-        <button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button>
-        <button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Geocaching.OAuth.OAuth.html">OAuth</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
     </div>
 
-        <ul class="side-nav nav nav-list">
-        <li class="nav-header">
-            <i class="icon-custom icon-method"></i> Methods
-            <ul>
-                                                                                    <li class="method public">
-        <a href="#method___construct" title="__construct :: Constructor">
-            <span class="description">Constructor</span><pre>__construct</pre>
-        </a>
-    </li>
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-594735533"></a>
+                                <a href="../namespaces/Geocaching.Log.html" style="margin-left: 30px; padding-left: 0">Log</a>
+            </div>
+            <div id="namespace-594735533" class="accordion-body collapse ">
+                <div class="accordion-inner">
 
-                                                                                                        <li class="method public">
-        <a href="#method_setLogging" title="setLogging :: Enable or disable log messages">
-            <span class="description">Enable or disable log messages</span><pre>setLogging</pre>
-        </a>
-    </li>
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Geocaching.Log.KLogger.html">KLogger</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                                                                                                                                                                <li class="method public">
-        <a href="#method_getRequestToken" title="getRequestToken :: Get Request Token">
-            <span class="description">Get Request Token</span><pre>getRequestToken</pre>
-        </a>
-    </li>
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                                                                                                        <li class="method public">
-        <a href="#method_getAccessToken" title="getAccessToken :: Get Access Token">
-            <span class="description">Get Access Token</span><pre>getAccessToken</pre>
-        </a>
-    </li>
-
-                                                                                                                                                                <li class="method public">
-        <a href="#method_redirect" title="redirect :: Make a redirection to API URL">
-            <span class="description">Make a redirection to API URL</span><pre>redirect</pre>
-        </a>
-    </li>
-
-                                                                                                                                                                                                                                                                                                                                                                                                <li class="method public">
-        <a href="#method_getRequestUri" title="getRequestUri :: Get Request URI">
-            <span class="description">Get Request URI</span><pre>getRequestUri</pre>
-        </a>
-    </li>
-
-                                                </ul>
-        </li>
-        <li class="nav-header protected">» Protected
-            <ul>
-                                                                                                                                    <li class="method protected">
-                            <a href="#method_log" title="log :: Log informations into the log file">
-                                <span class="description">Log informations into the log file</span><pre>log</pre>
-                            </a>
-                        </li>
-                                                                                                                                                        <li class="method protected">
-                            <a href="#method_signature_hmac_sha1" title="signature_hmac_sha1 :: Signature hmac_sha1">
-                                <span class="description">Signature hmac_sha1</span><pre>signature_hmac_sha1</pre>
-                            </a>
-                        </li>
-                                                                                                                    <li class="method protected">
-                            <a href="#method_setNonce" title="setNonce :: Set a nonce">
-                                <span class="description">Set a nonce</span><pre>setNonce</pre>
-                            </a>
-                        </li>
-                                                                                <li class="method protected">
-                            <a href="#method_curl_request" title="curl_request :: Make a curl request">
-                                <span class="description">Make a curl request</span><pre>curl_request</pre>
-                            </a>
-                        </li>
-                                                                                <li class="method protected">
-                            <a href="#method_http_explode_data" title="http_explode_data :: Explode an http data string (like key1=value1&amp;key2[]=value2 etc.)">
-                                <span class="description">Explode an http data string (like key1=value1&amp;key2[]=value2 etc.)</span><pre>http_explode_data</pre>
-                            </a>
-                        </li>
-                                                                                <li class="method protected">
-                            <a href="#method_rfc3986_encode" title="rfc3986_encode :: Return a string encoded according to RFC 3986.">
-                                <span class="description">Return a string encoded according to RFC 3986.</span><pre>rfc3986_encode</pre>
-                            </a>
-                        </li>
-                                                                                <li class="method protected">
-                            <a href="#method_oauth_loosy_decode" title="oauth_loosy_decode :: Return a string decoded according OAuth spec.">
-                                <span class="description">Return a string decoded according OAuth spec.</span><pre>oauth_loosy_decode</pre>
-                            </a>
-                        </li>
-                                                                                    </ul>
-        </li>
-        <li class="nav-header private">» Private
-            <ul>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </ul>
-        </li>
-        <li class="nav-header">
-            <i class="icon-custom icon-constant"></i> Constants
-            <ul>
-                            </ul>
-        </li>
-    </ul>
-
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
         </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/Geocaching.OAuth.html">\Geocaching\OAuth</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
 
-        <div class="span8">
-            <div class="element class">
-                <h1>OAuth</h1>
-                <small style="display: block; text-align: right">
-                                                        </small>
-                <p class="short_description">OAuth for the Geocaching API</p>
-                <div class="details">
-                    <div class="long_description">
+                    <h1><small>\Geocaching\OAuth</small>OAuth</h1>
+                    <p><em>OAuth for the Geocaching API</em></p>
+                    
+
+
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/Geocaching.OAuth.OAuth.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/Geocaching.OAuth.OAuth.html#method_setLogging" class="">setLogging()</a><br />
+                                                                    <a href="../classes/Geocaching.OAuth.OAuth.html#method_getRequestToken" class="">getRequestToken()</a><br />
+                                                                    <a href="../classes/Geocaching.OAuth.OAuth.html#method_getAccessToken" class="">getAccessToken()</a><br />
+                                                                    <a href="../classes/Geocaching.OAuth.OAuth.html#method_redirect" class="">redirect()</a><br />
+                                                                    <a href="../classes/Geocaching.OAuth.OAuth.html#method_getRequestUri" class="">getRequestUri()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <a href="../classes/Geocaching.OAuth.OAuth.html#method_log" class="">log()</a><br />
+                                                                    <a href="../classes/Geocaching.OAuth.OAuth.html#method_signature_hmac_sha1" class="">signature_hmac_sha1()</a><br />
+                                                                    <a href="../classes/Geocaching.OAuth.OAuth.html#method_setNonce" class="">setNonce()</a><br />
+                                                                    <a href="../classes/Geocaching.OAuth.OAuth.html#method_curl_request" class="">curl_request()</a><br />
+                                                                    <a href="../classes/Geocaching.OAuth.OAuth.html#method_http_explode_data" class="">http_explode_data()</a><br />
+                                                                    <a href="../classes/Geocaching.OAuth.OAuth.html#method_rfc3986_encode" class="">rfc3986_encode()</a><br />
+                                                                    <a href="../classes/Geocaching.OAuth.OAuth.html#method_oauth_loosy_decode" class="">oauth_loosy_decode()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Geocaching.OAuth.OAuth.html#property_list_oauth_url" class="">$list_oauth_url</a><br />
+                                                                    <a href="../classes/Geocaching.OAuth.OAuth.html#property_logging" class="">$logging</a><br />
+                                                                    <a href="../classes/Geocaching.OAuth.OAuth.html#property_oauth_signature_method" class="">$oauth_signature_method</a><br />
+                                                                    <a href="../classes/Geocaching.OAuth.OAuth.html#property_oauth_version" class="">$oauth_version</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Geocaching.OAuth.OAuth.html#property_consumer_key" class="">$consumer_key</a><br />
+                                                                    <a href="../classes/Geocaching.OAuth.OAuth.html#property_consumer_secret" class="">$consumer_secret</a><br />
+                                                                    <a href="../classes/Geocaching.OAuth.OAuth.html#property_callback_url" class="">$callback_url</a><br />
+                                                                    <a href="../classes/Geocaching.OAuth.OAuth.html#property_oauth_token_access" class="">$oauth_token_access</a><br />
+                                                                    <a href="../classes/Geocaching.OAuth.OAuth.html#property_oauth_url" class="">$oauth_url</a><br />
+                                                                    <a href="../classes/Geocaching.OAuth.OAuth.html#property_request_params" class="">$request_params</a><br />
+                                                                    <a href="../classes/Geocaching.OAuth.OAuth.html#property_access_params" class="">$access_params</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/OAuth.OAuth.php.html"><div class="path-wrapper">OAuth/OAuth.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">\Geocaching\OAuth</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\Geocaching\OAuth\OAuth</div>
+                            </dd>
+
                         
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr><td colspan="2"><em>None found</em></td></tr>
+                                        </table>
+                </aside>
+            </div>
 
-                    </div>
-                    <table class="table table-bordered">
-                                                                                    <tr>
-                                    <th>
-                                        package
-                                                                            </th>
-                                    <td>
-                                                                                <p>Geocaching\OAuth</p>
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
 
-                                    </td>
-                                </tr>
-                                                                        </table>
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_list_oauth_url" name="property_list_oauth_url" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$list_oauth_url</h3>
+                <pre class="signature">$list_oauth_url : array</pre>
+                <p><em>List of OAuth URL</em></p>
+                
 
-                    <h3><i class="icon-custom icon-method"></i> Methods</h3>
-                                                                <a id="method___construct"></a>
-                        <div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
-                            <h2>Constructor</h2>
-                            <pre>__construct(string $consumer_key, string $consumer_secret, string $callback_url, string $url = &#039;staging&#039;) </pre>
-                            <div class="labels">
-                                                                                                                                                                                            </div>
-                            <div class="row collapse">
-                                <div class="detail-description">
-                                    <div class="long_description">
-</div>
 
-                                    <table class="table">
-                                                                                    <tr>
-                                                <th>
-                                                    access
-                                                </th>
-                                                <td>
-                                                                                                                                                                    <p>public</p>
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
 
-                                                                                                    </td>
-                                            </tr>
-                                                                                    <tr>
-                                                <th>
-                                                    
-                                                </th>
-                                                <td>
-                                                                                                    </td>
-                                            </tr>
-                                                                                    <tr>
-                                                <th>
-                                                    
-                                                </th>
-                                                <td>
-                                                                                                    </td>
-                                            </tr>
-                                                                            </table>
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_logging" name="property_logging" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$logging</h3>
+                <pre class="signature">$logging : string</pre>
+                <p><em>Log OAuth requests in a file</em></p>
+                
 
-                                                                            <h3>Arguments</h3>
-                                                                                    <div class="subelement argument">
-                                                <h4>$consumer_key</h4>
-                                                <code>string</code><p><p>OAuth Key</p>
-</p>
-                                            </div>
-                                                                                    <div class="subelement argument">
-                                                <h4>$consumer_secret</h4>
-                                                <code>string</code><p><p>OAuth Secret</p>
-</p>
-                                            </div>
-                                                                                    <div class="subelement argument">
-                                                <h4>$callback_url</h4>
-                                                <code>string</code><p><p>Callbak URL</p>
-</p>
-                                            </div>
-                                                                                    <div class="subelement argument">
-                                                <h4>$url</h4>
-                                                <code>string</code><p><p>Array key from the $list_oauth_url array</p>
-</p>
-                                            </div>
-                                                                            
-                                                                    </div>
-                            </div>
-                        </div>
-                                            <a id="method_setLogging"></a>
-                        <div class="element clickable method public method_setLogging" data-toggle="collapse" data-target=".method_setLogging .collapse">
-                            <h2>Enable or disable log messages</h2>
-                            <pre>setLogging(string $directory) : void</pre>
-                            <div class="labels">
-                                                                                                                                                                                            </div>
-                            <div class="row collapse">
-                                <div class="detail-description">
-                                    <div class="long_description">
-</div>
 
-                                    <table class="table">
-                                                                                    <tr>
-                                                <th>
-                                                    
-                                                </th>
-                                                <td>
-                                                                                                    </td>
-                                            </tr>
-                                                                            </table>
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
 
-                                                                            <h3>Arguments</h3>
-                                                                                    <div class="subelement argument">
-                                                <h4>$directory</h4>
-                                                <code>string</code><p>
-</p>
-                                            </div>
-                                                                            
-                                                                    </div>
-                            </div>
-                        </div>
-                                            <a id="method_log"></a>
-                        <div class="element clickable method protected method_log" data-toggle="collapse" data-target=".method_log .collapse">
-                            <h2>Log informations into the log file</h2>
-                            <pre>log(string $infos, array $obj) : void</pre>
-                            <div class="labels">
-                                                                                                                                                                                            </div>
-                            <div class="row collapse">
-                                <div class="detail-description">
-                                    <div class="long_description">
-</div>
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_oauth_signature_method" name="property_oauth_signature_method" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$oauth_signature_method</h3>
+                <pre class="signature">$oauth_signature_method : string</pre>
+                <p><em>OAuth Signature Method</em></p>
+                
 
-                                    <table class="table">
-                                                                                    <tr>
-                                                <th>
-                                                    
-                                                </th>
-                                                <td>
-                                                                                                    </td>
-                                            </tr>
-                                                                            </table>
 
-                                                                            <h3>Arguments</h3>
-                                                                                    <div class="subelement argument">
-                                                <h4>$infos</h4>
-                                                <code>string</code><p>
-</p>
-                                            </div>
-                                                                                    <div class="subelement argument">
-                                                <h4>$obj</h4>
-                                                <code>array</code><p>
-</p>
-                                            </div>
-                                                                            
-                                                                    </div>
-                            </div>
-                        </div>
-                                            <a id="method_getRequestToken"></a>
-                        <div class="element clickable method public method_getRequestToken" data-toggle="collapse" data-target=".method_getRequestToken .collapse">
-                            <h2>Get Request Token</h2>
-                            <pre>getRequestToken() : array</pre>
-                            <div class="labels">
-                                                                                                                                                                                            </div>
-                            <div class="row collapse">
-                                <div class="detail-description">
-                                    <div class="long_description">
-</div>
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
 
-                                    <table class="table">
-                                                                                    <tr>
-                                                <th>
-                                                    access
-                                                </th>
-                                                <td>
-                                                                                                                                                                    <p>public</p>
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_oauth_version" name="property_oauth_version" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$oauth_version</h3>
+                <pre class="signature">$oauth_version : string</pre>
+                <p><em>OAuth version</em></p>
+                
 
-                                                                                                    </td>
-                                            </tr>
-                                                                                    <tr>
-                                                <th>
-                                                    
-                                                </th>
-                                                <td>
-                                                                                                    </td>
-                                            </tr>
-                                                                            </table>
 
-                                    
-                                                                            <h3>Response</h3>
-                                        <code>array</code><p>
-</p>
-                                                                    </div>
-                            </div>
-                        </div>
-                                            <a id="method_getAccessToken"></a>
-                        <div class="element clickable method public method_getAccessToken" data-toggle="collapse" data-target=".method_getAccessToken .collapse">
-                            <h2>Get Access Token</h2>
-                            <pre>getAccessToken(array $queryData, string $token) : string</pre>
-                            <div class="labels">
-                                                                                                                                                                                            </div>
-                            <div class="row collapse">
-                                <div class="detail-description">
-                                    <div class="long_description">
-</div>
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
 
-                                    <table class="table">
-                                                                                    <tr>
-                                                <th>
-                                                    access
-                                                </th>
-                                                <td>
-                                                                                                                                                                    <p>public</p>
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_consumer_key" name="property_consumer_key" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$consumer_key</h3>
+                <pre class="signature">$consumer_key : string</pre>
+                <p><em>Consumer key</em></p>
+                
 
-                                                                                                    </td>
-                                            </tr>
-                                                                                    <tr>
-                                                <th>
-                                                    
-                                                </th>
-                                                <td>
-                                                                                                    </td>
-                                            </tr>
-                                                                            </table>
 
-                                                                            <h3>Arguments</h3>
-                                                                                    <div class="subelement argument">
-                                                <h4>$queryData</h4>
-                                                <code>array</code><p>
-</p>
-                                            </div>
-                                                                                    <div class="subelement argument">
-                                                <h4>$token</h4>
-                                                <code>string</code><p>
-</p>
-                                            </div>
-                                                                            
-                                                                            <h3>Response</h3>
-                                        <code>string</code><p>
-</p>
-                                                                    </div>
-                            </div>
-                        </div>
-                                            <a id="method_signature_hmac_sha1"></a>
-                        <div class="element clickable method protected method_signature_hmac_sha1" data-toggle="collapse" data-target=".method_signature_hmac_sha1 .collapse">
-                            <h2>Signature hmac_sha1</h2>
-                            <pre>signature_hmac_sha1(array $params, array $secret = array()) : string</pre>
-                            <div class="labels">
-                                                                                                                                                                                            </div>
-                            <div class="row collapse">
-                                <div class="detail-description">
-                                    <div class="long_description">
-</div>
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
 
-                                    <table class="table">
-                                                                                    <tr>
-                                                <th>
-                                                    access
-                                                </th>
-                                                <td>
-                                                                                                                                                                    <p>protected</p>
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_consumer_secret" name="property_consumer_secret" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$consumer_secret</h3>
+                <pre class="signature">$consumer_secret : string</pre>
+                <p><em>Consumer secret</em></p>
+                
 
-                                                                                                    </td>
-                                            </tr>
-                                                                                    <tr>
-                                                <th>
-                                                    
-                                                </th>
-                                                <td>
-                                                                                                    </td>
-                                            </tr>
-                                                                            </table>
 
-                                                                            <h3>Arguments</h3>
-                                                                                    <div class="subelement argument">
-                                                <h4>$params</h4>
-                                                <code>array</code><p>
-</p>
-                                            </div>
-                                                                                    <div class="subelement argument">
-                                                <h4>$secret</h4>
-                                                <code>array</code><p>
-</p>
-                                            </div>
-                                                                            
-                                                                            <h3>Response</h3>
-                                        <code>string</code><p>
-</p>
-                                                                    </div>
-                            </div>
-                        </div>
-                                            <a id="method_redirect"></a>
-                        <div class="element clickable method public method_redirect" data-toggle="collapse" data-target=".method_redirect .collapse">
-                            <h2>Make a redirection to API URL</h2>
-                            <pre>redirect() : void</pre>
-                            <div class="labels">
-                                                                                                                                                                                            </div>
-                            <div class="row collapse">
-                                <div class="detail-description">
-                                    <div class="long_description">
-</div>
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
 
-                                    <table class="table">
-                                                                                    <tr>
-                                                <th>
-                                                    access
-                                                </th>
-                                                <td>
-                                                                                                                                                                    <p>public</p>
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_callback_url" name="property_callback_url" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$callback_url</h3>
+                <pre class="signature">$callback_url : string</pre>
+                <p><em>Callback URL</em></p>
+                
 
-                                                                                                    </td>
-                                            </tr>
-                                                                                    <tr>
-                                                <th>
-                                                    
-                                                </th>
-                                                <td>
-                                                                                                    </td>
-                                            </tr>
-                                                                            </table>
 
-                                    
-                                                                    </div>
-                            </div>
-                        </div>
-                                            <a id="method_setNonce"></a>
-                        <div class="element clickable method protected method_setNonce" data-toggle="collapse" data-target=".method_setNonce .collapse">
-                            <h2>Set a nonce</h2>
-                            <pre>setNonce() : string</pre>
-                            <div class="labels">
-                                                                                                                                                                                            </div>
-                            <div class="row collapse">
-                                <div class="detail-description">
-                                    <div class="long_description">
-</div>
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
 
-                                    <table class="table">
-                                                                                    <tr>
-                                                <th>
-                                                    access
-                                                </th>
-                                                <td>
-                                                                                                                                                                    <p>protected</p>
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_oauth_token_access" name="property_oauth_token_access" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$oauth_token_access</h3>
+                <pre class="signature">$oauth_token_access : string</pre>
+                <p><em>Oauth token access</em></p>
+                
 
-                                                                                                    </td>
-                                            </tr>
-                                                                                    <tr>
-                                                <th>
-                                                    
-                                                </th>
-                                                <td>
-                                                                                                    </td>
-                                            </tr>
-                                                                            </table>
 
-                                    
-                                                                            <h3>Response</h3>
-                                        <code>string</code><p>
-</p>
-                                                                    </div>
-                            </div>
-                        </div>
-                                            <a id="method_curl_request"></a>
-                        <div class="element clickable method protected method_curl_request" data-toggle="collapse" data-target=".method_curl_request .collapse">
-                            <h2>Make a curl request</h2>
-                            <pre>curl_request(string $url) : string</pre>
-                            <div class="labels">
-                                                                                                                                                                                            </div>
-                            <div class="row collapse">
-                                <div class="detail-description">
-                                    <div class="long_description">
-</div>
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
 
-                                    <table class="table">
-                                                                                    <tr>
-                                                <th>
-                                                    access
-                                                </th>
-                                                <td>
-                                                                                                                                                                    <p>protected</p>
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_oauth_url" name="property_oauth_url" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$oauth_url</h3>
+                <pre class="signature">$oauth_url : string</pre>
+                <p><em>OAuth URL</em></p>
+                
 
-                                                                                                    </td>
-                                            </tr>
-                                                                                    <tr>
-                                                <th>
-                                                    
-                                                </th>
-                                                <td>
-                                                                                                    </td>
-                                            </tr>
-                                                                            </table>
 
-                                                                            <h3>Arguments</h3>
-                                                                                    <div class="subelement argument">
-                                                <h4>$url</h4>
-                                                <code>string</code><p>
-</p>
-                                            </div>
-                                                                            
-                                                                            <h3>Response</h3>
-                                        <code>string</code><p>
-</p>
-                                                                    </div>
-                            </div>
-                        </div>
-                                            <a id="method_http_explode_data"></a>
-                        <div class="element clickable method protected method_http_explode_data" data-toggle="collapse" data-target=".method_http_explode_data .collapse">
-                            <h2>Explode an http data string (like key1=value1&amp;key2[]=value2 etc.)</h2>
-                            <pre>http_explode_data(string $string) : string</pre>
-                            <div class="labels">
-                                                                                                                                                                                            </div>
-                            <div class="row collapse">
-                                <div class="detail-description">
-                                    <div class="long_description"><p>We need this function because parse_str will delete doublon keys.
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_request_params" name="property_request_params" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$request_params</h3>
+                <pre class="signature">$request_params : array</pre>
+                <p><em>Request parameters</em></p>
+                
+
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_access_params" name="property_access_params" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$access_params</h3>
+                <pre class="signature">$access_params : array</pre>
+                <p><em>Access parameters</em></p>
+                
+
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(string <span class="argument">$consumer_key</span>, string <span class="argument">$consumer_secret</span>, string <span class="argument">$callback_url</span>, string <span class="argument">$url</span>)</pre>
+                <p><em>Constructor</em></p>
+                
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$consumer_key</td>
+                                <td><p>OAuth Key</p>
+</td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$consumer_secret</td>
+                                <td><p>OAuth Secret</p>
+</td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$callback_url</td>
+                                <td><p>Callbak URL</p>
+</td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$url</td>
+                                <td><p>Array key from the $list_oauth_url array</p>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setLogging" name="method_setLogging" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setLogging()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setLogging(string <span class="argument">$directory</span>) : void</pre>
+                <p><em>Enable or disable log messages</em></p>
+                
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$directory</td>
+                                <td>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getRequestToken" name="method_getRequestToken" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getRequestToken()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getRequestToken() : array</pre>
+                <p><em>Get Request Token</em></p>
+                
+
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getAccessToken" name="method_getAccessToken" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getAccessToken()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getAccessToken(array <span class="argument">$queryData</span>, string <span class="argument">$token</span>) : string</pre>
+                <p><em>Get Access Token</em></p>
+                
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$queryData</td>
+                                <td>
+</td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$token</td>
+                                <td>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_redirect" name="method_redirect" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">redirect()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">redirect() : void</pre>
+                <p><em>Make a redirection to API URL</em></p>
+                
+
+
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getRequestUri" name="method_getRequestUri" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getRequestUri()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getRequestUri() : string</pre>
+                <p><em>Get Request URI</em></p>
+                
+
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_log" name="method_log" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">log()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">log(string <span class="argument">$infos</span>, array <span class="argument">$obj</span>) : void</pre>
+                <p><em>Log informations into the log file</em></p>
+                
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$infos</td>
+                                <td>
+</td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$obj</td>
+                                <td>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_signature_hmac_sha1" name="method_signature_hmac_sha1" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">signature_hmac_sha1()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">signature_hmac_sha1(array <span class="argument">$params</span>, array <span class="argument">$secret</span>) : string</pre>
+                <p><em>Signature hmac_sha1</em></p>
+                
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$params</td>
+                                <td>
+</td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$secret</td>
+                                <td>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setNonce" name="method_setNonce" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">setNonce()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setNonce() : string</pre>
+                <p><em>Set a nonce</em></p>
+                
+
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_curl_request" name="method_curl_request" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">curl_request()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">curl_request(string <span class="argument">$url</span>) : string</pre>
+                <p><em>Make a curl request</em></p>
+                
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$url</td>
+                                <td>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_http_explode_data" name="method_http_explode_data" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">http_explode_data()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">http_explode_data(string <span class="argument">$string</span>) : string</pre>
+                <p><em>Explode an http data string (like key1=value1&amp;key2[]=value2 etc.)</em></p>
+                <p>We need this function because parse_str will delete doublon keys.
 This function makes it easier to find the sent string exactly as it was sent.</p>
-</div>
 
-                                    <table class="table">
-                                                                                    <tr>
-                                                <th>
-                                                    access
-                                                </th>
-                                                <td>
-                                                                                                                                                                    <p>protected</p>
 
-                                                                                                    </td>
-                                            </tr>
-                                                                                    <tr>
-                                                <th>
-                                                    
-                                                </th>
-                                                <td>
-                                                                                                    </td>
-                                            </tr>
-                                                                            </table>
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$string</td>
+                                <td>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
 
-                                                                            <h3>Arguments</h3>
-                                                                                    <div class="subelement argument">
-                                                <h4>$string</h4>
-                                                <code>string</code><p>
-</p>
-                                            </div>
-                                                                            
-                                                                            <h3>Response</h3>
-                                        <code>string</code><p>
-</p>
-                                                                    </div>
-                            </div>
-                        </div>
-                                            <a id="method_rfc3986_encode"></a>
-                        <div class="element clickable method protected method_rfc3986_encode" data-toggle="collapse" data-target=".method_rfc3986_encode .collapse">
-                            <h2>Return a string encoded according to RFC 3986.</h2>
-                            <pre>rfc3986_encode(string $str) : string</pre>
-                            <div class="labels">
-                                                                                                                                                                                            </div>
-                            <div class="row collapse">
-                                <div class="detail-description">
-                                    <div class="long_description"><p>In PHP 5.3+ you'll just need to do rawurlencode.</p>
-</div>
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_rfc3986_encode" name="method_rfc3986_encode" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">rfc3986_encode()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">rfc3986_encode(string <span class="argument">$str</span>) : string</pre>
+                <p><em>Return a string encoded according to RFC 3986.</em></p>
+                <p>In PHP 5.3+ you'll just need to do rawurlencode.</p>
 
-                                    <table class="table">
-                                                                                    <tr>
-                                                <th>
-                                                    access
-                                                </th>
-                                                <td>
-                                                                                                                                                                    <p>protected</p>
 
-                                                                                                    </td>
-                                            </tr>
-                                                                                    <tr>
-                                                <th>
-                                                    
-                                                </th>
-                                                <td>
-                                                                                                    </td>
-                                            </tr>
-                                                                            </table>
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$str</td>
+                                <td>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
 
-                                                                            <h3>Arguments</h3>
-                                                                                    <div class="subelement argument">
-                                                <h4>$str</h4>
-                                                <code>string</code><p>
-</p>
-                                            </div>
-                                                                            
-                                                                            <h3>Response</h3>
-                                        <code>string</code><p>
-</p>
-                                                                    </div>
-                            </div>
-                        </div>
-                                            <a id="method_oauth_loosy_decode"></a>
-                        <div class="element clickable method protected method_oauth_loosy_decode" data-toggle="collapse" data-target=".method_oauth_loosy_decode .collapse">
-                            <h2>Return a string decoded according OAuth spec.</h2>
-                            <pre>oauth_loosy_decode(string $str) : string</pre>
-                            <div class="labels">
-                                                                                                                                                                                            </div>
-                            <div class="row collapse">
-                                <div class="detail-description">
-                                    <div class="long_description"><p>"While the encoding rules specified in this specification for the
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_oauth_loosy_decode" name="method_oauth_loosy_decode" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">oauth_loosy_decode()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">oauth_loosy_decode(string <span class="argument">$str</span>) : string</pre>
+                <p><em>Return a string decoded according OAuth spec.</em></p>
+                <p>"While the encoding rules specified in this specification for the
 purpose of constructing the signature base string exclude the of
 a "+" character to represent an encoded space character, this pratice
 is widely used in application/x-www-form-urlencoded encoded values,
 and MUST be properly decoded"</p>
-</div>
 
-                                    <table class="table">
-                                                                                    <tr>
-                                                <th>
-                                                    access
-                                                </th>
-                                                <td>
-                                                                                                                                                                    <p>protected</p>
 
-                                                                                                    </td>
-                                            </tr>
-                                                                                    <tr>
-                                                <th>
-                                                    
-                                                </th>
-                                                <td>
-                                                                                                    </td>
-                                            </tr>
-                                                                            </table>
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$str</td>
+                                <td>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
 
-                                                                            <h3>Arguments</h3>
-                                                                                    <div class="subelement argument">
-                                                <h4>$str</h4>
-                                                <code>string</code><p>
-</p>
-                                            </div>
-                                                                            
-                                                                            <h3>Response</h3>
-                                        <code>string</code><p>
-</p>
-                                                                    </div>
-                            </div>
-                        </div>
-                                            <a id="method_getRequestUri"></a>
-                        <div class="element clickable method public method_getRequestUri" data-toggle="collapse" data-target=".method_getRequestUri .collapse">
-                            <h2>Get Request URI</h2>
-                            <pre>getRequestUri() : string</pre>
-                            <div class="labels">
-                                                                <span class="label">static</span>                                                                                                                            </div>
-                            <div class="row collapse">
-                                <div class="detail-description">
-                                    <div class="long_description">
-</div>
+                                                    </div>
+    </section>
 
-                                    <table class="table">
-                                                                                    <tr>
-                                                <th>
-                                                    access
-                                                </th>
-                                                <td>
-                                                                                                                                                                    <p>public</p>
-
-                                                                                                    </td>
-                                            </tr>
-                                                                                    <tr>
-                                                <th>
-                                                    
-                                                </th>
-                                                <td>
-                                                                                                    </td>
-                                            </tr>
-                                                                            </table>
-
-                                    
-                                                                            <h3>Response</h3>
-                                        <code>string</code><p>
-</p>
-                                                                    </div>
-                            </div>
-                        </div>
-                    
-                    
-                                                                <h3><i class="icon-custom icon-property"></i> Properties</h3>
-                                                    <a id="property_list_oauth_url"> </a>
-                            <div class="element clickable property protected property_list_oauth_url" data-toggle="collapse" data-target=".property_list_oauth_url .collapse">
-                                <h2>List of OAuth URL</h2>
-                                <pre>list_oauth_url</pre>
-                                <div class="labels">
-                                                                                                        </div>
-                                <div class="row collapse">
-                                    <div class="detail-description">
-                                        <div class="long_description">
-</div>
-
-                                        <table class="table">
-                                                                                            <tr>
-                                                    <th>
-                                                        access
-                                                    </th>
-                                                    <td>
-                                                                                                                    <p>protected</p>
-
-                                                                                                            </td>
-                                                </tr>
-                                                                                            <tr>
-                                                    <th>
-                                                        var
-                                                    </th>
-                                                    <td>
-                                                                                                                    
-
-                                                                                                            </td>
-                                                </tr>
-                                                                                            <tr>
-                                                    <th>
-                                                        
-                                                    </th>
-                                                    <td>
-                                                                                                            </td>
-                                                </tr>
-                                                                                    </table>
-                                    </div>
-                                </div>
-                            </div>
-                                                    <a id="property_logging"> </a>
-                            <div class="element clickable property protected property_logging" data-toggle="collapse" data-target=".property_logging .collapse">
-                                <h2>Log OAuth requests in a file</h2>
-                                <pre>logging</pre>
-                                <div class="labels">
-                                                                                                        </div>
-                                <div class="row collapse">
-                                    <div class="detail-description">
-                                        <div class="long_description">
-</div>
-
-                                        <table class="table">
-                                                                                            <tr>
-                                                    <th>
-                                                        access
-                                                    </th>
-                                                    <td>
-                                                                                                                    <p>protected</p>
-
-                                                                                                            </td>
-                                                </tr>
-                                                                                            <tr>
-                                                    <th>
-                                                        var
-                                                    </th>
-                                                    <td>
-                                                                                                                    
-
-                                                                                                            </td>
-                                                </tr>
-                                                                                            <tr>
-                                                    <th>
-                                                        
-                                                    </th>
-                                                    <td>
-                                                                                                            </td>
-                                                </tr>
-                                                                                    </table>
-                                    </div>
-                                </div>
-                            </div>
-                                                    <a id="property_oauth_signature_method"> </a>
-                            <div class="element clickable property protected property_oauth_signature_method" data-toggle="collapse" data-target=".property_oauth_signature_method .collapse">
-                                <h2>OAuth Signature Method</h2>
-                                <pre>oauth_signature_method</pre>
-                                <div class="labels">
-                                                                                                        </div>
-                                <div class="row collapse">
-                                    <div class="detail-description">
-                                        <div class="long_description">
-</div>
-
-                                        <table class="table">
-                                                                                            <tr>
-                                                    <th>
-                                                        access
-                                                    </th>
-                                                    <td>
-                                                                                                                    <p>protected</p>
-
-                                                                                                            </td>
-                                                </tr>
-                                                                                            <tr>
-                                                    <th>
-                                                        var
-                                                    </th>
-                                                    <td>
-                                                                                                                    
-
-                                                                                                            </td>
-                                                </tr>
-                                                                                            <tr>
-                                                    <th>
-                                                        
-                                                    </th>
-                                                    <td>
-                                                                                                            </td>
-                                                </tr>
-                                                                                    </table>
-                                    </div>
-                                </div>
-                            </div>
-                                                    <a id="property_oauth_version"> </a>
-                            <div class="element clickable property protected property_oauth_version" data-toggle="collapse" data-target=".property_oauth_version .collapse">
-                                <h2>OAuth version</h2>
-                                <pre>oauth_version</pre>
-                                <div class="labels">
-                                                                                                        </div>
-                                <div class="row collapse">
-                                    <div class="detail-description">
-                                        <div class="long_description">
-</div>
-
-                                        <table class="table">
-                                                                                            <tr>
-                                                    <th>
-                                                        access
-                                                    </th>
-                                                    <td>
-                                                                                                                    <p>protected</p>
-
-                                                                                                            </td>
-                                                </tr>
-                                                                                            <tr>
-                                                    <th>
-                                                        var
-                                                    </th>
-                                                    <td>
-                                                                                                                    
-
-                                                                                                            </td>
-                                                </tr>
-                                                                                            <tr>
-                                                    <th>
-                                                        
-                                                    </th>
-                                                    <td>
-                                                                                                            </td>
-                                                </tr>
-                                                                                    </table>
-                                    </div>
-                                </div>
-                            </div>
-                                                    <a id="property_consumer_key"> </a>
-                            <div class="element clickable property private property_consumer_key" data-toggle="collapse" data-target=".property_consumer_key .collapse">
-                                <h2>Consumer key</h2>
-                                <pre>consumer_key</pre>
-                                <div class="labels">
-                                                                                                        </div>
-                                <div class="row collapse">
-                                    <div class="detail-description">
-                                        <div class="long_description">
-</div>
-
-                                        <table class="table">
-                                                                                            <tr>
-                                                    <th>
-                                                        access
-                                                    </th>
-                                                    <td>
-                                                                                                                    <p>private</p>
-
-                                                                                                            </td>
-                                                </tr>
-                                                                                            <tr>
-                                                    <th>
-                                                        var
-                                                    </th>
-                                                    <td>
-                                                                                                                    
-
-                                                                                                            </td>
-                                                </tr>
-                                                                                            <tr>
-                                                    <th>
-                                                        
-                                                    </th>
-                                                    <td>
-                                                                                                            </td>
-                                                </tr>
-                                                                                    </table>
-                                    </div>
-                                </div>
-                            </div>
-                                                    <a id="property_consumer_secret"> </a>
-                            <div class="element clickable property private property_consumer_secret" data-toggle="collapse" data-target=".property_consumer_secret .collapse">
-                                <h2>Consumer secret</h2>
-                                <pre>consumer_secret</pre>
-                                <div class="labels">
-                                                                                                        </div>
-                                <div class="row collapse">
-                                    <div class="detail-description">
-                                        <div class="long_description">
-</div>
-
-                                        <table class="table">
-                                                                                            <tr>
-                                                    <th>
-                                                        access
-                                                    </th>
-                                                    <td>
-                                                                                                                    <p>private</p>
-
-                                                                                                            </td>
-                                                </tr>
-                                                                                            <tr>
-                                                    <th>
-                                                        var
-                                                    </th>
-                                                    <td>
-                                                                                                                    
-
-                                                                                                            </td>
-                                                </tr>
-                                                                                            <tr>
-                                                    <th>
-                                                        
-                                                    </th>
-                                                    <td>
-                                                                                                            </td>
-                                                </tr>
-                                                                                    </table>
-                                    </div>
-                                </div>
-                            </div>
-                                                    <a id="property_callback_url"> </a>
-                            <div class="element clickable property private property_callback_url" data-toggle="collapse" data-target=".property_callback_url .collapse">
-                                <h2>Callback URL</h2>
-                                <pre>callback_url</pre>
-                                <div class="labels">
-                                                                                                        </div>
-                                <div class="row collapse">
-                                    <div class="detail-description">
-                                        <div class="long_description">
-</div>
-
-                                        <table class="table">
-                                                                                            <tr>
-                                                    <th>
-                                                        access
-                                                    </th>
-                                                    <td>
-                                                                                                                    <p>private</p>
-
-                                                                                                            </td>
-                                                </tr>
-                                                                                            <tr>
-                                                    <th>
-                                                        var
-                                                    </th>
-                                                    <td>
-                                                                                                                    
-
-                                                                                                            </td>
-                                                </tr>
-                                                                                            <tr>
-                                                    <th>
-                                                        
-                                                    </th>
-                                                    <td>
-                                                                                                            </td>
-                                                </tr>
-                                                                                    </table>
-                                    </div>
-                                </div>
-                            </div>
-                                                    <a id="property_oauth_token_access"> </a>
-                            <div class="element clickable property private property_oauth_token_access" data-toggle="collapse" data-target=".property_oauth_token_access .collapse">
-                                <h2>Oauth token access</h2>
-                                <pre>oauth_token_access</pre>
-                                <div class="labels">
-                                                                                                        </div>
-                                <div class="row collapse">
-                                    <div class="detail-description">
-                                        <div class="long_description">
-</div>
-
-                                        <table class="table">
-                                                                                            <tr>
-                                                    <th>
-                                                        access
-                                                    </th>
-                                                    <td>
-                                                                                                                    <p>private</p>
-
-                                                                                                            </td>
-                                                </tr>
-                                                                                            <tr>
-                                                    <th>
-                                                        var
-                                                    </th>
-                                                    <td>
-                                                                                                                    
-
-                                                                                                            </td>
-                                                </tr>
-                                                                                            <tr>
-                                                    <th>
-                                                        
-                                                    </th>
-                                                    <td>
-                                                                                                            </td>
-                                                </tr>
-                                                                                    </table>
-                                    </div>
-                                </div>
-                            </div>
-                                                    <a id="property_oauth_url"> </a>
-                            <div class="element clickable property private property_oauth_url" data-toggle="collapse" data-target=".property_oauth_url .collapse">
-                                <h2>OAuth URL</h2>
-                                <pre>oauth_url</pre>
-                                <div class="labels">
-                                                                                                        </div>
-                                <div class="row collapse">
-                                    <div class="detail-description">
-                                        <div class="long_description">
-</div>
-
-                                        <table class="table">
-                                                                                            <tr>
-                                                    <th>
-                                                        access
-                                                    </th>
-                                                    <td>
-                                                                                                                    <p>private</p>
-
-                                                                                                            </td>
-                                                </tr>
-                                                                                            <tr>
-                                                    <th>
-                                                        var
-                                                    </th>
-                                                    <td>
-                                                                                                                    
-
-                                                                                                            </td>
-                                                </tr>
-                                                                                            <tr>
-                                                    <th>
-                                                        
-                                                    </th>
-                                                    <td>
-                                                                                                            </td>
-                                                </tr>
-                                                                                    </table>
-                                    </div>
-                                </div>
-                            </div>
-                                                    <a id="property_request_params"> </a>
-                            <div class="element clickable property private property_request_params" data-toggle="collapse" data-target=".property_request_params .collapse">
-                                <h2>Request parameters</h2>
-                                <pre>request_params</pre>
-                                <div class="labels">
-                                                                                                        </div>
-                                <div class="row collapse">
-                                    <div class="detail-description">
-                                        <div class="long_description">
-</div>
-
-                                        <table class="table">
-                                                                                            <tr>
-                                                    <th>
-                                                        access
-                                                    </th>
-                                                    <td>
-                                                                                                                    <p>private</p>
-
-                                                                                                            </td>
-                                                </tr>
-                                                                                            <tr>
-                                                    <th>
-                                                        var
-                                                    </th>
-                                                    <td>
-                                                                                                                    
-
-                                                                                                            </td>
-                                                </tr>
-                                                                                            <tr>
-                                                    <th>
-                                                        
-                                                    </th>
-                                                    <td>
-                                                                                                            </td>
-                                                </tr>
-                                                                                    </table>
-                                    </div>
-                                </div>
-                            </div>
-                                                    <a id="property_access_params"> </a>
-                            <div class="element clickable property private property_access_params" data-toggle="collapse" data-target=".property_access_params .collapse">
-                                <h2>Access parameters</h2>
-                                <pre>access_params</pre>
-                                <div class="labels">
-                                                                                                        </div>
-                                <div class="row collapse">
-                                    <div class="detail-description">
-                                        <div class="long_description">
-</div>
-
-                                        <table class="table">
-                                                                                            <tr>
-                                                    <th>
-                                                        access
-                                                    </th>
-                                                    <td>
-                                                                                                                    <p>private</p>
-
-                                                                                                            </td>
-                                                </tr>
-                                                                                            <tr>
-                                                    <th>
-                                                        var
-                                                    </th>
-                                                    <td>
-                                                                                                                    
-
-                                                                                                            </td>
-                                                </tr>
-                                                                                            <tr>
-                                                    <th>
-                                                        
-                                                    </th>
-                                                    <td>
-                                                                                                            </td>
-                                                </tr>
-                                                                                    </table>
-                                    </div>
-                                </div>
-                            </div>
-                                                            </div>
-            </div>
-            <a id="\Geocaching\OAuth\OAuth"></a>
-            <ul class="breadcrumb">
-                <li><a href="../index.html"><i class="icon-custom icon-class"></i></a></li>
-                    
-    
-    <li><span class="divider">\</span><a href="../namespaces/Geocaching.OAuth.html">OAuth</a></li>
-
-                <li class="active"><span class="divider">\</span><a href="../classes/Geocaching.OAuth.OAuth.html">OAuth</a></li>
-            </ul>
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">OAuth.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/OAuth/OAuth.php.txt" class="language-php line-numbers"></pre>
         </div>
     </div>
 
-    </div>
-
-        <footer class="span12">
-            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
-            <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
-            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-            generated on Wed, 10 Jul 2013 10:54:14 +0200.<br/>
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/Geocaching.html">\Geocaching</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="">Errors</a></li>
+                                    <li><a href="">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on August 4th, 2013 at 22:54.
+                </section>
+            </section>
+        </section>
     </footer>
-    </body>
+</div>
+
+</body>
 </html>
