@@ -3,12 +3,7 @@
 error_reporting(E_ALL | E_STRICT);
 session_start();
 
-spl_autoload_register(function ($classname) {
-    $classname = ltrim($classname, "\\");
-    preg_match('/^(.+)?([^\\\\]+)$/U', $classname, $match);
-    $classname = str_replace("\\", "/", $match[1]). str_replace(array("\\", "_"), "/", $match[2]) . ".php";
-    include_once __DIR__ . '/src/' . $classname;
-});
+require __DIR__ . '/vendor/autoload.php';
 
 use Geocaching\OAuth\OAuth as OAuth,
     Geocaching\Api\Json as Json;
@@ -72,107 +67,116 @@ if (!isset($_SESSION['ACCESS_TOKEN'])) {
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Demo of Geocaching API with PHP</title>
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
         <style type="text/css">
-        body {
-            font: 1em Arial;
+        #oauth_key, #oauth_secret {
+            width: 330px;
         }
         </style>
     </head>
     <body>
-        <h1>Demo of Geocaching API with PHP</h1>
-        <form action="" method="post">
-            <fieldset>
-                <legend>Geocaching OAuth</legend>
-                <p>
-                    <label for="oauth_key">Your OAuth Key:</label><br/>
-                    <input type="text" name="oauth_key" id="oauth_key" size="36" maxlength="36"
-                           <?php if(isset($_SESSION['OAUTH_KEY'])) echo 'value="' . $_SESSION['OAUTH_KEY'] . '"' ?>
-                           <?php if(isset($_SESSION['OAUTH_SECRET'])) echo 'readonly="readonly"' ?>
-                           <?php if(!isset($_SESSION['ACCESS_TOKEN'])) echo 'required'; ?> />
-                </p>
-                <p>
-                    <label for="oauth_secret">Your OAuth Secret:</label><br/>
-                    <input type="text" name="oauth_secret" id="oauth_secret" size="36" maxlength="36"
-                           <?php if(isset($_SESSION['OAUTH_SECRET'])) echo 'value="' . $_SESSION['OAUTH_SECRET'] . '"' ?>
-                           <?php if(isset($_SESSION['OAUTH_SECRET'])) echo 'readonly="readonly"' ?>
-                           <?php if(!isset($_SESSION['ACCESS_TOKEN'])) echo 'required'; ?> />
-                </p>
-                <p>
-                    <label>OAuth URL:</label><br/>
-                    <input type="radio" name="url" value="staging" id="staging" checked="checked" <?php if(isset($_SESSION['ACCESS_TOKEN'])) echo 'disabled="disabled"'; ?>> <label for="staging">Staging</label>
-                    <input type="radio" name="url" value="live" id="live" <?php if(isset($_SESSION['ACCESS_TOKEN'])) echo 'disabled="disabled"'; ?>> <label for="live">Live</label>
-                    <input type="radio" name="url" value="live_mobile" id="live_mobile" <?php if(isset($_SESSION['ACCESS_TOKEN'])) echo 'disabled="disabled"'; ?>> <label for="live_mobile">Live Mobile</label>
-                </p>
-                <input type="submit" name="oauth" value="OAuth dance!" <?php if(isset($_SESSION['ACCESS_TOKEN'])) echo 'disabled="disabled"'; ?>/>
-                <input type="submit" name="reset" value="Reset OAuth Token" <?php if(!isset($_SESSION['ACCESS_TOKEN'])) echo 'disabled="disabled"'; ?>/>
-            </fieldset>
-        </form>
-        <?php
-        if (isset($_SESSION['ACCESS_TOKEN']))
-        {
-            $token = unserialize($_SESSION['ACCESS_TOKEN']);
-            echo "<p><strong>Token:</strong> " . $token['oauth_token']."<br/>";
+        <div class="container">
+            <h1>Demo of Geocaching API with PHP</h1>
+            <form action="" method="post" role="form">
+                <fieldset>
+                    <legend>Geocaching OAuth</legend>
+                    <div class="form-group">
+                        <label for="oauth_key">Your OAuth Key:</label>
+                        <input type="text" name="oauth_key" id="oauth_key" size="36" maxlength="36" class="form-control"
+                               <?php if(isset($_SESSION['OAUTH_KEY'])) echo 'value="' . $_SESSION['OAUTH_KEY'] . '"' ?>
+                               <?php if(isset($_SESSION['OAUTH_SECRET'])) echo 'readonly="readonly"' ?>
+                               <?php if(!isset($_SESSION['ACCESS_TOKEN'])) echo 'required'; ?> />
+                    </div>
+                    <div class="form-group">
+                        <label for="oauth_secret">Your OAuth Secret:</label>
+                        <input type="text" name="oauth_secret" id="oauth_secret" size="36" maxlength="36" class="form-control"
+                               <?php if(isset($_SESSION['OAUTH_SECRET'])) echo 'value="' . $_SESSION['OAUTH_SECRET'] . '"' ?>
+                               <?php if(isset($_SESSION['OAUTH_SECRET'])) echo 'readonly="readonly"' ?>
+                               <?php if(!isset($_SESSION['ACCESS_TOKEN'])) echo 'required'; ?> />
+                    </div>
+                    <div class="form-group">
+                        <label>OAuth URL:</label><br />
+                        <label for="staging" class="checkbox-inline"><input type="radio" name="url" value="staging" id="staging" checked="checked" <?php if(isset($_SESSION['ACCESS_TOKEN'])) echo 'disabled="disabled"'; ?>> Staging</label>
+                        <label for="live" class="checkbox-inline"><input type="radio" name="url" value="live" id="live" <?php if(isset($_SESSION['ACCESS_TOKEN'])) echo 'disabled="disabled"'; ?>> Live</label>
+                        <label for="live_mobile" class="checkbox-inline"><input type="radio" name="url" value="live_mobile" id="live_mobile" <?php if(isset($_SESSION['ACCESS_TOKEN'])) echo 'disabled="disabled"'; ?>> Live Mobile</label>
+                    </div>
+                    <input type="submit" name="oauth" value="OAuth dance!"  class="btn btn-primary" <?php if(isset($_SESSION['ACCESS_TOKEN'])) echo 'disabled="disabled"'; ?>/>
+                    <input type="submit" name="reset" value="Reset OAuth Token"  class="btn btn-warning" <?php if(!isset($_SESSION['ACCESS_TOKEN'])) echo 'disabled="disabled"'; ?>/>
+                </fieldset>
+            </form>
+            <?php
+            if (isset($_SESSION['ACCESS_TOKEN']))
+            {
+                $token = unserialize($_SESSION['ACCESS_TOKEN']);
+                echo "<p><strong>Token:</strong> " . $token['oauth_token']."<br/>";
 
-            $api   = new Json($token['oauth_token'], $_SESSION['production']);
-            $api->setLogging('/tmp/');
+                $api   = new Json($token['oauth_token'], $_SESSION['production']);
+                $api->setLogging('/tmp/');
 
-            $params = array('PublicProfileData' => true);
-            try {
-                $user   = $api->getYourUserProfile($params);
+                $params = array('PublicProfileData' => true);
+                try {
+                    $user   = $api->getYourUserProfile($params);
+                }
+                catch(Exception $e) {
+                    echo '<p>' . $e->getMessage() . '</p>';
+                }
+
+                echo "<strong>Connected as:</strong> " . $user->Profile->User->UserName . " (Id = " . $user->Profile->User->Id . ")<br/>";
+
+                preg_match('/([0-9]+)/', $user->Profile->PublicProfile->MemberSince, $matches);
+                $memberSince = date('Y-m-d H:i:s', floor($matches[0]/1000));
+                echo "<strong>Member since:</strong> " . $memberSince . "</p>";
+                echo "<hr />";
+
+                //echo "<div><pre style='height: 200px;overflow: auto;background:#ccc;'>getYourUserProfile:<br>".print_r($user, true)."</pre></div>";
+
+                //$limits = $api->getAPILimits();
+                //echo "<p><strong>CacheLimit:</strong> ". $limits->Limits->CacheLimits[0]->CacheLimit." in ".$limits->Limits->CacheLimits[0]->InMinutes." minutes</p>";
+
+                /*$geocacheTypes = $api->GetGeocacheTypes();
+                echo "GeocacheTypes : <ul>";
+                foreach($geocacheTypes->GeocacheTypes as $value) {
+                    echo "<li>".$value->GeocacheTypeName." (".$value->GeocacheTypeId.")</li>";
+                }
+                echo "</ul>";
+
+                $attributeTypesData = $api->getAttributeTypesData();
+                echo "AttributeTypesData : <ul>";
+                foreach($attributeTypesData->AttributeTypes as $value) {
+                    echo "<li>".$value->Name." (".$value->ID.")</li>";
+                }
+                echo "</ul>";*/
+
+                /*$params['isLite'] = true;
+                $params['PointRadiusLatitude'] = 48.85975;
+                $params['PointRadiusLongitude'] = 2.34068;
+                $params['MaxPerPage'] = 10;
+                $params['GeocacheLogCount'] = 0;
+                $params['TrackableLogCount'] = 0;
+                //$params = array('CacheCodes'=>array('GC2FNN9'), 'MaxPerPage'=>50);
+                $data = $api->searchForGeocaches($params);
+                echo "<pre>";
+                var_dump($data);
+                echo "</pre>";
+
+                $params = array('IsLite'=>true,
+                                'StartIndex'=>2,
+                                'MaxPerPage'=>5,
+                                'GeocacheLogCount'=>0,
+                                'TrackableLogCount'=>0
+                    );
+                $data = $api->getMoreGeocaches($params);
+                echo "<pre>";
+                var_dump($data);
+                echo "</pre>";*/
             }
-            catch(Exception $e) {
-                echo '<p>' . $e->getMessage() . '</p>';
-            }
-
-            echo "<strong>Connected as:</strong> " . $user->Profile->User->UserName . " (Id = " . $user->Profile->User->Id . ")<br/>";
-
-            preg_match('/([0-9]+)/', $user->Profile->PublicProfile->MemberSince, $matches);
-            $memberSince = date('Y-m-d H:i:s', floor($matches[0]/1000));
-            echo "<strong>Member since:</strong> " . $memberSince . "</p>";
-            echo "<hr />";
-
-            //echo "<div><pre style='height: 200px;overflow: auto;background:#ccc;'>getYourUserProfile:<br>".print_r($user, true)."</pre></div>";
-
-            //$limits = $api->getAPILimits();
-            //echo "<p><strong>CacheLimit:</strong> ". $limits->Limits->CacheLimits[0]->CacheLimit." in ".$limits->Limits->CacheLimits[0]->InMinutes." minutes</p>";
-
-            /*$geocacheTypes = $api->GetGeocacheTypes();
-            echo "GeocacheTypes : <ul>";
-            foreach($geocacheTypes->GeocacheTypes as $value) {
-                echo "<li>".$value->GeocacheTypeName." (".$value->GeocacheTypeId.")</li>";
-            }
-            echo "</ul>";
-
-            $attributeTypesData = $api->getAttributeTypesData();
-            echo "AttributeTypesData : <ul>";
-            foreach($attributeTypesData->AttributeTypes as $value) {
-                echo "<li>".$value->Name." (".$value->ID.")</li>";
-            }
-            echo "</ul>";*/
-
-            /*$params['isLite'] = true;
-            $params['PointRadiusLatitude'] = 48.85975;
-            $params['PointRadiusLongitude'] = 2.34068;
-            $params['MaxPerPage'] = 10;
-            $params['GeocacheLogCount'] = 0;
-            $params['TrackableLogCount'] = 0;
-            //$params = array('CacheCodes'=>array('GC2FNN9'), 'MaxPerPage'=>50);
-            $data = $api->searchForGeocaches($params);
-            echo "<pre>";
-            var_dump($data);
-            echo "</pre>";
-
-            $params = array('IsLite'=>true,
-                            'StartIndex'=>2,
-                            'MaxPerPage'=>5,
-                            'GeocacheLogCount'=>0,
-                            'TrackableLogCount'=>0
-                );
-            $data = $api->getMoreGeocaches($params);
-            echo "<pre>";
-            var_dump($data);
-            echo "</pre>";*/
-        }
-        ?>
+            ?>
+        <footer>
+            <hr />
+            Hosted here: <a href="https://github.com/Surfoo/geocaching-api">https://github.com/Surfoo/geocaching-api</a>
+        </footer>
+    </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
     </body>
 </html>
