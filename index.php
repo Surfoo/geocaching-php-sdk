@@ -179,7 +179,7 @@ if (!isset($_SESSION['ACCESS_TOKEN'])) {
             <hr />
             <ul>
                 <li>Source: <a href="https://github.com/Surfoo/geocaching-api">https://github.com/Surfoo/geocaching-api</a></li>
-                <li><a href="docs/">Documentation</li>
+                <li><a href="docs/">Documentation</a></li>
             </ul>
         </footer>
     </div>
