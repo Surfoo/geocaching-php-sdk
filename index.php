@@ -72,6 +72,9 @@ if (!isset($_SESSION['ACCESS_TOKEN'])) {
         #oauth_key, #oauth_secret {
             width: 330px;
         }
+        .container form {
+            margin-bottom: 1em;
+        }
         </style>
     </head>
     <body>
@@ -108,25 +111,26 @@ if (!isset($_SESSION['ACCESS_TOKEN'])) {
             if (isset($_SESSION['ACCESS_TOKEN']))
             {
                 $token = unserialize($_SESSION['ACCESS_TOKEN']);
-                echo "<p><strong>Token:</strong> " . $token['oauth_token']."<br/>";
+                echo "<div class=\"well well-sm\">\n";
+                echo "<p><strong>Token:</strong> " . $token['oauth_token']."<br/>\n";
 
                 $api   = new Json($token['oauth_token'], $_SESSION['production']);
                 $api->setLogging('/tmp/');
 
                 $params = array('PublicProfileData' => true);
                 try {
-                    $user   = $api->getYourUserProfile($params);
+                    $user = $api->getYourUserProfile($params);
                 }
                 catch(Exception $e) {
-                    echo '<p>' . $e->getMessage() . '</p>';
+                    echo "<p>" . $e->getMessage() . "</p>\n";
                 }
 
-                echo "<strong>Connected as:</strong> " . $user->Profile->User->UserName . " (Id = " . $user->Profile->User->Id . ")<br/>";
+                echo "<strong>Connected as:</strong> " . $user->Profile->User->UserName . " (Id = " . $user->Profile->User->Id . ")<br/>\n";
 
                 preg_match('/([0-9]+)/', $user->Profile->PublicProfile->MemberSince, $matches);
                 $memberSince = date('Y-m-d H:i:s', floor($matches[0]/1000));
-                echo "<strong>Member since:</strong> " . $memberSince . "</p>";
-                echo "<hr />";
+                echo "<strong>Member since:</strong> " . $memberSince . "</p>\n";
+                echo "</div>\n";
 
                 //echo "<div><pre style='height: 200px;overflow: auto;background:#ccc;'>getYourUserProfile:<br>".print_r($user, true)."</pre></div>";
 
@@ -173,7 +177,10 @@ if (!isset($_SESSION['ACCESS_TOKEN'])) {
             ?>
         <footer>
             <hr />
-            Hosted here: <a href="https://github.com/Surfoo/geocaching-api">https://github.com/Surfoo/geocaching-api</a>
+            <ul>
+                <li>Source: <a href="https://github.com/Surfoo/geocaching-api">https://github.com/Surfoo/geocaching-api</a></li>
+                <li><a href="docs/">Documentation</li>
+            </ul>
         </footer>
     </div>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>

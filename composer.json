@@ -1,10 +1,10 @@
 {
-    "name": "geocaching/geocaching-api",
+    "name": "geocaching/api",
     "description": "Geocaching PHP Api",
     "type": "library",
     "license": "Eclipse Public License",
     "keywords": ["geocaching", "api", "oauth"],
-    "homepage": "https://github.com/Surfoo/geocaching-api",
+    "homepage": "http://geocaching.vaguelibre.net/api/",
     "authors": [
         {
             "name": "Surfoo",
