@@ -337,7 +337,7 @@ class Json extends Api
         if(!array_key_exists('LogTypes', $params))
             throw new Exception('LogTypes is missing.');
         if(!is_array($params['LogTypes']))
-            throw new Exception('Username must be an array.');
+            throw new Exception('LogTypes must be an array.');
         if(!array_key_exists('MaxPerPage', $params))
             throw new Exception('MaxPerPage is missing.');
 
@@ -362,6 +362,7 @@ class Json extends Api
      *
      * required param: MaxPerPage<br>
      * optional params: StartIndex, TrackableLogCount, CollectionOnly
+     *
      * @access public
      * @param  array  $params
      * @return object

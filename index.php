@@ -67,7 +67,7 @@ if (!isset($_SESSION['ACCESS_TOKEN'])) {
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Demo of Geocaching API with PHP</title>
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
         <style type="text/css">
         #oauth_key, #oauth_secret {
             width: 330px;
@@ -133,7 +133,8 @@ if (!isset($_SESSION['ACCESS_TOKEN'])) {
                 echo "</div>\n";
 
                 //echo "<div><pre style='height: 200px;overflow: auto;background:#ccc;'>getYourUserProfile:<br>".print_r($user, true)."</pre></div>";
-
+                //print_r($api->GetWptLogTypes());
+                print_r($api->GetUsersGeocacheLogs(array('Username'=>'K&JM', 'LogTypes'=>array(2), 'MaxPerPage'=>20)));
                 //$limits = $api->getAPILimits();
                 //echo "<p><strong>CacheLimit:</strong> ". $limits->Limits->CacheLimits[0]->CacheLimit." in ".$limits->Limits->CacheLimits[0]->InMinutes." minutes</p>";
 
@@ -184,6 +185,6 @@ if (!isset($_SESSION['ACCESS_TOKEN'])) {
         </footer>
     </div>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
     </body>
 </html>
