@@ -99,9 +99,9 @@ if (!isset($_SESSION['ACCESS_TOKEN'])) {
                     </div>
                     <div class="form-group">
                         <label>OAuth URL:</label><br />
-                        <label for="staging" class="checkbox-inline"><input type="radio" name="url" value="staging" id="staging" checked="checked" <?php if(isset($_SESSION['ACCESS_TOKEN'])) echo 'disabled="disabled"'; ?>> Staging</label>
-                        <label for="live" class="checkbox-inline"><input type="radio" name="url" value="live" id="live" <?php if(isset($_SESSION['ACCESS_TOKEN'])) echo 'disabled="disabled"'; ?>> Live</label>
-                        <label for="live_mobile" class="checkbox-inline"><input type="radio" name="url" value="live_mobile" id="live_mobile" <?php if(isset($_SESSION['ACCESS_TOKEN'])) echo 'disabled="disabled"'; ?>> Live Mobile</label>
+                        <label for="staging" class="checkbox-inline"><input type="radio" name="url" value="staging" id="staging" <?php if (isset($_SESSION['url']) && $_SESSION['url'] == "staging") echo 'checked="checked"'; if(isset($_SESSION['ACCESS_TOKEN'])) echo ' disabled="disabled"'; ?> required> Staging</label>
+                        <label for="live" class="checkbox-inline"><input type="radio" name="url" value="live" id="live" <?php if (isset($_SESSION['url']) && $_SESSION['url'] == "live") echo 'checked="checked"'; if(isset($_SESSION['ACCESS_TOKEN'])) echo ' disabled="disabled"'; ?>> Live</label>
+                        <label for="live_mobile" class="checkbox-inline"><input type="radio" name="url" value="live_mobile" id="live_mobile" <?php if (isset($_SESSION['url']) && $_SESSION['url'] == "live_mobile") echo 'checked="checked"'; if(isset($_SESSION['ACCESS_TOKEN'])) echo ' disabled="disabled"'; ?>> Live Mobile</label>
                     </div>
                     <input type="submit" name="oauth" value="OAuth dance!"  class="btn btn-primary" <?php if(isset($_SESSION['ACCESS_TOKEN'])) echo 'disabled="disabled"'; ?>/>
                     <input type="submit" name="reset" value="Reset OAuth Token"  class="btn btn-warning" <?php if(!isset($_SESSION['ACCESS_TOKEN'])) echo 'disabled="disabled"'; ?>/>
@@ -134,7 +134,7 @@ if (!isset($_SESSION['ACCESS_TOKEN'])) {
 
                 //echo "<div><pre style='height: 200px;overflow: auto;background:#ccc;'>getYourUserProfile:<br>".print_r($user, true)."</pre></div>";
                 //print_r($api->GetWptLogTypes());
-                print_r($api->GetUsersGeocacheLogs(array('Username'=>'K&JM', 'LogTypes'=>array(2), 'MaxPerPage'=>20)));
+
                 //$limits = $api->getAPILimits();
                 //echo "<p><strong>CacheLimit:</strong> ". $limits->Limits->CacheLimits[0]->CacheLimit." in ".$limits->Limits->CacheLimits[0]->InMinutes." minutes</p>";
 
