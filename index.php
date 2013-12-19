@@ -67,7 +67,7 @@ if (!isset($_SESSION['ACCESS_TOKEN'])) {
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Demo of Geocaching API with PHP</title>
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
         <style type="text/css">
         #oauth_key, #oauth_secret {
             width: 330px;
@@ -110,12 +110,16 @@ if (!isset($_SESSION['ACCESS_TOKEN'])) {
             <?php
             if (isset($_SESSION['ACCESS_TOKEN']))
             {
+                echo "<pre>";
+                print_r(unserialize($_SESSION['REQUEST_TOKEN']));
+                print_r(unserialize($_SESSION['ACCESS_TOKEN']));
+                echo "</pre>";
                 $token = unserialize($_SESSION['ACCESS_TOKEN']);
                 echo "<div class=\"well well-sm\">\n";
                 echo "<p><strong>Token:</strong> " . $token['oauth_token']."<br/>\n";
 
                 $api   = new Json($token['oauth_token'], $_SESSION['production']);
-                $api->setLogging('/tmp/');
+                //$api->setLogging('/tmp/');
 
                 $params = array('PublicProfileData' => true);
                 try {
@@ -185,6 +189,6 @@ if (!isset($_SESSION['ACCESS_TOKEN'])) {
         </footer>
     </div>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
     </body>
 </html>
