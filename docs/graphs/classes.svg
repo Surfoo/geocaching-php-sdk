@@ -18,7 +18,7 @@
 <path fill="none" stroke="gray" d="M20,-376C14,-376 8,-370 8,-364"/>
 <polyline fill="none" stroke="gray" points="8,-364 8,-20 "/>
 <path fill="none" stroke="gray" d="M8,-20C8,-14 14,-8 20,-8"/>
-<text text-anchor="middle" x="138" y="-362.1" font-family="Times Roman,serif" font-size="11.00" fill="gray">\</text>
+<text text-anchor="middle" x="138" y="-362.1" font-family="Times Roman,serif" font-size="11.00" fill="gray">Global</text>
 </g>
 <g id="graph3" class="cluster"><title>cluster_\Geocaching</title>
 <polyline fill="none" stroke="gray" points="28,-16 248,-16 "/>
