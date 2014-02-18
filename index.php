@@ -63,11 +63,11 @@ if (!isset($_SESSION['ACCESS_TOKEN'])) {
 
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta charset="utf-8" />
         <title>Demo of Geocaching API with PHP</title>
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
         <style type="text/css">
         #oauth_key, #oauth_secret {
             width: 330px;
@@ -135,7 +135,6 @@ if (!isset($_SESSION['ACCESS_TOKEN'])) {
                 $memberSince = date('Y-m-d H:i:s', floor($matches[0]/1000));
                 echo "<strong>Member since:</strong> " . $memberSince . "</p>\n";
                 echo "</div>\n";
-
                 //echo "<div><pre style='height: 200px;overflow: auto;background:#ccc;'>getYourUserProfile:<br>".print_r($user, true)."</pre></div>";
                 //print_r($api->GetWptLogTypes());
 
@@ -183,12 +182,12 @@ if (!isset($_SESSION['ACCESS_TOKEN'])) {
         <footer>
             <hr />
             <ul>
-                <li>Source: <a href="https://github.com/Surfoo/geocaching-api">https://github.com/Surfoo/geocaching-api</a></li>
+                <li><a href="https://github.com/Surfoo/geocaching-api">GitHub Project</a></li>
                 <li><a href="docs/">Documentation</a></li>
             </ul>
         </footer>
     </div>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     </body>
 </html>
