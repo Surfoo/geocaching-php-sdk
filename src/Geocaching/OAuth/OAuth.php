@@ -10,8 +10,7 @@
 
 namespace Geocaching\OAuth;
 
-use Geocaching\Log\KLogger as KLogger;
-use Exception;
+use Katzgrau\KLogger\Logger;
 
 /**
  * OAuth for the Geocaching API
@@ -120,16 +119,16 @@ class OAuth
     public function __construct($consumer_key, $consumer_secret, $callback_url, $url = 'staging')
     {
         if (empty($consumer_key)) {
-            throw new Exception("consumer_key is missing");
+            throw new \Exception("consumer_key is missing");
         }
         if (empty($consumer_secret)) {
-            throw new Exception("consumer_secret is missing");
+            throw new \Exception("consumer_secret is missing");
         }
         if (empty($callback_url)) {
-            throw new Exception("callback_url is missing");
+            throw new \Exception("callback_url is missing");
         }
         if (!in_array($url, array_keys($this->list_oauth_url))) {
-            throw new Exception("OAuth URL is invalid");
+            throw new \Exception("OAuth URL is invalid");
         }
 
         $this->consumer_key    = $consumer_key;
@@ -150,7 +149,7 @@ class OAuth
     public function setLogging($directory)
     {
         if ($directory) {
-            $this->logger = new KLogger($directory, KLogger::INFO);
+            $this->logger = new Logger($directory);
             $this->logging = true;
         }
         if ($this->logging && !$directory) {
@@ -170,7 +169,10 @@ class OAuth
         if (!$this->logging) {
             return false;
         }
-        $this->logger->logInfo('OAUTH: ' . $infos, $obj);
+        if (!is_array($obj)) {
+            $obj = [$obj];
+        }
+        $this->logger->info('OAUTH: ' . $infos, $obj);
     }
     /**
      * Get Request Token
@@ -330,7 +332,7 @@ class OAuth
         $response = curl_exec($ch);
         $status = curl_getinfo($ch);
         if ($status['http_code'] != 200) {
-            throw new Exception(curl_errno($ch));
+            throw new \Exception(curl_errno($ch));
         }
         curl_close($ch);
 

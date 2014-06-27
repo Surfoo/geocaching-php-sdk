@@ -10,8 +10,7 @@
 
 namespace Geocaching\Api;
 
-use Geocaching\Log\KLogger as KLogger;
-use Exception;
+use Katzgrau\KLogger\Logger;
 
 /**
  * Abstract class for Geocaching API
@@ -22,18 +21,8 @@ use Exception;
  * @package Geocaching\Api
  * @abstract
  */
-abstract class Api
+abstract class AbstractGeocachingApi
 {
-    /**
-     * JSON Format
-     */
-    const JSON_FORMAT = 0;
-
-    /**
-     * XML Format
-     */
-    const XML_FORMAT  = 1;
-
     /**
      * Staging URL of Groundspeak API
      *
@@ -65,14 +54,6 @@ abstract class Api
      * @var string $oauth_token
      */
     protected $oauth_token = null;
-
-    /**
-     * Type of output expected format, JSON or XML
-     *
-     * @access protected
-     * @var string $output_format
-     */
-    protected $output_format = null;
 
     /**
      * Log API requests in a file
@@ -274,7 +255,7 @@ abstract class Api
     {
         $this->log($request, $params);
 
-        $params = array_merge(array('format' => $this->output_format, 'AccessToken' => $this->oauth_token), $params);
+        $params = array_merge(array('format' => 'json', 'AccessToken' => $this->oauth_token), $params);
         $query_string = '?' . urldecode(http_build_query($params, '', '&'));
         $url = sprintf($this->api_url, ucfirst($request)) . $query_string;
 
@@ -295,10 +276,9 @@ abstract class Api
         curl_close($ch);
 
         if($status['http_code'] != 200)
-            throw new Exception('HTTP error : ' . $status['http_code']);
+            throw new \Exception('HTTP error : ' . $status['http_code']);
 
-        if($this->output_format == self::JSON_FORMAT)
-            $output = json_decode($output);
+        $output = json_decode($output);
 
         $this->checkRequestStatus($output);
 
@@ -317,13 +297,11 @@ abstract class Api
     {
         $this->log($request);
 
-        $params = array('format' => $this->output_format);
+        $params = array('format' => 'json');
         $query_string = '?' . urldecode(http_build_query($params, '', '&'));
         $url = sprintf($this->api_url, ucfirst($request)) . $query_string;
-        if ($this->output_format == self::JSON_FORMAT) {
-            $data = array_merge(array('AccessToken' => $this->oauth_token), $data);
-            $data = json_encode($data);
-        }
+        $data = array_merge(array('AccessToken' => $this->oauth_token), $data);
+        $data = json_encode($data);
 
         $this->log('curl_params', $params);
         $this->log('curl_url', $url);
@@ -345,10 +323,9 @@ abstract class Api
         curl_close($ch);
 
         if($status['http_code'] != 200)
-            throw new Exception('HTTP error : ' . $status['http_code']);
+            throw new \Exception('HTTP error : ' . $status['http_code']);
 
-        if($this->output_format == self::JSON_FORMAT)
-            $output = json_decode($output);
+        $output = json_decode($output);
 
         $this->checkRequestStatus($output);
 
@@ -364,7 +341,7 @@ abstract class Api
     public function setLogging($directory)
     {
         if ($directory) {
-            $this->logger = new KLogger($directory, KLogger::INFO);
+            $this->logger = new Logger($directory);
             $this->logging = true;
         }
         if ($this->logging && !$directory) {
@@ -381,11 +358,13 @@ abstract class Api
      */
     protected function log($infos, $obj = false)
     {
-        if(!$this->logging)
-
+        if (!$this->logging) {
             return false;
-
-        $this->logger->logInfo('API: ' . $infos, $obj);
+        }
+        if (!is_array($obj)) {
+            $obj = [$obj];
+        }
+        $this->logger->debug('API: ' . $infos, $obj);
     }
 
     /**
@@ -404,7 +383,7 @@ abstract class Api
     public function addFavoritePointToCache(array $params)
     {
         if(!array_key_exists('CacheCode', $params))
-            throw new Exception('CacheCode is missing.');
+            throw new \Exception('CacheCode is missing.');
 
         $get_params = array('CacheCode' => $params['CacheCode']);
 
@@ -423,7 +402,7 @@ abstract class Api
     public function deleteCacheNote(array $params)
     {
         if(!array_key_exists('CacheCode', $params))
-            throw new Exception('CacheCode is missing.');
+            throw new \Exception('CacheCode is missing.');
 
         $get_params = array('CacheCode' => $params['CacheCode']);
 
@@ -442,7 +421,7 @@ abstract class Api
     public function deleteUserWaypoint(array $params)
     {
         if(!array_key_exists('WaypointID', $params))
-            throw new Exception('WaypointID is missing.');
+            throw new \Exception('WaypointID is missing.');
 
         $get_params = array('WaypointID' => (int) $params['WaypointID']);
 
@@ -483,7 +462,7 @@ abstract class Api
     public function getBookmarkListsByUserID(array $params)
     {
         if(!array_key_exists('UserID', $params))
-            throw new Exception('UserID is missing.');
+            throw new \Exception('UserID is missing.');
 
         $get_params = array('UserID' => (int) $params['UserID']);
 
@@ -513,7 +492,7 @@ abstract class Api
     public function getCacheByTileGuid(array $params)
     {
         if(!array_key_exists('tileGuid', $params))
-            throw new Exception('tileGuid is missing.');
+            throw new \Exception('tileGuid is missing.');
 
         $get_params = array('tileGuid' => $params['tileGuid']);
 
@@ -577,9 +556,9 @@ abstract class Api
     public function getGeocacheLogsByCacheCode(array $params)
     {
         if(!array_key_exists('CacheCode', $params))
-            throw new Exception('CacheCode is missing.');
+            throw new \Exception('CacheCode is missing.');
         if(!array_key_exists('MaxPerPage', $params))
-            throw new Exception('MaxPerPage is missing.');
+            throw new \Exception('MaxPerPage is missing.');
 
         $get_params['CacheCode'] = $params['CacheCode'];
         $get_params['MaxPerPage'] = (int) $params['MaxPerPage'];
@@ -612,7 +591,7 @@ abstract class Api
     public function getImagesForGeocache(array $params)
     {
         if(!array_key_exists('CacheCode', $params))
-            throw new Exception('CacheCode is missing.');
+            throw new \Exception('CacheCode is missing.');
 
         $get_params['CacheCode'] = $params['CacheCode'];
 
@@ -643,9 +622,9 @@ abstract class Api
     public function getPocketQueryData(array $params)
     {
         if(!array_key_exists('PocketQueryGuid', $params))
-            throw new Exception('PocketQueryGuid is missing.');
+            throw new \Exception('PocketQueryGuid is missing.');
         if(!array_key_exists('MaxItems', $params))
-            throw new Exception('MaxItems is missing.');
+            throw new \Exception('MaxItems is missing.');
 
         $get_params['PocketQueryGuid'] = $params['PocketQueryGuid'];
         $get_params['MaxItems'] = (int) $params['MaxItems'];
@@ -680,7 +659,7 @@ abstract class Api
     public function getPocketQueryUrls(array $params)
     {
         if(!array_key_exists('PocketQueryGuid', $params))
-            throw new Exception('PocketQueryGuid is missing.');
+            throw new \Exception('PocketQueryGuid is missing.');
 
         $get_params['PocketQueryGuid'] = $params['PocketQueryGuid'];
 
@@ -699,7 +678,7 @@ abstract class Api
     public function getPocketQueryZippedFile(array $params)
     {
         if(!array_key_exists('PocketQueryGuid', $params))
-            throw new Exception('PocketQueryGuid is missing.');
+            throw new \Exception('PocketQueryGuid is missing.');
 
         $get_params['PocketQueryGuid'] = $params['PocketQueryGuid'];
 
@@ -752,9 +731,9 @@ abstract class Api
     public function getTrackableLogsByTBCode(array $params)
     {
         if(!array_key_exists('TBCode', $params))
-            throw new Exception('TBCode is missing.');
+            throw new \Exception('TBCode is missing.');
         if(!array_key_exists('MaxPerPage', $params))
-            throw new Exception('MaxPerPage is missing.');
+            throw new \Exception('MaxPerPage is missing.');
 
         $get_params['TBCode'] = $params['TBCode'];
         $get_params['MaxPerPage'] = (int) $params['MaxPerPage'];
@@ -777,7 +756,7 @@ abstract class Api
     public function getTrackablesByTBCode(array $params)
     {
         if(!array_key_exists('TBCode', $params))
-            throw new Exception('TBCode is missing.');
+            throw new \Exception('TBCode is missing.');
 
         $get_params['TBCode'] = $params['TBCode'];
         if(array_key_exists('TrackableLogCount', $params))
@@ -799,7 +778,7 @@ abstract class Api
     public function getTrackablesByTrackingNumber(array $params)
     {
         if(!array_key_exists('TrackingNumber', $params))
-            throw new Exception('TrackingNumber is missing.');
+            throw new \Exception('TrackingNumber is missing.');
 
         $get_params['TrackingNumber'] = $params['TrackingNumber'];
         if(array_key_exists('TrackableLogCount', $params))
@@ -821,9 +800,9 @@ abstract class Api
     public function getTrackablesInCache(array $params)
     {
         if(!array_key_exists('CacheCode', $params))
-            throw new Exception('CacheCode is missing.');
+            throw new \Exception('CacheCode is missing.');
         if(!array_key_exists('MaxPerPage', $params))
-            throw new Exception('MaxPerPage is missing.');
+            throw new \Exception('MaxPerPage is missing.');
 
         $get_params['CacheCode'] = $params['CacheCode'];
         $get_params['MaxPerPage'] = (int) $params['MaxPerPage'];
@@ -847,7 +826,7 @@ abstract class Api
     public function getTrackableTravelList(array $params)
     {
         if(!array_key_exists('TBCode', $params))
-            throw new Exception('TBCode is missing.');
+            throw new \Exception('TBCode is missing.');
 
         $get_params['TBCode'] = $params['TBCode'];
 
@@ -878,7 +857,7 @@ abstract class Api
     public function getUsersCacheNotes(array $params)
     {
         if(!array_key_exists('MaxPerPage', $params))
-            throw new Exception('MaxPerPage is missing.');
+            throw new \Exception('MaxPerPage is missing.');
 
         $get_params['MaxPerPage'] = (int) $params['MaxPerPage'];
         if(array_key_exists('StartIndex', $params))
@@ -899,7 +878,7 @@ abstract class Api
     public function getUsersWhoFavoritedCache(array $params)
     {
         if(!array_key_exists('CacheCode', $params))
-            throw new Exception('CacheCode is missing.');
+            throw new \Exception('CacheCode is missing.');
 
         $get_params['CacheCode'] = $params['CacheCode'];
 
@@ -918,7 +897,7 @@ abstract class Api
     public function getUserWaypoints(array $params)
     {
         if(!array_key_exists('CacheCode', $params))
-            throw new Exception('CacheCode is missing.');
+            throw new \Exception('CacheCode is missing.');
 
         $get_params['CacheCode'] = $params['CacheCode'];
 
@@ -948,7 +927,7 @@ abstract class Api
     public function removeFavoritePointFromCache(array $params)
     {
         if(!array_key_exists('CacheCode', $params))
-            throw new Exception('CacheCode is missing.');
+            throw new \Exception('CacheCode is missing.');
 
         $get_params['CacheCode'] = $params['CacheCode'];
 

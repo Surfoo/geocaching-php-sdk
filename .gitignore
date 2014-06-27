@@ -1,4 +1,5 @@
 *.sublime-project
 *.sublime-workspace
 docs/phpdoc-cache-*
+output
 vendor

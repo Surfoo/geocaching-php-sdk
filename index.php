@@ -5,8 +5,8 @@ session_start();
 
 require __DIR__ . '/vendor/autoload.php';
 
-use Geocaching\OAuth\OAuth as OAuth,
-    Geocaching\Api\Json as Json;
+use Geocaching\OAuth\OAuth;
+use Geocaching\Api\GeocachingApi;
 
 if(isset($_POST['reset'])) {
     $_SESSION = array();
@@ -40,7 +40,7 @@ if (!isset($_SESSION['ACCESS_TOKEN'])) {
     //First step : Ask a token, go to the Geocaching OAuth URL
     if(isset($_POST['oauth']) && isset($_POST['oauth_key']) && isset($_POST['oauth_secret'])) {
         $consumer = new OAuth($_POST['oauth_key'], $_POST['oauth_secret'], $callback_url, $_SESSION['url']);
-        $consumer->setLogging('/tmp/');
+        //$consumer->setLogging('/tmp/');
 
         $token = $consumer->getRequestToken();
         $_SESSION['OAUTH_KEY'] = $_POST['oauth_key'];
@@ -52,7 +52,8 @@ if (!isset($_SESSION['ACCESS_TOKEN'])) {
     //Second step : Go back from Geocaching OAuth URL, retrieve the token
     if(!empty($_GET) && isset($_SESSION['REQUEST_TOKEN'])) {
         $consumer = new OAuth($_SESSION['OAUTH_KEY'], $_SESSION['OAUTH_SECRET'], $callback_url, $_SESSION['url']);
-        $consumer->setLogging('/tmp/');
+        //$consumer->setLogging('/tmp/');
+
         $token = $consumer->getAccessToken($_GET, unserialize($_SESSION['REQUEST_TOKEN']));
         $_SESSION['ACCESS_TOKEN'] = serialize($token);
         header('Location: index.php');
@@ -67,13 +68,20 @@ if (!isset($_SESSION['ACCESS_TOKEN'])) {
     <head>
         <meta charset="utf-8" />
         <title>Demo of Geocaching API with PHP</title>
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <style type="text/css">
         #oauth_key, #oauth_secret {
             width: 330px;
         }
         .container form {
             margin-bottom: 1em;
+        }
+        footer ul {
+            padding: 0;
+            font-size: 1.2em;
+        }
+        footer ul li{
+            display: inline;
         }
         </style>
     </head>
@@ -118,7 +126,7 @@ if (!isset($_SESSION['ACCESS_TOKEN'])) {
                 echo "<div class=\"well well-sm\">\n";
                 echo "<p><strong>Token:</strong> " . $token['oauth_token']."<br/>\n";
 
-                $api   = new Json($token['oauth_token'], $_SESSION['production']);
+                $api = new GeocachingApi($token['oauth_token'], $_SESSION['production']);
                 //$api->setLogging('/tmp/');
 
                 $params = array('PublicProfileData' => true);
@@ -129,7 +137,7 @@ if (!isset($_SESSION['ACCESS_TOKEN'])) {
                     echo "<p>" . $e->getMessage() . "</p>\n";
                 }
 
-                echo "<strong>Connected as:</strong> " . $user->Profile->User->UserName . " (Id = " . $user->Profile->User->Id . ")<br/>\n";
+                echo "<strong>Connected as:</strong> " . $user->Profile->User->UserName . " (Id: " . $user->Profile->User->Id . ")<br/>\n";
 
                 preg_match('/([0-9]+)/', $user->Profile->PublicProfile->MemberSince, $matches);
                 $memberSince = date('Y-m-d H:i:s', floor($matches[0]/1000));
@@ -182,12 +190,20 @@ if (!isset($_SESSION['ACCESS_TOKEN'])) {
         <footer>
             <hr />
             <ul>
-                <li><a href="https://github.com/Surfoo/geocaching-api">GitHub Project</a></li>
+                <li><a href="https://github.com/Surfoo/geocaching-api">GitHub Project</a></li> &middot; 
                 <li><a href="docs/">Documentation</a></li>
             </ul>
         </footer>
+
+        <a href="https://github.com/surfoo/geocaching-api/">
+            <img style="position: absolute; top: 0; right: 0; border: 0;"
+                 src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67"
+                 alt="Fork me on GitHub"
+                 data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png">
+        </a>
+
     </div>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     </body>
 </html>

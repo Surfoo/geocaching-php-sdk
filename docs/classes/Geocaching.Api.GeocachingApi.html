@@ -15,8 +15,8 @@
     <!--[if lt IE 9]>
     <script src="https://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
     <![endif]-->
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
-    <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.min.js" type="text/javascript"></script>
     <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
     <script src="../js/jquery.smooth-scroll.js"></script>
     <script src="../js/prism.min.js"></script>
@@ -87,7 +87,7 @@
 
             <div class="nav-collapse">
                 <ul class="nav pull-right">
-                    <li class="dropdown">
+                                        <li class="dropdown">
                         <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
                             API Documentation <b class="caret"></b>
                         </a>
@@ -95,7 +95,7 @@
                                                         <li><a href="../namespaces/Geocaching.html">\Geocaching</a></li>
                                                     </ul>
                     </li>
-                    <li class="dropdown" id="charts-menu">
+                                        <li class="dropdown" id="charts-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             Charts <b class="caret"></b>
                         </a>
@@ -114,12 +114,17 @@
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="../reports/errors.html">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">0</span>
+                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">0</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="../reports/markers.html">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">20</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
                                 </a>
                             </li>
                         </ul>
@@ -139,35 +144,34 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-683916866"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-766827318"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-683916866" class="accordion-body collapse in">
+            <div id="namespace-766827318" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2092728085"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-25396609"></a>
                                 <a href="../namespaces/Geocaching.html" style="margin-left: 30px; padding-left: 0">Geocaching</a>
             </div>
-            <div id="namespace-2092728085" class="accordion-body collapse ">
+            <div id="namespace-25396609" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1839675584"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2113604371"></a>
                                 <a href="../namespaces/Geocaching.Api.html" style="margin-left: 30px; padding-left: 0">Api</a>
             </div>
-            <div id="namespace-1839675584" class="accordion-body collapse ">
+            <div id="namespace-2113604371" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
                     <ul>
-                                                                                                    <li class="class"><a href="../classes/Geocaching.Api.Json.html">Json</a></li>
-                                                    <li class="class"><a href="../classes/Geocaching.Api.Api.html">Api</a></li>
-                                                    <li class="class"><a href="../classes/Geocaching.Api.Xml.html">Xml</a></li>
+                                                                                                    <li class="class"><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html">AbstractGeocachingApi</a></li>
+                                                    <li class="class"><a href="../classes/Geocaching.Api.GeocachingApi.html">GeocachingApi</a></li>
                                             </ul>
                 </div>
             </div>
@@ -177,28 +181,10 @@
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1962731685"></a>
-                                <a href="../namespaces/Geocaching.Log.html" style="margin-left: 30px; padding-left: 0">Log</a>
-            </div>
-            <div id="namespace-1962731685" class="accordion-body collapse ">
-                <div class="accordion-inner">
-
-                    
-                    <ul>
-                                                                                                    <li class="class"><a href="../classes/Geocaching.Log.KLogger.html">KLogger</a></li>
-                                            </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-                                                    <div class="accordion" style="margin-bottom: 0">
-        <div class="accordion-group">
-            <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1321747840"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-537074367"></a>
                                 <a href="../namespaces/Geocaching.OAuth.html" style="margin-left: 30px; padding-left: 0">OAuth</a>
             </div>
-            <div id="namespace-1321747840" class="accordion-body collapse ">
+            <div id="namespace-537074367" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -237,7 +223,7 @@
                                             </nav>
                     <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
 
-                    <h1><small>\Geocaching\Api</small>Json</h1>
+                    <h1><small>\Geocaching\Api</small>GeocachingApi</h1>
                     <p><em>Geocaching API for JSON format</em></p>
                     
 
@@ -256,84 +242,82 @@
                         </section>
                         <section class="row-fluid public">
                             <section class="span4">
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method___construct" class="">__construct()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_addGeocachesToBookmarkList" class="">addGeocachesToBookmarkList()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_createFieldNoteAndPublish" class="">createFieldNoteAndPublish()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_createTrackableLog" class="">createTrackableLog()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Json.html#method_geocodeString" class="">geocodeString()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_getBookmarkListByGuid" class="">getBookmarkListByGuid()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_getGeocacheStatus" class="">getGeocacheStatus()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_getMoreGeocaches" class="">getMoreGeocaches()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_getUserGallery" class="">getUserGallery()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_getUsersCacheCounts" class="">getUsersCacheCounts()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_getOwnedTrackables" class="">getOwnedTrackables()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_getUsersGeocacheLogs" class="">getUsersGeocacheLogs()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_getUsersTrackables" class="">getUsersTrackables()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_getYourUserProfile" class="">getYourUserProfile()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_getAnotherUsersProfile" class="">getAnotherUsersProfile()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_saveUserWaypoint" class="">saveUserWaypoint()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_searchForGeocaches" class="">searchForGeocaches()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_searchForSouvenirsByPublicGuid" class="">searchForSouvenirsByPublicGuid()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_updateCacheNote" class="">updateCacheNote()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_uploadImageToGeocacheLog" class="">uploadImageToGeocacheLog()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_setLogging" class="">setLogging()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_addFavoritePointToCache" class="">addFavoritePointToCache()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_deleteCacheNote" class="">deleteCacheNote()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_deleteUserWaypoint" class="">deleteUserWaypoint()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_getAPILimits" class="">getAPILimits()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_getAttributeTypesData" class="">getAttributeTypesData()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_getBookmarkListsByUserID" class="">getBookmarkListsByUserID()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_getBookmarkListsForUser" class="">getBookmarkListsForUser()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_getCacheByTileGuid" class="">getCacheByTileGuid()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_getCacheIdsFavoritedByUser" class="">getCacheIdsFavoritedByUser()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_getCachesFavoritedByUser" class="">getCachesFavoritedByUser()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_getGeocacheDataTypes" class="">getGeocacheDataTypes()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_getGeocacheLogsByCacheCode" class="">getGeocacheLogsByCacheCode()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_getGeocacheTypes" class="">getGeocacheTypes()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_getImagesForGeocache" class="">getImagesForGeocache()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_getMembershipTypes" class="">getMembershipTypes()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_getPocketQueryData" class="">getPocketQueryData()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_getPocketQueryList" class="">getPocketQueryList()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_getPocketQueryUrls" class="">getPocketQueryUrls()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_getPocketQueryZippedFile" class="">getPocketQueryZippedFile()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_getServerDetails" class="">getServerDetails()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_getSiteStats" class="">getSiteStats()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_getStatusMessages" class="">getStatusMessages()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_getTrackableLogsByTBCode" class="">getTrackableLogsByTBCode()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_getTrackablesByTBCode" class="">getTrackablesByTBCode()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_getTrackablesByTrackingNumber" class="">getTrackablesByTrackingNumber()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_getTrackablesInCache" class="">getTrackablesInCache()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_getTrackableTravelList" class="">getTrackableTravelList()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_getUsersFavoritePoints" class="">getUsersFavoritePoints()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_getUsersCacheNotes" class="">getUsersCacheNotes()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_getUsersWhoFavoritedCache" class="">getUsersWhoFavoritedCache()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_getUserWaypoints" class="">getUserWaypoints()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_getWptLogTypes" class="">getWptLogTypes()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_removeFavoritePointFromCache" class="">removeFavoritePointFromCache()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.GeocachingApi.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.GeocachingApi.html#method_addGeocachesToBookmarkList" class="">addGeocachesToBookmarkList()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.GeocachingApi.html#method_createFieldNoteAndPublish" class="">createFieldNoteAndPublish()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.GeocachingApi.html#method_createTrackableLog" class="">createTrackableLog()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.GeocachingApi.html#method_getAnotherUsersProfile" class="">getAnotherUsersProfile()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.GeocachingApi.html#method_getBookmarkListByGuid" class="">getBookmarkListByGuid()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.GeocachingApi.html#method_getGeocacheStatus" class="">getGeocacheStatus()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.GeocachingApi.html#method_getMoreGeocaches" class="">getMoreGeocaches()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.GeocachingApi.html#method_getOwnedTrackables" class="">getOwnedTrackables()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.GeocachingApi.html#method_getUserGallery" class="">getUserGallery()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.GeocachingApi.html#method_getUsersCacheCounts" class="">getUsersCacheCounts()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.GeocachingApi.html#method_getUsersGeocacheLogs" class="">getUsersGeocacheLogs()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.GeocachingApi.html#method_getUsersTrackables" class="">getUsersTrackables()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.GeocachingApi.html#method_getYourUserProfile" class="">getYourUserProfile()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.GeocachingApi.html#method_saveUserWaypoint" class="">saveUserWaypoint()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.GeocachingApi.html#method_searchForGeocaches" class="">searchForGeocaches()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.GeocachingApi.html#method_searchForSouvenirsByPublicGuid" class="">searchForSouvenirsByPublicGuid()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.GeocachingApi.html#method_updateCacheNote" class="">updateCacheNote()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.GeocachingApi.html#method_uploadImageToGeocacheLog" class="">uploadImageToGeocacheLog()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_setLogging" class="">setLogging()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_addFavoritePointToCache" class="">addFavoritePointToCache()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_deleteCacheNote" class="">deleteCacheNote()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_deleteUserWaypoint" class="">deleteUserWaypoint()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_getAPILimits" class="">getAPILimits()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_getAttributeTypesData" class="">getAttributeTypesData()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_getBookmarkListsByUserID" class="">getBookmarkListsByUserID()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_getBookmarkListsForUser" class="">getBookmarkListsForUser()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_getCacheByTileGuid" class="">getCacheByTileGuid()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_getCacheIdsFavoritedByUser" class="">getCacheIdsFavoritedByUser()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_getCachesFavoritedByUser" class="">getCachesFavoritedByUser()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_getGeocacheDataTypes" class="">getGeocacheDataTypes()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_getGeocacheLogsByCacheCode" class="">getGeocacheLogsByCacheCode()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_getGeocacheTypes" class="">getGeocacheTypes()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_getImagesForGeocache" class="">getImagesForGeocache()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_getMembershipTypes" class="">getMembershipTypes()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_getPocketQueryData" class="">getPocketQueryData()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_getPocketQueryList" class="">getPocketQueryList()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_getPocketQueryUrls" class="">getPocketQueryUrls()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_getPocketQueryZippedFile" class="">getPocketQueryZippedFile()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_getServerDetails" class="">getServerDetails()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_getSiteStats" class="">getSiteStats()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_getStatusMessages" class="">getStatusMessages()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_getTrackableLogsByTBCode" class="">getTrackableLogsByTBCode()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_getTrackablesByTBCode" class="">getTrackablesByTBCode()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_getTrackablesByTrackingNumber" class="">getTrackablesByTrackingNumber()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_getTrackablesInCache" class="">getTrackablesInCache()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_getTrackableTravelList" class="">getTrackableTravelList()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_getUsersFavoritePoints" class="">getUsersFavoritePoints()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_getUsersCacheNotes" class="">getUsersCacheNotes()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_getUsersWhoFavoritedCache" class="">getUsersWhoFavoritedCache()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_getUserWaypoints" class="">getUserWaypoints()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_getWptLogTypes" class="">getWptLogTypes()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_removeFavoritePointFromCache" class="">removeFavoritePointFromCache()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.GeocachingApi.html#method_geocodeString" class="">geocodeString()</a><br />
                                                             </section>
                             <section class="span4">
                                                                     <em>No public properties found</em>
                                                             </section>
                             <section class="span4">
-                                                                    <a href="../classes/Geocaching.Api.Api.html#constant_JSON_FORMAT" class="">JSON_FORMAT</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#constant_XML_FORMAT" class="">XML_FORMAT</a><br />
+                                                                    <em>No constants found</em>
                                                             </section>
                         </section>
                         <section class="row-fluid protected">
                             <section class="span4">
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_checkRequestStatus" class="">checkRequestStatus()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Json.html#method_getUserProfile" class="">getUserProfile()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_get_request" class="">get_request()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_post_request" class="">post_request()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#method_log" class="">log()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.GeocachingApi.html#method_checkRequestStatus" class="">checkRequestStatus()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_get_request" class="">get_request()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_post_request" class="">post_request()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_log" class="">log()</a><br />
+                                                                    <a href="../classes/Geocaching.Api.GeocachingApi.html#method_getUserProfile" class="">getUserProfile()</a><br />
                                                             </section>
                             <section class="span4">
-                                                                    <a href="../classes/Geocaching.Api.Api.html#property_staging_api_url" class="">$staging_api_url</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#property_live_api_url" class="">$live_api_url</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#property_api_url" class="">$api_url</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#property_oauth_token" class="">$oauth_token</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#property_output_format" class="">$output_format</a><br />
-                                                                    <a href="../classes/Geocaching.Api.Api.html#property_logging" class="">$logging</a><br />
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#property_staging_api_url" class="">$staging_api_url</a><br />
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#property_live_api_url" class="">$live_api_url</a><br />
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#property_api_url" class="">$api_url</a><br />
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#property_oauth_token" class="">$oauth_token</a><br />
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#property_logging" class="">$logging</a><br />
                                                             </section>
                             <section class="span4">
                                 <em>N/A</em>
@@ -357,14 +341,14 @@
                     
                     <dl>
                         <dt>File</dt>
-                            <dd><a href="../files/Api.Json.php.html"><div class="path-wrapper">Api/Json.php</div></a></dd>
+                            <dd><a href="../files/Api.GeocachingApi.html"><div class="path-wrapper">Api/GeocachingApi.php</div></a></dd>
                                                 <dt>Package</dt>
                             <dd><div class="namespace-wrapper">\Geocaching\Api</div></dd>
                                                 <dt>Class hierarchy</dt>
                             <dd class="hierarchy">
                                                                                                                                                                                                                                                                                                 
-                                        <div class="namespace-wrapper"><a href="../classes/Geocaching.Api.Api.html">\Geocaching\Api\Api</a></div>
-                                                                                                    <div class="namespace-wrapper">\Geocaching\Api\Json</div>
+                                        <div class="namespace-wrapper"><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html">\Geocaching\Api\AbstractGeocachingApi</a></div>
+                                                                                                    <div class="namespace-wrapper">\Geocaching\Api\GeocachingApi</div>
                             </dd>
 
                         
@@ -374,84 +358,12 @@
                                                                         </dl>
                     <h2>Tags</h2>
                     <table class="table table-condensed">
-                                            <tr>
-                            <th>
-                                todo
-                            </th>
-                            <td>
-                                                            </td>
-                        </tr>
+                                            <tr><td colspan="2"><em>None found</em></td></tr>
                                         </table>
                 </aside>
             </div>
 
-                                    <a id="constants" name="constants"></a>
-            <div class="row-fluid">
-                <div class="span8 content class">
-                    <h2>Constants</h2>
-                </div>
-                <aside class="span4 detailsbar"></aside>
-            </div>
-
-                                <div class="row-fluid">
-        <div class="span8 content class">
-            <a id="constant_JSON_FORMAT" name="constant_JSON_FORMAT" class="anchor"></a>
-            <article id="constant_JSON_FORMAT" class="constant">
-                <h3 class="">JSON_FORMAT</h3>
-                <pre class="signature">JSON_FORMAT</pre>
-                <p><em>JSON Format</em></p>
-                
-            </article>
-        </div>
-        <aside class="span4 detailsbar">
-            <h1><i class="icon-arrow-down"></i></h1>
-                        <dl>
-                                                    <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
-                                                            </dl>
-            <h2>Tags</h2>
-            <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
-                            </table>
-        </aside>
-    </div>
-
-                                    <div class="row-fluid">
-        <div class="span8 content class">
-            <a id="constant_XML_FORMAT" name="constant_XML_FORMAT" class="anchor"></a>
-            <article id="constant_XML_FORMAT" class="constant">
-                <h3 class="">XML_FORMAT</h3>
-                <pre class="signature">XML_FORMAT</pre>
-                <p><em>XML Format</em></p>
-                
-            </article>
-        </div>
-        <aside class="span4 detailsbar">
-            <h1><i class="icon-arrow-down"></i></h1>
-                        <dl>
-                                                    <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
-                                                            </dl>
-            <h2>Tags</h2>
-            <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
-                            </table>
-        </aside>
-    </div>
-
-                            
+                        
                                     <a id="properties" name="properties"></a>
             <div class="row-fluid">
                 <div class="span8 content class">
@@ -477,17 +389,11 @@
             <h1><i class="icon-arrow-down"></i></h1>
                         <dl>
                                     <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
+                    <dd><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html"><div class="path-wrapper">\Geocaching\Api\AbstractGeocachingApi</div></a></dd>
                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -509,17 +415,11 @@
             <h1><i class="icon-arrow-down"></i></h1>
                         <dl>
                                     <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
+                    <dd><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html"><div class="path-wrapper">\Geocaching\Api\AbstractGeocachingApi</div></a></dd>
                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -541,17 +441,11 @@
             <h1><i class="icon-arrow-down"></i></h1>
                         <dl>
                                     <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
+                    <dd><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html"><div class="path-wrapper">\Geocaching\Api\AbstractGeocachingApi</div></a></dd>
                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -573,49 +467,11 @@
             <h1><i class="icon-arrow-down"></i></h1>
                         <dl>
                                     <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
+                    <dd><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html"><div class="path-wrapper">\Geocaching\Api\AbstractGeocachingApi</div></a></dd>
                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
-                            </table>
-        </aside>
-    </div>
-
-                                    <div class="row-fluid">
-        <div class="span8 content class">
-            <a id="property_output_format" name="property_output_format" class="anchor"></a>
-            <article class="property">
-                <h3 class="protected ">$output_format</h3>
-                <pre class="signature">$output_format : string</pre>
-                <p><em>Type of output expected format, JSON or XML</em></p>
-                
-
-                                <h4>Type</h4>
-                string
-                                            </article>
-        </div>
-        <aside class="span4 detailsbar">
-            <h1><i class="icon-arrow-down"></i></h1>
-                        <dl>
-                                    <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
-                                                            </dl>
-            <h2>Tags</h2>
-            <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -637,17 +493,11 @@
             <h1><i class="icon-arrow-down"></i></h1>
                         <dl>
                                     <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
+                    <dd><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html"><div class="path-wrapper">\Geocaching\Api\AbstractGeocachingApi</div></a></dd>
                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -665,7 +515,7 @@
             <article class="method">
                 <h3 class="public ">__construct()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">__construct(string <span class="argument">$oauth_token</span>, boolean <span class="argument">$live</span>)</pre>
+                <pre class="signature" style="margin-right: 54px;">__construct(string <span class="argument">$oauth_token</span>, boolean <span class="argument">$live</span>) : void</pre>
                 <p><em>Constructor</em></p>
                 
 
@@ -673,13 +523,13 @@
                     <table class="table table-condensed table-hover">
                                                     <tr>
                                 <td>string</td>
-                                <td>$oauth_token</td>
-                                <td></td>
+                                <td>$oauth_token </td>
+                                <td><p>OAuth token provided by the application</p></td>
                             </tr>
                                                     <tr>
                                 <td>boolean</td>
-                                <td>$live</td>
-                                <td></td>
+                                <td>$live </td>
+                                <td><p>production = true, staging = false</p></td>
                             </tr>
                                             </table>
                 
@@ -688,20 +538,11 @@
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
-                                        <span class="label label-info">abstract</span>
-                                                <dl>
-                                                    <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
-                                                            </dl>
+                                                            <dl>
+                                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -712,141 +553,15 @@
             <article class="method">
                 <h3 class="public ">addGeocachesToBookmarkList()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">addGeocachesToBookmarkList(array <span class="argument">$params</span>) : void</pre>
-                <p><em>Add Geocaches to a bookmark list</em></p>
-                
+                <pre class="signature" style="margin-right: 54px;">addGeocachesToBookmarkList(array <span class="argument">$params</span>) : object</pre>
+                <p><em>Add Geocaches To Bookmark List</em></p>
+                <p>Required params: BookmarkListGuid, CacheCodes</p>
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
                                                     <tr>
                                 <td>array</td>
-                                <td>$params</td>
-                                <td></td>
-                            </tr>
-                                            </table>
-                
-                
-                            </article>
-        </div>
-        <aside class="span4 detailsbar">
-            <h1><i class="icon-arrow-down"></i></h1>
-                                        <span class="label label-info">abstract</span>
-                                                <dl>
-                                                    <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
-                                                            </dl>
-            <h2>Tags</h2>
-            <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
-                            </table>
-        </aside>
-    </div>
-
-                                    <div class="row-fluid">
-        <div class="span8 content class">
-            <a id="method_createFieldNoteAndPublish" name="method_createFieldNoteAndPublish" class="anchor"></a>
-            <article class="method">
-                <h3 class="public ">createFieldNoteAndPublish()</h3>
-                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">createFieldNoteAndPublish(array <span class="argument">$params</span>) : void</pre>
-                <p><em>Create Field Note And Publish</em></p>
-                
-
-                                    <h4>Parameters</h4>
-                    <table class="table table-condensed table-hover">
-                                                    <tr>
-                                <td>array</td>
-                                <td>$params</td>
-                                <td></td>
-                            </tr>
-                                            </table>
-                
-                
-                            </article>
-        </div>
-        <aside class="span4 detailsbar">
-            <h1><i class="icon-arrow-down"></i></h1>
-                                        <span class="label label-info">abstract</span>
-                                                <dl>
-                                                    <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
-                                                            </dl>
-            <h2>Tags</h2>
-            <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
-                            </table>
-        </aside>
-    </div>
-
-                                    <div class="row-fluid">
-        <div class="span8 content class">
-            <a id="method_createTrackableLog" name="method_createTrackableLog" class="anchor"></a>
-            <article class="method">
-                <h3 class="public ">createTrackableLog()</h3>
-                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">createTrackableLog(array <span class="argument">$params</span>) : void</pre>
-                <p><em>Create Trackable Log</em></p>
-                
-
-                                    <h4>Parameters</h4>
-                    <table class="table table-condensed table-hover">
-                                                    <tr>
-                                <td>array</td>
-                                <td>$params</td>
-                                <td></td>
-                            </tr>
-                                            </table>
-                
-                
-                            </article>
-        </div>
-        <aside class="span4 detailsbar">
-            <h1><i class="icon-arrow-down"></i></h1>
-                                        <span class="label label-info">abstract</span>
-                                                <dl>
-                                                    <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
-                                                            </dl>
-            <h2>Tags</h2>
-            <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
-                            </table>
-        </aside>
-    </div>
-
-                                    <div class="row-fluid">
-        <div class="span8 content class">
-            <a id="method_geocodeString" name="method_geocodeString" class="anchor"></a>
-            <article class="method">
-                <h3 class="public ">geocodeString()</h3>
-                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">geocodeString(array <span class="argument">$params</span>) : object</pre>
-                <p><em>geocode String</em></p>
-                <p>required param: GeocodeString</p>
-
-                                    <h4>Parameters</h4>
-                    <table class="table table-condensed table-hover">
-                                                    <tr>
-                                <td>array</td>
-                                <td>$params</td>
+                                <td>$params </td>
                                 <td></td>
                             </tr>
                                             </table>
@@ -862,391 +577,78 @@
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
 
                                     <div class="row-fluid">
         <div class="span8 content class">
-            <a id="method_getBookmarkListByGuid" name="method_getBookmarkListByGuid" class="anchor"></a>
+            <a id="method_createFieldNoteAndPublish" name="method_createFieldNoteAndPublish" class="anchor"></a>
             <article class="method">
-                <h3 class="public ">getBookmarkListByGuid()</h3>
+                <h3 class="public ">createFieldNoteAndPublish()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">getBookmarkListByGuid(array <span class="argument">$params</span>) : void</pre>
-                <p><em>Get Bookmark List By Guid</em></p>
-                
+                <pre class="signature" style="margin-right: 54px;">createFieldNoteAndPublish(array <span class="argument">$params</span>) : object</pre>
+                <p><em>Create Field Note And Publish</em></p>
+                <p>Required params: CacheCode, WptLogTypeId, UTCDateLogged, Note<br>
+Optional params: PromoteToLog, FavoriteThisCache, EncryptLogText, UpdatedLatitude, UpdatedLongitude, base64ImageData, FileCaption, FileDescription, FileName</p>
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
                                                     <tr>
                                 <td>array</td>
-                                <td>$params</td>
+                                <td>$params </td>
                                 <td></td>
                             </tr>
                                             </table>
                 
                 
-                            </article>
+                                    <h4>Returns</h4>
+                    object
+                                                </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
-                                        <span class="label label-info">abstract</span>
-                                                <dl>
-                                                    <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
-                                                            </dl>
+                                                            <dl>
+                                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
 
                                     <div class="row-fluid">
         <div class="span8 content class">
-            <a id="method_getGeocacheStatus" name="method_getGeocacheStatus" class="anchor"></a>
+            <a id="method_createTrackableLog" name="method_createTrackableLog" class="anchor"></a>
             <article class="method">
-                <h3 class="public ">getGeocacheStatus()</h3>
+                <h3 class="public ">createTrackableLog()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">getGeocacheStatus(array <span class="argument">$params</span>) : void</pre>
-                <p><em>Get Geocache Status</em></p>
-                
+                <pre class="signature" style="margin-right: 54px;">createTrackableLog(array <span class="argument">$params</span>) : object</pre>
+                <p><em>Create Trackable Log</em></p>
+                <p>Required params: TrackingNumber, UTCDateLogged, Note, LogType</p>
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
                                                     <tr>
                                 <td>array</td>
-                                <td>$params</td>
+                                <td>$params </td>
                                 <td></td>
                             </tr>
                                             </table>
                 
                 
-                            </article>
+                                    <h4>Returns</h4>
+                    object
+                                                </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
-                                        <span class="label label-info">abstract</span>
-                                                <dl>
-                                                    <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
-                                                            </dl>
+                                                            <dl>
+                                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
-                            </table>
-        </aside>
-    </div>
-
-                                    <div class="row-fluid">
-        <div class="span8 content class">
-            <a id="method_getMoreGeocaches" name="method_getMoreGeocaches" class="anchor"></a>
-            <article class="method">
-                <h3 class="public ">getMoreGeocaches()</h3>
-                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">getMoreGeocaches(array <span class="argument">$params</span>) : void</pre>
-                <p><em>Get More Geocaches</em></p>
-                
-
-                                    <h4>Parameters</h4>
-                    <table class="table table-condensed table-hover">
-                                                    <tr>
-                                <td>array</td>
-                                <td>$params</td>
-                                <td></td>
-                            </tr>
-                                            </table>
-                
-                
-                            </article>
-        </div>
-        <aside class="span4 detailsbar">
-            <h1><i class="icon-arrow-down"></i></h1>
-                                        <span class="label label-info">abstract</span>
-                                                <dl>
-                                                    <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
-                                                            </dl>
-            <h2>Tags</h2>
-            <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
-                            </table>
-        </aside>
-    </div>
-
-                                    <div class="row-fluid">
-        <div class="span8 content class">
-            <a id="method_getUserGallery" name="method_getUserGallery" class="anchor"></a>
-            <article class="method">
-                <h3 class="public ">getUserGallery()</h3>
-                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">getUserGallery(array <span class="argument">$params</span>) : void</pre>
-                <p><em>Get User Gallery</em></p>
-                
-
-                                    <h4>Parameters</h4>
-                    <table class="table table-condensed table-hover">
-                                                    <tr>
-                                <td>array</td>
-                                <td>$params</td>
-                                <td></td>
-                            </tr>
-                                            </table>
-                
-                
-                            </article>
-        </div>
-        <aside class="span4 detailsbar">
-            <h1><i class="icon-arrow-down"></i></h1>
-                                        <span class="label label-info">abstract</span>
-                                                <dl>
-                                                    <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
-                                                            </dl>
-            <h2>Tags</h2>
-            <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
-                            </table>
-        </aside>
-    </div>
-
-                                    <div class="row-fluid">
-        <div class="span8 content class">
-            <a id="method_getUsersCacheCounts" name="method_getUsersCacheCounts" class="anchor"></a>
-            <article class="method">
-                <h3 class="public ">getUsersCacheCounts()</h3>
-                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">getUsersCacheCounts(array <span class="argument">$params</span>) : void</pre>
-                <p><em>Get Users Cache Counts</em></p>
-                
-
-                                    <h4>Parameters</h4>
-                    <table class="table table-condensed table-hover">
-                                                    <tr>
-                                <td>array</td>
-                                <td>$params</td>
-                                <td></td>
-                            </tr>
-                                            </table>
-                
-                
-                            </article>
-        </div>
-        <aside class="span4 detailsbar">
-            <h1><i class="icon-arrow-down"></i></h1>
-                                        <span class="label label-info">abstract</span>
-                                                <dl>
-                                                    <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
-                                                            </dl>
-            <h2>Tags</h2>
-            <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
-                            </table>
-        </aside>
-    </div>
-
-                                    <div class="row-fluid">
-        <div class="span8 content class">
-            <a id="method_getOwnedTrackables" name="method_getOwnedTrackables" class="anchor"></a>
-            <article class="method">
-                <h3 class="public ">getOwnedTrackables()</h3>
-                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">getOwnedTrackables(array <span class="argument">$params</span>) : void</pre>
-                <p><em>Get Owned Trackables</em></p>
-                
-
-                                    <h4>Parameters</h4>
-                    <table class="table table-condensed table-hover">
-                                                    <tr>
-                                <td>array</td>
-                                <td>$params</td>
-                                <td></td>
-                            </tr>
-                                            </table>
-                
-                
-                            </article>
-        </div>
-        <aside class="span4 detailsbar">
-            <h1><i class="icon-arrow-down"></i></h1>
-                                        <span class="label label-info">abstract</span>
-                                                <dl>
-                                                    <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
-                                                            </dl>
-            <h2>Tags</h2>
-            <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
-                            </table>
-        </aside>
-    </div>
-
-                                    <div class="row-fluid">
-        <div class="span8 content class">
-            <a id="method_getUsersGeocacheLogs" name="method_getUsersGeocacheLogs" class="anchor"></a>
-            <article class="method">
-                <h3 class="public ">getUsersGeocacheLogs()</h3>
-                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">getUsersGeocacheLogs(array <span class="argument">$params</span>) : void</pre>
-                <p><em>Get Users Geocache Logs</em></p>
-                
-
-                                    <h4>Parameters</h4>
-                    <table class="table table-condensed table-hover">
-                                                    <tr>
-                                <td>array</td>
-                                <td>$params</td>
-                                <td></td>
-                            </tr>
-                                            </table>
-                
-                
-                            </article>
-        </div>
-        <aside class="span4 detailsbar">
-            <h1><i class="icon-arrow-down"></i></h1>
-                                        <span class="label label-info">abstract</span>
-                                                <dl>
-                                                    <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
-                                                            </dl>
-            <h2>Tags</h2>
-            <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
-                            </table>
-        </aside>
-    </div>
-
-                                    <div class="row-fluid">
-        <div class="span8 content class">
-            <a id="method_getUsersTrackables" name="method_getUsersTrackables" class="anchor"></a>
-            <article class="method">
-                <h3 class="public ">getUsersTrackables()</h3>
-                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">getUsersTrackables(array <span class="argument">$params</span>) : void</pre>
-                <p><em>get Users Trackables</em></p>
-                
-
-                                    <h4>Parameters</h4>
-                    <table class="table table-condensed table-hover">
-                                                    <tr>
-                                <td>array</td>
-                                <td>$params</td>
-                                <td></td>
-                            </tr>
-                                            </table>
-                
-                
-                            </article>
-        </div>
-        <aside class="span4 detailsbar">
-            <h1><i class="icon-arrow-down"></i></h1>
-                                        <span class="label label-info">abstract</span>
-                                                <dl>
-                                                    <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
-                                                            </dl>
-            <h2>Tags</h2>
-            <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
-                            </table>
-        </aside>
-    </div>
-
-                                    <div class="row-fluid">
-        <div class="span8 content class">
-            <a id="method_getYourUserProfile" name="method_getYourUserProfile" class="anchor"></a>
-            <article class="method">
-                <h3 class="public ">getYourUserProfile()</h3>
-                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">getYourUserProfile(array <span class="argument">$params</span>) : void</pre>
-                <p><em>Get Your User Profile</em></p>
-                
-
-                                    <h4>Parameters</h4>
-                    <table class="table table-condensed table-hover">
-                                                    <tr>
-                                <td>array</td>
-                                <td>$params</td>
-                                <td></td>
-                            </tr>
-                                            </table>
-                
-                
-                            </article>
-        </div>
-        <aside class="span4 detailsbar">
-            <h1><i class="icon-arrow-down"></i></h1>
-                                        <span class="label label-info">abstract</span>
-                                                <dl>
-                                                    <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
-                                                            </dl>
-            <h2>Tags</h2>
-            <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -1257,38 +659,350 @@
             <article class="method">
                 <h3 class="public ">getAnotherUsersProfile()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">getAnotherUsersProfile(array <span class="argument">$params</span>) : void</pre>
+                <pre class="signature" style="margin-right: 54px;">getAnotherUsersProfile(array <span class="argument">$params</span>) : object</pre>
                 <p><em>Get Another Users Profile</em></p>
-                
+                <p>required param: UserID
+optionals params: ChallengesData, FavoritePointsData, GeocacheData, PublicProfileData, SouvenirData, TrackableData</p>
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
                                                     <tr>
                                 <td>array</td>
-                                <td>$params</td>
+                                <td>$params </td>
                                 <td></td>
                             </tr>
                                             </table>
                 
                 
-                            </article>
+                                    <h4>Returns</h4>
+                    object
+                                                </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
-                                        <span class="label label-info">abstract</span>
-                                                <dl>
-                                                    <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
-                                                            </dl>
+                                                            <dl>
+                                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getBookmarkListByGuid" name="method_getBookmarkListByGuid" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getBookmarkListByGuid()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getBookmarkListByGuid(array <span class="argument">$params</span>) : object</pre>
+                <p><em>Get Bookmark List By Guid</em></p>
+                <p>required param: BookmarkListGuid</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$params </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    object
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getGeocacheStatus" name="method_getGeocacheStatus" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getGeocacheStatus()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getGeocacheStatus(array <span class="argument">$params</span>) : object</pre>
+                <p><em>Get Geocache Status</em></p>
+                <p>required param: CacheCodes</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$params </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    object
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getMoreGeocaches" name="method_getMoreGeocaches" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getMoreGeocaches()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getMoreGeocaches(array <span class="argument">$params</span>) : object</pre>
+                <p><em>Get More Geocaches</em></p>
+                <p>required params: IsLite, StartIndex, MaxPerPage, GeocacheLogCount, TrackableLogCount</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$params </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    object
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getOwnedTrackables" name="method_getOwnedTrackables" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getOwnedTrackables()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getOwnedTrackables(array <span class="argument">$params</span>) : object</pre>
+                <p><em>Get Owned Trackables</em></p>
+                <p>required params: StartIndex, MaxPerPage<br>
+optional params: TrackableLogCount, CollectionOnly</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$params </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    object
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getUserGallery" name="method_getUserGallery" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getUserGallery()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getUserGallery(array <span class="argument">$params</span>) : object</pre>
+                <p><em>Get User Gallery</em></p>
+                <p>required params: Username, StartIndex, MaxPerPage</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$params </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    object
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getUsersCacheCounts" name="method_getUsersCacheCounts" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getUsersCacheCounts()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getUsersCacheCounts(array <span class="argument">$params</span>) : object</pre>
+                <p><em>Get Users Cache Counts</em></p>
+                <p>required param: Username</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$params </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    object
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getUsersGeocacheLogs" name="method_getUsersGeocacheLogs" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getUsersGeocacheLogs()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getUsersGeocacheLogs(array <span class="argument">$params</span>) : object</pre>
+                <p><em>Get Users Geocache Logs</em></p>
+                <p>required params: Username, LogTypes, MaxPerPage<br>
+optional params: StartIndex, EndDate, StartDate, ExcludeArchived</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$params </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    object
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getUsersTrackables" name="method_getUsersTrackables" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getUsersTrackables()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getUsersTrackables(array <span class="argument">$params</span>) : object</pre>
+                <p><em>Get Users Trackables</em></p>
+                <p>required param: MaxPerPage<br>
+optional params: StartIndex, TrackableLogCount, CollectionOnly</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$params </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    object
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getYourUserProfile" name="method_getYourUserProfile" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getYourUserProfile()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getYourUserProfile(array <span class="argument">$params</span>) : object</pre>
+                <p><em>Get Your User Profile</em></p>
+                <p>optionals params: ChallengesData, FavoritePointsData, GeocacheData, PublicProfileData, SouvenirData, TrackableData</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$params </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    object
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -1299,38 +1013,32 @@
             <article class="method">
                 <h3 class="public ">saveUserWaypoint()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">saveUserWaypoint(array <span class="argument">$params</span>) : void</pre>
+                <pre class="signature" style="margin-right: 54px;">saveUserWaypoint(array <span class="argument">$params</span>) : object</pre>
                 <p><em>Save User Waypoint</em></p>
-                
+                <p>required params: CacheCode, Latitude, Longitude
+optional param: Description</p>
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
                                                     <tr>
                                 <td>array</td>
-                                <td>$params</td>
+                                <td>$params </td>
                                 <td></td>
                             </tr>
                                             </table>
                 
                 
-                            </article>
+                                    <h4>Returns</h4>
+                    object
+                                                </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
-                                        <span class="label label-info">abstract</span>
-                                                <dl>
-                                                    <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
-                                                            </dl>
+                                                            <dl>
+                                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -1341,38 +1049,35 @@
             <article class="method">
                 <h3 class="public ">searchForGeocaches()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">searchForGeocaches(array <span class="argument">$params</span>) : void</pre>
+                <pre class="signature" style="margin-right: 54px;">searchForGeocaches(array <span class="argument">$params</span>) : object</pre>
                 <p><em>Search For Geocaches</em></p>
-                
+                <p>required params: DistanceInMeters &amp;&amp; PointRadiusLatitude &amp;&amp; PointRadiusLongitude OR CacheCode, MaxPerPage.<br>
+optional params: IsLite, StartIndex, MaxPerPage, GeocacheLogCount, TrackableLogCount, NotFoundByUsers, MinTerrain,
+MaxTerrain, GeocacheName, MinDifficulty, MaxDifficulty, CacheCodes, GeocacheTypeIds, GeocacheContainerSizeIds,
+Archived, Available, Premium, MinFavoritePoints, MaxFavoritePoints, HiddenByUsers, NotHiddenByUsers, BottomRightLatitude,
+BottomRightLongitude, TopLeftLatitude, TopLeftLongitude, BookmarkListIDs, MinTrackables, MaxTrackables.</p>
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
                                                     <tr>
                                 <td>array</td>
-                                <td>$params</td>
+                                <td>$params </td>
                                 <td></td>
                             </tr>
                                             </table>
                 
                 
-                            </article>
+                                    <h4>Returns</h4>
+                    object
+                                                </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
-                                        <span class="label label-info">abstract</span>
-                                                <dl>
-                                                    <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
-                                                            </dl>
+                                                            <dl>
+                                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -1383,38 +1088,32 @@
             <article class="method">
                 <h3 class="public ">searchForSouvenirsByPublicGuid()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">searchForSouvenirsByPublicGuid(array <span class="argument">$params</span>) : void</pre>
+                <pre class="signature" style="margin-right: 54px;">searchForSouvenirsByPublicGuid(array <span class="argument">$params</span>) : object</pre>
                 <p><em>Search For Souvenirs By Public Guid</em></p>
-                
+                <p>required param: PublicGuid<br>
+optional param: ExistingSouvenirIDs</p>
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
                                                     <tr>
                                 <td>array</td>
-                                <td>$params</td>
+                                <td>$params </td>
                                 <td></td>
                             </tr>
                                             </table>
                 
                 
-                            </article>
+                                    <h4>Returns</h4>
+                    object
+                                                </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
-                                        <span class="label label-info">abstract</span>
-                                                <dl>
-                                                    <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
-                                                            </dl>
+                                                            <dl>
+                                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -1425,38 +1124,31 @@
             <article class="method">
                 <h3 class="public ">updateCacheNote()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">updateCacheNote(array <span class="argument">$params</span>) : void</pre>
+                <pre class="signature" style="margin-right: 54px;">updateCacheNote(array <span class="argument">$params</span>) : object</pre>
                 <p><em>Update Cache Note</em></p>
-                
+                <p>required params: CacheCode, Note</p>
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
                                                     <tr>
                                 <td>array</td>
-                                <td>$params</td>
+                                <td>$params </td>
                                 <td></td>
                             </tr>
                                             </table>
                 
                 
-                            </article>
+                                    <h4>Returns</h4>
+                    object
+                                                </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
-                                        <span class="label label-info">abstract</span>
-                                                <dl>
-                                                    <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
-                                                            </dl>
+                                                            <dl>
+                                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -1467,38 +1159,32 @@
             <article class="method">
                 <h3 class="public ">uploadImageToGeocacheLog()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">uploadImageToGeocacheLog(array <span class="argument">$params</span>) : void</pre>
+                <pre class="signature" style="margin-right: 54px;">uploadImageToGeocacheLog(array <span class="argument">$params</span>) : object</pre>
                 <p><em>Upload Image To Geocache Log</em></p>
-                
+                <p>required params: LogGuid, base64ImageData<br>
+optional params: FileCaption, FileDescription, FileName</p>
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
                                                     <tr>
                                 <td>array</td>
-                                <td>$params</td>
+                                <td>$params </td>
                                 <td></td>
                             </tr>
                                             </table>
                 
                 
-                            </article>
+                                    <h4>Returns</h4>
+                    object
+                                                </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
-                                        <span class="label label-info">abstract</span>
-                                                <dl>
-                                                    <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
-                                                            </dl>
+                                                            <dl>
+                                                                            </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -1517,7 +1203,7 @@
                     <table class="table table-condensed table-hover">
                                                     <tr>
                                 <td>string</td>
-                                <td>$directory</td>
+                                <td>$directory </td>
                                 <td></td>
                             </tr>
                                             </table>
@@ -1529,17 +1215,11 @@
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
                                                     <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
+                    <dd><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html"><div class="path-wrapper">\Geocaching\Api\AbstractGeocachingApi</div></a></dd>
                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -1558,7 +1238,7 @@
                     <table class="table table-condensed table-hover">
                                                     <tr>
                                 <td>array</td>
-                                <td>$params</td>
+                                <td>$params </td>
                                 <td></td>
                             </tr>
                                             </table>
@@ -1573,17 +1253,11 @@
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
                                                     <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
+                    <dd><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html"><div class="path-wrapper">\Geocaching\Api\AbstractGeocachingApi</div></a></dd>
                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -1602,7 +1276,7 @@
                     <table class="table table-condensed table-hover">
                                                     <tr>
                                 <td>array</td>
-                                <td>$params</td>
+                                <td>$params </td>
                                 <td></td>
                             </tr>
                                             </table>
@@ -1617,17 +1291,11 @@
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
                                                     <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
+                    <dd><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html"><div class="path-wrapper">\Geocaching\Api\AbstractGeocachingApi</div></a></dd>
                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -1646,7 +1314,7 @@
                     <table class="table table-condensed table-hover">
                                                     <tr>
                                 <td>array</td>
-                                <td>$params</td>
+                                <td>$params </td>
                                 <td></td>
                             </tr>
                                             </table>
@@ -1661,17 +1329,11 @@
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
                                                     <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
+                    <dd><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html"><div class="path-wrapper">\Geocaching\Api\AbstractGeocachingApi</div></a></dd>
                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -1697,17 +1359,11 @@
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
                                                     <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
+                    <dd><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html"><div class="path-wrapper">\Geocaching\Api\AbstractGeocachingApi</div></a></dd>
                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -1733,17 +1389,11 @@
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
                                                     <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
+                    <dd><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html"><div class="path-wrapper">\Geocaching\Api\AbstractGeocachingApi</div></a></dd>
                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -1762,7 +1412,7 @@
                     <table class="table table-condensed table-hover">
                                                     <tr>
                                 <td>array</td>
-                                <td>$params</td>
+                                <td>$params </td>
                                 <td></td>
                             </tr>
                                             </table>
@@ -1777,17 +1427,11 @@
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
                                                     <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
+                    <dd><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html"><div class="path-wrapper">\Geocaching\Api\AbstractGeocachingApi</div></a></dd>
                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -1813,17 +1457,11 @@
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
                                                     <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
+                    <dd><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html"><div class="path-wrapper">\Geocaching\Api\AbstractGeocachingApi</div></a></dd>
                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -1842,7 +1480,7 @@
                     <table class="table table-condensed table-hover">
                                                     <tr>
                                 <td>array</td>
-                                <td>$params</td>
+                                <td>$params </td>
                                 <td></td>
                             </tr>
                                             </table>
@@ -1857,17 +1495,11 @@
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
                                                     <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
+                    <dd><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html"><div class="path-wrapper">\Geocaching\Api\AbstractGeocachingApi</div></a></dd>
                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -1893,17 +1525,11 @@
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
                                                     <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
+                    <dd><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html"><div class="path-wrapper">\Geocaching\Api\AbstractGeocachingApi</div></a></dd>
                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -1929,17 +1555,11 @@
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
                                                     <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
+                    <dd><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html"><div class="path-wrapper">\Geocaching\Api\AbstractGeocachingApi</div></a></dd>
                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -1958,7 +1578,7 @@
                     <table class="table table-condensed table-hover">
                                                     <tr>
                                 <td>array</td>
-                                <td>$params</td>
+                                <td>$params </td>
                                 <td></td>
                             </tr>
                                             </table>
@@ -1973,17 +1593,11 @@
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
                                                     <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
+                    <dd><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html"><div class="path-wrapper">\Geocaching\Api\AbstractGeocachingApi</div></a></dd>
                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -2003,7 +1617,7 @@ optional param: StartIndex</p>
                     <table class="table table-condensed table-hover">
                                                     <tr>
                                 <td>array</td>
-                                <td>$params</td>
+                                <td>$params </td>
                                 <td></td>
                             </tr>
                                             </table>
@@ -2018,17 +1632,11 @@ optional param: StartIndex</p>
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
                                                     <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
+                    <dd><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html"><div class="path-wrapper">\Geocaching\Api\AbstractGeocachingApi</div></a></dd>
                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -2054,17 +1662,11 @@ optional param: StartIndex</p>
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
                                                     <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
+                    <dd><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html"><div class="path-wrapper">\Geocaching\Api\AbstractGeocachingApi</div></a></dd>
                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -2083,7 +1685,7 @@ optional param: StartIndex</p>
                     <table class="table table-condensed table-hover">
                                                     <tr>
                                 <td>array</td>
-                                <td>$params</td>
+                                <td>$params </td>
                                 <td></td>
                             </tr>
                                             </table>
@@ -2098,17 +1700,11 @@ optional param: StartIndex</p>
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
                                                     <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
+                    <dd><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html"><div class="path-wrapper">\Geocaching\Api\AbstractGeocachingApi</div></a></dd>
                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -2134,17 +1730,11 @@ optional param: StartIndex</p>
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
                                                     <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
+                    <dd><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html"><div class="path-wrapper">\Geocaching\Api\AbstractGeocachingApi</div></a></dd>
                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -2164,7 +1754,7 @@ optional params: StartItem, GCListOnly</p>
                     <table class="table table-condensed table-hover">
                                                     <tr>
                                 <td>array</td>
-                                <td>$params</td>
+                                <td>$params </td>
                                 <td></td>
                             </tr>
                                             </table>
@@ -2179,17 +1769,11 @@ optional params: StartItem, GCListOnly</p>
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
                                                     <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
+                    <dd><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html"><div class="path-wrapper">\Geocaching\Api\AbstractGeocachingApi</div></a></dd>
                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -2215,17 +1799,11 @@ optional params: StartItem, GCListOnly</p>
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
                                                     <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
+                    <dd><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html"><div class="path-wrapper">\Geocaching\Api\AbstractGeocachingApi</div></a></dd>
                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -2244,7 +1822,7 @@ optional params: StartItem, GCListOnly</p>
                     <table class="table table-condensed table-hover">
                                                     <tr>
                                 <td>array</td>
-                                <td>$params</td>
+                                <td>$params </td>
                                 <td></td>
                             </tr>
                                             </table>
@@ -2259,17 +1837,11 @@ optional params: StartItem, GCListOnly</p>
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
                                                     <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
+                    <dd><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html"><div class="path-wrapper">\Geocaching\Api\AbstractGeocachingApi</div></a></dd>
                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -2288,7 +1860,7 @@ optional params: StartItem, GCListOnly</p>
                     <table class="table table-condensed table-hover">
                                                     <tr>
                                 <td>array</td>
-                                <td>$params</td>
+                                <td>$params </td>
                                 <td></td>
                             </tr>
                                             </table>
@@ -2303,17 +1875,11 @@ optional params: StartItem, GCListOnly</p>
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
                                                     <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
+                    <dd><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html"><div class="path-wrapper">\Geocaching\Api\AbstractGeocachingApi</div></a></dd>
                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -2339,17 +1905,11 @@ optional params: StartItem, GCListOnly</p>
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
                                                     <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
+                    <dd><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html"><div class="path-wrapper">\Geocaching\Api\AbstractGeocachingApi</div></a></dd>
                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -2375,17 +1935,11 @@ optional params: StartItem, GCListOnly</p>
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
                                                     <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
+                    <dd><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html"><div class="path-wrapper">\Geocaching\Api\AbstractGeocachingApi</div></a></dd>
                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -2411,17 +1965,11 @@ optional params: StartItem, GCListOnly</p>
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
                                                     <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
+                    <dd><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html"><div class="path-wrapper">\Geocaching\Api\AbstractGeocachingApi</div></a></dd>
                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -2441,7 +1989,7 @@ optional param: StartIndex</p>
                     <table class="table table-condensed table-hover">
                                                     <tr>
                                 <td>array</td>
-                                <td>$params</td>
+                                <td>$params </td>
                                 <td></td>
                             </tr>
                                             </table>
@@ -2456,17 +2004,11 @@ optional param: StartIndex</p>
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
                                                     <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
+                    <dd><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html"><div class="path-wrapper">\Geocaching\Api\AbstractGeocachingApi</div></a></dd>
                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -2486,7 +2028,7 @@ optional param: TrackableLogCount</p>
                     <table class="table table-condensed table-hover">
                                                     <tr>
                                 <td>array</td>
-                                <td>$params</td>
+                                <td>$params </td>
                                 <td></td>
                             </tr>
                                             </table>
@@ -2501,17 +2043,11 @@ optional param: TrackableLogCount</p>
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
                                                     <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
+                    <dd><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html"><div class="path-wrapper">\Geocaching\Api\AbstractGeocachingApi</div></a></dd>
                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -2531,7 +2067,7 @@ optional param: TrackableLogCount</p>
                     <table class="table table-condensed table-hover">
                                                     <tr>
                                 <td>array</td>
-                                <td>$params</td>
+                                <td>$params </td>
                                 <td></td>
                             </tr>
                                             </table>
@@ -2546,17 +2082,11 @@ optional param: TrackableLogCount</p>
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
                                                     <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
+                    <dd><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html"><div class="path-wrapper">\Geocaching\Api\AbstractGeocachingApi</div></a></dd>
                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -2576,7 +2106,7 @@ optional params: StartIndex, TrackableLogCount</p>
                     <table class="table table-condensed table-hover">
                                                     <tr>
                                 <td>array</td>
-                                <td>$params</td>
+                                <td>$params </td>
                                 <td></td>
                             </tr>
                                             </table>
@@ -2591,17 +2121,11 @@ optional params: StartIndex, TrackableLogCount</p>
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
                                                     <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
+                    <dd><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html"><div class="path-wrapper">\Geocaching\Api\AbstractGeocachingApi</div></a></dd>
                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -2620,7 +2144,7 @@ optional params: StartIndex, TrackableLogCount</p>
                     <table class="table table-condensed table-hover">
                                                     <tr>
                                 <td>array</td>
-                                <td>$params</td>
+                                <td>$params </td>
                                 <td></td>
                             </tr>
                                             </table>
@@ -2635,17 +2159,11 @@ optional params: StartIndex, TrackableLogCount</p>
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
                                                     <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
+                    <dd><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html"><div class="path-wrapper">\Geocaching\Api\AbstractGeocachingApi</div></a></dd>
                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -2671,17 +2189,11 @@ optional params: StartIndex, TrackableLogCount</p>
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
                                                     <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
+                    <dd><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html"><div class="path-wrapper">\Geocaching\Api\AbstractGeocachingApi</div></a></dd>
                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -2701,7 +2213,7 @@ optional param: StartIndex</p>
                     <table class="table table-condensed table-hover">
                                                     <tr>
                                 <td>array</td>
-                                <td>$params</td>
+                                <td>$params </td>
                                 <td></td>
                             </tr>
                                             </table>
@@ -2716,17 +2228,11 @@ optional param: StartIndex</p>
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
                                                     <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
+                    <dd><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html"><div class="path-wrapper">\Geocaching\Api\AbstractGeocachingApi</div></a></dd>
                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -2745,7 +2251,7 @@ optional param: StartIndex</p>
                     <table class="table table-condensed table-hover">
                                                     <tr>
                                 <td>array</td>
-                                <td>$params</td>
+                                <td>$params </td>
                                 <td></td>
                             </tr>
                                             </table>
@@ -2760,17 +2266,11 @@ optional param: StartIndex</p>
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
                                                     <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
+                    <dd><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html"><div class="path-wrapper">\Geocaching\Api\AbstractGeocachingApi</div></a></dd>
                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -2789,7 +2289,7 @@ optional param: StartIndex</p>
                     <table class="table table-condensed table-hover">
                                                     <tr>
                                 <td>array</td>
-                                <td>$params</td>
+                                <td>$params </td>
                                 <td></td>
                             </tr>
                                             </table>
@@ -2804,17 +2304,11 @@ optional param: StartIndex</p>
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
                                                     <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
+                    <dd><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html"><div class="path-wrapper">\Geocaching\Api\AbstractGeocachingApi</div></a></dd>
                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -2840,17 +2334,11 @@ optional param: StartIndex</p>
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
                                                     <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
+                    <dd><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html"><div class="path-wrapper">\Geocaching\Api\AbstractGeocachingApi</div></a></dd>
                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -2869,7 +2357,7 @@ optional param: StartIndex</p>
                     <table class="table table-condensed table-hover">
                                                     <tr>
                                 <td>array</td>
-                                <td>$params</td>
+                                <td>$params </td>
                                 <td></td>
                             </tr>
                                             </table>
@@ -2884,17 +2372,46 @@ optional param: StartIndex</p>
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
                                                     <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
+                    <dd><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html"><div class="path-wrapper">\Geocaching\Api\AbstractGeocachingApi</div></a></dd>
                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_geocodeString" name="method_geocodeString" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">geocodeString()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">geocodeString(array <span class="argument">$params</span>) : object</pre>
+                <p><em>geocode String</em></p>
+                <p>required param: GeocodeString</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$params </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    object
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -2905,15 +2422,15 @@ optional param: StartIndex</p>
             <article class="method">
                 <h3 class="protected ">checkRequestStatus()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">checkRequestStatus(string <span class="argument">$content</span>) : void</pre>
-                <p><em>Check the status of the POST or GET request</em></p>
+                <pre class="signature" style="margin-right: 54px;">checkRequestStatus(object <span class="argument">$content</span>) : void</pre>
+                <p><em>Check the status of the POST or GET request in JSON</em></p>
                 
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
                                                     <tr>
-                                <td>string</td>
-                                <td>$content</td>
+                                <td>object</td>
+                                <td>$content </td>
                                 <td></td>
                             </tr>
                                             </table>
@@ -2923,20 +2440,137 @@ optional param: StartIndex</p>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
-                                        <span class="label label-info">abstract</span>
-                                                <dl>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_request" name="method_get_request" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">get_request()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_request(string <span class="argument">$request</span>, array <span class="argument">$params</span>) : object|string</pre>
+                <p><em>Make a GET request</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$request </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$params </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    object|string
+                                            &mdash; <p>JSON : Object, XML : String</p>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
                                                     <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
+                    <dd><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html"><div class="path-wrapper">\Geocaching\Api\AbstractGeocachingApi</div></a></dd>
                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_post_request" name="method_post_request" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">post_request()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">post_request(string <span class="argument">$request</span>, array <span class="argument">$data</span>) : object|string</pre>
+                <p><em>Make a POST request</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$request </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$data </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    object|string
+                                            &mdash; <p>JSON : Object, XML : String</p>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html"><div class="path-wrapper">\Geocaching\Api\AbstractGeocachingApi</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_log" name="method_log" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">log()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">log(string <span class="argument">$infos</span>, array <span class="argument">$obj</span>) : void</pre>
+                <p><em>Log informations into the log file</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$infos </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$obj </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html"><div class="path-wrapper">\Geocaching\Api\AbstractGeocachingApi</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -2957,12 +2591,12 @@ if the method is getYourUserProfile, there are some required params (DeviceInfo)
                     <table class="table table-condensed table-hover">
                                                     <tr>
                                 <td>string</td>
-                                <td>$function</td>
+                                <td>$function </td>
                                 <td></td>
                             </tr>
                                                     <tr>
                                 <td>array</td>
-                                <td>$params</td>
+                                <td>$params </td>
                                 <td></td>
                             </tr>
                                             </table>
@@ -2978,157 +2612,7 @@ if the method is getYourUserProfile, there are some required params (DeviceInfo)
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
-                            </table>
-        </aside>
-    </div>
-
-                                    <div class="row-fluid">
-        <div class="span8 content class">
-            <a id="method_get_request" name="method_get_request" class="anchor"></a>
-            <article class="method">
-                <h3 class="protected ">get_request()</h3>
-                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">get_request(string <span class="argument">$request</span>, array <span class="argument">$params</span>) : object|string</pre>
-                <p><em>Make a GET request</em></p>
-                
-
-                                    <h4>Parameters</h4>
-                    <table class="table table-condensed table-hover">
-                                                    <tr>
-                                <td>string</td>
-                                <td>$request</td>
-                                <td></td>
-                            </tr>
-                                                    <tr>
-                                <td>array</td>
-                                <td>$params</td>
-                                <td></td>
-                            </tr>
-                                            </table>
-                
-                
-                                    <h4>Returns</h4>
-                    object|string
-                                            &mdash; <p>JSON : Object, XML : String</p>
-                                                </article>
-        </div>
-        <aside class="span4 detailsbar">
-            <h1><i class="icon-arrow-down"></i></h1>
-                                                            <dl>
-                                                    <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
-                                                            </dl>
-            <h2>Tags</h2>
-            <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
-                            </table>
-        </aside>
-    </div>
-
-                                    <div class="row-fluid">
-        <div class="span8 content class">
-            <a id="method_post_request" name="method_post_request" class="anchor"></a>
-            <article class="method">
-                <h3 class="protected ">post_request()</h3>
-                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">post_request(string <span class="argument">$request</span>, array <span class="argument">$data</span>) : object|string</pre>
-                <p><em>Make a POST request</em></p>
-                
-
-                                    <h4>Parameters</h4>
-                    <table class="table table-condensed table-hover">
-                                                    <tr>
-                                <td>string</td>
-                                <td>$request</td>
-                                <td></td>
-                            </tr>
-                                                    <tr>
-                                <td>array</td>
-                                <td>$data</td>
-                                <td></td>
-                            </tr>
-                                            </table>
-                
-                
-                                    <h4>Returns</h4>
-                    object|string
-                                            &mdash; <p>JSON : Object, XML : String</p>
-                                                </article>
-        </div>
-        <aside class="span4 detailsbar">
-            <h1><i class="icon-arrow-down"></i></h1>
-                                                            <dl>
-                                                    <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
-                                                            </dl>
-            <h2>Tags</h2>
-            <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
-                            </table>
-        </aside>
-    </div>
-
-                                    <div class="row-fluid">
-        <div class="span8 content class">
-            <a id="method_log" name="method_log" class="anchor"></a>
-            <article class="method">
-                <h3 class="protected ">log()</h3>
-                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">log(string <span class="argument">$infos</span>, array <span class="argument">$obj</span>) : void</pre>
-                <p><em>Log informations into the log file</em></p>
-                
-
-                                    <h4>Parameters</h4>
-                    <table class="table table-condensed table-hover">
-                                                    <tr>
-                                <td>string</td>
-                                <td>$infos</td>
-                                <td></td>
-                            </tr>
-                                                    <tr>
-                                <td>array</td>
-                                <td>$obj</td>
-                                <td></td>
-                            </tr>
-                                            </table>
-                
-                
-                            </article>
-        </div>
-        <aside class="span4 detailsbar">
-            <h1><i class="icon-arrow-down"></i></h1>
-                                                            <dl>
-                                                    <dt>Inherited from</dt>
-                    <dd><a href="../classes/Geocaching.Api.Api.html"><div class="path-wrapper">\Geocaching\Api\Api</div></a></dd>
-                                                            </dl>
-            <h2>Tags</h2>
-            <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            todo
-                        </th>
-                        <td>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -3139,10 +2623,10 @@ if the method is getYourUserProfile, there are some required params (DeviceInfo)
     <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="source-view-label">Json.php</h3>
+            <h3 id="source-view-label">GeocachingApi.php</h3>
         </div>
         <div class="modal-body">
-            <pre data-src="../files/Api/Json.php.txt" class="language-php line-numbers"></pre>
+            <pre data-src="../files/Api/GeocachingApi.php.txt" class="language-php line-numbers"></pre>
         </div>
     </div>
 
@@ -3183,7 +2667,7 @@ if the method is getYourUserProfile, there are some required params (DeviceInfo)
                 <section class="span10 offset1">
                     <hr />
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on February 18th, 2014 at 14:23.
+                    on June 27th, 2014 at 23:37.
                 </section>
             </section>
         </section>

@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <phpdoc>
-  <parser>
-    <target>docs</target>
-  </parser>
-  <transformer>
-    <target>docs</target>
-  </transformer>
-  <title><![CDATA[Geocaching API with PHP 5]]></title>
-  <files>
-    <file>src/Geocaching/Api/Api.php</file>
-    <file>src/Geocaching/Api/Json.php</file>
-    <file>src/Geocaching/Api/Xml.php</file>
-    <file>src/Geocaching/OAuth/OAuth.php</file>
-    <file>src/Geocaching/Log/KLogger.php</file>
-  </files>
+    <parser>
+        <target>output</target>
+    </parser>
+    <transformer>
+        <target>docs</target>
+    </transformer>
+    <title><![CDATA[Geocaching API with PHP 5]]></title>
+    <files>
+        <directory>src/</directory>
+    </files>
 </phpdoc>

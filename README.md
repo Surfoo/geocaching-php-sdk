@@ -10,6 +10,26 @@ You want to contribute?
 
 First, you must have your API key from Groundspeak, please refer to this url: http://www.geocaching.com/live/apidevelopers/
 
+## Installation
+
+### Composer
+
+From the Command Line:
+
+```
+composer require geocaching/api:1.0
+```
+
+In your `composer.json`:
+
+``` json
+{
+    "require": {
+        "geocaching/api": "1.0"
+    }
+}
+```
+
 Get the source
 --------------
 

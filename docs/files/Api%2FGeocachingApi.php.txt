@@ -10,14 +10,12 @@
 
 namespace Geocaching\Api;
 
-use Exception;
-
 /**
  * Geocaching API for JSON format
  *
  * @package Geocaching\Api
  */
-class Json extends Api
+class GeocachingApi extends AbstractGeocachingApi
 {
     /**
      * Constructor
@@ -30,10 +28,9 @@ class Json extends Api
     public function __construct($oauth_token, $live = false)
     {
         if(!isset($oauth_token))
-            throw new Exception('oauth_token is missing.');
+            throw new \Exception('oauth_token is missing.');
 
         $this->oauth_token   = $oauth_token;
-        $this->output_format = 'json';
         $this->http_headers  = array('Content-Type: application/json');
         if ($live) {
             $this->api_url = $this->live_api_url;
@@ -52,7 +49,7 @@ class Json extends Api
     protected function checkRequestStatus($content)
     {
         if(!empty($content->Status->StatusCode))
-            throw new Exception($content->Status->StatusMessage . ' (StatusCode: ' . $content->Status->StatusCode . ')');
+            throw new \Exception($content->Status->StatusMessage . ' (StatusCode: ' . $content->Status->StatusCode . ')');
     }
 
     /**
@@ -71,11 +68,11 @@ class Json extends Api
     public function addGeocachesToBookmarkList(array $params)
     {
         if(!array_key_exists('BookmarkListGuid', $params))
-            throw new Exception('BookmarkListGuid is missing.');
+            throw new \Exception('BookmarkListGuid is missing.');
         if(!array_key_exists('CacheCodes', $params))
-            throw new Exception('CacheCodes is missing.');
+            throw new \Exception('CacheCodes is missing.');
         if(!is_array($params['cacheCodes']))
-            throw new Exception('cacheCodes must be an array.');
+            throw new \Exception('cacheCodes must be an array.');
 
         $post_params['BookmarkListGuid'] = $params['BookmarkListGuid'];
         $post_params['CacheCodes'] = $params['CacheCodes'];
@@ -96,13 +93,13 @@ class Json extends Api
     public function createFieldNoteAndPublish(array $params)
     {
         if(!array_key_exists('CacheCode', $params))
-            throw new Exception('CacheCode is missing.');
+            throw new \Exception('CacheCode is missing.');
         if(!array_key_exists('WptLogTypeId', $params))
-            throw new Exception('WptLogTypeId is missing.');
+            throw new \Exception('WptLogTypeId is missing.');
         if(!array_key_exists('UTCDateLogged', $params))
-            throw new Exception('UTCDateLogged is missing.');
+            throw new \Exception('UTCDateLogged is missing.');
         if(!array_key_exists('Note', $params))
-            throw new Exception('Note is missing.');
+            throw new \Exception('Note is missing.');
 
         $post_params['CacheCode'] = $params['CacheCode'];
         $post_params['WptLogTypeId'] = $params['WptLogTypeId'];
@@ -145,13 +142,13 @@ class Json extends Api
     public function createTrackableLog(array $params)
     {
         if(!array_key_exists('TrackingNumber', $params))
-            throw new Exception('TrackingNumber is missing.');
+            throw new \Exception('TrackingNumber is missing.');
         if(!array_key_exists('UTCDateLogged', $params))
-            throw new Exception('UTCDateLogged is missing.');
+            throw new \Exception('UTCDateLogged is missing.');
         if(!array_key_exists('Note', $params))
-            throw new Exception('Note is missing.');
+            throw new \Exception('Note is missing.');
         if(!array_key_exists('LogType', $params))
-            throw new Exception('LogType is missing.');
+            throw new \Exception('LogType is missing.');
 
         $post_params['TrackingNumber'] = $params['TrackingNumber'];
         $post_params['UTCDateLogged'] = '/Date('.((int) $params['UTCDateLogged'] * 1000).')/'; //UTCDateLogged is a timestamp
@@ -173,7 +170,7 @@ class Json extends Api
     public function geocodeString(array $params)
     {
         if(!array_key_exists('GeocodeString', $params))
-            throw new Exception('GeocodeString is missing.');
+            throw new \Exception('GeocodeString is missing.');
 
         $post_params['GeocodeString'] = $params['GeocodeString'];
 
@@ -192,7 +189,7 @@ class Json extends Api
     public function getBookmarkListByGuid(array $params)
     {
         if(!array_key_exists('BookmarkListGuid', $params))
-            throw new Exception('BookmarkListGuid is missing.');
+            throw new \Exception('BookmarkListGuid is missing.');
 
         $post_params['BookmarkListGuid'] = $params['BookmarkListGuid'];
 
@@ -211,7 +208,7 @@ class Json extends Api
     public function getGeocacheStatus(array $params)
     {
         if(!array_key_exists('CacheCodes', $params))
-            throw new Exception('CacheCodes is missing.');
+            throw new \Exception('CacheCodes is missing.');
 
         $post_params['CacheCodes'] = $params['CacheCodes'];
 
@@ -230,15 +227,15 @@ class Json extends Api
     public function getMoreGeocaches(array $params)
     {
         if(!array_key_exists('IsLite', $params))
-            throw new Exception('IsLite is missing.');
+            throw new \Exception('IsLite is missing.');
         if(!array_key_exists('StartIndex', $params))
-            throw new Exception('StartIndex is missing.');
+            throw new \Exception('StartIndex is missing.');
         if(!array_key_exists('MaxPerPage', $params))
-            throw new Exception('MaxPerPage is missing.');
+            throw new \Exception('MaxPerPage is missing.');
         if(!array_key_exists('GeocacheLogCount', $params))
-            throw new Exception('GeocacheLogCount is missing.');
+            throw new \Exception('GeocacheLogCount is missing.');
         if(!array_key_exists('TrackableLogCount', $params))
-            throw new Exception('TrackableLogCount is missing.');
+            throw new \Exception('TrackableLogCount is missing.');
 
         $post_params['IsLite']  = (boolean) $params['IsLite'];
         $post_params['StartIndex']  = (int) $params['StartIndex'];
@@ -261,11 +258,11 @@ class Json extends Api
     public function getUserGallery(array $params)
     {
         if(!array_key_exists('Username', $params))
-            throw new Exception('Username is missing.');
+            throw new \Exception('Username is missing.');
         if(!array_key_exists('StartIndex', $params))
-            throw new Exception('StartIndex is missing.');
+            throw new \Exception('StartIndex is missing.');
         if(!array_key_exists('MaxPerPage', $params))
-            throw new Exception('MaxPerPage is missing.');
+            throw new \Exception('MaxPerPage is missing.');
 
         $post_params['Username'] = $params['Username'];
         $post_params['StartIndex'] = (int) $params['StartIndex'];
@@ -284,9 +281,9 @@ class Json extends Api
     public function getUsersCacheCounts(array $params)
     {
         if(!array_key_exists('Username', $params))
-            throw new Exception('Username is missing.');
+            throw new \Exception('Username is missing.');
         if(!is_array($params['Username']))
-            throw new Exception('Username must be an array.');
+            throw new \Exception('Username must be an array.');
 
         $post_params['Username'] = $params['Username'];
 
@@ -306,9 +303,9 @@ class Json extends Api
     public function getOwnedTrackables(array $params)
     {
         if(!array_key_exists('StartIndex', $params))
-            throw new Exception('StartIndex is missing.');
+            throw new \Exception('StartIndex is missing.');
         if(!array_key_exists('MaxPerPage', $params))
-            throw new Exception('MaxPerPage is missing.');
+            throw new \Exception('MaxPerPage is missing.');
 
         $post_params['StartIndex'] = (int) $params['StartIndex'];
         $post_params['MaxPerPage'] = (int) $params['MaxPerPage'];
@@ -333,13 +330,13 @@ class Json extends Api
     public function getUsersGeocacheLogs(array $params)
     {
         if(!array_key_exists('Username', $params))
-            throw new Exception('Username is missing.');
+            throw new \Exception('Username is missing.');
         if(!array_key_exists('LogTypes', $params))
-            throw new Exception('LogTypes is missing.');
+            throw new \Exception('LogTypes is missing.');
         if(!is_array($params['LogTypes']))
-            throw new Exception('LogTypes must be an array.');
+            throw new \Exception('LogTypes must be an array.');
         if(!array_key_exists('MaxPerPage', $params))
-            throw new Exception('MaxPerPage is missing.');
+            throw new \Exception('MaxPerPage is missing.');
 
         $post_params['MaxPerPage'] = (int) $params['MaxPerPage'];
         if(array_key_exists('StartIndex', $params))
@@ -370,7 +367,7 @@ class Json extends Api
     public function getUsersTrackables(array $params)
     {
         if(!array_key_exists('MaxPerPage', $params))
-            throw new Exception('MaxPerPage is missing.');
+            throw new \Exception('MaxPerPage is missing.');
 
         $post_params['MaxPerPage'] = (int) $params['MaxPerPage'];
         if(array_key_exists('StartIndex', $params))
@@ -425,14 +422,14 @@ class Json extends Api
     public function saveUserWaypoint(array $params)
     {
         if(!array_key_exists('CacheCode', $params))
-            throw new Exception('CacheCode is missing.');
+            throw new \Exception('CacheCode is missing.');
         if(!array_key_exists('Latitude', $params))
-            throw new Exception('Latitude is missing.');
+            throw new \Exception('Latitude is missing.');
         if(!array_key_exists('Longitude', $params))
-            throw new Exception('Longitude is missing.');
+            throw new \Exception('Longitude is missing.');
 
         /*if(!array_key_exists('ID', $params)) // ID is autoincrement, WTF ?
-            throw new Exception('ID is missing.');*/
+            throw new \Exception('ID is missing.');*/
 
         $post_params['CacheCode']   = $params['CacheCode'];
         $post_params['Latitude']    = (float) $params['Latitude'];
@@ -537,9 +534,9 @@ class Json extends Api
             $post_params['TrackableCount']['MaxTrackables'] = (int) $params['MaxTrackables'];
 
         if(!array_key_exists('PointRadius', $post_params) && !array_key_exists('CacheCode', $post_params))
-            throw new Exception('PointRadius or CacheCode is missing.');
+            throw new \Exception('PointRadius or CacheCode is missing.');
         if(!array_key_exists('MaxPerPage', $post_params))
-            throw new Exception('MaxPerPage is missing.');
+            throw new \Exception('MaxPerPage is missing.');
 
         return $this->post_request(__FUNCTION__, $post_params);
     }
@@ -557,7 +554,7 @@ class Json extends Api
     public function searchForSouvenirsByPublicGuid(array $params)
     {
         if(!array_key_exists('PublicGuid', $params))
-            throw new Exception('PublicGuid is missing.');
+            throw new \Exception('PublicGuid is missing.');
 
         $post_params['PublicGuid'] = $params['PublicGuid'];
         if(array_key_exists('ExistingSouvenirIDs', $params))
@@ -578,9 +575,9 @@ class Json extends Api
     public function updateCacheNote(array $params)
     {
         if(!array_key_exists('CacheCode', $params))
-            throw new Exception('CacheCode is missing.');
+            throw new \Exception('CacheCode is missing.');
         if(!array_key_exists('Note', $params))
-            throw new Exception('Note is missing.');
+            throw new \Exception('Note is missing.');
 
         $post_params['CacheCode'] = $params['CacheCode'];
         $post_params['Note']      = $params['Note'];
@@ -601,9 +598,9 @@ class Json extends Api
     public function uploadImageToGeocacheLog(array $params)
     {
         if(!array_key_exists('LogGuid', $params))
-            throw new Exception('LogGuid is missing.');
+            throw new \Exception('LogGuid is missing.');
         if(!array_key_exists('base64ImageData', $params))
-            throw new Exception('base64ImageData is missing.');
+            throw new \Exception('base64ImageData is missing.');
 
         $post_params['LogGuid'] = $params['LogGuid'];
 
@@ -660,3 +657,4 @@ class Json extends Api
         return $this->post_request($function, $post_params);
     }
 }
+
