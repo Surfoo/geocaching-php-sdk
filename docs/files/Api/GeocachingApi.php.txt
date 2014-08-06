@@ -1225,3 +1225,4 @@ class GeocachingApi extends AbstractGeocachingApi
     }
 
 }
+

@@ -1,5 +1,6 @@
 *.sublime-project
 *.sublime-workspace
-docs/phpdoc-cache-*
+composer.lock
 output
 vendor
+tools/monitoring.html

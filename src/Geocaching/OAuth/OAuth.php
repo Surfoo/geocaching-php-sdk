@@ -5,7 +5,7 @@
  * @author  Surfoo <surfooo@gmail.com>
  * @link    https://github.com/Surfoo/geocaching-api
  * @license http://opensource.org/licenses/eclipse-2.0.php
- * @package Geocaching\OAuth
+ * @package Geocaching_OAuth
  */
 
 namespace Geocaching\OAuth;
@@ -14,7 +14,6 @@ use Katzgrau\KLogger\Logger;
 
 /**
  * OAuth for the Geocaching API
- * @package Geocaching\OAuth
  */
 class OAuth
 {
@@ -25,7 +24,7 @@ class OAuth
      */
     protected $list_oauth_url = array('staging'     => 'http://staging.geocaching.com/OAuth/oauth.ashx',
                                       'live'        => 'https://www.geocaching.com/OAuth/oauth.ashx',
-                                      'live_mobile' => 'https://www.geocaching.com/oauth/mobileoauth.ashx');
+                                      'live_mobile' => 'https://www.geocaching.com/OAuth/mobileoauth.ashx');
 
     /**
      * Log OAuth requests in a file

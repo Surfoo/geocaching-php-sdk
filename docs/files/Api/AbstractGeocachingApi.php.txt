@@ -868,3 +868,4 @@ abstract class AbstractGeocachingApi
         $this->logger->debug('API: ' . $infos, $obj);
     }
 }
+
