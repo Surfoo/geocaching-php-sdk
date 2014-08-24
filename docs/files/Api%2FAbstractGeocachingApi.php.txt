@@ -89,7 +89,7 @@ abstract class AbstractGeocachingApi
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/AddFavoritePointToCache Documentation by Groundspeak
      * @abstract
-     * @param  array  $params
+     * @param  array $params
      * @return object
      */
     abstract public function addFavoritePointToCache(array $params);
@@ -101,8 +101,8 @@ abstract class AbstractGeocachingApi
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/AddGeocachesToBookmarkList Documentation by Groundspeak
      * @abstract
-     * @param  array
-     * @return void
+     * @param  array $params
+     * @return object
      */
     abstract public function addGeocachesToBookmarkList(array $params);
 
@@ -114,8 +114,8 @@ abstract class AbstractGeocachingApi
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/CreateFieldNoteAndPublish Documentation by Groundspeak
      * @abstract
-     * @param  array
-     * @return void
+     * @param  array $params
+     * @return object
      */
     abstract public function createFieldNoteAndPublish(array $params);
 
@@ -127,8 +127,8 @@ abstract class AbstractGeocachingApi
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/CreateTrackableLog Documentation by Groundspeak
      * @abstract
-     * @param  array
-     * @return void
+     * @param  array $params
+     * @return object
      */
     abstract public function createTrackableLog(array $params);
 
@@ -139,7 +139,7 @@ abstract class AbstractGeocachingApi
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/DeleteCacheNote Documentation by Groundspeak
      * @abstract
-     * @param  array  $params
+     * @param  array $params
      * @return object
      */
     abstract public function deleteCacheNote(array $params);
@@ -151,7 +151,7 @@ abstract class AbstractGeocachingApi
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/DeleteUserWaypoint Documentation by Groundspeak
      * @abstract
-     * @param  array  $params
+     * @param  array $params
      * @return object
      */
     abstract public function deleteUserWaypoint(array $params);
@@ -163,7 +163,7 @@ abstract class AbstractGeocachingApi
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GeocodeString Documentation by Groundspeak
      * @abstract
-     * @param  array  $params
+     * @param  array $params
      * @return object
      */
     abstract public function geocodeString(array $params);
@@ -176,8 +176,8 @@ abstract class AbstractGeocachingApi
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetAnotherUsersProfile Documentation by Groundspeak
      * @abstract
-     * @param  array
-     * @return void
+     * @param  array $params
+     * @return object
      */
     abstract public function getAnotherUsersProfile(array $params);
 
@@ -206,8 +206,8 @@ abstract class AbstractGeocachingApi
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/getBookmarkListByGuid Documentation by Groundspeak
      * @abstract
-     * @param  array
-     * @return void
+     * @param  array $params
+     * @return object
      */
     abstract public function getBookmarkListByGuid(array $params);
 
@@ -218,7 +218,7 @@ abstract class AbstractGeocachingApi
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetBookmarkListsByUserID Documentation by Groundspeak
      * @abstract
-     * @param  array  $params
+     * @param  array $params
      * @return object
      */
     abstract public function getBookmarkListsByUserID(array $params);
@@ -260,6 +260,7 @@ abstract class AbstractGeocachingApi
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetFullPocketQueryData Documentation by Groundspeak
      * @abstract
+     * @param  array $params
      * @return object
      */
     abstract public function getFullPocketQueryData(array $params);
@@ -271,7 +272,7 @@ abstract class AbstractGeocachingApi
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetGeocacheDataTypes Documentation by Groundspeak
      * @abstract
-     * @param  array  $params
+     * @param  array $params
      * @return object
      */
     abstract public function getGeocacheDataTypes(array $params);
@@ -284,7 +285,7 @@ abstract class AbstractGeocachingApi
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetGeocacheLogsByCacheCode Documentation by Groundspeak
      * @abstract
-     * @param  array  $params
+     * @param  array $params
      * @return object
      */
     abstract public function getGeocacheLogsByCacheCode(array $params);
@@ -296,8 +297,8 @@ abstract class AbstractGeocachingApi
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/getGeocacheStatus Documentation by Groundspeak
      * @abstract
-     * @param  array
-     * @return void
+     * @param  array $params
+     * @return object
      */
     abstract public function getGeocacheStatus(array $params);
 
@@ -317,7 +318,7 @@ abstract class AbstractGeocachingApi
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetImagesForGeocache Documentation by Groundspeak
      * @abstract
-     * @param  array  $params
+     * @param  array $params
      * @return object
      */
     abstract public function getImagesForGeocache(array $params);
@@ -338,8 +339,8 @@ abstract class AbstractGeocachingApi
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetMoreGeocaches Documentation by Groundspeak
      * @abstract
-     * @param  array
-     * @return void
+     * @param  array $params
+     * @return object
      */
     abstract public function getMoreGeocaches(array $params);
 
@@ -351,8 +352,8 @@ abstract class AbstractGeocachingApi
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetOwnedTrackables Documentation by Groundspeak
      * @abstract
-     * @param  array
-     * @return void
+     * @param  array $params
+     * @return object
      */
     abstract public function getOwnedTrackables(array $params);
 
@@ -364,7 +365,7 @@ abstract class AbstractGeocachingApi
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetPocketQueryData Documentation by Groundspeak
      * @abstract
-     * @param  array  $params
+     * @param  array $params
      * @return object
      */
     abstract public function getPocketQueryData(array $params);
@@ -385,7 +386,7 @@ abstract class AbstractGeocachingApi
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetPocketQueryZippedFile Documentation by Groundspeak
      * @abstract
-     * @param  array  $params
+     * @param  array $params
      * @return object
      */
     abstract public function getPocketQueryZippedFile(array $params);
@@ -416,7 +417,7 @@ abstract class AbstractGeocachingApi
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetTrackableLogsByTBCode Documentation by Groundspeak
      * @abstract
-     * @param  array  $params
+     * @param  array $params
      * @return object
      */
     abstract public function getTrackableLogsByTBCode(array $params);
@@ -429,7 +430,7 @@ abstract class AbstractGeocachingApi
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetTrackablesByTBCode Documentation by Groundspeak
      * @abstract
-     * @param  array  $params
+     * @param  array $params
      * @return object
      */
     abstract public function getTrackablesByTBCode(array $params);
@@ -442,7 +443,7 @@ abstract class AbstractGeocachingApi
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetTrackablesByTrackingNumber Documentation by Groundspeak
      * @abstract
-     * @param  array  $params
+     * @param  array $params
      * @return object
      */
     abstract public function getTrackablesByTrackingNumber(array $params);
@@ -455,7 +456,7 @@ abstract class AbstractGeocachingApi
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetTrackablesInCache Documentation by Groundspeak
      * @abstract
-     * @param  array  $params
+     * @param  array $params
      * @return object
      */
     abstract public function getTrackablesInCache(array $params);
@@ -467,7 +468,7 @@ abstract class AbstractGeocachingApi
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetTrackableTravelList Documentation by Groundspeak
      * @abstract
-     * @param  array  $params
+     * @param  array $params
      * @return object
      */
     abstract public function getTrackableTravelList(array $params);
@@ -479,8 +480,8 @@ abstract class AbstractGeocachingApi
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetUserGallery Documentation by Groundspeak
      * @abstract
-     * @param  array
-     * @return void
+     * @param  array $params
+     * @return object
      */
     abstract public function getUserGallery(array $params); //new
 
@@ -491,8 +492,8 @@ abstract class AbstractGeocachingApi
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/getUsersCacheCounts Documentation by Groundspeak
      * @abstract
-     * @param  array
-     * @return void
+     * @param  array $params
+     * @return object
      */
     abstract public function getUsersCacheCounts(array $params);
 
@@ -504,7 +505,7 @@ abstract class AbstractGeocachingApi
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetUsersCacheNotes Documentation by Groundspeak
      * @abstract
-     * @param  array  $params
+     * @param  array $params
      * @return object
      */
     abstract public function getUsersCacheNotes(array $params);
@@ -526,8 +527,8 @@ abstract class AbstractGeocachingApi
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetUsersGeocacheLogs Documentation by Groundspeak
      * @abstract
-     * @param  array
-     * @return void
+     * @param  array $params
+     * @return object
      */
     abstract public function getUsersGeocacheLogs(array $params);
 
@@ -539,8 +540,8 @@ abstract class AbstractGeocachingApi
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetUsersTrackables Documentation by Groundspeak
      * @abstract
-     * @param  array
-     * @return void
+     * @param  array $params
+     * @return object
      */
     abstract public function getUsersTrackables(array $params);
 
@@ -551,7 +552,7 @@ abstract class AbstractGeocachingApi
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetUsersWhoFavoritedCache Documentation by Groundspeak
      * @abstract
-     * @param  array  $params
+     * @param  array $params
      * @return object
      */
     abstract public function getUsersWhoFavoritedCache(array $params);
@@ -563,7 +564,7 @@ abstract class AbstractGeocachingApi
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetUserWaypoints Documentation by Groundspeak
      * @abstract
-     * @param  array  $params
+     * @param  array $params
      * @return object
      */
     abstract public function getUserWaypoints(array $params);
@@ -586,8 +587,8 @@ abstract class AbstractGeocachingApi
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetYourUserProfile Documentation by Groundspeak
      * @abstract
-     * @param  array
-     * @return void
+     * @param  array $params
+     * @return object
      */
     abstract public function getYourUserProfile($params = array());
 
@@ -598,7 +599,7 @@ abstract class AbstractGeocachingApi
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/RemoveFavoritePointFromCache Documentation by Groundspeak
      * @abstract
-     * @param  array  $params
+     * @param  array $params
      * @return object
      */
     abstract public function removeFavoritePointFromCache(array $params);
@@ -613,8 +614,8 @@ abstract class AbstractGeocachingApi
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/SaveUserWaypoint Documentation by Groundspeak
      * @abstract
-     * @param  array
-     * @return void
+     * @param  array $params
+     * @return object
      */
     abstract public function saveUserWaypoint(array $params);
 
@@ -630,8 +631,8 @@ abstract class AbstractGeocachingApi
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/SearchForGeocaches Documentation by Groundspeak
      * @abstract
-     * @param  array
-     * @return void
+     * @param  array $params
+     * @return object
      */
     abstract public function searchForGeocaches(array $params);
 
@@ -643,8 +644,8 @@ abstract class AbstractGeocachingApi
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/SearchForSouvenirsByPublicGuid Documentation by Groundspeak
      * @abstract
-     * @param  array
-     * @return void
+     * @param  array $params
+     * @return object
      */
     abstract public function searchForSouvenirsByPublicGuid(array $params);
 
@@ -655,8 +656,8 @@ abstract class AbstractGeocachingApi
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/UpdateCacheNote Documentation by Groundspeak
      * @abstract
-     * @param  array
-     * @return void
+     * @param  array $params
+     * @return object
      */
     abstract public function updateCacheNote(array $params);
 
@@ -668,8 +669,8 @@ abstract class AbstractGeocachingApi
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/UploadImageToGeocacheLog Documentation by Groundspeak
      * @abstract
-     * @param  array
-     * @return void
+     * @param  array $params
+     * @return object
      */
     abstract public function uploadImageToGeocacheLog(array $params);
 
@@ -681,8 +682,8 @@ abstract class AbstractGeocachingApi
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/UploadImageToTrackableLog Documentation by Groundspeak
      * @abstract
-     * @param  array
-     * @return void
+     * @param  array $params
+     * @return object
      */
     abstract public function uploadImageToTrackableLog(array $params);
 
@@ -696,7 +697,7 @@ abstract class AbstractGeocachingApi
      *
      * @access protected
      * @param  string $function
-     * @param  array  $params
+     * @param  array $params
      * @return object
      */
     protected function getUserProfile($function, $params = array())
@@ -750,7 +751,7 @@ abstract class AbstractGeocachingApi
      *
      * @access protected
      * @param  string $request
-     * @param  array  $params
+     * @param  array $params
      * @return object
      */
     protected function get_request($request, $params = array())
@@ -853,6 +854,7 @@ abstract class AbstractGeocachingApi
 
     /**
      * Log informations into the log file
+     *
      * @param  string $infos
      * @param  array  $obj
      * @return void
