@@ -1,6 +1,10 @@
 Geocaching API for PHP 5
 ========================
 
+[![Latest Stable Version](https://poser.pugx.org/geocaching/api/v/stable.svg)](https://packagist.org/packages/geocaching/api)
+[![Total Downloads](https://poser.pugx.org/geocaching/api/downloads.svg)](https://packagist.org/packages/geocaching/api)
+[![Latest Unstable Version](https://poser.pugx.org/geocaching/api/v/unstable.svg)](https://packagist.org/packages/geocaching/api)
+
 PHP 5 implementation of Groundspeak's Geocaching Live API.
 
 A kind of documentation about the API is available here : https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help
@@ -12,6 +16,8 @@ First, you must have your API key from Groundspeak, please refer to this url: ht
 
 ## Installation
 
+First, you need to install [composer](https://getcomposer.org/doc/00-intro.md#system-requirements).
+
 ### Composer
 
 From the Command Line:
@@ -20,7 +26,7 @@ From the Command Line:
 composer require geocaching/api:1.0
 ```
 
-In your `composer.json`:
+Or in your `composer.json`:
 
 ``` json
 {
