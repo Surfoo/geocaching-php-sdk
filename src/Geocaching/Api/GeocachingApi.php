@@ -424,7 +424,6 @@ class GeocachingApi extends AbstractGeocachingApi
         return $this->post_request(__FUNCTION__, $post_params);
     }
 
-
     /**
      * Get Geocache Types
      *
