@@ -759,7 +759,7 @@ abstract class AbstractGeocachingApi
         $this->log($request, $params);
 
         $params = array_merge(array('format' => 'json', 'AccessToken' => $this->oauth_token), $params);
-        $query_string = '?' . urldecode(http_build_query($params, '', '&'));
+        $query_string = '?' . http_build_query($params, '', '&');
         $url = sprintf($this->api_url, ucfirst($request)) . $query_string;
         $this->log('curl_params', $params);
         $this->log('curl_url', $url);
@@ -800,7 +800,7 @@ abstract class AbstractGeocachingApi
         $this->log($request);
 
         $params = array('format' => 'json');
-        $query_string = '?' . urldecode(http_build_query($params, '', '&'));
+        $query_string = '?' . http_build_query($params, '', '&');
         $url = sprintf($this->api_url, ucfirst($request)) . $query_string;
         $data = array_merge(array('AccessToken' => $this->oauth_token), $data);
         $data = json_encode($data);
