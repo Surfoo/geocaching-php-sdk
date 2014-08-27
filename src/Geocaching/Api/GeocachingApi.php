@@ -1009,7 +1009,7 @@ class GeocachingApi extends AbstractGeocachingApi
      * MaxTerrain, GeocacheName, MinDifficulty, MaxDifficulty, CacheCodes, GeocacheTypeIds, GeocacheContainerSizeIds,
      * Archived, Available, Premium, MinFavoritePoints, MaxFavoritePoints, HiddenByUsers, NotHiddenByUsers, BottomRightLatitude,
      * BottomRightLongitude, TopLeftLatitude, TopLeftLongitude, BookmarkListIDs, ExcludeIgnoreList, MinTrackables, MaxTrackables,
-     * UserNameFieldNotesFinds, StartDateRange, EndDateRange
+     * UserNameFieldNotesFinds, StartDateRange, EndDateRange, StateIds
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/SearchForGeocaches Documentation by Groundspeak
      * @access public
@@ -1106,6 +1106,9 @@ class GeocachingApi extends AbstractGeocachingApi
             $post_params['CachePublishedDate']['Range']['StartDate'] = '/Date('.((int) $params['StartDateRange'] * 1000).')/'; //StartDateRange is a timestamp
         if(array_key_exists('EndDateRange', $params))
             $post_params['CachePublishedDate']['Range']['EndDate'] = '/Date('.((int) $params['EndDateRange'] * 1000).')/'; //EndDateRange is a timestamp
+
+        if(array_key_exists('StateIds', $params) && is_array($params['StateIds']))
+            $post_params['States']['StateIds'] = $params['StateIds'];
 
         if(!array_key_exists('PointRadius', $post_params) && !array_key_exists('CacheCode', $post_params))
             throw new \Exception('PointRadius or CacheCode is missing.');
