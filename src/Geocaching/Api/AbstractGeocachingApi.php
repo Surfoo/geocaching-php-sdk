@@ -68,7 +68,7 @@ abstract class AbstractGeocachingApi
      * @param  boolean $live        production = true, staging = false
      * @return void
      */
-    public function __construct($oauth_token, $live = false)
+    public function __construct($oauth_token, $live = true)
     {
         if(!isset($oauth_token))
             throw new \Exception('oauth_token is missing.');
