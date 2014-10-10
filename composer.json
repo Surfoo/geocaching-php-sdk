@@ -1,6 +1,6 @@
 {
     "name": "geocaching/api",
-    "version": "1.1",
+    "version": "1.2-dev",
     "description": "Geocaching PHP Api",
     "type": "library",
     "license": "Eclipse Public License",
@@ -20,6 +20,6 @@
     },
     "require": {
         "php": ">=5.4",
-        "katzgrau/klogger": "1.0.*"
+        "monolog/monolog": "1.10.*"
     }
 }

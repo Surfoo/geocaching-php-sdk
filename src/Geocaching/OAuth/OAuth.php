@@ -10,7 +10,8 @@
 
 namespace Geocaching\OAuth;
 
-use Katzgrau\KLogger\Logger;
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
 
 /**
  * OAuth for the Geocaching API
@@ -148,8 +149,9 @@ class OAuth
     public function setLogging($directory)
     {
         if ($directory) {
-            $this->logger = new Logger($directory);
+            $this->logger = new Logger('oauth');
             $this->logging = true;
+            $this->logger->pushHandler(new StreamHandler($directory . '/groundspeak_oauth.log', Logger::DEBUG));
         }
         if ($this->logging && !$directory) {
             unset($this->logger);
@@ -159,20 +161,19 @@ class OAuth
 
     /**
      * Log informations into the log file
+     *
      * @param  string $infos
      * @param  array  $obj
      * @return void
      */
-    protected function log($infos, $obj)
+    protected function log($infos, $obj = false)
     {
         if (!$this->logging) {
             return false;
         }
-        if (!is_array($obj)) {
-            $obj = [$obj];
-        }
-        $this->logger->info('OAUTH: ' . $infos, $obj);
+        $this->logger->addDebug($infos . ": " . var_export($obj, true));
     }
+
     /**
      * Get Request Token
      *

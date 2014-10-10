@@ -9,7 +9,8 @@
 
 namespace Geocaching\Api;
 
-use Katzgrau\KLogger\Logger;
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
 
 /**
  * Abstract methods from Groundspeak API
@@ -843,8 +844,9 @@ abstract class AbstractGeocachingApi
     public function setLogging($directory)
     {
         if ($directory) {
-            $this->logger = new Logger($directory);
+            $this->logger = new Logger('api');
             $this->logging = true;
+            $this->logger->pushHandler(new StreamHandler($directory . '/groundspeak_api.log', Logger::DEBUG));
         }
         if ($this->logging && !$directory) {
             unset($this->logger);
@@ -864,9 +866,6 @@ abstract class AbstractGeocachingApi
         if (!$this->logging) {
             return false;
         }
-        if (!is_array($obj)) {
-            $obj = [$obj];
-        }
-        $this->logger->debug('API: ' . $infos, $obj);
+        $this->logger->addDebug($infos . ": " . var_export($obj, true));
     }
 }
