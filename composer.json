@@ -3,7 +3,7 @@
     "version": "1.2-dev",
     "description": "Geocaching PHP Api",
     "type": "library",
-    "license": "Eclipse Public License 1.0",
+    "license": "EPL-1.0",
     "keywords": ["groundspeak", "geocaching", "geocache", "api", "oauth"],
     "homepage": "http://geocaching.vaguelibre.net/api/",
     "authors": [
