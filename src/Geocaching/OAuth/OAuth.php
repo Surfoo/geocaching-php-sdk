@@ -76,14 +76,6 @@ class OAuth
     private $callback_url       = null;
 
     /**
-     * Oauth token access
-     *
-     * @access private
-     * @var string
-     */
-    private $oauth_token_access = null;
-
-    /**
      * OAuth URL
      *
      * @access private
@@ -191,11 +183,11 @@ class OAuth
             "oauth_callback"         => $this->callback_url
             );
 
-        $values = $this->rfc3986_encode(array_values($this->request_params));
+        $values = $this->rfc3986Encode(array_values($this->request_params));
         $this->request_params = array_combine(array_keys($this->request_params), $values);
         uksort($this->request_params, 'strcmp');
 
-        $this->request_params['oauth_signature'] = $this->signature_hmac_sha1($this->request_params, array($this->consumer_secret));
+        $this->request_params['oauth_signature'] = $this->signatureHmacSha1($this->request_params, array($this->consumer_secret));
         uksort($this->request_params, 'strcmp');
 
         foreach ($this->request_params as $k => $v) {
@@ -204,9 +196,9 @@ class OAuth
         $this->log(__FUNCTION__ . ' params', $urlPairs);
         $concatenatedUrlParams = implode('&', $urlPairs);
 
-        $authpage = $this->curl_request($this->oauth_url."?".$concatenatedUrlParams);
+        $authpage = $this->curlRequest($this->oauth_url."?".$concatenatedUrlParams);
         $this->log(__FUNCTION__ . ' authpage', $authpage);
-        $data = $this->http_explode_data($authpage);
+        $data = $this->httpExplodeData($authpage);
         $this->log(__FUNCTION__ . ' data', $data);
         $this->auth_token = $data['oauth_token'];
         $this->auth_token_secret = $data['oauth_token_secret'];
@@ -240,11 +232,11 @@ class OAuth
             "oauth_verifier" => $queryData['oauth_verifier']
             );
 
-        $values = $this->rfc3986_encode(array_values($this->access_params));
+        $values = $this->rfc3986Encode(array_values($this->access_params));
         $this->access_params = array_combine(array_keys($this->access_params), $values);
         uksort($this->access_params, 'strcmp');
 
-        $this->access_params['oauth_signature'] = $this->signature_hmac_sha1($this->access_params, array($this->consumer_secret, $token['auth_token_secret']));
+        $this->access_params['oauth_signature'] = $this->signatureHmacSha1($this->access_params, array($this->consumer_secret, $token['auth_token_secret']));
         uksort($this->access_params, 'strcmp');
 
         foreach ($this->access_params as $k => $v) {
@@ -253,11 +245,10 @@ class OAuth
         $this->log(__FUNCTION__ . ' params', $urlPairs);
         $concatenatedUrlParams = implode('&', $urlPairs);
 
-        $url = $this->curl_request($this->oauth_url."?".$concatenatedUrlParams);
+        $url = $this->curlRequest($this->oauth_url."?".$concatenatedUrlParams);
         $this->log(__FUNCTION__ . ' url', $this->oauth_url."?".$concatenatedUrlParams);
-        $data = $this->http_explode_data($url);
+        $data = $this->httpExplodeData($url);
         $this->log(__FUNCTION__ . ' data', $data);
-        $this->oauth_token_access = $data['oauth_token'];
 
         return $data;
     }
@@ -270,20 +261,20 @@ class OAuth
      * @param  array  $secret
      * @return string
      */
-    protected function signature_hmac_sha1($params, $secret = array())
+    protected function signatureHmacSha1($params, $secret = array())
     {
         foreach ($params as $k => $v) {
             $pairs[] = $k.'='.$v;
         }
         $query_string = implode('&', $pairs);
 
-        $base_url = "GET&".$this->rfc3986_encode($this->oauth_url)."&".$this->rfc3986_encode($query_string);
+        $base_url = "GET&".$this->rfc3986Encode($this->oauth_url)."&".$this->rfc3986Encode($query_string);
 
-        $secret_part = implode('&', $this->rfc3986_encode($secret));
+        $secret_part = implode('&', $this->rfc3986Encode($secret));
         if(count($secret) == 1)
             $secret_part .= '&';
 
-        return $this->rfc3986_encode(base64_encode(hash_hmac('sha1', $base_url, $secret_part, true)));
+        return $this->rfc3986Encode(base64_encode(hash_hmac('sha1', $base_url, $secret_part, true)));
     }
 
     /**
@@ -318,7 +309,7 @@ class OAuth
      * @param  string $url
      * @return string
      */
-    protected function curl_request($url)
+    protected function curlRequest($url)
     {
         $ch = curl_init();
 
@@ -349,17 +340,16 @@ class OAuth
      * @param  string $string
      * @return string
      */
-    protected function http_explode_data($string)
+    protected function httpExplodeData($string)
     {
         $string = explode('&', $string);
         $out = array();
-        $i = 0;
 
         foreach ($string as $line) {
             $parts = explode('=', $line);
 
-            $key = $this->oauth_loosy_decode($parts[0]);
-            $value = isset($parts[1]) ? $this->oauth_loosy_decode($parts[1]) : '';
+            $key = $this->oauthLoosyDecode($parts[0]);
+            $value = isset($parts[1]) ? $this->oauthLoosyDecode($parts[1]) : '';
 
             $out[$key] = $value;
         }
@@ -375,7 +365,7 @@ class OAuth
      * @param  string $str
      * @return string
      */
-    protected function rfc3986_encode($str)
+    protected function rfc3986Encode($str)
     {
         if (is_array($str)) {
             return array_map(array(__CLASS__, __FUNCTION__), $str);
@@ -401,7 +391,7 @@ class OAuth
      * @param  string $str
      * @return string
      */
-    protected function oauth_loosy_decode($str)
+    protected function oauthLoosyDecode($str)
     {
         $str = str_replace('+', '%20', $str);
 
@@ -434,7 +424,7 @@ class OAuth
         if (isset($_SERVER['REQUEST_URI'])) {
             $url = explode('?', $_SERVER['REQUEST_URI']);
             $url = $url[0];
-            $parsed_url = @parse_url($url);
+            $parsed_url = parse_url($url);
             $path = '';
             if (isset($parsed_url['path'])) {
                 $parsed_url['path'] = preg_replace('/^([\/]+)/', '/', $parsed_url['path']);

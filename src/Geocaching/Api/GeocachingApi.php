@@ -34,7 +34,7 @@ class GeocachingApi extends AbstractGeocachingApi
 
         $get_params = array('cacheCode' => $params['cacheCode']);
 
-        return $this->get_request(__FUNCTION__, $get_params);
+        return $this->getRequest(__FUNCTION__, $get_params);
     }
 
     /**
@@ -59,7 +59,7 @@ class GeocachingApi extends AbstractGeocachingApi
         $post_params['BookmarkListGuid'] = $params['BookmarkListGuid'];
         $post_params['CacheCodes'] = $params['CacheCodes'];
 
-        return $this->post_request(__FUNCTION__, $post_params);
+        return $this->postRequest(__FUNCTION__, $post_params);
     }
 
     /**
@@ -110,7 +110,7 @@ class GeocachingApi extends AbstractGeocachingApi
                 $post_params['ImageData']['FileName'] = $params['FileName'];
         }
 
-        return $this->post_request(__FUNCTION__, $post_params);
+        return $this->postRequest(__FUNCTION__, $post_params);
     }
 
     /**
@@ -150,7 +150,7 @@ class GeocachingApi extends AbstractGeocachingApi
                 $post_params['ImageData']['FileName'] = $params['FileName'];
         }
 
-        return $this->post_request(__FUNCTION__, $post_params);
+        return $this->postRequest(__FUNCTION__, $post_params);
     }
 
     /**
@@ -170,7 +170,7 @@ class GeocachingApi extends AbstractGeocachingApi
 
         $get_params = array('cacheCode' => $params['cacheCode']);
 
-        return $this->get_request(__FUNCTION__, $get_params);
+        return $this->getRequest(__FUNCTION__, $get_params);
     }
 
     /**
@@ -190,7 +190,7 @@ class GeocachingApi extends AbstractGeocachingApi
 
         $get_params = array('waypointID' => (int) $params['waypointID']);
 
-        return $this->get_request(__FUNCTION__, $get_params);
+        return $this->getRequest(__FUNCTION__, $get_params);
     }
 
     /**
@@ -210,7 +210,7 @@ class GeocachingApi extends AbstractGeocachingApi
 
         $post_params['GeocodeString'] = $params['GeocodeString'];
 
-        return $this->post_request(__FUNCTION__, $post_params);
+        return $this->postRequest(__FUNCTION__, $post_params);
     }
 
     /**
@@ -238,7 +238,7 @@ class GeocachingApi extends AbstractGeocachingApi
      */
     public function getAPILimits()
     {
-        return $this->get_request(__FUNCTION__);
+        return $this->getRequest(__FUNCTION__);
     }
 
     /**
@@ -250,7 +250,7 @@ class GeocachingApi extends AbstractGeocachingApi
      */
     public function getAttributeTypesData()
     {
-        return $this->get_request(__FUNCTION__);
+        return $this->getRequest(__FUNCTION__);
     }
 
     /**
@@ -270,7 +270,7 @@ class GeocachingApi extends AbstractGeocachingApi
 
         $post_params['BookmarkListGuid'] = $params['BookmarkListGuid'];
 
-        return $this->post_request(__FUNCTION__, $post_params);
+        return $this->postRequest(__FUNCTION__, $post_params);
     }
 
     /**
@@ -290,7 +290,7 @@ class GeocachingApi extends AbstractGeocachingApi
 
         $get_params = array('userID' => (int) $params['userID']);
 
-        return $this->get_request(__FUNCTION__, $get_params);
+        return $this->getRequest(__FUNCTION__, $get_params);
     }
 
     /**
@@ -302,7 +302,7 @@ class GeocachingApi extends AbstractGeocachingApi
      */
     public function getBookmarkListsForUser()
     {
-        return $this->get_request(__FUNCTION__);
+        return $this->getRequest(__FUNCTION__);
     }
 
     /**
@@ -314,7 +314,7 @@ class GeocachingApi extends AbstractGeocachingApi
      */
     public function getCacheIdsFavoritedByUser()
     {
-        return $this->get_request(__FUNCTION__);
+        return $this->getRequest(__FUNCTION__);
     }
 
     /**
@@ -326,7 +326,7 @@ class GeocachingApi extends AbstractGeocachingApi
      */
     public function getCachesFavoritedByUser()
     {
-        return $this->get_request(__FUNCTION__);
+        return $this->getRequest(__FUNCTION__);
     }
 
     /**
@@ -353,7 +353,7 @@ class GeocachingApi extends AbstractGeocachingApi
         if(array_key_exists('startItem', $params))
             $get_params['startItem'] = (int) $params['startItem'];
 
-        return $this->get_request(__FUNCTION__, $get_params);
+        return $this->getRequest(__FUNCTION__, $get_params);
     }
     /**
      * Get Geocache Data Types
@@ -375,7 +375,7 @@ class GeocachingApi extends AbstractGeocachingApi
         if(array_key_exists('attributeTypes', $params))
             $get_params['attributeTypes'] = (boolean) $params['attributeTypes'] ? 'true' : 'false';
 
-        return $this->get_request(__FUNCTION__, $get_params);
+        return $this->getRequest(__FUNCTION__, $get_params);
     }
 
     /**
@@ -401,7 +401,7 @@ class GeocachingApi extends AbstractGeocachingApi
         if(array_key_exists('startIndex', $params))
             $get_params['startIndex'] = (int) $params['startIndex'];
 
-        return $this->get_request(__FUNCTION__, $get_params);
+        return $this->getRequest(__FUNCTION__, $get_params);
     }
 
     /**
@@ -421,7 +421,7 @@ class GeocachingApi extends AbstractGeocachingApi
 
         $post_params['CacheCodes'] = $params['CacheCodes'];
 
-        return $this->post_request(__FUNCTION__, $post_params);
+        return $this->postRequest(__FUNCTION__, $post_params);
     }
 
     /**
@@ -433,7 +433,7 @@ class GeocachingApi extends AbstractGeocachingApi
      */
     public function getGeocacheTypes()
     {
-        return $this->get_request(__FUNCTION__);
+        return $this->getRequest(__FUNCTION__);
     }
 
     /**
@@ -453,7 +453,7 @@ class GeocachingApi extends AbstractGeocachingApi
 
         $get_params['cacheCode'] = $params['cacheCode'];
 
-        return $this->get_request(__FUNCTION__, $get_params);
+        return $this->getRequest(__FUNCTION__, $get_params);
     }
 
     /**
@@ -465,7 +465,7 @@ class GeocachingApi extends AbstractGeocachingApi
      */
     public function getMembershipTypes()
     {
-        return $this->get_request(__FUNCTION__);
+        return $this->getRequest(__FUNCTION__);
     }
 
     /**
@@ -497,7 +497,7 @@ class GeocachingApi extends AbstractGeocachingApi
         $post_params['GeocacheLogCount']  = (int) $params['GeocacheLogCount'];
         $post_params['TrackableLogCount']  = (int) $params['TrackableLogCount'];
 
-        return $this->post_request(__FUNCTION__, $post_params);
+        return $this->postRequest(__FUNCTION__, $post_params);
     }
 
     /**
@@ -525,7 +525,7 @@ class GeocachingApi extends AbstractGeocachingApi
         if(array_key_exists('CollectionOnly', $params))
             $post_params['CollectionOnly'] = (boolean) $params['CollectionOnly'];
 
-        return $this->post_request(__FUNCTION__, $post_params);
+        return $this->postRequest(__FUNCTION__, $post_params);
     }
 
     /**
@@ -553,7 +553,7 @@ class GeocachingApi extends AbstractGeocachingApi
         if(array_key_exists('gcListOnly', $params))
             $get_params['gcListOnly'] = (boolean) $params['gcListOnly'] ? 'true' : 'false';
 
-        return $this->get_request(__FUNCTION__, $get_params);
+        return $this->getRequest(__FUNCTION__, $get_params);
     }
 
     /**
@@ -565,7 +565,7 @@ class GeocachingApi extends AbstractGeocachingApi
      */
     public function getPocketQueryList()
     {
-        return $this->get_request(__FUNCTION__);
+        return $this->getRequest(__FUNCTION__);
     }
 
     /**
@@ -585,7 +585,7 @@ class GeocachingApi extends AbstractGeocachingApi
 
         $get_params['pocketQueryGuid'] = $params['pocketQueryGuid'];
 
-        return $this->get_request(__FUNCTION__, $get_params);
+        return $this->getRequest(__FUNCTION__, $get_params);
     }
 
     /**
@@ -597,7 +597,7 @@ class GeocachingApi extends AbstractGeocachingApi
      */
     public function getSiteStats()
     {
-        return $this->get_request(__FUNCTION__);
+        return $this->getRequest(__FUNCTION__);
     }
 
     /**
@@ -609,7 +609,7 @@ class GeocachingApi extends AbstractGeocachingApi
      */
     public function getStatusMessages()
     {
-        return $this->get_request(__FUNCTION__);
+        return $this->getRequest(__FUNCTION__);
     }
 
     /**
@@ -635,7 +635,7 @@ class GeocachingApi extends AbstractGeocachingApi
         if(array_key_exists('startIndex', $params))
             $get_params['startIndex'] = (int) $params['startIndex'];
 
-        return $this->get_request(__FUNCTION__, $get_params);
+        return $this->getRequest(__FUNCTION__, $get_params);
     }
 
     /**
@@ -658,7 +658,7 @@ class GeocachingApi extends AbstractGeocachingApi
         if(array_key_exists('trackableLogCount', $params))
             $get_params['trackableLogCount'] = (int) (boolean) $params['trackableLogCount'];
 
-        return $this->get_request(__FUNCTION__, $get_params);
+        return $this->getRequest(__FUNCTION__, $get_params);
     }
 
     /**
@@ -681,7 +681,7 @@ class GeocachingApi extends AbstractGeocachingApi
         if(array_key_exists('trackableLogCount', $params))
             $get_params['trackableLogCount'] = (int) (boolean) $params['trackableLogCount'];
 
-        return $this->get_request(__FUNCTION__, $get_params);
+        return $this->getRequest(__FUNCTION__, $get_params);
     }
 
     /**
@@ -709,7 +709,7 @@ class GeocachingApi extends AbstractGeocachingApi
         if(array_key_exists('trackableLogCount', $params))
             $get_params['trackableLogCount'] = (int) (boolean) $params['trackableLogCount'];
 
-        return $this->get_request(__FUNCTION__, $params);
+        return $this->getRequest(__FUNCTION__, $get_params);
     }
 
     /**
@@ -729,7 +729,7 @@ class GeocachingApi extends AbstractGeocachingApi
 
         $get_params['tbCode'] = $params['tbCode'];
 
-        return $this->get_request(__FUNCTION__, $get_params);
+        return $this->getRequest(__FUNCTION__, $get_params);
     }
 
     /**
@@ -754,6 +754,8 @@ class GeocachingApi extends AbstractGeocachingApi
         $post_params['Username'] = $params['Username'];
         $post_params['StartIndex'] = (int) $params['StartIndex'];
         $post_params['MaxPerPage'] = (int) $params['MaxPerPage'];
+
+        return $this->postRequest(__FUNCTION__, $post_params);
     }
 
     /**
@@ -775,7 +777,7 @@ class GeocachingApi extends AbstractGeocachingApi
 
         $post_params['Usernames'] = $params['Usernames'];
 
-        return $this->post_request(__FUNCTION__, $post_params);
+        return $this->postRequest(__FUNCTION__, $post_params);
     }
 
     /**
@@ -798,7 +800,7 @@ class GeocachingApi extends AbstractGeocachingApi
         if(array_key_exists('startIndex', $params))
             $get_params['startIndex'] = (int) $params['startIndex'];
 
-        return $this->get_request(__FUNCTION__, $params);
+        return $this->getRequest(__FUNCTION__, $get_params);
     }
 
     /**
@@ -810,7 +812,7 @@ class GeocachingApi extends AbstractGeocachingApi
      */
     public function getUsersFavoritePoints()
     {
-        return $this->get_request(__FUNCTION__);
+        return $this->getRequest(__FUNCTION__);
     }
 
     /**
@@ -848,7 +850,7 @@ class GeocachingApi extends AbstractGeocachingApi
         if(array_key_exists('ExcludeArchived', $params))
             $post_params['ExcludeArchived'] = (boolean) $params['ExcludeArchived'];
 
-        return $this->post_request(__FUNCTION__, $post_params);
+        return $this->postRequest(__FUNCTION__, $post_params);
     }
 
     /**
@@ -875,7 +877,7 @@ class GeocachingApi extends AbstractGeocachingApi
         if(array_key_exists('CollectionOnly', $params))
             $post_params['CollectionOnly'] = (boolean) $params['CollectionOnly'];
 
-        return $this->post_request(__FUNCTION__, $post_params);
+        return $this->postRequest(__FUNCTION__, $post_params);
     }
 
     /**
@@ -895,7 +897,7 @@ class GeocachingApi extends AbstractGeocachingApi
 
         $get_params['cacheCode'] = $params['cacheCode'];
 
-        return $this->get_request(__FUNCTION__, $get_params);
+        return $this->getRequest(__FUNCTION__, $get_params);
     }
 
     /**
@@ -915,7 +917,7 @@ class GeocachingApi extends AbstractGeocachingApi
 
         $get_params['cacheCode'] = $params['cacheCode'];
 
-        return $this->get_request(__FUNCTION__, $get_params);
+        return $this->getRequest(__FUNCTION__, $get_params);
     }
 
     /**
@@ -927,7 +929,7 @@ class GeocachingApi extends AbstractGeocachingApi
      */
     public function getWptLogTypes()
     {
-        return $this->get_request(__FUNCTION__);
+        return $this->getRequest(__FUNCTION__);
     }
 
     /**
@@ -964,7 +966,7 @@ class GeocachingApi extends AbstractGeocachingApi
 
         $get_params['cacheCode'] = $params['cacheCode'];
 
-        return $this->get_request(__FUNCTION__, $get_params);
+        return $this->getRequest(__FUNCTION__, $get_params);
     }
 
     /**
@@ -998,7 +1000,7 @@ class GeocachingApi extends AbstractGeocachingApi
         if(array_key_exists('ID', $params))
             $post_params['ID'] = (int) $params['ID'];
 
-        return $this->post_request(__FUNCTION__, $params);
+        return $this->postRequest(__FUNCTION__, $post_params);
     }
 
     /**
@@ -1115,7 +1117,7 @@ class GeocachingApi extends AbstractGeocachingApi
         if(!array_key_exists('MaxPerPage', $post_params))
             throw new \Exception('MaxPerPage is missing.');
 
-        return $this->post_request(__FUNCTION__, $post_params);
+        return $this->postRequest(__FUNCTION__, $post_params);
     }
 
     /**
@@ -1138,7 +1140,7 @@ class GeocachingApi extends AbstractGeocachingApi
         if(array_key_exists('ExistingSouvenirIDs', $params))
             $post_params['ExistingSouvenirIDs'] = $params['ExistingSouvenirIDs'];
 
-        return $this->post_request(__FUNCTION__, $post_params);
+        return $this->postRequest(__FUNCTION__, $post_params);
     }
 
     /**
@@ -1161,7 +1163,7 @@ class GeocachingApi extends AbstractGeocachingApi
         $post_params['CacheCode'] = $params['CacheCode'];
         $post_params['Note']      = $params['Note'];
 
-        return $this->post_request(__FUNCTION__, $post_params);
+        return $this->postRequest(__FUNCTION__, $post_params);
     }
 
     /**
@@ -1192,7 +1194,7 @@ class GeocachingApi extends AbstractGeocachingApi
         if(array_key_exists('FileName', $params))
             $post_params['ImageData']['FileName'] = $params['FileName'];
 
-        return $this->post_request(__FUNCTION__, $post_params);
+        return $this->postRequest(__FUNCTION__, $post_params);
     }
 
     /**
@@ -1223,7 +1225,7 @@ class GeocachingApi extends AbstractGeocachingApi
         if(array_key_exists('FileName', $params))
             $post_params['ImageData']['FileName'] = $params['FileName'];
 
-        return $this->post_request(__FUNCTION__, $post_params);
+        return $this->postRequest(__FUNCTION__, $post_params);
     }
 
 }

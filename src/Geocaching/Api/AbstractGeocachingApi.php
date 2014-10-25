@@ -628,7 +628,7 @@ abstract class AbstractGeocachingApi
      * MaxTerrain, GeocacheName, MinDifficulty, MaxDifficulty, CacheCodes, GeocacheTypeIds, GeocacheContainerSizeIds,
      * Archived, Available, Premium, MinFavoritePoints, MaxFavoritePoints, HiddenByUsers, NotHiddenByUsers, BottomRightLatitude,
      * BottomRightLongitude, TopLeftLatitude, TopLeftLongitude, BookmarkListIDs, ExcludeIgnoreList, MinTrackables, MaxTrackables,
-     * UserNameFieldNotesFinds, StartDateRange, EndDateRange
+     * UserNameFieldNotesFinds, StartDateRange, EndDateRange, StateIds
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/SearchForGeocaches Documentation by Groundspeak
      * @abstract
@@ -731,7 +731,7 @@ abstract class AbstractGeocachingApi
             $post_params['DeviceInfo']['WebBrowserVersion']             = 'blabla';
         }
 
-        return $this->post_request($function, $post_params);
+        return $this->postRequest($function, $post_params);
     }
 
     /**
@@ -741,10 +741,11 @@ abstract class AbstractGeocachingApi
      * @param  object $content
      * @return void
      */
-    protected function checkRequestStatus($content)
+    protected function checkRequestStatus(\stdClass $content)
     {
-        if(!empty($content->Status->StatusCode))
+        if(!empty($content->Status->StatusCode)) {
             throw new \Exception($content->Status->StatusMessage . ' (StatusCode: ' . $content->Status->StatusCode . ')');
+        }
     }
 
     /**
@@ -755,7 +756,7 @@ abstract class AbstractGeocachingApi
      * @param  array $params
      * @return object
      */
-    protected function get_request($request, $params = array())
+    protected function getRequest($request, $params = array())
     {
         $this->log($request, $params);
 
@@ -796,7 +797,7 @@ abstract class AbstractGeocachingApi
      * @param  array  $data
      * @return object
      */
-    protected function post_request($request, array $data)
+    protected function postRequest($request, array $data)
     {
         $this->log($request);
 
