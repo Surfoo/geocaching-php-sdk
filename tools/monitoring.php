@@ -55,7 +55,6 @@ function monitoring($class)
     echo '<h2>' . $class . '</h2>'."\n";
 
     foreach ($reflect->getMethods() as $reflectmethod) {
-        $error = false;
         $params = [];
         $params_from_GS = [];
         if (preg_match('/@link ([^\s]+)/', $reflectmethod->getDocComment(), $matche)) {
