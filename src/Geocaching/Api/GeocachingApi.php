@@ -973,9 +973,17 @@ class GeocachingApi extends AbstractGeocachingApi
      * Save User Waypoint
      *
      * - required params: CacheCode, Latitude, Longitude
-     * - optional param: Description, ID
-     * Note: The ID field in the request should only be set with an ID returned from the service
-     * (when you are updating a waypoint) Otherwise this field should be left null.
+     * - optional param: Description, ID, IsCorrectedCoordinate, AssociatedAdditionalWaypoint, IsUserCompleted
+     * *Note* The ID field in the request should only be set with an ID returned from the service (when you are updating a waypoint)
+     * Otherwise this field should be left null. 
+     * Possible status codes: 
+     *     GetStatusOk - 0, 
+     *     GetFailStatus - 1, 
+     *     GetNotAuthorizedStatus - 2, 
+     *     GetGeocacheCodeIsNotValid - 12, 
+     *     GetInvalidInputsStatus - 100, 
+     *     GetCorrectedCoordinatesNotSupportedWithoutCacheId - 154, 
+     *     GetCannotSupportMoreThanOneCorrectedCoordinatesPerGeocache - 155
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/SaveUserWaypoint Documentation by Groundspeak
      * @access public
@@ -999,6 +1007,15 @@ class GeocachingApi extends AbstractGeocachingApi
             $post_params['Description'] = $params['Description'];
         if(array_key_exists('ID', $params))
             $post_params['ID'] = (int) $params['ID'];
+
+        if(array_key_exists('IsCorrectedCoordinate', $params))
+            $post_params['IsCorrectedCoordinate'] = (boolean) $params['IsCorrectedCoordinate'];
+
+        if(array_key_exists('AssociatedAdditionalWaypoint', $params))
+            $post_params['AssociatedAdditionalWaypoint'] = $params['AssociatedAdditionalWaypoint'];
+
+        if(array_key_exists('IsUserCompleted', $params))
+            $post_params['IsUserCompleted'] = (boolean) $params['IsUserCompleted'];
 
         return $this->postRequest(__FUNCTION__, $post_params);
     }

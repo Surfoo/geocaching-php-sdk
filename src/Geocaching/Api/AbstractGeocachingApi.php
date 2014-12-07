@@ -609,7 +609,7 @@ abstract class AbstractGeocachingApi
      * Save User Waypoint
      *
      * - required params: CacheCode, Latitude, Longitude
-     * - optional param: Description, ID
+     * - optional param: Description, ID, IsCorrectedCoordinate, AssociatedAdditionalWaypoint, IsUserCompleted
      * Note: The ID field in the request should only be set with an ID returned from the service
      * (when you are updating a waypoint) Otherwise this field should be left null.
      *
