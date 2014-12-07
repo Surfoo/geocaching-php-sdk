@@ -472,6 +472,7 @@ class GeocachingApi extends AbstractGeocachingApi
      * Get More Geocaches
      *
      * - required params: IsLite, StartIndex, MaxPerPage, GeocacheLogCount, TrackableLogCount
+     * - optional param: IsSummaryOnly
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetMoreGeocaches Documentation by Groundspeak
      * @access public
@@ -491,11 +492,12 @@ class GeocachingApi extends AbstractGeocachingApi
         if(!array_key_exists('TrackableLogCount', $params))
             throw new \Exception('TrackableLogCount is missing.');
 
-        $post_params['IsLite']  = (boolean) $params['IsLite'];
-        $post_params['StartIndex']  = (int) $params['StartIndex'];
-        $post_params['MaxPerPage']  = (int) $params['MaxPerPage'];
-        $post_params['GeocacheLogCount']  = (int) $params['GeocacheLogCount'];
-        $post_params['TrackableLogCount']  = (int) $params['TrackableLogCount'];
+        $post_params['IsLite'] = (boolean) $params['IsLite'];
+        $post_params['StartIndex'] = (int) $params['StartIndex'];
+        $post_params['MaxPerPage'] = (int) $params['MaxPerPage'];
+        $post_params['GeocacheLogCount'] = (int) $params['GeocacheLogCount'];
+        $post_params['TrackableLogCount'] = (int) $params['TrackableLogCount'];
+        $post_params['IsSummaryOnly'] = (boolean) $params['IsSummaryOnly'];
 
         return $this->postRequest(__FUNCTION__, $post_params);
     }
@@ -1028,7 +1030,8 @@ class GeocachingApi extends AbstractGeocachingApi
      * MaxTerrain, GeocacheName, MinDifficulty, MaxDifficulty, CacheCodes, GeocacheTypeIds, GeocacheContainerSizeIds,
      * Archived, Available, Premium, MinFavoritePoints, MaxFavoritePoints, HiddenByUsers, NotHiddenByUsers, BottomRightLatitude,
      * BottomRightLongitude, TopLeftLatitude, TopLeftLongitude, BookmarkListIDs, ExcludeIgnoreList, MinTrackables, MaxTrackables,
-     * UserNameFieldNotesFinds, StartDateRange, EndDateRange, StateIds
+     * UserNameFieldNotesFinds, StartDateRange, EndDateRange, StateIds, CountryIds, RecommendedOriginLatitude, RecommendedOriginLongitude,
+     * AscendingOrder, SortFilterId, IsSummaryOnly
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/SearchForGeocaches Documentation by Groundspeak
      * @access public
@@ -1085,6 +1088,10 @@ class GeocachingApi extends AbstractGeocachingApi
             $post_params['GeocacheExclusions']['Archived'] = (boolean) $params['Archived'];
         if(array_key_exists('Available', $params))
             $post_params['GeocacheExclusions']['Available'] = (boolean) $params['Available'];
+        if(array_key_exists('HasCorrectedCoordinates', $params))
+            $post_params['GeocacheExclusions']['HasCorrectedCoordinates'] = (boolean) $params['HasCorrectedCoordinates'];
+        if(array_key_exists('HasPersonalCacheNote', $params))
+            $post_params['GeocacheExclusions']['HasPersonalCacheNote'] = (boolean) $params['HasPersonalCacheNote'];
         if(array_key_exists('Premium', $params))
             $post_params['GeocacheExclusions']['Premium'] = (boolean) $params['Premium'];
 
@@ -1128,6 +1135,26 @@ class GeocachingApi extends AbstractGeocachingApi
 
         if(array_key_exists('StateIds', $params) && is_array($params['StateIds']))
             $post_params['States']['StateIds'] = $params['StateIds'];
+
+        if(array_key_exists('CountryIds', $params) && is_array($params['CountryIds']))
+            $post_params['Countries']['CountryIds'] = $params['CountryIds'];
+
+        if(array_key_exists('FoundByUser', $params))
+            $post_params['FoundByUser']['UserName'] = $params['FoundByUser'];
+
+        if(array_key_exists('RecommendedOriginLatitude', $params) && array_key_exists('RecommendedOriginLongitude', $params)) {
+            $post_params['Recommended']['Origin']['Latitude'] = (float) $params['RecommendedOriginLatitude'];
+            $post_params['Recommended']['Origin']['Longitude'] = (float) $params['RecommendedOriginLongitude'];
+        }
+
+        if(array_key_exists('AscendingOrder', $params))
+            $post_params['SortBys']['AscendingOrder'] = (boolean) $params['AscendingOrder'];
+
+        if(array_key_exists('SortFilterId', $params))
+            $post_params['SortBys']['SortFilterId'] = (int) $params['SortFilterId'];
+
+        if(array_key_exists('IsSummaryOnly', $params))
+            $post_params['IsSummaryOnly'] = (boolean) $params['IsSummaryOnly'];
 
         if(!array_key_exists('PointRadius', $post_params) && !array_key_exists('CacheCode', $post_params))
             throw new \Exception('PointRadius or CacheCode is missing.');

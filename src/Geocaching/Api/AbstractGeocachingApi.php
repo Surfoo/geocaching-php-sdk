@@ -337,6 +337,7 @@ abstract class AbstractGeocachingApi
      * Get More Geocaches
      *
      * - required params: IsLite, StartIndex, MaxPerPage, GeocacheLogCount, TrackableLogCount
+     * - optional param: IsSummaryOnly
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetMoreGeocaches Documentation by Groundspeak
      * @abstract
@@ -628,7 +629,8 @@ abstract class AbstractGeocachingApi
      * MaxTerrain, GeocacheName, MinDifficulty, MaxDifficulty, CacheCodes, GeocacheTypeIds, GeocacheContainerSizeIds,
      * Archived, Available, Premium, MinFavoritePoints, MaxFavoritePoints, HiddenByUsers, NotHiddenByUsers, BottomRightLatitude,
      * BottomRightLongitude, TopLeftLatitude, TopLeftLongitude, BookmarkListIDs, ExcludeIgnoreList, MinTrackables, MaxTrackables,
-     * UserNameFieldNotesFinds, StartDateRange, EndDateRange, StateIds
+     * UserNameFieldNotesFinds, StartDateRange, EndDateRange, StateIds, CountryIds, RecommendedOriginLatitude, RecommendedOriginLongitude,
+     * AscendingOrder, SortFilterId, IsSummaryOnly
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/SearchForGeocaches Documentation by Groundspeak
      * @abstract
