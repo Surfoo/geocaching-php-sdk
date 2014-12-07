@@ -25,7 +25,7 @@ class OAuth
      */
     protected $list_oauth_url = array('staging'     => 'http://staging.geocaching.com/OAuth/oauth.ashx',
                                       'live'        => 'https://www.geocaching.com/OAuth/oauth.ashx',
-                                      'live_mobile' => 'https://www.geocaching.com/OAuth/mobileoauth.ashx');
+                                      'live_mobile' => 'https://www.geocaching.com/OAuth/mobileoauth.ashx', );
 
     /**
      * Log OAuth requests in a file
@@ -143,7 +143,7 @@ class OAuth
         if ($directory) {
             $this->logger = new Logger('oauth');
             $this->logging = true;
-            $this->logger->pushHandler(new StreamHandler($directory . '/groundspeak_oauth.log', Logger::DEBUG));
+            $this->logger->pushHandler(new StreamHandler($directory.'/groundspeak_oauth.log', Logger::DEBUG));
         }
         if ($this->logging && !$directory) {
             unset($this->logger);
@@ -163,7 +163,7 @@ class OAuth
         if (!$this->logging) {
             return false;
         }
-        $this->logger->addDebug($infos . ": " . var_export($obj, true));
+        $this->logger->addDebug($infos.": ".var_export($obj, true));
     }
 
     /**
@@ -180,7 +180,7 @@ class OAuth
             "oauth_timestamp"        => time(),
             "oauth_consumer_key"     => $this->consumer_key,
             "oauth_signature_method" => $this->oauth_signature_method,
-            "oauth_callback"         => $this->callback_url
+            "oauth_callback"         => $this->callback_url,
             );
 
         $values = $this->rfc3986Encode(array_values($this->request_params));
@@ -193,13 +193,13 @@ class OAuth
         foreach ($this->request_params as $k => $v) {
             $urlPairs[] = $k."=".$v;
         }
-        $this->log(__FUNCTION__ . ' params', $urlPairs);
+        $this->log(__FUNCTION__.' params', $urlPairs);
         $concatenatedUrlParams = implode('&', $urlPairs);
 
         $authpage = $this->curlRequest($this->oauth_url."?".$concatenatedUrlParams);
-        $this->log(__FUNCTION__ . ' authpage', $authpage);
+        $this->log(__FUNCTION__.' authpage', $authpage);
         $data = $this->httpExplodeData($authpage);
-        $this->log(__FUNCTION__ . ' data', $data);
+        $this->log(__FUNCTION__.' data', $data);
         $this->auth_token = $data['oauth_token'];
         $this->auth_token_secret = $data['oauth_token_secret'];
         $this->oauth_callback_confirmed = (bool) $data['oauth_callback_confirmed'];
@@ -209,7 +209,7 @@ class OAuth
         }
 
         return array('auth_token' => $this->auth_token,
-                     'auth_token_secret' => $this->auth_token_secret);
+                     'auth_token_secret' => $this->auth_token_secret, );
     }
 
     /**
@@ -229,7 +229,7 @@ class OAuth
             "oauth_consumer_key" => $this->consumer_key,
             "oauth_signature_method" => $this->oauth_signature_method,
             "oauth_token" => $queryData['oauth_token'],
-            "oauth_verifier" => $queryData['oauth_verifier']
+            "oauth_verifier" => $queryData['oauth_verifier'],
             );
 
         $values = $this->rfc3986Encode(array_values($this->access_params));
@@ -242,13 +242,13 @@ class OAuth
         foreach ($this->access_params as $k => $v) {
             $urlPairs[] = $k."=".$v;
         }
-        $this->log(__FUNCTION__ . ' params', $urlPairs);
+        $this->log(__FUNCTION__.' params', $urlPairs);
         $concatenatedUrlParams = implode('&', $urlPairs);
 
         $url = $this->curlRequest($this->oauth_url."?".$concatenatedUrlParams);
-        $this->log(__FUNCTION__ . ' url', $this->oauth_url."?".$concatenatedUrlParams);
+        $this->log(__FUNCTION__.' url', $this->oauth_url."?".$concatenatedUrlParams);
         $data = $this->httpExplodeData($url);
-        $this->log(__FUNCTION__ . ' data', $data);
+        $this->log(__FUNCTION__.' data', $data);
 
         return $data;
     }
@@ -271,8 +271,9 @@ class OAuth
         $base_url = "GET&".$this->rfc3986Encode($this->oauth_url)."&".$this->rfc3986Encode($query_string);
 
         $secret_part = implode('&', $this->rfc3986Encode($secret));
-        if(count($secret) == 1)
+        if (count($secret) == 1) {
             $secret_part .= '&';
+        }
 
         return $this->rfc3986Encode(base64_encode(hash_hmac('sha1', $base_url, $secret_part, true)));
     }
@@ -285,9 +286,9 @@ class OAuth
      */
     public function redirect()
     {
-        $redirecturl = $this->oauth_url . '?oauth_token=' . urlencode($this->auth_token) . '&force_login=true';
-        $this->log(__FUNCTION__ , $redirecturl);
-        header('Location: ' . $redirecturl);
+        $redirecturl = $this->oauth_url.'?oauth_token='.urlencode($this->auth_token).'&force_login=true';
+        $this->log(__FUNCTION__, $redirecturl);
+        header('Location: '.$redirecturl);
         exit(0);
     }
 
@@ -316,9 +317,9 @@ class OAuth
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
         curl_setopt($ch, CURLOPT_TIMEOUT, 30);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
 
         $response = curl_exec($ch);
         $status = curl_getinfo($ch);
@@ -413,7 +414,7 @@ class OAuth
                 parse_str($_SERVER['HTTP_X_REQUESTED_QUERY_STRING'], $tmp_get);
 
                 if (is_array($tmp_get)) {
-                    $path .= '?' . http_build_query($tmp_get, '', '&');
+                    $path .= '?'.http_build_query($tmp_get, '', '&');
                 }
                 unset($tmp_get);
             }
@@ -435,7 +436,7 @@ class OAuth
                 parse_str($_SERVER['QUERY_STRING'], $tmp_get);
 
                 if (is_array($tmp_get)) {
-                    $path .= '?' . http_build_query($tmp_get, '', '&');
+                    $path .= '?'.http_build_query($tmp_get, '', '&');
                 }
                 unset($tmp_get);
             }

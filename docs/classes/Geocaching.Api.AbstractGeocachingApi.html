@@ -114,7 +114,7 @@
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="../reports/errors.html">
-                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">4</span>
+                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">97</span>
                                 </a>
                             </li>
                             <li>
@@ -144,28 +144,28 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1634122126"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1524408085"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-1634122126" class="accordion-body collapse in">
+            <div id="namespace-1524408085" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-580862781"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-37603420"></a>
                                 <a href="../namespaces/Geocaching.html" style="margin-left: 30px; padding-left: 0">Geocaching</a>
             </div>
-            <div id="namespace-580862781" class="accordion-body collapse ">
+            <div id="namespace-37603420" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1729969434"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-934342100"></a>
                                 <a href="../namespaces/Geocaching.Api.html" style="margin-left: 30px; padding-left: 0">Api</a>
             </div>
-            <div id="namespace-1729969434" class="accordion-body collapse ">
+            <div id="namespace-934342100" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -181,10 +181,10 @@
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2010088425"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-567915863"></a>
                                 <a href="../namespaces/Geocaching.OAuth.html" style="margin-left: 30px; padding-left: 0">OAuth</a>
             </div>
-            <div id="namespace-2010088425" class="accordion-body collapse ">
+            <div id="namespace-567915863" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -1388,6 +1388,7 @@
                 <p><em>Get More Geocaches</em></p>
                 <ul>
 <li>required params: IsLite, StartIndex, MaxPerPage, GeocacheLogCount, TrackableLogCount</li>
+<li>optional param: IsSummaryOnly</li>
 </ul>
 
                                     <h4>Parameters</h4>
@@ -2292,7 +2293,7 @@ DeviceTotalMemoryInMB, DeviceUniqueId, MobileHardwareVersion, WebBrowserVersion<
                 <p><em>Save User Waypoint</em></p>
                 <ul>
 <li>required params: CacheCode, Latitude, Longitude</li>
-<li>optional param: Description, ID
+<li>optional param: Description, ID, IsCorrectedCoordinate, AssociatedAdditionalWaypoint, IsUserCompleted
 Note: The ID field in the request should only be set with an ID returned from the service
 (when you are updating a waypoint) Otherwise this field should be left null.</li>
 </ul>
@@ -2340,7 +2341,8 @@ Note: The ID field in the request should only be set with an ID returned from th
 MaxTerrain, GeocacheName, MinDifficulty, MaxDifficulty, CacheCodes, GeocacheTypeIds, GeocacheContainerSizeIds,
 Archived, Available, Premium, MinFavoritePoints, MaxFavoritePoints, HiddenByUsers, NotHiddenByUsers, BottomRightLatitude,
 BottomRightLongitude, TopLeftLatitude, TopLeftLongitude, BookmarkListIDs, ExcludeIgnoreList, MinTrackables, MaxTrackables,
-UserNameFieldNotesFinds, StartDateRange, EndDateRange, StateIds</li>
+UserNameFieldNotesFinds, StartDateRange, EndDateRange, StateIds, CountryIds, RecommendedOriginLatitude, RecommendedOriginLongitude,
+AscendingOrder, SortFilterId, IsSummaryOnly</li>
 </ul>
 
                                     <h4>Parameters</h4>
@@ -2823,7 +2825,7 @@ UserNameFieldNotesFinds, StartDateRange, EndDateRange, StateIds</li>
                 <section class="span10 offset1">
                     <hr />
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on October 25th, 2014 at 13:25.
+                    on December 7th, 2014 at 19:12.
                 </section>
             </section>
         </section>
