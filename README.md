@@ -5,9 +5,11 @@ Geocaching API for PHP 5
 [![Total Downloads](https://poser.pugx.org/geocaching/api/downloads.svg)](https://packagist.org/packages/geocaching/api)
 [![Latest Unstable Version](https://poser.pugx.org/geocaching/api/v/unstable.svg)](https://packagist.org/packages/geocaching/api)
 
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/bce9472c-1bfc-4e75-aaff-d12cad84a27f/big.png)](https://insight.sensiolabs.com/projects/bce9472c-1bfc-4e75-aaff-d12cad84a27f)
+
 PHP 5 implementation of Groundspeak's Geocaching Live API.
 
-A kind of documentation about the API is available here : https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help
+A kind of documentation about the API is available here : https://api.groundspeak.com/LiveV6/geocaching.svc/help
 
 You want to contribute?
 -----------------------
