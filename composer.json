@@ -20,6 +20,6 @@
     },
     "require": {
         "php": ">=5.4",
-        "monolog/monolog": "1.11.*"
+        "monolog/monolog": "1.*"
     }
 }
