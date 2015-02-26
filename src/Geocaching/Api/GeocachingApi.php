@@ -1210,6 +1210,9 @@ class GeocachingApi extends AbstractGeocachingApi
         if (array_key_exists('Premium', $params)) {
             $post_params['GeocacheExclusions']['Premium'] = (boolean) $params['Premium'];
         }
+        if (array_key_exists('Published', $params)) {
+            $post_params['GeocacheExclusions']['Published'] = (boolean) $params['Published'];
+        }
 
         if (array_key_exists('MinFavoritePoints', $params)) {
             $post_params['FavoritePoints']['MinFavoritePoints'] = (int) $params['MinFavoritePoints'];
