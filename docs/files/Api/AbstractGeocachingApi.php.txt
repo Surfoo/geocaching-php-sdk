@@ -630,8 +630,8 @@ abstract class AbstractGeocachingApi
      * MaxTerrain, GeocacheName, MinDifficulty, MaxDifficulty, CacheCodes, GeocacheTypeIds, GeocacheContainerSizeIds,
      * Archived, Available, Premium, Published, MinFavoritePoints, MaxFavoritePoints, HiddenByUsers, NotHiddenByUsers, BottomRightLatitude,
      * BottomRightLongitude, TopLeftLatitude, TopLeftLongitude, BookmarkListIDs, ExcludeIgnoreList, MinTrackables, MaxTrackables,
-     * UserNameFieldNotesFinds, StartDateRange, EndDateRange, StateIds, CountryIds, RecommendedOriginLatitude, RecommendedOriginLongitude,
-     * AscendingOrder, SortFilterId, IsSummaryOnly
+     * UserNameFieldNotesFinds, StartDatePublished, EndDatePublished, StateIds, CountryIds, RecommendedOriginLatitude, RecommendedOriginLongitude,
+     * StartDateEvent, EndDateEvent, AscendingOrder, SortFilterId, IsSummaryOnly, SortPointLatitude, SortPointLongitude
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/SearchForGeocaches Documentation by Groundspeak
      * @abstract

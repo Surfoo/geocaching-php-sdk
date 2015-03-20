@@ -367,6 +367,7 @@ class GeocachingApi extends AbstractGeocachingApi
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetFullPocketQueryData Documentation by Groundspeak
      * @access public
+     * @param  array  $params
      * @return object
      */
     public function getFullPocketQueryData(array $params)
@@ -1125,8 +1126,8 @@ class GeocachingApi extends AbstractGeocachingApi
      * MaxTerrain, GeocacheName, MinDifficulty, MaxDifficulty, CacheCodes, GeocacheTypeIds, GeocacheContainerSizeIds,
      * Archived, Available, Premium, Published, MinFavoritePoints, MaxFavoritePoints, HiddenByUsers, NotHiddenByUsers, BottomRightLatitude,
      * BottomRightLongitude, TopLeftLatitude, TopLeftLongitude, BookmarkListIDs, ExcludeIgnoreList, MinTrackables, MaxTrackables,
-     * UserNameFieldNotesFinds, StartDateRange, EndDateRange, StateIds, CountryIds, RecommendedOriginLatitude, RecommendedOriginLongitude,
-     * AscendingOrder, SortFilterId, IsSummaryOnly
+     * UserNameFieldNotesFinds, StartDatePublished, EndDatePublished, StateIds, CountryIds, RecommendedOriginLatitude, RecommendedOriginLongitude,
+     * StartDateEvent, EndDateEvent, AscendingOrder, SortFilterId, IsSummaryOnly, SortPointLatitude, SortPointLongitude
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/SearchForGeocaches Documentation by Groundspeak
      * @access public
@@ -1260,12 +1261,12 @@ class GeocachingApi extends AbstractGeocachingApi
             $post_params['FieldNoteFinds']['UserName'] = $params['UserNameFieldNotesFinds'];
         }
 
-        if (array_key_exists('StartDateRange', $params)) {
-            $post_params['CachePublishedDate']['Range']['StartDate'] = '/Date('.((int) $params['StartDateRange'] * 1000).')/';
-        } //StartDateRange is a timestamp
-        if (array_key_exists('EndDateRange', $params)) {
-            $post_params['CachePublishedDate']['Range']['EndDate'] = '/Date('.((int) $params['EndDateRange'] * 1000).')/';
-        } //EndDateRange is a timestamp
+        if (array_key_exists('StartDatePublished', $params)) {
+            $post_params['CachePublishedDate']['Range']['StartDate'] = '/Date('.((int) $params['StartDatePublished'] * 1000).')/';
+        } // StartDatePublished is a timestamp
+        if (array_key_exists('EndDatePublished', $params)) {
+            $post_params['CachePublishedDate']['Range']['EndDate'] = '/Date('.((int) $params['EndDatePublished'] * 1000).')/';
+        } // EndDatePublished is a timestamp
 
         if (array_key_exists('StateIds', $params) && is_array($params['StateIds'])) {
             $post_params['States']['StateIds'] = $params['StateIds'];
@@ -1284,6 +1285,13 @@ class GeocachingApi extends AbstractGeocachingApi
             $post_params['Recommended']['Origin']['Longitude'] = (float) $params['RecommendedOriginLongitude'];
         }
 
+        if (array_key_exists('StartDateEvent', $params)) {
+            $post_params['EventsDateRangeUtc']['Range']['StartDate'] = '/Date('.((int) $params['StartDateEvent'] * 1000).')/';
+        } // StartDateEvent is a timestamp
+        if (array_key_exists('EndDateEvent', $params)) {
+            $post_params['EventsDateRangeUtc']['Range']['EndDate'] = '/Date('.((int) $params['EndDateEvent'] * 1000).')/';
+        } // EndDateEvent is a timestamp
+
         if (array_key_exists('AscendingOrder', $params)) {
             $post_params['SortBys']['AscendingOrder'] = (boolean) $params['AscendingOrder'];
         }
@@ -1294,6 +1302,11 @@ class GeocachingApi extends AbstractGeocachingApi
 
         if (array_key_exists('IsSummaryOnly', $params)) {
             $post_params['IsSummaryOnly'] = (boolean) $params['IsSummaryOnly'];
+        }
+
+        if (array_key_exists('SortPointLatitude', $params) && array_key_exists('SortPointLongitude', $params)) {
+            $post_params['SortPoint']['Latitude'] = (float) $params['SortPointLatitude'];
+            $post_params['SortPoint']['Longitude'] = (float) $params['SortPointLongitude'];
         }
 
         if (!array_key_exists('PointRadius', $post_params) && !array_key_exists('CacheCode', $post_params)) {
