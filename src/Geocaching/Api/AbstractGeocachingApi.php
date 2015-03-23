@@ -754,7 +754,7 @@ abstract class AbstractGeocachingApi
     protected function checkRequestStatus(\stdClass $content)
     {
         if (!empty($content->Status->StatusCode)) {
-            throw new \Exception($content->Status->StatusMessage.' (StatusCode: '.$content->Status->StatusCode.')');
+            throw new \Exception($content->Status->StatusMessage, $content->Status->StatusCode);
         }
     }
 
