@@ -25,7 +25,7 @@ First, you need to install [composer](https://getcomposer.org/doc/00-intro.md#sy
 From the Command Line:
 
 ```
-composer require geocaching/api:1.1
+composer require geocaching/api:1.2
 ```
 
 Or in your `composer.json`:
@@ -33,7 +33,7 @@ Or in your `composer.json`:
 ``` json
 {
     "require": {
-        "geocaching/api": "1.1"
+        "geocaching/api": "1.2"
     }
 }
 ```
