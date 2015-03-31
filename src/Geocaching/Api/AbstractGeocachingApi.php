@@ -779,7 +779,7 @@ abstract class AbstractGeocachingApi
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_HTTPHEADER, $this->http_headers);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_SSLVERSION, 3);
+        curl_setopt($ch, CURLOPT_SSLVERSION, 4);
         curl_setopt($ch, CURLOPT_URL, $url);
         $output = curl_exec($ch);
         $this->log('curl_exec', $output);
@@ -827,7 +827,7 @@ abstract class AbstractGeocachingApi
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
         curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_SSLVERSION, 3);
+        curl_setopt($ch, CURLOPT_SSLVERSION, 4);
         curl_setopt($ch, CURLOPT_URL, $url);
         $output = curl_exec($ch);
         $this->log('curl_exec', $output);
