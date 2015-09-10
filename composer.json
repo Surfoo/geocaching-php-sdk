@@ -1,6 +1,5 @@
 {
     "name": "geocaching/api",
-    "version": "1.2",
     "description": "Geocaching PHP Api",
     "type": "library",
     "license": "EPL-1.0",
