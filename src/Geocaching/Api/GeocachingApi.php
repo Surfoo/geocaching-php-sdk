@@ -3,7 +3,8 @@
  * Geocaching API with PHP
  *
  * @author  Surfoo <surfooo@gmail.com>
- * @license http://opensource.org/licenses/eclipse-2.0.php
+ * @link    https://github.com/Surfoo/geocaching-api
+ * @license https://opensource.org/licenses/MIT
  * @package Geocaching_Api
  */
 
@@ -111,6 +112,9 @@ class GeocachingApi extends AbstractGeocachingApi
         }
         if (array_key_exists('UpdatedLongitude', $params)) {
             $post_params['UpdatedLongitude'] = (float) $params['UpdatedLongitude'];
+        }
+        if (array_key_exists('Guid', $params)) {
+            $post_params['Guid'] = $params['Guid'];
         }
 
         if (array_key_exists('base64ImageData', $params)) {
@@ -1401,7 +1405,9 @@ class GeocachingApi extends AbstractGeocachingApi
         if (array_key_exists('FileName', $params)) {
             $post_params['ImageData']['FileName'] = $params['FileName'];
         }
-
+        if (array_key_exists('ReferenceCode', $params)) {
+            $post_params['ReferenceCode'] = $params['ReferenceCode'];
+        }
         return $this->postRequest(__FUNCTION__, $post_params);
     }
 

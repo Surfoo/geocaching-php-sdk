@@ -48,7 +48,7 @@ Fork the project source code on [github](https://github.com/Surfoo/geocaching-ap
 License
 -------
 
-geocaching-api is distributed under [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
+geocaching-api is distributed under [MIT](https://opensource.org/licenses/MIT).
 
 Contact & Questions
 -------------------

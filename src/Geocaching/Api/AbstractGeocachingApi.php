@@ -3,7 +3,8 @@
  * Geocaching API with PHP
  *
  * @author  Surfoo <surfooo@gmail.com>
- * @license http://opensource.org/licenses/eclipse-2.0.php
+ * @link    https://github.com/Surfoo/geocaching-api
+ * @license https://opensource.org/licenses/MIT
  * @package Geocaching_Api
  */
 
