@@ -113,7 +113,7 @@ abstract class AbstractGeocachingApi
      * Create Field Note And Publish
      *
      * - required params: CacheCode, WptLogTypeId, UTCDateLogged, Note
-     * - optional params: PromoteToLog, FavoriteThisCache, EncryptLogText, UpdatedLatitude, UpdatedLongitude, base64ImageData, FileCaption, FileDescription, FileName
+     * - optional params: PromoteToLog, FavoriteThisCache, EncryptLogText, UpdatedLatitude, UpdatedLongitude, base64ImageData, FileCaption, FileDescription, FileName, Guid
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/CreateFieldNoteAndPublish Documentation by Groundspeak
      * @abstract
@@ -207,7 +207,7 @@ abstract class AbstractGeocachingApi
      *
      * - required param: BookmarkListGuid
      *
-     * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/getBookmarkListByGuid Documentation by Groundspeak
+     * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetBookmarkListByGuid Documentation by Groundspeak
      * @abstract
      * @param  array  $params
      * @return object
@@ -298,7 +298,7 @@ abstract class AbstractGeocachingApi
      *
      * - required param: CacheCodes
      *
-     * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/getGeocacheStatus Documentation by Groundspeak
+     * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetGeocacheStatus Documentation by Groundspeak
      * @abstract
      * @param  array  $params
      * @return object
@@ -494,7 +494,7 @@ abstract class AbstractGeocachingApi
      *
      * - required param: Usernames
      *
-     * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/getUsersCacheCounts Documentation by Groundspeak
+     * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetUsersCacheCounts Documentation by Groundspeak
      * @abstract
      * @param  array  $params
      * @return object
@@ -670,7 +670,7 @@ abstract class AbstractGeocachingApi
      * Upload Image To Geocache Log
      *
      * - required params: LogGuid, base64ImageData
-     * - optional params: FileCaption, FileDescription, FileName
+     * - optional params: FileCaption, FileDescription, FileName, ReferenceCode
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/UploadImageToGeocacheLog Documentation by Groundspeak
      * @abstract

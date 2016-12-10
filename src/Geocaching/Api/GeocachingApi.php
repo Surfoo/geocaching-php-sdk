@@ -71,7 +71,7 @@ class GeocachingApi extends AbstractGeocachingApi
      * Create Field Note And Publish
      *
      * - required params: CacheCode, WptLogTypeId, UTCDateLogged, Note
-     * - optional params: PromoteToLog, FavoriteThisCache, EncryptLogText, UpdatedLatitude, UpdatedLongitude, base64ImageData, FileCaption, FileDescription, FileName
+     * - optional params: PromoteToLog, FavoriteThisCache, EncryptLogText, UpdatedLatitude, UpdatedLongitude, base64ImageData, FileCaption, FileDescription, FileName, Guid
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/CreateFieldNoteAndPublish Documentation by Groundspeak
      * @access public
@@ -1377,7 +1377,7 @@ class GeocachingApi extends AbstractGeocachingApi
      * Upload Image To Geocache Log
      *
      * - required params: LogGuid, base64ImageData
-     * - optional params: FileCaption, FileDescription, FileName
+     * - optional params: FileCaption, FileDescription, FileName, ReferenceCode
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/UploadImageToGeocacheLog Documentation by Groundspeak
      * @access public

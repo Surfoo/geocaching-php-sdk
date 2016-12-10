@@ -2,7 +2,7 @@
     "name": "geocaching/api",
     "description": "Geocaching PHP Api",
     "type": "library",
-    "license": "EPL-1.0",
+    "license": "MIT",
     "keywords": ["groundspeak", "geocaching", "geocache", "api", "oauth"],
     "homepage": "http://geocaching.vaguelibre.net/api/",
     "authors": [
@@ -19,6 +19,10 @@
     },
     "require": {
         "php": ">=5.4",
-        "monolog/monolog": "1.*"
+        "monolog/monolog": "1.*",
+        "guzzlehttp/guzzle": "^6.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7"
     }
 }

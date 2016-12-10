@@ -5,10 +5,16 @@ error_reporting(E_ALL | E_STRICT);
 
 require dirname(__DIR__) . '/vendor/autoload.php';
 
+
+use GuzzleHttp\Client;
+$client = new Client(['verify' => false]);
+
 echo '<p class="date"><strong>Date of monitoring</strong>: ' . date('r') . '</p>'."\n";
 
 // Groundspeak methods
-$html = file_get_contents('https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help');
+$response = $client->get('https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help');
+$html = $response->getBody();
+
 preg_match_all('/<tr>\s+<td>([a-z]+)<\/td>/i', $html, $matches);
 $methods_from_GS = $matches[1];
 
@@ -45,10 +51,10 @@ if (!empty($positive_diff_methods) || !empty($negative_diff_methods)) {
 }
 
 // Check the difference between the Groundspeak API and the 2 libraries
-monitoring('Geocaching\Api\AbstractGeocachingApi');
-monitoring('Geocaching\Api\GeocachingApi');
+monitoring('Geocaching\Api\AbstractGeocachingApi', $client);
+monitoring('Geocaching\Api\GeocachingApi', $client);
 
-function monitoring($class)
+function monitoring($class, GuzzleHttp\Client $client)
 {
     $reflect = new ReflectionClass($class);
     echo '<div class="col-md-6">'."\n";
@@ -59,7 +65,8 @@ function monitoring($class)
         $params_from_GS = [];
         if (preg_match('/@link ([^\s]+)/', $reflectmethod->getDocComment(), $matche)) {
 
-            $html_content = file_get_contents($matche[1]);
+            $response = $client->get($matche[1]);
+            $html_content = $response->getBody();
             preg_match('#<span class="uri-template">([^<]+)</span>#', $html_content, $url);
             $url = html_entity_decode($url[1]);
             $details_url = parse_url($url);
