@@ -114,12 +114,12 @@
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="../reports/errors.html">
-                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">12</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">2</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="../reports/markers.html">
-                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">5</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
                                 </a>
                             </li>
                             <li>
@@ -144,34 +144,35 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1054093058"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1687081715"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-1054093058" class="accordion-body collapse in">
+            <div id="namespace-1687081715" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1449192634"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-487022204"></a>
                                 <a href="../namespaces/Geocaching.html" style="margin-left: 30px; padding-left: 0">Geocaching</a>
             </div>
-            <div id="namespace-1449192634" class="accordion-body collapse ">
+            <div id="namespace-487022204" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-829751222"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-207695468"></a>
                                 <a href="../namespaces/Geocaching.Api.html" style="margin-left: 30px; padding-left: 0">Api</a>
             </div>
-            <div id="namespace-829751222" class="accordion-body collapse ">
+            <div id="namespace-207695468" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
                     <ul>
                                                                                                     <li class="class"><a href="../classes/Geocaching.Api.AbstractGeocachingApi.html">AbstractGeocachingApi</a></li>
                                                     <li class="class"><a href="../classes/Geocaching.Api.GeocachingApi.html">GeocachingApi</a></li>
+                                                    <li class="class"><a href="../classes/Geocaching.Api.GeocachingApiException.html">GeocachingApiException</a></li>
                                             </ul>
                 </div>
             </div>
@@ -181,15 +182,16 @@
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1544577882"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1526416547"></a>
                                 <a href="../namespaces/Geocaching.OAuth.html" style="margin-left: 30px; padding-left: 0">OAuth</a>
             </div>
-            <div id="namespace-1544577882" class="accordion-body collapse ">
+            <div id="namespace-1526416547" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
                     <ul>
-                                                                                                    <li class="class"><a href="../classes/Geocaching.OAuth.OAuth.html">OAuth</a></li>
+                                                                                                    <li class="class"><a href="../classes/Geocaching.OAuth.GeocachingOAuthException.html">GeocachingOAuthException</a></li>
+                                                    <li class="class"><a href="../classes/Geocaching.OAuth.OAuth.html">OAuth</a></li>
                                             </ul>
                 </div>
             </div>
@@ -224,7 +226,7 @@
                     <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
 
                     <h1><small>\Geocaching\Api</small>AbstractGeocachingApi</h1>
-                    <p><em>Abstract methods from Groundspeak API</em></p>
+                    <p><em>Abstract methods from Groundspeak API.</em></p>
                     
                     
                                         
@@ -295,13 +297,13 @@
                                                                     <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_updateCacheNote" class="">updateCacheNote()</a><br />
                                                                     <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_uploadImageToGeocacheLog" class="">uploadImageToGeocacheLog()</a><br />
                                                                     <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_uploadImageToTrackableLog" class="">uploadImageToTrackableLog()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_setLogging" class="">setLogging()</a><br />
                                                             </section>
                             <section class="span4">
                                                                     <em>No public properties found</em>
                                                             </section>
                             <section class="span4">
-                                                                    <em>No constants found</em>
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#constant_STAGING_API_URL" class="">STAGING_API_URL</a><br />
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#constant_LIVE_API_URL" class="">LIVE_API_URL</a><br />
                                                             </section>
                         </section>
                         <section class="row-fluid protected">
@@ -310,14 +312,11 @@
                                                                     <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_checkRequestStatus" class="">checkRequestStatus()</a><br />
                                                                     <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_getRequest" class="">getRequest()</a><br />
                                                                     <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_postRequest" class="">postRequest()</a><br />
-                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#method_log" class="">log()</a><br />
                                                             </section>
                             <section class="span4">
-                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#property_staging_api_url" class="">$staging_api_url</a><br />
-                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#property_live_api_url" class="">$live_api_url</a><br />
                                                                     <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#property_api_url" class="">$api_url</a><br />
                                                                     <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#property_oauth_token" class="">$oauth_token</a><br />
-                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#property_logging" class="">$logging</a><br />
+                                                                    <a href="../classes/Geocaching.Api.AbstractGeocachingApi.html#property_client" class="">$client</a><br />
                                                             </section>
                             <section class="span4">
                                 <em>N/A</em>
@@ -344,7 +343,7 @@
                         <dt>File</dt>
                             <dd><a href="../files/Api.AbstractGeocachingApi.html"><div class="path-wrapper">Api/AbstractGeocachingApi.php</div></a></dd>
                                                 <dt>Package</dt>
-                            <dd><div class="namespace-wrapper">Geocaching_Api</div></dd>
+                            <dd><div class="namespace-wrapper">Default</div></dd>
                                                 <dt>Class hierarchy</dt>
                             <dd class="hierarchy">
                                                                                                                                                                     <div class="namespace-wrapper">\Geocaching\Api\AbstractGeocachingApi</div>
@@ -365,7 +364,57 @@
                 </aside>
             </div>
 
-                        
+                                    <a id="constants" name="constants"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Constants</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_STAGING_API_URL" name="constant_STAGING_API_URL" class="anchor"></a>
+            <article id="constant_STAGING_API_URL" class="constant">
+                <h3 class="">STAGING_API_URL</h3>
+                <pre class="signature">STAGING_API_URL</pre>
+                <p><em>Staging URL of Groundspeak API.</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_LIVE_API_URL" name="constant_LIVE_API_URL" class="anchor"></a>
+            <article id="constant_LIVE_API_URL" class="constant">
+                <h3 class="">LIVE_API_URL</h3>
+                <pre class="signature">LIVE_API_URL</pre>
+                <p><em>Production URL of Groundspeak API.</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
                                     <a id="properties" name="properties"></a>
             <div class="row-fluid">
                 <div class="span8 content class">
@@ -376,59 +425,11 @@
 
                                                     <div class="row-fluid">
         <div class="span8 content class">
-            <a id="property_staging_api_url" name="property_staging_api_url" class="anchor"></a>
-            <article class="property">
-                <h3 class="protected ">$staging_api_url</h3>
-                <pre class="signature">$staging_api_url : string</pre>
-                <p><em>Staging URL of Groundspeak API</em></p>
-                
-
-                                <h4>Type</h4>
-                string
-                                            </article>
-        </div>
-        <aside class="span4 detailsbar">
-            <h1><i class="icon-arrow-down"></i></h1>
-                        <dl>
-                                                            </dl>
-            <h2>Tags</h2>
-            <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
-                            </table>
-        </aside>
-    </div>
-
-                                    <div class="row-fluid">
-        <div class="span8 content class">
-            <a id="property_live_api_url" name="property_live_api_url" class="anchor"></a>
-            <article class="property">
-                <h3 class="protected ">$live_api_url</h3>
-                <pre class="signature">$live_api_url : string</pre>
-                <p><em>Production URL of Groundspeak API</em></p>
-                
-
-                                <h4>Type</h4>
-                string
-                                            </article>
-        </div>
-        <aside class="span4 detailsbar">
-            <h1><i class="icon-arrow-down"></i></h1>
-                        <dl>
-                                                            </dl>
-            <h2>Tags</h2>
-            <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
-                            </table>
-        </aside>
-    </div>
-
-                                    <div class="row-fluid">
-        <div class="span8 content class">
             <a id="property_api_url" name="property_api_url" class="anchor"></a>
             <article class="property">
                 <h3 class="protected ">$api_url</h3>
                 <pre class="signature">$api_url : string</pre>
-                <p><em>API URL</em></p>
+                <p><em>API URL.</em></p>
                 
 
                                 <h4>Type</h4>
@@ -452,7 +453,7 @@
             <article class="property">
                 <h3 class="protected ">$oauth_token</h3>
                 <pre class="signature">$oauth_token : string</pre>
-                <p><em>OAuth token sent by the client</em></p>
+                <p><em>OAuth token sent by the client.</em></p>
                 
 
                                 <h4>Type</h4>
@@ -472,16 +473,16 @@
 
                                     <div class="row-fluid">
         <div class="span8 content class">
-            <a id="property_logging" name="property_logging" class="anchor"></a>
+            <a id="property_client" name="property_client" class="anchor"></a>
             <article class="property">
-                <h3 class="protected ">$logging</h3>
-                <pre class="signature">$logging : string</pre>
-                <p><em>Log API requests in a file</em></p>
+                <h3 class="protected ">$client</h3>
+                <pre class="signature">$client : \Geocaching\Api\GuzzleHttp\Client</pre>
+                <p><em></em></p>
                 
 
                                 <h4>Type</h4>
-                string
-                                            </article>
+                \Geocaching\Api\GuzzleHttp\Client
+                &mdash; client                            </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
@@ -507,12 +508,17 @@
             <article class="method">
                 <h3 class="public ">__construct()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">__construct(string  <span class="argument">$oauth_token</span>, boolean  <span class="argument">$live = true</span>) : void</pre>
-                <p><em>Constructor</em></p>
+                <pre class="signature" style="margin-right: 54px;">__construct(\Geocaching\Api\Guzzle\Client  <span class="argument">$client</span>, string  <span class="argument">$oauth_token</span>, boolean  <span class="argument">$live = true</span>) </pre>
+                <p><em>Constructor.</em></p>
                 
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>\Geocaching\Api\Guzzle\Client</td>
+                                <td>$client </td>
+                                <td></td>
+                            </tr>
                                                     <tr>
                                 <td>string</td>
                                 <td>$oauth_token </td>
@@ -547,7 +553,7 @@
                 <h3 class="public ">addFavoritePointToCache()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">addFavoritePointToCache(array  <span class="argument">$params</span>) : object</pre>
-                <p><em>Add Favorite Point To a Cache</em></p>
+                <p><em>Add Favorite Point To a Cache.</em></p>
                 <ul>
 <li>required param: cacheCode</li>
 </ul>
@@ -588,7 +594,7 @@
                 <h3 class="public ">addGeocachesToBookmarkList()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">addGeocachesToBookmarkList(array  <span class="argument">$params</span>) : object</pre>
-                <p><em>Add Geocaches to a bookmark list</em></p>
+                <p><em>Add Geocaches to a bookmark list.</em></p>
                 <ul>
 <li>required params: BookmarkListGuid, CacheCodes</li>
 </ul>
@@ -629,10 +635,10 @@
                 <h3 class="public ">createFieldNoteAndPublish()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">createFieldNoteAndPublish(array  <span class="argument">$params</span>) : object</pre>
-                <p><em>Create Field Note And Publish</em></p>
+                <p><em>Create Field Note And Publish.</em></p>
                 <ul>
 <li>required params: CacheCode, WptLogTypeId, UTCDateLogged, Note</li>
-<li>optional params: PromoteToLog, FavoriteThisCache, EncryptLogText, UpdatedLatitude, UpdatedLongitude, base64ImageData, FileCaption, FileDescription, FileName</li>
+<li>optional params: PromoteToLog, FavoriteThisCache, EncryptLogText, UpdatedLatitude, UpdatedLongitude, base64ImageData, FileCaption, FileDescription, FileName, Guid</li>
 </ul>
 
                                     <h4>Parameters</h4>
@@ -671,7 +677,7 @@
                 <h3 class="public ">createTrackableLog()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">createTrackableLog(array  <span class="argument">$params</span>) : object</pre>
-                <p><em>Create Trackable Log</em></p>
+                <p><em>Create Trackable Log.</em></p>
                 <ul>
 <li>required params: TrackingNumber, UTCDateLogged, Note, LogType</li>
 <li>optional params: CacheCode, TravelBugCode, base64ImageData, FileCaption, FileDescription, FileName</li>
@@ -713,7 +719,7 @@
                 <h3 class="public ">deleteCacheNote()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">deleteCacheNote(array  <span class="argument">$params</span>) : object</pre>
-                <p><em>Delete Cache Note</em></p>
+                <p><em>Delete Cache Note.</em></p>
                 <ul>
 <li>required param: cacheCode</li>
 </ul>
@@ -754,7 +760,7 @@
                 <h3 class="public ">deleteUserWaypoint()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">deleteUserWaypoint(array  <span class="argument">$params</span>) : object</pre>
-                <p><em>Delete User Waypoint</em></p>
+                <p><em>Delete User Waypoint.</em></p>
                 <ul>
 <li>required param: waypointID</li>
 </ul>
@@ -795,7 +801,7 @@
                 <h3 class="public ">geocodeString()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">geocodeString(array  <span class="argument">$params</span>) : object</pre>
-                <p><em>Geocode String</em></p>
+                <p><em>Geocode String.</em></p>
                 <ul>
 <li>required param: GeocodeString</li>
 </ul>
@@ -836,7 +842,7 @@
                 <h3 class="public ">getAnotherUsersProfile()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getAnotherUsersProfile(array  <span class="argument">$params</span>) : object</pre>
-                <p><em>Get Another Users Profile</em></p>
+                <p><em>Get Another Users Profile.</em></p>
                 <ul>
 <li>required param: UserID</li>
 <li>optional params: ChallengesData, FavoritePointsData, GeocacheData, PublicProfileData, SouvenirData, TrackableData</li>
@@ -878,7 +884,7 @@
                 <h3 class="public ">getAPILimits()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getAPILimits() : object</pre>
-                <p><em>Get API Limits</em></p>
+                <p><em>Get API Limits.</em></p>
                 
 
                 
@@ -909,7 +915,7 @@
                 <h3 class="public ">getAttributeTypesData()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getAttributeTypesData() : object</pre>
-                <p><em>Get Attribute Types Data</em></p>
+                <p><em>Get Attribute Types Data.</em></p>
                 
 
                 
@@ -940,7 +946,7 @@
                 <h3 class="public ">getBookmarkListByGuid()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getBookmarkListByGuid(array  <span class="argument">$params</span>) : object</pre>
-                <p><em>Get Bookmark List By Guid</em></p>
+                <p><em>Get Bookmark List By Guid.</em></p>
                 <ul>
 <li>required param: BookmarkListGuid</li>
 </ul>
@@ -965,7 +971,7 @@
                                         <span class="label label-info">abstract</span>
                                                 <dl>
                                                                                             <dt>See also</dt>
-                                                                <dd><a href="https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/getBookmarkListByGuid"><span class="namespace-wrapper">Documentation by Groundspeak</span></a></dd>
+                                                                <dd><a href="https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetBookmarkListByGuid"><span class="namespace-wrapper">Documentation by Groundspeak</span></a></dd>
                                                                 </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
@@ -981,7 +987,7 @@
                 <h3 class="public ">getBookmarkListsByUserID()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getBookmarkListsByUserID(array  <span class="argument">$params</span>) : object</pre>
-                <p><em>Get Bookmark Lists By User ID</em></p>
+                <p><em>Get Bookmark Lists By User ID.</em></p>
                 <ul>
 <li>required param: userID</li>
 </ul>
@@ -1022,7 +1028,7 @@
                 <h3 class="public ">getBookmarkListsForUser()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getBookmarkListsForUser() : object</pre>
-                <p><em>Get Bookmark Lists For User</em></p>
+                <p><em>Get Bookmark Lists For User.</em></p>
                 
 
                 
@@ -1053,7 +1059,7 @@
                 <h3 class="public ">getCacheIdsFavoritedByUser()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getCacheIdsFavoritedByUser() : object</pre>
-                <p><em>Get Cache Ids Favorited By User</em></p>
+                <p><em>Get Cache Ids Favorited By User.</em></p>
                 
 
                 
@@ -1084,7 +1090,7 @@
                 <h3 class="public ">getCachesFavoritedByUser()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getCachesFavoritedByUser() : object</pre>
-                <p><em>Get Caches Favorited By User</em></p>
+                <p><em>Get Caches Favorited By User.</em></p>
                 
 
                 
@@ -1115,7 +1121,7 @@
                 <h3 class="public ">getFullPocketQueryData()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getFullPocketQueryData(array  <span class="argument">$params</span>) : object</pre>
-                <p><em>Get Full Pocket Query Data</em></p>
+                <p><em>Get Full Pocket Query Data.</em></p>
                 <p>Returns a complete Geocache object without those full caches counting against user's cache limit.</p>
 <ul>
 <li>required params: pocketQueryGuid, maxItems</li>
@@ -1158,7 +1164,7 @@
                 <h3 class="public ">getGeocacheDataTypes()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getGeocacheDataTypes(array  <span class="argument">$params</span>) : object</pre>
-                <p><em>Get Geocache Data Types</em></p>
+                <p><em>Get Geocache Data Types.</em></p>
                 <ul>
 <li>optional params: geocacheTypes, logTypes, attributeTypes</li>
 </ul>
@@ -1199,7 +1205,7 @@
                 <h3 class="public ">getGeocacheLogsByCacheCode()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getGeocacheLogsByCacheCode(array  <span class="argument">$params</span>) : object</pre>
-                <p><em>Get Geocache Logs By Cache Code</em></p>
+                <p><em>Get Geocache Logs By Cache Code.</em></p>
                 <ul>
 <li>required params: cacheCode, maxPerPage</li>
 <li>optional param: startIndex</li>
@@ -1241,7 +1247,7 @@
                 <h3 class="public ">getGeocacheStatus()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getGeocacheStatus(array  <span class="argument">$params</span>) : object</pre>
-                <p><em>Get Geocache Status</em></p>
+                <p><em>Get Geocache Status.</em></p>
                 <ul>
 <li>required param: CacheCodes</li>
 </ul>
@@ -1266,7 +1272,7 @@
                                         <span class="label label-info">abstract</span>
                                                 <dl>
                                                                                             <dt>See also</dt>
-                                                                <dd><a href="https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/getGeocacheStatus"><span class="namespace-wrapper">Documentation by Groundspeak</span></a></dd>
+                                                                <dd><a href="https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetGeocacheStatus"><span class="namespace-wrapper">Documentation by Groundspeak</span></a></dd>
                                                                 </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
@@ -1282,7 +1288,7 @@
                 <h3 class="public ">getGeocacheTypes()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getGeocacheTypes() : object</pre>
-                <p><em>Get Geocache Types</em></p>
+                <p><em>Get Geocache Types.</em></p>
                 
 
                 
@@ -1313,7 +1319,7 @@
                 <h3 class="public ">getImagesForGeocache()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getImagesForGeocache(array  <span class="argument">$params</span>) : object</pre>
-                <p><em>Get Images For Geocache</em></p>
+                <p><em>Get Images For Geocache.</em></p>
                 <ul>
 <li>required param: cacheCode</li>
 </ul>
@@ -1354,7 +1360,7 @@
                 <h3 class="public ">getMembershipTypes()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getMembershipTypes() : object</pre>
-                <p><em>Get Membership Types</em></p>
+                <p><em>Get Membership Types.</em></p>
                 
 
                 
@@ -1385,7 +1391,7 @@
                 <h3 class="public ">getMoreGeocaches()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getMoreGeocaches(array  <span class="argument">$params</span>) : object</pre>
-                <p><em>Get More Geocaches</em></p>
+                <p><em>Get More Geocaches.</em></p>
                 <ul>
 <li>required params: IsLite, StartIndex, MaxPerPage, GeocacheLogCount, TrackableLogCount</li>
 <li>optional param: IsSummaryOnly</li>
@@ -1427,7 +1433,7 @@
                 <h3 class="public ">getOwnedTrackables()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getOwnedTrackables(array  <span class="argument">$params</span>) : object</pre>
-                <p><em>Get Owned Trackables</em></p>
+                <p><em>Get Owned Trackables.</em></p>
                 <ul>
 <li>required params: StartIndex, MaxPerPage</li>
 <li>optional params: TrackableLogsCount, CollectionOnly</li>
@@ -1469,7 +1475,7 @@
                 <h3 class="public ">getPocketQueryData()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getPocketQueryData(array  <span class="argument">$params</span>) : object</pre>
-                <p><em>Get Pocket Query Data</em></p>
+                <p><em>Get Pocket Query Data.</em></p>
                 <ul>
 <li>required params: pocketQueryGuid, maxItems</li>
 <li>optional params: startItem, gcListOnly</li>
@@ -1511,7 +1517,7 @@
                 <h3 class="public ">getPocketQueryList()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getPocketQueryList() : object</pre>
-                <p><em>Get Pocket Query List</em></p>
+                <p><em>Get Pocket Query List.</em></p>
                 
 
                 
@@ -1542,7 +1548,7 @@
                 <h3 class="public ">getPocketQueryZippedFile()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getPocketQueryZippedFile(array  <span class="argument">$params</span>) : object</pre>
-                <p><em>Get Pocket Query Zipped File</em></p>
+                <p><em>Get Pocket Query Zipped File.</em></p>
                 <ul>
 <li>required param: pocketQueryGuid</li>
 </ul>
@@ -1583,7 +1589,7 @@
                 <h3 class="public ">getSiteStats()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getSiteStats() : object</pre>
-                <p><em>Get Site Stats</em></p>
+                <p><em>Get Site Stats.</em></p>
                 
 
                 
@@ -1614,7 +1620,7 @@
                 <h3 class="public ">getStatusMessages()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getStatusMessages() : object</pre>
-                <p><em>Get Status Messages</em></p>
+                <p><em>Get Status Messages.</em></p>
                 
 
                 
@@ -1645,7 +1651,7 @@
                 <h3 class="public ">getTrackableLogsByTBCode()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getTrackableLogsByTBCode(array  <span class="argument">$params</span>) : object</pre>
-                <p><em>Get Trackable Logs By TB Code</em></p>
+                <p><em>Get Trackable Logs By TB Code.</em></p>
                 <ul>
 <li>required params: tbCode, maxPerPage</li>
 <li>optional param: startIndex</li>
@@ -1687,7 +1693,7 @@
                 <h3 class="public ">getTrackablesByTBCode()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getTrackablesByTBCode(array  <span class="argument">$params</span>) : object</pre>
-                <p><em>Get Trackables By TB Code</em></p>
+                <p><em>Get Trackables By TB Code.</em></p>
                 <ul>
 <li>required param: tbCode</li>
 <li>optional param: trackableLogCount</li>
@@ -1729,7 +1735,7 @@
                 <h3 class="public ">getTrackablesByTrackingNumber()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getTrackablesByTrackingNumber(array  <span class="argument">$params</span>) : object</pre>
-                <p><em>Get Trackables By Tracking Number</em></p>
+                <p><em>Get Trackables By Tracking Number.</em></p>
                 <ul>
 <li>required param: trackingNumber</li>
 <li>optional param: trackableLogCount</li>
@@ -1771,7 +1777,7 @@
                 <h3 class="public ">getTrackablesInCache()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getTrackablesInCache(array  <span class="argument">$params</span>) : object</pre>
-                <p><em>Get Trackables In Cache</em></p>
+                <p><em>Get Trackables In Cache.</em></p>
                 <ul>
 <li>required params: cacheCode, maxPerPage</li>
 <li>optional params: startIndex, trackableLogCount</li>
@@ -1813,7 +1819,7 @@
                 <h3 class="public ">getTrackableTravelList()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getTrackableTravelList(array  <span class="argument">$params</span>) : object</pre>
-                <p><em>Get Trackable Travel List</em></p>
+                <p><em>Get Trackable Travel List.</em></p>
                 <ul>
 <li>required param: tbCode</li>
 </ul>
@@ -1854,7 +1860,7 @@
                 <h3 class="public ">getUserGallery()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getUserGallery(array  <span class="argument">$params</span>) : object</pre>
-                <p><em>Get User Gallery</em></p>
+                <p><em>Get User Gallery.</em></p>
                 <ul>
 <li>required params: Username, StartIndex, MaxPerPage</li>
 </ul>
@@ -1895,7 +1901,7 @@
                 <h3 class="public ">getUsersCacheCounts()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getUsersCacheCounts(array  <span class="argument">$params</span>) : object</pre>
-                <p><em>Get Users Cache Counts</em></p>
+                <p><em>Get Users Cache Counts.</em></p>
                 <ul>
 <li>required param: Usernames</li>
 </ul>
@@ -1920,7 +1926,7 @@
                                         <span class="label label-info">abstract</span>
                                                 <dl>
                                                                                             <dt>See also</dt>
-                                                                <dd><a href="https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/getUsersCacheCounts"><span class="namespace-wrapper">Documentation by Groundspeak</span></a></dd>
+                                                                <dd><a href="https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetUsersCacheCounts"><span class="namespace-wrapper">Documentation by Groundspeak</span></a></dd>
                                                                 </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
@@ -1936,7 +1942,7 @@
                 <h3 class="public ">getUsersCacheNotes()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getUsersCacheNotes(array  <span class="argument">$params</span>) : object</pre>
-                <p><em>Get Users Cache Notes</em></p>
+                <p><em>Get Users Cache Notes.</em></p>
                 <ul>
 <li>required param: maxPerPage</li>
 <li>optional param: startIndex</li>
@@ -1978,7 +1984,7 @@
                 <h3 class="public ">getUsersFavoritePoints()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getUsersFavoritePoints() : object</pre>
-                <p><em>Get Users Favorite Points</em></p>
+                <p><em>Get Users Favorite Points.</em></p>
                 
 
                 
@@ -2009,7 +2015,7 @@
                 <h3 class="public ">getUsersGeocacheLogs()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getUsersGeocacheLogs(array  <span class="argument">$params</span>) : object</pre>
-                <p><em>Get Users Geocache Logs</em></p>
+                <p><em>Get Users Geocache Logs.</em></p>
                 <ul>
 <li>required params: Username, LogTypes, MaxPerPage</li>
 <li>optional params: StartIndex, EndDate, StartDate, ExcludeArchived</li>
@@ -2051,7 +2057,7 @@
                 <h3 class="public ">getUsersTrackables()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getUsersTrackables(array  <span class="argument">$params</span>) : object</pre>
-                <p><em>get Users Trackables</em></p>
+                <p><em>get Users Trackables.</em></p>
                 <ul>
 <li>required param: MaxPerPage</li>
 <li>optional params: StartIndex, TrackableLogsCount, CollectionOnly</li>
@@ -2093,7 +2099,7 @@
                 <h3 class="public ">getUsersWhoFavoritedCache()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getUsersWhoFavoritedCache(array  <span class="argument">$params</span>) : object</pre>
-                <p><em>Get Users Who Favorited Cache</em></p>
+                <p><em>Get Users Who Favorited Cache.</em></p>
                 <ul>
 <li>required param: cacheCode</li>
 </ul>
@@ -2134,7 +2140,7 @@
                 <h3 class="public ">getUserWaypoints()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getUserWaypoints(array  <span class="argument">$params</span>) : object</pre>
-                <p><em>Get User Waypoints</em></p>
+                <p><em>Get User Waypoints.</em></p>
                 <ul>
 <li>required param: cacheCode</li>
 </ul>
@@ -2175,7 +2181,7 @@
                 <h3 class="public ">getWptLogTypes()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getWptLogTypes() : object</pre>
-                <p><em>Get Wpt Log Types</em></p>
+                <p><em>Get Wpt Log Types.</em></p>
                 
 
                 
@@ -2206,7 +2212,7 @@
                 <h3 class="public ">getYourUserProfile()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getYourUserProfile(array  <span class="argument">$params = array()</span>) : object</pre>
-                <p><em>Get Your User Profile</em></p>
+                <p><em>Get Your User Profile.</em></p>
                 <ul>
 <li>optional params: ChallengesData, FavoritePointsData, GeocacheData, PublicProfileData, SouvenirData, TrackableData, EmailData,
 ApplicationCurrentMemoryUsage, ApplicationPeakMemoryUsage, ApplicationSoftwareVersion DeviceManufacturer, DeviceName, DeviceOperatingSystem,
@@ -2249,7 +2255,7 @@ DeviceTotalMemoryInMB, DeviceUniqueId, MobileHardwareVersion, WebBrowserVersion<
                 <h3 class="public ">removeFavoritePointFromCache()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">removeFavoritePointFromCache(array  <span class="argument">$params</span>) : object</pre>
-                <p><em>Remove Favorite Point From Cache</em></p>
+                <p><em>Remove Favorite Point From Cache.</em></p>
                 <ul>
 <li>required param: cacheCode</li>
 </ul>
@@ -2290,7 +2296,7 @@ DeviceTotalMemoryInMB, DeviceUniqueId, MobileHardwareVersion, WebBrowserVersion<
                 <h3 class="public ">saveUserWaypoint()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">saveUserWaypoint(array  <span class="argument">$params</span>) : object</pre>
-                <p><em>Save User Waypoint</em></p>
+                <p><em>Save User Waypoint.</em></p>
                 <ul>
 <li>required params: CacheCode, Latitude, Longitude</li>
 <li>optional param: Description, ID, IsCorrectedCoordinate, AssociatedAdditionalWaypoint, IsUserCompleted
@@ -2334,7 +2340,7 @@ Note: The ID field in the request should only be set with an ID returned from th
                 <h3 class="public ">searchForGeocaches()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">searchForGeocaches(array  <span class="argument">$params</span>) : object</pre>
-                <p><em>Search For Geocaches</em></p>
+                <p><em>Search For Geocaches.</em></p>
                 <ul>
 <li>required params: DistanceInMeters &amp;&amp; PointRadiusLatitude &amp;&amp; PointRadiusLongitude OR CacheCode, MaxPerPage</li>
 <li>optional params: IsLite, StartIndex, MaxPerPage, GeocacheLogCount, TrackableLogCount, NotFoundByUsers, MinTerrain,
@@ -2381,7 +2387,7 @@ StartDateEvent, EndDateEvent, AscendingOrder, SortFilterId, IsSummaryOnly, SortP
                 <h3 class="public ">searchForSouvenirsByPublicGuid()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">searchForSouvenirsByPublicGuid(array  <span class="argument">$params</span>) : object</pre>
-                <p><em>Search For Souvenirs By Public Guid</em></p>
+                <p><em>Search For Souvenirs By Public Guid.</em></p>
                 <ul>
 <li>required param: PublicGuid</li>
 <li>optional param: ExistingSouvenirIDs</li>
@@ -2423,7 +2429,7 @@ StartDateEvent, EndDateEvent, AscendingOrder, SortFilterId, IsSummaryOnly, SortP
                 <h3 class="public ">updateCacheNote()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">updateCacheNote(array  <span class="argument">$params</span>) : object</pre>
-                <p><em>Update Cache Note</em></p>
+                <p><em>Update Cache Note.</em></p>
                 <ul>
 <li>required params: CacheCode, Note</li>
 </ul>
@@ -2464,10 +2470,10 @@ StartDateEvent, EndDateEvent, AscendingOrder, SortFilterId, IsSummaryOnly, SortP
                 <h3 class="public ">uploadImageToGeocacheLog()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">uploadImageToGeocacheLog(array  <span class="argument">$params</span>) : object</pre>
-                <p><em>Upload Image To Geocache Log</em></p>
+                <p><em>Upload Image To Geocache Log.</em></p>
                 <ul>
 <li>required params: LogGuid, base64ImageData</li>
-<li>optional params: FileCaption, FileDescription, FileName</li>
+<li>optional params: FileCaption, FileDescription, FileName, ReferenceCode</li>
 </ul>
 
                                     <h4>Parameters</h4>
@@ -2506,7 +2512,7 @@ StartDateEvent, EndDateEvent, AscendingOrder, SortFilterId, IsSummaryOnly, SortP
                 <h3 class="public ">uploadImageToTrackableLog()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">uploadImageToTrackableLog(array  <span class="argument">$params</span>) : object</pre>
-                <p><em>Upload Image To Trackable Log</em></p>
+                <p><em>Upload Image To Trackable Log.</em></p>
                 <ul>
 <li>required params: LogGuid, base64ImageData</li>
 <li>optional params: FileCaption, FileDescription, FileName</li>
@@ -2541,40 +2547,6 @@ StartDateEvent, EndDateEvent, AscendingOrder, SortFilterId, IsSummaryOnly, SortP
         </aside>
     </div>
 
-                                    <div class="row-fluid">
-        <div class="span8 content class">
-            <a id="method_setLogging" name="method_setLogging" class="anchor"></a>
-            <article class="method">
-                <h3 class="public ">setLogging()</h3>
-                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">setLogging(string  <span class="argument">$directory</span>) : void</pre>
-                <p><em>Enable or disable log messages</em></p>
-                
-
-                                    <h4>Parameters</h4>
-                    <table class="table table-condensed table-hover">
-                                                    <tr>
-                                <td>string</td>
-                                <td>$directory </td>
-                                <td></td>
-                            </tr>
-                                            </table>
-                
-                
-                				
-                            </article>
-        </div>
-        <aside class="span4 detailsbar">
-            <h1><i class="icon-arrow-down"></i></h1>
-                                                            <dl>
-                                                                            </dl>
-            <h2>Tags</h2>
-            <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
-                            </table>
-        </aside>
-    </div>
-
                                                     <div class="row-fluid">
         <div class="span8 content class">
             <a id="method_getUserProfile" name="method_getUserProfile" class="anchor"></a>
@@ -2582,7 +2554,7 @@ StartDateEvent, EndDateEvent, AscendingOrder, SortFilterId, IsSummaryOnly, SortP
                 <h3 class="protected ">getUserProfile()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getUserProfile(string  <span class="argument">$function</span>, array  <span class="argument">$params = array()</span>) : object</pre>
-                <p><em>Get User Profile</em></p>
+                <p><em>Get User Profile.</em></p>
                 <p>Internal method for getYourUserProfile or getAnotherUsersProfile</p>
 <ul>
 <li>optional params: UserID, FavoritePointsData, GeocacheData, PublicProfileData, ProfileOptions, SouvenirData, ProfileOptions</li>
@@ -2626,8 +2598,8 @@ StartDateEvent, EndDateEvent, AscendingOrder, SortFilterId, IsSummaryOnly, SortP
             <article class="method">
                 <h3 class="protected ">checkRequestStatus()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">checkRequestStatus(object  <span class="argument">$content</span>) : void</pre>
-                <p><em>Check the status of the POST or GET request in JSON</em></p>
+                <pre class="signature" style="margin-right: 54px;">checkRequestStatus(object  <span class="argument">$content</span>) </pre>
+                <p><em>Check the status of the POST or GET request in JSON.</em></p>
                 
 
                                     <h4>Parameters</h4>
@@ -2661,7 +2633,7 @@ StartDateEvent, EndDateEvent, AscendingOrder, SortFilterId, IsSummaryOnly, SortP
                 <h3 class="protected ">getRequest()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getRequest(string  <span class="argument">$request</span>, array  <span class="argument">$params = array()</span>) : object</pre>
-                <p><em>Make a GET request</em></p>
+                <p><em>Make a GET request.</em></p>
                 
 
                                     <h4>Parameters</h4>
@@ -2702,7 +2674,7 @@ StartDateEvent, EndDateEvent, AscendingOrder, SortFilterId, IsSummaryOnly, SortP
                 <h3 class="protected ">postRequest()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">postRequest(string  <span class="argument">$request</span>, array  <span class="argument">$data</span>) : object</pre>
-                <p><em>Make a POST request</em></p>
+                <p><em>Make a POST request.</em></p>
                 
 
                                     <h4>Parameters</h4>
@@ -2723,45 +2695,6 @@ StartDateEvent, EndDateEvent, AscendingOrder, SortFilterId, IsSummaryOnly, SortP
                                     <h4>Returns</h4>
                     object
                                     				
-                            </article>
-        </div>
-        <aside class="span4 detailsbar">
-            <h1><i class="icon-arrow-down"></i></h1>
-                                                            <dl>
-                                                                            </dl>
-            <h2>Tags</h2>
-            <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
-                            </table>
-        </aside>
-    </div>
-
-                                    <div class="row-fluid">
-        <div class="span8 content class">
-            <a id="method_log" name="method_log" class="anchor"></a>
-            <article class="method">
-                <h3 class="protected ">log()</h3>
-                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">log(string  <span class="argument">$infos</span>, array  <span class="argument">$obj = false</span>) : void</pre>
-                <p><em>Log informations into the log file</em></p>
-                
-
-                                    <h4>Parameters</h4>
-                    <table class="table table-condensed table-hover">
-                                                    <tr>
-                                <td>string</td>
-                                <td>$infos </td>
-                                <td></td>
-                            </tr>
-                                                    <tr>
-                                <td>array</td>
-                                <td>$obj </td>
-                                <td></td>
-                            </tr>
-                                            </table>
-                
-                
-                				
                             </article>
         </div>
         <aside class="span4 detailsbar">
@@ -2825,7 +2758,7 @@ StartDateEvent, EndDateEvent, AscendingOrder, SortFilterId, IsSummaryOnly, SortP
                 <section class="span10 offset1">
                     <hr />
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on March 20th, 2015 at 23:21.
+                    on December 12th, 2016 at 14:09.
                 </section>
             </section>
         </section>

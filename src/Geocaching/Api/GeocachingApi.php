@@ -1,17 +1,17 @@
 <?php
+
 /**
- * Geocaching API with PHP
+ * Geocaching API with PHP.
  *
  * @author  Surfoo <surfooo@gmail.com>
  * @link    https://github.com/Surfoo/geocaching-api
  * @license https://opensource.org/licenses/MIT
- * @package Geocaching_Api
  */
 
 namespace Geocaching\Api;
 
 /**
- * List of methods from Groundspeak API
+ * List of methods from Groundspeak API.
  *
  * @link    https://github.com/Surfoo/geocaching-api Geocaching API on GitHub
  * @link    https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help API Documentation by Groundspeak
@@ -19,84 +19,87 @@ namespace Geocaching\Api;
 class GeocachingApi extends AbstractGeocachingApi
 {
     /**
-     * Add Favorite Point To a Cache
+     * Add Favorite Point To a Cache.
      *
      * - required param: cacheCode
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/AddFavoritePointToCache Documentation by Groundspeak
-     * @access public
-     * @param  array  $params
+     *
+     * @param array $params
+     *
      * @return object
      */
     public function addFavoritePointToCache(array $params)
     {
         if (!array_key_exists('cacheCode', $params)) {
-            throw new \Exception('cacheCode is missing.');
+            throw new GeocachingApiException('cacheCode is missing.');
         }
 
-        $get_params = array('cacheCode' => $params['cacheCode']);
+        $get_params = ['cacheCode' => $params['cacheCode']];
 
         return $this->getRequest(__FUNCTION__, $get_params);
     }
 
     /**
-     * Add Geocaches To Bookmark List
+     * Add Geocaches To Bookmark List.
      *
      * - required params: BookmarkListGuid, CacheCodes
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/AddGeocachesToBookmarkList Documentation by Groundspeak
-     * @access public
-     * @param  array  $params
+     *
+     * @param array $params
+     *
      * @return object
      */
     public function addGeocachesToBookmarkList(array $params)
     {
         if (!array_key_exists('BookmarkListGuid', $params)) {
-            throw new \Exception('BookmarkListGuid is missing.');
+            throw new GeocachingApiException('BookmarkListGuid is missing.');
         }
         if (!array_key_exists('CacheCodes', $params)) {
-            throw new \Exception('CacheCodes is missing.');
+            throw new GeocachingApiException('CacheCodes is missing.');
         }
         if (!is_array($params['CacheCodes'])) {
-            throw new \Exception('CacheCodes must be an array.');
+            throw new GeocachingApiException('CacheCodes must be an array.');
         }
 
         $post_params['BookmarkListGuid'] = $params['BookmarkListGuid'];
-        $post_params['CacheCodes'] = $params['CacheCodes'];
+        $post_params['CacheCodes']       = $params['CacheCodes'];
 
         return $this->postRequest(__FUNCTION__, $post_params);
     }
 
     /**
-     * Create Field Note And Publish
+     * Create Field Note And Publish.
      *
      * - required params: CacheCode, WptLogTypeId, UTCDateLogged, Note
      * - optional params: PromoteToLog, FavoriteThisCache, EncryptLogText, UpdatedLatitude, UpdatedLongitude, base64ImageData, FileCaption, FileDescription, FileName, Guid
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/CreateFieldNoteAndPublish Documentation by Groundspeak
-     * @access public
-     * @param  array  $params
+     *
+     * @param array $params
+     *
      * @return object
      */
     public function createFieldNoteAndPublish(array $params)
     {
         if (!array_key_exists('CacheCode', $params)) {
-            throw new \Exception('CacheCode is missing.');
+            throw new GeocachingApiException('CacheCode is missing.');
         }
         if (!array_key_exists('WptLogTypeId', $params)) {
-            throw new \Exception('WptLogTypeId is missing.');
+            throw new GeocachingApiException('WptLogTypeId is missing.');
         }
         if (!array_key_exists('UTCDateLogged', $params)) {
-            throw new \Exception('UTCDateLogged is missing.');
+            throw new GeocachingApiException('UTCDateLogged is missing.');
         }
         if (!array_key_exists('Note', $params)) {
-            throw new \Exception('Note is missing.');
+            throw new GeocachingApiException('Note is missing.');
         }
 
-        $post_params['CacheCode'] = $params['CacheCode'];
-        $post_params['WptLogTypeId'] = $params['WptLogTypeId'];
-        $post_params['UTCDateLogged'] = '/Date('.((int) $params['UTCDateLogged'] * 1000).')/'; //UTCDateLogged is a timestamp
-        $post_params['Note'] = $params['Note'];
+        $post_params['CacheCode']     = $params['CacheCode'];
+        $post_params['WptLogTypeId']  = $params['WptLogTypeId'];
+        $post_params['UTCDateLogged'] = '/Date(' . ((int) $params['UTCDateLogged'] * 1000) . ')/'; //UTCDateLogged must be a timestamp
+        $post_params['Note']          = $params['Note'];
 
         if (array_key_exists('PromoteToLog', $params)) {
             $post_params['PromoteToLog'] = (boolean) $params['PromoteToLog'];
@@ -134,35 +137,36 @@ class GeocachingApi extends AbstractGeocachingApi
     }
 
     /**
-     * Create Trackable Log
+     * Create Trackable Log.
      *
      * - required params: TrackingNumber, UTCDateLogged, Note, LogType
      * - optional params: CacheCode, TravelBugCode, base64ImageData, FileCaption, FileDescription, FileName
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/CreateTrackableLog Documentation by Groundspeak
-     * @access public
-     * @param  array  $params
+     *
+     * @param array $params
+     *
      * @return object
      */
     public function createTrackableLog(array $params)
     {
         if (!array_key_exists('TrackingNumber', $params)) {
-            throw new \Exception('TrackingNumber is missing.');
+            throw new GeocachingApiException('TrackingNumber is missing.');
         }
         if (!array_key_exists('UTCDateLogged', $params)) {
-            throw new \Exception('UTCDateLogged is missing.');
+            throw new GeocachingApiException('UTCDateLogged is missing.');
         }
         if (!array_key_exists('Note', $params)) {
-            throw new \Exception('Note is missing.');
+            throw new GeocachingApiException('Note is missing.');
         }
         if (!array_key_exists('LogType', $params)) {
-            throw new \Exception('LogType is missing.');
+            throw new GeocachingApiException('LogType is missing.');
         }
 
         $post_params['TrackingNumber'] = $params['TrackingNumber'];
-        $post_params['UTCDateLogged'] = '/Date('.((int) $params['UTCDateLogged'] * 1000).')/'; //UTCDateLogged is a timestamp
-        $post_params['Note'] = $params['Note'];
-        $post_params['LogType'] = (int) $params['LogType'];
+        $post_params['UTCDateLogged']  = '/Date(' . ((int) $params['UTCDateLogged'] * 1000) . ')/'; //UTCDateLogged must be timestamp
+        $post_params['Note']           = $params['Note'];
+        $post_params['LogType']        = (int) $params['LogType'];
 
         if (array_key_exists('base64ImageData', $params)) {
             $post_params['ImageData']['base64ImageData'] = base64_encode($params['base64ImageData']);
@@ -181,61 +185,64 @@ class GeocachingApi extends AbstractGeocachingApi
     }
 
     /**
-     * Delete Cache Note
+     * Delete Cache Note.
      *
      * - required param: cacheCode
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/DeleteCacheNote Documentation by Groundspeak
-     * @access public
-     * @param  array  $params
+     *
+     * @param array $params
+     *
      * @return object
      */
     public function deleteCacheNote(array $params)
     {
         if (!array_key_exists('cacheCode', $params)) {
-            throw new \Exception('cacheCode is missing.');
+            throw new GeocachingApiException('cacheCode is missing.');
         }
 
-        $get_params = array('cacheCode' => $params['cacheCode']);
+        $get_params = ['cacheCode' => $params['cacheCode']];
 
         return $this->getRequest(__FUNCTION__, $get_params);
     }
 
     /**
-     * Delete User Waypoint
+     * Delete User Waypoint.
      *
      * - required param: waypointID
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/DeleteUserWaypoint Documentation by Groundspeak
-     * @access public
-     * @param  array  $params
+     *
+     * @param array $params
+     *
      * @return object
      */
     public function deleteUserWaypoint(array $params)
     {
         if (!array_key_exists('waypointID', $params)) {
-            throw new \Exception('waypointID is missing.');
+            throw new GeocachingApiException('waypointID is missing.');
         }
 
-        $get_params = array('waypointID' => (int) $params['waypointID']);
+        $get_params = ['waypointID' => (int) $params['waypointID']];
 
         return $this->getRequest(__FUNCTION__, $get_params);
     }
 
     /**
-     * Geocode String
+     * Geocode String.
      *
      * - required param: GeocodeString
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GeocodeString Documentation by Groundspeak
-     * @access public
-     * @param  array  $params
+     *
+     * @param array $params
+     *
      * @return object
      */
     public function geocodeString(array $params)
     {
         if (!array_key_exists('GeocodeString', $params)) {
-            throw new \Exception('GeocodeString is missing.');
+            throw new GeocachingApiException('GeocodeString is missing.');
         }
 
         $post_params['GeocodeString'] = $params['GeocodeString'];
@@ -244,14 +251,15 @@ class GeocachingApi extends AbstractGeocachingApi
     }
 
     /**
-     * Get Another Users Profile
+     * Get Another Users Profile.
      *
      * - required param: UserID
      * - optional params: ChallengesData, FavoritePointsData, GeocacheData, PublicProfileData, SouvenirData, TrackableData
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetAnotherUsersProfile Documentation by Groundspeak
-     * @access public
-     * @param  array  $params
+     *
+     * @param array $params
+     *
      * @return object
      */
     public function getAnotherUsersProfile(array $params)
@@ -260,10 +268,10 @@ class GeocachingApi extends AbstractGeocachingApi
     }
 
     /**
-     * Get API Limits
+     * Get API Limits.
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetAPILimits Documentation by Groundspeak
-     * @access public
+     *
      * @return object
      */
     public function getAPILimits()
@@ -272,10 +280,10 @@ class GeocachingApi extends AbstractGeocachingApi
     }
 
     /**
-     * Get Attribute Types Data
+     * Get Attribute Types Data.
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetAttributeTypesData Documentation by Groundspeak
-     * @access public
+     *
      * @return object
      */
     public function getAttributeTypesData()
@@ -284,19 +292,20 @@ class GeocachingApi extends AbstractGeocachingApi
     }
 
     /**
-     * Get Bookmark List By Guid
+     * Get Bookmark List By Guid.
      *
      * - required param: BookmarkListGuid
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetBookmarkListByGuid Documentation by Groundspeak
-     * @access public
-     * @param  array  $params
+     *
+     * @param array $params
+     *
      * @return object
      */
     public function getBookmarkListByGuid(array $params)
     {
         if (!array_key_exists('BookmarkListGuid', $params)) {
-            throw new \Exception('BookmarkListGuid is missing.');
+            throw new GeocachingApiException('BookmarkListGuid is missing.');
         }
 
         $post_params['BookmarkListGuid'] = $params['BookmarkListGuid'];
@@ -305,31 +314,32 @@ class GeocachingApi extends AbstractGeocachingApi
     }
 
     /**
-     * Get Bookmark Lists By User ID
+     * Get Bookmark Lists By User ID.
      *
      * - required param: userID
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetBookmarkListsByUserID Documentation by Groundspeak
-     * @access public
-     * @param  array  $params
+     *
+     * @param array $params
+     *
      * @return object
      */
     public function getBookmarkListsByUserID(array $params)
     {
         if (!array_key_exists('userID', $params)) {
-            throw new \Exception('userID is missing.');
+            throw new GeocachingApiException('userID is missing.');
         }
 
-        $get_params = array('userID' => (int) $params['userID']);
+        $get_params = ['userID' => (int) $params['userID']];
 
         return $this->getRequest(__FUNCTION__, $get_params);
     }
 
     /**
-     * Get Bookmark Lists For User
+     * Get Bookmark Lists For User.
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetBookmarkListsForUser Documentation by Groundspeak
-     * @access public
+     *
      * @return object
      */
     public function getBookmarkListsForUser()
@@ -338,10 +348,10 @@ class GeocachingApi extends AbstractGeocachingApi
     }
 
     /**
-     * Get Cache Ids Favorited By User
+     * Get Cache Ids Favorited By User.
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetCacheIdsFavoritedByUser Documentation by Groundspeak
-     * @access public
+     *
      * @return object
      */
     public function getCacheIdsFavoritedByUser()
@@ -350,10 +360,10 @@ class GeocachingApi extends AbstractGeocachingApi
     }
 
     /**
-     * Get Caches Favorited By User
+     * Get Caches Favorited By User.
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetCachesFavoritedByUser Documentation by Groundspeak
-     * @access public
+     *
      * @return object
      */
     public function getCachesFavoritedByUser()
@@ -362,7 +372,7 @@ class GeocachingApi extends AbstractGeocachingApi
     }
 
     /**
-     * Get Full Pocket Query Data
+     * Get Full Pocket Query Data.
      *
      * Returns a complete Geocache object without those full caches counting against user's cache limit.
      *
@@ -370,21 +380,22 @@ class GeocachingApi extends AbstractGeocachingApi
      * - optional param: startItem
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetFullPocketQueryData Documentation by Groundspeak
-     * @access public
-     * @param  array  $params
+     *
+     * @param array $params
+     *
      * @return object
      */
     public function getFullPocketQueryData(array $params)
     {
         if (!array_key_exists('pocketQueryGuid', $params)) {
-            throw new \Exception('pocketQueryGuid is missing.');
+            throw new GeocachingApiException('pocketQueryGuid is missing.');
         }
         if (!array_key_exists('maxItems', $params)) {
-            throw new \Exception('maxItems is missing.');
+            throw new GeocachingApiException('maxItems is missing.');
         }
 
         $get_params['pocketQueryGuid'] = $params['pocketQueryGuid'];
-        $get_params['maxItems'] = (int) $params['maxItems'];
+        $get_params['maxItems']        = (int) $params['maxItems'];
         if (array_key_exists('startItem', $params)) {
             $get_params['startItem'] = (int) $params['startItem'];
         }
@@ -392,18 +403,19 @@ class GeocachingApi extends AbstractGeocachingApi
         return $this->getRequest(__FUNCTION__, $get_params);
     }
     /**
-     * Get Geocache Data Types
+     * Get Geocache Data Types.
      *
      * - optional params: geocacheTypes, logTypes, attributeTypes
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetGeocacheDataTypes Documentation by Groundspeak
-     * @access public
-     * @param  array  $params
+     *
+     * @param array $params
+     *
      * @return object
      */
     public function getGeocacheDataTypes(array $params)
     {
-        $get_params = array();
+        $get_params = [];
         if (array_key_exists('geocacheTypes', $params)) {
             $get_params['geocacheTypes'] = (boolean) $params['geocacheTypes'] ? 'true' : 'false';
         }
@@ -418,26 +430,27 @@ class GeocachingApi extends AbstractGeocachingApi
     }
 
     /**
-     * Get Geocache Logs By Cache Code
+     * Get Geocache Logs By Cache Code.
      *
      * - required params: cacheCode, maxPerPage
      * - optional param: startIndex
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetGeocacheLogsByCacheCode Documentation by Groundspeak
-     * @access public
-     * @param  array  $params
+     *
+     * @param array $params
+     *
      * @return object
      */
     public function getGeocacheLogsByCacheCode(array $params)
     {
         if (!array_key_exists('cacheCode', $params)) {
-            throw new \Exception('cacheCode is missing.');
+            throw new GeocachingApiException('cacheCode is missing.');
         }
         if (!array_key_exists('maxPerPage', $params)) {
-            throw new \Exception('maxPerPage is missing.');
+            throw new GeocachingApiException('maxPerPage is missing.');
         }
 
-        $get_params['cacheCode'] = $params['cacheCode'];
+        $get_params['cacheCode']  = $params['cacheCode'];
         $get_params['maxPerPage'] = (int) $params['maxPerPage'];
         if (array_key_exists('startIndex', $params)) {
             $get_params['startIndex'] = (int) $params['startIndex'];
@@ -447,19 +460,20 @@ class GeocachingApi extends AbstractGeocachingApi
     }
 
     /**
-     * Get Geocache Status
+     * Get Geocache Status.
      *
      * - required param: CacheCodes
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetGeocacheStatus Documentation by Groundspeak
-     * @access public
-     * @param  array  $params
+     *
+     * @param array $params
+     *
      * @return object
      */
     public function getGeocacheStatus(array $params)
     {
         if (!array_key_exists('CacheCodes', $params)) {
-            throw new \Exception('CacheCodes is missing.');
+            throw new GeocachingApiException('CacheCodes is missing.');
         }
 
         $post_params['CacheCodes'] = $params['CacheCodes'];
@@ -468,10 +482,10 @@ class GeocachingApi extends AbstractGeocachingApi
     }
 
     /**
-     * Get Geocache Types
+     * Get Geocache Types.
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetGeocacheTypes Documentation by Groundspeak
-     * @access public
+     *
      * @return object
      */
     public function getGeocacheTypes()
@@ -480,19 +494,20 @@ class GeocachingApi extends AbstractGeocachingApi
     }
 
     /**
-     * Get Images For Geocache
+     * Get Images For Geocache.
      *
      * - required param: cacheCode
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetImagesForGeocache Documentation by Groundspeak
-     * @access public
-     * @param  array  $params
+     *
+     * @param array $params
+     *
      * @return object
      */
     public function getImagesForGeocache(array $params)
     {
         if (!array_key_exists('cacheCode', $params)) {
-            throw new \Exception('cacheCode is missing.');
+            throw new GeocachingApiException('cacheCode is missing.');
         }
 
         $get_params['cacheCode'] = $params['cacheCode'];
@@ -501,10 +516,10 @@ class GeocachingApi extends AbstractGeocachingApi
     }
 
     /**
-     * Get Membership Types
+     * Get Membership Types.
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetMembershipTypes Documentation by Groundspeak
-     * @access public
+     *
      * @return object
      */
     public function getMembershipTypes()
@@ -513,62 +528,64 @@ class GeocachingApi extends AbstractGeocachingApi
     }
 
     /**
-     * Get More Geocaches
+     * Get More Geocaches.
      *
      * - required params: IsLite, StartIndex, MaxPerPage, GeocacheLogCount, TrackableLogCount
      * - optional param: IsSummaryOnly
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetMoreGeocaches Documentation by Groundspeak
-     * @access public
-     * @param  array  $params
+     *
+     * @param array $params
+     *
      * @return object
      */
     public function getMoreGeocaches(array $params)
     {
         if (!array_key_exists('IsLite', $params)) {
-            throw new \Exception('IsLite is missing.');
+            throw new GeocachingApiException('IsLite is missing.');
         }
         if (!array_key_exists('StartIndex', $params)) {
-            throw new \Exception('StartIndex is missing.');
+            throw new GeocachingApiException('StartIndex is missing.');
         }
         if (!array_key_exists('MaxPerPage', $params)) {
-            throw new \Exception('MaxPerPage is missing.');
+            throw new GeocachingApiException('MaxPerPage is missing.');
         }
         if (!array_key_exists('GeocacheLogCount', $params)) {
-            throw new \Exception('GeocacheLogCount is missing.');
+            throw new GeocachingApiException('GeocacheLogCount is missing.');
         }
         if (!array_key_exists('TrackableLogCount', $params)) {
-            throw new \Exception('TrackableLogCount is missing.');
+            throw new GeocachingApiException('TrackableLogCount is missing.');
         }
 
-        $post_params['IsLite'] = (boolean) $params['IsLite'];
-        $post_params['StartIndex'] = (int) $params['StartIndex'];
-        $post_params['MaxPerPage'] = (int) $params['MaxPerPage'];
-        $post_params['GeocacheLogCount'] = (int) $params['GeocacheLogCount'];
+        $post_params['IsLite']            = (boolean) $params['IsLite'];
+        $post_params['StartIndex']        = (int) $params['StartIndex'];
+        $post_params['MaxPerPage']        = (int) $params['MaxPerPage'];
+        $post_params['GeocacheLogCount']  = (int) $params['GeocacheLogCount'];
         $post_params['TrackableLogCount'] = (int) $params['TrackableLogCount'];
-        $post_params['IsSummaryOnly'] = (boolean) $params['IsSummaryOnly'];
+        $post_params['IsSummaryOnly']     = (boolean) $params['IsSummaryOnly'];
 
         return $this->postRequest(__FUNCTION__, $post_params);
     }
 
     /**
-     * Get Owned Trackables
+     * Get Owned Trackables.
      *
      * - required params: StartIndex, MaxPerPage
      * - optional params: TrackableLogsCount, CollectionOnly
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetOwnedTrackables Documentation by Groundspeak
-     * @access public
-     * @param  array  $params
+     *
+     * @param array $params
+     *
      * @return object
      */
     public function getOwnedTrackables(array $params)
     {
         if (!array_key_exists('StartIndex', $params)) {
-            throw new \Exception('StartIndex is missing.');
+            throw new GeocachingApiException('StartIndex is missing.');
         }
         if (!array_key_exists('MaxPerPage', $params)) {
-            throw new \Exception('MaxPerPage is missing.');
+            throw new GeocachingApiException('MaxPerPage is missing.');
         }
 
         $post_params['StartIndex'] = (int) $params['StartIndex'];
@@ -584,27 +601,28 @@ class GeocachingApi extends AbstractGeocachingApi
     }
 
     /**
-     * Get Pocket Query Data
+     * Get Pocket Query Data.
      *
      * - required params: pocketQueryGuid, maxItems
      * - optional params: startItem, gcListOnly
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetPocketQueryData Documentation by Groundspeak
-     * @access public
-     * @param  array  $params
+     *
+     * @param array $params
+     *
      * @return object
      */
     public function getPocketQueryData(array $params)
     {
         if (!array_key_exists('pocketQueryGuid', $params)) {
-            throw new \Exception('pocketQueryGuid is missing.');
+            throw new GeocachingApiException('pocketQueryGuid is missing.');
         }
         if (!array_key_exists('maxItems', $params)) {
-            throw new \Exception('maxItems is missing.');
+            throw new GeocachingApiException('maxItems is missing.');
         }
 
         $get_params['pocketQueryGuid'] = $params['pocketQueryGuid'];
-        $get_params['maxItems'] = (int) $params['maxItems'];
+        $get_params['maxItems']        = (int) $params['maxItems'];
         if (array_key_exists('startItem', $params)) {
             $get_params['startItem'] = (int) $params['startItem'];
         }
@@ -616,10 +634,10 @@ class GeocachingApi extends AbstractGeocachingApi
     }
 
     /**
-     * Get Pocket Query List
+     * Get Pocket Query List.
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetPocketQueryList Documentation by Groundspeak
-     * @access public
+     *
      * @return object
      */
     public function getPocketQueryList()
@@ -628,19 +646,20 @@ class GeocachingApi extends AbstractGeocachingApi
     }
 
     /**
-     * Get Pocket Query Zipped File
+     * Get Pocket Query Zipped File.
      *
      * - required param: pocketQueryGuid
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetPocketQueryZippedFile Documentation by Groundspeak
-     * @access public
-     * @param  array  $params
+     *
+     * @param array $params
+     *
      * @return object
      */
     public function getPocketQueryZippedFile(array $params)
     {
         if (!array_key_exists('pocketQueryGuid', $params)) {
-            throw new \Exception('pocketQueryGuid is missing.');
+            throw new GeocachingApiException('pocketQueryGuid is missing.');
         }
 
         $get_params['pocketQueryGuid'] = $params['pocketQueryGuid'];
@@ -649,10 +668,10 @@ class GeocachingApi extends AbstractGeocachingApi
     }
 
     /**
-     * Get Site Stats
+     * Get Site Stats.
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetSiteStats Documentation by Groundspeak
-     * @access public
+     *
      * @return object
      */
     public function getSiteStats()
@@ -661,10 +680,10 @@ class GeocachingApi extends AbstractGeocachingApi
     }
 
     /**
-     * Get Status Messages
+     * Get Status Messages.
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetStatusMessages Documentation by Groundspeak
-     * @access public
+     *
      * @return object
      */
     public function getStatusMessages()
@@ -673,26 +692,27 @@ class GeocachingApi extends AbstractGeocachingApi
     }
 
     /**
-     * Get Trackable Logs By TB Code
+     * Get Trackable Logs By TB Code.
      *
      * - required params: tbCode, maxPerPage
      * - optional param: startIndex
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetTrackableLogsByTBCode Documentation by Groundspeak
-     * @access public
-     * @param  array  $params
+     *
+     * @param array $params
+     *
      * @return object
      */
     public function getTrackableLogsByTBCode(array $params)
     {
         if (!array_key_exists('tbCode', $params)) {
-            throw new \Exception('tbCode is missing.');
+            throw new GeocachingApiException('tbCode is missing.');
         }
         if (!array_key_exists('maxPerPage', $params)) {
-            throw new \Exception('maxPerPage is missing.');
+            throw new GeocachingApiException('maxPerPage is missing.');
         }
 
-        $get_params['tbCode'] = $params['tbCode'];
+        $get_params['tbCode']     = $params['tbCode'];
         $get_params['maxPerPage'] = (int) $params['maxPerPage'];
         if (array_key_exists('startIndex', $params)) {
             $get_params['startIndex'] = (int) $params['startIndex'];
@@ -702,20 +722,21 @@ class GeocachingApi extends AbstractGeocachingApi
     }
 
     /**
-     * Get Trackables By TB Code
+     * Get Trackables By TB Code.
      *
      * - required param: tbCode
      * - optional param: trackableLogCount
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetTrackablesByTBCode Documentation by Groundspeak
-     * @access public
-     * @param  array  $params
+     *
+     * @param array $params
+     *
      * @return object
      */
     public function getTrackablesByTBCode(array $params)
     {
         if (!array_key_exists('tbCode', $params)) {
-            throw new \Exception('tbCode is missing.');
+            throw new GeocachingApiException('tbCode is missing.');
         }
 
         $get_params['tbCode'] = $params['tbCode'];
@@ -727,20 +748,21 @@ class GeocachingApi extends AbstractGeocachingApi
     }
 
     /**
-     * Get Trackables By Tracking Number
+     * Get Trackables By Tracking Number.
      *
      * - required param: trackingNumber
      * - optional param: trackableLogCount
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetTrackablesByTrackingNumber Documentation by Groundspeak
-     * @access public
-     * @param  array  $params
+     *
+     * @param array $params
+     *
      * @return object
      */
     public function getTrackablesByTrackingNumber(array $params)
     {
         if (!array_key_exists('trackingNumber', $params)) {
-            throw new \Exception('trackingNumber is missing.');
+            throw new GeocachingApiException('trackingNumber is missing.');
         }
 
         $get_params['trackingNumber'] = $params['trackingNumber'];
@@ -752,26 +774,27 @@ class GeocachingApi extends AbstractGeocachingApi
     }
 
     /**
-     * Get Trackables In Cache
+     * Get Trackables In Cache.
      *
      * - required params: cacheCode, maxPerPage
      * - optional params: startIndex, trackableLogCount
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetTrackablesInCache Documentation by Groundspeak
-     * @access public
-     * @param  array  $params
+     *
+     * @param array $params
+     *
      * @return object
      */
     public function getTrackablesInCache(array $params)
     {
         if (!array_key_exists('cacheCode', $params)) {
-            throw new \Exception('cacheCode is missing.');
+            throw new GeocachingApiException('cacheCode is missing.');
         }
         if (!array_key_exists('maxPerPage', $params)) {
-            throw new \Exception('maxPerPage is missing.');
+            throw new GeocachingApiException('maxPerPage is missing.');
         }
 
-        $get_params['cacheCode'] = $params['cacheCode'];
+        $get_params['cacheCode']  = $params['cacheCode'];
         $get_params['maxPerPage'] = (int) $params['maxPerPage'];
         if (array_key_exists('startIndex', $params)) {
             $get_params['startIndex'] = (int) $params['startIndex'];
@@ -784,19 +807,20 @@ class GeocachingApi extends AbstractGeocachingApi
     }
 
     /**
-     * Get Trackable Travel List
+     * Get Trackable Travel List.
      *
      * - required param: tbCode
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetTrackableTravelList Documentation by Groundspeak
-     * @access public
-     * @param  array  $params
+     *
+     * @param array $params
+     *
      * @return object
      */
     public function getTrackableTravelList(array $params)
     {
         if (!array_key_exists('tbCode', $params)) {
-            throw new \Exception('tbCode is missing.');
+            throw new GeocachingApiException('tbCode is missing.');
         }
 
         $get_params['tbCode'] = $params['tbCode'];
@@ -805,28 +829,29 @@ class GeocachingApi extends AbstractGeocachingApi
     }
 
     /**
-     * Get User Gallery
+     * Get User Gallery.
      *
      * - required params: Username, StartIndex, MaxPerPage
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetUserGallery Documentation by Groundspeak
-     * @access public
-     * @param  array  $params
+     *
+     * @param array $params
+     *
      * @return object
      */
     public function getUserGallery(array $params)
     {
         if (!array_key_exists('Username', $params)) {
-            throw new \Exception('Username is missing.');
+            throw new GeocachingApiException('Username is missing.');
         }
         if (!array_key_exists('StartIndex', $params)) {
-            throw new \Exception('StartIndex is missing.');
+            throw new GeocachingApiException('StartIndex is missing.');
         }
         if (!array_key_exists('MaxPerPage', $params)) {
-            throw new \Exception('MaxPerPage is missing.');
+            throw new GeocachingApiException('MaxPerPage is missing.');
         }
 
-        $post_params['Username'] = $params['Username'];
+        $post_params['Username']   = $params['Username'];
         $post_params['StartIndex'] = (int) $params['StartIndex'];
         $post_params['MaxPerPage'] = (int) $params['MaxPerPage'];
 
@@ -834,22 +859,23 @@ class GeocachingApi extends AbstractGeocachingApi
     }
 
     /**
-     * Get Users Cache Counts
+     * Get Users Cache Counts.
      *
      * - required param: Usernames
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetUsersCacheCounts Documentation by Groundspeak
-     * @access public
-     * @param  array  $params
+     *
+     * @param array $params
+     *
      * @return object
      */
     public function getUsersCacheCounts(array $params)
     {
         if (!array_key_exists('Usernames', $params)) {
-            throw new \Exception('Usernames is missing.');
+            throw new GeocachingApiException('Usernames is missing.');
         }
         if (!is_array($params['Usernames'])) {
-            throw new \Exception('Usernames must be an array.');
+            throw new GeocachingApiException('Usernames must be an array.');
         }
 
         $post_params['Usernames'] = $params['Usernames'];
@@ -858,20 +884,21 @@ class GeocachingApi extends AbstractGeocachingApi
     }
 
     /**
-     * Get Users Cache Notes
+     * Get Users Cache Notes.
      *
      * - required param: maxPerPage
      * - optional param: startIndex
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetUsersCacheNotes Documentation by Groundspeak
-     * @access public
-     * @param  array  $params
+     *
+     * @param array $params
+     *
      * @return object
      */
     public function getUsersCacheNotes(array $params)
     {
         if (!array_key_exists('maxPerPage', $params)) {
-            throw new \Exception('maxPerPage is missing.');
+            throw new GeocachingApiException('maxPerPage is missing.');
         }
 
         $get_params['maxPerPage'] = (int) $params['maxPerPage'];
@@ -883,10 +910,10 @@ class GeocachingApi extends AbstractGeocachingApi
     }
 
     /**
-     * Get Users Favorite Points
+     * Get Users Favorite Points.
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetUsersFavoritePoints Documentation by Groundspeak
-     * @access public
+     *
      * @return object
      */
     public function getUsersFavoritePoints()
@@ -895,29 +922,30 @@ class GeocachingApi extends AbstractGeocachingApi
     }
 
     /**
-     * Get Users Geocache Logs
+     * Get Users Geocache Logs.
      *
      * - required params: Username, LogTypes, MaxPerPage
      * - optional params: StartIndex, EndDate, StartDate, ExcludeArchived
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetUsersGeocacheLogs Documentation by Groundspeak
-     * @access public
-     * @param  array  $params
+     *
+     * @param array $params
+     *
      * @return object
      */
     public function getUsersGeocacheLogs(array $params)
     {
         if (!array_key_exists('Username', $params)) {
-            throw new \Exception('Username is missing.');
+            throw new GeocachingApiException('Username is missing.');
         }
         if (!array_key_exists('LogTypes', $params)) {
-            throw new \Exception('LogTypes is missing.');
+            throw new GeocachingApiException('LogTypes is missing.');
         }
         if (!is_array($params['LogTypes'])) {
-            throw new \Exception('LogTypes must be an array.');
+            throw new GeocachingApiException('LogTypes must be an array.');
         }
         if (!array_key_exists('MaxPerPage', $params)) {
-            throw new \Exception('MaxPerPage is missing.');
+            throw new GeocachingApiException('MaxPerPage is missing.');
         }
 
         $post_params['MaxPerPage'] = (int) $params['MaxPerPage'];
@@ -928,10 +956,10 @@ class GeocachingApi extends AbstractGeocachingApi
         $post_params['LogTypes'] = $params['LogTypes'];
 
         if (array_key_exists('EndDate', $params)) {
-            $post_params['Range']['EndDate'] = '/Date('.((int) $params['EndDate'] * 1000).')/';
+            $post_params['Range']['EndDate'] = '/Date(' . ((int) $params['EndDate'] * 1000) . ')/';
         } //EndDate is a timestamp
         if (array_key_exists('StartDate', $params)) {
-            $post_params['Range']['StartDate'] = '/Date('.((int) $params['StartDate'] * 1000).')/';
+            $post_params['Range']['StartDate'] = '/Date(' . ((int) $params['StartDate'] * 1000) . ')/';
         } //StartDate is a timestamp
         if (array_key_exists('ExcludeArchived', $params)) {
             $post_params['ExcludeArchived'] = (boolean) $params['ExcludeArchived'];
@@ -941,20 +969,21 @@ class GeocachingApi extends AbstractGeocachingApi
     }
 
     /**
-     * Get Users Trackables
+     * Get Users Trackables.
      *
      * - required param: MaxPerPage
      * - optional params: StartIndex, TrackableLogsCount, CollectionOnly
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetUsersTrackables Documentation by Groundspeak
-     * @access public
-     * @param  array  $params
+     *
+     * @param array $params
+     *
      * @return object
      */
     public function getUsersTrackables(array $params)
     {
         if (!array_key_exists('MaxPerPage', $params)) {
-            throw new \Exception('MaxPerPage is missing.');
+            throw new GeocachingApiException('MaxPerPage is missing.');
         }
 
         $post_params['MaxPerPage'] = (int) $params['MaxPerPage'];
@@ -972,19 +1001,20 @@ class GeocachingApi extends AbstractGeocachingApi
     }
 
     /**
-     * Get Users Who Favorited Cache
+     * Get Users Who Favorited Cache.
      *
      * - required param: cacheCode
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetUsersWhoFavoritedCache Documentation by Groundspeak
-     * @access public
-     * @param  array  $params
+     *
+     * @param array $params
+     *
      * @return object
      */
     public function getUsersWhoFavoritedCache(array $params)
     {
         if (!array_key_exists('cacheCode', $params)) {
-            throw new \Exception('cacheCode is missing.');
+            throw new GeocachingApiException('cacheCode is missing.');
         }
 
         $get_params['cacheCode'] = $params['cacheCode'];
@@ -993,19 +1023,20 @@ class GeocachingApi extends AbstractGeocachingApi
     }
 
     /**
-     * Get User Waypoints
+     * Get User Waypoints.
      *
      * - required param: cacheCode
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetUserWaypoints Documentation by Groundspeak
-     * @access public
-     * @param  array  $params
+     *
+     * @param array $params
+     *
      * @return object
      */
     public function getUserWaypoints(array $params)
     {
         if (!array_key_exists('cacheCode', $params)) {
-            throw new \Exception('cacheCode is missing.');
+            throw new GeocachingApiException('cacheCode is missing.');
         }
 
         $get_params['cacheCode'] = $params['cacheCode'];
@@ -1014,10 +1045,10 @@ class GeocachingApi extends AbstractGeocachingApi
     }
 
     /**
-     * Get Wpt Log Types
+     * Get Wpt Log Types.
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetWptLogTypes Documentation by Groundspeak
-     * @access public
+     *
      * @return object
      */
     public function getWptLogTypes()
@@ -1026,36 +1057,38 @@ class GeocachingApi extends AbstractGeocachingApi
     }
 
     /**
-     * Get Your User Profile
+     * Get Your User Profile.
      *
      * - optional params: ChallengesData, FavoritePointsData, GeocacheData, PublicProfileData, SouvenirData, TrackableData, EmailData,
      * ApplicationCurrentMemoryUsage, ApplicationPeakMemoryUsage, ApplicationSoftwareVersion DeviceManufacturer, DeviceName, DeviceOperatingSystem,
      * DeviceTotalMemoryInMB, DeviceUniqueId, MobileHardwareVersion, WebBrowserVersion
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/GetYourUserProfile Documentation by Groundspeak
-     * @access public
-     * @param  array  $params
+     *
+     * @param array $params
+     *
      * @return object
      */
-    public function getYourUserProfile($params = array())
+    public function getYourUserProfile($params = [])
     {
         return $this->getUserProfile(__FUNCTION__, $params);
     }
 
     /**
-     * Remove Favorite Point From Cache
+     * Remove Favorite Point From Cache.
      *
      * - required param: cacheCode
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/RemoveFavoritePointFromCache Documentation by Groundspeak
-     * @access public
-     * @param  array  $params
+     *
+     * @param array $params
+     *
      * @return object
      */
     public function removeFavoritePointFromCache(array $params)
     {
         if (!array_key_exists('cacheCode', $params)) {
-            throw new \Exception('cacheCode is missing.');
+            throw new GeocachingApiException('cacheCode is missing.');
         }
 
         $get_params['cacheCode'] = $params['cacheCode'];
@@ -1064,7 +1097,7 @@ class GeocachingApi extends AbstractGeocachingApi
     }
 
     /**
-     * Save User Waypoint
+     * Save User Waypoint.
      *
      * - required params: CacheCode, Latitude, Longitude
      * - optional param: Description, ID, IsCorrectedCoordinate, AssociatedAdditionalWaypoint, IsUserCompleted
@@ -1080,20 +1113,21 @@ class GeocachingApi extends AbstractGeocachingApi
      *     GetCannotSupportMoreThanOneCorrectedCoordinatesPerGeocache - 155
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/SaveUserWaypoint Documentation by Groundspeak
-     * @access public
-     * @param  array  $params
+     *
+     * @param array $params
+     *
      * @return object
      */
     public function saveUserWaypoint(array $params)
     {
         if (!array_key_exists('CacheCode', $params)) {
-            throw new \Exception('CacheCode is missing.');
+            throw new GeocachingApiException('CacheCode is missing.');
         }
         if (!array_key_exists('Latitude', $params)) {
-            throw new \Exception('Latitude is missing.');
+            throw new GeocachingApiException('Latitude is missing.');
         }
         if (!array_key_exists('Longitude', $params)) {
-            throw new \Exception('Longitude is missing.');
+            throw new GeocachingApiException('Longitude is missing.');
         }
 
         $post_params['CacheCode'] = $params['CacheCode'];
@@ -1123,7 +1157,7 @@ class GeocachingApi extends AbstractGeocachingApi
     }
 
     /**
-     * Search For Geocaches
+     * Search For Geocaches.
      *
      * - required params: DistanceInMeters && PointRadiusLatitude && PointRadiusLongitude OR CacheCode, MaxPerPage
      * - optional params: IsLite, StartIndex, MaxPerPage, GeocacheLogCount, TrackableLogCount, NotFoundByUsers, MinTerrain,
@@ -1134,8 +1168,9 @@ class GeocachingApi extends AbstractGeocachingApi
      * StartDateEvent, EndDateEvent, AscendingOrder, SortFilterId, IsSummaryOnly, SortPointLatitude, SortPointLongitude
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/SearchForGeocaches Documentation by Groundspeak
-     * @access public
-     * @param  array  $params
+     *
+     * @param array $params
+     *
      * @return object
      */
     public function searchForGeocaches(array $params)
@@ -1266,10 +1301,10 @@ class GeocachingApi extends AbstractGeocachingApi
         }
 
         if (array_key_exists('StartDatePublished', $params)) {
-            $post_params['CachePublishedDate']['Range']['StartDate'] = '/Date('.((int) $params['StartDatePublished'] * 1000).')/';
+            $post_params['CachePublishedDate']['Range']['StartDate'] = '/Date(' . ((int) $params['StartDatePublished'] * 1000) . ')/';
         } // StartDatePublished is a timestamp
         if (array_key_exists('EndDatePublished', $params)) {
-            $post_params['CachePublishedDate']['Range']['EndDate'] = '/Date('.((int) $params['EndDatePublished'] * 1000).')/';
+            $post_params['CachePublishedDate']['Range']['EndDate'] = '/Date(' . ((int) $params['EndDatePublished'] * 1000) . ')/';
         } // EndDatePublished is a timestamp
 
         if (array_key_exists('StateIds', $params) && is_array($params['StateIds'])) {
@@ -1285,15 +1320,15 @@ class GeocachingApi extends AbstractGeocachingApi
         }
 
         if (array_key_exists('RecommendedOriginLatitude', $params) && array_key_exists('RecommendedOriginLongitude', $params)) {
-            $post_params['Recommended']['Origin']['Latitude'] = (float) $params['RecommendedOriginLatitude'];
+            $post_params['Recommended']['Origin']['Latitude']  = (float) $params['RecommendedOriginLatitude'];
             $post_params['Recommended']['Origin']['Longitude'] = (float) $params['RecommendedOriginLongitude'];
         }
 
         if (array_key_exists('StartDateEvent', $params)) {
-            $post_params['EventsDateRangeUtc']['Range']['StartDate'] = '/Date('.((int) $params['StartDateEvent'] * 1000).')/';
+            $post_params['EventsDateRangeUtc']['Range']['StartDate'] = '/Date(' . ((int) $params['StartDateEvent'] * 1000) . ')/';
         } // StartDateEvent is a timestamp
         if (array_key_exists('EndDateEvent', $params)) {
-            $post_params['EventsDateRangeUtc']['Range']['EndDate'] = '/Date('.((int) $params['EndDateEvent'] * 1000).')/';
+            $post_params['EventsDateRangeUtc']['Range']['EndDate'] = '/Date(' . ((int) $params['EndDateEvent'] * 1000) . ')/';
         } // EndDateEvent is a timestamp
 
         if (array_key_exists('AscendingOrder', $params)) {
@@ -1309,35 +1344,36 @@ class GeocachingApi extends AbstractGeocachingApi
         }
 
         if (array_key_exists('SortPointLatitude', $params) && array_key_exists('SortPointLongitude', $params)) {
-            $post_params['SortPoint']['Latitude'] = (float) $params['SortPointLatitude'];
+            $post_params['SortPoint']['Latitude']  = (float) $params['SortPointLatitude'];
             $post_params['SortPoint']['Longitude'] = (float) $params['SortPointLongitude'];
         }
 
         if (!array_key_exists('PointRadius', $post_params) && !array_key_exists('CacheCode', $post_params)) {
-            throw new \Exception('PointRadius or CacheCode is missing.');
+            throw new GeocachingApiException('PointRadius or CacheCode is missing.');
         }
         if (!array_key_exists('MaxPerPage', $post_params)) {
-            throw new \Exception('MaxPerPage is missing.');
+            throw new GeocachingApiException('MaxPerPage is missing.');
         }
 
         return $this->postRequest(__FUNCTION__, $post_params);
     }
 
     /**
-     * Search For Souvenirs By Public Guid
+     * Search For Souvenirs By Public Guid.
      *
      * - required param: PublicGuid
      * - optional param: ExistingSouvenirIDs
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/SearchForSouvenirsByPublicGuid Documentation by Groundspeak
-     * @access public
-     * @param  array  $params
+     *
+     * @param array $params
+     *
      * @return object
      */
     public function searchForSouvenirsByPublicGuid(array $params)
     {
         if (!array_key_exists('PublicGuid', $params)) {
-            throw new \Exception('PublicGuid is missing.');
+            throw new GeocachingApiException('PublicGuid is missing.');
         }
 
         $post_params['PublicGuid'] = $params['PublicGuid'];
@@ -1349,22 +1385,23 @@ class GeocachingApi extends AbstractGeocachingApi
     }
 
     /**
-     * Update Cache Note
+     * Update Cache Note.
      *
      * - required params: CacheCode, Note
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/UpdateCacheNote Documentation by Groundspeak
-     * @access public
-     * @param  array  $params
+     *
+     * @param array $params
+     *
      * @return object
      */
     public function updateCacheNote(array $params)
     {
         if (!array_key_exists('CacheCode', $params)) {
-            throw new \Exception('CacheCode is missing.');
+            throw new GeocachingApiException('CacheCode is missing.');
         }
         if (!array_key_exists('Note', $params)) {
-            throw new \Exception('Note is missing.');
+            throw new GeocachingApiException('Note is missing.');
         }
 
         $post_params['CacheCode'] = $params['CacheCode'];
@@ -1374,26 +1411,27 @@ class GeocachingApi extends AbstractGeocachingApi
     }
 
     /**
-     * Upload Image To Geocache Log
+     * Upload Image To Geocache Log.
      *
      * - required params: LogGuid, base64ImageData
      * - optional params: FileCaption, FileDescription, FileName, ReferenceCode
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/UploadImageToGeocacheLog Documentation by Groundspeak
-     * @access public
-     * @param  array  $params
+     *
+     * @param array $params
+     *
      * @return object
      */
     public function uploadImageToGeocacheLog(array $params)
     {
         if (!array_key_exists('LogGuid', $params)) {
-            throw new \Exception('LogGuid is missing.');
+            throw new GeocachingApiException('LogGuid is missing.');
         }
         if (!array_key_exists('base64ImageData', $params)) {
-            throw new \Exception('base64ImageData is missing.');
+            throw new GeocachingApiException('base64ImageData is missing.');
         }
 
-        $post_params['LogGuid'] = $params['LogGuid'];
+        $post_params['LogGuid']                      = $params['LogGuid'];
         $post_params['ImageData']['base64ImageData'] = base64_encode($params['base64ImageData']);
 
         if (array_key_exists('FileCaption', $params)) {
@@ -1408,30 +1446,32 @@ class GeocachingApi extends AbstractGeocachingApi
         if (array_key_exists('ReferenceCode', $params)) {
             $post_params['ReferenceCode'] = $params['ReferenceCode'];
         }
+
         return $this->postRequest(__FUNCTION__, $post_params);
     }
 
     /**
-     * Upload Image To Trackable Log
+     * Upload Image To Trackable Log.
      *
      * - required params: LogGuid, base64ImageData
      * - optional params: FileCaption, FileDescription, FileName
      *
      * @link https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/UploadImageToTrackableLog Documentation by Groundspeak
-     * @access public
-     * @param  array  $params
+     *
+     * @param array $params
+     *
      * @return object
      */
     public function uploadImageToTrackableLog(array $params)
     {
         if (!array_key_exists('LogGuid', $params)) {
-            throw new \Exception('LogGuid is missing.');
+            throw new GeocachingApiException('LogGuid is missing.');
         }
         if (!array_key_exists('base64ImageData', $params)) {
-            throw new \Exception('base64ImageData is missing.');
+            throw new GeocachingApiException('base64ImageData is missing.');
         }
 
-        $post_params['LogGuid'] = $params['LogGuid'];
+        $post_params['LogGuid']                      = $params['LogGuid'];
         $post_params['ImageData']['base64ImageData'] = base64_encode($params['base64ImageData']);
 
         if (array_key_exists('FileCaption', $params)) {

@@ -5,8 +5,24 @@ session_start();
 
 require __DIR__ . '/vendor/autoload.php';
 
-use Geocaching\OAuth\OAuth;
 use Geocaching\Api\GeocachingApi;
+use Geocaching\Api\GeocachingApiException;
+use Geocaching\OAuth\GeocachingOAuthException;
+use Geocaching\OAuth\OAuth;
+use GuzzleHttp\Client;
+use GuzzleHttp\Middleware;
+use GuzzleHttp\MessageFormatter;
+use GuzzleHttp\HandlerStack;
+use Monolog\Logger;
+use Monolog\Handler\RotatingFileHandler;
+
+$logger = new Logger('api-consumer');
+$logger->pushHandler(new RotatingFileHandler('logs/geocaching-api.log'));
+$guzzleLoggingMiddleware = Middleware::log($logger, new MessageFormatter());
+$handlerStack = HandlerStack::create();
+$handlerStack->push($guzzleLoggingMiddleware);
+
+$client = new Client(['handler' => $handlerStack]);
 
 if (isset($_POST['reset'])) {
     $_SESSION = array();
@@ -39,25 +55,40 @@ if (!isset($_SESSION['ACCESS_TOKEN'])) {
 
     //First step : Ask a token, go to the Geocaching OAuth URL
     if (isset($_POST['oauth']) && isset($_POST['oauth_key']) && isset($_POST['oauth_secret'])) {
-        $consumer = new OAuth($_POST['oauth_key'], $_POST['oauth_secret'], $callback_url, $_SESSION['url']);
-        //$consumer->setLogging('/tmp/');
+        try {
+            $consumer = new OAuth($client, $_POST['oauth_key'], $_POST['oauth_secret'], $callback_url, $_SESSION['url']);
 
-        $token = $consumer->getRequestToken();
-        $_SESSION['OAUTH_KEY'] = $_POST['oauth_key'];
-        $_SESSION['OAUTH_SECRET'] = $_POST['oauth_secret'];
-        $_SESSION['REQUEST_TOKEN'] = serialize($token);
-        $consumer->redirect();
+            $token = $consumer->getRequestToken();
+            $_SESSION['OAUTH_KEY'] = $_POST['oauth_key'];
+            $_SESSION['OAUTH_SECRET'] = $_POST['oauth_secret'];
+            $_SESSION['REQUEST_TOKEN'] = serialize($token);
+            $consumer->redirect();
+        }  catch(GeocachingOAuthException $e) {
+            echo $e->getMessage() . '<br /><pre>' . print_r($e->getTrace(), true) . '</pre>';
+            die();
+        } catch(\Exception $e) {
+            echo $e->getMessage() . '<br /><pre>' . print_r($e->getTrace(), true) . '</pre>';
+            die();
+        }
+
     }
 
     //Second step : Go back from Geocaching OAuth URL, retrieve the token
     if (!empty($_GET) && isset($_SESSION['REQUEST_TOKEN'])) {
-        $consumer = new OAuth($_SESSION['OAUTH_KEY'], $_SESSION['OAUTH_SECRET'], $callback_url, $_SESSION['url']);
-        //$consumer->setLogging('/tmp/');
+        try {
+            $consumer = new OAuth($client, $_SESSION['OAUTH_KEY'], $_SESSION['OAUTH_SECRET'], $callback_url, $_SESSION['url']);
 
-        $token = $consumer->getAccessToken($_GET, unserialize($_SESSION['REQUEST_TOKEN']));
-        $_SESSION['ACCESS_TOKEN'] = serialize($token);
-        header('Location: index.php');
-        exit(0);
+            $token = $consumer->getAccessToken($_GET, unserialize($_SESSION['REQUEST_TOKEN']));
+            $_SESSION['ACCESS_TOKEN'] = serialize($token);
+            header('Location: index.php');
+            exit(0);
+        }  catch(GeocachingOAuthException $e) {
+            echo $e->getMessage() . '<br /><pre>' . print_r($e->getTrace(), true) . '</pre>';
+            die();
+        } catch(\Exception $e) {
+            echo $e->getMessage() . '<br /><pre>' . print_r($e->getTrace(), true) . '</pre>';
+            die();
+        }
     }
 }
 
@@ -67,8 +98,8 @@ if (!isset($_SESSION['ACCESS_TOKEN'])) {
     <head>
         <meta charset="utf-8" />
         <title>Demo of Geocaching API with PHP</title>
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
         <style type="text/css">
         #oauth_key, #oauth_secret {
             width: 330px;
@@ -136,8 +167,8 @@ if (!isset($_SESSION['ACCESS_TOKEN'])) {
                 $token = unserialize($_SESSION['ACCESS_TOKEN']);
 
                 try {
-                    $api = new GeocachingApi($token['oauth_token'], $_SESSION['production']);
-                    //$api->setLogging('/tmp/');
+                    $api = new GeocachingApi($client, $token['oauth_token'], $_SESSION['production']);
+
                     $params = array('PublicProfileData' => true);
                     $user = $api->getYourUserProfile($params);
 
@@ -147,12 +178,20 @@ if (!isset($_SESSION['ACCESS_TOKEN'])) {
                     preg_match('/([0-9]+)/', $user->Profile->PublicProfile->MemberSince, $matches);
                     echo "<strong>Member since:</strong> " . date('Y-m-d H:i:s', floor($matches[0]/1000)) . "</p>\n";
                     echo "</div>\n";
-                } catch (Exception $e) {
-                    echo '<div class="alert alert-danger" role="alert">' . $e->getMessage() . '</div>'."\n";
+                } catch(GeocachingApiException $e) {
+                    echo '<div class="alert alert-danger" role="alert">' . $e->getMessage() . ' (Code: ' . $e->getCode(). ')<br /><pre>' . print_r($e->getTrace(), true) . '</pre></div>'."\n";
+                } catch(\Exception $e) {
+                    echo '<div class="alert alert-danger" role="alert">' . $e->getMessage() . '<br /><pre>' . print_r($e->getTrace(), true) . '</pre></div>'."\n";
                 }
 
                 // Test methods here:
-                $response = $api->getSiteStats();
+                try {
+                    $response = $api->getSiteStats();
+                } catch(GeocachingApiException $e) {
+                    echo '<div class="alert alert-danger" role="alert">' . $e->getMessage() . ' (Code: ' . $e->getCode(). ')<br /><pre>' . print_r($e->getTrace(), true) . '</pre></div>'."\n";
+                } catch(\Exception $e) {
+                    echo '<div class="alert alert-danger" role="alert">' . $e->getMessage() . '<br /><pre>' . print_r($e->getTrace(), true) . '</pre></div>'."\n";
+                }
 
                 echo "<pre>";
                 print_r($response);
@@ -176,7 +215,7 @@ if (!isset($_SESSION['ACCESS_TOKEN'])) {
         </a>
 
     </div>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </body>
 </html>
