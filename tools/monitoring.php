@@ -5,6 +5,13 @@ error_reporting(E_ALL | E_STRICT);
 
 require dirname(__DIR__) . '/vendor/autoload.php';
 
+$blacklist_methods = [
+                        'GetCacheByTileGuid',
+                        'GetUserCredentials',
+                        'Ping',
+                        'RegisterWP7DeviceTile',
+                        'WindowsPhoneTileSearch',
+                    ];
 use GuzzleHttp\Client;
 
 $client = new Client(['verify' => false]);
@@ -15,8 +22,10 @@ echo '<p class="date"><strong>Date of monitoring</strong>: ' . date('r') . '</p>
 $response = $client->get('https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help');
 $html     = $response->getBody();
 
-preg_match_all('/<tr>\s+<td>([a-z]+)<\/td>/i', $html, $matches);
-$methods_from_GS = $matches[1];
+preg_match_all('/<tr>\s+<td>([a-z0-9]+)<\/td>/i', $html, $matches);
+
+$methods_from_GS = array_diff($matches[1], $blacklist_methods);
+sort($methods_from_GS);
 
 // AbstractGeocachingApi Methods
 $reflect      = new ReflectionClass('Geocaching\Api\AbstractGeocachingApi');
@@ -112,9 +121,7 @@ function monitoring($class, GuzzleHttp\Client $client)
             }
 
             $format = '<div class="alert alert-%s">
-                        <strong>
-                            <a href="https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/' . ucfirst($reflectmethod->getName()) . '">' . $reflectmethod->getName() . '</a>
-                        </strong>: %s';
+                        <strong><a href="https://staging.api.groundspeak.com/Live/v6beta/geocaching.svc/help/operations/' . ucfirst($reflectmethod->getName()) . '">' . $reflectmethod->getName() . '</a></strong>: %s';
 
             $result = array_intersect($params_from_GS, $params);
             if (count($result) != count($params_from_GS)) {

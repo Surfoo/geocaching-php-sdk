@@ -12,7 +12,7 @@ define('MONITORING_FILENAME', 'tools/monitoring.html');
     <head>
         <meta charset="utf-8" />
         <title>Monitoring of the Groundspeak API</title>
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <style type="text/css">
         footer ul {
             padding: 0;
@@ -33,8 +33,7 @@ define('MONITORING_FILENAME', 'tools/monitoring.html');
         <div class="row">
 <?php
 if(file_exists(MONITORING_FILENAME) && is_readable(MONITORING_FILENAME)) {
-    $content = file_get_contents(MONITORING_FILENAME);
-    echo $content;
+    echo file_get_contents(MONITORING_FILENAME);
 }
 ?>
         </div>
@@ -54,7 +53,7 @@ if(file_exists(MONITORING_FILENAME) && is_readable(MONITORING_FILENAME)) {
         </a>
 
     </div>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </body>
 </html>
