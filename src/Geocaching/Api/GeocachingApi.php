@@ -1175,6 +1175,8 @@ class GeocachingApi extends AbstractGeocachingApi
      */
     public function searchForGeocaches(array $params)
     {
+        $post_params = [];
+        
         if (array_key_exists('IsLite', $params)) {
             $post_params['IsLite'] = (boolean) $params['IsLite'];
         }

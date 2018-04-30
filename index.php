@@ -154,8 +154,8 @@ if (!isset($_SESSION['ACCESS_TOKEN'])) {
                               if(isset($_SESSION['ACCESS_TOKEN'])) echo ' disabled="disabled"';
                         ?>> Live Mobile</label>
                     </div>
-                    <input type="submit" name="oauth" value="OAuth dance!" class="btn btn-primary" <?php if(isset($_SESSION['ACCESS_TOKEN'])) echo 'disabled="disabled"'; ?>/>
-                    <input type="submit" name="reset" value="Reset OAuth Token" class="btn btn-warning" <?php if(!isset($_SESSION['ACCESS_TOKEN'])) echo 'disabled="disabled"'; ?>/>
+                    <input type="submit" name="oauth" value="OAuth dance!" class="btn btn-primary" <?php if(isset($_SESSION['ACCESS_TOKEN'])) echo 'disabled'; ?>/>
+                    <input type="submit" name="reset" value="Reset OAuth Token" class="btn btn-warning" <?php if(!isset($_SESSION['REQUEST_TOKEN']) && !isset($_SESSION['ACCESS_TOKEN'])) echo 'disabled'; ?>/>
                 </fieldset>
             </form>
             <?php

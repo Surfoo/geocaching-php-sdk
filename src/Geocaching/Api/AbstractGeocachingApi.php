@@ -863,8 +863,11 @@ abstract class AbstractGeocachingApi
 
         $output = json_decode((string) $response->getBody());
 
-        $this->checkRequestStatus($output);
-
+        try {
+            $this->checkRequestStatus($output);
+        } catch(GeocachingApiException $e) {
+            return $e->getMessage();
+        }
         return $output;
     }
 
@@ -896,8 +899,11 @@ abstract class AbstractGeocachingApi
 
         $output = json_decode((string) $response->getBody());
 
-        $this->checkRequestStatus($output);
-
+        try {
+            $this->checkRequestStatus($output);
+        } catch(GeocachingApiException $e) {
+            return $e->getMessage();
+        }
         return $output;
     }
 }
