@@ -1,8 +1,8 @@
-*.sublime-project
-*.sublime-workspace
 composer.lock
-logs
+logs/*
+!logs/.gitkeep
 output
 vendor
 tools/monitoring.html
 .php_cs.cache
+keys.txt

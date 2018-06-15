@@ -5,24 +5,22 @@ session_start();
 
 require __DIR__ . '/vendor/autoload.php';
 
-use Geocaching\Api\GeocachingApi;
-use Geocaching\Api\GeocachingApiException;
-use Geocaching\OAuth\GeocachingOAuthException;
-use Geocaching\OAuth\OAuth;
-use GuzzleHttp\Client;
+use Geocaching\GeocachingFactory;
+use Geocaching\Exception\GeocachingApiException;
+use League\OAuth2\Client\Provider\Geocaching;
+use League\OAuth2\Client\Provider\Exception\GeocachingIdentityProviderException;
 use GuzzleHttp\Middleware;
 use GuzzleHttp\MessageFormatter;
 use GuzzleHttp\HandlerStack;
 use Monolog\Logger;
 use Monolog\Handler\RotatingFileHandler;
 
-$logger = new Logger('api-consumer');
+$logger = new Logger('api');
 $logger->pushHandler(new RotatingFileHandler('logs/geocaching-api.log'));
 $guzzleLoggingMiddleware = Middleware::log($logger, new MessageFormatter());
 $handlerStack = HandlerStack::create();
 $handlerStack->push($guzzleLoggingMiddleware);
 
-$client = new Client(['handler' => $handlerStack]);
 
 if (isset($_POST['reset'])) {
     $_SESSION = array();
@@ -35,63 +33,81 @@ if (isset($_POST['reset'])) {
     exit(0);
 }
 
-if (!array_key_exists('production', $_SESSION) && array_key_exists('url', $_POST)) {
-    switch ($_POST['url']) {
-        case 'live_mobile':
-        case 'live':
-            $_SESSION['production'] = true;
-            $_SESSION['url'] = $_POST['url'];
-            break;
-        case 'staging':
-        default:
-            $_SESSION['production'] = false;
-            $_SESSION['url'] = $_POST['url'];
-    }
-}
+// if (!array_key_exists('production', $_SESSION) && array_key_exists('url', $_POST)) {
+//     switch ($_POST['url']) {
+//         case 'production':
+//             $_SESSION['production'] = true;
+//             $_SESSION['url'] = $_POST['url'];
+//             break;
+//         case 'staging':
+//         default:
+//             $_SESSION['production'] = false;
+//             $_SESSION['url'] = $_POST['url'];
+//     }
+// }
 
 if (!isset($_SESSION['ACCESS_TOKEN'])) {
 
-    $callback_url = 'http://' . $_SERVER['HTTP_HOST'] . OAuth::getRequestUri();
+    //$callback_url = 'http://' . $_SERVER['HTTP_HOST'] . OAuth::getRequestUri();
+    $_SESSION['callback_url'] = 'http://localhost:8000';
 
     //First step : Ask a token, go to the Geocaching OAuth URL
-    if (isset($_POST['oauth']) && isset($_POST['oauth_key']) && isset($_POST['oauth_secret'])) {
+    if (isset($_POST['oauth']) && isset($_POST['oauth_key']) && isset($_POST['oauth_secret']) && !isset($_GET['code'])) {
         try {
-            $consumer = new OAuth($client, $_POST['oauth_key'], $_POST['oauth_secret'], $callback_url, $_SESSION['url']);
 
-            $token = $consumer->getRequestToken();
-            $_SESSION['OAUTH_KEY'] = $_POST['oauth_key'];
-            $_SESSION['OAUTH_SECRET'] = $_POST['oauth_secret'];
-            $_SESSION['REQUEST_TOKEN'] = serialize($token);
-            $consumer->redirect();
-        }  catch(GeocachingOAuthException $e) {
-            echo $e->getMessage() . '<br /><pre>' . print_r($e->getTrace(), true) . '</pre>';
-            die();
+            $_SESSION['oauth_key']    = $_POST['oauth_key'];
+            $_SESSION['oauth_secret'] = $_POST['oauth_secret'];
+            $_SESSION['environment']  = $_POST['environment'];
+            
+            $provider = new Geocaching([
+                'clientId'       => $_SESSION['oauth_key'],
+                'clientSecret'   => $_SESSION['oauth_secret'],
+                'response_type'  => 'code',
+                'scope'          => '*',
+                'redirectUri'    => $_SESSION['callback_url'],
+                'environment'    => $_SESSION['environment']
+            ]);
+
+            if (!isset($_GET['code'])) {
+                // If we don't have an authorization code then get one
+                $authUrl = $provider->getAuthorizationUrl();
+                $_SESSION['oauth2state'] = $provider->getState();
+                header('Location: ' . $authUrl);
+                exit;
+            }
+        
         } catch(\Exception $e) {
             echo $e->getMessage() . '<br /><pre>' . print_r($e->getTrace(), true) . '</pre>';
             die();
         }
 
-    }
+    } else if (empty($_GET['state']) || (isset($_SESSION['oauth2state']) && $_GET['state'] !== $_SESSION['oauth2state'])) {
 
-    //Second step : Go back from Geocaching OAuth URL, retrieve the token
-    if (!empty($_GET) && isset($_SESSION['REQUEST_TOKEN'])) {
+        if (isset($_SESSION['oauth2state'])) {
+            unset($_SESSION['oauth2state']);
+        }
+        //exit('Invalid state');
+    } else if(!isset($_SESSION['oauth'])) {
         try {
-            $consumer = new OAuth($client, $_SESSION['OAUTH_KEY'], $_SESSION['OAUTH_SECRET'], $callback_url, $_SESSION['url']);
+            $provider = new Geocaching([
+                'clientId'       => $_SESSION['oauth_key'],
+                'clientSecret'   => $_SESSION['oauth_secret'],
+                'response_type'  => 'code',
+                'scope'          => '*',
+                'redirectUri'    => $_SESSION['callback_url'],
+                'environment'    => $_SESSION['environment']
+            ]);
 
-            $token = $consumer->getAccessToken($_GET, unserialize($_SESSION['REQUEST_TOKEN']));
-            $_SESSION['ACCESS_TOKEN'] = serialize($token);
-            header('Location: index.php');
-            exit(0);
-        }  catch(GeocachingOAuthException $e) {
-            echo $e->getMessage() . '<br /><pre>' . print_r($e->getTrace(), true) . '</pre>';
-            die();
-        } catch(\Exception $e) {
-            echo $e->getMessage() . '<br /><pre>' . print_r($e->getTrace(), true) . '</pre>';
-            die();
+            $accessToken = $provider->getAccessToken('authorization_code', ['code' => $_GET['code']]);
+            $_SESSION['oauth']['accessToken'] = $accessToken->getToken();
+            $_SESSION['oauth']['refreshToken'] = $accessToken->getRefreshToken();
+            $_SESSION['oauth']['expirationTimestamp'] = $accessToken->getExpires();
+
+        } catch(GeocachingIdentityProviderException $e) {
+            exit($e->getMessage());
         }
     }
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -125,77 +141,114 @@ if (!isset($_SESSION['ACCESS_TOKEN'])) {
                     <div class="form-group">
                         <label for="oauth_key">Your OAuth Key:</label>
                         <input type="text" name="oauth_key" id="oauth_key" size="36" maxlength="36" class="form-control"
-                               <?php if(isset($_SESSION['OAUTH_KEY'])) echo 'value="' . $_SESSION['OAUTH_KEY'] . '"' ?>
-                               <?php if(isset($_SESSION['OAUTH_SECRET'])) echo 'readonly="readonly"' ?>
-                               <?php if(!isset($_SESSION['ACCESS_TOKEN'])) echo 'required'; ?> />
+                               <?php if(isset($_SESSION['oauth_key'])) echo 'value="' . $_SESSION['oauth_key'] . '"' ?>
+                               <?php if(isset($_SESSION['oauth_key'])) echo 'readonly="readonly"' ?>
+                               <?php if(!isset($_SESSION['oauth']['accessToken'])) echo 'required'; ?> />
                     </div>
                     <div class="form-group">
                         <label for="oauth_secret">Your OAuth Secret:</label>
                         <input type="text" name="oauth_secret" id="oauth_secret" size="36" maxlength="36" class="form-control"
-                               <?php if(isset($_SESSION['OAUTH_SECRET'])) echo 'value="' . $_SESSION['OAUTH_SECRET'] . '"' ?>
-                               <?php if(isset($_SESSION['OAUTH_SECRET'])) echo 'readonly="readonly"' ?>
-                               <?php if(!isset($_SESSION['ACCESS_TOKEN'])) echo 'required'; ?> />
+                               <?php if(isset($_SESSION['oauth_secret'])) echo 'value="' . $_SESSION['oauth_secret'] . '"' ?>
+                               <?php if(isset($_SESSION['oauth_secret'])) echo 'readonly="readonly"' ?>
+                               <?php if(!isset($_SESSION['oauth']['accessToken'])) echo 'required'; ?> />
                     </div>
                     <div class="form-group">
-                        <label>OAuth URL:</label><br />
+                        <label>OAuth environment:</label><br />
                         <label for="staging" class="checkbox-inline">
-                            <input type="radio" name="url" value="staging" id="staging"
-                            <?php if (isset($_SESSION['url']) && $_SESSION['url'] == "staging") echo 'checked="checked"';
-                                  if(isset($_SESSION['ACCESS_TOKEN'])) echo ' disabled="disabled"';
+                            <input type="radio" name="environment" value="staging" id="staging"
+                            <?php if (isset($_SESSION['environment']) && $_SESSION['environment'] == "staging") echo 'checked="checked"';
+                                  if(isset($_SESSION['oauth']['accessToken'])) echo ' disabled="disabled"';
                             ?> required> Staging</label>
-                        <label for="live" class="checkbox-inline">
-                            <input type="radio" name="url" value="live" id="live"
-                            <?php if (isset($_SESSION['url']) && $_SESSION['url'] == "live") echo 'checked="checked"';
-                                  if(isset($_SESSION['ACCESS_TOKEN'])) echo ' disabled="disabled"';
-                            ?>> Live</label>
-                        <label for="live_mobile" class="checkbox-inline">
-                        <input type="radio" name="url" value="live_mobile" id="live_mobile"
-                        <?php if (isset($_SESSION['url']) && $_SESSION['url'] == "live_mobile") echo 'checked="checked"';
-                              if(isset($_SESSION['ACCESS_TOKEN'])) echo ' disabled="disabled"';
-                        ?>> Live Mobile</label>
+                        <label for="production" class="checkbox-inline">
+                            <input type="radio" name="environment" value="production" id="production"
+                            <?php if (isset($_SESSION['environment']) && $_SESSION['environment'] == "production") echo 'checked="checked"';
+                                  if(isset($_SESSION['oauth']['accessToken'])) echo ' disabled="disabled"';
+                            ?>> Production</label>
                     </div>
-                    <input type="submit" name="oauth" value="OAuth dance!" class="btn btn-primary" <?php if(isset($_SESSION['ACCESS_TOKEN'])) echo 'disabled'; ?>/>
-                    <input type="submit" name="reset" value="Reset OAuth Token" class="btn btn-warning" <?php if(!isset($_SESSION['REQUEST_TOKEN']) && !isset($_SESSION['ACCESS_TOKEN'])) echo 'disabled'; ?>/>
+                    <input type="submit" name="oauth" value="OAuth dance!" class="btn btn-primary" <?php if (isset($_SESSION['oauth']['accessToken'])) echo 'disabled'; ?>/>
+                    <input type="submit" name="reset" value="Reset OAuth Token" class="btn btn-warning" <?php if (!isset($_SESSION['oauth']['accessToken'])) echo 'disabled'; ?>/>
                 </fieldset>
             </form>
             <?php
-            if (isset($_SESSION['ACCESS_TOKEN'])) {
-                // echo "<pre>";
-                // print_r(unserialize($_SESSION['REQUEST_TOKEN']));
-                // print_r(unserialize($_SESSION['ACCESS_TOKEN']));
-                // echo "</pre>";
-                $token = unserialize($_SESSION['ACCESS_TOKEN']);
+            if (isset($_SESSION['oauth']['accessToken'])) {
+                echo "<div class=\"alert alert-success\" role=\"alert\">\n";
+                echo "  <p><strong>OAuth Information:</strong><br/>\n";
+                echo "  <pre>" . print_r($_SESSION['oauth'], true) . "</pre>\n";
+                echo "</div>\n";
 
+                // Test methods here
                 try {
-                    $api = new GeocachingApi($client, $token['oauth_token'], $_SESSION['production']);
 
-                    $params = array('PublicProfileData' => true);
-                    $user = $api->getYourUserProfile($params);
+                    $httpDebug = false;
+                    $geocachingApi = GeocachingFactory::create($_SESSION['oauth']['accessToken'], 
+                                                               $_SESSION['environment'], 
+                                                               ['debug' => $httpDebug, 
+                                                                'handler' => $handlerStack,
+                                                                'timeout' => 6,
+                                                                'connect_timeout' => 3,
+                                                               ]);
 
-                    echo "<div class=\"alert alert-success\" role=\"alert\">\n";
-                    echo "<p><strong>Token:</strong> " . $token['oauth_token']."<br/>\n";
-                    echo "<strong>Connected as:</strong> " . $user->Profile->User->UserName . " (Id: " . $user->Profile->User->Id . ")<br/>\n";
-                    preg_match('/([0-9]+)/', $user->Profile->PublicProfile->MemberSince, $matches);
-                    echo "<strong>Member since:</strong> " . date('Y-m-d H:i:s', floor($matches[0]/1000)) . "</p>\n";
-                    echo "</div>\n";
-                } catch(GeocachingApiException $e) {
-                    echo '<div class="alert alert-danger" role="alert">' . $e->getMessage() . ' (Code: ' . $e->getCode(). ')<br /><pre>' . print_r($e->getTrace(), true) . '</pre></div>'."\n";
-                } catch(\Exception $e) {
-                    echo '<div class="alert alert-danger" role="alert">' . $e->getMessage() . '<br /><pre>' . print_r($e->getTrace(), true) . '</pre></div>'."\n";
+                    ob_start();
+                    $response = $geocachingApi->getUser('me', ['fields' => 'referenceCode,username,findCount,hideCount,avatarUrl,membershipLevelId,homeCoordinates,geocacheLimits']);
+                    $user = $response->getBody();
+                    $httpDebugLog = ob_get_clean();
+                    echo "<div><strong>Your profile:</strong><br />\n";
+
+                    if ($httpDebug) {
+                        echo "<pre>HTTP Debug:\n";
+                        print_r($httpDebugLog);
+                        echo "</pre>";
+                        
+                        echo "<pre>";
+                        print_r($response->getHeaders());
+                        echo "</pre>";
+                    }
+
+                    if (!is_null($user)) {
+                        echo "<pre>";
+                        print_r($user);
+                        echo "</pre>";
+                        echo "</div>\n";
+                    }
+
+                    //ob_start();
+                    // $response = $geocachingApi->searchGeocaches(['q' => 'location:[' . $user->homeCoordinates->latitude . ',' . $user->homeCoordinates->longitude . ']']);
+                    // $response = $geocachingApi->searchGeocaches(['q' => 'location:[48.38887,2.84127]+radius:3km', 'fields' => 'referenceCode,name']);
+                    // $httpDebugLog = ob_get_clean();
+                    // if ($httpDebug) {
+                    //     echo "<pre>HTTP Debug:\n";
+                    //     print_r($httpDebugLog);
+                    //     echo "</pre>";
+                    // }
+                    // if (!is_null($response)) {
+                    //     echo "<pre>";
+                    //     print_r($response);
+                    //     echo "</pre>";
+                    // }
+
+                } catch (GeocachingApiException $e) {
+                    $httpDebugLog = ob_get_clean();
+                    if ($httpDebug) {
+                        echo "<pre>HTTP Debug:\n";
+                        print_r($httpDebugLog);
+                        echo "</pre>";
+                    }
+                    echo '<div class="alert alert-danger" role="alert"><strong>GeocachingApiException:</strong><br />
+                    ' . $e->getMessage() . ' (Code: ' . $e->getCode(). ')<br />
+                    <pre>' . print_r($e->getTrace(), true) . '</pre>
+                    </div>'."\n";
+                } catch (\Exception $e) {
+                    $httpDebugLog = ob_get_clean();
+                    if ($httpDebug) {
+                        echo "<pre>HTTP Debug:\n";
+                        print_r($httpDebugLog);
+                        echo "</pre>";
+                    }
+                    echo '<div class="alert alert-danger" role="alert"><strong>Exception:</strong><br />
+                    ' . $e->getMessage() . ' (Code: ' . $e->getCode(). ')<br />
+                    <pre>' . print_r($e->getTrace(), true) . '</pre>
+                    </div>'."\n";
                 }
-
-                // Test methods here:
-                try {
-                    $response = $api->getSiteStats();
-                } catch(GeocachingApiException $e) {
-                    echo '<div class="alert alert-danger" role="alert">' . $e->getMessage() . ' (Code: ' . $e->getCode(). ')<br /><pre>' . print_r($e->getTrace(), true) . '</pre></div>'."\n";
-                } catch(\Exception $e) {
-                    echo '<div class="alert alert-danger" role="alert">' . $e->getMessage() . '<br /><pre>' . print_r($e->getTrace(), true) . '</pre></div>'."\n";
-                }
-
-                echo "<pre>";
-                print_r($response);
-                echo "</pre>";
             }
             ?>
         <footer>

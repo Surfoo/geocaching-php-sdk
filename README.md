@@ -1,4 +1,4 @@
-Geocaching API for PHP >=5.6
+Geocaching API for PHP >=7.1
 ============================
 
 [![Latest Stable Version](https://poser.pugx.org/geocaching/api/v/stable.svg)](https://packagist.org/packages/geocaching/api)
@@ -9,7 +9,9 @@ Geocaching API for PHP >=5.6
 
 PHP implementation of Groundspeak's Geocaching Live API.
 
-A kind of documentation about the API is available here : https://api.groundspeak.com/LiveV6/geocaching.svc/help
+The documentation about the API is available here: 
+  - https://api.groundspeak.com/documentation
+  - https://api.groundspeak.com/api-docs/index
 
 You want to contribute?
 -----------------------
@@ -18,14 +20,14 @@ First, you must have your API key from Groundspeak, please refer to this url: ht
 
 ## Installation
 
-First, you need to install [composer](https://getcomposer.org/doc/00-intro.md#system-requirements).
+You need to install [composer](https://getcomposer.org/doc/00-intro.md#system-requirements).
 
 ### Composer
 
-From the Command Line:
+From the command line:
 
 ```
-composer require geocaching/api:2.0
+composer require surfoo/geocaching-api:3.0
 ```
 
 Or in your `composer.json`:
@@ -33,24 +35,7 @@ Or in your `composer.json`:
 ``` json
 {
     "require": {
-        "geocaching/api": "~2.0"
+        "surfoo/geocaching-api": "~3.0"
     }
 }
 ```
-
-Get the source
---------------
-
-Fork the project source code on [github](https://github.com/Surfoo/geocaching-api):
-
-    git clone git://github.com/Surfoo/geocaching-api.git
-
-License
--------
-
-geocaching-api is distributed under [MIT](https://opensource.org/licenses/MIT).
-
-Contact & Questions
--------------------
-
-- author: surfooo at gmail dot com
