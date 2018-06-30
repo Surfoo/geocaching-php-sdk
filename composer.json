@@ -1,15 +1,13 @@
 {
     "name": "surfoo/geocaching-php-sdk",
-    "description": "Geocaching PHP Api",
     "type": "library",
     "license": "MIT",
-    "keywords": ["groundspeak", "geocaching", "geocache", "api", "oauth"],
+    "keywords": ["groundspeak", "geocaching", "geocache", "api", "oauth", "sdk", "php"],
     "homepage": "http://geocaching.vaguelibre.net/api/",
     "authors": [
         {
             "name": "Surfoo",
-            "email": "surfooo@gmail.com",
-            "role": "Developer"
+            "email": "surfooo@gmail.com"
         }
     ],
     "autoload": {

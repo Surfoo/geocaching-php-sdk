@@ -6,7 +6,7 @@ session_start();
 require __DIR__ . '/vendor/autoload.php';
 
 use Geocaching\GeocachingFactory;
-use Geocaching\Exception\GeocachingApiException;
+use Geocaching\Exception\GeocachingSdkException;
 use League\OAuth2\Client\Provider\Geocaching;
 use League\OAuth2\Client\Provider\Exception\GeocachingIdentityProviderException;
 use GuzzleHttp\Middleware;
@@ -180,16 +180,17 @@ if (!isset($_SESSION['ACCESS_TOKEN'])) {
                 try {
 
                     $httpDebug = false;
-                    $geocachingApi = GeocachingFactory::create($_SESSION['oauth']['accessToken'], 
+                    $GeocachingSdk = GeocachingFactory::createSdkExtended($_SESSION['oauth']['accessToken'], 
                                                                $_SESSION['environment'], 
                                                                ['debug' => $httpDebug, 
                                                                 'handler' => $handlerStack,
-                                                                'timeout' => 6,
+                                                                'timeout' => 10,
                                                                 'connect_timeout' => 3,
                                                                ]);
 
                     ob_start();
-                    $response = $geocachingApi->getUser('me', ['fields' => 'referenceCode,username,findCount,hideCount,avatarUrl,membershipLevelId,homeCoordinates,geocacheLimits']);
+                    $response = $GeocachingSdk->getUser('me', ['fields' => 'referenceCode,username,findCount,hideCount,avatarUrl,membershipLevelId,homeCoordinates,geocacheLimits']);
+
                     $user = $response->getBody();
                     $httpDebugLog = ob_get_clean();
                     echo "<div><strong>Your profile:</strong><br />\n";
@@ -211,29 +212,14 @@ if (!isset($_SESSION['ACCESS_TOKEN'])) {
                         echo "</div>\n";
                     }
 
-                    //ob_start();
-                    // $response = $geocachingApi->searchGeocaches(['q' => 'location:[' . $user->homeCoordinates->latitude . ',' . $user->homeCoordinates->longitude . ']']);
-                    // $response = $geocachingApi->searchGeocaches(['q' => 'location:[48.38887,2.84127]+radius:3km', 'fields' => 'referenceCode,name']);
-                    // $httpDebugLog = ob_get_clean();
-                    // if ($httpDebug) {
-                    //     echo "<pre>HTTP Debug:\n";
-                    //     print_r($httpDebugLog);
-                    //     echo "</pre>";
-                    // }
-                    // if (!is_null($response)) {
-                    //     echo "<pre>";
-                    //     print_r($response);
-                    //     echo "</pre>";
-                    // }
-
-                } catch (GeocachingApiException $e) {
+                } catch (GeocachingSdkException $e) {
                     $httpDebugLog = ob_get_clean();
                     if ($httpDebug) {
                         echo "<pre>HTTP Debug:\n";
                         print_r($httpDebugLog);
                         echo "</pre>";
                     }
-                    echo '<div class="alert alert-danger" role="alert"><strong>GeocachingApiException:</strong><br />
+                    echo '<div class="alert alert-danger" role="alert"><strong>GeocachingSdkException:</strong><br />
                     ' . $e->getMessage() . ' (Code: ' . $e->getCode(). ')<br />
                     <pre>' . print_r($e->getTrace(), true) . '</pre>
                     </div>'."\n";

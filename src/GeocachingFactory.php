@@ -3,12 +3,12 @@
 namespace Geocaching;
 
 use GuzzleHttp\Client;
-use Geocaching\Api\GeocachingApi;
+use Geocaching\Sdk\GeocachingSdk;
+use Geocaching\Sdk\GeocachingSdkExtended;
 use Geocaching\Lib\Adapters\GuzzleHttpClient;
 
 class GeocachingFactory
 {
-
     /**
      * Staging URL of Groundspeak API.
      *
@@ -24,7 +24,7 @@ class GeocachingFactory
     const PRODUCTION_API_URL = 'https://api.groundspeak.com';
 
     /**
-     * Version of the API
+     * Version of the API.
      *
      * @const string
      */
@@ -33,24 +33,52 @@ class GeocachingFactory
     /**
      * @param string $accessToken
      * @param string $environment
-     * @param bool $responseToArray
-     * @param array $options
+     * @param array  $options
      *
-     * @return GeocachingApi
+     * @return GeocachingSdk
      */
-    public static function create(
+    public static function createSdk(
         string $accessToken,
         string $environment = 'production',
         array $options = []
     ) {
-        $baseUri = $environment == 'staging' ? self::STAGING_API_URL : self::PRODUCTION_API_URL;
+        $adapter = self::createHandler($accessToken, $environment, $options);
 
+        return new GeocachingSdk($adapter);
+    }
+
+    /**
+     * @param string $accessToken
+     * @param string $environment
+     * @param array  $options
+     *
+     * @return GeocachingSdkExtended
+     */
+    public static function createSdkExtended(
+        string $accessToken,
+        string $environment = 'production',
+        array $options = []
+    ) {
+        $adapter = self::createHandler($accessToken, $environment, $options);
+
+        return new GeocachingSdkExtended($adapter);
+    }
+
+    /**
+     * @param string $accessToken
+     * @param string $environment
+     * @param bool   $responseToArray
+     * @param array  $options
+     *
+     * @return GuzzleHttpClient
+     */
+    private static function createHandler(string $accessToken, string $environment, array $options = [])
+    {
+        $baseUri = 'staging' == $environment ? self::STAGING_API_URL : self::PRODUCTION_API_URL;
         $client = new Client([
-            'base_uri' => $baseUri . self::API_VERSION
+            'base_uri' => $baseUri . self::API_VERSION,
         ]);
 
-        $adapter = new GuzzleHttpClient($client, $accessToken, $options);
-
-        return new GeocachingApi($adapter);
+        return new GuzzleHttpClient($client, $accessToken, $options);
     }
 }

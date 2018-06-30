@@ -7,7 +7,8 @@ use Geocaching\Lib\Response\Response;
 interface HttpClientInterface
 {
     /**
-     * @param boolean $toArray
+     * @param bool $toArray
+     *
      * @return stdClass|array
      */
     public function getBody(bool $toArray = false);
@@ -19,7 +20,7 @@ interface HttpClientInterface
 
     /**
      * @param string $uri
-     * @param array $data
+     * @param array  $data
      *
      * @return Response
      *
@@ -39,7 +40,7 @@ interface HttpClientInterface
 
     /**
      * @param string $uri
-     * @param array $data
+     * @param array  $data
      *
      * @return Response
      *

@@ -2,7 +2,9 @@ composer.lock
 logs/*
 !logs/.gitkeep
 output
+cache
 vendor
 tools/monitoring.html
 .php_cs.cache
 keys.txt
+sami.phar

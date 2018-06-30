@@ -7,10 +7,8 @@ use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Stream;
 use Geocaching\Exception\GeocachingApiException;
-use Geocaching\Helpers\HmacHelper;
 use Geocaching\Lib\Response\Response;
 use Psr\Http\Message\ResponseInterface;
-use Geocaching\Lib\Adapters\HttpClientInterface;
 
 class GuzzleHttpClient implements HttpClientInterface
 {
@@ -23,8 +21,8 @@ class GuzzleHttpClient implements HttpClientInterface
         'headers' => [
             self::HEADER_AUTHORIZATION => '',
         ],
-        'timeout'        => 3,
-        'connect_timeout'=> 3,
+        'timeout' => 3,
+        'connect_timeout' => 3,
     ];
 
     /**
@@ -33,11 +31,11 @@ class GuzzleHttpClient implements HttpClientInterface
     private $client;
 
     /**
-     * GuzzleHttpClient constructor
+     * GuzzleHttpClient constructor.
      *
      * @param Client $client
      * @param string $token
-     * @param array $options
+     * @param array  $options
      */
     public function __construct(Client $client, string $token, array $options = [])
     {
@@ -50,7 +48,8 @@ class GuzzleHttpClient implements HttpClientInterface
     }
 
     /**
-     * @param boolean $toArray
+     * @param bool $toArray
+     *
      * @return stdClass|array
      */
     public function getBody(bool $toArray = false)
@@ -68,7 +67,7 @@ class GuzzleHttpClient implements HttpClientInterface
 
     /**
      * @param string $uri
-     * @param array $query
+     * @param array  $query
      *
      * @return \Geocaching\Lib\Response\Response|mixed
      */
@@ -93,8 +92,8 @@ class GuzzleHttpClient implements HttpClientInterface
 
     /**
      * @param string $uri
-     * @param array $body
-     * @param array $query
+     * @param array  $body
+     * @param array  $query
      *
      * @return \Geocaching\Lib\Response\Response|mixed
      */
@@ -119,8 +118,8 @@ class GuzzleHttpClient implements HttpClientInterface
 
     /**
      * @param string $uri
-     * @param array $body
-     * @param array $query
+     * @param array  $body
+     * @param array  $query
      *
      * @return \Geocaching\Lib\Response\Response|mixed
      */
@@ -176,13 +175,13 @@ class GuzzleHttpClient implements HttpClientInterface
         }
     }
 
-    /** 
+    /**
      * @param array $headers
      *
      * @return string
      */
     private function decodeError401(array $headers): string
-    {   
+    {
         return $headers['WWW-Authenticate'][0];
     }
 
@@ -196,8 +195,10 @@ class GuzzleHttpClient implements HttpClientInterface
         $body = json_decode($responseBody);
         if ($body->errorMessage) {
             $content = json_decode($body->errorMessage);
+
             return $content->message;
         }
+
         return (string) $responseBody;
     }
 
