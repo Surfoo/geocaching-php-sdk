@@ -173,7 +173,7 @@ interface GeocachingSdkInterface
     public function getUserTrackables(array $query);
 
     /**
-     * @see
+     * @see https://api.groundspeak.com/documentation#get-trackable-images
      *
      * @param string $referenceCode
      * @param array  $query
@@ -181,6 +181,15 @@ interface GeocachingSdkInterface
      * @return GuzzleHttpClient
      */
     public function getTrackableImages(string $referenceCode, array $query = []);
+
+    /**
+     * @see https://api.groundspeak.com/documentation#get-geocoin-types
+     *
+     * @param array $query
+     *
+     * @return GuzzleHttpClient
+     */
+    public function getGeocoinTypes(array $query = []);
 
     /**
      * @see https://api.groundspeak.com/documentation#get-trackable-logs

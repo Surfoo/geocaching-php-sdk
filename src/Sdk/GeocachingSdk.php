@@ -244,7 +244,7 @@ class GeocachingSdk implements GeocachingSdkInterface
     }
 
     /**
-     * @see
+     * @see https://api.groundspeak.com/documentation#get-users-trackables
      *
      * @param string $referenceCode
      * @param array  $query
@@ -254,6 +254,18 @@ class GeocachingSdk implements GeocachingSdkInterface
     public function getTrackableImages(string $referenceCode, array $query = [])
     {
         return $this->httpClient->get('trackables/' . $referenceCode . '/images', $query);
+    }
+
+    /**
+     * @see https://api.groundspeak.com/documentation#get-geocoin-types
+     *
+     * @param array $query
+     *
+     * @return GuzzleHttpClient
+     */
+    public function getGeocoinTypes(array $query = [])
+    {
+        return $this->httpClient->get('trackables/geocointypes', $query);
     }
 
     /**
