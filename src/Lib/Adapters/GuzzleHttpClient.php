@@ -2,12 +2,12 @@
 
 namespace Geocaching\Lib\Adapters;
 
+use Geocaching\Exception\GeocachingSdkException;
+use Geocaching\Lib\Response\Response;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Stream;
-use Geocaching\Exception\GeocachingApiException;
-use Geocaching\Lib\Response\Response;
 use Psr\Http\Message\ResponseInterface;
 
 class GuzzleHttpClient implements HttpClientInterface
@@ -21,7 +21,7 @@ class GuzzleHttpClient implements HttpClientInterface
         'headers' => [
             self::HEADER_AUTHORIZATION => '',
         ],
-        'timeout' => 3,
+        'timeout'         => 3,
         'connect_timeout' => 3,
     ];
 
@@ -80,7 +80,7 @@ class GuzzleHttpClient implements HttpClientInterface
         try {
             $this->response = $this->client->request('GET', $uri, $this->options);
         } catch (ConnectException $e) {
-            throw new GeocachingApiException($e->getMessage(), $e->getCode());
+            throw new GeocachingSdkException($e->getMessage(), $e->getCode());
         } catch (RequestException $e) {
             $this->handleErrorResponse($e->getResponse());
         } catch (\Exception $e) {
@@ -108,7 +108,7 @@ class GuzzleHttpClient implements HttpClientInterface
         try {
             $this->response = $this->client->request('POST', $uri, $this->options);
         } catch (ConnectException $e) {
-            throw new GeocachingApiException($e->getMessage(), $e->getCode());
+            throw new GeocachingSdkException($e->getMessage(), $e->getCode());
         } catch (RequestException $e) {
             $this->handleErrorResponse($e->getResponse());
         }
@@ -130,7 +130,7 @@ class GuzzleHttpClient implements HttpClientInterface
         try {
             $this->response = $this->client->request('PUT', $uri, $this->options);
         } catch (ConnectException $e) {
-            throw new GeocachingApiException($e->getMessage(), $e->getCode());
+            throw new GeocachingSdkException($e->getMessage(), $e->getCode());
         } catch (RequestException $e) {
             $this->handleErrorResponse($e->getResponse());
         }
@@ -150,7 +150,7 @@ class GuzzleHttpClient implements HttpClientInterface
         try {
             $this->response = $this->client->request('DELETE', $uri, $this->options);
         } catch (ConnectException $e) {
-            throw new GeocachingApiException($e->getMessage(), $e->getCode());
+            throw new GeocachingSdkException($e->getMessage(), $e->getCode());
         } catch (RequestException $e) {
             $this->handleErrorResponse($e->getResponse());
         }
@@ -161,17 +161,17 @@ class GuzzleHttpClient implements HttpClientInterface
     /**
      * @param ResponseInterface $response
      *
-     * @throws GeocachingApiException The request is invalid
+     * @throws GeocachingSdkException The request is invalid
      */
     private function handleErrorResponse(ResponseInterface $response)
     {
         switch ($response->getStatusCode()) {
             case 401:
-                throw new GeocachingApiException($this->decodeError401($response->getHeaders()), $response->getStatusCode());
+                throw new GeocachingSdkException($this->decodeError401($response->getHeaders()), $response->getStatusCode());
             case 404:
-                throw new GeocachingApiException($this->decodeError404ResponseBody($response->getBody()), $response->getStatusCode());
+                throw new GeocachingSdkException($this->decodeError404ResponseBody($response->getBody()), $response->getStatusCode());
             default:
-                throw new GeocachingApiException($this->decodeErrorResponseBody($response->getBody()), $response->getStatusCode());
+                throw new GeocachingSdkException($this->decodeErrorResponseBody($response->getBody()), $response->getStatusCode());
         }
     }
 

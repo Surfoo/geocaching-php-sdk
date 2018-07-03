@@ -2,10 +2,10 @@
 
 namespace Geocaching;
 
-use GuzzleHttp\Client;
+use Geocaching\Lib\Adapters\GuzzleHttpClient;
 use Geocaching\Sdk\GeocachingSdk;
 use Geocaching\Sdk\GeocachingSdkExtended;
-use Geocaching\Lib\Adapters\GuzzleHttpClient;
+use GuzzleHttp\Client;
 
 class GeocachingFactory
 {
@@ -31,6 +31,8 @@ class GeocachingFactory
     const API_VERSION = '/v1/';
 
     /**
+     * Return Geocaching SDK to use API's methods
+     *
      * @param string $accessToken
      * @param string $environment
      * @param array  $options
@@ -48,6 +50,8 @@ class GeocachingFactory
     }
 
     /**
+     * Return Geocaching custom methods
+     * 
      * @param string $accessToken
      * @param string $environment
      * @param array  $options
@@ -75,7 +79,7 @@ class GeocachingFactory
     private static function createHandler(string $accessToken, string $environment, array $options = [])
     {
         $baseUri = 'staging' == $environment ? self::STAGING_API_URL : self::PRODUCTION_API_URL;
-        $client = new Client([
+        $client  = new Client([
             'base_uri' => $baseUri . self::API_VERSION,
         ]);
 

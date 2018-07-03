@@ -29,8 +29,6 @@ class GeocachingSdk implements GeocachingSdkInterface
     protected $httpClient;
 
     /**
-     * Constructor.
-     *
      * @param HttpClientInterface $httpClient
      */
     public function __construct(HttpClientInterface $httpClient)

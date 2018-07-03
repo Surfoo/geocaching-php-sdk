@@ -1,7 +1,6 @@
 composer.lock
 logs/*
 !logs/.gitkeep
-output
 cache
 vendor
 tools/monitoring.html

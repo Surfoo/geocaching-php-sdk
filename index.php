@@ -21,7 +21,6 @@ $guzzleLoggingMiddleware = Middleware::log($logger, new MessageFormatter());
 $handlerStack = HandlerStack::create();
 $handlerStack->push($guzzleLoggingMiddleware);
 
-
 if (isset($_POST['reset'])) {
     $_SESSION = array();
     if (ini_get("session.use_cookies")) {
@@ -33,23 +32,9 @@ if (isset($_POST['reset'])) {
     exit(0);
 }
 
-// if (!array_key_exists('production', $_SESSION) && array_key_exists('url', $_POST)) {
-//     switch ($_POST['url']) {
-//         case 'production':
-//             $_SESSION['production'] = true;
-//             $_SESSION['url'] = $_POST['url'];
-//             break;
-//         case 'staging':
-//         default:
-//             $_SESSION['production'] = false;
-//             $_SESSION['url'] = $_POST['url'];
-//     }
-// }
-
 if (!isset($_SESSION['ACCESS_TOKEN'])) {
 
-    //$callback_url = 'http://' . $_SERVER['HTTP_HOST'] . OAuth::getRequestUri();
-    $_SESSION['callback_url'] = 'http://localhost:8000';
+    $callback_url = 'http://' . $_SERVER['HTTP_HOST'] . '/';
 
     //First step : Ask a token, go to the Geocaching OAuth URL
     if (isset($_POST['oauth']) && isset($_POST['oauth_key']) && isset($_POST['oauth_secret']) && !isset($_GET['code'])) {
@@ -179,7 +164,7 @@ if (!isset($_SESSION['ACCESS_TOKEN'])) {
                 // Test methods here
                 try {
 
-                    $httpDebug = false;
+                    $httpDebug = true;
                     $GeocachingSdk = GeocachingFactory::createSdkExtended($_SESSION['oauth']['accessToken'], 
                                                                $_SESSION['environment'], 
                                                                ['debug' => $httpDebug, 
@@ -189,9 +174,9 @@ if (!isset($_SESSION['ACCESS_TOKEN'])) {
                                                                ]);
 
                     ob_start();
-                    $response = $GeocachingSdk->getUser('me', ['fields' => 'referenceCode,username,findCount,hideCount,avatarUrl,membershipLevelId,homeCoordinates,geocacheLimits']);
+                    $response = $GeocachingSdk->getGeocoinTypes(['fields' => 'id,name,imageUrl', 'skip' => 10400, 'take' => 100]);
 
-                    $user = $response->getBody();
+                    $user = $response->getBody(true);
                     $httpDebugLog = ob_get_clean();
                     echo "<div><strong>Your profile:</strong><br />\n";
 
@@ -237,22 +222,6 @@ if (!isset($_SESSION['ACCESS_TOKEN'])) {
                 }
             }
             ?>
-        <footer>
-            <hr />
-            <ul>
-                <li><a href="https://github.com/Surfoo/geocaching-api">GitHub Project</a></li> &middot;
-                <li><a href="docs/">Documentation</a></li> &middot;
-                <li><a href="monitoring.php">Monitoring</a></li>
-            </ul>
-        </footer>
-
-        <a href="https://github.com/surfoo/geocaching-api/">
-            <img style="position: absolute; top: 0; right: 0; border: 0;"
-                 src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67"
-                 alt="Fork me on GitHub"
-                 data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png">
-        </a>
-
     </div>
     <script src="//code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
