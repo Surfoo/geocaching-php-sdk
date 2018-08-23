@@ -41,7 +41,7 @@ class GuzzleHttpClient implements HttpClientInterface
     {
         $this->options['headers'][self::HEADER_AUTHORIZATION] = sprintf('Bearer %s', $token);
         if (!empty($options)) {
-            $this->options = array_merge($this->options, $options);
+            $this->options = array_replace_recursive($this->options, $options);
         }
 
         $this->client = $client;
@@ -63,6 +63,14 @@ class GuzzleHttpClient implements HttpClientInterface
     public function getHeaders(): array
     {
         return $this->response->getHeaders();
+    }
+
+    /**
+     * @return int
+     */
+    public function getStatusCode(): int
+    {
+        return $this->response->getStatusCode();
     }
 
     /**
@@ -97,13 +105,17 @@ class GuzzleHttpClient implements HttpClientInterface
      *
      * @return \Geocaching\Lib\Response\Response|mixed
      */
-    public function post(string $uri, array $body = [], array $query = [])
+    public function post(string $uri, array $body = [], array $query = [], array $options = [])
     {
+        $this->options = array_merge_recursive($this->options, $options);
+
+        if (!empty($body)) {
+            $this->options['json'] = $body;
+        }
+
         if (!empty($query)) {
             $uri .= '?' . http_build_query($query);
         }
-
-        $this->options['json'] = $body;
 
         try {
             $this->response = $this->client->request('POST', $uri, $this->options);

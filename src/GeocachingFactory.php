@@ -24,6 +24,16 @@ class GeocachingFactory
     const PRODUCTION_API_URL = 'https://api.groundspeak.com';
 
     /**
+     * @const string
+     */
+    const ENVIRONMENT_STAGING = 'staging';
+
+    /**
+     * @const string
+     */
+    const ENVIRONMENT_PRODUCTION = 'production';
+
+    /**
      * Version of the API.
      *
      * @const string
@@ -41,7 +51,7 @@ class GeocachingFactory
      */
     public static function createSdk(
         string $accessToken,
-        string $environment = 'production',
+        string $environment = self::ENVIRONMENT_PRODUCTION,
         array $options = []
     ) {
         $adapter = self::createHandler($accessToken, $environment, $options);
@@ -60,7 +70,7 @@ class GeocachingFactory
      */
     public static function createSdkExtended(
         string $accessToken,
-        string $environment = 'production',
+        string $environment = self::ENVIRONMENT_PRODUCTION,
         array $options = []
     ) {
         $adapter = self::createHandler($accessToken, $environment, $options);
@@ -78,7 +88,7 @@ class GeocachingFactory
      */
     private static function createHandler(string $accessToken, string $environment, array $options = [])
     {
-        $baseUri = 'staging' == $environment ? self::STAGING_API_URL : self::PRODUCTION_API_URL;
+        $baseUri = self::ENVIRONMENT_STAGING == $environment ? self::STAGING_API_URL : self::PRODUCTION_API_URL;
         $client  = new Client([
             'base_uri' => $baseUri . self::API_VERSION,
         ]);

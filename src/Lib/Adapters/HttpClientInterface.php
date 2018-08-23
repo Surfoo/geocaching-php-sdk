@@ -30,13 +30,15 @@ interface HttpClientInterface
 
     /**
      * @param string $uri
-     * @param arrray $data
+     * @param array $body
+     * @param array $query
+     * @param array $options
      *
      * @return Response
      *
      * @throws GeocachingException
      */
-    public function post(string $uri, array $data);
+    public function post(string $uri, array $body = [], array $query = [], array $options = []);
 
     /**
      * @param string $uri

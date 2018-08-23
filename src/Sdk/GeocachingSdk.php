@@ -4,9 +4,7 @@
  * Geocaching PHP SDK.
  *
  * @author  Surfoo <surfooo@gmail.com>
- *
- * @see    https://github.com/Surfoo/geocaching-api
- *
+ * @see     https://github.com/Surfoo/geocaching-api
  * @license https://opensource.org/licenses/MIT
  */
 
@@ -37,135 +35,101 @@ class GeocachingSdk implements GeocachingSdkInterface
     }
 
     /**
-     * @see https://api.groundspeak.com/documentation#search
-     *
-     * @param array $query
-     *
-     * @return Geocaching\Lib\Adapters\GuzzleHttpClient
-     */
-    public function searchGeocaches(array $query)
-    {
-        return $this->httpClient->get('geocaches/search', $query);
-    }
-
-    /**
-     * @see https://api.groundspeak.com/documentation#get-geocache
-     *
-     * @param string $referenceCode
-     * @param array  $query
-     *
-     * @return GuzzleHttpClient
-     */
-    public function getGeocache(string $referenceCode, array $query = [])
-    {
-        return $this->httpClient->get('geocaches/' . $referenceCode, $query);
-    }
-
-    /**
-     * @see https://api.groundspeak.com/documentation#get-geocaches
+     * swagger: GET /v{api-version}/friends
+     * 
+     * @see https://api.groundspeak.com/documentation#get-friends
+     * @see https://api.groundspeak.com/api-docs/index#!/Friends/Friends_GetFriends
      *
      * @param array $query
      *
      * @return GuzzleHttpClient
      */
-    public function getGeocaches(array $query)
+    public function getFriends(array $query = [])
     {
-        return $this->httpClient->get('geocaches', $query);
+        return $this->httpClient->get('friends', $query);
     }
 
     /**
-     * @see https://api.groundspeak.com/documentation#get-geocache-images
+     * swagger: GET /v{api-version}/friendrequests
+     * 
+     * @see https://api.groundspeak.com/documentation#get-friendrequests
+     * @see https://api.groundspeak.com/api-docs/index#!/Friends/Friends_GetFriendRequests
      *
-     * @param string $referenceCode
-     * @param array  $query
-     *
-     * @return GuzzleHttpClient
-     */
-    public function getGeocacheImages(string $referenceCode, array $query = [])
-    {
-        return $this->httpClient->get('geocaches/' . $referenceCode . '/images', $query);
-    }
-
-    /**
-     * @see https://api.groundspeak.com/documentation#upsert-geocachenote
-     *
-     * @param string $referenceCode
-     * @param string $note
-     *
-     * @return GuzzleHttpClient
-     */
-    public function setGeocacheNote(string $referenceCode, string $note)
-    {
-        return $this->httpClient->put('geocaches/' . $referenceCode . '/notes', [$note]);
-    }
-
-    /**
-     * @see https://api.groundspeak.com/documentation#delete-geocachenote
-     *
-     * @param string $referenceCode
-     *
-     * @return GuzzleHttpClient
-     */
-    public function deleteGeocacheNote(string $referenceCode)
-    {
-        return $this->httpClient->delete('geocaches/' . $referenceCode . '/notes');
-    }
-
-    /**
-     * @see https://api.groundspeak.com/documentation#get-geocache-logs
-     *
-     * @param string $referenceCode
-     * @param array  $query
-     *
-     * @return GuzzleHttpClient
-     */
-    public function getGeocacheLogs(string $referenceCode, array $query = [])
-    {
-        return $this->httpClient->get('geocaches/' . $referenceCode . '/geocachelogs', $query);
-    }
-
-    /**
-     * @see https://api.groundspeak.com/documentation#get-geocachelog
-     *
-     * @param string $referenceCode
-     * @param array  $query
-     *
-     * @return GuzzleHttpClient
-     */
-    public function getGeocacheLog(string $referenceCode, array $query = [])
-    {
-        return $this->httpClient->get('geocacheslogs/' . $referenceCode, $query);
-    }
-
-    /**
-     * @see https://api.groundspeak.com/documentation#create-geocachelog
-     *
-     * @param array $geocacheLog
      * @param array $query
      *
      * @return GuzzleHttpClient
      */
-    public function setGeocacheLog(array $geocacheLog, array $query = [])
+    public function getFriendRequests(array $query = [])
     {
-        return $this->httpClient->post('geocacheslogs', $query);
+        return $this->httpClient->get('friendrequests', $query);
     }
 
     /**
-     * @see https://api.groundspeak.com/documentation#update-geocachelog
+     * swagger: POST /v{api-version}/friendrequests
+     * 
+     * @see https://api.groundspeak.com/documentation#create-friendrequest
+     * @see https://api.groundspeak.com/api-docs/index#!/Friends/Friends_CreateFriendRequest
      *
-     * @param string $referenceCode
-     * @param array  $geocacheLog
-     * @param array  $query
+     * @param array $friendRequest
+     * @param array $query
      *
      * @return GuzzleHttpClient
      */
-    public function updateGeocacheLog(string $referenceCode, array $geocacheLog, array $query = [])
+    public function sendFriendRequest(array $friendRequest, array $query = [])
     {
-        return $this->httpClient->put('geocacheslogs/' . $referenceCode, $geocacheLog, $query);
+        return $this->httpClient->post('friendrequests', $friendRequest, $query);
     }
 
     /**
+     * swagger: POST /v{api-version}/friendrequests/{requestId}/accept
+     * 
+     * @see https://api.groundspeak.com/documentation#accept-friendrequest
+     * @see https://api.groundspeak.com/api-docs/index#!/Friends/Friends_AcceptFriendRequest
+     *
+     * @param string $requestId
+     *
+     * @return GuzzleHttpClient
+     */
+    public function acceptFriendRequest(string $requestId)
+    {
+        return $this->httpClient->post('friendrequests/' . $requestId . '/accept');
+    }
+
+    /**
+     * swagger: DELETE /v{api-version}/friends/{userCode
+     * 
+     * @see https://api.groundspeak.com/documentation#delete-friend
+     * @see https://api.groundspeak.com/api-docs/index#!/Friends/Friends_RemoveFriend
+     *
+     * @param string $referenceCode
+     *
+     * @return GuzzleHttpClient
+     */
+    public function deleteFriend(string $referenceCode)
+    {
+        return $this->httpClient->delete('friends/' . $referenceCode);
+    }
+
+    /**
+     * swagger: DELETE /v{api-version}/friendrequests/{requestId}
+     * 
+     * @see https://api.groundspeak.com/documentation#delete-friendrequest
+     * @see https://api.groundspeak.com/api-docs/index#!/Friends/Friends_DeleteFriendRequest
+     *
+     * @param string $requestId
+     *
+     * @return GuzzleHttpClient
+     */
+    public function deleteFriendRequest(string $requestId)
+    {
+        return $this->httpClient->delete('friendrequests/' . $requestId);
+    }
+
+    /**
+     * swagger: DELETE /v{api-version}/geocachelogs/{referenceCode}
+     * 
      * @see https://api.groundspeak.com/documentation#delete-geocachelog
+     * @see https://api.groundspeak.com/api-docs/index#!/GeocacheLogs/GeocacheLogs_DeleteGeocacheLog
      *
      * @param string $referenceCode
      *
@@ -177,7 +141,43 @@ class GeocachingSdk implements GeocachingSdkInterface
     }
 
     /**
+     * swagger: GET /v{api-version}/geocachelogs/{referenceCode}
+     * 
+     * @see https://api.groundspeak.com/documentation#get-geocachelog
+     * @see https://api.groundspeak.com/api-docs/index#!/GeocacheLogs/GeocacheLogs_GetGeocacheLog
+     *
+     * @param string $referenceCode
+     * @param array  $query
+     *
+     * @return GuzzleHttpClient
+     */
+    public function getGeocacheLog(string $referenceCode, array $query = [])
+    {
+        return $this->httpClient->get('geocachelogs/' . $referenceCode, $query);
+    }
+
+    /**
+     * swagger: GET /v{api-version}/geocachelogs/{referenceCode}
+     * 
+     * @see https://api.groundspeak.com/documentation#update-geocachelog
+     * @see https://api.groundspeak.com/api-docs/index#!/GeocacheLogs/GeocacheLogs_Put
+     *
+     * @param string $referenceCode
+     * @param array  $geocacheLog
+     * @param array  $query
+     *
+     * @return GuzzleHttpClient
+     */
+    public function updateGeocacheLog(string $referenceCode, array $geocacheLog, array $query = [])
+    {
+        return $this->httpClient->put('geocachelogs/' . $referenceCode, $geocacheLog, $query);
+    }
+
+    /**
+     * swagger: GET /v{api-version}/geocachelogs/{referenceCode}/images
+     * 
      * @see https://api.groundspeak.com/documentation#get-geocachelog-images
+     * @see https://api.groundspeak.com/api-docs/index#!/GeocacheLogs/GeocacheLogs_GetImages
      *
      * @param string $referenceCode
      * @param array  $query
@@ -190,7 +190,10 @@ class GeocachingSdk implements GeocachingSdkInterface
     }
 
     /**
+     * swagger: POST /v{api-version}/geocachelogs/{referenceCode}/images 
+     * 
      * @see https://api.groundspeak.com/documentation#create-geocachelog-image
+     * @see https://api.groundspeak.com/api-docs/index#!/GeocacheLogs/GeocacheLogs_PostImages
      *
      * @param string $referenceCode
      * @param array  $imageToUpload
@@ -200,11 +203,92 @@ class GeocachingSdk implements GeocachingSdkInterface
      */
     public function setGeocacheLogImages(string $referenceCode, array $imageToUpload, array $query = [])
     {
-        return $this->httpClient->post('geocacheslogs/' . $referenceCode . '/images', $imageToUpload, $query);
+        return $this->httpClient->post('geocachelogs/' . $referenceCode . '/images', $imageToUpload, $query);
     }
 
     /**
+     * swagger: POST /v{api-version}/geocachelogs
+     * 
+     * @see https://api.groundspeak.com/documentation#create-geocachelog
+     * @see https://api.groundspeak.com/api-docs/index#!/GeocacheLogs/GeocacheLogs_PostLog
+     *
+     * @param array $geocacheLog
+     * @param array $query
+     *
+     * @return GuzzleHttpClient
+     */
+    public function setGeocacheLog(array $geocacheLog, array $query = [])
+    {
+        return $this->httpClient->post('geocachelogs', $query);
+    }
+
+    /**
+     * swagger: DELETE /v{api-version}/geocaches/{referenceCode}/notes
+     * 
+     * @see https://api.groundspeak.com/documentation#delete-geocachenote
+     *
+     * @param string $referenceCode
+     *
+     * @return GuzzleHttpClient
+     */
+    public function deleteGeocacheNote(string $referenceCode)
+    {
+        return $this->httpClient->delete('geocaches/' . $referenceCode . '/notes');
+    }
+
+    /**
+     * swagger: PUT /v{api-version}/geocaches/{referenceCode}/notes
+     * 
+     * @see https://api.groundspeak.com/documentation#upsert-geocachenote
+     * @see https://api.groundspeak.com/api-docs/index#!/GeocacheNotes/GeocacheNotes_Delete
+     *
+     * @param string $referenceCode
+     * @param array $note
+     *
+     * @return GuzzleHttpClient
+     */
+    public function setGeocacheNote(string $referenceCode, array $note)
+    {
+        return $this->httpClient->put('geocaches/' . $referenceCode . '/notes', $note);
+    }
+
+    /**
+     * swagger: GET /v{api-version}/geocaches/{referenceCode}
+     * 
+     * @see https://api.groundspeak.com/documentation#get-geocache
+     * @see https://api.groundspeak.com/api-docs/index#!/Geocaches/Geocaches_Get
+     *
+     * @param string $referenceCode
+     * @param array  $query
+     *
+     * @return GuzzleHttpClient
+     */
+    public function getGeocache(string $referenceCode, array $query = [])
+    {
+        return $this->httpClient->get('geocaches/' . $referenceCode, $query);
+    }
+
+    /**
+     * swagger: GET /v{api-version}/geocaches/{referenceCode}/images
+     * 
+     * @see https://api.groundspeak.com/documentation#get-geocache-images
+     * @see https://api.groundspeak.com/api-docs/index#!/Geocaches/Geocaches_GetImages
+     *
+     * @param string $referenceCode
+     * @param array  $query
+     *
+     * @return GuzzleHttpClient
+     */
+    public function getGeocacheImages(string $referenceCode, array $query = [])
+    {
+        return $this->httpClient->get('geocaches/' . $referenceCode . '/images', $query);
+    }
+
+    /**
+     * swagger: GET /v{api-version}/geocaches/{referenceCode}/trackables
+     * 
      * @see https://api.groundspeak.com/documentation#get-geocache-trackables
+     * @see https://api.groundspeak.com/api-docs/index#!/GeocacheNotes/GeocacheNotes_UpsertGeocacheNoteAsync
      *
      * @param string $referenceCode
      * @param array  $query
@@ -213,320 +297,75 @@ class GeocachingSdk implements GeocachingSdkInterface
      */
     public function getGeocacheTrackables(string $referenceCode, array $query = [])
     {
-        return $this->httpClient->get('geocacheslogs/' . $referenceCode . '/trackables', $query);
+        return $this->httpClient->get('geocaches/' . $referenceCode . '/trackables', $query);
     }
 
     /**
-     * @see https://api.groundspeak.com/documentation#get-trackable
-     *
-     * @param string $referenceCode
-     * @param array  $query
-     *
-     * @return GuzzleHttpClient
-     */
-    public function getTrackables(string $referenceCode, array $query = [])
-    {
-        return $this->httpClient->get('trackables/' . $referenceCode, $query);
-    }
-
-    /**
-     * @see https://api.groundspeak.com/documentation#get-users-trackables
+     * swagger: GET /v{api-version}/geocaches
+     * 
+     * @see https://api.groundspeak.com/documentation#get-geocaches
+     * @see https://api.groundspeak.com/api-docs/index#!/Geocaches/Geocaches_GetGeocaches
      *
      * @param array $query
      *
      * @return GuzzleHttpClient
      */
-    public function getUserTrackables(array $query = [])
+    public function getGeocaches(array $query)
     {
-        return $this->httpClient->get('trackables', $query);
+        return $this->httpClient->get('geocaches', $query);
     }
 
     /**
-     * @see https://api.groundspeak.com/documentation#get-users-trackables
+     * swagger: GET /v{api-version}/geocaches/{referenceCode}/geocachelogs
+     * 
+     * @see https://api.groundspeak.com/documentation#get-geocache-logs
+     * @see https://api.groundspeak.com/api-docs/index#!/Geocaches/Geocaches_GetLogs
      *
      * @param string $referenceCode
      * @param array  $query
      *
      * @return GuzzleHttpClient
      */
-    public function getTrackableImages(string $referenceCode, array $query = [])
+    public function getGeocacheLogs(string $referenceCode, array $query = [])
     {
-        return $this->httpClient->get('trackables/' . $referenceCode . '/images', $query);
+        return $this->httpClient->get('geocaches/' . $referenceCode . '/geocachelogs', $query);
     }
 
     /**
-     * @see https://api.groundspeak.com/documentation#get-geocoin-types
+     * swagger: GET /v{api-version}/geocaches/search
+     * 
+     * @see https://api.groundspeak.com/documentation#search
+     * @see https://api.groundspeak.com/api-docs/index#!/Geocaches/Geocaches_Search
      *
      * @param array $query
      *
      * @return GuzzleHttpClient
      */
-    public function getGeocoinTypes(array $query = [])
+    public function searchGeocaches(array $query)
     {
-        return $this->httpClient->get('trackables/geocointypes', $query);
+        return $this->httpClient->get('geocaches/search', $query);
     }
 
     /**
-     * @see https://api.groundspeak.com/documentation#get-trackable-logs
-     *
-     * @param string $referenceCode
-     * @param array  $query
-     *
-     * @return GuzzleHttpClient
-     */
-    public function getTrackableLogs(string $referenceCode, array $query = [])
-    {
-        return $this->httpClient->get('trackables/' . $referenceCode . '/trackablelogs', $query);
-    }
-
-    /**
-     * @see https://api.groundspeak.com/documentation#get-trackablelog
-     *
-     * @param string $referenceCode
-     * @param array  $query
-     *
-     * @return GuzzleHttpClient
-     */
-    public function getTrackableLog(string $referenceCode, array $query = [])
-    {
-        return $this->httpClient->get('trackablelogs/' . $referenceCode, $query);
-    }
-
-    /**
-     * @see https://api.groundspeak.com/documentation#create-trackablelog
-     *
-     * @param array $trackableLog
-     * @param array $query
-     *
-     * @return GuzzleHttpClient
-     */
-    public function setTrackableLog(array $trackableLog, array $query = [])
-    {
-        return $this->httpClient->post('trackablelogs', $trackableLog, $query);
-    }
-
-    /**
-     * @see https://api.groundspeak.com/documentation#update-trackablelog
-     *
-     * @param string $referenceCode
-     * @param array  $trackableLog
-     * @param array  $query
-     *
-     * @return GuzzleHttpClient
-     */
-    public function updateTrackableLog(string $referenceCode, array $trackableLog, array $query = [])
-    {
-        return $this->httpClient->put('trackablelogs/' . $referenceCode, $trackableLog, $query);
-    }
-
-    /**
-     * @see https://api.groundspeak.com/documentation#delete-trackablelog
+     * swagger: DELETE /v{api-version}/lists/{referenceCode}
+     * 
+     * @see https://api.groundspeak.com/documentation#remove-list
+     * @see https://api.groundspeak.com/api-docs/index#!/Lists/Lists_RemoveGeocache
      *
      * @param string $referenceCode
      *
      * @return GuzzleHttpClient
      */
-    public function deleteTrackableLog(string $referenceCode)
+    public function deleteList(string $referenceCode)
     {
-        return $this->httpClient->delete('trackablelogs/' . $referenceCode);
+        return $this->httpClient->delete('lists/' . $referenceCode);
     }
 
     /**
-     * @see https://api.groundspeak.com/documentation#get-trackablelog-images
-     *
-     * @param string $referenceCode
-     * @param array  $query
-     *
-     * @return GuzzleHttpClient
-     */
-    public function getTrackableLogImages(string $referenceCode, array $query = [])
-    {
-        return $this->httpClient->get('trackablelogs/' . $referenceCode . '/images', $query);
-    }
-
-    /**
-     * @see https://api.groundspeak.com/documentation#get-trackablelog-images
-     *
-     * @param string $referenceCode
-     * @param array  $imageToUpload
-     * @param array  $query
-     *
-     * @return GuzzleHttpClient
-     */
-    public function setTrackableLogImages(string $referenceCode, array $imageToUpload, array $query = [])
-    {
-        return $this->httpClient->post('trackablelogs/' . $referenceCode . '/images', $imageToUpload, $query);
-    }
-
-    /**
-     * @see https://api.groundspeak.com/documentation#get-geocache-logdrafts
-     *
-     * @param string $referenceCode
-     * @param array  $query
-     *
-     * @return GuzzleHttpClient
-     */
-    public function getGeocacheLogdrafts(string $referenceCode, array $query = [])
-    {
-        return $this->httpClient->get('geocaches/' . $referenceCode . '/logdrafts', $query);
-    }
-
-    /**
-     * @see https://api.groundspeak.com/documentation#get-logdrafts
-     *
-     * @param array $query
-     *
-     * @return GuzzleHttpClient
-     */
-    public function getLogdrafts(array $query = [])
-    {
-        return $this->httpClient->get('logdrafts', $query);
-    }
-
-    /**
-     * @see https://api.groundspeak.com/documentation#get-logdraft
-     *
-     * @param string $referenceCode
-     * @param array  $query
-     *
-     * @return GuzzleHttpClient
-     */
-    public function getLogdraft(string $referenceCode, array $query = [])
-    {
-        return $this->httpClient->get('logdrafts/' . $referenceCode, $query);
-    }
-
-    /**
-     * @see https://api.groundspeak.com/documentation#create-logdraft
-     *
-     * @param array $logDraft
-     * @param array $query
-     *
-     * @return GuzzleHttpClient
-     */
-    public function setLogdraft(array $logDraft, array $query = [])
-    {
-        return $this->httpClient->post('logdrafts', $logDraft, $query);
-    }
-
-    /**
-     * @see https://api.groundspeak.com/documentation#update-logdraft
-     *
-     * @param string $referenceCode
-     * @param array  $logDraft
-     * @param array  $query
-     *
-     * @return GuzzleHttpClient
-     */
-    public function updateLogdraft(string $referenceCode, array $logDraft, array $query = [])
-    {
-        return $this->httpClient->put('logdrafts/' . $referenceCode, $logDraft, $query);
-    }
-
-    /**
-     * @see https://api.groundspeak.com/documentation#delete-logdraft
-     *
-     * @param string $referenceCode
-     *
-     * @return GuzzleHttpClient
-     */
-    public function deleteLogdraft(string $referenceCode)
-    {
-        return $this->httpClient->delete('logdrafts/' . $referenceCode);
-    }
-
-    /**
-     * @see https://api.groundspeak.com/documentation#promote-logdraft
-     *
-     * @param string $referenceCode
-     * @param array  $logDraft
-     *
-     * @return GuzzleHttpClient
-     */
-    public function promoteLogdraft(string $referenceCode, array $logDraft)
-    {
-        return $this->httpClient->post('logdrafts/' . $referenceCode . '/promote', $logDraft);
-    }
-
-    /**
-     * @see https://api.groundspeak.com/documentation#create-logdraft-image
-     *
-     * @param string $referenceCode
-     * @param array  $postImage
-     * @param array  $query
-     *
-     * @return GuzzleHttpClient
-     */
-    public function setLogdraftImage(string $referenceCode, array $postImage, array $query = [])
-    {
-        return $this->httpClient->post('logdrafts/' . $referenceCode . '/images', $postImage, $query);
-    }
-
-    /**
-     * @see https://api.groundspeak.com/documentation#get-geocache-userwaypoints
-     *
-     * @param string $referenceCode
-     * @param array  $query
-     *
-     * @return GuzzleHttpClient
-     */
-    public function getGeocacheUserWaypoints(string $referenceCode, array $query = [])
-    {
-        return $this->httpClient->get('geocaches/' . $referenceCode . '/userwaypoints', $query);
-    }
-
-    /**
-     * @see https://api.groundspeak.com/documentation#get-userwaypoints
-     *
-     * @param array $query
-     *
-     * @return GuzzleHttpClient
-     */
-    public function getUserWaypoints(array $query = [])
-    {
-        return $this->httpClient->get('userwaypoints', $query);
-    }
-
-    /**
-     * @see https://api.groundspeak.com/documentation#create-userwaypoint
-     *
-     * @param string $referenceCode
-     * @param array  $userWaypoint
-     *
-     * @return GuzzleHttpClient
-     */
-    public function setGeocacheUserWaypoint(string $referenceCode, array $userWaypoint)
-    {
-        return $this->httpClient->post('geocaches/' . $referenceCode . '/userwaypoints', $userWaypoint);
-    }
-
-    /**
-     * @see https://api.groundspeak.com/documentation#update-userwaypoint
-     *
-     * @param string $referenceCode
-     * @param array  $userWaypoint
-     *
-     * @return GuzzleHttpClient
-     */
-    public function updateUserWaypoint(string $referenceCode, array $userWaypoint)
-    {
-        return $this->httpClient->put('userwaypoints/' . $referenceCode, $query);
-    }
-
-    /**
-     * @see https://api.groundspeak.com/documentation#delete-userwaypoint
-     *
-     * @param string $referenceCode
-     *
-     * @return GuzzleHttpClient
-     */
-    public function deleteUserWaypoint(string $referenceCode)
-    {
-        return $this->httpClient->delete('userwaypoints/' . $referenceCode);
-    }
-
-    /**
+     * swagger: GET /v{api-version}/lists/{referenceCode}
+     * 
      * @see https://api.groundspeak.com/documentation#get-list
+     * @see https://api.groundspeak.com/api-docs/index#!/Lists/Lists_GetList
      *
      * @param string $referenceCode
      * @param array  $query
@@ -539,20 +378,10 @@ class GeocachingSdk implements GeocachingSdkInterface
     }
 
     /**
-     * @see https://api.groundspeak.com/documentation#create-list
-     *
-     * @param array $list
-     * @param array $query
-     *
-     * @return GuzzleHttpClient
-     */
-    public function setList(array $list, array $query = [])
-    {
-        return $this->httpClient->post('lists', $list, $query);
-    }
-
-    /**
+     * swagger: PUT /v{api-version}/lists/{referenceCode}
+     * 
      * @see https://api.groundspeak.com/documentation#update-list
+     * @see https://api.groundspeak.com/api-docs/index#!/Lists/Lists_UpdateList
      *
      * @param string $referenceCode
      * @param array  $list
@@ -566,19 +395,25 @@ class GeocachingSdk implements GeocachingSdkInterface
     }
 
     /**
-     * @see https://api.groundspeak.com/documentation#remove-list
+     * swagger: GET /v{api-version}/lists/{referenceCode}/geocaches/zipped
+     * 
+     * @see https://api.groundspeak.com/documentation#get-pq-zip
+     * @see https://api.groundspeak.com/api-docs/index#!/Lists/Lists_GetZippedPocketQuery
      *
      * @param string $referenceCode
      *
      * @return GuzzleHttpClient
      */
-    public function deleteList(string $referenceCode)
+    public function getZippedPocketQuery(string $referenceCode)
     {
-        return $this->httpClient->delete('lists/' . $referenceCode);
+        return $this->httpClient->get('lists/' . $referenceCode . '/geocaches/zipped');
     }
 
     /**
+     * swagger: GET /v{api-version}/lists/{referenceCode}/geocaches
+     * 
      * @see https://api.groundspeak.com/documentation#get-list-geocaches
+     * @see https://api.groundspeak.com/api-docs/index#!/Lists/Lists_GetGeocaches
      *
      * @param string $referenceCode
      * @param array  $query
@@ -591,7 +426,10 @@ class GeocachingSdk implements GeocachingSdkInterface
     }
 
     /**
+     * swagger: POST /v{api-version}/lists/{referenceCode}/geocaches
+     * 
      * @see https://api.groundspeak.com/documentation#add-geocache-list
+     * @see https://api.groundspeak.com/api-docs/index#!/Lists/Lists_AddGeocache
      *
      * @param string $referenceCode
      * @param array  $geocache
@@ -605,20 +443,42 @@ class GeocachingSdk implements GeocachingSdkInterface
     }
 
     /**
-     * @see https://api.groundspeak.com/documentation#add-geocaches-list
+     * swagger: POST /v{api-version}/lists
+     * 
+     * @see https://api.groundspeak.com/documentation#create-list
+     * @see https://api.groundspeak.com/api-docs/index#!/Lists/Lists_PostList
      *
-     * @param string $referenceCode
-     * @param array  $query
+     * @param array $list
+     * @param array $query
      *
      * @return GuzzleHttpClient
      */
-    public function setBulkGeocachesList(string $referenceCode, array $query)
+    public function setList(array $list, array $query = [])
     {
-        return $this->httpClient->post('lists/' . $referenceCode . '/bulkgeocaches', [], $query);
+        return $this->httpClient->post('lists', $list, $query);
     }
 
     /**
+     * swagger: POST /v{api-version}/lists/{referenceCode}/bulkgeocaches
+     * 
+     * @see https://api.groundspeak.com/documentation#add-geocaches-list
+     * @see https://api.groundspeak.com/api-docs/index#!/Lists/Lists_AddGeocaches
+     *
+     * @param string $referenceCode
+     * @param array  $body
+     *
+     * @return GuzzleHttpClient
+     */
+    public function setBulkGeocachesList(string $referenceCode, array $body)
+    {
+        return $this->httpClient->post('lists/' . $referenceCode . '/bulkgeocaches', $body);
+    }
+
+    /**
+     * swagger: DELETE /v{api-version}/lists/{referenceCode}/geocaches/{geocacheReferenceCode}
+     * 
      * @see https://api.groundspeak.com/documentation#delete-geocache-list
+     * @see https://api.groundspeak.com/api-docs/index#!/Lists/Lists_RemoveList
      *
      * @param string $referenceCode
      * @param string $geocacheCode
@@ -631,7 +491,313 @@ class GeocachingSdk implements GeocachingSdkInterface
     }
 
     /**
+     * swagger: DELETE /v{api-version}/logdrafts/{referenceCode}
+     * 
+     * @see https://api.groundspeak.com/documentation#delete-logdraft
+     * @see https://api.groundspeak.com/api-docs/index#!/LogDrafts/LogDrafts_Delete
+     *
+     * @param string $referenceCode
+     *
+     * @return GuzzleHttpClient
+     */
+    public function deleteLogdraft(string $referenceCode)
+    {
+        return $this->httpClient->delete('logdrafts/' . $referenceCode);
+    }
+
+    /**
+     * swagger: GET /v{api-version}/logdrafts/{referenceCode}
+     * 
+     * @see https://api.groundspeak.com/documentation#get-logdraft
+     * @see https://api.groundspeak.com/api-docs/index#!/LogDrafts/LogDrafts_Get
+     *
+     * @param string $referenceCode
+     * @param array  $query
+     *
+     * @return GuzzleHttpClient
+     */
+    public function getLogdraft(string $referenceCode, array $query = [])
+    {
+        return $this->httpClient->get('logdrafts/' . $referenceCode, $query);
+    }
+
+    /**
+     * swagger: PUT /v{api-version}/logdrafts/{referenceCode}
+     * 
+     * @see https://api.groundspeak.com/documentation#update-logdraft
+     * @see https://api.groundspeak.com/api-docs/index#!/LogDrafts/LogDrafts_Put
+     *
+     * @param string $referenceCode
+     * @param array  $logDraft
+     * @param array  $query
+     *
+     * @return GuzzleHttpClient
+     */
+    public function updateLogdraft(string $referenceCode, array $logDraft, array $query = [])
+    {
+        return $this->httpClient->put('logdrafts/' . $referenceCode, $logDraft, $query);
+    }
+
+    /**
+     * swagger: GET /v{api-version}/logdrafts
+     * 
+     * @see https://api.groundspeak.com/documentation#get-logdrafts
+     * @see https://api.groundspeak.com/api-docs/index#!/LogDrafts/LogDrafts_GetUserDrafts
+     *
+     * @param array $query
+     *
+     * @return GuzzleHttpClient
+     */
+    public function getLogdrafts(array $query = [])
+    {
+        return $this->httpClient->get('logdrafts', $query);
+    }
+
+    /**
+     * swagger: POST /v{api-version}/logdrafts
+     * 
+     * @see https://api.groundspeak.com/documentation#create-logdraft
+     * @see https://api.groundspeak.com/api-docs/index#!/LogDrafts/LogDrafts_Post
+     *
+     * @param array $logDraft
+     * @param array $query
+     *
+     * @return GuzzleHttpClient
+     */
+    public function setLogdraft(array $logDraft, array $query = [])
+    {
+        return $this->httpClient->post('logdrafts', $logDraft, $query);
+    }
+
+    /**
+     * swagger: GET /v{api-version}/geocaches/{referenceCode}/logdrafts
+     * 
+     * @see https://api.groundspeak.com/documentation#get-geocache-logdrafts
+     * @see https://api.groundspeak.com/api-docs/index#!/LogDrafts/LogDrafts_GetGeocacheDrafts
+     *
+     * @param string $referenceCode
+     * @param array  $query
+     *
+     * @return GuzzleHttpClient
+     */
+    public function getGeocacheLogdrafts(string $referenceCode, array $query = [])
+    {
+        return $this->httpClient->get('geocaches/' . $referenceCode . '/logdrafts', $query);
+    }
+
+    /**
+     * swagger: POST /v{api-version}/logdrafts/{referenceCode}/promote
+     * 
+     * @see https://api.groundspeak.com/documentation#promote-logdraft
+     * @see https://api.groundspeak.com/api-docs/index#!/LogDrafts/LogDrafts_PromoteToGeocacheLog
+     *
+     * @param string $referenceCode
+     * @param array  $logDraft
+     *
+     * @return GuzzleHttpClient
+     */
+    public function promoteLogdraft(string $referenceCode, array $logDraft)
+    {
+        return $this->httpClient->post('logdrafts/' . $referenceCode . '/promote', $logDraft);
+    }
+
+    /**
+     * swagger: POST /v{api-version}/logdrafts/{referenceCode}/images
+     * 
+     * @see https://api.groundspeak.com/documentation#create-logdraft-image
+     * @see https://api.groundspeak.com/api-docs/index#!/LogDrafts/LogDrafts_Post_0
+     *
+     * @param string $referenceCode
+     * @param array  $postImage
+     * @param array  $query
+     *
+     * @return GuzzleHttpClient
+     */
+    public function setLogdraftImage(string $referenceCode, array $postImage, array $query = [])
+    {
+        return $this->httpClient->post('logdrafts/' . $referenceCode . '/images', $postImage, $query);
+    }
+
+    /**
+     * swagger: DELETE /v{api-version}/trackablelogs/{referenceCode}
+     * 
+     * @see https://api.groundspeak.com/documentation#delete-trackablelog
+     * @see https://api.groundspeak.com/api-docs/index#!/TrackableLogs/TrackableLogs_ArchiveTrackableLog
+     *
+     * @param string $referenceCode
+     *
+     * @return GuzzleHttpClient
+     */
+    public function deleteTrackableLog(string $referenceCode)
+    {
+        return $this->httpClient->delete('trackablelogs/' . $referenceCode);
+    }
+
+    /**
+     * swagger: GET /v{api-version}/trackablelogs/{referenceCode}
+     * 
+     * @see https://api.groundspeak.com/documentation#get-trackablelog
+     * @see https://api.groundspeak.com/api-docs/index#!/TrackableLogs/TrackableLogs_GetTrackableLog
+     *
+     * @param string $referenceCode
+     * @param array  $query
+     *
+     * @return GuzzleHttpClient
+     */
+    public function getTrackableLog(string $referenceCode, array $query = [])
+    {
+        return $this->httpClient->get('trackablelogs/' . $referenceCode, $query);
+    }
+
+    /**
+     * swagger: PUT /v{api-version}/trackablelogs/{referenceCode}
+     * 
+     * @see https://api.groundspeak.com/documentation#update-trackablelog
+     * @see https://api.groundspeak.com/api-docs/index#!/TrackableLogs/TrackableLogs_Put
+     *
+     * @param string $referenceCode
+     * @param array  $trackableLog
+     * @param array  $query
+     *
+     * @return GuzzleHttpClient
+     */
+    public function updateTrackableLog(string $referenceCode, array $trackableLog, array $query = [])
+    {
+        return $this->httpClient->put('trackablelogs/' . $referenceCode, $trackableLog, $query);
+    }
+
+    /**
+     * swagger: GET /v{api-version}/trackablelogs/{referenceCode}/images
+     * 
+     * @see https://api.groundspeak.com/documentation#get-trackablelog-images
+     * @see https://api.groundspeak.com/api-docs/index#!/TrackableLogs/TrackableLogs_GetImages
+     *
+     * @param string $referenceCode
+     * @param array  $query
+     *
+     * @return GuzzleHttpClient
+     */
+    public function getTrackableLogImages(string $referenceCode, array $query = [])
+    {
+        return $this->httpClient->get('trackablelogs/' . $referenceCode . '/images', $query);
+    }
+
+    /**
+     * swagger: POST /v{api-version}/trackablelogs/{referenceCode}/images
+     * 
+     * @see https://api.groundspeak.com/documentation#get-trackablelog-images
+     * @see https://api.groundspeak.com/api-docs/index#!/TrackableLogs/TrackableLogs_PostImages
+     *
+     * @param string $referenceCode
+     * @param array  $imageToUpload
+     * @param array  $query
+     *
+     * @return GuzzleHttpClient
+     */
+    public function setTrackableLogImages(string $referenceCode, array $imageToUpload, array $query = [])
+    {
+        return $this->httpClient->post('trackablelogs/' . $referenceCode . '/images', $imageToUpload, $query);
+    }
+
+    /**
+     * swagger: POST /v{api-version}/trackablelogs
+     * 
+     * @see https://api.groundspeak.com/documentation#create-trackablelog
+     * @see https://api.groundspeak.com/api-docs/index#!/TrackableLogs/TrackableLogs_PostLog
+     *
+     * @param array $trackableLog
+     * @param array $query
+     *
+     * @return GuzzleHttpClient
+     */
+    public function setTrackableLog(array $trackableLog, array $query = [])
+    {
+        return $this->httpClient->post('trackablelogs', $trackableLog, $query);
+    }
+
+    /**
+     * swagger: GET /v{api-version}/trackables/{referenceCode}
+     * 
+     * @see https://api.groundspeak.com/documentation#get-trackable
+     * @see https://api.groundspeak.com/api-docs/index#!/Trackables/Trackables_GetTrackable
+     *
+     * @param string $referenceCode
+     * @param array  $query
+     *
+     * @return GuzzleHttpClient
+     */
+    public function getTrackables(string $referenceCode, array $query = [])
+    {
+        return $this->httpClient->get('trackables/' . $referenceCode, $query);
+    }
+
+    /**
+     * swagger: GET /v{api-version}/trackables
+     * 
+     * @see https://api.groundspeak.com/documentation#get-users-trackables
+     * @see https://api.groundspeak.com/api-docs/index#!/Trackables/Trackables_GetUserTrackables
+     *
+     * @param array $query
+     *
+     * @return GuzzleHttpClient
+     */
+    public function getUserTrackables(array $query = [])
+    {
+        return $this->httpClient->get('trackables', $query);
+    }
+
+    /**
+     * swagger: GET /v{api-version}/trackables/geocointypes
+     * 
+     * @see https://api.groundspeak.com/documentation#get-geocoin-types
+     * @see https://api.groundspeak.com/api-docs/index#!/Trackables/Trackables_GetGeocoinTypes
+     *
+     * @param array $query
+     *
+     * @return GuzzleHttpClient
+     */
+    public function getGeocoinTypes(array $query = [])
+    {
+        return $this->httpClient->get('trackables/geocointypes', $query);
+    }
+
+    /**
+     * swagger: GET /v{api-version}/trackables/{referenceCode}/Images
+     * 
+     * @see https://api.groundspeak.com/documentation#get-users-trackables
+     * @see https://api.groundspeak.com/api-docs/index#!/Trackables/Trackables_GetImages
+     *
+     * @param string $referenceCode
+     * @param array  $query
+     *
+     * @return GuzzleHttpClient
+     */
+    public function getTrackableImages(string $referenceCode, array $query = [])
+    {
+        return $this->httpClient->get('trackables/' . $referenceCode . '/images', $query);
+    }
+
+    /**
+     * swagger: GET /v{api-version}/trackables/{referenceCode}/trackablelogs
+     * 
+     * @see https://api.groundspeak.com/documentation#get-trackable-logs
+     * @see https://api.groundspeak.com/api-docs/index#!/Trackables/Trackables_GetLogs
+     *
+     * @param string $referenceCode
+     * @param array  $query
+     *
+     * @return GuzzleHttpClient
+     */
+    public function getTrackableLogs(string $referenceCode, array $query = [])
+    {
+        return $this->httpClient->get('trackables/' . $referenceCode . '/trackablelogs', $query);
+    }
+
+    /**
+     * swagger: GET /v{api-version}/users/{referenceCode}
+     * 
      * @see https://api.groundspeak.com/documentation#get-user
+     * @see https://api.groundspeak.com/api-docs/index#!/Users/Users_GetUser
      *
      * @param string $referenceCode
      * @param string $query
@@ -644,58 +810,10 @@ class GeocachingSdk implements GeocachingSdkInterface
     }
 
     /**
-     * @see https://api.groundspeak.com/documentation#get-users
-     *
-     * @param array $query
-     *
-     * @return GuzzleHttpClient
-     */
-    public function getUsers(array $query = [])
-    {
-        return $this->httpClient->get('users', $query);
-    }
-
-    /**
-     * @see https://api.groundspeak.com/documentation#get-user-logs
-     *
-     * @param string $referenceCode
-     * @param array  $query
-     *
-     * @return GuzzleHttpClient
-     */
-    public function getUserGeocacheLogs(string $referenceCode, array $query = [])
-    {
-        return $this->httpClient->get('users/' . $referenceCode . '/geocachelogs', $query);
-    }
-
-    /**
-     * @see https://api.groundspeak.com/documentation#get-lists
-     *
-     * @param string $referenceCode
-     * @param array  $query
-     *
-     * @return GuzzleHttpClient
-     */
-    public function getUserLists(string $referenceCode, array $query = [])
-    {
-        return $this->httpClient->get('users/' . $referenceCode . '/lists', $query);
-    }
-
-    /**
-     * @see https://api.groundspeak.com/documentation#get-souvenirs
-     *
-     * @param string $referenceCode
-     * @param array  $query
-     *
-     * @return GuzzleHttpClient
-     */
-    public function getUserSouvenirs(string $referenceCode, array $query = [])
-    {
-        return $this->httpClient->get('users/' . $referenceCode . '/souvenirs', $query);
-    }
-
-    /**
+     * swagger: GET /v{api-version}/users/{referenceCode}/images
+     * 
      * @see https://api.groundspeak.com/documentation#get-user-images
+     * @see https://api.groundspeak.com/api-docs/index#!/Users/Users_GetImages
      *
      * @param string $referenceCode
      * @param array  $query
@@ -708,80 +826,167 @@ class GeocachingSdk implements GeocachingSdkInterface
     }
 
     /**
-     * @see https://api.groundspeak.com/documentation#get-friends
+     * swagger: GET /v{api-version}/users/{referenceCode}/souvenirs
+     * 
+     * @see https://api.groundspeak.com/documentation#get-souvenirs
+     * @see https://api.groundspeak.com/api-docs/index#!/Users/Users_GetSouvenirs
+     *
+     * @param string $referenceCode
+     * @param array  $query
+     *
+     * @return GuzzleHttpClient
+     */
+    public function getUserSouvenirs(string $referenceCode, array $query = [])
+    {
+        return $this->httpClient->get('users/' . $referenceCode . '/souvenirs', $query);
+    }
+
+    /**
+     * swagger: GET /v{api-version}/users
+     * 
+     * @see https://api.groundspeak.com/documentation#get-users
+     * @see https://api.groundspeak.com/api-docs/index#!/Users/Users_GetUsers
      *
      * @param array $query
      *
      * @return GuzzleHttpClient
      */
-    public function getFriends(array $query = [])
+    public function getUsers(array $query = [])
     {
-        return $this->httpClient->get('friends', $query);
+        return $this->httpClient->get('users', $query);
     }
 
     /**
-     * @see https://api.groundspeak.com/documentation#get-friendrequests
+     * swagger: GET /v{api-version}/users/{referenceCode}/list
+     * 
+     * @see https://api.groundspeak.com/documentation#get-lists
+     * @see https://api.groundspeak.com/api-docs/index#!/Users/Users_GetLists
+     *
+     * @param string $referenceCode
+     * @param array  $query
+     *
+     * @return GuzzleHttpClient
+     */
+    public function getUserLists(string $referenceCode, array $query = [])
+    {
+        return $this->httpClient->get('users/' . $referenceCode . '/lists', $query);
+    }
+
+    /**
+     * swagger: GET /v{api-version}/users/{referenceCode}/geocachelogs
+     * 
+     * @see https://api.groundspeak.com/documentation#get-user-logs
+     * @see https://api.groundspeak.com/api-docs/index#!/Users/Users_GetGeocacheLogs
+     *
+     * @param string $referenceCode
+     * @param array  $query
+     *
+     * @return GuzzleHttpClient
+     */
+    public function getUserGeocacheLogs(string $referenceCode, array $query = [])
+    {
+        return $this->httpClient->get('users/' . $referenceCode . '/geocachelogs', $query);
+    }
+
+    /**
+     * swagger: POST /v{api-version}/_users/{username}/validate
+     * 
+     * @see https://api.groundspeak.com/api-docs/index#!/Users/Users_ValidateUserAsync
+     * 
+     * @param string $username
+     * @param array $body
+     * @param array $options
+     * 
+     * @return GuzzleHttpClient
+     */
+    public function validateUser(string $username, array $body, array $options)
+    {
+        $options['form_params'] = $body;
+        return $this->httpClient->post('_users/' . $username . '/validate', [], [], $options);
+    }
+
+    /**
+     * swagger: GET /v{api-version}/userwaypoints
+     * 
+     * @see https://api.groundspeak.com/documentation#get-userwaypoints
+     * @see https://api.groundspeak.com/api-docs/index#!/UserWaypoints/UserWaypoints_GetUserWaypointsAsync
      *
      * @param array $query
      *
      * @return GuzzleHttpClient
      */
-    public function getFriendRequests(array $query = [])
+    public function getUserWaypoints(array $query = [])
     {
-        return $this->httpClient->get('friendrequests', $query);
+        return $this->httpClient->get('userwaypoints', $query);
     }
 
     /**
-     * @see https://api.groundspeak.com/documentation#create-friendrequest
+     * swagger: POST /v{api-version}/userwaypoints
+     * 
+     * @see https://api.groundspeak.com/documentation#create-userwaypoint
+     * @see https://api.groundspeak.com/api-docs/index#!/UserWaypoints/UserWaypoints_Post
      *
-     * @param array $friendRequest
-     * @param array $query
+     * @param array $body
      *
      * @return GuzzleHttpClient
      */
-    public function sendFriendRequest(array $friendRequest, array $query = [])
+    public function setGeocacheUserWaypoint(string $referenceCode, array $body)
     {
-        return $this->httpClient->post('friendrequests', $friendRequest, $query);
+        return $this->httpClient->post('userwaypoints', $body);
     }
 
     /**
-     * @see https://api.groundspeak.com/documentation#accept-friendrequest
+     * swagger: GET /v{api-version}/geocaches/{referenceCode}/userwaypoints
+     * 
+     * @see https://api.groundspeak.com/documentation#get-geocache-userwaypoints
+     * @see https://api.groundspeak.com/api-docs/index#!/UserWaypoints/UserWaypoints_GetGeocacheUserWaypointsAsync
      *
-     * @param string $requestId
+     * @param string $referenceCode
+     * @param array  $query
      *
      * @return GuzzleHttpClient
      */
-    public function acceptFriendRequest(string $requestId)
+    public function getGeocacheUserWaypoints(string $referenceCode, array $query = [])
     {
-        return $this->httpClient->post('friendrequests/' . $requestId . '/accept');
+        return $this->httpClient->get('geocaches/' . $referenceCode . '/userwaypoints', $query);
     }
 
     /**
-     * @see https://api.groundspeak.com/documentation#delete-friendrequest
-     *
-     * @param string $requestId
-     *
-     * @return GuzzleHttpClient
-     */
-    public function deleteFriendRequest(string $requestId)
-    {
-        return $this->httpClient->delete('friendrequests/' . $requestId);
-    }
-
-    /**
-     * @see https://api.groundspeak.com/documentation#delete-friend
+     * swagger: DELETE /v{api-version}/userwaypoints/{referenceCode}
+     * 
+     * @see https://api.groundspeak.com/documentation#delete-userwaypoint
+     * @see https://api.groundspeak.com/api-docs/index#!/UserWaypoints/UserWaypoints_Delete
      *
      * @param string $referenceCode
      *
      * @return GuzzleHttpClient
      */
-    public function deleteFriend(string $referenceCode)
+    public function deleteUserWaypoint(string $referenceCode)
     {
-        return $this->httpClient->delete('friends/' . $referenceCode);
+        return $this->httpClient->delete('userwaypoints/' . $referenceCode);
     }
 
     /**
+     * swagger: PUT /v{api-version}/userwaypoints/{referenceCode}
+     * 
+     * @see https://api.groundspeak.com/documentation#update-userwaypoint
+     * @see https://api.groundspeak.com/api-docs/index#!/UserWaypoints/UserWaypoints_Put
+     *
+     * @param string $referenceCode
+     * @param array  $userWaypoint
+     *
+     * @return GuzzleHttpClient
+     */
+    public function updateUserWaypoint(string $referenceCode, array $userWaypoint)
+    {
+        return $this->httpClient->put('userwaypoints/' . $referenceCode, $query);
+    }
+
+    /**
+     * swagger: GET /v{api-version}/utilities/referencecode
+     * 
      * @see https://api.groundspeak.com/documentation#get-reference-code
+     * @see https://api.groundspeak.com/api-docs/index#!/Utilities/Utilities_GetReferenceCode
      *
      * @param array $query
      *
@@ -793,12 +998,14 @@ class GeocachingSdk implements GeocachingSdkInterface
     }
 
     /**
-     * @return bool
+     * swagger: GET /status/ping
+     * 
+     * @see https://api.groundspeak.com/api-docs/index#!/Status/Status_PingAsync
+     * 
+     * @return int
      */
-    public function ping(): bool
+    public function ping(): int
     {
-        $this->httpClient->get('/ping');
-
-        return true;
+        return $this->httpClient->get('/ping')->getStatusCode();
     }
 }

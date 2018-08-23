@@ -56,11 +56,11 @@ interface GeocachingSdkInterface
      * @see https://api.groundspeak.com/documentation#upsert-geocachenote
      *
      * @param string $referenceCode
-     * @param string $note
+     * @param array $note
      *
      * @return GuzzleHttpClient
      */
-    public function setGeocacheNote(string $referenceCode, string $note);
+    public function setGeocacheNote(string $referenceCode, array $note);
 
     /**
      * @see https://api.groundspeak.com/documentation#delete-geocachenote
@@ -530,6 +530,7 @@ interface GeocachingSdkInterface
      */
     public function getUserImages(string $referenceCode, array $query = []);
 
+
     /**
      * @see https://api.groundspeak.com/documentation#get-friends
      *
@@ -595,7 +596,7 @@ interface GeocachingSdkInterface
     public function getReferenceCodeFromId(array $query);
 
     /**
-     * @return bool
+     * @return int
      */
-    public function ping(): bool;
+    public function ping();
 }
