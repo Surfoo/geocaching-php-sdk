@@ -96,7 +96,7 @@ class GeocachingSdk implements GeocachingSdkInterface
     }
 
     /**
-     * swagger: DELETE /v{api-version}/friends/{userCode
+     * swagger: DELETE /v{api-version}/friends/{userCode}
      * 
      * @see https://api.groundspeak.com/documentation#delete-friend
      * @see https://api.groundspeak.com/api-docs/index#!/Friends/Friends_RemoveFriend
@@ -157,7 +157,7 @@ class GeocachingSdk implements GeocachingSdkInterface
     }
 
     /**
-     * swagger: GET /v{api-version}/geocachelogs/{referenceCode}
+     * swagger: PUT /v{api-version}/geocachelogs/{referenceCode}
      * 
      * @see https://api.groundspeak.com/documentation#update-geocachelog
      * @see https://api.groundspeak.com/api-docs/index#!/GeocacheLogs/GeocacheLogs_Put
@@ -857,7 +857,7 @@ class GeocachingSdk implements GeocachingSdkInterface
     }
 
     /**
-     * swagger: GET /v{api-version}/users/{referenceCode}/list
+     * swagger: GET /v{api-version}/users/{referenceCode}/lists
      * 
      * @see https://api.groundspeak.com/documentation#get-lists
      * @see https://api.groundspeak.com/api-docs/index#!/Users/Users_GetLists

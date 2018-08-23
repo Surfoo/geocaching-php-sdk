@@ -24,11 +24,15 @@ class GeocachingFactory
     const PRODUCTION_API_URL = 'https://api.groundspeak.com';
 
     /**
+     * staging
+     *
      * @const string
      */
     const ENVIRONMENT_STAGING = 'staging';
 
     /**
+     * production
+     *
      * @const string
      */
     const ENVIRONMENT_PRODUCTION = 'production';
@@ -38,7 +42,7 @@ class GeocachingFactory
      *
      * @const string
      */
-    const API_VERSION = '/v1/';
+    const API_VERSION = 'v1';
 
     /**
      * Return Geocaching SDK to use API's methods
@@ -90,7 +94,7 @@ class GeocachingFactory
     {
         $baseUri = self::ENVIRONMENT_STAGING == $environment ? self::STAGING_API_URL : self::PRODUCTION_API_URL;
         $client  = new Client([
-            'base_uri' => $baseUri . self::API_VERSION,
+            'base_uri' => sprintf('%s/%s/', $baseUri, self::API_VERSION),
         ]);
 
         return new GuzzleHttpClient($client, $accessToken, $options);
