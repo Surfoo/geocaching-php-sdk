@@ -11,6 +11,7 @@
 namespace Geocaching\Sdk;
 
 use Geocaching\Lib\Adapters\HttpClientInterface;
+use Geocaching\Lib\Adapters\GuzzleHttpClient;
 
 /**
  * List of methods from Groundspeak API.
@@ -137,7 +138,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      */
     public function deleteGeocacheLog(string $referenceCode)
     {
-        return $this->httpClient->delete('geocacheslogs/' . $referenceCode);
+        return $this->httpClient->delete('geocachelogs/' . $referenceCode);
     }
 
     /**
@@ -186,7 +187,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      */
     public function getGeocacheLogImages(string $referenceCode, array $query = [])
     {
-        return $this->httpClient->get('geocacheslogs/' . $referenceCode . '/images', $query);
+        return $this->httpClient->get('geocachelogs/' . $referenceCode . '/images', $query);
     }
 
     /**
@@ -219,7 +220,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      */
     public function setGeocacheLog(array $geocacheLog, array $query = [])
     {
-        return $this->httpClient->post('geocachelogs', $query);
+        return $this->httpClient->post('geocachelogs', $geocacheLog, $query);
     }
 
     /**
@@ -247,7 +248,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return GuzzleHttpClient
      */
-    public function setGeocacheNote(string $referenceCode, array $note)
+    public function updateGeocacheNote(string $referenceCode, array $note)
     {
         return $this->httpClient->put('geocaches/' . $referenceCode . '/notes', $note);
     }
@@ -726,7 +727,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return GuzzleHttpClient
      */
-    public function getTrackables(string $referenceCode, array $query = [])
+    public function getTrackable(string $referenceCode, array $query = [])
     {
         return $this->httpClient->get('trackables/' . $referenceCode, $query);
     }
@@ -899,7 +900,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * 
      * @return GuzzleHttpClient
      */
-    public function validateUser(string $username, array $body, array $options)
+    public function validateUser(string $username, array $body)
     {
         $options['form_params'] = $body;
         return $this->httpClient->post('_users/' . $username . '/validate', [], [], $options);
@@ -973,11 +974,11 @@ class GeocachingSdk implements GeocachingSdkInterface
      * @see https://api.groundspeak.com/api-docs/index#!/UserWaypoints/UserWaypoints_Put
      *
      * @param string $referenceCode
-     * @param array  $userWaypoint
+     * @param array  $query
      *
      * @return GuzzleHttpClient
      */
-    public function updateUserWaypoint(string $referenceCode, array $userWaypoint)
+    public function updateUserWaypoint(string $referenceCode, array $query)
     {
         return $this->httpClient->put('userwaypoints/' . $referenceCode, $query);
     }
@@ -999,13 +1000,23 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: GET /status/ping
-     * 
+     *
      * @see https://api.groundspeak.com/api-docs/index#!/Status/Status_PingAsync
-     * 
-     * @return int
+     *
+     * @return GuzzleHttpClient
      */
-    public function ping(): int
+    public function ping()
     {
-        return $this->httpClient->get('/ping')->getStatusCode();
+        return $this->httpClient->get('/ping');
+    }
+
+    /**
+     * alias of ping()
+     *
+     * @return GuzzleHttpClient
+     */
+    public function status()
+    {
+        return $this->ping();
     }
 }

@@ -254,7 +254,7 @@
                     <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setGeocacheNote">setGeocacheNote</a>(string $referenceCode, array $note)
+                    <a href="#method_updateGeocacheNote">updateGeocacheNote</a>(string $referenceCode, array $note)
         
                                             <p>swagger: PUT /v{api-version}/geocaches/{referenceCode}/notes</p>                </div>
                 <div class="col-md-2"></div>
@@ -351,7 +351,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                    <a href="../../Geocaching/Lib/Adapters/GuzzleHttpClient.html"><abbr title="Geocaching\Lib\Adapters\GuzzleHttpClient">GuzzleHttpClient</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getZippedPocketQuery">getZippedPocketQuery</a>(string $referenceCode)
@@ -554,7 +554,7 @@
                     <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getTrackables">getTrackables</a>(string $referenceCode, array $query = [])
+                    <a href="#method_getTrackable">getTrackable</a>(string $referenceCode, array $query = [])
         
                                             <p>swagger: GET /v{api-version}/trackables/{referenceCode}</p>                </div>
                 <div class="col-md-2"></div>
@@ -664,7 +664,7 @@
                     <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_validateUser">validateUser</a>(string $username, array $body, array $options)
+                    <a href="#method_validateUser">validateUser</a>(string $username, array $body)
         
                                             <p>swagger: POST /v{api-version}/_users/{username}/validate</p>                </div>
                 <div class="col-md-2"></div>
@@ -714,7 +714,7 @@
                     <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_updateUserWaypoint">updateUserWaypoint</a>(string $referenceCode, array $userWaypoint)
+                    <a href="#method_updateUserWaypoint">updateUserWaypoint</a>(string $referenceCode, array $query)
         
                                             <p>swagger: PUT /v{api-version}/userwaypoints/{referenceCode}</p>                </div>
                 <div class="col-md-2"></div>
@@ -731,12 +731,22 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    int
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_ping">ping</a>()
         
                                             <p>swagger: GET /status/ping</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Geocaching/Lib/Adapters/GuzzleHttpClient.html"><abbr title="Geocaching\Lib\Adapters\GuzzleHttpClient">GuzzleHttpClient</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_status">status</a>()
+        
+                                            <p>alias of ping()</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -747,7 +757,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 32</div>
+        <div class="location">at         line 33</div>
         <code>                    
     <strong>__construct</strong>(<a href="../../Geocaching/Lib/Adapters/HttpClientInterface.html"><abbr title="Geocaching\Lib\Adapters\HttpClientInterface">HttpClientInterface</abbr></a> $httpClient)
         </code>
@@ -776,7 +786,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getFriends">
-        <div class="location">at         line 47</div>
+        <div class="location">at         line 48</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>getFriends</strong>(array $query = [])
         </code>
@@ -833,7 +843,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getFriendRequests">
-        <div class="location">at         line 62</div>
+        <div class="location">at         line 63</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>getFriendRequests</strong>(array $query = [])
         </code>
@@ -890,7 +900,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_sendFriendRequest">
-        <div class="location">at         line 78</div>
+        <div class="location">at         line 79</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>sendFriendRequest</strong>(array $friendRequest, array $query = [])
         </code>
@@ -952,7 +962,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_acceptFriendRequest">
-        <div class="location">at         line 93</div>
+        <div class="location">at         line 94</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>acceptFriendRequest</strong>(string $requestId)
         </code>
@@ -1009,7 +1019,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_deleteFriend">
-        <div class="location">at         line 108</div>
+        <div class="location">at         line 109</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>deleteFriend</strong>(string $referenceCode)
         </code>
@@ -1066,7 +1076,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_deleteFriendRequest">
-        <div class="location">at         line 123</div>
+        <div class="location">at         line 124</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>deleteFriendRequest</strong>(string $requestId)
         </code>
@@ -1123,7 +1133,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_deleteGeocacheLog">
-        <div class="location">at         line 138</div>
+        <div class="location">at         line 139</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>deleteGeocacheLog</strong>(string $referenceCode)
         </code>
@@ -1180,7 +1190,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getGeocacheLog">
-        <div class="location">at         line 154</div>
+        <div class="location">at         line 155</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>getGeocacheLog</strong>(string $referenceCode, array $query = [])
         </code>
@@ -1242,7 +1252,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_updateGeocacheLog">
-        <div class="location">at         line 171</div>
+        <div class="location">at         line 172</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>updateGeocacheLog</strong>(string $referenceCode, array $geocacheLog, array $query = [])
         </code>
@@ -1309,7 +1319,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getGeocacheLogImages">
-        <div class="location">at         line 187</div>
+        <div class="location">at         line 188</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>getGeocacheLogImages</strong>(string $referenceCode, array $query = [])
         </code>
@@ -1371,7 +1381,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setGeocacheLogImages">
-        <div class="location">at         line 204</div>
+        <div class="location">at         line 205</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>setGeocacheLogImages</strong>(string $referenceCode, array $imageToUpload, array $query = [])
         </code>
@@ -1438,7 +1448,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setGeocacheLog">
-        <div class="location">at         line 220</div>
+        <div class="location">at         line 221</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>setGeocacheLog</strong>(array $geocacheLog, array $query = [])
         </code>
@@ -1500,7 +1510,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_deleteGeocacheNote">
-        <div class="location">at         line 234</div>
+        <div class="location">at         line 235</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>deleteGeocacheNote</strong>(string $referenceCode)
         </code>
@@ -1550,10 +1560,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_setGeocacheNote">
-        <div class="location">at         line 250</div>
+                    <h3 id="method_updateGeocacheNote">
+        <div class="location">at         line 251</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
-    <strong>setGeocacheNote</strong>(string $referenceCode, array $note)
+    <strong>updateGeocacheNote</strong>(string $referenceCode, array $note)
         </code>
     </h3>
     <div class="details">
@@ -1613,7 +1623,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getGeocache">
-        <div class="location">at         line 266</div>
+        <div class="location">at         line 267</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>getGeocache</strong>(string $referenceCode, array $query = [])
         </code>
@@ -1675,7 +1685,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getGeocacheImages">
-        <div class="location">at         line 282</div>
+        <div class="location">at         line 283</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>getGeocacheImages</strong>(string $referenceCode, array $query = [])
         </code>
@@ -1737,7 +1747,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getGeocacheTrackables">
-        <div class="location">at         line 298</div>
+        <div class="location">at         line 299</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>getGeocacheTrackables</strong>(string $referenceCode, array $query = [])
         </code>
@@ -1799,7 +1809,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getGeocaches">
-        <div class="location">at         line 313</div>
+        <div class="location">at         line 314</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>getGeocaches</strong>(array $query)
         </code>
@@ -1856,7 +1866,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getGeocacheLogs">
-        <div class="location">at         line 329</div>
+        <div class="location">at         line 330</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>getGeocacheLogs</strong>(string $referenceCode, array $query = [])
         </code>
@@ -1918,7 +1928,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_searchGeocaches">
-        <div class="location">at         line 344</div>
+        <div class="location">at         line 345</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>searchGeocaches</strong>(array $query)
         </code>
@@ -1975,7 +1985,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_deleteList">
-        <div class="location">at         line 359</div>
+        <div class="location">at         line 360</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>deleteList</strong>(string $referenceCode)
         </code>
@@ -2032,7 +2042,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getList">
-        <div class="location">at         line 375</div>
+        <div class="location">at         line 376</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>getList</strong>(string $referenceCode, array $query = [])
         </code>
@@ -2094,7 +2104,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_updateList">
-        <div class="location">at         line 392</div>
+        <div class="location">at         line 393</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>updateList</strong>(string $referenceCode, array $list, array $query = [])
         </code>
@@ -2161,8 +2171,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getZippedPocketQuery">
-        <div class="location">at         line 407</div>
-        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+        <div class="location">at         line 408</div>
+        <code>                    <a href="../../Geocaching/Lib/Adapters/GuzzleHttpClient.html"><abbr title="Geocaching\Lib\Adapters\GuzzleHttpClient">GuzzleHttpClient</abbr></a>
     <strong>getZippedPocketQuery</strong>(string $referenceCode)
         </code>
     </h3>
@@ -2188,7 +2198,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td><a href="../../Geocaching/Lib/Adapters/GuzzleHttpClient.html"><abbr title="Geocaching\Lib\Adapters\GuzzleHttpClient">GuzzleHttpClient</abbr></a></td>
             <td></td>
         </tr>
     </table>
@@ -2218,7 +2228,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getGeocacheList">
-        <div class="location">at         line 423</div>
+        <div class="location">at         line 424</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>getGeocacheList</strong>(string $referenceCode, array $query = [])
         </code>
@@ -2280,7 +2290,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setGeocacheList">
-        <div class="location">at         line 440</div>
+        <div class="location">at         line 441</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>setGeocacheList</strong>(string $referenceCode, array $geocache, array $query = [])
         </code>
@@ -2347,7 +2357,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setList">
-        <div class="location">at         line 456</div>
+        <div class="location">at         line 457</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>setList</strong>(array $list, array $query = [])
         </code>
@@ -2409,7 +2419,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setBulkGeocachesList">
-        <div class="location">at         line 472</div>
+        <div class="location">at         line 473</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>setBulkGeocachesList</strong>(string $referenceCode, array $body)
         </code>
@@ -2471,7 +2481,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_deleteGeocacheList">
-        <div class="location">at         line 488</div>
+        <div class="location">at         line 489</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>deleteGeocacheList</strong>(string $referenceCode, string $geocacheCode)
         </code>
@@ -2533,7 +2543,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_deleteLogdraft">
-        <div class="location">at         line 503</div>
+        <div class="location">at         line 504</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>deleteLogdraft</strong>(string $referenceCode)
         </code>
@@ -2590,7 +2600,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getLogdraft">
-        <div class="location">at         line 519</div>
+        <div class="location">at         line 520</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>getLogdraft</strong>(string $referenceCode, array $query = [])
         </code>
@@ -2652,7 +2662,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_updateLogdraft">
-        <div class="location">at         line 536</div>
+        <div class="location">at         line 537</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>updateLogdraft</strong>(string $referenceCode, array $logDraft, array $query = [])
         </code>
@@ -2719,7 +2729,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getLogdrafts">
-        <div class="location">at         line 551</div>
+        <div class="location">at         line 552</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>getLogdrafts</strong>(array $query = [])
         </code>
@@ -2776,7 +2786,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setLogdraft">
-        <div class="location">at         line 567</div>
+        <div class="location">at         line 568</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>setLogdraft</strong>(array $logDraft, array $query = [])
         </code>
@@ -2838,7 +2848,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getGeocacheLogdrafts">
-        <div class="location">at         line 583</div>
+        <div class="location">at         line 584</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>getGeocacheLogdrafts</strong>(string $referenceCode, array $query = [])
         </code>
@@ -2900,7 +2910,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_promoteLogdraft">
-        <div class="location">at         line 599</div>
+        <div class="location">at         line 600</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>promoteLogdraft</strong>(string $referenceCode, array $logDraft)
         </code>
@@ -2962,7 +2972,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setLogdraftImage">
-        <div class="location">at         line 616</div>
+        <div class="location">at         line 617</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>setLogdraftImage</strong>(string $referenceCode, array $postImage, array $query = [])
         </code>
@@ -3029,7 +3039,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_deleteTrackableLog">
-        <div class="location">at         line 631</div>
+        <div class="location">at         line 632</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>deleteTrackableLog</strong>(string $referenceCode)
         </code>
@@ -3086,7 +3096,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getTrackableLog">
-        <div class="location">at         line 647</div>
+        <div class="location">at         line 648</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>getTrackableLog</strong>(string $referenceCode, array $query = [])
         </code>
@@ -3148,7 +3158,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_updateTrackableLog">
-        <div class="location">at         line 664</div>
+        <div class="location">at         line 665</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>updateTrackableLog</strong>(string $referenceCode, array $trackableLog, array $query = [])
         </code>
@@ -3215,7 +3225,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getTrackableLogImages">
-        <div class="location">at         line 680</div>
+        <div class="location">at         line 681</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>getTrackableLogImages</strong>(string $referenceCode, array $query = [])
         </code>
@@ -3277,7 +3287,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setTrackableLogImages">
-        <div class="location">at         line 697</div>
+        <div class="location">at         line 698</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>setTrackableLogImages</strong>(string $referenceCode, array $imageToUpload, array $query = [])
         </code>
@@ -3344,7 +3354,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setTrackableLog">
-        <div class="location">at         line 713</div>
+        <div class="location">at         line 714</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>setTrackableLog</strong>(array $trackableLog, array $query = [])
         </code>
@@ -3405,10 +3415,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getTrackables">
-        <div class="location">at         line 729</div>
+                    <h3 id="method_getTrackable">
+        <div class="location">at         line 730</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
-    <strong>getTrackables</strong>(string $referenceCode, array $query = [])
+    <strong>getTrackable</strong>(string $referenceCode, array $query = [])
         </code>
     </h3>
     <div class="details">
@@ -3468,7 +3478,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getUserTrackables">
-        <div class="location">at         line 744</div>
+        <div class="location">at         line 745</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>getUserTrackables</strong>(array $query = [])
         </code>
@@ -3525,7 +3535,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getGeocoinTypes">
-        <div class="location">at         line 759</div>
+        <div class="location">at         line 760</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>getGeocoinTypes</strong>(array $query = [])
         </code>
@@ -3582,7 +3592,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getTrackableImages">
-        <div class="location">at         line 775</div>
+        <div class="location">at         line 776</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>getTrackableImages</strong>(string $referenceCode, array $query = [])
         </code>
@@ -3644,7 +3654,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getTrackableLogs">
-        <div class="location">at         line 791</div>
+        <div class="location">at         line 792</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>getTrackableLogs</strong>(string $referenceCode, array $query = [])
         </code>
@@ -3706,7 +3716,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getUser">
-        <div class="location">at         line 807</div>
+        <div class="location">at         line 808</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>getUser</strong>(string $referenceCode, array $query = [])
         </code>
@@ -3768,7 +3778,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getUserImages">
-        <div class="location">at         line 823</div>
+        <div class="location">at         line 824</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>getUserImages</strong>(string $referenceCode, array $query = [])
         </code>
@@ -3830,7 +3840,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getUserSouvenirs">
-        <div class="location">at         line 839</div>
+        <div class="location">at         line 840</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>getUserSouvenirs</strong>(string $referenceCode, array $query = [])
         </code>
@@ -3892,7 +3902,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getUsers">
-        <div class="location">at         line 854</div>
+        <div class="location">at         line 855</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>getUsers</strong>(array $query = [])
         </code>
@@ -3949,7 +3959,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getUserLists">
-        <div class="location">at         line 870</div>
+        <div class="location">at         line 871</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>getUserLists</strong>(string $referenceCode, array $query = [])
         </code>
@@ -4011,7 +4021,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getUserGeocacheLogs">
-        <div class="location">at         line 886</div>
+        <div class="location">at         line 887</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>getUserGeocacheLogs</strong>(string $referenceCode, array $query = [])
         </code>
@@ -4073,9 +4083,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_validateUser">
-        <div class="location">at         line 902</div>
+        <div class="location">at         line 903</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
-    <strong>validateUser</strong>(string $username, array $body, array $options)
+    <strong>validateUser</strong>(string $username, array $body)
         </code>
     </h3>
     <div class="details">
@@ -4096,11 +4106,6 @@
                     <tr>
                 <td>array</td>
                 <td>$body</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>array</td>
-                <td>$options</td>
                 <td></td>
             </tr>
             </table>
@@ -4134,7 +4139,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getUserWaypoints">
-        <div class="location">at         line 918</div>
+        <div class="location">at         line 919</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>getUserWaypoints</strong>(array $query = [])
         </code>
@@ -4191,7 +4196,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setGeocacheUserWaypoint">
-        <div class="location">at         line 933</div>
+        <div class="location">at         line 934</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>setGeocacheUserWaypoint</strong>(string $referenceCode, array $body)
         </code>
@@ -4253,7 +4258,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getGeocacheUserWaypoints">
-        <div class="location">at         line 949</div>
+        <div class="location">at         line 950</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>getGeocacheUserWaypoints</strong>(string $referenceCode, array $query = [])
         </code>
@@ -4315,7 +4320,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_deleteUserWaypoint">
-        <div class="location">at         line 964</div>
+        <div class="location">at         line 965</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>deleteUserWaypoint</strong>(string $referenceCode)
         </code>
@@ -4372,9 +4377,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_updateUserWaypoint">
-        <div class="location">at         line 980</div>
+        <div class="location">at         line 981</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
-    <strong>updateUserWaypoint</strong>(string $referenceCode, array $userWaypoint)
+    <strong>updateUserWaypoint</strong>(string $referenceCode, array $query)
         </code>
     </h3>
     <div class="details">
@@ -4394,7 +4399,7 @@
             </tr>
                     <tr>
                 <td>array</td>
-                <td>$userWaypoint</td>
+                <td>$query</td>
                 <td></td>
             </tr>
             </table>
@@ -4434,7 +4439,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getReferenceCodeFromId">
-        <div class="location">at         line 995</div>
+        <div class="location">at         line 996</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>getReferenceCodeFromId</strong>(array $query)
         </code>
@@ -4491,8 +4496,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_ping">
-        <div class="location">at         line 1007</div>
-        <code>                    int
+        <div class="location">at         line 1008</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>ping</strong>()
         </code>
     </h3>
@@ -4508,7 +4513,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>int</td>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
             <td></td>
         </tr>
     </table>
@@ -4526,6 +4531,36 @@
             </tr>
             </table>
 
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_status">
+        <div class="location">at         line 1018</div>
+        <code>                    <a href="../../Geocaching/Lib/Adapters/GuzzleHttpClient.html"><abbr title="Geocaching\Lib\Adapters\GuzzleHttpClient">GuzzleHttpClient</abbr></a>
+    <strong>status</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>alias of ping()</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Geocaching/Lib/Adapters/GuzzleHttpClient.html"><abbr title="Geocaching\Lib\Adapters\GuzzleHttpClient">GuzzleHttpClient</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
                     </div>
     </div>
 

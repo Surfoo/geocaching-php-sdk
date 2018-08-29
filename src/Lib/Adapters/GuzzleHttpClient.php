@@ -54,7 +54,11 @@ class GuzzleHttpClient implements HttpClientInterface
      */
     public function getBody(bool $toArray = false)
     {
-        return json_decode((string) $this->response->getBody(), $toArray);
+        $content = (string) $this->response->getBody();
+        if (empty($content)) {
+            $content = '{}';
+        }
+        return json_decode($content, $toArray);
     }
 
     /**
@@ -71,6 +75,14 @@ class GuzzleHttpClient implements HttpClientInterface
     public function getStatusCode(): int
     {
         return $this->response->getStatusCode();
+    }
+
+    /**
+     * @return string
+     */
+    public function getReasonPhrase(): string
+    {
+        return $this->response->getReasonPhrase();
     }
 
     /**
@@ -135,9 +147,17 @@ class GuzzleHttpClient implements HttpClientInterface
      *
      * @return \Geocaching\Lib\Response\Response|mixed
      */
-    public function put(string $uri, array $body, array $query = [])
+    public function put(string $uri, array $body, array $query = [], array $options = [])
     {
-        $this->options['json'] = $body;
+        $this->options = array_merge_recursive($this->options, $options);
+
+        if (!empty($body)) {
+            $this->options['json'] = $body;
+        }
+
+        if (!empty($query)) {
+            $uri .= '?' . http_build_query($query);
+        }
 
         try {
             $this->response = $this->client->request('PUT', $uri, $this->options);
@@ -205,10 +225,14 @@ class GuzzleHttpClient implements HttpClientInterface
     private function decodeError404ResponseBody(Stream $responseBody): string
     {
         $body = json_decode($responseBody);
-        if ($body->errorMessage) {
-            $content = json_decode($body->errorMessage);
 
-            return $content->message;
+        if ($body && $body->errorMessage) {
+            $content = json_decode($body->errorMessage);
+            if ($content && $body->errorMessage != $content && isset($content->message)) {
+                return $content->message;
+            } else {
+                return (string) $body->errorMessage;
+            }
         }
 
         return (string) $responseBody;
@@ -222,10 +246,14 @@ class GuzzleHttpClient implements HttpClientInterface
     private function decodeErrorResponseBody(Stream $responseBody): string
     {
         $body = json_decode($responseBody);
-        if (isset($body->errors) && !empty($body->errors)) {
+
+        if ($body && isset($body->errors) && !empty($body->errors)) {
             return (string) $body->errors[0]->message;
         }
+        if ($body && isset($body->errorMessage) && !empty($body->errorMessage)) {
+            return (string) $body->errorMessage;
+        }
 
-        return $body->errorMessage;
+        return (string) $responseBody;
     }
 }

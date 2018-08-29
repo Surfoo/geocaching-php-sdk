@@ -141,7 +141,7 @@
                     <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setGeocacheNote">setGeocacheNote</a>(string $referenceCode, array $note)
+                    <a href="#method_updateGeocacheNote">updateGeocacheNote</a>(string $referenceCode, array $note)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -251,7 +251,7 @@
                     <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getTrackables">getTrackables</a>(string $referenceCode, array $query = [])
+                    <a href="#method_getTrackable">getTrackable</a>(string $referenceCode, array $query = [])
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -262,7 +262,7 @@
                     <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getUserTrackables">getUserTrackables</a>(array $query)
+                    <a href="#method_getUserTrackables">getUserTrackables</a>(array $query = [])
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -743,7 +743,18 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    int
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_validateUser">validateUser</a>(string $username, array $body)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_ping">ping</a>()
@@ -965,10 +976,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_setGeocacheNote">
+                    <h3 id="method_updateGeocacheNote">
         <div class="location">at         line 63</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
-    <strong>setGeocacheNote</strong>(string $referenceCode, array $note)
+    <strong>updateGeocacheNote</strong>(string $referenceCode, array $note)
         </code>
     </h3>
     <div class="details">
@@ -1505,10 +1516,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getTrackables">
+                    <h3 id="method_getTrackable">
         <div class="location">at         line 164</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
-    <strong>getTrackables</strong>(string $referenceCode, array $query = [])
+    <strong>getTrackable</strong>(string $referenceCode, array $query = [])
         </code>
     </h3>
     <div class="details">
@@ -1562,7 +1573,7 @@
                     <h3 id="method_getUserTrackables">
         <div class="location">at         line 173</div>
         <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
-    <strong>getUserTrackables</strong>(array $query)
+    <strong>getUserTrackables</strong>(array $query = [])
         </code>
     </h3>
     <div class="details">
@@ -3890,9 +3901,63 @@
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_validateUser">
+        <div class="location">at         line 607</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>validateUser</strong>(string $username, array $body)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$username</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$body</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/api-docs/index#!/Users/Users_ValidateUserAsync">https://api.groundspeak.com/api-docs/index#!/Users/Users_ValidateUserAsync</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_ping">
-        <div class="location">at         line 601</div>
-        <code>                    int
+        <div class="location">at         line 612</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
     <strong>ping</strong>()
         </code>
     </h3>
@@ -3906,7 +3971,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>int</td>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
             <td></td>
         </tr>
     </table>

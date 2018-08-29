@@ -1,9 +1,6 @@
 composer.lock
-logs/*
-!logs/.gitkeep
 cache
 vendor
-tools/monitoring.html
 .php_cs.cache
 keys.txt
 sami.phar

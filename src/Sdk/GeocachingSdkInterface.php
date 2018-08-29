@@ -60,7 +60,7 @@ interface GeocachingSdkInterface
      *
      * @return GuzzleHttpClient
      */
-    public function setGeocacheNote(string $referenceCode, array $note);
+    public function updateGeocacheNote(string $referenceCode, array $note);
 
     /**
      * @see https://api.groundspeak.com/documentation#delete-geocachenote
@@ -161,7 +161,7 @@ interface GeocachingSdkInterface
      *
      * @return GuzzleHttpClient
      */
-    public function getTrackables(string $referenceCode, array $query = []);
+    public function getTrackable(string $referenceCode, array $query = []);
 
     /**
      * @see https://api.groundspeak.com/documentation#get-users-trackables
@@ -170,7 +170,7 @@ interface GeocachingSdkInterface
      *
      * @return GuzzleHttpClient
      */
-    public function getUserTrackables(array $query);
+    public function getUserTrackables(array $query = []);
 
     /**
      * @see https://api.groundspeak.com/documentation#get-trackable-images
@@ -596,7 +596,18 @@ interface GeocachingSdkInterface
     public function getReferenceCodeFromId(array $query);
 
     /**
-     * @return int
+     * @see https://api.groundspeak.com/api-docs/index#!/Users/Users_ValidateUserAsync
+     *
+     * @param string $username
+     * @param array $body
+     * @param array $options
+     *
+     * @return GuzzleHttpClient
+     */
+    public function validateUser(string $username, array $body);
+
+    /**
+     * @return GuzzleHttpClient
      */
     public function ping();
 }

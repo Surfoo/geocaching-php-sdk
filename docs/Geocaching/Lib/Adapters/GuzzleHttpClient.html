@@ -150,6 +150,17 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getReasonPhrase">getReasonPhrase</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     <abbr title="Geocaching\Lib\Response\Response">Response</abbr>
                 </div>
                 <div class="col-md-8 type">
@@ -175,7 +186,7 @@
                     <abbr title="Geocaching\Lib\Response\Response">Response</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_put">put</a>(string $uri, array $body, array $query = [])
+                    <a href="#method_put">put</a>(string $uri, array $body, array $query = [], array $options = [])
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -279,7 +290,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getHeaders">
-        <div class="location">at         line 63</div>
+        <div class="location">at         line 67</div>
         <code>                    array
     <strong>getHeaders</strong>()
         </code>
@@ -307,7 +318,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getStatusCode">
-        <div class="location">at         line 71</div>
+        <div class="location">at         line 75</div>
         <code>                    int
     <strong>getStatusCode</strong>()
         </code>
@@ -334,8 +345,36 @@
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_getReasonPhrase">
+        <div class="location">at         line 83</div>
+        <code>                    string
+    <strong>getReasonPhrase</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_get">
-        <div class="location">at         line 82</div>
+        <div class="location">at         line 94</div>
         <code>                    <abbr title="Geocaching\Lib\Response\Response">Response</abbr>
     <strong>get</strong>(string $uri, array $query = [])
         </code>
@@ -378,7 +417,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_post">
-        <div class="location">at         line 108</div>
+        <div class="location">at         line 120</div>
         <code>                    <abbr title="Geocaching\Lib\Response\Response">Response</abbr>
     <strong>post</strong>(string $uri, array $body = [], array $query = [], array $options = [])
         </code>
@@ -431,9 +470,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_put">
-        <div class="location">at         line 138</div>
+        <div class="location">at         line 150</div>
         <code>                    <abbr title="Geocaching\Lib\Response\Response">Response</abbr>
-    <strong>put</strong>(string $uri, array $body, array $query = [])
+    <strong>put</strong>(string $uri, array $body, array $query = [], array $options = [])
         </code>
     </h3>
     <div class="details">
@@ -459,6 +498,11 @@
                 <td>$query</td>
                 <td></td>
             </tr>
+                    <tr>
+                <td>array</td>
+                <td>$options</td>
+                <td></td>
+            </tr>
             </table>
 
             
@@ -479,7 +523,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_delete">
-        <div class="location">at         line 158</div>
+        <div class="location">at         line 178</div>
         <code>                    <abbr title="Geocaching\Lib\Response\Response">Response</abbr>
     <strong>delete</strong>(string $uri)
         </code>
