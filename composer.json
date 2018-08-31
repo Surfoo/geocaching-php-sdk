@@ -1,5 +1,5 @@
 {
-    "name": "geocaching/api",
+    "name": "surfoo/geocaching-php-sdk",
     "description": "Geocaching PHP Api",
     "type": "library",
     "license": "MIT",
