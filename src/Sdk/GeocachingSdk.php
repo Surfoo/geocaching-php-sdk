@@ -571,22 +571,6 @@ class GeocachingSdk implements GeocachingSdkInterface
     }
 
     /**
-     * swagger: GET /v{api-version}/geocaches/{referenceCode}/logdrafts
-     * 
-     * @see https://api.groundspeak.com/documentation#get-geocache-logdrafts
-     * @see https://api.groundspeak.com/api-docs/index#!/LogDrafts/LogDrafts_GetGeocacheDrafts
-     *
-     * @param string $referenceCode
-     * @param array  $query
-     *
-     * @return GuzzleHttpClient
-     */
-    public function getGeocacheLogdrafts(string $referenceCode, array $query = [])
-    {
-        return $this->httpClient->get('geocaches/' . $referenceCode . '/logdrafts', $query);
-    }
-
-    /**
      * swagger: POST /v{api-version}/logdrafts/{referenceCode}/promote
      * 
      * @see https://api.groundspeak.com/documentation#promote-logdraft
@@ -887,23 +871,6 @@ class GeocachingSdk implements GeocachingSdkInterface
     public function getUserGeocacheLogs(string $referenceCode, array $query = [])
     {
         return $this->httpClient->get('users/' . $referenceCode . '/geocachelogs', $query);
-    }
-
-    /**
-     * swagger: POST /v{api-version}/_users/{username}/validate
-     * 
-     * @see https://api.groundspeak.com/api-docs/index#!/Users/Users_ValidateUserAsync
-     * 
-     * @param string $username
-     * @param array $body
-     * @param array $options
-     * 
-     * @return GuzzleHttpClient
-     */
-    public function validateUser(string $username, array $body)
-    {
-        $options['form_params'] = $body;
-        return $this->httpClient->post('_users/' . $username . '/validate', [], [], $options);
     }
 
     /**

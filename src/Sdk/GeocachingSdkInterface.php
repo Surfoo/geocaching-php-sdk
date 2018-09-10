@@ -263,16 +263,6 @@ interface GeocachingSdkInterface
     public function setTrackableLogImages(string $referenceCode, array $imageToUpload, array $query = []);
 
     /**
-     * @see https://api.groundspeak.com/documentation#get-geocache-logdrafts
-     *
-     * @param string $referenceCode
-     * @param array  $query
-     *
-     * @return GuzzleHttpClient
-     */
-    public function getGeocacheLogdrafts(string $referenceCode, array $query = []);
-
-    /**
      * @see https://api.groundspeak.com/documentation#get-logdrafts
      *
      * @param array $query
@@ -594,17 +584,6 @@ interface GeocachingSdkInterface
      * @return GuzzleHttpClient
      */
     public function getReferenceCodeFromId(array $query);
-
-    /**
-     * @see https://api.groundspeak.com/api-docs/index#!/Users/Users_ValidateUserAsync
-     *
-     * @param string $username
-     * @param array $body
-     * @param array $options
-     *
-     * @return GuzzleHttpClient
-     */
-    public function validateUser(string $username, array $body);
 
     /**
      * @return GuzzleHttpClient
