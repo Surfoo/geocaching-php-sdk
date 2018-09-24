@@ -586,6 +586,64 @@ interface GeocachingSdkInterface
     public function getReferenceCodeFromId(array $query);
 
     /**
+     * @see https://staging.api.groundspeak.com/documentation#get-countries
+     * 
+     * @return GuzzleHttpClient
+     */
+    public function getCountries();
+
+    /**
+     * @see https://staging.api.groundspeak.com/documentation#get-states
+     * 
+     * @return GuzzleHttpClient
+     */
+    public function getStates();
+
+    /**
+     * @see https://staging.api.groundspeak.com/documentation#get-country-states
+     * 
+     * @param int $countryId
+     * 
+     * @return GuzzleHttpClient
+     */
+    public function getStatesByCountry(int $countryId);
+
+    /**
+     * @see https://staging.api.groundspeak.com/documentation#get-membership-levels
+     * 
+     * @return GuzzleHttpClient
+     */
+    public function getMembershipLevels();
+
+    /**
+     * @see https://staging.api.groundspeak.com/documentation#get-geocache-types
+     * 
+     * @return GuzzleHttpClient
+     */
+    public function getGeocacheTypes();
+
+    /**
+     * @see https://staging.api.groundspeak.com/documentation#get-attributes
+     * 
+     * @return GuzzleHttpClient
+     */
+    public function getAttributes();
+
+    /**
+     * @see https://staging.api.groundspeak.com/documentation#get-geocachelog-types
+     * 
+     * @return GuzzleHttpClient
+     */
+    public function getGeocacheLogTypes();
+
+    /**
+     * @see https://staging.api.groundspeak.com/documentation#get-trackablelog-types
+     * 
+     * @return GuzzleHttpClient
+     */
+    public function getTrackableLogTypes();
+
+    /**
      * @return GuzzleHttpClient
      */
     public function ping();

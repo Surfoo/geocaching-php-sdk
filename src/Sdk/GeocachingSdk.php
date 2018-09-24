@@ -966,6 +966,104 @@ class GeocachingSdk implements GeocachingSdkInterface
     }
 
     /**
+     * swagger: GET /v{api-version}/countries
+     * 
+     * @see https://staging.api.groundspeak.com/documentation#get-countries
+     * 
+     * @return GuzzleHttpClient
+     */
+    public function getCountries()
+    {
+        return $this->httpClient->get('countries');
+    }
+
+    /**
+     * swagger: GET /v{api-version}/states
+     * 
+     * @see https://staging.api.groundspeak.com/documentation#get-states
+     * 
+     * @return GuzzleHttpClient
+     */
+    public function getStates()
+    {
+        return $this->httpClient->get('states');
+    }
+
+    /**
+     * swagger: GET /v{api-version}/countries/{countryId}/states
+     * 
+     * @see https://staging.api.groundspeak.com/documentation#get-country-states
+     * 
+     * @param int $countryId
+     * 
+     * @return GuzzleHttpClient
+     */
+    public function getStatesByCountry(int $countryId)
+    {
+        return $this->httpClient->get('countries/' . $countryId . '/states');
+    }
+
+    /**
+     * swagger: GET /v{api-version}/membershiplevels
+     * 
+     * @see https://staging.api.groundspeak.com/documentation#get-membership-levels
+     * 
+     * @return GuzzleHttpClient
+     */
+    public function getMembershipLevels()
+    {
+        return $this->httpClient->get('membershiplevels');
+    }
+
+    /**
+     * swagger: GET /v{api-version}/geocachetypes
+     * 
+     * @see https://staging.api.groundspeak.com/documentation#get-geocache-types
+     * 
+     * @return GuzzleHttpClient
+     */
+    public function getGeocacheTypes()
+    {
+        return $this->httpClient->get('geocachetypes');
+    }
+
+    /**
+     * swagger: GET /v{api-version}/attributes
+     * 
+     * @see https://staging.api.groundspeak.com/documentation#get-attributes
+     * 
+     * @return GuzzleHttpClient
+     */
+    public function getAttributes()
+    {
+        return $this->httpClient->get('attributes');
+    }
+
+    /**
+     * swagger: GET /v{api-version}/geocachelogtypes
+     * 
+     * @see https://staging.api.groundspeak.com/documentation#get-geocachelog-types
+     * 
+     * @return GuzzleHttpClient
+     */
+    public function getGeocacheLogTypes()
+    {
+        return $this->httpClient->get('geocachelogtypes');
+    }
+
+    /**
+     * swagger: GET /v{api-version}/trackablelogtypes
+     * 
+     * @see https://staging.api.groundspeak.com/documentation#get-trackablelog-types
+     * 
+     * @return GuzzleHttpClient
+     */
+    public function getTrackableLogTypes()
+    {
+        return $this->httpClient->get('trackablelogtypes');
+    }
+
+    /**
      * swagger: GET /status/ping
      *
      * @see https://api.groundspeak.com/api-docs/index#!/Status/Status_PingAsync
