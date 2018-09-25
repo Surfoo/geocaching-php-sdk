@@ -19,6 +19,13 @@ interface HttpClientInterface
     public function getHeaders(): array;
 
     /**
+     * @param string $header
+     *
+     * @return array
+     */
+    public function getHeader(string $header): array;
+
+    /**
      * @param string $uri
      * @param array  $data
      *

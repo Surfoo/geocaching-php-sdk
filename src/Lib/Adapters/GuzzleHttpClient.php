@@ -70,6 +70,16 @@ class GuzzleHttpClient implements HttpClientInterface
     }
 
     /**
+     * @param string $header
+     *
+     * @return array
+     */
+    public function getHeader(string $header): array
+    {
+        return $this->response->getHeader($header);
+    }
+
+    /**
      * @return int
      */
     public function getStatusCode(): int
