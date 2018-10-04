@@ -38,9 +38,9 @@ interface HttpClientInterface
 
     /**
      * @param string $uri
-     * @param array $body
-     * @param array $query
-     * @param array $options
+     * @param array  $body
+     * @param array  $query
+     * @param array  $options
      *
      * @return Response
      *

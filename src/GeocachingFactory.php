@@ -65,7 +65,7 @@ class GeocachingFactory
 
     /**
      * Return Geocaching custom methods
-     * 
+     *
      * @param string $accessToken
      * @param string $environment
      * @param array  $options

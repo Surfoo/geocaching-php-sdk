@@ -15,7 +15,6 @@ $finder = PhpCsFixer\Finder::create()
 return PhpCsFixer\Config::create()
     ->setRules(array(
         '@PSR2' => true,
-        '@Symfony   ' => true,
         'binary_operator_spaces' => [
             'align_double_arrow' => true,
             'align_equals' => true,

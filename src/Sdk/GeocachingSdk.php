@@ -36,7 +36,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: GET /v{api-version}/friends
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#get-friends
      * @see https://api.groundspeak.com/api-docs/index#!/Friends/Friends_GetFriends
      *
@@ -51,7 +51,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: GET /v{api-version}/friendrequests
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#get-friendrequests
      * @see https://api.groundspeak.com/api-docs/index#!/Friends/Friends_GetFriendRequests
      *
@@ -66,7 +66,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: POST /v{api-version}/friendrequests
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#create-friendrequest
      * @see https://api.groundspeak.com/api-docs/index#!/Friends/Friends_CreateFriendRequest
      *
@@ -82,7 +82,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: POST /v{api-version}/friendrequests/{requestId}/accept
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#accept-friendrequest
      * @see https://api.groundspeak.com/api-docs/index#!/Friends/Friends_AcceptFriendRequest
      *
@@ -97,7 +97,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: DELETE /v{api-version}/friends/{userCode}
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#delete-friend
      * @see https://api.groundspeak.com/api-docs/index#!/Friends/Friends_RemoveFriend
      *
@@ -112,7 +112,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: DELETE /v{api-version}/friendrequests/{requestId}
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#delete-friendrequest
      * @see https://api.groundspeak.com/api-docs/index#!/Friends/Friends_DeleteFriendRequest
      *
@@ -127,7 +127,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: DELETE /v{api-version}/geocachelogs/{referenceCode}
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#delete-geocachelog
      * @see https://api.groundspeak.com/api-docs/index#!/GeocacheLogs/GeocacheLogs_DeleteGeocacheLog
      *
@@ -142,7 +142,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: GET /v{api-version}/geocachelogs/{referenceCode}
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#get-geocachelog
      * @see https://api.groundspeak.com/api-docs/index#!/GeocacheLogs/GeocacheLogs_GetGeocacheLog
      *
@@ -158,7 +158,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: PUT /v{api-version}/geocachelogs/{referenceCode}
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#update-geocachelog
      * @see https://api.groundspeak.com/api-docs/index#!/GeocacheLogs/GeocacheLogs_Put
      *
@@ -175,7 +175,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: GET /v{api-version}/geocachelogs/{referenceCode}/images
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#get-geocachelog-images
      * @see https://api.groundspeak.com/api-docs/index#!/GeocacheLogs/GeocacheLogs_GetImages
      *
@@ -190,8 +190,8 @@ class GeocachingSdk implements GeocachingSdkInterface
     }
 
     /**
-     * swagger: POST /v{api-version}/geocachelogs/{referenceCode}/images 
-     * 
+     * swagger: POST /v{api-version}/geocachelogs/{referenceCode}/images
+     *
      * @see https://api.groundspeak.com/documentation#create-geocachelog-image
      * @see https://api.groundspeak.com/api-docs/index#!/GeocacheLogs/GeocacheLogs_PostImages
      *
@@ -208,7 +208,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: POST /v{api-version}/geocachelogs
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#create-geocachelog
      * @see https://api.groundspeak.com/api-docs/index#!/GeocacheLogs/GeocacheLogs_PostLog
      *
@@ -224,7 +224,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: DELETE /v{api-version}/geocaches/{referenceCode}/notes
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#delete-geocachenote
      *
      * @param string $referenceCode
@@ -238,12 +238,12 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: PUT /v{api-version}/geocaches/{referenceCode}/notes
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#upsert-geocachenote
      * @see https://api.groundspeak.com/api-docs/index#!/GeocacheNotes/GeocacheNotes_Delete
      *
      * @param string $referenceCode
-     * @param array $note
+     * @param array  $note
      *
      * @return Response
      */
@@ -254,7 +254,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: GET /v{api-version}/geocaches/{referenceCode}
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#get-geocache
      * @see https://api.groundspeak.com/api-docs/index#!/Geocaches/Geocaches_Get
      *
@@ -270,7 +270,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: GET /v{api-version}/geocaches/{referenceCode}/images
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#get-geocache-images
      * @see https://api.groundspeak.com/api-docs/index#!/Geocaches/Geocaches_GetImages
      *
@@ -286,7 +286,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: GET /v{api-version}/geocaches/{referenceCode}/trackables
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#get-geocache-trackables
      * @see https://api.groundspeak.com/api-docs/index#!/GeocacheNotes/GeocacheNotes_UpsertGeocacheNoteAsync
      *
@@ -302,7 +302,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: GET /v{api-version}/geocaches
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#get-geocaches
      * @see https://api.groundspeak.com/api-docs/index#!/Geocaches/Geocaches_GetGeocaches
      *
@@ -317,7 +317,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: GET /v{api-version}/geocaches/{referenceCode}/geocachelogs
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#get-geocache-logs
      * @see https://api.groundspeak.com/api-docs/index#!/Geocaches/Geocaches_GetLogs
      *
@@ -333,7 +333,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: GET /v{api-version}/geocaches/search
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#search
      * @see https://api.groundspeak.com/api-docs/index#!/Geocaches/Geocaches_Search
      *
@@ -348,7 +348,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: DELETE /v{api-version}/lists/{referenceCode}
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#remove-list
      * @see https://api.groundspeak.com/api-docs/index#!/Lists/Lists_RemoveGeocache
      *
@@ -363,7 +363,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: GET /v{api-version}/lists/{referenceCode}
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#get-list
      * @see https://api.groundspeak.com/api-docs/index#!/Lists/Lists_GetList
      *
@@ -379,7 +379,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: PUT /v{api-version}/lists/{referenceCode}
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#update-list
      * @see https://api.groundspeak.com/api-docs/index#!/Lists/Lists_UpdateList
      *
@@ -396,7 +396,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: GET /v{api-version}/lists/{referenceCode}/geocaches/zipped
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#get-pq-zip
      * @see https://api.groundspeak.com/api-docs/index#!/Lists/Lists_GetZippedPocketQuery
      *
@@ -411,7 +411,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: GET /v{api-version}/lists/{referenceCode}/geocaches
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#get-list-geocaches
      * @see https://api.groundspeak.com/api-docs/index#!/Lists/Lists_GetGeocaches
      *
@@ -427,7 +427,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: POST /v{api-version}/lists/{referenceCode}/geocaches
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#add-geocache-list
      * @see https://api.groundspeak.com/api-docs/index#!/Lists/Lists_AddGeocache
      *
@@ -444,7 +444,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: POST /v{api-version}/lists
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#create-list
      * @see https://api.groundspeak.com/api-docs/index#!/Lists/Lists_PostList
      *
@@ -460,7 +460,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: POST /v{api-version}/lists/{referenceCode}/bulkgeocaches
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#add-geocaches-list
      * @see https://api.groundspeak.com/api-docs/index#!/Lists/Lists_AddGeocaches
      *
@@ -476,7 +476,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: DELETE /v{api-version}/lists/{referenceCode}/geocaches/{geocacheReferenceCode}
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#delete-geocache-list
      * @see https://api.groundspeak.com/api-docs/index#!/Lists/Lists_RemoveList
      *
@@ -492,7 +492,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: DELETE /v{api-version}/logdrafts/{referenceCode}
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#delete-logdraft
      * @see https://api.groundspeak.com/api-docs/index#!/LogDrafts/LogDrafts_Delete
      *
@@ -507,7 +507,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: GET /v{api-version}/logdrafts/{referenceCode}
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#get-logdraft
      * @see https://api.groundspeak.com/api-docs/index#!/LogDrafts/LogDrafts_Get
      *
@@ -523,7 +523,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: PUT /v{api-version}/logdrafts/{referenceCode}
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#update-logdraft
      * @see https://api.groundspeak.com/api-docs/index#!/LogDrafts/LogDrafts_Put
      *
@@ -540,7 +540,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: GET /v{api-version}/logdrafts
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#get-logdrafts
      * @see https://api.groundspeak.com/api-docs/index#!/LogDrafts/LogDrafts_GetUserDrafts
      *
@@ -555,7 +555,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: POST /v{api-version}/logdrafts
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#create-logdraft
      * @see https://api.groundspeak.com/api-docs/index#!/LogDrafts/LogDrafts_Post
      *
@@ -571,7 +571,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: POST /v{api-version}/logdrafts/{referenceCode}/promote
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#promote-logdraft
      * @see https://api.groundspeak.com/api-docs/index#!/LogDrafts/LogDrafts_PromoteToGeocacheLog
      *
@@ -587,7 +587,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: POST /v{api-version}/logdrafts/{referenceCode}/images
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#create-logdraft-image
      * @see https://api.groundspeak.com/api-docs/index#!/LogDrafts/LogDrafts_Post_0
      *
@@ -604,7 +604,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: DELETE /v{api-version}/trackablelogs/{referenceCode}
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#delete-trackablelog
      * @see https://api.groundspeak.com/api-docs/index#!/TrackableLogs/TrackableLogs_ArchiveTrackableLog
      *
@@ -619,7 +619,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: GET /v{api-version}/trackablelogs/{referenceCode}
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#get-trackablelog
      * @see https://api.groundspeak.com/api-docs/index#!/TrackableLogs/TrackableLogs_GetTrackableLog
      *
@@ -635,7 +635,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: PUT /v{api-version}/trackablelogs/{referenceCode}
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#update-trackablelog
      * @see https://api.groundspeak.com/api-docs/index#!/TrackableLogs/TrackableLogs_Put
      *
@@ -652,7 +652,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: GET /v{api-version}/trackablelogs/{referenceCode}/images
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#get-trackablelog-images
      * @see https://api.groundspeak.com/api-docs/index#!/TrackableLogs/TrackableLogs_GetImages
      *
@@ -668,7 +668,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: POST /v{api-version}/trackablelogs/{referenceCode}/images
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#get-trackablelog-images
      * @see https://api.groundspeak.com/api-docs/index#!/TrackableLogs/TrackableLogs_PostImages
      *
@@ -685,7 +685,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: POST /v{api-version}/trackablelogs
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#create-trackablelog
      * @see https://api.groundspeak.com/api-docs/index#!/TrackableLogs/TrackableLogs_PostLog
      *
@@ -701,7 +701,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: GET /v{api-version}/trackables/{referenceCode}
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#get-trackable
      * @see https://api.groundspeak.com/api-docs/index#!/Trackables/Trackables_GetTrackable
      *
@@ -717,7 +717,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: GET /v{api-version}/trackables
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#get-users-trackables
      * @see https://api.groundspeak.com/api-docs/index#!/Trackables/Trackables_GetUserTrackables
      *
@@ -732,7 +732,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: GET /v{api-version}/trackables/geocointypes
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#get-geocoin-types
      * @see https://api.groundspeak.com/api-docs/index#!/Trackables/Trackables_GetGeocoinTypes
      *
@@ -747,7 +747,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: GET /v{api-version}/trackables/{referenceCode}/Images
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#get-users-trackables
      * @see https://api.groundspeak.com/api-docs/index#!/Trackables/Trackables_GetImages
      *
@@ -763,7 +763,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: GET /v{api-version}/trackables/{referenceCode}/trackablelogs
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#get-trackable-logs
      * @see https://api.groundspeak.com/api-docs/index#!/Trackables/Trackables_GetLogs
      *
@@ -779,7 +779,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: GET /v{api-version}/users/{referenceCode}
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#get-user
      * @see https://api.groundspeak.com/api-docs/index#!/Users/Users_GetUser
      *
@@ -795,7 +795,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: GET /v{api-version}/users/{referenceCode}/images
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#get-user-images
      * @see https://api.groundspeak.com/api-docs/index#!/Users/Users_GetImages
      *
@@ -811,7 +811,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: GET /v{api-version}/users/{referenceCode}/souvenirs
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#get-souvenirs
      * @see https://api.groundspeak.com/api-docs/index#!/Users/Users_GetSouvenirs
      *
@@ -827,7 +827,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: GET /v{api-version}/users
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#get-users
      * @see https://api.groundspeak.com/api-docs/index#!/Users/Users_GetUsers
      *
@@ -842,7 +842,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: GET /v{api-version}/users/{referenceCode}/lists
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#get-lists
      * @see https://api.groundspeak.com/api-docs/index#!/Users/Users_GetLists
      *
@@ -858,7 +858,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: GET /v{api-version}/users/{referenceCode}/geocachelogs
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#get-user-logs
      * @see https://api.groundspeak.com/api-docs/index#!/Users/Users_GetGeocacheLogs
      *
@@ -874,7 +874,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: GET /v{api-version}/userwaypoints
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#get-userwaypoints
      * @see https://api.groundspeak.com/api-docs/index#!/UserWaypoints/UserWaypoints_GetUserWaypointsAsync
      *
@@ -889,7 +889,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: POST /v{api-version}/userwaypoints
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#create-userwaypoint
      * @see https://api.groundspeak.com/api-docs/index#!/UserWaypoints/UserWaypoints_Post
      *
@@ -904,7 +904,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: GET /v{api-version}/geocaches/{referenceCode}/userwaypoints
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#get-geocache-userwaypoints
      * @see https://api.groundspeak.com/api-docs/index#!/UserWaypoints/UserWaypoints_GetGeocacheUserWaypointsAsync
      *
@@ -920,7 +920,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: DELETE /v{api-version}/userwaypoints/{referenceCode}
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#delete-userwaypoint
      * @see https://api.groundspeak.com/api-docs/index#!/UserWaypoints/UserWaypoints_Delete
      *
@@ -935,7 +935,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: PUT /v{api-version}/userwaypoints/{referenceCode}
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#update-userwaypoint
      * @see https://api.groundspeak.com/api-docs/index#!/UserWaypoints/UserWaypoints_Put
      *
@@ -951,7 +951,7 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: GET /v{api-version}/utilities/referencecode
-     * 
+     *
      * @see https://api.groundspeak.com/documentation#get-reference-code
      * @see https://api.groundspeak.com/api-docs/index#!/Utilities/Utilities_GetReferenceCode
      *
@@ -966,9 +966,9 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: GET /v{api-version}/countries
-     * 
+     *
      * @see https://staging.api.groundspeak.com/documentation#get-countries
-     * 
+     *
      * @return Response
      */
     public function getCountries()
@@ -978,9 +978,9 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: GET /v{api-version}/states
-     * 
+     *
      * @see https://staging.api.groundspeak.com/documentation#get-states
-     * 
+     *
      * @return Response
      */
     public function getStates()
@@ -990,11 +990,11 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: GET /v{api-version}/countries/{countryId}/states
-     * 
+     *
      * @see https://staging.api.groundspeak.com/documentation#get-country-states
-     * 
+     *
      * @param int $countryId
-     * 
+     *
      * @return Response
      */
     public function getStatesByCountry(int $countryId)
@@ -1004,9 +1004,9 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: GET /v{api-version}/membershiplevels
-     * 
+     *
      * @see https://staging.api.groundspeak.com/documentation#get-membership-levels
-     * 
+     *
      * @return Response
      */
     public function getMembershipLevels()
@@ -1016,9 +1016,9 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: GET /v{api-version}/geocachetypes
-     * 
+     *
      * @see https://staging.api.groundspeak.com/documentation#get-geocache-types
-     * 
+     *
      * @return Response
      */
     public function getGeocacheTypes()
@@ -1028,9 +1028,9 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: GET /v{api-version}/attributes
-     * 
+     *
      * @see https://staging.api.groundspeak.com/documentation#get-attributes
-     * 
+     *
      * @return Response
      */
     public function getAttributes()
@@ -1040,9 +1040,9 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: GET /v{api-version}/geocachelogtypes
-     * 
+     *
      * @see https://staging.api.groundspeak.com/documentation#get-geocachelog-types
-     * 
+     *
      * @return Response
      */
     public function getGeocacheLogTypes()
@@ -1052,9 +1052,9 @@ class GeocachingSdk implements GeocachingSdkInterface
 
     /**
      * swagger: GET /v{api-version}/trackablelogtypes
-     * 
+     *
      * @see https://staging.api.groundspeak.com/documentation#get-trackablelog-types
-     * 
+     *
      * @return Response
      */
     public function getTrackableLogTypes()

@@ -27,6 +27,7 @@
         "phpstan/phpstan": "^0.10.3"
     },
     "scripts": {
-        "phpstan": "vendor/bin/phpstan analyse -l 7 src"
+        "phpstan": "vendor/bin/phpstan analyse -l 7 src",
+        "php-cs-fixer": "php-cs-fixer fix"
     }
 }
