@@ -3,16 +3,21 @@
 namespace Geocaching\Lib\Adapters;
 
 use Geocaching\Exception\GeocachingSdkException;
-use Geocaching\Lib\Response\Response;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Psr7\Stream;
+use GuzzleHttp\Psr7\Response;
+use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\ResponseInterface;
 
 class GuzzleHttpClient implements HttpClientInterface
 {
     const HEADER_AUTHORIZATION = 'Authorization';
+
+    /**
+     * @var Response
+     */
+    protected $response;
 
     /**
      * @var array
@@ -50,7 +55,7 @@ class GuzzleHttpClient implements HttpClientInterface
     /**
      * @param bool $toArray
      *
-     * @return stdClass|array
+     * @return \stdClass|array
      */
     public function getBody(bool $toArray = false)
     {
@@ -113,8 +118,6 @@ class GuzzleHttpClient implements HttpClientInterface
             throw new GeocachingSdkException($e->getMessage(), $e->getCode());
         } catch (RequestException $e) {
             $this->handleErrorResponse($e->getResponse());
-        } catch (\Exception $e) {
-            $this->handleErrorResponse($e->getBody());
         }
 
         return $this;
@@ -201,12 +204,18 @@ class GuzzleHttpClient implements HttpClientInterface
     }
 
     /**
-     * @param ResponseInterface $response
+     * @param ResponseInterface|null $response
      *
      * @throws GeocachingSdkException The request is invalid
+     *
+     * @return void
      */
-    private function handleErrorResponse(ResponseInterface $response)
+    private function handleErrorResponse(?ResponseInterface $response): void
     {
+        if (is_null($response)) {
+            throw new GeocachingSdkException('Error: Empty response.');
+        }
+
         switch ($response->getStatusCode()) {
             case 401:
                 throw new GeocachingSdkException($this->decodeError401($response->getHeaders()), $response->getStatusCode());
@@ -228,11 +237,11 @@ class GuzzleHttpClient implements HttpClientInterface
     }
 
     /**
-     * @param GuzzleHttp\Psr7\Stream $responseBody
+     * @param StreamInterface $responseBody
      *
      * @return string
      */
-    private function decodeError404ResponseBody(Stream $responseBody): string
+    private function decodeError404ResponseBody(StreamInterface $responseBody): string
     {
         $body = json_decode($responseBody);
 
@@ -249,11 +258,11 @@ class GuzzleHttpClient implements HttpClientInterface
     }
 
     /**
-     * @param GuzzleHttp\Psr7\Stream $responseBody
+     * @param StreamInterface $responseBody
      *
      * @return string
      */
-    private function decodeErrorResponseBody(Stream $responseBody): string
+    private function decodeErrorResponseBody(StreamInterface $responseBody): string
     {
         $body = json_decode($responseBody);
 

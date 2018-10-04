@@ -4,19 +4,18 @@
  * Geocaching PHP SDK.
  *
  * @author  Surfoo <surfooo@gmail.com>
- * @see     https://github.com/Surfoo/geocaching-api
+ * @see     https://github.com/Surfoo/geocaching-php-sdk
  * @license https://opensource.org/licenses/MIT
  */
 
 namespace Geocaching\Sdk;
 
 use Geocaching\Lib\Adapters\HttpClientInterface;
-use Geocaching\Lib\Adapters\GuzzleHttpClient;
+use GuzzleHttp\Psr7\Response;
 
 /**
  * List of methods from Groundspeak API.
  *
- * @see    https://github.com/Surfoo/geocaching-api Geocaching API on GitHub
  * @see    https://api.groundspeak.com/documentation API Documentation by Groundspeak
  * @see    https://api.groundspeak.com/api-docs/index Swagger
  */
@@ -43,7 +42,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @param array $query
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function getFriends(array $query = [])
     {
@@ -58,7 +57,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @param array $query
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function getFriendRequests(array $query = [])
     {
@@ -74,7 +73,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * @param array $friendRequest
      * @param array $query
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function sendFriendRequest(array $friendRequest, array $query = [])
     {
@@ -89,7 +88,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @param string $requestId
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function acceptFriendRequest(string $requestId)
     {
@@ -104,7 +103,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @param string $referenceCode
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function deleteFriend(string $referenceCode)
     {
@@ -119,7 +118,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @param string $requestId
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function deleteFriendRequest(string $requestId)
     {
@@ -134,7 +133,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @param string $referenceCode
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function deleteGeocacheLog(string $referenceCode)
     {
@@ -150,7 +149,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * @param string $referenceCode
      * @param array  $query
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function getGeocacheLog(string $referenceCode, array $query = [])
     {
@@ -167,7 +166,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * @param array  $geocacheLog
      * @param array  $query
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function updateGeocacheLog(string $referenceCode, array $geocacheLog, array $query = [])
     {
@@ -183,7 +182,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * @param string $referenceCode
      * @param array  $query
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function getGeocacheLogImages(string $referenceCode, array $query = [])
     {
@@ -200,7 +199,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * @param array  $imageToUpload
      * @param array  $query
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function setGeocacheLogImages(string $referenceCode, array $imageToUpload, array $query = [])
     {
@@ -216,7 +215,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * @param array $geocacheLog
      * @param array $query
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function setGeocacheLog(array $geocacheLog, array $query = [])
     {
@@ -230,7 +229,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @param string $referenceCode
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function deleteGeocacheNote(string $referenceCode)
     {
@@ -246,7 +245,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * @param string $referenceCode
      * @param array $note
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function updateGeocacheNote(string $referenceCode, array $note)
     {
@@ -262,7 +261,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * @param string $referenceCode
      * @param array  $query
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function getGeocache(string $referenceCode, array $query = [])
     {
@@ -278,7 +277,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * @param string $referenceCode
      * @param array  $query
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function getGeocacheImages(string $referenceCode, array $query = [])
     {
@@ -294,7 +293,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * @param string $referenceCode
      * @param array  $query
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function getGeocacheTrackables(string $referenceCode, array $query = [])
     {
@@ -309,7 +308,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @param array $query
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function getGeocaches(array $query)
     {
@@ -325,7 +324,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * @param string $referenceCode
      * @param array  $query
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function getGeocacheLogs(string $referenceCode, array $query = [])
     {
@@ -340,7 +339,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @param array $query
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function searchGeocaches(array $query)
     {
@@ -355,7 +354,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @param string $referenceCode
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function deleteList(string $referenceCode)
     {
@@ -371,7 +370,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * @param string $referenceCode
      * @param array  $query
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function getList(string $referenceCode, array $query = [])
     {
@@ -388,7 +387,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * @param array  $list
      * @param array  $query
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function updateList(string $referenceCode, array $list, array $query = [])
     {
@@ -403,7 +402,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @param string $referenceCode
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function getZippedPocketQuery(string $referenceCode)
     {
@@ -419,7 +418,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * @param string $referenceCode
      * @param array  $query
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function getGeocacheList(string $referenceCode, array $query = [])
     {
@@ -436,7 +435,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * @param array  $geocache
      * @param array  $query
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function setGeocacheList(string $referenceCode, array $geocache, array $query = [])
     {
@@ -452,7 +451,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * @param array $list
      * @param array $query
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function setList(array $list, array $query = [])
     {
@@ -468,7 +467,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * @param string $referenceCode
      * @param array  $body
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function setBulkGeocachesList(string $referenceCode, array $body)
     {
@@ -484,7 +483,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * @param string $referenceCode
      * @param string $geocacheCode
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function deleteGeocacheList(string $referenceCode, string $geocacheCode)
     {
@@ -499,7 +498,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @param string $referenceCode
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function deleteLogdraft(string $referenceCode)
     {
@@ -515,7 +514,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * @param string $referenceCode
      * @param array  $query
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function getLogdraft(string $referenceCode, array $query = [])
     {
@@ -532,7 +531,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * @param array  $logDraft
      * @param array  $query
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function updateLogdraft(string $referenceCode, array $logDraft, array $query = [])
     {
@@ -547,7 +546,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @param array $query
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function getLogdrafts(array $query = [])
     {
@@ -563,7 +562,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * @param array $logDraft
      * @param array $query
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function setLogdraft(array $logDraft, array $query = [])
     {
@@ -579,7 +578,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * @param string $referenceCode
      * @param array  $logDraft
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function promoteLogdraft(string $referenceCode, array $logDraft)
     {
@@ -596,7 +595,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * @param array  $postImage
      * @param array  $query
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function setLogdraftImage(string $referenceCode, array $postImage, array $query = [])
     {
@@ -611,7 +610,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @param string $referenceCode
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function deleteTrackableLog(string $referenceCode)
     {
@@ -627,7 +626,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * @param string $referenceCode
      * @param array  $query
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function getTrackableLog(string $referenceCode, array $query = [])
     {
@@ -644,7 +643,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * @param array  $trackableLog
      * @param array  $query
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function updateTrackableLog(string $referenceCode, array $trackableLog, array $query = [])
     {
@@ -660,7 +659,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * @param string $referenceCode
      * @param array  $query
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function getTrackableLogImages(string $referenceCode, array $query = [])
     {
@@ -677,7 +676,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * @param array  $imageToUpload
      * @param array  $query
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function setTrackableLogImages(string $referenceCode, array $imageToUpload, array $query = [])
     {
@@ -693,7 +692,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * @param array $trackableLog
      * @param array $query
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function setTrackableLog(array $trackableLog, array $query = [])
     {
@@ -709,7 +708,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * @param string $referenceCode
      * @param array  $query
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function getTrackable(string $referenceCode, array $query = [])
     {
@@ -724,7 +723,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @param array $query
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function getUserTrackables(array $query = [])
     {
@@ -739,7 +738,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @param array $query
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function getGeocoinTypes(array $query = [])
     {
@@ -755,7 +754,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * @param string $referenceCode
      * @param array  $query
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function getTrackableImages(string $referenceCode, array $query = [])
     {
@@ -771,7 +770,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * @param string $referenceCode
      * @param array  $query
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function getTrackableLogs(string $referenceCode, array $query = [])
     {
@@ -785,9 +784,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      * @see https://api.groundspeak.com/api-docs/index#!/Users/Users_GetUser
      *
      * @param string $referenceCode
-     * @param string $query
+     * @param array  $query
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function getUser(string $referenceCode, array $query = [])
     {
@@ -803,7 +802,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * @param string $referenceCode
      * @param array  $query
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function getUserImages(string $referenceCode, array $query = [])
     {
@@ -819,7 +818,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * @param string $referenceCode
      * @param array  $query
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function getUserSouvenirs(string $referenceCode, array $query = [])
     {
@@ -834,7 +833,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @param array $query
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function getUsers(array $query = [])
     {
@@ -850,7 +849,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * @param string $referenceCode
      * @param array  $query
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function getUserLists(string $referenceCode, array $query = [])
     {
@@ -866,7 +865,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * @param string $referenceCode
      * @param array  $query
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function getUserGeocacheLogs(string $referenceCode, array $query = [])
     {
@@ -881,7 +880,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @param array $query
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function getUserWaypoints(array $query = [])
     {
@@ -896,7 +895,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @param array $body
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function setGeocacheUserWaypoint(string $referenceCode, array $body)
     {
@@ -912,7 +911,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * @param string $referenceCode
      * @param array  $query
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function getGeocacheUserWaypoints(string $referenceCode, array $query = [])
     {
@@ -927,7 +926,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @param string $referenceCode
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function deleteUserWaypoint(string $referenceCode)
     {
@@ -943,7 +942,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * @param string $referenceCode
      * @param array  $query
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function updateUserWaypoint(string $referenceCode, array $query)
     {
@@ -958,7 +957,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @param array $query
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function getReferenceCodeFromId(array $query)
     {
@@ -970,7 +969,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * 
      * @see https://staging.api.groundspeak.com/documentation#get-countries
      * 
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function getCountries()
     {
@@ -982,7 +981,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * 
      * @see https://staging.api.groundspeak.com/documentation#get-states
      * 
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function getStates()
     {
@@ -996,7 +995,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * 
      * @param int $countryId
      * 
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function getStatesByCountry(int $countryId)
     {
@@ -1008,7 +1007,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * 
      * @see https://staging.api.groundspeak.com/documentation#get-membership-levels
      * 
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function getMembershipLevels()
     {
@@ -1020,7 +1019,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * 
      * @see https://staging.api.groundspeak.com/documentation#get-geocache-types
      * 
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function getGeocacheTypes()
     {
@@ -1032,7 +1031,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * 
      * @see https://staging.api.groundspeak.com/documentation#get-attributes
      * 
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function getAttributes()
     {
@@ -1044,7 +1043,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * 
      * @see https://staging.api.groundspeak.com/documentation#get-geocachelog-types
      * 
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function getGeocacheLogTypes()
     {
@@ -1056,7 +1055,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * 
      * @see https://staging.api.groundspeak.com/documentation#get-trackablelog-types
      * 
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function getTrackableLogTypes()
     {
@@ -1068,17 +1067,17 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/api-docs/index#!/Status/Status_PingAsync
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function ping()
     {
-        return $this->httpClient->get('/ping');
+        return $this->httpClient->get('ping');
     }
 
     /**
      * alias of ping()
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function status()
     {
