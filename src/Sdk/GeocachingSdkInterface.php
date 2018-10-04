@@ -5,12 +5,14 @@
  *
  * @author  Surfoo <surfooo@gmail.com>
  *
- * @see    https://github.com/Surfoo/geocaching-api
+ * @see    https://github.com/Surfoo/geocaching-php-sdk
  *
  * @license https://opensource.org/licenses/MIT
  */
 
 namespace Geocaching\Sdk;
+
+use Geocaching\Lib\Adapters\GuzzleHttpClient;
 
 interface GeocachingSdkInterface
 {
@@ -66,7 +68,6 @@ interface GeocachingSdkInterface
      * @see https://api.groundspeak.com/documentation#delete-geocachenote
      *
      * @param string $referenceCode
-     * @param string $note
      *
      * @return GuzzleHttpClient
      */
@@ -465,7 +466,7 @@ interface GeocachingSdkInterface
      * @see https://api.groundspeak.com/documentation#get-user
      *
      * @param string $referenceCode
-     * @param string $query
+     * @param array  $query
      *
      * @return GuzzleHttpClient
      */

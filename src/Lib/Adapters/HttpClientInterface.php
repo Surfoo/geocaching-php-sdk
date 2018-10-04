@@ -2,14 +2,15 @@
 
 namespace Geocaching\Lib\Adapters;
 
-use Geocaching\Lib\Response\Response;
+use Geocaching\Exception\GeocachingSdkException;
+use GuzzleHttp\Psr7\Response;
 
 interface HttpClientInterface
 {
     /**
      * @param bool $toArray
      *
-     * @return stdClass|array
+     * @return \stdClass|array
      */
     public function getBody(bool $toArray = false);
 
@@ -31,9 +32,9 @@ interface HttpClientInterface
      *
      * @return Response
      *
-     * @throws GeocachingException
+     * @throws GeocachingSdkException
      */
-    public function get(string $uri, array $data);
+    public function get(string $uri, array $data = []);
 
     /**
      * @param string $uri
@@ -43,26 +44,27 @@ interface HttpClientInterface
      *
      * @return Response
      *
-     * @throws GeocachingException
+     * @throws GeocachingSdkException
      */
     public function post(string $uri, array $body = [], array $query = [], array $options = []);
 
     /**
      * @param string $uri
      * @param array  $data
+     * @param array  $query
      *
      * @return Response
      *
-     * @throws GeocachingException
+     * @throws GeocachingSdkException
      */
-    public function put(string $uri, array $data);
+    public function put(string $uri, array $data, array $query = []);
 
     /**
      * @param string $uri
      *
      * @return Response
      *
-     * @throws GeocachingException
+     * @throws GeocachingSdkException
      */
     public function delete(string $uri);
 }

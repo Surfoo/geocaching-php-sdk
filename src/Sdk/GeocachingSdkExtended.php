@@ -5,7 +5,7 @@
  *
  * @author  Surfoo <surfooo@gmail.com>
  *
- * @see    https://github.com/Surfoo/geocaching-api
+ * @see    https://github.com/Surfoo/geocaching-php-sdk
  *
  * @license https://opensource.org/licenses/MIT
  */
@@ -13,14 +13,8 @@
 namespace Geocaching\Sdk;
 
 use Geocaching\Lib\Adapters\HttpClientInterface;
+use GuzzleHttp\Psr7\Response;
 
-/**
- * List of methods from Groundspeak API.
- *
- * @see    https://github.com/Surfoo/geocaching-api Geocaching API on GitHub
- * @see    https://api.groundspeak.com/documentation API Documentation by Groundspeak
- * @see    https://api.groundspeak.com/api-docs/index Swagger
- */
 class GeocachingSdkExtended extends GeocachingSdk
 {
     /**
@@ -36,7 +30,7 @@ class GeocachingSdkExtended extends GeocachingSdk
      *
      * @param array $fields
      *
-     * @return GuzzleHttpClient
+     * @return Response
      */
     public function getMyProfile(array $fields = ['referenceCode', 'findCount', 'hideCount', 'favoritePoints', 'username', 'membershipLevelId', 'avatarUrl', 'homeCoordinates'])
     {

@@ -85,7 +85,6 @@ class GeocachingFactory
     /**
      * @param string $accessToken
      * @param string $environment
-     * @param bool   $responseToArray
      * @param array  $options
      *
      * @return GuzzleHttpClient
