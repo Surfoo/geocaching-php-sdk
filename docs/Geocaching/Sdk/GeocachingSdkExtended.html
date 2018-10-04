@@ -1,0 +1,3977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Geocaching\Sdk\GeocachingSdkExtended | Geocaching PHP SDK</title>
+
+            <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/sami.css">
+        <script src="../../js/jquery-1.11.1.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script src="../../js/typeahead.min.js"></script>
+        <script src="../../sami.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    
+    
+    </head>
+
+    <body id="class" data-name="class:Geocaching_Sdk_GeocachingSdkExtended" data-root-path="../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="../../search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../index.html">Geocaching PHP SDK</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../classes.html">Classes</a></li>
+                                            <li><a href="../../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../traits.html">Traits</a></li>
+                    <li><a href="../../doc-index.html">Index</a></li>
+                    <li><a href="../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../Geocaching.html">Geocaching</a></li><li class="backslash">\</li><li><a href="../../Geocaching/Sdk.html">Sdk</a></li><li class="backslash">\</li><li>GeocachingSdkExtended</li>
+            </ol>
+        </div>
+                <div id="page-content">
+                
+    <div class="page-header">
+        <h1>
+            GeocachingSdkExtended
+                
+        </h1>
+    </div>
+
+    <p>    class
+    <strong>GeocachingSdkExtended</strong>        extends <a href="../../Geocaching/Sdk/GeocachingSdk.html"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a>
+</p>
+
+        
+    
+
+            <div class="description">
+            <p>List of methods from Groundspeak API.</p>                                </div>
+    
+    
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_httpClient">
+                                        protected                                        <a href="../../Geocaching/Lib/Adapters/HttpClientInterface.html"><abbr title="Geocaching\Lib\Adapters\HttpClientInterface">HttpClientInterface</abbr></a>
+                </td>
+                <td>$httpClient</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#property_httpClient"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___construct">__construct</a>(<a href="../../Geocaching/Lib/Adapters/HttpClientInterface.html"><abbr title="Geocaching\Lib\Adapters\HttpClientInterface">HttpClientInterface</abbr></a> $httpClient)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_searchGeocaches">searchGeocaches</a>(array $query)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_searchGeocaches"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getGeocache">getGeocache</a>(string $referenceCode, array $query = [])
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getGeocache"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getGeocaches">getGeocaches</a>(array $query)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getGeocaches"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getGeocacheImages">getGeocacheImages</a>(string $referenceCode, array $query = [])
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getGeocacheImages"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setGeocacheNote">setGeocacheNote</a>(string $referenceCode, string $note)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_setGeocacheNote"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_deleteGeocacheNote">deleteGeocacheNote</a>(string $referenceCode)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_deleteGeocacheNote"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getGeocacheLogs">getGeocacheLogs</a>(string $referenceCode, array $query = [])
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getGeocacheLogs"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getGeocacheLog">getGeocacheLog</a>(string $referenceCode, array $query = [])
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getGeocacheLog"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setGeocacheLog">setGeocacheLog</a>(array $geocacheLog, array $query = [])
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_setGeocacheLog"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_updateGeocacheLog">updateGeocacheLog</a>(string $referenceCode, array $geocacheLog, array $query = [])
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_updateGeocacheLog"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_deleteGeocacheLog">deleteGeocacheLog</a>(string $referenceCode)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_deleteGeocacheLog"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getGeocacheLogImages">getGeocacheLogImages</a>(string $referenceCode, array $query = [])
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getGeocacheLogImages"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setGeocacheLogImages">setGeocacheLogImages</a>(string $referenceCode, array $imageToUpload, array $query = [])
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_setGeocacheLogImages"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getGeocacheTrackables">getGeocacheTrackables</a>(string $referenceCode, array $query = [])
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getGeocacheTrackables"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getTrackables">getTrackables</a>(string $referenceCode, array $query = [])
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getTrackables"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getUserTrackables">getUserTrackables</a>(array $query = [])
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getUserTrackables"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getTrackableImages">getTrackableImages</a>(string $referenceCode, array $query = [])
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getTrackableImages"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getTrackableLogs">getTrackableLogs</a>(string $referenceCode, array $query = [])
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getTrackableLogs"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getTrackableLog">getTrackableLog</a>(string $referenceCode, array $query = [])
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getTrackableLog"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setTrackableLog">setTrackableLog</a>(array $trackableLog, array $query = [])
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_setTrackableLog"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_updateTrackableLog">updateTrackableLog</a>(string $referenceCode, array $trackableLog, array $query = [])
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_updateTrackableLog"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_deleteTrackableLog">deleteTrackableLog</a>(string $referenceCode)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_deleteTrackableLog"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getTrackableLogImages">getTrackableLogImages</a>(string $referenceCode, array $query = [])
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getTrackableLogImages"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setTrackableLogImages">setTrackableLogImages</a>(string $referenceCode, array $imageToUpload, array $query = [])
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_setTrackableLogImages"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getGeocacheLogdrafts">getGeocacheLogdrafts</a>(string $referenceCode, array $query = [])
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getGeocacheLogdrafts"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getLogdrafts">getLogdrafts</a>(array $query = [])
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getLogdrafts"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getLogdraft">getLogdraft</a>(string $referenceCode, array $query = [])
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getLogdraft"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setLogdraft">setLogdraft</a>(array $logDraft, array $query = [])
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_setLogdraft"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_updateLogdraft">updateLogdraft</a>(string $referenceCode, array $logDraft, array $query = [])
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_updateLogdraft"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_deleteLogdraft">deleteLogdraft</a>(string $referenceCode)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_deleteLogdraft"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_promoteLogdraft">promoteLogdraft</a>(string $referenceCode, array $logDraft)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_promoteLogdraft"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setLogdraftImage">setLogdraftImage</a>(string $referenceCode, array $postImage, array $query = [])
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_setLogdraftImage"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getGeocacheUserWaypoints">getGeocacheUserWaypoints</a>(string $referenceCode, array $query = [])
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getGeocacheUserWaypoints"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getUserWaypoints">getUserWaypoints</a>(array $query = [])
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getUserWaypoints"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setGeocacheUserWaypoint">setGeocacheUserWaypoint</a>(string $referenceCode, array $userWaypoint)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_setGeocacheUserWaypoint"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_updateUserWaypoint">updateUserWaypoint</a>(string $referenceCode, array $userWaypoint)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_updateUserWaypoint"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_deleteUserWaypoint">deleteUserWaypoint</a>(string $referenceCode)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_deleteUserWaypoint"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getList">getList</a>(string $referenceCode, array $query = [])
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getList"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setList">setList</a>(array $list, array $query = [])
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_setList"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_updateList">updateList</a>(string $referenceCode, array $list, array $query = [])
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_updateList"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_deleteList">deleteList</a>(string $referenceCode)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_deleteList"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getGeocacheList">getGeocacheList</a>(string $referenceCode, array $query = [])
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getGeocacheList"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setGeocacheList">setGeocacheList</a>(string $referenceCode, array $geocache, array $query = [])
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_setGeocacheList"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setBulkGeocachesList">setBulkGeocachesList</a>(string $referenceCode, array $query)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_setBulkGeocachesList"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_deleteGeocacheList">deleteGeocacheList</a>(string $referenceCode, string $geocacheCode)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_deleteGeocacheList"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getUser">getUser</a>(string $referenceCode, array $query = [])
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getUser"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getUsers">getUsers</a>(array $query = [])
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getUsers"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getUserGeocacheLogs">getUserGeocacheLogs</a>(string $referenceCode, array $query = [])
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getUserGeocacheLogs"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getUserLists">getUserLists</a>(string $referenceCode, array $query = [])
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getUserLists"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getUserSouvenirs">getUserSouvenirs</a>(string $referenceCode, array $query = [])
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getUserSouvenirs"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getUserImages">getUserImages</a>(string $referenceCode, array $query = [])
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getUserImages"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getFriends">getFriends</a>(array $query = [])
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getFriends"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getFriendRequests">getFriendRequests</a>(array $query = [])
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getFriendRequests"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_sendFriendRequest">sendFriendRequest</a>(array $friendRequest, array $query = [])
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_sendFriendRequest"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_acceptFriendRequest">acceptFriendRequest</a>(string $requestId)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_acceptFriendRequest"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_deleteFriendRequest">deleteFriendRequest</a>(string $requestId)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_deleteFriendRequest"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_deleteFriend">deleteFriend</a>(string $referenceCode)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_deleteFriend"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getReferenceCodeFromId">getReferenceCodeFromId</a>(array $query)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getReferenceCodeFromId"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_ping">ping</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Geocaching/Sdk/GeocachingSdk.html#method_ping"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getMyProfile">getMyProfile</a>(array $fields = [&#039;referenceCode&#039;, &#039;findCount&#039;, &#039;hideCount&#039;, &#039;favoritePoints&#039;, &#039;username&#039;, &#039;membershipLevelId&#039;, &#039;avatarUrl&#039;, &#039;homeCoordinates&#039;])
+        
+                                            <p>Get the full user's profile.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location">at         line 29</div>
+        <code>                    
+    <strong>__construct</strong>(<a href="../../Geocaching/Lib/Adapters/HttpClientInterface.html"><abbr title="Geocaching\Lib\Adapters\HttpClientInterface">HttpClientInterface</abbr></a> $httpClient)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Geocaching/Lib/Adapters/HttpClientInterface.html"><abbr title="Geocaching\Lib\Adapters\HttpClientInterface">HttpClientInterface</abbr></a></td>
+                <td>$httpClient</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_searchGeocaches">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_searchGeocaches"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 48</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>searchGeocaches</strong>(array $query)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#search">https://api.groundspeak.com/documentation#search</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getGeocache">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getGeocache"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 61</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>getGeocache</strong>(string $referenceCode, array $query = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$referenceCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#get-geocache">https://api.groundspeak.com/documentation#get-geocache</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getGeocaches">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getGeocaches"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 73</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>getGeocaches</strong>(array $query)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#get-geocaches">https://api.groundspeak.com/documentation#get-geocaches</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getGeocacheImages">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getGeocacheImages"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 86</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>getGeocacheImages</strong>(string $referenceCode, array $query = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$referenceCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#get-geocache-images">https://api.groundspeak.com/documentation#get-geocache-images</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setGeocacheNote">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_setGeocacheNote"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 99</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>setGeocacheNote</strong>(string $referenceCode, string $note)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$referenceCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$note</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#upsert-geocachenote">https://api.groundspeak.com/documentation#upsert-geocachenote</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_deleteGeocacheNote">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_deleteGeocacheNote"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 111</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>deleteGeocacheNote</strong>(string $referenceCode)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$referenceCode</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#delete-geocachenote">https://api.groundspeak.com/documentation#delete-geocachenote</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getGeocacheLogs">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getGeocacheLogs"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 124</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>getGeocacheLogs</strong>(string $referenceCode, array $query = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$referenceCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#get-geocache-logs">https://api.groundspeak.com/documentation#get-geocache-logs</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getGeocacheLog">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getGeocacheLog"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 137</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>getGeocacheLog</strong>(string $referenceCode, array $query = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$referenceCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#get-geocachelog">https://api.groundspeak.com/documentation#get-geocachelog</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setGeocacheLog">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_setGeocacheLog"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 150</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>setGeocacheLog</strong>(array $geocacheLog, array $query = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$geocacheLog</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#create-geocachelog">https://api.groundspeak.com/documentation#create-geocachelog</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_updateGeocacheLog">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_updateGeocacheLog"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 164</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>updateGeocacheLog</strong>(string $referenceCode, array $geocacheLog, array $query = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$referenceCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$geocacheLog</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#update-geocachelog">https://api.groundspeak.com/documentation#update-geocachelog</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_deleteGeocacheLog">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_deleteGeocacheLog"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 176</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>deleteGeocacheLog</strong>(string $referenceCode)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$referenceCode</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#delete-geocachelog">https://api.groundspeak.com/documentation#delete-geocachelog</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getGeocacheLogImages">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getGeocacheLogImages"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 189</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>getGeocacheLogImages</strong>(string $referenceCode, array $query = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$referenceCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#get-geocachelog-images">https://api.groundspeak.com/documentation#get-geocachelog-images</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setGeocacheLogImages">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_setGeocacheLogImages"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 203</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>setGeocacheLogImages</strong>(string $referenceCode, array $imageToUpload, array $query = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$referenceCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$imageToUpload</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#create-geocachelog-image">https://api.groundspeak.com/documentation#create-geocachelog-image</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getGeocacheTrackables">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getGeocacheTrackables"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 216</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>getGeocacheTrackables</strong>(string $referenceCode, array $query = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$referenceCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#get-geocache-trackables">https://api.groundspeak.com/documentation#get-geocache-trackables</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getTrackables">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getTrackables"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 229</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>getTrackables</strong>(string $referenceCode, array $query = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$referenceCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#get-trackable">https://api.groundspeak.com/documentation#get-trackable</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getUserTrackables">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getUserTrackables"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 241</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>getUserTrackables</strong>(array $query = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#get-users-trackables">https://api.groundspeak.com/documentation#get-users-trackables</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getTrackableImages">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getTrackableImages"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 254</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>getTrackableImages</strong>(string $referenceCode, array $query = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$referenceCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getTrackableLogs">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getTrackableLogs"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 267</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>getTrackableLogs</strong>(string $referenceCode, array $query = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$referenceCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#get-trackable-logs">https://api.groundspeak.com/documentation#get-trackable-logs</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getTrackableLog">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getTrackableLog"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 280</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>getTrackableLog</strong>(string $referenceCode, array $query = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$referenceCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#get-trackablelog">https://api.groundspeak.com/documentation#get-trackablelog</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setTrackableLog">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_setTrackableLog"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 293</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>setTrackableLog</strong>(array $trackableLog, array $query = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$trackableLog</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#create-trackablelog">https://api.groundspeak.com/documentation#create-trackablelog</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_updateTrackableLog">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_updateTrackableLog"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 307</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>updateTrackableLog</strong>(string $referenceCode, array $trackableLog, array $query = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$referenceCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$trackableLog</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#update-trackablelog">https://api.groundspeak.com/documentation#update-trackablelog</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_deleteTrackableLog">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_deleteTrackableLog"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 319</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>deleteTrackableLog</strong>(string $referenceCode)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$referenceCode</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#delete-trackablelog">https://api.groundspeak.com/documentation#delete-trackablelog</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getTrackableLogImages">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getTrackableLogImages"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 332</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>getTrackableLogImages</strong>(string $referenceCode, array $query = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$referenceCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#get-trackablelog-images">https://api.groundspeak.com/documentation#get-trackablelog-images</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setTrackableLogImages">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_setTrackableLogImages"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 346</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>setTrackableLogImages</strong>(string $referenceCode, array $imageToUpload, array $query = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$referenceCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$imageToUpload</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#get-trackablelog-images">https://api.groundspeak.com/documentation#get-trackablelog-images</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getGeocacheLogdrafts">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getGeocacheLogdrafts"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 359</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>getGeocacheLogdrafts</strong>(string $referenceCode, array $query = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$referenceCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#get-geocache-logdrafts">https://api.groundspeak.com/documentation#get-geocache-logdrafts</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getLogdrafts">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getLogdrafts"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 371</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>getLogdrafts</strong>(array $query = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#get-logdrafts">https://api.groundspeak.com/documentation#get-logdrafts</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getLogdraft">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getLogdraft"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 384</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>getLogdraft</strong>(string $referenceCode, array $query = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$referenceCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#get-logdraft">https://api.groundspeak.com/documentation#get-logdraft</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setLogdraft">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_setLogdraft"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 397</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>setLogdraft</strong>(array $logDraft, array $query = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$logDraft</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#create-logdraft">https://api.groundspeak.com/documentation#create-logdraft</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_updateLogdraft">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_updateLogdraft"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 411</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>updateLogdraft</strong>(string $referenceCode, array $logDraft, array $query = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$referenceCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$logDraft</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#update-logdraft">https://api.groundspeak.com/documentation#update-logdraft</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_deleteLogdraft">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_deleteLogdraft"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 423</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>deleteLogdraft</strong>(string $referenceCode)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$referenceCode</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#delete-logdraft">https://api.groundspeak.com/documentation#delete-logdraft</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_promoteLogdraft">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_promoteLogdraft"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 436</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>promoteLogdraft</strong>(string $referenceCode, array $logDraft)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$referenceCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$logDraft</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#promote-logdraft">https://api.groundspeak.com/documentation#promote-logdraft</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setLogdraftImage">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_setLogdraftImage"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 450</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>setLogdraftImage</strong>(string $referenceCode, array $postImage, array $query = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$referenceCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$postImage</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#create-logdraft-image">https://api.groundspeak.com/documentation#create-logdraft-image</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getGeocacheUserWaypoints">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getGeocacheUserWaypoints"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 463</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>getGeocacheUserWaypoints</strong>(string $referenceCode, array $query = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$referenceCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#get-geocache-userwaypoints">https://api.groundspeak.com/documentation#get-geocache-userwaypoints</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getUserWaypoints">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getUserWaypoints"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 475</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>getUserWaypoints</strong>(array $query = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#get-userwaypoints">https://api.groundspeak.com/documentation#get-userwaypoints</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setGeocacheUserWaypoint">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_setGeocacheUserWaypoint"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 488</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>setGeocacheUserWaypoint</strong>(string $referenceCode, array $userWaypoint)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$referenceCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$userWaypoint</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#create-userwaypoint">https://api.groundspeak.com/documentation#create-userwaypoint</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_updateUserWaypoint">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_updateUserWaypoint"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 501</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>updateUserWaypoint</strong>(string $referenceCode, array $userWaypoint)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$referenceCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$userWaypoint</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#update-userwaypoint">https://api.groundspeak.com/documentation#update-userwaypoint</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_deleteUserWaypoint">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_deleteUserWaypoint"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 513</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>deleteUserWaypoint</strong>(string $referenceCode)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$referenceCode</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#delete-userwaypoint">https://api.groundspeak.com/documentation#delete-userwaypoint</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getList">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getList"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 526</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>getList</strong>(string $referenceCode, array $query = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$referenceCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#get-list">https://api.groundspeak.com/documentation#get-list</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setList">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_setList"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 539</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>setList</strong>(array $list, array $query = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$list</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#create-list">https://api.groundspeak.com/documentation#create-list</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_updateList">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_updateList"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 553</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>updateList</strong>(string $referenceCode, array $list, array $query = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$referenceCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$list</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#update-list">https://api.groundspeak.com/documentation#update-list</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_deleteList">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_deleteList"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 565</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>deleteList</strong>(string $referenceCode)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$referenceCode</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#remove-list">https://api.groundspeak.com/documentation#remove-list</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getGeocacheList">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getGeocacheList"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 578</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>getGeocacheList</strong>(string $referenceCode, array $query = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$referenceCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#get-list-geocaches">https://api.groundspeak.com/documentation#get-list-geocaches</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setGeocacheList">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_setGeocacheList"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 592</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>setGeocacheList</strong>(string $referenceCode, array $geocache, array $query = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$referenceCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$geocache</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#add-geocache-list">https://api.groundspeak.com/documentation#add-geocache-list</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setBulkGeocachesList">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_setBulkGeocachesList"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 605</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>setBulkGeocachesList</strong>(string $referenceCode, array $query)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$referenceCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#add-geocaches-list">https://api.groundspeak.com/documentation#add-geocaches-list</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_deleteGeocacheList">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_deleteGeocacheList"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 618</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>deleteGeocacheList</strong>(string $referenceCode, string $geocacheCode)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$referenceCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$geocacheCode</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#delete-geocache-list">https://api.groundspeak.com/documentation#delete-geocache-list</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getUser">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getUser"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 631</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>getUser</strong>(string $referenceCode, array $query = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$referenceCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#get-user">https://api.groundspeak.com/documentation#get-user</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getUsers">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getUsers"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 643</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>getUsers</strong>(array $query = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#get-users">https://api.groundspeak.com/documentation#get-users</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getUserGeocacheLogs">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getUserGeocacheLogs"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 656</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>getUserGeocacheLogs</strong>(string $referenceCode, array $query = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$referenceCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#get-user-logs">https://api.groundspeak.com/documentation#get-user-logs</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getUserLists">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getUserLists"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 669</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>getUserLists</strong>(string $referenceCode, array $query = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$referenceCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#get-lists">https://api.groundspeak.com/documentation#get-lists</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getUserSouvenirs">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getUserSouvenirs"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 682</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>getUserSouvenirs</strong>(string $referenceCode, array $query = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$referenceCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#get-souvenirs">https://api.groundspeak.com/documentation#get-souvenirs</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getUserImages">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getUserImages"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 695</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>getUserImages</strong>(string $referenceCode, array $query = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$referenceCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#get-user-images">https://api.groundspeak.com/documentation#get-user-images</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getFriends">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getFriends"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 707</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>getFriends</strong>(array $query = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#get-friends">https://api.groundspeak.com/documentation#get-friends</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getFriendRequests">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getFriendRequests"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 719</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>getFriendRequests</strong>(array $query = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#get-friendrequests">https://api.groundspeak.com/documentation#get-friendrequests</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_sendFriendRequest">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_sendFriendRequest"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 732</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>sendFriendRequest</strong>(array $friendRequest, array $query = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$friendRequest</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#create-friendrequest">https://api.groundspeak.com/documentation#create-friendrequest</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_acceptFriendRequest">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_acceptFriendRequest"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 744</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>acceptFriendRequest</strong>(string $requestId)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$requestId</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#accept-friendrequest">https://api.groundspeak.com/documentation#accept-friendrequest</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_deleteFriendRequest">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_deleteFriendRequest"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 756</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>deleteFriendRequest</strong>(string $requestId)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$requestId</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#delete-friendrequest">https://api.groundspeak.com/documentation#delete-friendrequest</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_deleteFriend">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_deleteFriend"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 768</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>deleteFriend</strong>(string $referenceCode)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$referenceCode</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#delete-friend">https://api.groundspeak.com/documentation#delete-friend</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getReferenceCodeFromId">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_getReferenceCodeFromId"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 780</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>getReferenceCodeFromId</strong>(array $query)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://api.groundspeak.com/documentation#get-reference-code">https://api.groundspeak.com/documentation#get-reference-code</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_ping">
+        <div class="location">in <a href="../../Geocaching/Sdk/GeocachingSdk.html#method_ping"><abbr title="Geocaching\Sdk\GeocachingSdk">GeocachingSdk</abbr></a> at         line 788</div>
+        <code>                    bool
+    <strong>ping</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getMyProfile">
+        <div class="location">at         line 41</div>
+        <code>                    <abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr>
+    <strong>getMyProfile</strong>(array $fields = [&#039;referenceCode&#039;, &#039;findCount&#039;, &#039;hideCount&#039;, &#039;favoritePoints&#039;, &#039;username&#039;, &#039;membershipLevelId&#039;, &#039;avatarUrl&#039;, &#039;homeCoordinates&#039;])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get the full user's profile.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$fields</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Geocaching\Sdk\GuzzleHttpClient">GuzzleHttpClient</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+    </body>
+
+</html>

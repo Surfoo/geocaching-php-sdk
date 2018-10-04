@@ -1,5 +1,5 @@
-Geocaching API for PHP >=5.6
-============================
+# Geocaching PHP SDK
+
 
 [![Latest Stable Version](https://poser.pugx.org/geocaching/api/v/stable.svg)](https://packagist.org/packages/geocaching/api)
 [![Total Downloads](https://poser.pugx.org/geocaching/api/downloads.svg)](https://packagist.org/packages/geocaching/api)
@@ -7,25 +7,41 @@ Geocaching API for PHP >=5.6
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/bce9472c-1bfc-4e75-aaff-d12cad84a27f/big.png)](https://insight.sensiolabs.com/projects/bce9472c-1bfc-4e75-aaff-d12cad84a27f)
 
-PHP implementation of Groundspeak's Geocaching Live API.
+The documentation about the API is available here: 
+  - https://api.groundspeak.com/documentation
+  - https://api.groundspeak.com/api-docs/index
 
-A kind of documentation about the API is available here : https://api.groundspeak.com/LiveV6/geocaching.svc/help
+You can follow changes about the documentation and the API here:
+  - https://github.com/Surfoo/groundspeak-api-monitoring
 
-You want to contribute?
------------------------
 
-First, you must have your API key from Groundspeak, please refer to this url: http://www.geocaching.com/live/apidevelopers/
+## Requirements
 
-## Installation
+ - PHP >= 7.1
+ - Install [composer](https://getcomposer.org/doc/00-intro.md#system-requirements).
 
-First, you need to install [composer](https://getcomposer.org/doc/00-intro.md#system-requirements).
+## Composer
 
-### Composer
-
-From the Command Line:
+From the command line:
 
 ```
-composer require geocaching/api:2.0
+composer require surfoo/geocaching-php-sdk:3.0
+```
+
+Or in your `composer.json`:
+
+``` json
+{
+    "require": {
+        "surfoo/geocaching-php-sdk": "~3.0"
+    }
+}
+```
+
+For the old API (no longer maintained):
+
+```
+composer require geocaching/api:~2.0
 ```
 
 Or in your `composer.json`:
@@ -38,19 +54,6 @@ Or in your `composer.json`:
 }
 ```
 
-Get the source
---------------
+## Using the PHP SDK
 
-Fork the project source code on [github](https://github.com/Surfoo/geocaching-api):
-
-    git clone git://github.com/Surfoo/geocaching-api.git
-
-License
--------
-
-geocaching-api is distributed under [MIT](https://opensource.org/licenses/MIT).
-
-Contact & Questions
--------------------
-
-- author: surfooo at gmail dot com
+First, you must have your API key from Groundspeak, but access to the API are no longer open.

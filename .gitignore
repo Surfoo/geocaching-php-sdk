@@ -1,8 +1,6 @@
-*.sublime-project
-*.sublime-workspace
 composer.lock
-logs
-output
+cache
 vendor
-tools/monitoring.html
 .php_cs.cache
+keys.txt
+sami.phar
