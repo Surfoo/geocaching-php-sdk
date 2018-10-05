@@ -55,3 +55,9 @@ Or in your `composer.json`:
 ## Using the PHP SDK
 
 First, you must have your API key from Groundspeak, but access to the API are no longer open.
+
+You can find an example of implementation (with OAuth 2) in this repository: https://github.com/Surfoo/geocaching-api-demo
+
+## Contributing
+
+All contributions are welcome! Feel free to submit pull requests, issues or ideas :-)
