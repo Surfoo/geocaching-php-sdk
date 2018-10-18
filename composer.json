@@ -23,7 +23,7 @@
         "surfoo/oauth2-geocaching": "~1.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "~7.0",
+        "phpunit/phpunit": "~7.4",
         "phpstan/phpstan": "^0.10.3"
     },
     "scripts": {
