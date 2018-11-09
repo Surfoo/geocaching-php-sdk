@@ -190,6 +190,22 @@ class GeocachingSdk implements GeocachingSdkInterface
     }
 
     /**
+     * swagger: DELETE /v{api-version}/geocachelogs/{referenceCode}/images/{imageGuid}
+     *
+     * @see https://api.groundspeak.com/documentation#delete-geocachelog-image
+     * @see https://api.groundspeak.com/api-docs/index#!/GeocacheLogs/GeocacheLogs_DeleteGeocacheLogImages
+     *
+     * @param string $referenceCode
+     * @param string $imageGuid
+     *
+     * @return Response
+     */
+    public function deleteGeocacheLogImage(string $referenceCode, string $imageGuid)
+    {
+        return $this->httpClient->delete('geocachelogs/' . $referenceCode . '/images/' . $imageGuid);
+    }
+
+    /**
      * swagger: POST /v{api-version}/geocachelogs/{referenceCode}/images
      *
      * @see https://api.groundspeak.com/documentation#create-geocachelog-image
@@ -684,6 +700,22 @@ class GeocachingSdk implements GeocachingSdkInterface
     }
 
     /**
+     * swagger: DELETE /v{api-version}/trackablelogs/{referenceCode}/images/{imageGuid}
+     *
+     * @see https://api.groundspeak.com/documentation#delete-trackablelog-image
+     * @see https://staging.api.groundspeak.com/api-docs/index#!/TrackableLogs/TrackableLogs_DeleteTrackableLogImages
+     *
+     * @param string $referenceCode
+     * @param string $imageGuid
+     *
+     * @return Response
+     */
+    public function deleteTrackableLogImage(string $referenceCode, string $imageGuid)
+    {
+        return $this->httpClient->delete('trackablelogs/' . $referenceCode . '/images/' . $imageGuid);
+    }
+
+    /**
      * swagger: POST /v{api-version}/trackablelogs
      *
      * @see https://api.groundspeak.com/documentation#create-trackablelog
@@ -931,6 +963,37 @@ class GeocachingSdk implements GeocachingSdkInterface
     public function deleteUserWaypoint(string $referenceCode)
     {
         return $this->httpClient->delete('userwaypoints/' . $referenceCode);
+    }
+
+    /**
+     * swagger: PUT /v{api-version}/geocaches/{referenceCode}/correctedcoordinates
+     *
+     * @see https://api.groundspeak.com/documentation#upsert-correctedcoordinates
+     * @see https://api.groundspeak.com/api-docs/index#!/UserWaypoints/UserWaypoints_UpsertCorrectedCoordinates
+     *
+     * @param string $referenceCode
+     * @param array  $coordinates
+     *
+     * @return Response
+     */
+    public function updateCorrectedCoordinates(string $referenceCode, array $coordinates)
+    {
+        return $this->httpClient->put('geocaches/' . $referenceCode . '/correctedcoordinates', $coordinates);
+    }
+
+    /**
+     * swagger: DELETE /v{api-version}/geocaches/{referenceCode}/correctedcoordinates
+     *
+     * @see https://api.groundspeak.com/documentation#delete-correctedcoordinates
+     * @see https://api.groundspeak.com/api-docs/index#!/UserWaypoints/UserWaypoints_DeleteCorrectedCoordinates
+     *
+     * @param string $referenceCode
+     *
+     * @return Response
+     */
+    public function deleteCorrectedCoordinates(string $referenceCode)
+    {
+        return $this->httpClient->delete('geocaches/' . $referenceCode . '/correctedcoordinates');
     }
 
     /**

@@ -134,6 +134,16 @@ interface GeocachingSdkInterface
     public function getGeocacheLogImages(string $referenceCode, array $query = []);
 
     /**
+     * @see https://api.groundspeak.com/documentation#delete-geocachelog-image
+     *
+     * @param string $referenceCode
+     * @param string $imageGuid
+     *
+     * @return GuzzleHttpClient
+     */
+    public function deleteGeocacheLogImage(string $referenceCode, string $imageGuid);
+
+    /**
      * @see https://api.groundspeak.com/documentation#create-geocachelog-image
      *
      * @param string $referenceCode
@@ -253,7 +263,7 @@ interface GeocachingSdkInterface
     public function getTrackableLogImages(string $referenceCode, array $query = []);
 
     /**
-     * @see https://api.groundspeak.com/documentation#get-trackablelog-images
+     * @see https://api.groundspeak.com/documentation#create-trackablelog-image
      *
      * @param string $referenceCode
      * @param array  $imageToUpload
@@ -262,6 +272,16 @@ interface GeocachingSdkInterface
      * @return GuzzleHttpClient
      */
     public function setTrackableLogImages(string $referenceCode, array $imageToUpload, array $query = []);
+
+    /**
+     * @see https://api.groundspeak.com/documentation#delete-trackablelog-image
+     *
+     * @param string $referenceCode
+     * @param string $imageGuid
+     *
+     * @return GuzzleHttpClient
+     */
+    public function deleteTrackableLogImage(string $referenceCode, string $imageGuid);
 
     /**
      * @see https://api.groundspeak.com/documentation#get-logdrafts
@@ -380,6 +400,25 @@ interface GeocachingSdkInterface
      * @return GuzzleHttpClient
      */
     public function deleteUserWaypoint(string $referenceCode);
+
+    /**
+     * @see https://api.groundspeak.com/documentation#upsert-correctedcoordinates
+     *
+     * @param string $referenceCode
+     * @param array  $coordinates
+     *
+     * @return GuzzleHttpClient
+     */
+    public function updateCorrectedCoordinates(string $referenceCode, array $coordinates);
+
+    /**
+     * @see https://api.groundspeak.com/documentation#delete-correctedcoordinates
+     *
+     * @param string $referenceCode
+     *
+     * @return GuzzleHttpClient
+     */
+    public function deleteCorrectedCoordinates(string $referenceCode);
 
     /**
      * @see https://api.groundspeak.com/documentation#get-list

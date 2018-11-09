@@ -59,6 +59,10 @@ class GuzzleHttpClient implements HttpClientInterface
      */
     public function getBody(bool $toArray = false)
     {
+        if ($this->response === null) {
+            throw new GeocachingSdkException('response is null');
+        }
+
         $content = (string) $this->response->getBody();
         if (empty($content)) {
             $content = '{}';
@@ -71,6 +75,9 @@ class GuzzleHttpClient implements HttpClientInterface
      */
     public function getHeaders(): array
     {
+        if ($this->response === null) {
+            throw new GeocachingSdkException('response is null');
+        }
         return $this->response->getHeaders();
     }
 
@@ -81,6 +88,9 @@ class GuzzleHttpClient implements HttpClientInterface
      */
     public function getHeader(string $header): array
     {
+        if ($this->response === null) {
+            throw new GeocachingSdkException('response is null');
+        }
         return $this->response->getHeader($header);
     }
 
@@ -89,6 +99,9 @@ class GuzzleHttpClient implements HttpClientInterface
      */
     public function getStatusCode(): int
     {
+        if ($this->response === null) {
+            throw new GeocachingSdkException('response is null');
+        }
         return $this->response->getStatusCode();
     }
 
@@ -97,6 +110,9 @@ class GuzzleHttpClient implements HttpClientInterface
      */
     public function getReasonPhrase(): string
     {
+        if ($this->response === null) {
+            throw new GeocachingSdkException('response is null');
+        }
         return $this->response->getReasonPhrase();
     }
 
@@ -108,14 +124,10 @@ class GuzzleHttpClient implements HttpClientInterface
      */
     public function get(string $uri, array $query = [])
     {
-        if (!empty($query)) {
-            $uri .= '?' . http_build_query($query);
-        }
-
         try {
-            $this->response = $this->client->request('GET', $uri, $this->options);
+            $this->response = $this->client->request('GET', $uri, array_merge($this->options, ['query' => $query]));
         } catch (ConnectException $e) {
-            throw new GeocachingSdkException($e->getMessage(), $e->getCode());
+            throw new GeocachingSdkException($e->getMessage(), $e->getCode(), ['uri' => $uri, 'query' => $query, 'options' => $this->options]);
         } catch (RequestException $e) {
             $this->handleErrorResponse($e->getResponse());
         }
@@ -138,14 +150,10 @@ class GuzzleHttpClient implements HttpClientInterface
             $this->options['json'] = $body;
         }
 
-        if (!empty($query)) {
-            $uri .= '?' . http_build_query($query);
-        }
-
         try {
-            $this->response = $this->client->request('POST', $uri, $this->options);
+            $this->response = $this->client->request('POST', $uri, array_merge($this->options, ['query' => $query]));
         } catch (ConnectException $e) {
-            throw new GeocachingSdkException($e->getMessage(), $e->getCode());
+            throw new GeocachingSdkException($e->getMessage(), $e->getCode(), ['uri' => $uri, 'query' => $query, 'options' => $this->options]);
         } catch (RequestException $e) {
             $this->handleErrorResponse($e->getResponse());
         }
@@ -168,14 +176,10 @@ class GuzzleHttpClient implements HttpClientInterface
             $this->options['json'] = $body;
         }
 
-        if (!empty($query)) {
-            $uri .= '?' . http_build_query($query);
-        }
-
         try {
-            $this->response = $this->client->request('PUT', $uri, $this->options);
+            $this->response = $this->client->request('PUT', $uri, array_merge($this->options, ['query' => $query]));
         } catch (ConnectException $e) {
-            throw new GeocachingSdkException($e->getMessage(), $e->getCode());
+            throw new GeocachingSdkException($e->getMessage(), $e->getCode(), ['uri' => $uri, 'query' => $query, 'options' => $this->options]);
         } catch (RequestException $e) {
             $this->handleErrorResponse($e->getResponse());
         }
@@ -195,7 +199,7 @@ class GuzzleHttpClient implements HttpClientInterface
         try {
             $this->response = $this->client->request('DELETE', $uri, $this->options);
         } catch (ConnectException $e) {
-            throw new GeocachingSdkException($e->getMessage(), $e->getCode());
+            throw new GeocachingSdkException($e->getMessage(), $e->getCode(), ['uri' => $uri, 'options' => $this->options]);
         } catch (RequestException $e) {
             $this->handleErrorResponse($e->getResponse());
         }
