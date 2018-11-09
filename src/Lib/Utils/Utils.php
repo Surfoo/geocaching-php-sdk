@@ -2,7 +2,8 @@
 
 namespace Geocaching\Lib\Utils;
 
-class Utils {
+class Utils
+{
 
     /**
      * @const string
@@ -71,18 +72,18 @@ class Utils {
      * Convert a base 31 number containing chars 0123456789ABCDEFGHJKMNPQRTVWXYZ
      * to numeric value.
      *
-     * @param string $input
+     * @param  string     $input
      * @return int
      * @throws \Exception Only chars 0123456789ABCDEFGHJKMNPQRTVWXYZ are supported.
      */
     protected static function base31Decode(string $input): int
     {
-        $base = \strlen(self::BASE_31_CHARS);
+        $base   = \strlen(self::BASE_31_CHARS);
         $result = 0;
 
         $inputList = \str_split($input);
         foreach ($inputList as $ch) {
-           $result *= $base;
+            $result *= $base;
 
             $index = \strpos(self::BASE_31_CHARS, $ch);
             if ($index === false) {

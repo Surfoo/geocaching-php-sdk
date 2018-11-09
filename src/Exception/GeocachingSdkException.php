@@ -4,7 +4,6 @@ namespace Geocaching\Exception;
 
 class GeocachingSdkException extends \Exception
 {
-
     protected $context = null;
 
     /**
@@ -21,7 +20,8 @@ class GeocachingSdkException extends \Exception
     /**
      * @return array
      */
-    public function getContext() {
+    public function getContext()
+    {
         return $this->context;
     }
 }
