@@ -9,6 +9,7 @@ class GeocachingSdkException extends \Exception
     /**
      * @param string $message
      * @param int    $code
+     * @param array  $context
      */
     public function __construct(string $message = 'Bad request exception', int $code = 0, array $context = [])
     {

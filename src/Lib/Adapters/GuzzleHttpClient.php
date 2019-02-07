@@ -124,8 +124,12 @@ class GuzzleHttpClient implements HttpClientInterface
      */
     public function get(string $uri, array $query = [])
     {
+        if (!empty($query)) {
+            $uri .= '?' . http_build_query($query);
+        }
+
         try {
-            $this->response = $this->client->request('GET', $uri, array_merge($this->options, ['query' => $query]));
+            $this->response = $this->client->request('GET', $uri, $this->options);
         } catch (ConnectException $e) {
             throw new GeocachingSdkException($e->getMessage(), $e->getCode(), ['uri' => $uri, 'query' => $query, 'options' => $this->options]);
         } catch (RequestException $e) {
@@ -139,6 +143,7 @@ class GuzzleHttpClient implements HttpClientInterface
      * @param string $uri
      * @param array  $body
      * @param array  $query
+     * @param array  $options
      *
      * @return \Geocaching\Lib\Response\Response|mixed
      */
@@ -150,10 +155,14 @@ class GuzzleHttpClient implements HttpClientInterface
             $this->options['json'] = $body;
         }
 
+        if (!empty($query)) {
+            $uri .= '?' . http_build_query($query);
+        }
+
         try {
-            $this->response = $this->client->request('POST', $uri, array_merge($this->options, ['query' => $query]));
+            $this->response = $this->client->request('POST', $uri, $this->options);
         } catch (ConnectException $e) {
-            throw new GeocachingSdkException($e->getMessage(), $e->getCode(), ['uri' => $uri, 'query' => $query, 'options' => $this->options]);
+            throw new GeocachingSdkException($e->getMessage(), $e->getCode(), ['uri' => $uri, 'body' => $body, 'query' => $query, 'options' => $this->options]);
         } catch (RequestException $e) {
             $this->handleErrorResponse($e->getResponse());
         }
@@ -165,6 +174,7 @@ class GuzzleHttpClient implements HttpClientInterface
      * @param string $uri
      * @param array  $body
      * @param array  $query
+     * @param array  $options
      *
      * @return \Geocaching\Lib\Response\Response|mixed
      */
@@ -176,10 +186,14 @@ class GuzzleHttpClient implements HttpClientInterface
             $this->options['json'] = $body;
         }
 
+        if (!empty($query)) {
+            $uri .= '?' . http_build_query($query);
+        }
+
         try {
-            $this->response = $this->client->request('PUT', $uri, array_merge($this->options, ['query' => $query]));
+            $this->response = $this->client->request('PUT', $uri, $this->options);
         } catch (ConnectException $e) {
-            throw new GeocachingSdkException($e->getMessage(), $e->getCode(), ['uri' => $uri, 'query' => $query, 'options' => $this->options]);
+            throw new GeocachingSdkException($e->getMessage(), $e->getCode(), ['uri' => $uri, 'body' => $body, 'query' => $query, 'options' => $this->options]);
         } catch (RequestException $e) {
             $this->handleErrorResponse($e->getResponse());
         }
