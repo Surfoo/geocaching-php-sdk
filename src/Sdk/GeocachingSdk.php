@@ -417,12 +417,15 @@ class GeocachingSdk implements GeocachingSdkInterface
      * @see https://api.groundspeak.com/api-docs/index#!/Lists/Lists_GetZippedPocketQuery
      *
      * @param string $referenceCode
+     * @param string $dirname full path directory to extract files
      *
      * @return Response
      */
-    public function getZippedPocketQuery(string $referenceCode)
+    public function getZippedPocketQuery(string $referenceCode, string $dirname)
     {
-        return $this->httpClient->get('lists/' . $referenceCode . '/geocaches/zipped');
+        $fullAbsolutePath = sprintf('%s/%s.zip', $dirname, $referenceCode);
+
+        return $this->httpClient->get('lists/' . $referenceCode . '/geocaches/zipped', [], ['sink' => $fullAbsolutePath]);
     }
 
     /**
