@@ -119,19 +119,22 @@ class GuzzleHttpClient implements HttpClientInterface
     /**
      * @param string $uri
      * @param array  $query
+     * @param array  $options
      *
      * @return \Geocaching\Lib\Response\Response|mixed
      */
-    public function get(string $uri, array $query = [])
+    public function get(string $uri, array $query = [],  array $options = [])
     {
+        $options = array_merge_recursive($this->options, $options);
+
         if (!empty($query)) {
             $uri .= '?' . http_build_query($query);
         }
 
         try {
-            $this->response = $this->client->request('GET', $uri, $this->options);
+            $this->response = $this->client->request('GET', $uri, $options);
         } catch (ConnectException $e) {
-            throw new GeocachingSdkException($e->getMessage(), $e->getCode(), ['uri' => $uri, 'query' => $query, 'options' => $this->options]);
+            throw new GeocachingSdkException($e->getMessage(), $e->getCode(), ['uri' => $uri, 'query' => $query, 'options' => $options]);
         } catch (RequestException $e) {
             $this->handleErrorResponse($e->getResponse());
         }
@@ -149,10 +152,10 @@ class GuzzleHttpClient implements HttpClientInterface
      */
     public function post(string $uri, array $body = [], array $query = [], array $options = [])
     {
-        $this->options = array_merge_recursive($this->options, $options);
+        $options = array_merge_recursive($this->options, $options);
 
         if (!empty($body)) {
-            $this->options['json'] = $body;
+            $options['json'] = $body;
         }
 
         if (!empty($query)) {
@@ -160,9 +163,9 @@ class GuzzleHttpClient implements HttpClientInterface
         }
 
         try {
-            $this->response = $this->client->request('POST', $uri, $this->options);
+            $this->response = $this->client->request('POST', $uri, $options);
         } catch (ConnectException $e) {
-            throw new GeocachingSdkException($e->getMessage(), $e->getCode(), ['uri' => $uri, 'body' => $body, 'query' => $query, 'options' => $this->options]);
+            throw new GeocachingSdkException($e->getMessage(), $e->getCode(), ['uri' => $uri, 'body' => $body, 'query' => $query, 'options' => $options]);
         } catch (RequestException $e) {
             $this->handleErrorResponse($e->getResponse());
         }
