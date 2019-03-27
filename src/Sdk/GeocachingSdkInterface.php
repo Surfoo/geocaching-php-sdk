@@ -686,5 +686,10 @@ interface GeocachingSdkInterface
     /**
      * @return GuzzleHttpClient
      */
+    public function getHQPromotions();
+
+    /**
+     * @return GuzzleHttpClient
+     */
     public function ping();
 }

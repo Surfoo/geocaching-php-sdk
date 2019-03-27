@@ -1129,6 +1129,18 @@ class GeocachingSdk implements GeocachingSdkInterface
     }
 
     /**
+     * swagger: GET /v{api-version}/HQPromotions/metadata
+     *
+     * @see https://staging.api.groundspeak.com/api-docs/index#!/HQPromotions/HQPromotions_Get
+     *
+     * @return Response
+     */
+    public function getHQPromotions()
+    {
+        return $this->httpClient->get('HQPromotions/metadata');
+    }
+
+    /**
      * swagger: GET /status/ping
      *
      * @see https://api.groundspeak.com/api-docs/index#!/Status/Status_PingAsync
