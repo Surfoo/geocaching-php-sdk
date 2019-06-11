@@ -560,6 +560,15 @@ interface GeocachingSdkInterface
      */
     public function getUserImages(string $referenceCode, array $query = []);
 
+    /**
+     * @see https://api.groundspeak.com/documentation#get-geocache-favoritedby
+     *
+     * @param string $referenceCode
+     * @param array  $query
+     *
+     * @return GuzzleHttpClient
+     */
+    public function getFavoritedUsersByGeocache(string $referenceCode, array $query = []);
 
     /**
      * @see https://api.groundspeak.com/documentation#get-friends
