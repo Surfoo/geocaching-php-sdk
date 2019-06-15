@@ -2,5 +2,4 @@ composer.lock
 cache
 vendor
 .php_cs.cache
-keys.txt
 sami.phar

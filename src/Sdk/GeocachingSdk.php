@@ -300,20 +300,20 @@ class GeocachingSdk implements GeocachingSdkInterface
         return $this->httpClient->get('geocaches/' . $referenceCode . '/images', $query);
     }
 
-    /**
-     * swagger: GET /v{api-version}/geocaches/{referenceCode}/trackables
-     *
-     * @see https://api.groundspeak.com/documentation#get-geocache-trackables
-     * @see https://api.groundspeak.com/api-docs/index#!/GeocacheNotes/GeocacheNotes_UpsertGeocacheNoteAsync
+     /**
+     * swagger: GET /v{api-version}/geocaches/{referenceCode}/favoritedby
+     *  
+     * @see https://api.groundspeak.com/documentation#get-geocache-favoritedby
+     * @see https://api.groundspeak.com/api-docs/index#!/Geocaches/Geocaches_GetFavoritedBy
      *
      * @param string $referenceCode
      * @param array  $query
      *
      * @return Response
      */
-    public function getGeocacheTrackables(string $referenceCode, array $query = [])
+    public function getFavoritedUsersByGeocache(string $referenceCode, array $query = [])
     {
-        return $this->httpClient->get('geocaches/' . $referenceCode . '/trackables', $query);
+        return $this->httpClient->get('geocaches/' . $referenceCode . '/favoritedby', $query);
     }
 
     /**
@@ -329,6 +329,22 @@ class GeocachingSdk implements GeocachingSdkInterface
     public function getGeocaches(array $query)
     {
         return $this->httpClient->get('geocaches', $query);
+    }
+
+    /**
+     * swagger: GET /v{api-version}/geocaches/{referenceCode}/trackables
+     *
+     * @see https://api.groundspeak.com/documentation#get-geocache-trackables
+     * @see https://api.groundspeak.com/api-docs/index#!/GeocacheNotes/GeocacheNotes_UpsertGeocacheNoteAsync
+     *
+     * @param string $referenceCode
+     * @param array  $query
+     *
+     * @return Response
+     */
+    public function getGeocacheTrackables(string $referenceCode, array $query = [])
+    {
+        return $this->httpClient->get('geocaches/' . $referenceCode . '/trackables', $query);
     }
 
     /**
@@ -1126,6 +1142,18 @@ class GeocachingSdk implements GeocachingSdkInterface
     public function getTrackableLogTypes()
     {
         return $this->httpClient->get('trackablelogtypes');
+    }
+
+    /**
+     * swagger: GET /v{api-version}/HQPromotions/metadata
+     *
+     * @see https://staging.api.groundspeak.com/api-docs/index#!/HQPromotions/HQPromotions_Get
+     *
+     * @return Response
+     */
+    public function getHQPromotions()
+    {
+        return $this->httpClient->get('HQPromotions/metadata');
     }
 
     /**
