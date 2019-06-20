@@ -35,22 +35,6 @@ Or in your `composer.json`:
 }
 ```
 
-For the old API (no longer maintained):
-
-```
-composer require geocaching/api
-```
-
-Or in your `composer.json`:
-
-``` json
-{
-    "require": {
-        "geocaching/api": "~2.0"
-    }
-}
-```
-
 ## Using the PHP SDK
 
 First, you must have your API key from Groundspeak, but access to the API are no longer open.
