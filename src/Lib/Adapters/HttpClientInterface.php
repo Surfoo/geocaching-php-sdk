@@ -29,12 +29,13 @@ interface HttpClientInterface
     /**
      * @param string $uri
      * @param array  $data
+     * @param array  $options
      *
      * @return Response
      *
      * @throws GeocachingSdkException
      */
-    public function get(string $uri, array $data = []);
+    public function get(string $uri, array $data = [], array $options = []);
 
     /**
      * @param string $uri

@@ -16,8 +16,8 @@ use GuzzleHttp\Psr7\Response;
 /**
  * List of methods from Groundspeak API.
  *
- * @see    https://api.groundspeak.com/documentation API Documentation by Groundspeak
- * @see    https://api.groundspeak.com/api-docs/index Swagger
+ * @see https://api.groundspeak.com/documentation API Documentation by Groundspeak
+ * @see https://api.groundspeak.com/api-docs/index Swagger
  */
 class GeocachingSdk implements GeocachingSdkInterface
 {
@@ -190,22 +190,6 @@ class GeocachingSdk implements GeocachingSdkInterface
     }
 
     /**
-     * swagger: DELETE /v{api-version}/geocachelogs/{referenceCode}/images/{imageGuid}
-     *
-     * @see https://api.groundspeak.com/documentation#delete-geocachelog-image
-     * @see https://api.groundspeak.com/api-docs/index#!/GeocacheLogs/GeocacheLogs_DeleteGeocacheLogImages
-     *
-     * @param string $referenceCode
-     * @param string $imageGuid
-     *
-     * @return Response
-     */
-    public function deleteGeocacheLogImage(string $referenceCode, string $imageGuid)
-    {
-        return $this->httpClient->delete('geocachelogs/' . $referenceCode . '/images/' . $imageGuid);
-    }
-
-    /**
      * swagger: POST /v{api-version}/geocachelogs/{referenceCode}/images
      *
      * @see https://api.groundspeak.com/documentation#create-geocachelog-image
@@ -236,6 +220,22 @@ class GeocachingSdk implements GeocachingSdkInterface
     public function setGeocacheLog(array $geocacheLog, array $query = [])
     {
         return $this->httpClient->post('geocachelogs', $geocacheLog, $query);
+    }
+
+    /**
+     * swagger: DELETE /v{api-version}/geocachelogs/{referenceCode}/images/{imageGuid}
+     *
+     * @see https://api.groundspeak.com/documentation#delete-geocachelog-image
+     * @see https://api.groundspeak.com/api-docs/index#!/GeocacheLogs/GeocacheLogs_DeleteGeocacheLogImages
+     *
+     * @param string $referenceCode
+     * @param string $imageGuid
+     *
+     * @return Response
+     */
+    public function deleteGeocacheLogImage(string $referenceCode, string $imageGuid)
+    {
+        return $this->httpClient->delete('geocachelogs/' . $referenceCode . '/images/' . $imageGuid);
     }
 
     /**
@@ -300,9 +300,9 @@ class GeocachingSdk implements GeocachingSdkInterface
         return $this->httpClient->get('geocaches/' . $referenceCode . '/images', $query);
     }
 
-     /**
+    /**
      * swagger: GET /v{api-version}/geocaches/{referenceCode}/favoritedby
-     *  
+     *
      * @see https://api.groundspeak.com/documentation#get-geocache-favoritedby
      * @see https://api.groundspeak.com/api-docs/index#!/Geocaches/Geocaches_GetFavoritedBy
      *
@@ -379,6 +379,65 @@ class GeocachingSdk implements GeocachingSdkInterface
     }
 
     /**
+     * swagger: GET /v{api-version}/geotours/{referenceCode}
+     *
+     * @see https://api.groundspeak.com/documentation#get-geotour
+     * @see https://api.groundspeak.com/api-docs/index#!/GeoTours/GeoTours_GetGeoTour
+     *
+     * @param string $referenceCode
+     * @param array  $query
+     *
+     * @return Response
+     */
+    public function getGeotour(string $referenceCode, array $query = [])
+    {
+        return $this->httpClient->get('geotours/' . $referenceCode, $query);
+    }
+
+    /**
+     * swagger: GET /v{api-version}/geotours
+     *
+     * @see https://api.groundspeak.com/documentation#get-geotours
+     * @see https://api.groundspeak.com/api-docs/index#!/GeoTours/GeoTours_GetGeoTours
+     *
+     * @param array $query
+     *
+     * @return Response
+     */
+    public function getGeotours(array $query = [])
+    {
+        return $this->httpClient->get('geotours', $query);
+    }
+
+    /**
+     * swagger: GET /v{api-version}/geotours/{referenceCode}/geocaches
+     *
+     * @see https://api.groundspeak.com/documentation#get-geotour-geocaches
+     * @see https://api.groundspeak.com/api-docs/index#!/GeoTours/GeoTours_GetGeocachesByGeoTour
+     *
+     * @param string $referenceCode
+     * @param array  $query
+     *
+     * @return Response
+     */
+    public function getGeocachesGeotour(string $referenceCode, array $query = [])
+    {
+        return $this->httpClient->get('geotours/' . $referenceCode . '/geocaches', $query);
+    }
+
+    /**
+     * swagger: GET /v{api-version}/HQPromotions/metadata
+     *
+     * @see https://api.groundspeak.com/api-docs/index#!/HQPromotions/HQPromotions_Get
+     *
+     * @return Response
+     */
+    public function getHQPromotions()
+    {
+        return $this->httpClient->get('HQPromotions/metadata');
+    }
+
+    /**
      * swagger: DELETE /v{api-version}/lists/{referenceCode}
      *
      * @see https://api.groundspeak.com/documentation#remove-list
@@ -433,7 +492,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * @see https://api.groundspeak.com/api-docs/index#!/Lists/Lists_GetZippedPocketQuery
      *
      * @param string $referenceCode
-     * @param string $dirname full path directory to extract files
+     * @param string $dirname       full path directory to extract files
      *
      * @return Response
      */
@@ -722,7 +781,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * swagger: DELETE /v{api-version}/trackablelogs/{referenceCode}/images/{imageGuid}
      *
      * @see https://api.groundspeak.com/documentation#delete-trackablelog-image
-     * @see https://staging.api.groundspeak.com/api-docs/index#!/TrackableLogs/TrackableLogs_DeleteTrackableLogImages
+     * @see https://api.groundspeak.com/api-docs/index#!/TrackableLogs/TrackableLogs_DeleteTrackableLogImages
      *
      * @param string $referenceCode
      * @param string $imageGuid
@@ -1049,7 +1108,7 @@ class GeocachingSdk implements GeocachingSdkInterface
     /**
      * swagger: GET /v{api-version}/countries
      *
-     * @see https://staging.api.groundspeak.com/documentation#get-countries
+     * @see https://api.groundspeak.com/documentation#get-countries
      *
      * @return Response
      */
@@ -1061,7 +1120,7 @@ class GeocachingSdk implements GeocachingSdkInterface
     /**
      * swagger: GET /v{api-version}/states
      *
-     * @see https://staging.api.groundspeak.com/documentation#get-states
+     * @see https://api.groundspeak.com/documentation#get-states
      *
      * @return Response
      */
@@ -1073,7 +1132,7 @@ class GeocachingSdk implements GeocachingSdkInterface
     /**
      * swagger: GET /v{api-version}/countries/{countryId}/states
      *
-     * @see https://staging.api.groundspeak.com/documentation#get-country-states
+     * @see https://api.groundspeak.com/documentation#get-country-states
      *
      * @param int $countryId
      *
@@ -1087,7 +1146,7 @@ class GeocachingSdk implements GeocachingSdkInterface
     /**
      * swagger: GET /v{api-version}/membershiplevels
      *
-     * @see https://staging.api.groundspeak.com/documentation#get-membership-levels
+     * @see https://api.groundspeak.com/documentation#get-membership-levels
      *
      * @return Response
      */
@@ -1099,7 +1158,7 @@ class GeocachingSdk implements GeocachingSdkInterface
     /**
      * swagger: GET /v{api-version}/geocachetypes
      *
-     * @see https://staging.api.groundspeak.com/documentation#get-geocache-types
+     * @see https://api.groundspeak.com/documentation#get-geocache-types
      *
      * @return Response
      */
@@ -1111,7 +1170,7 @@ class GeocachingSdk implements GeocachingSdkInterface
     /**
      * swagger: GET /v{api-version}/attributes
      *
-     * @see https://staging.api.groundspeak.com/documentation#get-attributes
+     * @see https://api.groundspeak.com/documentation#get-attributes
      *
      * @return Response
      */
@@ -1123,7 +1182,7 @@ class GeocachingSdk implements GeocachingSdkInterface
     /**
      * swagger: GET /v{api-version}/geocachelogtypes
      *
-     * @see https://staging.api.groundspeak.com/documentation#get-geocachelog-types
+     * @see https://api.groundspeak.com/documentation#get-geocachelog-types
      *
      * @return Response
      */
@@ -1135,25 +1194,13 @@ class GeocachingSdk implements GeocachingSdkInterface
     /**
      * swagger: GET /v{api-version}/trackablelogtypes
      *
-     * @see https://staging.api.groundspeak.com/documentation#get-trackablelog-types
+     * @see https://api.groundspeak.com/documentation#get-trackablelog-types
      *
      * @return Response
      */
     public function getTrackableLogTypes()
     {
         return $this->httpClient->get('trackablelogtypes');
-    }
-
-    /**
-     * swagger: GET /v{api-version}/HQPromotions/metadata
-     *
-     * @see https://staging.api.groundspeak.com/api-docs/index#!/HQPromotions/HQPromotions_Get
-     *
-     * @return Response
-     */
-    public function getHQPromotions()
-    {
-        return $this->httpClient->get('HQPromotions/metadata');
     }
 
     /**
