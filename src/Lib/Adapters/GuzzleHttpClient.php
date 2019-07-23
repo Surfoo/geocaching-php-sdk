@@ -123,7 +123,7 @@ class GuzzleHttpClient implements HttpClientInterface
      *
      * @return \Geocaching\Lib\Response\Response|mixed
      */
-    public function get(string $uri, array $query = [],  array $options = [])
+    public function get(string $uri, array $query = [], array $options = [])
     {
         $options = array_merge_recursive($this->options, $options);
 

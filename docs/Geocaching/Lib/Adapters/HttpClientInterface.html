@@ -130,7 +130,7 @@
                     <abbr title="GuzzleHttp\Psr7\Response">Response</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_get">get</a>(string $uri, array $data = [])
+                    <a href="#method_get">get</a>(string $uri, array $data = [], array $options = [])
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -281,9 +281,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_get">
-        <div class="location">at         line 37</div>
+        <div class="location">at         line 38</div>
         <code>                    <abbr title="GuzzleHttp\Psr7\Response">Response</abbr>
-    <strong>get</strong>(string $uri, array $data = [])
+    <strong>get</strong>(string $uri, array $data = [], array $options = [])
         </code>
     </h3>
     <div class="details">
@@ -302,6 +302,11 @@
                     <tr>
                 <td>array</td>
                 <td>$data</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$options</td>
                 <td></td>
             </tr>
             </table>
@@ -333,7 +338,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_post">
-        <div class="location">at         line 49</div>
+        <div class="location">at         line 50</div>
         <code>                    <abbr title="GuzzleHttp\Psr7\Response">Response</abbr>
     <strong>post</strong>(string $uri, array $body = [], array $query = [], array $options = [])
         </code>
@@ -395,7 +400,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_put">
-        <div class="location">at         line 60</div>
+        <div class="location">at         line 61</div>
         <code>                    <abbr title="GuzzleHttp\Psr7\Response">Response</abbr>
     <strong>put</strong>(string $uri, array $data, array $query = [])
         </code>
@@ -452,7 +457,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_delete">
-        <div class="location">at         line 69</div>
+        <div class="location">at         line 70</div>
         <code>                    <abbr title="GuzzleHttp\Psr7\Response">Response</abbr>
     <strong>delete</strong>(string $uri)
         </code>
