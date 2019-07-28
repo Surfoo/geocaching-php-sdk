@@ -8,6 +8,31 @@ use Geocaching\Lib\Utils\Utils;
 final class UtilsTest extends TestCase
 {
 
+    public function providerDecimalToDegreeDecimal()
+    {
+        return [
+            [0, 0,                  'N 00° 0.000 E 000° 0.000'],
+            [48.855600, 2.365517,   'N 48° 51.336 E 002° 21.931'],
+            [-48.855600, 2.365517,  'S 48° 51.336 E 002° 21.931'],
+            [48.855600, -2.365517,  'N 48° 51.336 W 002° 21.931'],
+            [-48.855600, -2.365517, 'S 48° 51.336 W 002° 21.931'],
+        ];
+    }
+
+    /**
+     * @dataProvider providerDecimalToDegreeDecimal
+     *
+     * @param float $latitude
+     * @param float $longitude
+     * @param string $expected
+     */
+    public function testDecimalToDegreeDecimal(float $latitude, float $longitude, string $expected)
+    {
+        $result = Utils::decimalToDegreeDecimal($latitude, $longitude);
+
+        $this->assertEquals($expected, $result);
+    }
+
     public function providerReferenceCode()
     {
         return [
@@ -22,6 +47,9 @@ final class UtilsTest extends TestCase
 
     /**
      * @dataProvider providerReferenceCode
+     * 
+     * @param string $referenceCode
+     * @param integer $expected
      */
     public function testReferenceCodeToIdSuccessful(string $referenceCode, int $expected): void
     {
@@ -40,11 +68,13 @@ final class UtilsTest extends TestCase
 
     /**
      * @dataProvider providerReferenceCodeFail
+
+     * @param string $referenceCode
      *
      * @expectedException \Exception
      * @expectedExceptionMessage Only chars 0123456789ABCDEFGHJKMNPQRTVWXYZ are supported.
      */
-    public function testReferenceCodeToIdFail($referenceCode)
+    public function testReferenceCodeToIdFail(string $referenceCode)
     {
         $result = Utils::referenceCodeToId($referenceCode);
     }
@@ -63,6 +93,10 @@ final class UtilsTest extends TestCase
 
     /**
      * @dataProvider providerId
+     * 
+     * @param string $number
+     * @param string $prefix
+     * @param string $expected
      */
     public function testIdToReferenceCodeSucessful(string $number, string $prefix, string $expected): void
     {

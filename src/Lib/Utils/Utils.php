@@ -23,6 +23,66 @@ class Utils
     const CACHE_CODE_BASE16_MAX = 0xFFFF;
 
     /**
+     * Convert decimal coordinates to degree decimal coordinates
+     * 
+     * @param float $latitude
+     * @param float $longitude
+     * 
+     * @return string
+     */
+    public static function decimalToDegreeDecimal(float $latitude, float $longitude): string {
+        $hemisphere = 'N';
+
+        if ($latitude < 0) {
+            $hemisphere = 'S';
+            $latitude *= -1;
+        }
+
+        $lat_minutes = ($latitude - (int) $latitude) * 60;
+    
+        $meridian = 'E';
+
+        if ($longitude < 0) {
+            $meridian = 'W';
+            $longitude *= -1;
+        }
+
+        $lng_minutes = ($longitude - (int) $longitude) * 60;
+    
+        return sprintf('%s %02d° %.3f %s %03d° %.3f',
+                        $hemisphere, (int) $latitude, $lat_minutes,
+                        $meridian, (int) $longitude, $lng_minutes
+        );
+    }
+
+    /**
+     * Generate a random CodeVerifier for PKCE
+     * 
+     * @param integer $length
+     * 
+     * @return string
+     */
+    public static function createCodeVerifier(int $length = 128): string
+    {
+        if ($length < 43 || $length > 128) {
+            throw new Exception('length must be beetween 43 and 128');
+        }
+
+        return bin2hex(random_bytes(floor($length/2)));
+    }
+
+    /**
+     * Generate codeVerifier from the codeVerifier for PKCE
+     *
+     * @param string $codeVerifier
+     * @return string
+     */
+    public static function createCodeChallenge(string $codeVerifier): string
+    {
+        return base64url_encode(pack('H*', hash('sha256', $codeVerifier)));
+    }
+
+    /**
      * Concert a reference code to an Id
      *
      * @param string $referenceCode
