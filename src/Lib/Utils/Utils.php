@@ -62,34 +62,6 @@ class Utils
     }
 
     /**
-     * Generate a random CodeVerifier for PKCE
-     *
-     * @param int $length
-     *
-     * @return string
-     */
-    public static function createCodeVerifier(int $length = 128): string
-    {
-        if ($length < 43 || $length > 128) {
-            throw new \Exception('length must be beetween 43 and 128');
-        }
-
-        return bin2hex(random_bytes(floor($length / 2)));
-    }
-
-    /**
-     * Generate codeVerifier from the codeVerifier for PKCE
-     *
-     * @param  string $codeVerifier
-     * @return string
-     */
-    public static function createCodeChallenge(string $codeVerifier): string
-    {
-        $binarydata = pack('H*', hash('sha256', $codeVerifier));
-        return trim(strtr(base64_encode($binarydata), '+/', '-_'), "=");
-    }
-
-    /**
      * Concert a reference code to an Id
      *
      * @param string $referenceCode
