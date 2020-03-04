@@ -203,6 +203,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * swagger: DELETE /v{api-version}/geocaches/{referenceCode}/notes
      *
      * @see https://api.groundspeak.com/documentation#delete-geocachenote
+     * @see https://api.groundspeak.com/api-docs/index#!/GeocacheNotes/GeocacheNotes_DeleteNote
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
@@ -280,7 +281,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * swagger: GET /v{api-version}/geocaches/{referenceCode}/trackables
      *
      * @see https://api.groundspeak.com/documentation#get-geocache-trackables
-     * @see https://api.groundspeak.com/api-docs/index#!/GeocacheNotes/GeocacheNotes_UpsertGeocacheNoteAsync
+     * @see https://api.groundspeak.com/api-docs/index#!/GeocacheNotes/GeocacheNotes_UpsertNote
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
