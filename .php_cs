@@ -39,6 +39,7 @@ return PhpCsFixer\Config::create()
         'ternary_operator_spaces' => true,
         'trailing_comma_in_multiline_array' => true,
         'no_unused_imports' => true,
+        'no_superfluous_phpdoc_tags' => true,
     ))
     ->setFinder($finder)
     ->setUsingCache(true)

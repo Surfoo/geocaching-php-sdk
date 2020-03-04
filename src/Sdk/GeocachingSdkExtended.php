@@ -4,22 +4,16 @@
  * Geocaching PHP SDK Extented.
  *
  * @author  Surfoo <surfooo@gmail.com>
- *
  * @see    https://github.com/Surfoo/geocaching-php-sdk
- *
  * @license https://opensource.org/licenses/MIT
  */
 
 namespace Geocaching\Sdk;
 
 use Geocaching\Lib\Adapters\HttpClientInterface;
-use GuzzleHttp\Psr7\Response;
 
 class GeocachingSdkExtended extends GeocachingSdk
 {
-    /**
-     * @param HttpClientInterface $httpClient
-     */
     public function __construct(HttpClientInterface $httpClient)
     {
         parent::__construct($httpClient);
@@ -28,9 +22,7 @@ class GeocachingSdkExtended extends GeocachingSdk
     /**
      * Get the full user's profile.
      *
-     * @param array $fields
-     *
-     * @return Response
+     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
     public function getMyProfile(array $fields = ['referenceCode', 'findCount', 'hideCount', 'favoritePoints', 'username', 'membershipLevelId', 'avatarUrl', 'homeCoordinates'])
     {

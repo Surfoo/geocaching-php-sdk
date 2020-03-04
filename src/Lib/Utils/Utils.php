@@ -24,11 +24,6 @@ class Utils
 
     /**
      * Convert decimal coordinates to degree decimal coordinates
-     *
-     * @param float $latitude
-     * @param float $longitude
-     *
-     * @return string
      */
     public static function decimalToDegreeDecimal(float $latitude, float $longitude): string
     {
@@ -63,10 +58,6 @@ class Utils
 
     /**
      * Concert a reference code to an Id
-     *
-     * @param string $referenceCode
-     *
-     * @return int
      */
     public static function referenceCodeToId(string $referenceCode): int
     {
@@ -87,11 +78,6 @@ class Utils
 
     /**
      * Convert a numeric id to a reference Code.
-     *
-     * @param string $number
-     * @param string $prefix
-     *
-     * @return string
      */
     public static function idToReferenceCode(string $number, string $prefix): string
     {
@@ -111,8 +97,6 @@ class Utils
      * Convert a base 31 number containing chars 0123456789ABCDEFGHJKMNPQRTVWXYZ
      * to numeric value.
      *
-     * @param  string     $input
-     * @return int
      * @throws \Exception Only chars 0123456789ABCDEFGHJKMNPQRTVWXYZ are supported.
      */
     protected static function base31Decode(string $input): int
@@ -138,10 +122,6 @@ class Utils
     /**
      * Convert a numeric value to base 31 number using chars
      * ABCDEFGHJKMNPQRTVWXYZ0123456789.
-     *
-     * @param int $input
-     *
-     * @return string
      */
     protected static function base31Encode(int $input): string
     {
