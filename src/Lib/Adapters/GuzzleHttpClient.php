@@ -6,7 +6,6 @@ use Geocaching\Exception\GeocachingSdkException;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
 
@@ -15,7 +14,7 @@ class GuzzleHttpClient implements HttpClientInterface
     const HEADER_AUTHORIZATION = 'Authorization';
 
     /**
-     * @var Response
+     * @var \Psr\Http\Message\ResponseInterface
      */
     protected $response;
 
@@ -37,10 +36,6 @@ class GuzzleHttpClient implements HttpClientInterface
 
     /**
      * GuzzleHttpClient constructor.
-     *
-     * @param Client $client
-     * @param string $token
-     * @param array  $options
      */
     public function __construct(Client $client, string $token, array $options = [])
     {
@@ -53,8 +48,6 @@ class GuzzleHttpClient implements HttpClientInterface
     }
 
     /**
-     * @param bool $toArray
-     *
      * @return \stdClass|array
      */
     public function getBody(bool $toArray = false)
@@ -70,9 +63,6 @@ class GuzzleHttpClient implements HttpClientInterface
         return json_decode($content, $toArray);
     }
 
-    /**
-     * @return array
-     */
     public function getHeaders(): array
     {
         if ($this->response === null) {
@@ -81,11 +71,6 @@ class GuzzleHttpClient implements HttpClientInterface
         return $this->response->getHeaders();
     }
 
-    /**
-     * @param string $header
-     *
-     * @return array
-     */
     public function getHeader(string $header): array
     {
         if ($this->response === null) {
@@ -94,9 +79,6 @@ class GuzzleHttpClient implements HttpClientInterface
         return $this->response->getHeader($header);
     }
 
-    /**
-     * @return int
-     */
     public function getStatusCode(): int
     {
         if ($this->response === null) {
@@ -105,9 +87,6 @@ class GuzzleHttpClient implements HttpClientInterface
         return $this->response->getStatusCode();
     }
 
-    /**
-     * @return string
-     */
     public function getReasonPhrase(): string
     {
         if ($this->response === null) {
@@ -117,11 +96,7 @@ class GuzzleHttpClient implements HttpClientInterface
     }
 
     /**
-     * @param string $uri
-     * @param array  $query
-     * @param array  $options
-     *
-     * @return \Geocaching\Lib\Response\Response|mixed
+     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
     public function get(string $uri, array $query = [], array $options = [])
     {
@@ -143,12 +118,7 @@ class GuzzleHttpClient implements HttpClientInterface
     }
 
     /**
-     * @param string $uri
-     * @param array  $body
-     * @param array  $query
-     * @param array  $options
-     *
-     * @return \Geocaching\Lib\Response\Response|mixed
+     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
     public function post(string $uri, array $body = [], array $query = [], array $options = [])
     {
@@ -174,12 +144,7 @@ class GuzzleHttpClient implements HttpClientInterface
     }
 
     /**
-     * @param string $uri
-     * @param array  $body
-     * @param array  $query
-     * @param array  $options
-     *
-     * @return \Geocaching\Lib\Response\Response|mixed
+     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
     public function put(string $uri, array $body, array $query = [], array $options = [])
     {
@@ -205,9 +170,7 @@ class GuzzleHttpClient implements HttpClientInterface
     }
 
     /**
-     * @param string $uri
-     *
-     * @return \Geocaching\Lib\Response\Response|mixed
+     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
     public function delete(string $uri)
     {
@@ -225,11 +188,7 @@ class GuzzleHttpClient implements HttpClientInterface
     }
 
     /**
-     * @param ResponseInterface|null $response
-     *
      * @throws GeocachingSdkException The request is invalid
-     *
-     * @return void
      */
     private function handleErrorResponse(?ResponseInterface $response): void
     {
@@ -247,21 +206,11 @@ class GuzzleHttpClient implements HttpClientInterface
         }
     }
 
-    /**
-     * @param array $headers
-     *
-     * @return string
-     */
     private function decodeError401(array $headers): string
     {
         return $headers['WWW-Authenticate'][0];
     }
 
-    /**
-     * @param StreamInterface $responseBody
-     *
-     * @return string
-     */
     private function decodeError404ResponseBody(StreamInterface $responseBody): string
     {
         $body = json_decode($responseBody);
@@ -278,11 +227,6 @@ class GuzzleHttpClient implements HttpClientInterface
         return (string) $responseBody;
     }
 
-    /**
-     * @param StreamInterface $responseBody
-     *
-     * @return string
-     */
     private function decodeErrorResponseBody(StreamInterface $responseBody): string
     {
         $body = json_decode($responseBody);

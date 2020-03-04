@@ -4,6 +4,9 @@ namespace Geocaching\Enum;
 
 class GeocacheSize extends EnumAbstract
 {
+    /**
+     * @var array
+     */
     protected static $list = [
                                 1 => 'Unknown',
                                 2 => 'Micro',

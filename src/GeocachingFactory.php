@@ -25,15 +25,11 @@ class GeocachingFactory
     const PRODUCTION_API_URL = 'https://api.groundspeak.com';
 
     /**
-     * staging
-     *
      * @const string
      */
     const ENVIRONMENT_STAGING = 'staging';
 
     /**
-     * production
-     *
      * @const string
      */
     const ENVIRONMENT_PRODUCTION = 'production';
@@ -45,17 +41,17 @@ class GeocachingFactory
      */
     const API_VERSION = 'v1';
 
+    /**
+     * @var \GuzzleHttp\HandlerStack|null
+     */
     private static $stack;
 
     const LOG_FORMAT = ['{method} {uri} HTTP/{version} {req_body}',
-                        'RESPONSE: {code} - {res_body}'
+                        'RESPONSE: {code} - {res_body}',
                     ];
     /**
      * Return Geocaching SDK to use API's methods
      *
-     * @param string $accessToken
-     * @param string $environment
-     * @param array  $options
      *
      * @return GeocachingSdk
      */
@@ -72,10 +68,6 @@ class GeocachingFactory
     /**
      * Return Geocaching custom methods
      *
-     * @param string $accessToken
-     * @param string $environment
-     * @param array  $options
-     *
      * @return GeocachingSdkExtended
      */
     public static function createSdkExtended(
@@ -89,8 +81,6 @@ class GeocachingFactory
     }
 
     /**
-     * @param LoggerInterface $logger
-     * @param array $messageFormats
      * @return void
      */
     public static function setLogger(LoggerInterface $logger, array $messageFormats = [])
@@ -106,15 +96,12 @@ class GeocachingFactory
                 \GuzzleHttp\Middleware::log(
                     $logger,
                     new \GuzzleHttp\MessageFormatter($messageFormat)
-            ));
+                )
+            );
         }
     }
 
     /**
-     * @param string $accessToken
-     * @param string $environment
-     * @param array  $options
-     *
      * @return GuzzleHttpClient
      */
     private static function createHandler(string $accessToken, string $environment, array $options = [])
