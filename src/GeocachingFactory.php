@@ -6,6 +6,7 @@ use Geocaching\Lib\Adapters\GuzzleHttpClient;
 use Geocaching\Sdk\GeocachingSdk;
 use Geocaching\Sdk\GeocachingSdkExtended;
 use GuzzleHttp\Client;
+use Psr\Log\LoggerInterface;
 
 class GeocachingFactory
 {
@@ -44,6 +45,11 @@ class GeocachingFactory
      */
     const API_VERSION = 'v1';
 
+    private static $stack;
+
+    const LOG_FORMAT = ['{method} {uri} HTTP/{version} {req_body}',
+                        'RESPONSE: {code} - {res_body}'
+                    ];
     /**
      * Return Geocaching SDK to use API's methods
      *
@@ -83,6 +89,28 @@ class GeocachingFactory
     }
 
     /**
+     * @param LoggerInterface $logger
+     * @param array $messageFormats
+     * @return void
+     */
+    public static function setLogger(LoggerInterface $logger, array $messageFormats = [])
+    {
+        if (empty($messageFormats)) {
+            $messageFormats = self::LOG_FORMAT;
+        }
+
+        self::$stack = \GuzzleHttp\HandlerStack::create();
+
+        foreach ($messageFormats as $messageFormat) {
+            self::$stack->unshift(
+                \GuzzleHttp\Middleware::log(
+                    $logger,
+                    new \GuzzleHttp\MessageFormatter($messageFormat)
+            ));
+        }
+    }
+
+    /**
      * @param string $accessToken
      * @param string $environment
      * @param array  $options
@@ -92,9 +120,12 @@ class GeocachingFactory
     private static function createHandler(string $accessToken, string $environment, array $options = [])
     {
         $baseUri = self::ENVIRONMENT_STAGING == $environment ? self::STAGING_API_URL : self::PRODUCTION_API_URL;
-        $client  = new Client([
-            'base_uri' => sprintf('%s/%s/', $baseUri, self::API_VERSION),
-        ]);
+
+        $config = ['base_uri' => sprintf('%s/%s/', $baseUri, self::API_VERSION)];
+        if (!is_null(self::$stack)) {
+            $config['handler'] = self::$stack;
+        }
+        $client = new Client($config);
 
         return new GuzzleHttpClient($client, $accessToken, $options);
     }
