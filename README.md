@@ -11,10 +11,9 @@ The documentation about the API is available here:
 You can follow changes about the documentation and the API here:
   - https://github.com/Surfoo/groundspeak-api-monitoring
 
-
 ## Requirements
 
- - PHP >= 7.1
+ - PHP >= 7.2
  - [composer](https://getcomposer.org/doc/00-intro.md#system-requirements).
 
 ## Composer
@@ -30,7 +29,7 @@ Or in your `composer.json`:
 ``` json
 {
     "require": {
-        "surfoo/geocaching-php-sdk": "^3.0"
+        "surfoo/geocaching-php-sdk": "^3.9"
     }
 }
 ```
