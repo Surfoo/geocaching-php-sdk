@@ -13,13 +13,6 @@ namespace Geocaching\Sdk;
 interface GeocachingSdkInterface
 {
     /**
-     * @see https://api.groundspeak.com/documentation#get-friends
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
-     */
-    public function getFriends(array $query = []);
-
-    /**
      * @see https://api.groundspeak.com/documentation#get-friendrequests
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
@@ -32,6 +25,20 @@ interface GeocachingSdkInterface
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
     public function sendFriendRequest(array $friendRequest, array $query = []);
+
+    /**
+     * @see https://api.groundspeak.com/documentation#get-friends
+     *
+     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
+     */
+    public function getFriends(array $query = []);
+
+    /**
+     * @see https://api.groundspeak.com/documentation#get-friend-logs-geocache
+     *
+     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
+     */
+    public function getFriendsGeocacheLogsByGeocache(string $referenceCode, array $query = []);
 
     /**
      * @see https://api.groundspeak.com/documentation#accept-friendrequest
@@ -167,6 +174,20 @@ interface GeocachingSdkInterface
     public function searchGeocaches(array $query);
 
     /**
+     * @see https://api.groundspeak.com/documentation#verify-final-coordinates
+     *
+     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
+     */
+    public function checkFinalCoordinates(string $referenceCode, array $coordinates);
+
+    /**
+     * @see https://api.groundspeak.com/documentation#bulk-create-trackablelogs
+     *
+     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
+     */
+    public function setBulkTrackableLogs(string $referenceCode, array $logs, array $query = []);
+
+    /**
      * @see https://api.groundspeak.com/documentation#get-geotour
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
@@ -186,7 +207,7 @@ interface GeocachingSdkInterface
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
     public function getGeocachesGeotour(string $referenceCode, array $query = []);
- 
+
     /**
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
@@ -215,8 +236,6 @@ interface GeocachingSdkInterface
 
     /**
      * @see https://api.groundspeak.com/documentation#get-pq-zip
-     *
-     * @param string $dirname full path directory to extract files
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */

@@ -2,6 +2,8 @@
 
 namespace Geocaching\Lib\Utils;
 
+use Geocaching\Exception\UtilsException;
+
 class Utils
 {
 
@@ -97,7 +99,7 @@ class Utils
      * Convert a base 31 number containing chars 0123456789ABCDEFGHJKMNPQRTVWXYZ
      * to numeric value.
      *
-     * @throws \Exception Only chars 0123456789ABCDEFGHJKMNPQRTVWXYZ are supported.
+     * @throws UtilsException Only chars 0123456789ABCDEFGHJKMNPQRTVWXYZ are supported.
      */
     protected static function base31Decode(string $input): int
     {
@@ -110,7 +112,7 @@ class Utils
 
             $index = \strpos(self::BASE_31_CHARS, $ch);
             if ($index === false) {
-                throw new \Exception("Only chars " . self::BASE_31_CHARS . " are supported.");
+                throw new UtilsException("Only chars " . self::BASE_31_CHARS . " are supported.");
             }
 
             $result += $index;
