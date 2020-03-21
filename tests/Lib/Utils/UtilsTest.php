@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 use Geocaching\Lib\Utils\Utils;
-
 final class UtilsTest extends TestCase
 {
 
@@ -56,7 +55,7 @@ final class UtilsTest extends TestCase
         $result = Utils::referenceCodeToId($referenceCode);
 
         $this->assertEquals($expected, $result);
-        $this->assertInternalType('int', $result);
+        $this->assertIsInt($result);
     }
 
     public function providerReferenceCodeFail()
@@ -68,15 +67,13 @@ final class UtilsTest extends TestCase
 
     /**
      * @dataProvider providerReferenceCodeFail
-
-     * @param string $referenceCode
-     *
-     * @expectedException \Exception
-     * @expectedExceptionMessage Only chars 0123456789ABCDEFGHJKMNPQRTVWXYZ are supported.
      */
     public function testReferenceCodeToIdFail(string $referenceCode)
     {
-        $result = Utils::referenceCodeToId($referenceCode);
+        $this->expectException(Geocaching\Exception\UtilsException::class);
+        $this->expectExceptionMessage("Only chars 0123456789ABCDEFGHJKMNPQRTVWXYZ are supported.");
+
+        Utils::referenceCodeToId($referenceCode);
     }
 
     public function providerId()
@@ -103,7 +100,7 @@ final class UtilsTest extends TestCase
         $result = Utils::idToReferenceCode($number, $prefix);
 
         $this->assertEquals($expected, $result);
-        $this->assertInternalType('string', $result);
+        $this->assertIsString($result);
     }
 
 }

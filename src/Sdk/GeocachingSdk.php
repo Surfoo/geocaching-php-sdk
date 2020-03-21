@@ -31,19 +31,6 @@ class GeocachingSdk implements GeocachingSdkInterface
     }
 
     /**
-     * swagger: GET /v{api-version}/friends
-     *
-     * @see https://api.groundspeak.com/documentation#get-friends
-     * @see https://api.groundspeak.com/api-docs/index#!/Friends/Friends_GetFriends
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
-     */
-    public function getFriends(array $query = [])
-    {
-        return $this->httpClient->get('friends', $query);
-    }
-
-    /**
      * swagger: GET /v{api-version}/friendrequests
      *
      * @see https://api.groundspeak.com/documentation#get-friendrequests
@@ -68,6 +55,34 @@ class GeocachingSdk implements GeocachingSdkInterface
     {
         return $this->httpClient->post('friendrequests', $friendRequest, $query);
     }
+
+    /**
+     * swagger: GET /v{api-version}/friends
+     *
+     * @see https://api.groundspeak.com/documentation#get-friends
+     * @see https://api.groundspeak.com/api-docs/index#!/Friends/Friends_GetFriends
+     *
+     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
+     */
+    public function getFriends(array $query = [])
+    {
+        return $this->httpClient->get('friends', $query);
+    }
+
+    /**
+     * swagger: GET /v{api-version}/friends/geocaches/{referenceCode}/geocachelogs
+     *
+     * @see https://api.groundspeak.com/documentation#bulk-create-trackablelogs
+     * @see https://api.groundspeak.com/api-docs/index#!/Friends/Friends_GetFriendsGeocacheLogs
+     *
+     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
+     */
+    public function getFriendsGeocacheLogsByGeocache(string $referenceCode, array $query = [])
+    {
+        return $this->httpClient->get('friends/geocaches/' . $referenceCode . '/geocachelogs', $query);
+    }
+
+
 
     /**
      * swagger: POST /v{api-version}/friendrequests/{requestId}/accept
@@ -317,6 +332,32 @@ class GeocachingSdk implements GeocachingSdkInterface
     }
 
     /**
+     * swagger: POST /v{api-version}/geocaches/{referenceCode}/bulktrackablelogs
+     *
+     * @see https://api.groundspeak.com/documentation#verify-final-coordinates
+     * @see https://api.groundspeak.com/api-docs/index#!/Geocaches/Geocaches_CheckFinalCoordinates
+     *
+     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
+     */
+    public function checkFinalCoordinates(string $referenceCode, array $coordinates)
+    {
+        return $this->httpClient->post('geocaches/' . $referenceCode . '/finalcoordinates', $coordinates);
+    }
+
+    /**
+     * swagger: POST /v{api-version}/geocaches/{referenceCode}/bulktrackablelogs
+     *
+     * @see https://api.groundspeak.com/documentation#bulk-create-trackablelogs
+     * @see https://api.groundspeak.com/api-docs/index#!/Geocaches/Geocaches_BulkCreateTrackableLogs
+     *
+     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
+     */
+    public function setBulkTrackableLogs(string $referenceCode, array $logs, array $query = [])
+    {
+        return $this->httpClient->post('geocaches/' . $referenceCode . '/bulktrackablelogs', $logs, $query);
+    }
+
+    /**
      * swagger: GET /v{api-version}/geotours/{referenceCode}
      *
      * @see https://api.groundspeak.com/documentation#get-geotour
@@ -411,8 +452,6 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-pq-zip
      * @see https://api.groundspeak.com/api-docs/index#!/Lists/Lists_GetZippedPocketQuery
-     *
-     * @param string $dirname full path directory to extract files
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */

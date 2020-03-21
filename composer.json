@@ -4,7 +4,7 @@
     "type": "library",
     "license": "MIT",
     "keywords": ["groundspeak", "geocaching", "geocache", "api", "oauth", "sdk", "php"],
-    "homepage": "http://geocaching.vaguelibre.net/api/",
+    "homepage": "https://geocaching.vaguelibre.net/api/",
     "authors": [
         {
             "name": "Surfoo",
@@ -17,13 +17,13 @@
         }
     },
     "require": {
-        "php": "~7.2",
-        "monolog/monolog": "~1.23",
-        "guzzlehttp/guzzle": "~6.3",
-        "surfoo/oauth2-geocaching": "~1.2"
+        "php": "~7.3",
+        "monolog/monolog": "~2.0",
+        "guzzlehttp/guzzle": "~6.5",
+        "surfoo/oauth2-geocaching": "~1.3"
     },
     "require-dev": {
-        "phpunit/phpunit": "~7.4",
+        "phpunit/phpunit": "^9.0",
         "phpstan/phpstan": "^0.12.0"
     },
     "scripts": {

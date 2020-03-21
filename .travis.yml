@@ -1,0 +1,14 @@
+language: php
+php:
+  - 7.3
+  - 7.4
+
+env:
+#  - dependencies=--prefer-lowest
+  - dependencies=
+
+script: ./vendor/bin/phpunit --coverage-text
+
+before_script:
+    - composer self-update
+    - composer update
