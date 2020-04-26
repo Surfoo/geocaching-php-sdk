@@ -174,8 +174,6 @@ class GuzzleHttpClient implements HttpClientInterface
      */
     public function delete(string $uri)
     {
-        $response = null;
-
         try {
             $this->response = $this->client->request('DELETE', $uri, $this->options);
         } catch (ConnectException $e) {
@@ -208,7 +206,11 @@ class GuzzleHttpClient implements HttpClientInterface
 
     private function decodeError401(array $headers): string
     {
-        return $headers['WWW-Authenticate'][0];
+        if (array_key_exists('WWW-Authenticate', $headers)) {
+            return $headers['WWW-Authenticate'][0];
+        }
+
+        return "";
     }
 
     private function decodeError404ResponseBody(StreamInterface $responseBody): string
