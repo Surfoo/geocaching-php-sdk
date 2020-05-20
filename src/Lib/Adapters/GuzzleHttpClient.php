@@ -100,7 +100,7 @@ class GuzzleHttpClient implements HttpClientInterface
      */
     public function get(string $uri, array $query = [], array $options = [])
     {
-        $options = array_merge_recursive($this->options, $options);
+        $options = array_merge($this->options, $options);
 
         if (!empty($query)) {
             $uri .= '?' . http_build_query($query);
@@ -122,7 +122,7 @@ class GuzzleHttpClient implements HttpClientInterface
      */
     public function post(string $uri, array $body = [], array $query = [], array $options = [])
     {
-        $options = array_merge_recursive($this->options, $options);
+        $options = array_merge($this->options, $options);
 
         if (!empty($body)) {
             $options['json'] = $body;
@@ -148,7 +148,7 @@ class GuzzleHttpClient implements HttpClientInterface
      */
     public function put(string $uri, array $body, array $query = [], array $options = [])
     {
-        $this->options = array_merge_recursive($this->options, $options);
+        $options = array_merge($this->options, $options);
 
         if (!empty($body)) {
             $this->options['json'] = $body;
@@ -159,9 +159,9 @@ class GuzzleHttpClient implements HttpClientInterface
         }
 
         try {
-            $this->response = $this->client->request('PUT', $uri, $this->options);
+            $this->response = $this->client->request('PUT', $uri, $options);
         } catch (ConnectException $e) {
-            throw new GeocachingSdkException($e->getMessage(), $e->getCode(), ['uri' => $uri, 'body' => $body, 'query' => $query, 'options' => $this->options]);
+            throw new GeocachingSdkException($e->getMessage(), $e->getCode(), ['uri' => $uri, 'body' => $body, 'query' => $query, 'options' => $options]);
         } catch (RequestException $e) {
             $this->handleErrorResponse($e->getResponse());
         }
@@ -172,12 +172,14 @@ class GuzzleHttpClient implements HttpClientInterface
     /**
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function delete(string $uri)
+    public function delete(string $uri, array $options = [])
     {
+        $options = array_merge($this->options, $options);
+
         try {
-            $this->response = $this->client->request('DELETE', $uri, $this->options);
+            $this->response = $this->client->request('DELETE', $uri, $options);
         } catch (ConnectException $e) {
-            throw new GeocachingSdkException($e->getMessage(), $e->getCode(), ['uri' => $uri, 'options' => $this->options]);
+            throw new GeocachingSdkException($e->getMessage(), $e->getCode(), ['uri' => $uri, 'options' => $options]);
         } catch (RequestException $e) {
             $this->handleErrorResponse($e->getResponse());
         }

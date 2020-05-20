@@ -13,7 +13,7 @@ You can follow changes about the documentation and the API here:
 
 ## Requirements
 
- - PHP >= 7.2
+ - PHP >= 7.3
  - [composer](https://getcomposer.org/doc/00-intro.md#system-requirements).
 
 ## Composer
@@ -22,16 +22,6 @@ From the command line:
 
 ```
 composer require surfoo/geocaching-php-sdk
-```
-
-Or in your `composer.json`:
-
-``` json
-{
-    "require": {
-        "surfoo/geocaching-php-sdk": "^3.9"
-    }
-}
 ```
 
 ## Using the PHP SDK

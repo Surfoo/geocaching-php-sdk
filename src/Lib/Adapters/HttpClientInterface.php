@@ -34,12 +34,12 @@ interface HttpClientInterface
      *
      * @throws GeocachingSdkException
      */
-    public function put(string $uri, array $data, array $query = []);
+    public function put(string $uri, array $data, array $query = [], array $options = []);
 
     /**
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      *
      * @throws GeocachingSdkException
      */
-    public function delete(string $uri);
+    public function delete(string $uri, array $options = []);
 }
