@@ -38,9 +38,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getFriendRequests(array $query = [])
+    public function getFriendRequests(array $query = [], array $options = [])
     {
-        return $this->httpClient->get('friendrequests', $query);
+        return $this->httpClient->get('friendrequests', $query, $options);
     }
 
     /**
@@ -51,9 +51,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function sendFriendRequest(array $friendRequest, array $query = [])
+    public function sendFriendRequest(array $friendRequest, array $query = [], array $options = [])
     {
-        return $this->httpClient->post('friendrequests', $friendRequest, $query);
+        return $this->httpClient->post('friendrequests', $friendRequest, $query, $options);
     }
 
     /**
@@ -64,9 +64,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getFriends(array $query = [])
+    public function getFriends(array $query = [], array $options = [])
     {
-        return $this->httpClient->get('friends', $query);
+        return $this->httpClient->get('friends', $query, $options);
     }
 
     /**
@@ -77,12 +77,10 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getFriendsGeocacheLogsByGeocache(string $referenceCode, array $query = [])
+    public function getFriendsGeocacheLogsByGeocache(string $referenceCode, array $query = [], array $options = [])
     {
-        return $this->httpClient->get('friends/geocaches/' . $referenceCode . '/geocachelogs', $query);
+        return $this->httpClient->get('friends/geocaches/' . $referenceCode . '/geocachelogs', $query, $options);
     }
-
-
 
     /**
      * swagger: POST /v{api-version}/friendrequests/{requestId}/accept
@@ -92,9 +90,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function acceptFriendRequest(string $requestId)
+    public function acceptFriendRequest(string $requestId, array $options = [])
     {
-        return $this->httpClient->post('friendrequests/' . $requestId . '/accept');
+        return $this->httpClient->post('friendrequests/' . $requestId . '/accept', $options);
     }
 
     /**
@@ -105,9 +103,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function deleteFriend(string $referenceCode)
+    public function deleteFriend(string $referenceCode, array $options = [])
     {
-        return $this->httpClient->delete('friends/' . $referenceCode);
+        return $this->httpClient->delete('friends/' . $referenceCode, $options);
     }
 
     /**
@@ -118,9 +116,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function deleteFriendRequest(string $requestId)
+    public function deleteFriendRequest(string $requestId, array $options = [])
     {
-        return $this->httpClient->delete('friendrequests/' . $requestId);
+        return $this->httpClient->delete('friendrequests/' . $requestId, $options);
     }
 
     /**
@@ -131,9 +129,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function deleteGeocacheLog(string $referenceCode)
+    public function deleteGeocacheLog(string $referenceCode, array $options = [])
     {
-        return $this->httpClient->delete('geocachelogs/' . $referenceCode);
+        return $this->httpClient->delete('geocachelogs/' . $referenceCode, $options);
     }
 
     /**
@@ -144,9 +142,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getGeocacheLog(string $referenceCode, array $query = [])
+    public function getGeocacheLog(string $referenceCode, array $query = [], array $options = [])
     {
-        return $this->httpClient->get('geocachelogs/' . $referenceCode, $query);
+        return $this->httpClient->get('geocachelogs/' . $referenceCode, $query, $options);
     }
 
     /**
@@ -157,9 +155,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function updateGeocacheLog(string $referenceCode, array $geocacheLog, array $query = [])
+    public function updateGeocacheLog(string $referenceCode, array $geocacheLog, array $query = [], array $options = [])
     {
-        return $this->httpClient->put('geocachelogs/' . $referenceCode, $geocacheLog, $query);
+        return $this->httpClient->put('geocachelogs/' . $referenceCode, $geocacheLog, $query, $options);
     }
 
     /**
@@ -170,9 +168,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getGeocacheLogImages(string $referenceCode, array $query = [])
+    public function getGeocacheLogImages(string $referenceCode, array $query = [], array $options = [])
     {
-        return $this->httpClient->get('geocachelogs/' . $referenceCode . '/images', $query);
+        return $this->httpClient->get('geocachelogs/' . $referenceCode . '/images', $query, $options);
     }
 
     /**
@@ -183,9 +181,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function setGeocacheLogImages(string $referenceCode, array $imageToUpload, array $query = [])
+    public function setGeocacheLogImages(string $referenceCode, array $imageToUpload, array $query = [], array $options = [])
     {
-        return $this->httpClient->post('geocachelogs/' . $referenceCode . '/images', $imageToUpload, $query);
+        return $this->httpClient->post('geocachelogs/' . $referenceCode . '/images', $imageToUpload, $query, $options);
     }
 
     /**
@@ -196,9 +194,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function setGeocacheLog(array $geocacheLog, array $query = [])
+    public function setGeocacheLog(array $geocacheLog, array $query = [], array $options = [])
     {
-        return $this->httpClient->post('geocachelogs', $geocacheLog, $query);
+        return $this->httpClient->post('geocachelogs', $geocacheLog, $query, $options);
     }
 
     /**
@@ -209,9 +207,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function deleteGeocacheLogImage(string $referenceCode, string $imageGuid)
+    public function deleteGeocacheLogImage(string $referenceCode, string $imageGuid, array $options = [])
     {
-        return $this->httpClient->delete('geocachelogs/' . $referenceCode . '/images/' . $imageGuid);
+        return $this->httpClient->delete('geocachelogs/' . $referenceCode . '/images/' . $imageGuid, $options);
     }
 
     /**
@@ -222,9 +220,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function deleteGeocacheNote(string $referenceCode)
+    public function deleteGeocacheNote(string $referenceCode, array $options = [])
     {
-        return $this->httpClient->delete('geocaches/' . $referenceCode . '/notes');
+        return $this->httpClient->delete('geocaches/' . $referenceCode . '/notes', $options);
     }
 
     /**
@@ -235,9 +233,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function updateGeocacheNote(string $referenceCode, array $note)
+    public function updateGeocacheNote(string $referenceCode, array $note, array $options = [])
     {
-        return $this->httpClient->put('geocaches/' . $referenceCode . '/notes', $note);
+        return $this->httpClient->put('geocaches/' . $referenceCode . '/notes', $note, $options);
     }
 
     /**
@@ -248,9 +246,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getGeocache(string $referenceCode, array $query = [])
+    public function getGeocache(string $referenceCode, array $query = [], array $options = [])
     {
-        return $this->httpClient->get('geocaches/' . $referenceCode, $query);
+        return $this->httpClient->get('geocaches/' . $referenceCode, $query, $options);
     }
 
     /**
@@ -261,9 +259,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getGeocacheImages(string $referenceCode, array $query = [])
+    public function getGeocacheImages(string $referenceCode, array $query = [], array $options = [])
     {
-        return $this->httpClient->get('geocaches/' . $referenceCode . '/images', $query);
+        return $this->httpClient->get('geocaches/' . $referenceCode . '/images', $query, $options);
     }
 
     /**
@@ -274,9 +272,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getFavoritedUsersByGeocache(string $referenceCode, array $query = [])
+    public function getFavoritedUsersByGeocache(string $referenceCode, array $query = [], array $options = [])
     {
-        return $this->httpClient->get('geocaches/' . $referenceCode . '/favoritedby', $query);
+        return $this->httpClient->get('geocaches/' . $referenceCode . '/favoritedby', $query, $options);
     }
 
     /**
@@ -287,9 +285,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getGeocaches(array $query)
+    public function getGeocaches(array $query, array $options = [])
     {
-        return $this->httpClient->get('geocaches', $query);
+        return $this->httpClient->get('geocaches', $query, $options);
     }
 
     /**
@@ -300,9 +298,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getGeocacheTrackables(string $referenceCode, array $query = [])
+    public function getGeocacheTrackables(string $referenceCode, array $query = [], array $options = [])
     {
-        return $this->httpClient->get('geocaches/' . $referenceCode . '/trackables', $query);
+        return $this->httpClient->get('geocaches/' . $referenceCode . '/trackables', $query, $options);
     }
 
     /**
@@ -313,9 +311,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getGeocacheLogs(string $referenceCode, array $query = [])
+    public function getGeocacheLogs(string $referenceCode, array $query = [], array $options = [])
     {
-        return $this->httpClient->get('geocaches/' . $referenceCode . '/geocachelogs', $query);
+        return $this->httpClient->get('geocaches/' . $referenceCode . '/geocachelogs', $query, $options);
     }
 
     /**
@@ -326,9 +324,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function searchGeocaches(array $query)
+    public function searchGeocaches(array $query, array $options = [])
     {
-        return $this->httpClient->get('geocaches/search', $query);
+        return $this->httpClient->get('geocaches/search', $query, $options);
     }
 
     /**
@@ -339,9 +337,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function checkFinalCoordinates(string $referenceCode, array $coordinates)
+    public function checkFinalCoordinates(string $referenceCode, array $coordinates, array $options = [])
     {
-        return $this->httpClient->post('geocaches/' . $referenceCode . '/finalcoordinates', $coordinates);
+        return $this->httpClient->post('geocaches/' . $referenceCode . '/finalcoordinates', $coordinates, $options);
     }
 
     /**
@@ -352,9 +350,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function setBulkTrackableLogs(string $referenceCode, array $logs, array $query = [])
+    public function setBulkTrackableLogs(string $referenceCode, array $logs, array $query = [], array $options = [])
     {
-        return $this->httpClient->post('geocaches/' . $referenceCode . '/bulktrackablelogs', $logs, $query);
+        return $this->httpClient->post('geocaches/' . $referenceCode . '/bulktrackablelogs', $logs, $query, $options);
     }
 
     /**
@@ -365,9 +363,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getGeotour(string $referenceCode, array $query = [])
+    public function getGeotour(string $referenceCode, array $query = [], array $options = [])
     {
-        return $this->httpClient->get('geotours/' . $referenceCode, $query);
+        return $this->httpClient->get('geotours/' . $referenceCode, $query, $options);
     }
 
     /**
@@ -378,9 +376,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getGeotours(array $query = [])
+    public function getGeotours(array $query = [], array $options = [])
     {
-        return $this->httpClient->get('geotours', $query);
+        return $this->httpClient->get('geotours', $query, $options);
     }
 
     /**
@@ -391,9 +389,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getGeocachesGeotour(string $referenceCode, array $query = [])
+    public function getGeocachesGeotour(string $referenceCode, array $query = [], array $options = [])
     {
-        return $this->httpClient->get('geotours/' . $referenceCode . '/geocaches', $query);
+        return $this->httpClient->get('geotours/' . $referenceCode . '/geocaches', $query, $options);
     }
 
     /**
@@ -403,9 +401,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getHQPromotions()
+    public function getHQPromotions(array $options = [])
     {
-        return $this->httpClient->get('HQPromotions/metadata');
+        return $this->httpClient->get('HQPromotions/metadata', $options);
     }
 
     /**
@@ -416,9 +414,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function deleteList(string $referenceCode)
+    public function deleteList(string $referenceCode, array $options = [])
     {
-        return $this->httpClient->delete('lists/' . $referenceCode);
+        return $this->httpClient->delete('lists/' . $referenceCode, $options);
     }
 
     /**
@@ -429,9 +427,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getList(string $referenceCode, array $query = [])
+    public function getList(string $referenceCode, array $query = [], array $options = [])
     {
-        return $this->httpClient->get('lists/' . $referenceCode, $query);
+        return $this->httpClient->get('lists/' . $referenceCode, $query, $options);
     }
 
     /**
@@ -442,9 +440,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function updateList(string $referenceCode, array $list, array $query = [])
+    public function updateList(string $referenceCode, array $list, array $query = [], array $options = [])
     {
-        return $this->httpClient->put('lists/' . $referenceCode, $list, $query);
+        return $this->httpClient->put('lists/' . $referenceCode, $list, $query, $options);
     }
 
     /**
@@ -455,11 +453,12 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getZippedPocketQuery(string $referenceCode, string $dirname)
+    public function getZippedPocketQuery(string $referenceCode, string $dirname, array $options = [])
     {
         $fullAbsolutePath = sprintf('%s/%s.zip', $dirname, $referenceCode);
+        $options          = array_merge($options, ['sink' => $fullAbsolutePath]);
 
-        return $this->httpClient->get('lists/' . $referenceCode . '/geocaches/zipped', [], ['sink' => $fullAbsolutePath]);
+        return $this->httpClient->get('lists/' . $referenceCode . '/geocaches/zipped', [], $options);
     }
 
     /**
@@ -470,9 +469,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getGeocacheList(string $referenceCode, array $query = [])
+    public function getGeocacheList(string $referenceCode, array $query = [], array $options = [])
     {
-        return $this->httpClient->get('lists/' . $referenceCode . '/geocaches', $query);
+        return $this->httpClient->get('lists/' . $referenceCode . '/geocaches', $query, $options);
     }
 
     /**
@@ -483,9 +482,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function setGeocacheList(string $referenceCode, array $geocache, array $query = [])
+    public function setGeocacheList(string $referenceCode, array $geocache, array $query = [], array $options = [])
     {
-        return $this->httpClient->post('lists/' . $referenceCode . '/geocaches', $geocache, $query);
+        return $this->httpClient->post('lists/' . $referenceCode . '/geocaches', $geocache, $query, $options);
     }
 
     /**
@@ -496,9 +495,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function setList(array $list, array $query = [])
+    public function setList(array $list, array $query = [], array $options = [])
     {
-        return $this->httpClient->post('lists', $list, $query);
+        return $this->httpClient->post('lists', $list, $query, $options);
     }
 
     /**
@@ -509,9 +508,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function setBulkGeocachesList(string $referenceCode, array $body)
+    public function setBulkGeocachesList(string $referenceCode, array $body, array $options = [])
     {
-        return $this->httpClient->post('lists/' . $referenceCode . '/bulkgeocaches', $body);
+        return $this->httpClient->post('lists/' . $referenceCode . '/bulkgeocaches', $body, $options);
     }
 
     /**
@@ -522,9 +521,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function deleteGeocacheList(string $referenceCode, string $geocacheCode)
+    public function deleteGeocacheList(string $referenceCode, string $geocacheCode, array $options = [])
     {
-        return $this->httpClient->delete('lists/' . $referenceCode . '/geocaches/' . $geocacheCode);
+        return $this->httpClient->delete('lists/' . $referenceCode . '/geocaches/' . $geocacheCode, $options);
     }
 
     /**
@@ -535,9 +534,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function deleteLogdraft(string $referenceCode)
+    public function deleteLogdraft(string $referenceCode, array $options = [])
     {
-        return $this->httpClient->delete('logdrafts/' . $referenceCode);
+        return $this->httpClient->delete('logdrafts/' . $referenceCode, $options);
     }
 
     /**
@@ -548,9 +547,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getLogdraft(string $referenceCode, array $query = [])
+    public function getLogdraft(string $referenceCode, array $query = [], array $options = [])
     {
-        return $this->httpClient->get('logdrafts/' . $referenceCode, $query);
+        return $this->httpClient->get('logdrafts/' . $referenceCode, $query, $options);
     }
 
     /**
@@ -561,9 +560,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function updateLogdraft(string $referenceCode, array $logDraft, array $query = [])
+    public function updateLogdraft(string $referenceCode, array $logDraft, array $query = [], array $options = [])
     {
-        return $this->httpClient->put('logdrafts/' . $referenceCode, $logDraft, $query);
+        return $this->httpClient->put('logdrafts/' . $referenceCode, $logDraft, $query, $options);
     }
 
     /**
@@ -574,9 +573,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getLogdrafts(array $query = [])
+    public function getLogdrafts(array $query = [], array $options = [])
     {
-        return $this->httpClient->get('logdrafts', $query);
+        return $this->httpClient->get('logdrafts', $query, $options);
     }
 
     /**
@@ -587,9 +586,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function setLogdraft(array $logDraft, array $query = [])
+    public function setLogdraft(array $logDraft, array $query = [], array $options = [])
     {
-        return $this->httpClient->post('logdrafts', $logDraft, $query);
+        return $this->httpClient->post('logdrafts', $logDraft, $query, $options);
     }
 
     /**
@@ -600,9 +599,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function promoteLogdraft(string $referenceCode, array $logDraft)
+    public function promoteLogdraft(string $referenceCode, array $logDraft, array $options = [])
     {
-        return $this->httpClient->post('logdrafts/' . $referenceCode . '/promote', $logDraft);
+        return $this->httpClient->post('logdrafts/' . $referenceCode . '/promote', $logDraft, $options);
     }
 
     /**
@@ -613,9 +612,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function setLogdraftImage(string $referenceCode, array $postImage, array $query = [])
+    public function setLogdraftImage(string $referenceCode, array $postImage, array $query = [], array $options = [])
     {
-        return $this->httpClient->post('logdrafts/' . $referenceCode . '/images', $postImage, $query);
+        return $this->httpClient->post('logdrafts/' . $referenceCode . '/images', $postImage, $query, $options);
     }
 
     /**
@@ -626,9 +625,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function deleteTrackableLog(string $referenceCode)
+    public function deleteTrackableLog(string $referenceCode, array $options = [])
     {
-        return $this->httpClient->delete('trackablelogs/' . $referenceCode);
+        return $this->httpClient->delete('trackablelogs/' . $referenceCode, $options);
     }
 
     /**
@@ -639,9 +638,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getTrackableLog(string $referenceCode, array $query = [])
+    public function getTrackableLog(string $referenceCode, array $query = [], array $options = [])
     {
-        return $this->httpClient->get('trackablelogs/' . $referenceCode, $query);
+        return $this->httpClient->get('trackablelogs/' . $referenceCode, $query, $options);
     }
 
     /**
@@ -652,9 +651,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function updateTrackableLog(string $referenceCode, array $trackableLog, array $query = [])
+    public function updateTrackableLog(string $referenceCode, array $trackableLog, array $query = [], array $options = [])
     {
-        return $this->httpClient->put('trackablelogs/' . $referenceCode, $trackableLog, $query);
+        return $this->httpClient->put('trackablelogs/' . $referenceCode, $trackableLog, $query, $options);
     }
 
     /**
@@ -665,9 +664,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getTrackableLogImages(string $referenceCode, array $query = [])
+    public function getTrackableLogImages(string $referenceCode, array $query = [], array $options = [])
     {
-        return $this->httpClient->get('trackablelogs/' . $referenceCode . '/images', $query);
+        return $this->httpClient->get('trackablelogs/' . $referenceCode . '/images', $query, $options);
     }
 
     /**
@@ -678,9 +677,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function setTrackableLogImages(string $referenceCode, array $imageToUpload, array $query = [])
+    public function setTrackableLogImages(string $referenceCode, array $imageToUpload, array $query = [], array $options = [])
     {
-        return $this->httpClient->post('trackablelogs/' . $referenceCode . '/images', $imageToUpload, $query);
+        return $this->httpClient->post('trackablelogs/' . $referenceCode . '/images', $imageToUpload, $query, $options);
     }
 
     /**
@@ -691,9 +690,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function deleteTrackableLogImage(string $referenceCode, string $imageGuid)
+    public function deleteTrackableLogImage(string $referenceCode, string $imageGuid, array $options = [])
     {
-        return $this->httpClient->delete('trackablelogs/' . $referenceCode . '/images/' . $imageGuid);
+        return $this->httpClient->delete('trackablelogs/' . $referenceCode . '/images/' . $imageGuid, $options);
     }
 
     /**
@@ -704,9 +703,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function setTrackableLog(array $trackableLog, array $query = [])
+    public function setTrackableLog(array $trackableLog, array $query = [], array $options = [])
     {
-        return $this->httpClient->post('trackablelogs', $trackableLog, $query);
+        return $this->httpClient->post('trackablelogs', $trackableLog, $query, $options);
     }
 
     /**
@@ -717,9 +716,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getTrackable(string $referenceCode, array $query = [])
+    public function getTrackable(string $referenceCode, array $query = [], array $options = [])
     {
-        return $this->httpClient->get('trackables/' . $referenceCode, $query);
+        return $this->httpClient->get('trackables/' . $referenceCode, $query, $options);
     }
 
     /**
@@ -730,9 +729,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getUserTrackables(array $query = [])
+    public function getUserTrackables(array $query = [], array $options = [])
     {
-        return $this->httpClient->get('trackables', $query);
+        return $this->httpClient->get('trackables', $query, $options);
     }
 
     /**
@@ -743,9 +742,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getGeocoinTypes(array $query = [])
+    public function getGeocoinTypes(array $query = [], array $options = [])
     {
-        return $this->httpClient->get('trackables/geocointypes', $query);
+        return $this->httpClient->get('trackables/geocointypes', $query, $options);
     }
 
     /**
@@ -756,9 +755,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getTrackableImages(string $referenceCode, array $query = [])
+    public function getTrackableImages(string $referenceCode, array $query = [], array $options = [])
     {
-        return $this->httpClient->get('trackables/' . $referenceCode . '/images', $query);
+        return $this->httpClient->get('trackables/' . $referenceCode . '/images', $query, $options);
     }
 
     /**
@@ -769,9 +768,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getTrackableLogs(string $referenceCode, array $query = [])
+    public function getTrackableLogs(string $referenceCode, array $query = [], array $options = [])
     {
-        return $this->httpClient->get('trackables/' . $referenceCode . '/trackablelogs', $query);
+        return $this->httpClient->get('trackables/' . $referenceCode . '/trackablelogs', $query, $options);
     }
 
     /**
@@ -782,9 +781,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getUser(string $referenceCode, array $query = [])
+    public function getUser(string $referenceCode, array $query = [], array $options = [])
     {
-        return $this->httpClient->get('users/' . $referenceCode, $query);
+        return $this->httpClient->get('users/' . $referenceCode, $query, $options);
     }
 
     /**
@@ -795,9 +794,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getUserImages(string $referenceCode, array $query = [])
+    public function getUserImages(string $referenceCode, array $query = [], array $options = [])
     {
-        return $this->httpClient->get('users/' . $referenceCode . '/images', $query);
+        return $this->httpClient->get('users/' . $referenceCode . '/images', $query, $options);
     }
 
     /**
@@ -808,9 +807,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getUserSouvenirs(string $referenceCode, array $query = [])
+    public function getUserSouvenirs(string $referenceCode, array $query = [], array $options = [])
     {
-        return $this->httpClient->get('users/' . $referenceCode . '/souvenirs', $query);
+        return $this->httpClient->get('users/' . $referenceCode . '/souvenirs', $query, $options);
     }
 
     /**
@@ -821,9 +820,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getUsers(array $query = [])
+    public function getUsers(array $query = [], array $options = [])
     {
-        return $this->httpClient->get('users', $query);
+        return $this->httpClient->get('users', $query, $options);
     }
 
     /**
@@ -834,9 +833,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getUserLists(string $referenceCode, array $query = [])
+    public function getUserLists(string $referenceCode, array $query = [], array $options = [])
     {
-        return $this->httpClient->get('users/' . $referenceCode . '/lists', $query);
+        return $this->httpClient->get('users/' . $referenceCode . '/lists', $query, $options);
     }
 
     /**
@@ -847,9 +846,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getUserGeocacheLogs(string $referenceCode, array $query = [])
+    public function getUserGeocacheLogs(string $referenceCode, array $query = [], array $options = [])
     {
-        return $this->httpClient->get('users/' . $referenceCode . '/geocachelogs', $query);
+        return $this->httpClient->get('users/' . $referenceCode . '/geocachelogs', $query, $options);
     }
 
     /**
@@ -860,9 +859,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getUserWaypoints(array $query = [])
+    public function getUserWaypoints(array $query = [], array $options = [])
     {
-        return $this->httpClient->get('userwaypoints', $query);
+        return $this->httpClient->get('userwaypoints', $query, $options);
     }
 
     /**
@@ -873,9 +872,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function setGeocacheUserWaypoint(string $referenceCode, array $body)
+    public function setGeocacheUserWaypoint(string $referenceCode, array $body, array $options = [])
     {
-        return $this->httpClient->post('userwaypoints', $body);
+        return $this->httpClient->post('userwaypoints', $body, $options);
     }
 
     /**
@@ -886,9 +885,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getGeocacheUserWaypoints(string $referenceCode, array $query = [])
+    public function getGeocacheUserWaypoints(string $referenceCode, array $query = [], array $options = [])
     {
-        return $this->httpClient->get('geocaches/' . $referenceCode . '/userwaypoints', $query);
+        return $this->httpClient->get('geocaches/' . $referenceCode . '/userwaypoints', $query, $options);
     }
 
     /**
@@ -899,9 +898,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function deleteUserWaypoint(string $referenceCode)
+    public function deleteUserWaypoint(string $referenceCode, array $options = [])
     {
-        return $this->httpClient->delete('userwaypoints/' . $referenceCode);
+        return $this->httpClient->delete('userwaypoints/' . $referenceCode, $options);
     }
 
     /**
@@ -912,9 +911,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function updateCorrectedCoordinates(string $referenceCode, array $coordinates)
+    public function updateCorrectedCoordinates(string $referenceCode, array $coordinates, array $options = [])
     {
-        return $this->httpClient->put('geocaches/' . $referenceCode . '/correctedcoordinates', $coordinates);
+        return $this->httpClient->put('geocaches/' . $referenceCode . '/correctedcoordinates', $coordinates, $options);
     }
 
     /**
@@ -925,9 +924,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function deleteCorrectedCoordinates(string $referenceCode)
+    public function deleteCorrectedCoordinates(string $referenceCode, array $options = [])
     {
-        return $this->httpClient->delete('geocaches/' . $referenceCode . '/correctedcoordinates');
+        return $this->httpClient->delete('geocaches/' . $referenceCode . '/correctedcoordinates', $options);
     }
 
     /**
@@ -938,9 +937,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function updateUserWaypoint(string $referenceCode, array $query)
+    public function updateUserWaypoint(string $referenceCode, array $query, array $options = [])
     {
-        return $this->httpClient->put('userwaypoints/' . $referenceCode, $query);
+        return $this->httpClient->put('userwaypoints/' . $referenceCode, $query, $options);
     }
 
     /**
@@ -951,9 +950,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getReferenceCodeFromId(array $query)
+    public function getReferenceCodeFromId(array $query, array $options = [])
     {
-        return $this->httpClient->get('utilities/referencecode', $query);
+        return $this->httpClient->get('utilities/referencecode', $query, $options);
     }
 
     /**
@@ -963,9 +962,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getCountries()
+    public function getCountries(array $options = [])
     {
-        return $this->httpClient->get('countries');
+        return $this->httpClient->get('countries', $options);
     }
 
     /**
@@ -975,9 +974,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getStates()
+    public function getStates(array $options = [])
     {
-        return $this->httpClient->get('states');
+        return $this->httpClient->get('states', $options);
     }
 
     /**
@@ -987,9 +986,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getStatesByCountry(int $countryId)
+    public function getStatesByCountry(int $countryId, array $options = [])
     {
-        return $this->httpClient->get('countries/' . $countryId . '/states');
+        return $this->httpClient->get('countries/' . $countryId . '/states', $options);
     }
 
     /**
@@ -999,9 +998,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getMembershipLevels()
+    public function getMembershipLevels(array $options = [])
     {
-        return $this->httpClient->get('membershiplevels');
+        return $this->httpClient->get('membershiplevels', $options);
     }
 
     /**
@@ -1011,9 +1010,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getGeocacheTypes()
+    public function getGeocacheTypes(array $options = [])
     {
-        return $this->httpClient->get('geocachetypes');
+        return $this->httpClient->get('geocachetypes', $options);
     }
 
     /**
@@ -1023,9 +1022,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getAttributes()
+    public function getAttributes(array $options = [])
     {
-        return $this->httpClient->get('attributes');
+        return $this->httpClient->get('attributes', $options);
     }
 
     /**
@@ -1035,9 +1034,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getGeocacheLogTypes()
+    public function getGeocacheLogTypes(array $options = [])
     {
-        return $this->httpClient->get('geocachelogtypes');
+        return $this->httpClient->get('geocachelogtypes', $options);
     }
 
     /**
@@ -1047,9 +1046,9 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getTrackableLogTypes()
+    public function getTrackableLogTypes(array $options = [])
     {
-        return $this->httpClient->get('trackablelogtypes');
+        return $this->httpClient->get('trackablelogtypes', $options);
     }
 
     /**
