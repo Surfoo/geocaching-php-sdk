@@ -330,7 +330,7 @@ class GeocachingSdk implements GeocachingSdkInterface
     }
 
     /**
-     * swagger: POST /v{api-version}/geocaches/{referenceCode}/bulktrackablelogs
+     * swagger: POST /v{api-version}/geocaches/{referenceCode}/finalcoordinates
      *
      * @see https://api.groundspeak.com/documentation#verify-final-coordinates
      * @see https://api.groundspeak.com/api-docs/index#!/Geocaches/Geocaches_CheckFinalCoordinates

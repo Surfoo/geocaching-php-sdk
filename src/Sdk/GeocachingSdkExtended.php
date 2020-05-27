@@ -4,7 +4,7 @@
  * Geocaching PHP SDK Extented.
  *
  * @author  Surfoo <surfooo@gmail.com>
- * @see    https://github.com/Surfoo/geocaching-php-sdk
+ * @see     https://github.com/Surfoo/geocaching-php-sdk
  * @license https://opensource.org/licenses/MIT
  */
 
