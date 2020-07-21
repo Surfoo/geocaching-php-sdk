@@ -151,7 +151,7 @@ class GuzzleHttpClient implements HttpClientInterface
         $options = array_merge($this->options, $options);
 
         if (!empty($body)) {
-            $this->options['json'] = $body;
+            $options['json'] = $body;
         }
 
         if (!empty($query)) {
