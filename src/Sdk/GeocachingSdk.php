@@ -735,6 +735,19 @@ class GeocachingSdk implements GeocachingSdkInterface
     }
 
     /**
+     * swagger: GET /v{api-version}/trackables/{referenceCode}/journeys 
+     *
+     * @see https://api.groundspeak.com/documentation#get-trackable-journeys
+     * @see https://api.groundspeak.com/api-docs/index#!/Trackables/Trackables_GetTrackableJourneys
+     *
+     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
+     */
+    public function getTrackableJourneys(string $referenceCode, array $query = [], array $options = [])
+    {
+        return $this->httpClient->get('trackables/' . $referenceCode . '/journeys', $query, $options);
+    }
+
+    /**
      * swagger: GET /v{api-version}/trackables/geocointypes
      *
      * @see https://api.groundspeak.com/documentation#get-geocoin-types
@@ -959,6 +972,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * swagger: GET /v{api-version}/countries
      *
      * @see https://api.groundspeak.com/documentation#get-countries
+     * @see https://api.groundspeak.com/api-docs/index#!/ReferenceData/ReferenceData_GetCountries
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
@@ -971,6 +985,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * swagger: GET /v{api-version}/states
      *
      * @see https://api.groundspeak.com/documentation#get-states
+     * @see https://api.groundspeak.com/api-docs/index#!/ReferenceData/ReferenceData_GetStates
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
@@ -983,6 +998,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * swagger: GET /v{api-version}/countries/{countryId}/states
      *
      * @see https://api.groundspeak.com/documentation#get-country-states
+     * @see https://api.groundspeak.com/api-docs/index#!/ReferenceData/ReferenceData_GetStatesByCountry
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
@@ -995,6 +1011,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * swagger: GET /v{api-version}/membershiplevels
      *
      * @see https://api.groundspeak.com/documentation#get-membership-levels
+     * @see https://api.groundspeak.com/api-docs/index#!/ReferenceData/ReferenceData_GetMembershipLevels
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
@@ -1007,6 +1024,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * swagger: GET /v{api-version}/geocachetypes
      *
      * @see https://api.groundspeak.com/documentation#get-geocache-types
+     * @see https://api.groundspeak.com/api-docs/index#!/ReferenceData/ReferenceData_GetGeocacheTypes
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
@@ -1019,6 +1037,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      * swagger: GET /v{api-version}/attributes
      *
      * @see https://api.groundspeak.com/documentation#get-attributes
+     * @see https://api.groundspeak.com/api-docs/index#!/ReferenceData/ReferenceData_GetAttributes
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
@@ -1028,9 +1047,36 @@ class GeocachingSdk implements GeocachingSdkInterface
     }
 
     /**
+     * swagger: GET /v{api-version}/geocachesizes 
+     *
+     * @see https://api.groundspeak.com/documentation#get-geocache-sizes
+     * @see https://api.groundspeak.com/api-docs/index#!/ReferenceData/ReferenceData_GetGeocacheSizes
+     *
+     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
+     */
+    public function getGeocacheSizes(array $options = [])
+    {
+        return $this->httpClient->get('geocachesizes', $options);
+    }
+
+    /**
+     * swagger: GET /v{api-version}/geocachestatuses 
+     *
+     * @see https://api.groundspeak.com/documentation#get-geocache-statuses
+     * @see https://api.groundspeak.com/api-docs/index#!/ReferenceData/ReferenceData_GetGeocacheStatuses
+     *
+     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
+     */
+    public function getGeocacheStatuses(array $options = [])
+    {
+        return $this->httpClient->get('geocachestatuses', $options);
+    }
+
+    /**
      * swagger: GET /v{api-version}/geocachelogtypes
      *
      * @see https://api.groundspeak.com/documentation#get-geocachelog-types
+     * @see https://api.groundspeak.com/api-docs/index#!/ReferenceData/ReferenceData_GetGeocacheLogTypes
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
@@ -1043,12 +1089,26 @@ class GeocachingSdk implements GeocachingSdkInterface
      * swagger: GET /v{api-version}/trackablelogtypes
      *
      * @see https://api.groundspeak.com/documentation#get-trackablelog-types
+     * @see https://api.groundspeak.com/api-docs/index#!/ReferenceData/ReferenceData_GetTrackableLogTypes
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
     public function getTrackableLogTypes(array $options = [])
     {
         return $this->httpClient->get('trackablelogtypes', $options);
+    }
+
+    /**
+     * swagger: GET /v{api-version}/optedoutusers
+     *
+     * @see https://api.groundspeak.com/documentation#get-opted-out-users
+     * @see https://api.groundspeak.com/api-docs/index#!/Users/Users_GetOptedOutUsers
+     *
+     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
+     */
+    public function getOptedOutUsers(array $query, array $options = [])
+    {
+        return $this->httpClient->get('optedoutusers', $query, $options);
     }
 
     /**

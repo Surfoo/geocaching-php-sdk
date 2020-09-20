@@ -389,6 +389,13 @@ interface GeocachingSdkInterface
     public function getUserTrackables(array $query = [], array $options = []);
 
     /**
+     * @see https://api.groundspeak.com/documentation#get-trackable-journeys
+     *
+     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
+     */
+    public function getTrackableJourneys(string $referenceCode, array $query = [], array $options = []);
+
+    /**
      * @see https://api.groundspeak.com/documentation#get-geocoin-types
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
@@ -550,6 +557,20 @@ interface GeocachingSdkInterface
     public function getAttributes(array $options = []);
 
     /**
+     * @see https://api.groundspeak.com/documentation#get-geocache-sizes
+     *
+     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
+     */
+    public function getGeocacheSizes(array $options = []);
+
+    /**
+     * @see https://api.groundspeak.com/documentation#get-geocache-statuses
+     *
+     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
+     */
+    public function getGeocacheStatuses(array $options = []);
+
+    /**
      * @see https://api.groundspeak.com/documentation#get-geocachelog-types
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
@@ -562,6 +583,13 @@ interface GeocachingSdkInterface
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
     public function getTrackableLogTypes(array $options = []);
+
+    /**
+     * @see https://api.groundspeak.com/documentation#get-opted-out-users
+     *
+     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
+     */
+    public function getOptedOutUsers(array $query, array $options = []);
 
     /**
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
