@@ -594,5 +594,10 @@ interface GeocachingSdkInterface
     /**
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
+    public function getWherigoCartridge(string $guid, array $query = [], array $options = []);
+
+    /**
+     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
+     */
     public function ping();
 }

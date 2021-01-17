@@ -735,7 +735,7 @@ class GeocachingSdk implements GeocachingSdkInterface
     }
 
     /**
-     * swagger: GET /v{api-version}/trackables/{referenceCode}/journeys 
+     * swagger: GET /v{api-version}/trackables/{referenceCode}/journeys
      *
      * @see https://api.groundspeak.com/documentation#get-trackable-journeys
      * @see https://api.groundspeak.com/api-docs/index#!/Trackables/Trackables_GetTrackableJourneys
@@ -1047,7 +1047,7 @@ class GeocachingSdk implements GeocachingSdkInterface
     }
 
     /**
-     * swagger: GET /v{api-version}/geocachesizes 
+     * swagger: GET /v{api-version}/geocachesizes
      *
      * @see https://api.groundspeak.com/documentation#get-geocache-sizes
      * @see https://api.groundspeak.com/api-docs/index#!/ReferenceData/ReferenceData_GetGeocacheSizes
@@ -1060,7 +1060,7 @@ class GeocachingSdk implements GeocachingSdkInterface
     }
 
     /**
-     * swagger: GET /v{api-version}/geocachestatuses 
+     * swagger: GET /v{api-version}/geocachestatuses
      *
      * @see https://api.groundspeak.com/documentation#get-geocache-statuses
      * @see https://api.groundspeak.com/api-docs/index#!/ReferenceData/ReferenceData_GetGeocacheStatuses
@@ -1109,6 +1109,18 @@ class GeocachingSdk implements GeocachingSdkInterface
     public function getOptedOutUsers(array $query, array $options = [])
     {
         return $this->httpClient->get('optedoutusers', $query, $options);
+    }
+    
+    /**
+     * swagger: GET /v{api-version}/wherigo/{guid}/cartridge
+     *
+     * @see https://api.groundspeak.com/api-docs/index#!/Wherigo/Wherigo_GetWherigoCartridge
+     *
+     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
+     */
+    public function getWherigoCartridge(string $guid, array $query = [], array $options = [])
+    {
+        return $this->httpClient->get('wherigo/' . $guid . '/cartridge', $query, $options);
     }
 
     /**
