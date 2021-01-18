@@ -59,10 +59,14 @@ class Utils
     }
 
     /**
-     * Concert a reference code to an Id
+     * Convert a reference code to an Id
      */
     public static function referenceCodeToId(string $referenceCode): int
     {
+        if (\strlen($referenceCode) <= 2) {
+            throw new UtilsException('referenceCode "' . $referenceCode . '" too short.');
+        }
+
         if (\substr($referenceCode, 0, 2) == 'GC') {
             $referenceCode = \str_replace('SO', '50', $referenceCode);
         }
