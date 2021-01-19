@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-use PHPUnit\Framework\TestCase;
 use Geocaching\Lib\Utils\Utils;
+use PHPUnit\Framework\TestCase;
+
 final class UtilsTest extends TestCase
 {
-
     public function providerDecimalToDegreeDecimal()
     {
         return [
@@ -20,10 +20,6 @@ final class UtilsTest extends TestCase
 
     /**
      * @dataProvider providerDecimalToDegreeDecimal
-     *
-     * @param float $latitude
-     * @param float $longitude
-     * @param string $expected
      */
     public function testDecimalToDegreeDecimal(float $latitude, float $longitude, string $expected)
     {
@@ -46,9 +42,6 @@ final class UtilsTest extends TestCase
 
     /**
      * @dataProvider providerReferenceCode
-     * 
-     * @param string $referenceCode
-     * @param integer $expected
      */
     public function testReferenceCodeToIdSuccessful(string $referenceCode, int $expected): void
     {
@@ -61,17 +54,18 @@ final class UtilsTest extends TestCase
     public function providerReferenceCodeFail()
     {
         return [
-            ['GCSRTOP']
+            ['GC', 'referenceCode "GC" too short.'],
+            ['GCSRTOP', 'Only chars 0123456789ABCDEFGHJKMNPQRTVWXYZ are supported.'],
         ];
     }
 
     /**
      * @dataProvider providerReferenceCodeFail
      */
-    public function testReferenceCodeToIdFail(string $referenceCode)
+    public function testReferenceCodeToIdFail(string $referenceCode, string $expected)
     {
         $this->expectException(Geocaching\Exception\UtilsException::class);
-        $this->expectExceptionMessage("Only chars 0123456789ABCDEFGHJKMNPQRTVWXYZ are supported.");
+        $this->expectExceptionMessage($expected);
 
         Utils::referenceCodeToId($referenceCode);
     }
@@ -90,10 +84,6 @@ final class UtilsTest extends TestCase
 
     /**
      * @dataProvider providerId
-     * 
-     * @param string $number
-     * @param string $prefix
-     * @param string $expected
      */
     public function testIdToReferenceCodeSucessful(string $number, string $prefix, string $expected): void
     {
@@ -102,5 +92,4 @@ final class UtilsTest extends TestCase
         $this->assertEquals($expected, $result);
         $this->assertIsString($result);
     }
-
 }

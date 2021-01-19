@@ -2,4 +2,5 @@ composer.lock
 cache
 vendor
 .php_cs.cache
+.phpunit.result.cache
 sami.phar
