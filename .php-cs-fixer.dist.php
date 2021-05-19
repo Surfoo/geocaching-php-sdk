@@ -12,12 +12,15 @@ $finder = PhpCsFixer\Finder::create()
     ->in(__DIR__ . '/src')
 ;
 
-return PhpCsFixer\Config::create()
-    ->setRules(array(
+$config = new PhpCsFixer\Config();
+return $config->setRules([
         '@PSR2' => true,
         'binary_operator_spaces' => [
-            'align_double_arrow' => true,
-            'align_equals' => true,
+            'operators' => [
+                '='   => 'align_single_space_minimal',
+                '===' => 'align_single_space_minimal',
+                '=>'  => 'align_single_space_minimal',
+            ],
         ],
         'concat_space' => [
             'spacing' => 'one'
@@ -29,18 +32,20 @@ return PhpCsFixer\Config::create()
         'phpdoc_align' => true,
         'phpdoc_scalar' => true,
         'phpdoc_trim' => true,
-        'no_extra_consecutive_blank_lines' => [
-            'use'
+        'no_extra_blank_lines' => ['tokens' => 
+            ['break', 'case', 'continue', 'curly_brace_block',
+            'default', 'extra', 'parenthesis_brace_block', 'return',
+            'square_brace_block', 'switch', 'throw', 'use', 'use_trait']
         ],
         'array_syntax' => [
             'syntax' => 'short'
         ],
         'cast_spaces' => true,
         'ternary_operator_spaces' => true,
-        'trailing_comma_in_multiline_array' => true,
+        'trailing_comma_in_multiline' => true,
         'no_unused_imports' => true,
         'no_superfluous_phpdoc_tags' => true,
-    ))
+    ])
     ->setFinder($finder)
     ->setUsingCache(true)
 ;
