@@ -6,7 +6,6 @@ use Geocaching\Exception\UtilsException;
 
 class Utils
 {
-
     /**
      * @const string
      */

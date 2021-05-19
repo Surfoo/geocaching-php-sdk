@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
         - deleteGeocacheLogUpvotes
         - setGeocacheLogUpvotes
         - getUserTrackableLog
+    - Improved http errors management
 
 ## [3.14.0] - 2021-01-19
 ### Added

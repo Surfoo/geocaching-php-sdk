@@ -122,14 +122,14 @@ interface GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function deleteGeocacheLogUpvotes(string $referenceCode, string $upvoteTypeId, array $options = []);
+    public function deleteGeocacheLogUpvotes(string $referenceCode, int $upvoteTypeId, array $options = []);
 
     /**
      * @see https://api.groundspeak.com/documentation#create-geocachelog-upvotes
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function setGeocacheLogUpvotes(string $referenceCode, string $upvoteTypeId, array $options = []);
+    public function setGeocacheLogUpvotes(string $referenceCode, int $upvoteTypeId, array $options = []);
 
     /**
      * @see https://api.groundspeak.com/documentation#delete-geocachelog-image

@@ -233,7 +233,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function deleteGeocacheLogUpvotes(string $referenceCode, string $upvoteTypeId, array $options = [])
+    public function deleteGeocacheLogUpvotes(string $referenceCode, int $upvoteTypeId, array $options = [])
     {
         return $this->httpClient->delete('geocachelogs/' . $referenceCode . '/upvotes/' . $upvoteTypeId, $options);
     }
@@ -246,7 +246,7 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function setGeocacheLogUpvotes(string $referenceCode, string $upvoteTypeId, array $options = [])
+    public function setGeocacheLogUpvotes(string $referenceCode, int $upvoteTypeId, array $options = [])
     {
         return $this->httpClient->post('geocachelogs/' . $referenceCode . '/upvotes/' . $upvoteTypeId, $options);
     }

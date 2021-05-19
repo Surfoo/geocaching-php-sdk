@@ -19,7 +19,7 @@
     "require": {
         "php": "^7.3 || ^8.0",
         "monolog/monolog": "^2.0",
-        "guzzlehttp/guzzle": "^6.0 || ^7.0",
+        "guzzlehttp/guzzle": "^7.0",
         "surfoo/oauth2-geocaching": "^1.4"
     },
     "require-dev": {
