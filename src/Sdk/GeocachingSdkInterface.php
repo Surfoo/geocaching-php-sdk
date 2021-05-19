@@ -13,6 +13,13 @@ namespace Geocaching\Sdk;
 interface GeocachingSdkInterface
 {
     /**
+     * @see https://api.groundspeak.com/api-docs/index#!/Adventures/Adventures_Search
+     *
+     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
+     */
+    public function searchAdventures(array $query = [], array $options = []);
+
+    /**
      * @see https://api.groundspeak.com/documentation#get-friendrequests
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
@@ -83,6 +90,13 @@ interface GeocachingSdkInterface
     public function updateGeocacheLog(string $referenceCode, array $geocacheLog, array $query = [], array $options = []);
 
     /**
+     * @see https://api.groundspeak.com/documentation#get-geocachelog-upvotes
+     *
+     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
+     */
+    public function getGeocacheLogUpvotes(array $query = [], array $options = []);
+
+    /**
      * @see https://api.groundspeak.com/documentation#get-geocachelog-images
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
@@ -102,6 +116,20 @@ interface GeocachingSdkInterface
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
     public function setGeocacheLog(array $geocacheLog, array $query = [], array $options = []);
+
+    /**
+     * @see https://api.groundspeak.com/documentation#delete-geocachelog-upvotes
+     *
+     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
+     */
+    public function deleteGeocacheLogUpvotes(string $referenceCode, string $upvoteTypeId, array $options = []);
+
+    /**
+     * @see https://api.groundspeak.com/documentation#create-geocachelog-upvotes
+     *
+     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
+     */
+    public function setGeocacheLogUpvotes(string $referenceCode, string $upvoteTypeId, array $options = []);
 
     /**
      * @see https://api.groundspeak.com/documentation#delete-geocachelog-image
@@ -345,6 +373,13 @@ interface GeocachingSdkInterface
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
     public function updateTrackableLog(string $referenceCode, array $trackableLog, array $query = [], array $options = []);
+
+    /**
+     * @see https://api.groundspeak.com/documentation#get-user-trackablelog
+     *
+     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
+     */
+    public function getUserTrackableLog(array $query = [], array $options = []);
 
     /**
      * @see https://api.groundspeak.com/documentation#get-trackablelog-images

@@ -31,6 +31,19 @@ class GeocachingSdk implements GeocachingSdkInterface
     }
 
     /**
+     * swagger: GET /v{api-version}/adventures/search
+     *
+     * @see https://api.groundspeak.com/documentation#adventures-search
+     * @see https://api.groundspeak.com/api-docs/index#!/Adventures/Adventures_Search
+     *
+     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
+     */
+    public function searchAdventures(array $query = [], array $options = [])
+    {
+        return $this->httpClient->get('adventures/search', $query, $options);
+    }
+
+    /**
      * swagger: GET /v{api-version}/friendrequests
      *
      * @see https://api.groundspeak.com/documentation#get-friendrequests
@@ -161,6 +174,19 @@ class GeocachingSdk implements GeocachingSdkInterface
     }
 
     /**
+     * swagger: GET /v{api-version}/geocachelogs/upvotes
+     *
+     * @see https://api.groundspeak.com/documentation#get-geocachelog-upvotes
+     * @see https://api.groundspeak.com/api-docs/index#!/GeocacheLogs/GeocacheLogs_GetLogUpvotes
+     *
+     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
+     */
+    public function getGeocacheLogUpvotes(array $query = [], array $options = [])
+    {
+        return $this->httpClient->get('geocachelogs/upvotes', $query, $options);
+    }
+
+    /**
      * swagger: GET /v{api-version}/geocachelogs/{referenceCode}/images
      *
      * @see https://api.groundspeak.com/documentation#get-geocachelog-images
@@ -197,6 +223,32 @@ class GeocachingSdk implements GeocachingSdkInterface
     public function setGeocacheLog(array $geocacheLog, array $query = [], array $options = [])
     {
         return $this->httpClient->post('geocachelogs', $geocacheLog, $query, $options);
+    }
+
+    /**
+     * swagger: DELETE /v{api-version}/geocachelogs/{referenceCode}/upvotes/{upvoteTypeId}
+     *
+     * @see https://api.groundspeak.com/documentation#delete-geocachelog-upvotes
+     * @see https://api.groundspeak.com/api-docs/index#!/GeocacheLogs/GeocacheLogs_DeleteUpvote
+     *
+     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
+     */
+    public function deleteGeocacheLogUpvotes(string $referenceCode, string $upvoteTypeId, array $options = [])
+    {
+        return $this->httpClient->delete('geocachelogs/' . $referenceCode . '/upvotes/' . $upvoteTypeId, $options);
+    }
+
+    /**
+     * swagger: POST /v{api-version}/geocachelogs/{referenceCode}/upvotes/{upvoteTypeId}
+     *
+     * @see https://api.groundspeak.com/documentation#create-geocachelog-upvotes
+     * @see https://api.groundspeak.com/api-docs/index#!/GeocacheLogs/GeocacheLogs_AddUpvote
+     *
+     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
+     */
+    public function setGeocacheLogUpvotes(string $referenceCode, string $upvoteTypeId, array $options = [])
+    {
+        return $this->httpClient->post('geocachelogs/' . $referenceCode . '/upvotes/' . $upvoteTypeId, $options);
     }
 
     /**
@@ -654,6 +706,19 @@ class GeocachingSdk implements GeocachingSdkInterface
     public function updateTrackableLog(string $referenceCode, array $trackableLog, array $query = [], array $options = [])
     {
         return $this->httpClient->put('trackablelogs/' . $referenceCode, $trackableLog, $query, $options);
+    }
+
+    /**
+     * swagger: GET /v{api-version}/trackablelogs
+     *
+     * @see https://api.groundspeak.com/documentation#get-user-trackablelog
+     * @see https://api.groundspeak.com/api-docs/index#!/TrackableLogs/TrackableLogs_GetTrackableLogs
+     *
+     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
+     */
+    public function getUserTrackableLog(array $query = [], array $options = [])
+    {
+        return $this->httpClient->get('trackablelogs/', $query, $options);
     }
 
     /**
