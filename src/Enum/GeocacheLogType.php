@@ -24,5 +24,6 @@ class GeocacheLogType extends EnumAbstract
                                 47 => 'Update Coordinates',
                                 68 => 'Post Reviewer Note',
                                 74 => 'Announcement',
+                                76 => 'Submit for Review',
                             ];
 }
