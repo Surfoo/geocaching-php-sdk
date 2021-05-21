@@ -2,7 +2,7 @@
 
 namespace Geocaching\Enum;
 
-class AdditionalWaypointType extends EnumAbstract
+class AdditionalWaypointVisibilityType extends EnumAbstract
 {
     protected static $list = [
                                 0 => 'Visible',
