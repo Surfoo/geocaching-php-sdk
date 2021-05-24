@@ -4,7 +4,8 @@ namespace Geocaching\Lib\Adapters;
 
 use Geocaching\Exception\GeocachingSdkException;
 use GuzzleHttp\Client;
-use GuzzleHttp\Exception\TransferException;
+use GuzzleHttp\Exception\ConnectException;
+use GuzzleHttp\Exception\RequestException;
 
 class GuzzleHttpClient implements HttpClientInterface
 {
@@ -105,7 +106,17 @@ class GuzzleHttpClient implements HttpClientInterface
 
         try {
             $this->response = $this->client->get($uri, $options);
-        } catch (TransferException $e) {
+        } catch (ConnectException $e) {
+            throw new GeocachingSdkException(
+                $e->getMessage(),
+                $e->getCode(),
+                [
+                 'uri'      => $uri,
+                 'query'    => $query,
+                 'options'  => $options,
+                ]
+            );
+        } catch (RequestException $e) {
             $response = null;
             if ($e->hasResponse()) {
                 $response = json_decode($e->getResponse()->getBody());
@@ -142,7 +153,18 @@ class GuzzleHttpClient implements HttpClientInterface
 
         try {
             $this->response = $this->client->post($uri, $options);
-        } catch (TransferException $e) {
+        } catch (ConnectException $e) {
+            throw new GeocachingSdkException(
+                $e->getMessage(),
+                $e->getCode(),
+                [
+                 'uri'      => $uri,
+                 'body'     => $body,
+                 'query'    => $query,
+                 'options'  => $options,
+                ]
+            );
+        } catch (RequestException $e) {
             $response = null;
             if ($e->hasResponse()) {
                 $response = json_decode($e->getResponse()->getBody());
@@ -180,7 +202,18 @@ class GuzzleHttpClient implements HttpClientInterface
 
         try {
             $this->response = $this->client->put($uri, $options);
-        } catch (TransferException $e) {
+        } catch (ConnectException $e) {
+            throw new GeocachingSdkException(
+                $e->getMessage(),
+                $e->getCode(),
+                [
+                 'uri'      => $uri,
+                 'body'     => $body,
+                 'query'    => $query,
+                 'options'  => $options,
+                ]
+            );
+        } catch (RequestException $e) {
             $response = null;
             if ($e->hasResponse()) {
                 $response = json_decode($e->getResponse()->getBody());
@@ -210,7 +243,16 @@ class GuzzleHttpClient implements HttpClientInterface
 
         try {
             $this->response = $this->client->delete($uri, $options);
-        } catch (TransferException $e) {
+        } catch (ConnectException $e) {
+            throw new GeocachingSdkException(
+                $e->getMessage(),
+                $e->getCode(),
+                [
+                 'uri'      => $uri,
+                 'options'  => $options,
+                ]
+            );
+        } catch (RequestException $e) {
             $response = null;
             if ($e->hasResponse()) {
                 $response = json_decode($e->getResponse()->getBody());
