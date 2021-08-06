@@ -118,14 +118,14 @@ interface GeocachingSdkInterface
     public function setGeocacheLog(array $geocacheLog, array $query = [], array $options = []);
 
     /**
-     * @see https://api.groundspeak.com/documentation#delete-geocachelog-upvotes
+     * @see https://api.groundspeak.com/documentation#delete-geocachelog-upvote
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
     public function deleteGeocacheLogUpvotes(string $referenceCode, int $upvoteTypeId, array $options = []);
 
     /**
-     * @see https://api.groundspeak.com/documentation#create-geocachelog-upvotes
+     * @see https://api.groundspeak.com/documentation#add-geocachelog-upvote
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */

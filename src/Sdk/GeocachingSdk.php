@@ -228,7 +228,7 @@ class GeocachingSdk implements GeocachingSdkInterface
     /**
      * swagger: DELETE /v{api-version}/geocachelogs/{referenceCode}/upvotes/{upvoteTypeId}
      *
-     * @see https://api.groundspeak.com/documentation#delete-geocachelog-upvotes
+     * @see https://api.groundspeak.com/documentation#delete-geocachelog-upvote
      * @see https://api.groundspeak.com/api-docs/index#!/GeocacheLogs/GeocacheLogs_DeleteUpvote
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
@@ -241,7 +241,7 @@ class GeocachingSdk implements GeocachingSdkInterface
     /**
      * swagger: POST /v{api-version}/geocachelogs/{referenceCode}/upvotes/{upvoteTypeId}
      *
-     * @see https://api.groundspeak.com/documentation#create-geocachelog-upvotes
+     * @see https://api.groundspeak.com/documentation#add-geocachelog-upvote
      * @see https://api.groundspeak.com/api-docs/index#!/GeocacheLogs/GeocacheLogs_AddUpvote
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
