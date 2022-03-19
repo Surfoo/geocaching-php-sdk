@@ -134,7 +134,7 @@ class Utils
 
         while ($input > 0) {
             $result .= self::BASE_31_CHARS[$input % 31];
-            $input = (int) $input / 31;
+            $input = intval($input / 31);
         }
 
         return \strrev($result);

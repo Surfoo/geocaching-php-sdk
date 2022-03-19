@@ -13,6 +13,13 @@ namespace Geocaching\Sdk;
 interface GeocachingSdkInterface
 {
     /**
+     * @see https://api.groundspeak.com/api-docs/index#!/Adventures/Adventures_Get
+     *
+     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
+     */
+    public function getAdventure(string $adventureId, array $options = []);
+
+    /**
      * @see https://api.groundspeak.com/api-docs/index#!/Adventures/Adventures_Search
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
@@ -452,11 +459,25 @@ interface GeocachingSdkInterface
     public function getTrackableLogs(string $referenceCode, array $query = [], array $options = []);
 
     /**
+     * @see https://api.groundspeak.com/documentation#get-user-privacy-settings
+     *
+     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
+     */
+    public function getUserPrivacySettings(string $referenceCode, array $options = []);
+
+    /**
      * @see https://api.groundspeak.com/documentation#get-user
      *
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
     public function getUser(string $referenceCode, array $query = [], array $options = []);
+
+    /**
+     * @see https://api.groundspeak.com/documentation#get-opted-out-users
+     *
+     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
+     */
+    public function getOptedOutUsers(array $query, array $options = []);
 
     /**
      * @see https://api.groundspeak.com/documentation#get-user-images
@@ -618,13 +639,6 @@ interface GeocachingSdkInterface
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
     public function getTrackableLogTypes(array $options = []);
-
-    /**
-     * @see https://api.groundspeak.com/documentation#get-opted-out-users
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
-     */
-    public function getOptedOutUsers(array $query, array $options = []);
 
     /**
      * @return \Geocaching\Lib\Adapters\GuzzleHttpClient

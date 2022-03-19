@@ -31,6 +31,19 @@ class GeocachingSdk implements GeocachingSdkInterface
     }
 
     /**
+     * swagger: GET /v{api-version}/adventures/{adventureId}
+     *
+     * @see https://api.groundspeak.com/documentation#get-adventure
+     * @see https://api.groundspeak.com/api-docs/index#!/Adventures/Adventures_Get
+     *
+     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
+     */
+    public function getAdventure(string $adventureId, array $options = [])
+    {
+        return $this->httpClient->get('adventures/' . $adventureId, [], $options);
+    }
+
+    /**
      * swagger: GET /v{api-version}/adventures/search
      *
      * @see https://api.groundspeak.com/documentation#adventures-search
@@ -852,6 +865,19 @@ class GeocachingSdk implements GeocachingSdkInterface
     }
 
     /**
+     * swagger: GET /v{api-version}/users/{referenceCode}/privacysettings
+     *
+     * @see https://api.groundspeak.com/documentation#get-user-privacy-settings
+     * @see https://api.groundspeak.com/api-docs/index#!/Users/Users_GetUserPrivacySettings
+     *
+     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
+     */
+    public function getUserPrivacySettings(string $referenceCode, array $options = [])
+    {
+        return $this->httpClient->get('users/' . $referenceCode . '/privacysettings', [], $options);
+    }
+
+    /**
      * swagger: GET /v{api-version}/users/{referenceCode}
      *
      * @see https://api.groundspeak.com/documentation#get-user
@@ -862,6 +888,19 @@ class GeocachingSdk implements GeocachingSdkInterface
     public function getUser(string $referenceCode, array $query = [], array $options = [])
     {
         return $this->httpClient->get('users/' . $referenceCode, $query, $options);
+    }
+
+    /**
+     * swagger: GET /v{api-version}/optedoutusers
+     *
+     * @see https://api.groundspeak.com/documentation#get-opted-out-users
+     * @see https://api.groundspeak.com/api-docs/index#!/Users/Users_GetOptedOutUsers
+     *
+     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
+     */
+    public function getOptedOutUsers(array $query, array $options = [])
+    {
+        return $this->httpClient->get('optedoutusers', $query, $options);
     }
 
     /**
@@ -1163,19 +1202,6 @@ class GeocachingSdk implements GeocachingSdkInterface
         return $this->httpClient->get('trackablelogtypes', $options);
     }
 
-    /**
-     * swagger: GET /v{api-version}/optedoutusers
-     *
-     * @see https://api.groundspeak.com/documentation#get-opted-out-users
-     * @see https://api.groundspeak.com/api-docs/index#!/Users/Users_GetOptedOutUsers
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
-     */
-    public function getOptedOutUsers(array $query, array $options = [])
-    {
-        return $this->httpClient->get('optedoutusers', $query, $options);
-    }
-    
     /**
      * swagger: GET /v{api-version}/wherigo/{guid}/cartridge
      *
