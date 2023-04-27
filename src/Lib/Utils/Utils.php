@@ -36,7 +36,7 @@ class Utils
         }
 
         $lat_minutes = ($latitude - (int) $latitude) * 60;
-    
+
         $meridian = 'E';
 
         if ($longitude < 0) {
@@ -96,6 +96,26 @@ class Utils
             $result = \substr($result, 1);
         }
         return $prefix . $result;
+    }
+
+    /**
+     * Check if a string is a referenceCode (generic method)
+     */
+    public static function isReferenceCode(string $referenceCode, string $prefix): bool
+    {
+        if (strlen($prefix) < 2) {
+            return false;
+        }
+
+        return (bool) preg_match('/^' . $prefix . '[' . self::BASE_31_CHARS . ']{1,}$/i', $referenceCode);
+    }
+
+    /**
+     * Check if a string is a geocode (shortcut)
+     */
+    public static function isGeocode(string $geocode): bool
+    {
+        return self::isReferenceCode($geocode, 'GC');
     }
 
     /**

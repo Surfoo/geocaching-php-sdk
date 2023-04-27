@@ -29,6 +29,7 @@
     },
     "scripts": {
         "phpstan": "vendor/bin/phpstan analyse",
-        "php-cs-fixer": "php-cs-fixer fix"
+        "php-cs-fixer": "php-cs-fixer fix",
+        "phpunit": "vendor/bin/phpunit"
     }
 }

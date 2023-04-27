@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 final class UtilsTest extends TestCase
 {
-    public function providerDecimalToDegreeDecimal()
+    public static function providerDecimalToDegreeDecimal()
     {
         return [
             [0, 0,                  'N 00° 0.000 E 000° 0.000'],
@@ -28,7 +28,7 @@ final class UtilsTest extends TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function providerReferenceCode()
+    public static function providerReferenceCode()
     {
         return [
             ['GC1', 1],
@@ -51,7 +51,7 @@ final class UtilsTest extends TestCase
         $this->assertIsInt($result);
     }
 
-    public function providerReferenceCodeFail()
+    public static function providerReferenceCodeFail()
     {
         return [
             ['GC', 'referenceCode "GC" too short.'],
@@ -70,7 +70,7 @@ final class UtilsTest extends TestCase
         Utils::referenceCodeToId($referenceCode);
     }
 
-    public function providerId()
+    public static function providerId()
     {
         return [
             ['1', 'GC', 'GC1'],
@@ -91,5 +91,51 @@ final class UtilsTest extends TestCase
 
         $this->assertEquals($expected, $result);
         $this->assertIsString($result);
+    }
+
+    public static function providerGeocodes()
+    {
+        return [
+            ['GC12345', true],
+            ['PR12345', false],
+        ];
+    }
+
+    /**
+     * @dataProvider providerGeocodes
+     */
+    public function testGeocodes(string $geocode, bool $expected): void
+    {
+        $result = Utils::isGeocode($geocode);
+
+        $this->assertEquals($expected, $result);
+    }
+
+    public static function providerReferenceCodes()
+    {
+        return [
+            ['', '', false],
+            ['', 'GC', false],
+            ['GC', '', false],
+            ['GC', 'GC', false],
+            ['GC2X3Y6', 'GC', true],
+            ['GL19JDPRE', 'GL', true],
+            ['PR2X3Y6', 'PR', true],
+            ['gc2x3y6', 'GC', true],
+            ['GCA234I', 'GC', false],
+            ['GCA234L', 'GC', false],
+            ['GCA234O', 'GC', false],
+            ['GCA234S', 'GC', false],
+        ];
+    }
+
+    /**
+     * @dataProvider providerReferenceCodes
+     */
+    public function testReferenceCodes(string $geocode, string $prefix, bool $expected): void
+    {
+        $result = Utils::isReferenceCode($geocode, $prefix);
+
+        $this->assertEquals($expected, $result);
     }
 }
