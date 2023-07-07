@@ -13,7 +13,7 @@ You can follow changes about the documentation and the API here:
 
 ## Requirements
 
- - PHP >= 7.3
+ - PHP >= 8.1
  - [composer](https://getcomposer.org/doc/00-intro.md#system-requirements).
 
 ## Composer
