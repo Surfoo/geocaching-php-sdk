@@ -16,20 +16,39 @@
             "Geocaching\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Geocaching\\Client\\Tests\\": "tests"
+        }
+    },
     "require": {
-        "php": "^7.3 || ^8.0 || ^8.1 || ^8.2",
+        "php": "^8.1 || ^8.2",
         "monolog/monolog": "^2.0 || ^3.0",
-        "guzzlehttp/guzzle": "^7.0",
-        "surfoo/oauth2-geocaching": "^1.4"
+        "surfoo/oauth2-geocaching": "^1.4",
+        "psr/http-factory": "^1.0",
+        "psr/http-client": "^1.0",
+        "php-http/client-common": "^2.7",
+        "psr/http-client-implementation": "*",
+        "nyholm/psr7": "^1.8"
     },
     "require-dev": {
         "phpunit/phpunit": "^10.0",
         "phpstan/phpstan": "^1.9",
-        "friendsofphp/php-cs-fixer": "^3.0"
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "php-http/curl-client": "^2.3",
+        "laminas/laminas-diactoros": "^3.0",
+        "php-http/mock-client": "^1.6",
+        "symfony/var-dumper": "^5.1"
     },
     "scripts": {
         "phpstan": "vendor/bin/phpstan analyse",
         "php-cs-fixer": "php-cs-fixer fix",
         "phpunit": "vendor/bin/phpunit"
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
+        },
+        "sort-packages": true
     }
 }
