@@ -2,13 +2,22 @@
 
 namespace Geocaching\Enum;
 
-class GeocacheStatus extends EnumAbstract
+enum GeocacheStatus: string
 {
-    protected static $list = [
-                                1 => 'Unpublished',
-                                2 => 'Active',
-                                3 => 'Disabled',
-                                4 => 'Locked',
-                                5 => 'Archived',
-                            ];
+    case UNPUBLISHED = 'Unpublished';
+    case ACTIVE      = 'Active';
+    case DISABLED    = 'Disabled';
+    case LOCKED      = 'Locked';
+    case ARCHIVED    = 'Archived';
+
+    public function id(): int
+    {
+        return match($this) {
+            self::UNPUBLISHED => 1,
+            self::ACTIVE      => 2,
+            self::DISABLED    => 3,
+            self::LOCKED      => 4,
+            self::ARCHIVED    => 5,
+        };
+    }
 }

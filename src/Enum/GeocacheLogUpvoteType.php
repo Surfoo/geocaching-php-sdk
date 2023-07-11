@@ -2,10 +2,16 @@
 
 namespace Geocaching\Enum;
 
-class GeocacheLogUpvoteType extends EnumAbstract
+enum GeocacheLogUpvoteType: string
 {
-    protected static $list = [
-                                1 => 'GreatStory',
-                                2 => 'Helpful',
-                            ];
+    case GREAT_STORY = 'GreatStory';
+    case HELPFUL = 'Helpful';
+
+    public function id(): int
+    {
+        return match($this) {
+            self::GREAT_STORY => 1,
+            self::HELPFUL => 2,
+        };
+    }
 }

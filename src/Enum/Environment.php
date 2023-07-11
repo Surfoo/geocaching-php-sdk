@@ -2,7 +2,7 @@
 
 namespace Geocaching\Enum;
 
-Enum Environment: string
+enum Environment: string
 {
     case STAGING    = 'staging';
     case PRODUCTION = 'production';
