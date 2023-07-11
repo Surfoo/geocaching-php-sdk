@@ -41,7 +41,7 @@ final class ClientBuilder
     public function getHttpClient(): ClientInterface
     {
         $pluginClient = (new PluginClientFactory())->createClient($this->httpClient, $this->plugins);
-        
+
         return new HttpMethodsClient(
             $pluginClient,
             $this->requestFactoryInterface,
