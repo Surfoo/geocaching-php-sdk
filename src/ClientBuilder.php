@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Geocaching;
 
 use Http\Client\Common\HttpMethodsClient;
-use Http\Client\Common\HttpMethodsClientInterface;
 use Http\Client\Common\Plugin;
 use Http\Client\Common\PluginClientFactory;
 use Http\Discovery\Psr18ClientDiscovery;
@@ -39,7 +38,7 @@ final class ClientBuilder
         $this->plugins[] = $plugin;
     }
     
-    public function getHttpClient(): HttpMethodsClientInterface
+    public function getHttpClient(): ClientInterface
     {
         $pluginClient = (new PluginClientFactory())->createClient($this->httpClient, $this->plugins);
         
