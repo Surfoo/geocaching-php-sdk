@@ -1,6 +1,6 @@
 <?php
 
-namespace Geocaching\Lib\Utils;
+namespace Geocaching;
 
 use Geocaching\Exception\UtilsException;
 

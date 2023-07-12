@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Geocaching\Lib\Utils\Utils;
+use Geocaching\Utils;
 use PHPUnit\Framework\TestCase;
 
 final class UtilsTest extends TestCase
