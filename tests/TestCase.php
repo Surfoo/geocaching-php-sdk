@@ -24,6 +24,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
     protected function givenSdk(): GeocachingSdk
     {
         return new GeocachingSdk(new Options([
+            'access_token'   => 'fakeToken',
             'client_builder' => new ClientBuilder($this->mockClient),
             'environment'    => Environment::STAGING,
         ]));

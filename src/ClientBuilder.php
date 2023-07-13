@@ -6,31 +6,33 @@ namespace Geocaching;
 
 use Http\Client\Common\HttpMethodsClient;
 use Http\Client\Common\Plugin;
+use Http\Client\Common\Plugin\AuthenticationPlugin;
+use Http\Client\Common\Plugin\HeaderDefaultsPlugin;
 use Http\Client\Common\PluginClientFactory;
 use Http\Discovery\Psr18ClientDiscovery;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
+use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 
 final class ClientBuilder
 {
-    private ClientInterface $httpClient;
-    
-    private RequestFactoryInterface $requestFactoryInterface;
-    
-    private StreamFactoryInterface $streamFactoryInterface;
-    
     private array $plugins = [];
-    
+
     public function __construct(
-        ClientInterface $httpClient = null,
-        RequestFactoryInterface $requestFactoryInterface = null,
-        StreamFactoryInterface $streamFactoryInterface = null
+        private ?ClientInterface $httpClient = null,
+        private ?RequestFactoryInterface $requestFactory = null,
+        private ?StreamFactoryInterface $streamFactory = null
     ) {
         $this->httpClient = $httpClient ?: Psr18ClientDiscovery::find();
-        $this->requestFactoryInterface = $requestFactoryInterface ?: Psr17FactoryDiscovery::findRequestFactory();
-        $this->streamFactoryInterface = $streamFactoryInterface ?: Psr17FactoryDiscovery::findStreamFactory();
+        $this->requestFactory = $requestFactory ?: Psr17FactoryDiscovery::findRequestFactory();
+        $this->streamFactory = $streamFactory ?: Psr17FactoryDiscovery::findStreamFactory();
+
+        $this->addPlugin(new HeaderDefaultsPlugin([
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+        ]));
     }
     
     public function addPlugin(Plugin $plugin): void
@@ -44,8 +46,8 @@ final class ClientBuilder
 
         return new HttpMethodsClient(
             $pluginClient,
-            $this->requestFactoryInterface,
-            $this->streamFactoryInterface
+            $this->requestFactory,
+            $this->streamFactory
         );
     }
 }
