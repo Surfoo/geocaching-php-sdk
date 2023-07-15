@@ -12,7 +12,7 @@ enum GeocacheStatus: string
 
     public function id(): int
     {
-        return match($this) {
+        return match ($this) {
             self::UNPUBLISHED => 1,
             self::ACTIVE      => 2,
             self::DISABLED    => 3,

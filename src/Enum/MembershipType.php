@@ -11,7 +11,7 @@ enum MembershipType: string
 
     public function id(): int
     {
-        return match($this) {
+        return match ($this) {
             self::UNKNOWN => 0,
             self::BASIC   => 1,
             self::CHARTER => 2,

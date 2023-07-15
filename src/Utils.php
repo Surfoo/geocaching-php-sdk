@@ -9,19 +9,19 @@ class Utils
     /**
      * @const string
      */
-    const BASE_31_CHARS = "0123456789ABCDEFGHJKMNPQRTVWXYZ";
+    public const BASE_31_CHARS = "0123456789ABCDEFGHJKMNPQRTVWXYZ";
 
     /**
      * (16 * 31 * 31 * 31) - (16 * 16 * 16 * 16)
      *
      * @const int
      */
-    const CACHE_CODE_BASE31_MAGIC_NUMBER = 411120;
+    public const CACHE_CODE_BASE31_MAGIC_NUMBER = 411120;
 
     /**
      * @const int
      */
-    const CACHE_CODE_BASE16_MAX = 0xFFFF;
+    public const CACHE_CODE_BASE16_MAX = 0xFFFF;
 
     /**
      * Convert decimal coordinates to degree decimal coordinates
@@ -66,7 +66,7 @@ class Utils
             throw new UtilsException('referenceCode "' . $referenceCode . '" too short.');
         }
 
-        if (\substr($referenceCode, 0, 2) == 'GC') {
+        if (str_starts_with($referenceCode, 'GC')) {
             $referenceCode = \str_replace('SO', '50', $referenceCode);
         }
 

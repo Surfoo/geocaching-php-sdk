@@ -17,7 +17,7 @@ enum TrackableLogType: string
 
     public function id(): int
     {
-        return match($this) {
+        return match ($this) {
             self::WRITE_NOTE => 4,
             self::RETRIEVE_IT => 13,
             self::DROPPED_OFF => 14,

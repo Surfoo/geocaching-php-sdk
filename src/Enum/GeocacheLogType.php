@@ -28,7 +28,7 @@ enum GeocacheLogType: string
 
     public function id(): int
     {
-        return match($this) {
+        return match ($this) {
             self::FOUND_IT => 2,
             self::DID_NOT_FIND_IT => 3,
             self::WRITE_NOTE => 4,

@@ -1,18 +1,69 @@
 name: CI
 
-on: [push]
+on:
+  pull_request:
+  push:
+    branches:
+      - "master"
+
+env:
+  COMPOSER_ROOT_VERSION: "1.99.99"
 
 jobs:
-  unit-test:
-    runs-on: ubuntu-latest
 
+  lint:
+    name: "Lint"
+    runs-on: "ubuntu-latest"
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version: [ '8.1', '8.2']
     steps:
-    - uses: actions/checkout@v3
-    - uses: php-actions/composer@v6
-    - uses: php-actions/phpunit@v3
-    - name: PHPUnit tests
-      uses: php-actions/phpunit@v3
-      with:
-        configuration: "phpunit.xml"
-        memory_limit: "256M"
-        php_version: "8.1"
+      - uses: "actions/checkout@v2"
+      - uses: "shivammathur/setup-php@v2"
+        with:
+          php-version: "${{ matrix.php-version }}"
+          coverage: "none"
+          ini-values: "memory_limit=-1, zend.assertions=1, error_reporting=-1, display_errors=On"
+          tools: "composer:v2"
+      - uses: "ramsey/composer-install@v2"
+      - name: "Lint the PHP source code"
+        run: "./vendor/bin/parallel-lint src tests"
+
+  coding-standards:
+    name: "Coding Standards"
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: "actions/checkout@v2"
+      - uses: "shivammathur/setup-php@v2"
+        with:
+          php-version: "latest"
+          coverage: "none"
+          ini-values: "memory_limit=-1"
+          tools: "composer:v2"
+      - uses: "ramsey/composer-install@v2"
+      - name: "Check coding standards"
+        run: "./vendor/bin/phpcs src --standard=psr2 --exclude=Generic.Files.LineLength -sp --colors"
+
+  unit-tests:
+    name: "Unit Tests"
+    runs-on: "ubuntu-latest"
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version: [ '8.1', '8.2' ]
+    steps:
+      - uses: "actions/checkout@v2"
+      - uses: "shivammathur/setup-php@v2"
+        with:
+          php-version: "${{ matrix.php-version }}"
+          coverage: "xdebug"
+          ini-values: "memory_limit=-1, zend.assertions=1, error_reporting=-1, display_errors=On"
+          tools: "composer"
+      - name: "Prepare for tests"
+        run: "mkdir -p build/logs"
+      - uses: "ramsey/composer-install@v2"
+      - name: "Run unit tests"
+        run: "./vendor/bin/phpunit --colors=always --coverage-clover build/logs/clover.xml --coverage-text"
+      - name: "Publish coverage report to Codecov"
+        uses: "codecov/codecov-action@v2"

@@ -26,7 +26,7 @@ enum GeocacheType: string
 
     public function id(): int
     {
-        return match($this) {
+        return match ($this) {
             self::TRADITIONAL => 2,
             self::MULTI_CACHE => 3,
             self::VIRTUAL => 4,

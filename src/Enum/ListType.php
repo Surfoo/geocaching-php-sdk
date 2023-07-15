@@ -12,7 +12,7 @@ enum ListType: string
 
     public function id(): int
     {
-        return match($this) {
+        return match ($this) {
             self::POCKET_QUERY => 1,
             self::BOOKMARK     => 2,
             self::IGNORE       => 3,

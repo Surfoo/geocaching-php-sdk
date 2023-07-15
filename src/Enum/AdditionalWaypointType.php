@@ -13,7 +13,7 @@ enum AdditionalWaypointType: string
 
     public function id(): int
     {
-        return match($this) {
+        return match ($this) {
             self::PARKING_AREA => 217,
             self::VIRTUAL_STAGE => 218,
             self::PHYSICAL_STAGE => 219,

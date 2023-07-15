@@ -14,7 +14,7 @@ enum GeocacheLogUpvoteType: string
 
     public function id(): int
     {
-        return match($this) {
+        return match ($this) {
             self::UNKNOWN => 1,
             self::MICRO => 2,
             self::REGULAR => 3,

@@ -10,7 +10,7 @@ enum AdditionalWaypointVisibilityType: string
 
     public function id(): int
     {
-        return match($this) {
+        return match ($this) {
             self::VISIBLE => 0,
             self::HIDE_COORDINATES => 1,
             self::HIDDEN => 2,

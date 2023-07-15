@@ -8,7 +8,8 @@ use Http\Discovery\Psr17FactoryDiscovery;
 use Psr\Http\Message\UriFactoryInterface;
 use Psr\Http\Message\UriInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Geocaching\Enum\{Environment, BaseUri};
+use Geocaching\Enum\Environment;
+use Geocaching\Enum\BaseUri;
 use Http\Client\Common\Plugin\AuthenticationPlugin;
 use Http\Client\Common\Plugin\BaseUriPlugin;
 use Http\Message\Authentication\Bearer;
@@ -18,7 +19,7 @@ final class Options
     /**
      * @const string
      */
-    const API_VERSION = 'v1';
+    public const API_VERSION = 'v1';
 
     private array $options;
 
@@ -27,7 +28,7 @@ final class Options
         $resolver = new OptionsResolver();
         $this->configureOptions($resolver);
 
-        $baseUri = match($options['environment']) {
+        $baseUri = match ($options['environment']) {
             Environment::STAGING => BaseUri::STAGING,
             default              => BaseUri::PRODUCTION,
         };
