@@ -1,6 +1,11 @@
 <?xml version="1.0"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bootstrap="vendor/autoload.php" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.1/phpunit.xsd">
-  <coverage/>
+  <coverage>
+    <report>
+      <clover outputFile="./build/coverage/log/coverage.xml"/>
+      <html outputDirectory="./build/coverage/html" lowUpperBound="35" highLowerBound="70"/>
+    </report>
+  </coverage>
   <testsuites>
     <testsuite name="units">
       <directory>tests</directory>

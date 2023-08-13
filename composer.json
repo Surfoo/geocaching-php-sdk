@@ -30,11 +30,10 @@
         "psr/http-client": "^1.0",
         "psr/http-client-implementation": "*",
         "psr/http-factory": "^1.0",
-        "surfoo/oauth2-geocaching": "dev-feat-v2"
+        "surfoo/oauth2-geocaching": "^2.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.0",
-        "laminas/laminas-diactoros": "^3.0",
         "php-http/mock-client": "^1.6",
         "php-parallel-lint/php-parallel-lint": "~1.3",
         "phpstan/phpstan": "^1.9",
@@ -45,12 +44,12 @@
         "symfony/var-dumper": "^6.3"
     },
     "scripts": {
-        "phpstan": "./vendor/bin/phpstan analyse",
-        "phpcs": "./vendor/bin/phpcs src --standard=psr2 --exclude=Generic.Files.LineLength -sp --colors",
-        "phpcbf": "./vendor/bin/phpcbf src --standard=psr2 --exclude=Generic.Files.LineLength -sp --colors",
         "php-cs-fixer": "php-cs-fixer fix",
-        "phpunit": "./vendor/bin/phpunit",
-        "rector": "./vendor/bin/rector"
+        "phpcbf":       "vendor/bin/phpcbf src --standard=psr2 --exclude=Generic.Files.LineLength -sp --colors",
+        "phpcs":        "vendor/bin/phpcs  src --standard=psr2 --exclude=Generic.Files.LineLength -sp --colors",
+        "phpstan":      "vendor/bin/phpstan analyse",
+        "phpunit":      "XDEBUG_MODE=coverage vendor/bin/phpunit",
+        "rector":       "vendor/bin/rector"
     },
     "config": {
         "allow-plugins": {

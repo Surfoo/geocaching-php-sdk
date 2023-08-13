@@ -63,11 +63,6 @@ final class Options
         return $this->options['client_builder'];
     }
 
-    public function getEnvironment(): string
-    {
-        return $this->options['environment'];
-    }
-
     public function getUriFactory(): UriFactoryInterface
     {
         return $this->options['uri_factory'];

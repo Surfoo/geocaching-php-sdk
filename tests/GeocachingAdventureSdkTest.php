@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Geocaching\Client\Tests;
 
-use Laminas\Diactoros\Response;
+// use Laminas\Diactoros\Response;
 
 final class GeocachingAdventureSdkTest extends TestCase
 {
