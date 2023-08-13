@@ -8,9 +8,12 @@
  * @license https://opensource.org/licenses/MIT
  */
 
-namespace Geocaching\Sdk;
+declare(strict_types=1);
 
-use Geocaching\Lib\Adapters\HttpClientInterface;
+namespace Geocaching;
+
+use Psr\Http\Client\ClientInterface;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * List of methods from Groundspeak API.
@@ -18,16 +21,18 @@ use Geocaching\Lib\Adapters\HttpClientInterface;
  * @see https://api.groundspeak.com/documentation API Documentation by Groundspeak
  * @see https://api.groundspeak.com/api-docs/index Swagger
  */
-class GeocachingSdk implements GeocachingSdkInterface
+final class GeocachingSdk implements GeocachingSdkInterface
 {
-    /**
-     * @var HttpClientInterface
-     */
-    protected $httpClient;
+    private ClientBuilder $clientBuilder;
 
-    public function __construct(HttpClientInterface $httpClient)
+    public function __construct(Options $options)
     {
-        $this->httpClient = $httpClient;
+        $this->clientBuilder = $options->getClientBuilder();
+    }
+
+    public function getHttpClient(): ClientInterface
+    {
+        return $this->clientBuilder->getHttpClient();
     }
 
     /**
@@ -35,12 +40,10 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-adventure
      * @see https://api.groundspeak.com/api-docs/index#!/Adventures/Adventures_Get
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getAdventure(string $adventureId, array $options = [])
+    public function getAdventure(string $adventureId, array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('adventures/' . $adventureId, [], $options);
+        return $this->getHttpClient()->get('/adventures/' . $adventureId, $headers);
     }
 
     /**
@@ -48,12 +51,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#adventures-search
      * @see https://api.groundspeak.com/api-docs/index#!/Adventures/Adventures_Search
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function searchAdventures(array $query = [], array $options = [])
+    public function searchAdventures(array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('adventures/search', $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->get('/adventures/search' . $query, $headers);
     }
 
     /**
@@ -61,12 +65,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-friendrequests
      * @see https://api.groundspeak.com/api-docs/index#!/Friends/Friends_GetFriendRequests
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getFriendRequests(array $query = [], array $options = [])
+    public function getFriendRequests(array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('friendrequests', $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->get('/friendrequests' . $query, $headers);
     }
 
     /**
@@ -74,12 +79,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#create-friendrequest
      * @see https://api.groundspeak.com/api-docs/index#!/Friends/Friends_CreateFriendRequest
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function sendFriendRequest(array $friendRequest, array $query = [], array $options = [])
+    public function sendFriendRequest(array $friendRequest, array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->post('friendrequests', $friendRequest, $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->post('/friendrequests' . $query, $headers, $friendRequest);
     }
 
     /**
@@ -87,12 +93,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-friends
      * @see https://api.groundspeak.com/api-docs/index#!/Friends/Friends_GetFriends
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getFriends(array $query = [], array $options = [])
+    public function getFriends(array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('friends', $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->get('/friends' . $query, $headers);
     }
 
     /**
@@ -100,12 +107,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#bulk-create-trackablelogs
      * @see https://api.groundspeak.com/api-docs/index#!/Friends/Friends_GetFriendsGeocacheLogs
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getFriendsGeocacheLogsByGeocache(string $referenceCode, array $query = [], array $options = [])
+    public function getFriendsGeocacheLogsByGeocache(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('friends/geocaches/' . $referenceCode . '/geocachelogs', $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->get('/friends/geocaches/' . $referenceCode . '/geocachelogs' . $query, $headers);
     }
 
     /**
@@ -113,12 +121,10 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#accept-friendrequest
      * @see https://api.groundspeak.com/api-docs/index#!/Friends/Friends_AcceptFriendRequest
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function acceptFriendRequest(string $requestId, array $options = [])
+    public function acceptFriendRequest(string $requestId, array $headers = []): ResponseInterface
     {
-        return $this->httpClient->post('friendrequests/' . $requestId . '/accept', $options);
+        return $this->getHttpClient()->post('/friendrequests/' . $requestId . '/accept', $headers);
     }
 
     /**
@@ -126,12 +132,10 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#delete-friend
      * @see https://api.groundspeak.com/api-docs/index#!/Friends/Friends_RemoveFriend
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function deleteFriend(string $referenceCode, array $options = [])
+    public function deleteFriend(string $referenceCode, array $headers = []): ResponseInterface
     {
-        return $this->httpClient->delete('friends/' . $referenceCode, $options);
+        return $this->getHttpClient()->delete('/friends/' . $referenceCode, $headers);
     }
 
     /**
@@ -139,12 +143,10 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#delete-friendrequest
      * @see https://api.groundspeak.com/api-docs/index#!/Friends/Friends_DeleteFriendRequest
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function deleteFriendRequest(string $requestId, array $options = [])
+    public function deleteFriendRequest(string $requestId, array $headers = []): ResponseInterface
     {
-        return $this->httpClient->delete('friendrequests/' . $requestId, $options);
+        return $this->getHttpClient()->delete('/friendrequests/' . $requestId, $headers);
     }
 
     /**
@@ -152,12 +154,10 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#delete-geocachelog
      * @see https://api.groundspeak.com/api-docs/index#!/GeocacheLogs/GeocacheLogs_DeleteGeocacheLog
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function deleteGeocacheLog(string $referenceCode, array $options = [])
+    public function deleteGeocacheLog(string $referenceCode, array $headers = []): ResponseInterface
     {
-        return $this->httpClient->delete('geocachelogs/' . $referenceCode, $options);
+        return $this->getHttpClient()->delete('/geocachelogs/' . $referenceCode, $headers);
     }
 
     /**
@@ -165,12 +165,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-geocachelog
      * @see https://api.groundspeak.com/api-docs/index#!/GeocacheLogs/GeocacheLogs_GetGeocacheLog
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getGeocacheLog(string $referenceCode, array $query = [], array $options = [])
+    public function getGeocacheLog(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('geocachelogs/' . $referenceCode, $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->get('/geocachelogs/' . $referenceCode . $query, $headers);
     }
 
     /**
@@ -178,12 +179,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#update-geocachelog
      * @see https://api.groundspeak.com/api-docs/index#!/GeocacheLogs/GeocacheLogs_Put
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function updateGeocacheLog(string $referenceCode, array $geocacheLog, array $query = [], array $options = [])
+    public function updateGeocacheLog(string $referenceCode, array $geocacheLog, array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->put('geocachelogs/' . $referenceCode, $geocacheLog, $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->put('/geocachelogs/' . $referenceCode . $query, $headers, $geocacheLog);
     }
 
     /**
@@ -191,12 +193,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-geocachelog-upvotes
      * @see https://api.groundspeak.com/api-docs/index#!/GeocacheLogs/GeocacheLogs_GetLogUpvotes
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getGeocacheLogUpvotes(array $query = [], array $options = [])
+    public function getGeocacheLogUpvotes(array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('geocachelogs/upvotes', $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->get('/geocachelogs/upvotes' . $query, $headers);
     }
 
     /**
@@ -204,12 +207,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-geocachelog-images
      * @see https://api.groundspeak.com/api-docs/index#!/GeocacheLogs/GeocacheLogs_GetImages
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getGeocacheLogImages(string $referenceCode, array $query = [], array $options = [])
+    public function getGeocacheLogImages(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('geocachelogs/' . $referenceCode . '/images', $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->get('/geocachelogs/' . $referenceCode . '/images' . $query, $headers);
     }
 
     /**
@@ -217,12 +221,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#create-geocachelog-image
      * @see https://api.groundspeak.com/api-docs/index#!/GeocacheLogs/GeocacheLogs_PostImages
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function setGeocacheLogImages(string $referenceCode, array $imageToUpload, array $query = [], array $options = [])
+    public function setGeocacheLogImages(string $referenceCode, array $imageToUpload, array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->post('geocachelogs/' . $referenceCode . '/images', $imageToUpload, $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->post('/geocachelogs/' . $referenceCode . '/images' . $query, $headers, $imageToUpload);
     }
 
     /**
@@ -230,12 +235,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#create-geocachelog
      * @see https://api.groundspeak.com/api-docs/index#!/GeocacheLogs/GeocacheLogs_PostLog
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function setGeocacheLog(array $geocacheLog, array $query = [], array $options = [])
+    public function setGeocacheLog(array $geocacheLog, array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->post('geocachelogs', $geocacheLog, $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->post('/geocachelogs' . $query, $headers, $geocacheLog);
     }
 
     /**
@@ -243,12 +249,10 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#delete-geocachelog-upvote
      * @see https://api.groundspeak.com/api-docs/index#!/GeocacheLogs/GeocacheLogs_DeleteUpvote
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function deleteGeocacheLogUpvotes(string $referenceCode, int $upvoteTypeId, array $options = [])
+    public function deleteGeocacheLogUpvotes(string $referenceCode, int $upvoteTypeId, array $headers = []): ResponseInterface
     {
-        return $this->httpClient->delete('geocachelogs/' . $referenceCode . '/upvotes/' . $upvoteTypeId, $options);
+        return $this->getHttpClient()->delete('/geocachelogs/' . $referenceCode . '/upvotes/' . $upvoteTypeId, $headers);
     }
 
     /**
@@ -256,12 +260,10 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#add-geocachelog-upvote
      * @see https://api.groundspeak.com/api-docs/index#!/GeocacheLogs/GeocacheLogs_AddUpvote
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function setGeocacheLogUpvotes(string $referenceCode, int $upvoteTypeId, array $options = [])
+    public function setGeocacheLogUpvotes(string $referenceCode, int $upvoteTypeId, array $headers = []): ResponseInterface
     {
-        return $this->httpClient->post('geocachelogs/' . $referenceCode . '/upvotes/' . $upvoteTypeId, $options);
+        return $this->getHttpClient()->post('/geocachelogs/' . $referenceCode . '/upvotes/' . $upvoteTypeId, $headers);
     }
 
     /**
@@ -269,12 +271,10 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#delete-geocachelog-image
      * @see https://api.groundspeak.com/api-docs/index#!/GeocacheLogs/GeocacheLogs_DeleteGeocacheLogImages
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function deleteGeocacheLogImage(string $referenceCode, string $imageGuid, array $options = [])
+    public function deleteGeocacheLogImage(string $referenceCode, string $imageGuid, array $headers = []): ResponseInterface
     {
-        return $this->httpClient->delete('geocachelogs/' . $referenceCode . '/images/' . $imageGuid, $options);
+        return $this->getHttpClient()->delete('/geocachelogs/' . $referenceCode . '/images/' . $imageGuid, $headers);
     }
 
     /**
@@ -282,12 +282,10 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#delete-geocachenote
      * @see https://api.groundspeak.com/api-docs/index#!/GeocacheNotes/GeocacheNotes_DeleteNote
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function deleteGeocacheNote(string $referenceCode, array $options = [])
+    public function deleteGeocacheNote(string $referenceCode, array $headers = []): ResponseInterface
     {
-        return $this->httpClient->delete('geocaches/' . $referenceCode . '/notes', $options);
+        return $this->getHttpClient()->delete('/geocaches/' . $referenceCode . '/notes', $headers);
     }
 
     /**
@@ -295,12 +293,10 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#upsert-geocachenote
      * @see https://api.groundspeak.com/api-docs/index#!/GeocacheNotes/GeocacheNotes_Delete
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function updateGeocacheNote(string $referenceCode, array $note, array $options = [])
+    public function updateGeocacheNote(string $referenceCode, array $note, array $headers = []): ResponseInterface
     {
-        return $this->httpClient->put('geocaches/' . $referenceCode . '/notes', $note, $options);
+        return $this->getHttpClient()->put('/geocaches/' . $referenceCode . '/notes', $headers, $note);
     }
 
     /**
@@ -308,12 +304,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-geocache
      * @see https://api.groundspeak.com/api-docs/index#!/Geocaches/Geocaches_Get
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getGeocache(string $referenceCode, array $query = [], array $options = [])
+    public function getGeocache(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('geocaches/' . $referenceCode, $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->get('/geocaches/' . $referenceCode . $query, $headers);
     }
 
     /**
@@ -321,12 +318,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-geocache-images
      * @see https://api.groundspeak.com/api-docs/index#!/Geocaches/Geocaches_GetImages
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getGeocacheImages(string $referenceCode, array $query = [], array $options = [])
+    public function getGeocacheImages(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('geocaches/' . $referenceCode . '/images', $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->get('/geocaches/' . $referenceCode . '/images' . $query, $headers);
     }
 
     /**
@@ -334,12 +332,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-geocache-favoritedby
      * @see https://api.groundspeak.com/api-docs/index#!/Geocaches/Geocaches_GetFavoritedBy
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getFavoritedUsersByGeocache(string $referenceCode, array $query = [], array $options = [])
+    public function getFavoritedUsersByGeocache(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('geocaches/' . $referenceCode . '/favoritedby', $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->get('/geocaches/' . $referenceCode . '/favoritedby' . $query, $headers);
     }
 
     /**
@@ -347,12 +346,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-geocaches
      * @see https://api.groundspeak.com/api-docs/index#!/Geocaches/Geocaches_GetGeocaches
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getGeocaches(array $query, array $options = [])
+    public function getGeocaches(array $query, array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('geocaches', $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->get('/geocaches' . $query, $headers);
     }
 
     /**
@@ -360,12 +360,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-geocache-trackables
      * @see https://api.groundspeak.com/api-docs/index#!/GeocacheNotes/GeocacheNotes_UpsertNote
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getGeocacheTrackables(string $referenceCode, array $query = [], array $options = [])
+    public function getGeocacheTrackables(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('geocaches/' . $referenceCode . '/trackables', $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->get('/geocaches/' . $referenceCode . '/trackables' . $query, $headers);
     }
 
     /**
@@ -373,12 +374,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-geocache-logs
      * @see https://api.groundspeak.com/api-docs/index#!/Geocaches/Geocaches_GetLogs
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getGeocacheLogs(string $referenceCode, array $query = [], array $options = [])
+    public function getGeocacheLogs(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('geocaches/' . $referenceCode . '/geocachelogs', $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->get('/geocaches/' . $referenceCode . '/geocachelogs' . $query, $headers);
     }
 
     /**
@@ -386,12 +388,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#search
      * @see https://api.groundspeak.com/api-docs/index#!/Geocaches/Geocaches_Search
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function searchGeocaches(array $query, array $options = [])
+    public function searchGeocaches(array $query, array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('geocaches/search', $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->get('/geocaches/search' . $query, $headers);
     }
 
     /**
@@ -399,12 +402,10 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#verify-final-coordinates
      * @see https://api.groundspeak.com/api-docs/index#!/Geocaches/Geocaches_CheckFinalCoordinates
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function checkFinalCoordinates(string $referenceCode, array $coordinates, array $options = [])
+    public function checkFinalCoordinates(string $referenceCode, array $coordinates, array $headers = []): ResponseInterface
     {
-        return $this->httpClient->post('geocaches/' . $referenceCode . '/finalcoordinates', $coordinates, $options);
+        return $this->getHttpClient()->post('/geocaches/' . $referenceCode . '/finalcoordinates', $headers, $coordinates);
     }
 
     /**
@@ -412,12 +413,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#bulk-create-trackablelogs
      * @see https://api.groundspeak.com/api-docs/index#!/Geocaches/Geocaches_BulkCreateTrackableLogs
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function setBulkTrackableLogs(string $referenceCode, array $logs, array $query = [], array $options = [])
+    public function setBulkTrackableLogs(string $referenceCode, array $logs, array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->post('geocaches/' . $referenceCode . '/bulktrackablelogs', $logs, $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->post('/geocaches/' . $referenceCode . '/bulktrackablelogs' . $query, $headers, $logs);
     }
 
     /**
@@ -425,12 +427,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-geotour
      * @see https://api.groundspeak.com/api-docs/index#!/GeoTours/GeoTours_GetGeoTour
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getGeotour(string $referenceCode, array $query = [], array $options = [])
+    public function getGeotour(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('geotours/' . $referenceCode, $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->get('/geotours/' . $referenceCode . $query, $headers);
     }
 
     /**
@@ -438,12 +441,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-geotours
      * @see https://api.groundspeak.com/api-docs/index#!/GeoTours/GeoTours_GetGeoTours
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getGeotours(array $query = [], array $options = [])
+    public function getGeotours(array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('geotours', $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->get('/geotours' . $query, $headers);
     }
 
     /**
@@ -451,24 +455,23 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-geotour-geocaches
      * @see https://api.groundspeak.com/api-docs/index#!/GeoTours/GeoTours_GetGeocachesByGeoTour
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getGeocachesGeotour(string $referenceCode, array $query = [], array $options = [])
+    public function getGeocachesGeotour(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('geotours/' . $referenceCode . '/geocaches', $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->get('/geotours/' . $referenceCode . '/geocaches' . $query, $headers);
     }
 
     /**
      * swagger: GET /v{api-version}/HQPromotions/metadata
      *
      * @see https://api.groundspeak.com/api-docs/index#!/HQPromotions/HQPromotions_Get
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getHQPromotions(array $options = [])
+    public function getHQPromotions(array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('HQPromotions/metadata', $options);
+        return $this->getHttpClient()->get('/HQPromotions/metadata', $headers);
     }
 
     /**
@@ -476,12 +479,10 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#remove-list
      * @see https://api.groundspeak.com/api-docs/index#!/Lists/Lists_RemoveGeocache
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function deleteList(string $referenceCode, array $options = [])
+    public function deleteList(string $referenceCode, array $headers = []): ResponseInterface
     {
-        return $this->httpClient->delete('lists/' . $referenceCode, $options);
+        return $this->getHttpClient()->delete('/lists/' . $referenceCode, $headers);
     }
 
     /**
@@ -489,12 +490,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-list
      * @see https://api.groundspeak.com/api-docs/index#!/Lists/Lists_GetList
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getList(string $referenceCode, array $query = [], array $options = [])
+    public function getList(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('lists/' . $referenceCode, $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->get('/lists/' . $referenceCode . $query, $headers);
     }
 
     /**
@@ -502,12 +504,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#update-list
      * @see https://api.groundspeak.com/api-docs/index#!/Lists/Lists_UpdateList
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function updateList(string $referenceCode, array $list, array $query = [], array $options = [])
+    public function updateList(string $referenceCode, array $list, array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->put('lists/' . $referenceCode, $list, $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->put('/lists/' . $referenceCode . $query, $headers, $list);
     }
 
     /**
@@ -515,15 +518,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-pq-zip
      * @see https://api.groundspeak.com/api-docs/index#!/Lists/Lists_GetZippedPocketQuery
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getZippedPocketQuery(string $referenceCode, string $dirname, array $options = [])
+    public function getZippedPocketQuery(string $referenceCode, string $dirname, array $headers = []): ResponseInterface
     {
         $fullAbsolutePath = sprintf('%s/%s.zip', $dirname, $referenceCode);
-        $options          = array_merge($options, ['sink' => $fullAbsolutePath]);
+        $headers          = array_merge($headers, ['sink' => $fullAbsolutePath]);
 
-        return $this->httpClient->get('lists/' . $referenceCode . '/geocaches/zipped', [], $options);
+        return $this->getHttpClient()->get('/lists/' . $referenceCode . '/geocaches/zipped', $headers);
     }
 
     /**
@@ -531,12 +532,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-list-geocaches
      * @see https://api.groundspeak.com/api-docs/index#!/Lists/Lists_GetGeocaches
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getGeocacheList(string $referenceCode, array $query = [], array $options = [])
+    public function getGeocacheList(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('lists/' . $referenceCode . '/geocaches', $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->get('/lists/' . $referenceCode . '/geocaches' . $query, $headers);
     }
 
     /**
@@ -544,12 +546,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#add-geocache-list
      * @see https://api.groundspeak.com/api-docs/index#!/Lists/Lists_AddGeocache
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function setGeocacheList(string $referenceCode, array $geocache, array $query = [], array $options = [])
+    public function setGeocacheList(string $referenceCode, array $geocache, array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->post('lists/' . $referenceCode . '/geocaches', $geocache, $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->post('/lists/' . $referenceCode . '/geocaches' . $query, $headers, $geocache);
     }
 
     /**
@@ -557,12 +560,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#create-list
      * @see https://api.groundspeak.com/api-docs/index#!/Lists/Lists_PostList
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function setList(array $list, array $query = [], array $options = [])
+    public function setList(array $list, array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->post('lists', $list, $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->post('/lists' . $query, $headers, $list);
     }
 
     /**
@@ -570,12 +574,10 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#add-geocaches-list
      * @see https://api.groundspeak.com/api-docs/index#!/Lists/Lists_AddGeocaches
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function setBulkGeocachesList(string $referenceCode, array $body, array $options = [])
+    public function setBulkGeocachesList(string $referenceCode, array $body, array $headers = []): ResponseInterface
     {
-        return $this->httpClient->post('lists/' . $referenceCode . '/bulkgeocaches', $body, $options);
+        return $this->getHttpClient()->post('/lists/' . $referenceCode . '/bulkgeocaches', $body, $headers);
     }
 
     /**
@@ -583,12 +585,10 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#delete-geocache-list
      * @see https://api.groundspeak.com/api-docs/index#!/Lists/Lists_RemoveList
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function deleteGeocacheList(string $referenceCode, string $geocacheCode, array $options = [])
+    public function deleteGeocacheList(string $referenceCode, string $geocacheCode, array $headers = []): ResponseInterface
     {
-        return $this->httpClient->delete('lists/' . $referenceCode . '/geocaches/' . $geocacheCode, $options);
+        return $this->getHttpClient()->delete('/lists/' . $referenceCode . '/geocaches/' . $geocacheCode, $headers);
     }
 
     /**
@@ -596,12 +596,10 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#delete-logdraft
      * @see https://api.groundspeak.com/api-docs/index#!/LogDrafts/LogDrafts_Delete
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function deleteLogdraft(string $referenceCode, array $options = [])
+    public function deleteLogdraft(string $referenceCode, array $headers = []): ResponseInterface
     {
-        return $this->httpClient->delete('logdrafts/' . $referenceCode, $options);
+        return $this->getHttpClient()->delete('/logdrafts/' . $referenceCode, $headers);
     }
 
     /**
@@ -609,12 +607,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-logdraft
      * @see https://api.groundspeak.com/api-docs/index#!/LogDrafts/LogDrafts_Get
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getLogdraft(string $referenceCode, array $query = [], array $options = [])
+    public function getLogdraft(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('logdrafts/' . $referenceCode, $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->get('/logdrafts/' . $referenceCode . $query, $headers);
     }
 
     /**
@@ -622,12 +621,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#update-logdraft
      * @see https://api.groundspeak.com/api-docs/index#!/LogDrafts/LogDrafts_Put
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function updateLogdraft(string $referenceCode, array $logDraft, array $query = [], array $options = [])
+    public function updateLogdraft(string $referenceCode, array $logDraft, array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->put('logdrafts/' . $referenceCode, $logDraft, $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->put('/logdrafts/' . $referenceCode . $query, $headers, $logDraft);
     }
 
     /**
@@ -635,12 +635,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-logdrafts
      * @see https://api.groundspeak.com/api-docs/index#!/LogDrafts/LogDrafts_GetUserDrafts
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getLogdrafts(array $query = [], array $options = [])
+    public function getLogdrafts(array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('logdrafts', $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->get('/logdrafts' . $query, $headers);
     }
 
     /**
@@ -648,12 +649,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#create-logdraft
      * @see https://api.groundspeak.com/api-docs/index#!/LogDrafts/LogDrafts_Post
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function setLogdraft(array $logDraft, array $query = [], array $options = [])
+    public function setLogdraft(array $logDraft, array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->post('logdrafts', $logDraft, $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->post('/logdrafts' . $query, $headers, $logDraft);
     }
 
     /**
@@ -661,12 +663,10 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#promote-logdraft
      * @see https://api.groundspeak.com/api-docs/index#!/LogDrafts/LogDrafts_PromoteToGeocacheLog
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function promoteLogdraft(string $referenceCode, array $logDraft, array $options = [])
+    public function promoteLogdraft(string $referenceCode, array $logDraft, array $headers = []): ResponseInterface
     {
-        return $this->httpClient->post('logdrafts/' . $referenceCode . '/promote', $logDraft, $options);
+        return $this->getHttpClient()->post('/logdrafts/' . $referenceCode . '/promote', $headers, $logDraft);
     }
 
     /**
@@ -674,12 +674,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#create-logdraft-image
      * @see https://api.groundspeak.com/api-docs/index#!/LogDrafts/LogDrafts_Post_0
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function setLogdraftImage(string $referenceCode, array $postImage, array $query = [], array $options = [])
+    public function setLogdraftImage(string $referenceCode, array $postImage, array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->post('logdrafts/' . $referenceCode . '/images', $postImage, $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->post('/logdrafts/' . $referenceCode . '/images' . $query, $headers, $postImage);
     }
 
     /**
@@ -687,12 +688,10 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#delete-trackablelog
      * @see https://api.groundspeak.com/api-docs/index#!/TrackableLogs/TrackableLogs_ArchiveTrackableLog
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function deleteTrackableLog(string $referenceCode, array $options = [])
+    public function deleteTrackableLog(string $referenceCode, array $headers = []): ResponseInterface
     {
-        return $this->httpClient->delete('trackablelogs/' . $referenceCode, $options);
+        return $this->getHttpClient()->delete('/trackablelogs/' . $referenceCode, $headers);
     }
 
     /**
@@ -700,12 +699,10 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-trackablelog
      * @see https://api.groundspeak.com/api-docs/index#!/TrackableLogs/TrackableLogs_GetTrackableLog
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getTrackableLog(string $referenceCode, array $query = [], array $options = [])
+    public function getTrackableLog(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('trackablelogs/' . $referenceCode, $query, $options);
+        return $this->getHttpClient()->get('/trackablelogs/' . $referenceCode, $query, $headers);
     }
 
     /**
@@ -713,12 +710,10 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#update-trackablelog
      * @see https://api.groundspeak.com/api-docs/index#!/TrackableLogs/TrackableLogs_Put
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function updateTrackableLog(string $referenceCode, array $trackableLog, array $query = [], array $options = [])
+    public function updateTrackableLog(string $referenceCode, array $trackableLog, array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->put('trackablelogs/' . $referenceCode, $trackableLog, $query, $options);
+        return $this->getHttpClient()->put('/trackablelogs/' . $referenceCode, $trackableLog, $query, $headers);
     }
 
     /**
@@ -726,12 +721,10 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-user-trackablelog
      * @see https://api.groundspeak.com/api-docs/index#!/TrackableLogs/TrackableLogs_GetTrackableLogs
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getUserTrackableLog(array $query = [], array $options = [])
+    public function getUserTrackableLog(array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('trackablelogs/', $query, $options);
+        return $this->getHttpClient()->get('/trackablelogs/', $query, $headers);
     }
 
     /**
@@ -739,12 +732,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-trackablelog-images
      * @see https://api.groundspeak.com/api-docs/index#!/TrackableLogs/TrackableLogs_GetImages
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getTrackableLogImages(string $referenceCode, array $query = [], array $options = [])
+    public function getTrackableLogImages(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('trackablelogs/' . $referenceCode . '/images', $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->get('/trackablelogs/' . $referenceCode . '/images' . $query, $headers);
     }
 
     /**
@@ -752,12 +746,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-trackablelog-images
      * @see https://api.groundspeak.com/api-docs/index#!/TrackableLogs/TrackableLogs_PostImages
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function setTrackableLogImages(string $referenceCode, array $imageToUpload, array $query = [], array $options = [])
+    public function setTrackableLogImages(string $referenceCode, array $imageToUpload, array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->post('trackablelogs/' . $referenceCode . '/images', $imageToUpload, $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->post('/trackablelogs/' . $referenceCode . '/images' . $query, $headers, $imageToUpload);
     }
 
     /**
@@ -765,12 +760,10 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#delete-trackablelog-image
      * @see https://api.groundspeak.com/api-docs/index#!/TrackableLogs/TrackableLogs_DeleteTrackableLogImages
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function deleteTrackableLogImage(string $referenceCode, string $imageGuid, array $options = [])
+    public function deleteTrackableLogImage(string $referenceCode, string $imageGuid, array $headers = []): ResponseInterface
     {
-        return $this->httpClient->delete('trackablelogs/' . $referenceCode . '/images/' . $imageGuid, $options);
+        return $this->getHttpClient()->delete('/trackablelogs/' . $referenceCode . '/images/' . $imageGuid, $headers);
     }
 
     /**
@@ -778,12 +771,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#create-trackablelog
      * @see https://api.groundspeak.com/api-docs/index#!/TrackableLogs/TrackableLogs_PostLog
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function setTrackableLog(array $trackableLog, array $query = [], array $options = [])
+    public function setTrackableLog(array $trackableLog, array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->post('trackablelogs', $trackableLog, $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->post('/trackablelogs' . $query, $headers, $trackableLog);
     }
 
     /**
@@ -791,12 +785,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-trackable
      * @see https://api.groundspeak.com/api-docs/index#!/Trackables/Trackables_GetTrackable
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getTrackable(string $referenceCode, array $query = [], array $options = [])
+    public function getTrackable(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('trackables/' . $referenceCode, $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->get('/trackables/' . $referenceCode . $query, $headers);
     }
 
     /**
@@ -804,12 +799,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-users-trackables
      * @see https://api.groundspeak.com/api-docs/index#!/Trackables/Trackables_GetUserTrackables
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getUserTrackables(array $query = [], array $options = [])
+    public function getUserTrackables(array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('trackables', $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->get('/trackables' . $query, $headers);
     }
 
     /**
@@ -817,12 +813,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-trackable-journeys
      * @see https://api.groundspeak.com/api-docs/index#!/Trackables/Trackables_GetTrackableJourneys
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getTrackableJourneys(string $referenceCode, array $query = [], array $options = [])
+    public function getTrackableJourneys(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('trackables/' . $referenceCode . '/journeys', $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->get('/trackables/' . $referenceCode . '/journeys' . $query, $headers);
     }
 
     /**
@@ -830,12 +827,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-geocoin-types
      * @see https://api.groundspeak.com/api-docs/index#!/Trackables/Trackables_GetGeocoinTypes
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getGeocoinTypes(array $query = [], array $options = [])
+    public function getGeocoinTypes(array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('trackables/geocointypes', $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->get('/trackables/geocointypes' . $query, $headers);
     }
 
     /**
@@ -843,12 +841,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-users-trackables
      * @see https://api.groundspeak.com/api-docs/index#!/Trackables/Trackables_GetImages
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getTrackableImages(string $referenceCode, array $query = [], array $options = [])
+    public function getTrackableImages(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('trackables/' . $referenceCode . '/images', $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->get('/trackables/' . $referenceCode . '/images' . $query, $headers);
     }
 
     /**
@@ -856,12 +855,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-trackable-logs
      * @see https://api.groundspeak.com/api-docs/index#!/Trackables/Trackables_GetLogs
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getTrackableLogs(string $referenceCode, array $query = [], array $options = [])
+    public function getTrackableLogs(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('trackables/' . $referenceCode . '/trackablelogs', $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->get('/trackables/' . $referenceCode . '/trackablelogs' . $query, $headers);
     }
 
     /**
@@ -869,12 +869,10 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-user-privacy-settings
      * @see https://api.groundspeak.com/api-docs/index#!/Users/Users_GetUserPrivacySettings
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getUserPrivacySettings(string $referenceCode, array $options = [])
+    public function getUserPrivacySettings(string $referenceCode, array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('users/' . $referenceCode . '/privacysettings', [], $options);
+        return $this->getHttpClient()->get('/users/' . $referenceCode . '/privacysettings', $headers);
     }
 
     /**
@@ -882,12 +880,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-user
      * @see https://api.groundspeak.com/api-docs/index#!/Users/Users_GetUser
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getUser(string $referenceCode, array $query = [], array $options = [])
+    public function getUser(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('users/' . $referenceCode, $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->get('/users/' . $referenceCode . $query, $headers);
     }
 
     /**
@@ -895,12 +894,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-opted-out-users
      * @see https://api.groundspeak.com/api-docs/index#!/Users/Users_GetOptedOutUsers
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getOptedOutUsers(array $query, array $options = [])
+    public function getOptedOutUsers(array $query, array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('optedoutusers', $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->get('/optedoutusers' . $query, $headers);
     }
 
     /**
@@ -908,12 +908,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-user-images
      * @see https://api.groundspeak.com/api-docs/index#!/Users/Users_GetImages
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getUserImages(string $referenceCode, array $query = [], array $options = [])
+    public function getUserImages(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('users/' . $referenceCode . '/images', $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->get('/users/' . $referenceCode . '/images' . $query, $headers);
     }
 
     /**
@@ -921,12 +922,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-souvenirs
      * @see https://api.groundspeak.com/api-docs/index#!/Users/Users_GetSouvenirs
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getUserSouvenirs(string $referenceCode, array $query = [], array $options = [])
+    public function getUserSouvenirs(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('users/' . $referenceCode . '/souvenirs', $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->get('/users/' . $referenceCode . '/souvenirs' . $query, $headers);
     }
 
     /**
@@ -934,12 +936,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-users
      * @see https://api.groundspeak.com/api-docs/index#!/Users/Users_GetUsers
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getUsers(array $query = [], array $options = [])
+    public function getUsers(array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('users', $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->get('/users' . $query, $headers);
     }
 
     /**
@@ -947,12 +950,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-lists
      * @see https://api.groundspeak.com/api-docs/index#!/Users/Users_GetLists
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getUserLists(string $referenceCode, array $query = [], array $options = [])
+    public function getUserLists(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('users/' . $referenceCode . '/lists', $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->get('/users/' . $referenceCode . '/lists' . $query, $headers);
     }
 
     /**
@@ -960,12 +964,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-user-logs
      * @see https://api.groundspeak.com/api-docs/index#!/Users/Users_GetGeocacheLogs
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getUserGeocacheLogs(string $referenceCode, array $query = [], array $options = [])
+    public function getUserGeocacheLogs(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('users/' . $referenceCode . '/geocachelogs', $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->get('/users/' . $referenceCode . '/geocachelogs' . $query, $headers);
     }
 
     /**
@@ -973,12 +978,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-userwaypoints
      * @see https://api.groundspeak.com/api-docs/index#!/UserWaypoints/UserWaypoints_GetUserWaypointsAsync
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getUserWaypoints(array $query = [], array $options = [])
+    public function getUserWaypoints(array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('userwaypoints', $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->get('/userwaypoints' . $query, $headers);
     }
 
     /**
@@ -986,12 +992,10 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#create-userwaypoint
      * @see https://api.groundspeak.com/api-docs/index#!/UserWaypoints/UserWaypoints_Post
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function setGeocacheUserWaypoint(string $referenceCode, array $body, array $options = [])
+    public function setGeocacheUserWaypoint(string $referenceCode, array $body, array $headers = []): ResponseInterface
     {
-        return $this->httpClient->post('userwaypoints', $body, $options);
+        return $this->getHttpClient()->post('/userwaypoints', $headers, $body);
     }
 
     /**
@@ -999,12 +1003,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-geocache-userwaypoints
      * @see https://api.groundspeak.com/api-docs/index#!/UserWaypoints/UserWaypoints_GetGeocacheUserWaypointsAsync
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getGeocacheUserWaypoints(string $referenceCode, array $query = [], array $options = [])
+    public function getGeocacheUserWaypoints(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('geocaches/' . $referenceCode . '/userwaypoints', $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->get('/geocaches/' . $referenceCode . '/userwaypoints' . $query, $headers);
     }
 
     /**
@@ -1012,12 +1017,10 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#delete-userwaypoint
      * @see https://api.groundspeak.com/api-docs/index#!/UserWaypoints/UserWaypoints_Delete
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function deleteUserWaypoint(string $referenceCode, array $options = [])
+    public function deleteUserWaypoint(string $referenceCode, array $headers = []): ResponseInterface
     {
-        return $this->httpClient->delete('userwaypoints/' . $referenceCode, $options);
+        return $this->getHttpClient()->delete('/userwaypoints/' . $referenceCode, $headers);
     }
 
     /**
@@ -1025,12 +1028,10 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#upsert-correctedcoordinates
      * @see https://api.groundspeak.com/api-docs/index#!/UserWaypoints/UserWaypoints_UpsertCorrectedCoordinates
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function updateCorrectedCoordinates(string $referenceCode, array $coordinates, array $options = [])
+    public function updateCorrectedCoordinates(string $referenceCode, array $coordinates, array $headers = []): ResponseInterface
     {
-        return $this->httpClient->put('geocaches/' . $referenceCode . '/correctedcoordinates', $coordinates, $options);
+        return $this->getHttpClient()->put('/geocaches/' . $referenceCode . '/correctedcoordinates', $headers, $coordinates);
     }
 
     /**
@@ -1038,12 +1039,10 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#delete-correctedcoordinates
      * @see https://api.groundspeak.com/api-docs/index#!/UserWaypoints/UserWaypoints_DeleteCorrectedCoordinates
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function deleteCorrectedCoordinates(string $referenceCode, array $options = [])
+    public function deleteCorrectedCoordinates(string $referenceCode, array $headers = []): ResponseInterface
     {
-        return $this->httpClient->delete('geocaches/' . $referenceCode . '/correctedcoordinates', $options);
+        return $this->getHttpClient()->delete('/geocaches/' . $referenceCode . '/correctedcoordinates', $headers);
     }
 
     /**
@@ -1051,12 +1050,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#update-userwaypoint
      * @see https://api.groundspeak.com/api-docs/index#!/UserWaypoints/UserWaypoints_Put
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function updateUserWaypoint(string $referenceCode, array $query, array $options = [])
+    public function updateUserWaypoint(string $referenceCode, array $query, array $headers = []): ResponseInterface
     {
-        return $this->httpClient->put('userwaypoints/' . $referenceCode, $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->put('/userwaypoints/' . $referenceCode . $query, $headers);
     }
 
     /**
@@ -1064,12 +1064,13 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-reference-code
      * @see https://api.groundspeak.com/api-docs/index#!/Utilities/Utilities_GetReferenceCode
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getReferenceCodeFromId(array $query, array $options = [])
+    public function getReferenceCodeFromId(array $query, array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('utilities/referencecode', $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->get('/utilities/referencecode' . $query, $headers);
     }
 
     /**
@@ -1077,12 +1078,10 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-countries
      * @see https://api.groundspeak.com/api-docs/index#!/ReferenceData/ReferenceData_GetCountries
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getCountries(array $options = [])
+    public function getCountries(array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('countries', $options);
+        return $this->getHttpClient()->get('/countries', $headers);
     }
 
     /**
@@ -1090,12 +1089,10 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-states
      * @see https://api.groundspeak.com/api-docs/index#!/ReferenceData/ReferenceData_GetStates
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getStates(array $options = [])
+    public function getStates(array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('states', $options);
+        return $this->getHttpClient()->get('/states', $headers);
     }
 
     /**
@@ -1103,12 +1100,10 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-country-states
      * @see https://api.groundspeak.com/api-docs/index#!/ReferenceData/ReferenceData_GetStatesByCountry
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getStatesByCountry(int $countryId, array $options = [])
+    public function getStatesByCountry(int $countryId, array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('countries/' . $countryId . '/states', $options);
+        return $this->getHttpClient()->get('/countries/' . $countryId . '/states', $headers);
     }
 
     /**
@@ -1116,12 +1111,10 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-membership-levels
      * @see https://api.groundspeak.com/api-docs/index#!/ReferenceData/ReferenceData_GetMembershipLevels
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getMembershipLevels(array $options = [])
+    public function getMembershipLevels(array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('membershiplevels', $options);
+        return $this->getHttpClient()->get('/membershiplevels', $headers);
     }
 
     /**
@@ -1129,12 +1122,10 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-geocache-types
      * @see https://api.groundspeak.com/api-docs/index#!/ReferenceData/ReferenceData_GetGeocacheTypes
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getGeocacheTypes(array $options = [])
+    public function getGeocacheTypes(array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('geocachetypes', $options);
+        return $this->getHttpClient()->get('/geocachetypes', $headers);
     }
 
     /**
@@ -1142,12 +1133,10 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-attributes
      * @see https://api.groundspeak.com/api-docs/index#!/ReferenceData/ReferenceData_GetAttributes
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getAttributes(array $options = [])
+    public function getAttributes(array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('attributes', $options);
+        return $this->getHttpClient()->get('/attributes', $headers);
     }
 
     /**
@@ -1155,12 +1144,10 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-geocache-sizes
      * @see https://api.groundspeak.com/api-docs/index#!/ReferenceData/ReferenceData_GetGeocacheSizes
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getGeocacheSizes(array $options = [])
+    public function getGeocacheSizes(array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('geocachesizes', $options);
+        return $this->getHttpClient()->get('/geocachesizes', $headers);
     }
 
     /**
@@ -1168,12 +1155,10 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-geocache-statuses
      * @see https://api.groundspeak.com/api-docs/index#!/ReferenceData/ReferenceData_GetGeocacheStatuses
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getGeocacheStatuses(array $options = [])
+    public function getGeocacheStatuses(array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('geocachestatuses', $options);
+        return $this->getHttpClient()->get('/geocachestatuses', $headers);
     }
 
     /**
@@ -1181,12 +1166,10 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-geocachelog-types
      * @see https://api.groundspeak.com/api-docs/index#!/ReferenceData/ReferenceData_GetGeocacheLogTypes
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getGeocacheLogTypes(array $options = [])
+    public function getGeocacheLogTypes(array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('geocachelogtypes', $options);
+        return $this->getHttpClient()->get('/geocachelogtypes', $headers);
     }
 
     /**
@@ -1194,44 +1177,39 @@ class GeocachingSdk implements GeocachingSdkInterface
      *
      * @see https://api.groundspeak.com/documentation#get-trackablelog-types
      * @see https://api.groundspeak.com/api-docs/index#!/ReferenceData/ReferenceData_GetTrackableLogTypes
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getTrackableLogTypes(array $options = [])
+    public function getTrackableLogTypes(array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('trackablelogtypes', $options);
+        return $this->getHttpClient()->get('/trackablelogtypes', $headers);
     }
 
     /**
      * swagger: GET /v{api-version}/wherigo/{guid}/cartridge
      *
      * @see https://api.groundspeak.com/api-docs/index#!/Wherigo/Wherigo_GetWherigoCartridge
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function getWherigoCartridge(string $guid, array $query = [], array $options = [])
+    public function getWherigoCartridge(string $guid, array $query = [], array $headers = []): ResponseInterface
     {
-        return $this->httpClient->get('wherigo/' . $guid . '/cartridge', $query, $options);
+        if (!empty($query)) {
+            $query = '?'. http_build_query($query);
+        }
+        return $this->getHttpClient()->get('/wherigo/' . $guid . '/cartridge' . $query, $headers);
     }
 
     /**
      * swagger: GET /status/ping
      *
      * @see https://api.groundspeak.com/api-docs/index#!/Status/Status_PingAsync
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function ping()
+    public function ping(): ResponseInterface
     {
-        return $this->httpClient->get('ping');
+        return $this->getHttpClient()->get('/ping');
     }
 
     /**
      * alias of ping()
-     *
-     * @return \Geocaching\Lib\Adapters\GuzzleHttpClient
      */
-    public function status()
+    public function status(): ResponseInterface
     {
         return $this->ping();
     }

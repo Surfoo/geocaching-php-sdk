@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Geocaching\Lib\Utils\Utils;
+use Geocaching\Utils;
 use PHPUnit\Framework\TestCase;
 
 final class UtilsTest extends TestCase
@@ -73,6 +73,7 @@ final class UtilsTest extends TestCase
     public static function providerId()
     {
         return [
+            ['0', 'GC', 'GC'],
             ['1', 'GC', 'GC1'],
             ['64', 'GC', 'GC40'],
             ['65536', 'GC', 'GCG000'],

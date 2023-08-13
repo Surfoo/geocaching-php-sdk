@@ -2,14 +2,24 @@
 
 namespace Geocaching\Enum;
 
-class AdditionalWaypointType extends EnumAbstract
+enum AdditionalWaypointType: string
 {
-    protected static $list = [
-                                217 => 'Parking Area',
-                                218 => 'Virtual Stage',
-                                219 => 'Physical Stage',
-                                220 => 'Final Location',
-                                221 => 'Trailhead',
-                                452 => 'Reference Point',
-                            ];
+    case PARKING_AREA = 'Parking Area';
+    case VIRTUAL_STAGE = 'Virtual Stage';
+    case PHYSICAL_STAGE = 'Physical Stage';
+    case FINAL_LOCATION = 'Final Location';
+    case TRAILHEAD = 'Trailhead';
+    case REFERENCE_POINT = 'Reference Point';
+
+    public function id(): int
+    {
+        return match ($this) {
+            self::PARKING_AREA => 217,
+            self::VIRTUAL_STAGE => 218,
+            self::PHYSICAL_STAGE => 219,
+            self::FINAL_LOCATION => 220,
+            self::TRAILHEAD => 221,
+            self::REFERENCE_POINT => 452,
+        };
+    }
 }

@@ -2,13 +2,22 @@
 
 namespace Geocaching\Enum;
 
-class ListType extends EnumAbstract
+enum ListType: string
 {
-    protected static $list = [
-                                1 => 'Pocket Query (pq)',
-                                2 => 'Bookmark (bm)',
-                                3 => 'Ignore (il)',
-                                4 => 'Watch (wl)',
-                                5 => 'Favorites (fl)',
-                            ];
+    case POCKET_QUERY = 'Pocket Query (pq)';
+    case BOOKMARK     = 'Bookmark (bm)';
+    case IGNORE       = 'Ignore (il)';
+    case WATCH        = 'Watch (wl)';
+    case FAVORITES    = 'Favorites (fl)';
+
+    public function id(): int
+    {
+        return match ($this) {
+            self::POCKET_QUERY => 1,
+            self::BOOKMARK     => 2,
+            self::IGNORE       => 3,
+            self::WATCH        => 4,
+            self::FAVORITES    => 5,
+        };
+    }
 }

@@ -16,20 +16,45 @@
             "Geocaching\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Geocaching\\Client\\Tests\\": "tests"
+        }
+    },
     "require": {
-        "php": "^7.3 || ^8.0 || ^8.1 || ^8.2",
-        "monolog/monolog": "^2.0 || ^3.0",
-        "guzzlehttp/guzzle": "^7.0",
-        "surfoo/oauth2-geocaching": "^1.4"
+        "php": "^8.1",
+        "monolog/monolog": "^3.0",
+        "nyholm/psr7": "^1.8",
+        "php-http/client-common": "^2.7",
+        "php-http/discovery": "^1.19",
+        "psr/http-client": "^1.0",
+        "psr/http-client-implementation": "*",
+        "psr/http-factory": "^1.0",
+        "surfoo/oauth2-geocaching": "^2.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^10.0",
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "php-http/mock-client": "^1.6",
+        "php-parallel-lint/php-parallel-lint": "~1.3",
         "phpstan/phpstan": "^1.9",
-        "friendsofphp/php-cs-fixer": "^3.0"
+        "phpunit/php-code-coverage": "^10.0",
+        "phpunit/phpunit": "^10.0",
+        "rector/rector": "^0.17",
+        "squizlabs/php_codesniffer": "~3.5",
+        "symfony/var-dumper": "^6.3"
     },
     "scripts": {
-        "phpstan": "vendor/bin/phpstan analyse",
         "php-cs-fixer": "php-cs-fixer fix",
-        "phpunit": "vendor/bin/phpunit"
+        "phpcbf":       "vendor/bin/phpcbf src --standard=psr2 --exclude=Generic.Files.LineLength -sp --colors",
+        "phpcs":        "vendor/bin/phpcs  src --standard=psr2 --exclude=Generic.Files.LineLength -sp --colors",
+        "phpstan":      "vendor/bin/phpstan analyse",
+        "phpunit":      "XDEBUG_MODE=coverage vendor/bin/phpunit",
+        "rector":       "vendor/bin/rector"
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
+        },
+        "sort-packages": true
     }
 }
