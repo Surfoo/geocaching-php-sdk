@@ -4,6 +4,8 @@ namespace Geocaching\Enum;
 
 enum MembershipType: string
 {
+    use EnumTrait;
+
     case UNKNOWN = 'Unknown';
     case BASIC   = 'Basic';
     case CHARTER = 'Charter';

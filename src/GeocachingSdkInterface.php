@@ -180,7 +180,6 @@ interface GeocachingSdkInterface
     public function getGeocachesGeotour(string $referenceCode, array $query = [], array $headers = []): ResponseInterface;
 
     /**
-     * @return \Psr\Http\Message\ResponseInterface
      */
     public function getHQPromotions(array $headers = []): ResponseInterface;
 
@@ -465,12 +464,10 @@ interface GeocachingSdkInterface
     public function getTrackableLogTypes(array $headers = []): ResponseInterface;
 
     /**
-     * @return \Psr\Http\Message\ResponseInterface
      */
     public function getWherigoCartridge(string $guid, array $query = [], array $headers = []): ResponseInterface;
 
     /**
-     * @return \Psr\Http\Message\ResponseInterface
      */
     public function ping(): ResponseInterface;
 }

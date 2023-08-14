@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Geocaching;
 
+use Geocaching\Enum\BaseUri;
+use Geocaching\Enum\Environment;
+use Http\Client\Common\Plugin\AuthenticationPlugin;
+use Http\Client\Common\Plugin\BaseUriPlugin;
 use Http\Discovery\Psr17FactoryDiscovery;
+use Http\Message\Authentication\Bearer;
 use Psr\Http\Message\UriFactoryInterface;
 use Psr\Http\Message\UriInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Geocaching\Enum\Environment;
-use Geocaching\Enum\BaseUri;
-use Http\Client\Common\Plugin\AuthenticationPlugin;
-use Http\Client\Common\Plugin\BaseUriPlugin;
-use Http\Message\Authentication\Bearer;
 
 final class Options
 {

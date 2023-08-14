@@ -55,7 +55,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function searchAdventures(array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->get('/adventures/search' . $query, $headers);
     }
@@ -69,7 +69,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function getFriendRequests(array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->get('/friendrequests' . $query, $headers);
     }
@@ -83,7 +83,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function sendFriendRequest(array $friendRequest, array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->post('/friendrequests' . $query, $headers, $friendRequest);
     }
@@ -97,7 +97,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function getFriends(array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->get('/friends' . $query, $headers);
     }
@@ -111,7 +111,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function getFriendsGeocacheLogsByGeocache(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->get('/friends/geocaches/' . $referenceCode . '/geocachelogs' . $query, $headers);
     }
@@ -169,7 +169,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function getGeocacheLog(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->get('/geocachelogs/' . $referenceCode . $query, $headers);
     }
@@ -183,7 +183,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function updateGeocacheLog(string $referenceCode, array $geocacheLog, array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->put('/geocachelogs/' . $referenceCode . $query, $headers, $geocacheLog);
     }
@@ -197,7 +197,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function getGeocacheLogUpvotes(array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->get('/geocachelogs/upvotes' . $query, $headers);
     }
@@ -211,7 +211,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function getGeocacheLogImages(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->get('/geocachelogs/' . $referenceCode . '/images' . $query, $headers);
     }
@@ -225,7 +225,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function setGeocacheLogImages(string $referenceCode, array $imageToUpload, array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->post('/geocachelogs/' . $referenceCode . '/images' . $query, $headers, $imageToUpload);
     }
@@ -239,7 +239,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function setGeocacheLog(array $geocacheLog, array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->post('/geocachelogs' . $query, $headers, $geocacheLog);
     }
@@ -308,7 +308,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function getGeocache(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->get('/geocaches/' . $referenceCode . $query, $headers);
     }
@@ -322,7 +322,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function getGeocacheImages(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->get('/geocaches/' . $referenceCode . '/images' . $query, $headers);
     }
@@ -336,7 +336,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function getFavoritedUsersByGeocache(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->get('/geocaches/' . $referenceCode . '/favoritedby' . $query, $headers);
     }
@@ -350,7 +350,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function getGeocaches(array $query, array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->get('/geocaches' . $query, $headers);
     }
@@ -364,7 +364,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function getGeocacheTrackables(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->get('/geocaches/' . $referenceCode . '/trackables' . $query, $headers);
     }
@@ -378,7 +378,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function getGeocacheLogs(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->get('/geocaches/' . $referenceCode . '/geocachelogs' . $query, $headers);
     }
@@ -392,7 +392,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function searchGeocaches(array $query, array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->get('/geocaches/search' . $query, $headers);
     }
@@ -417,7 +417,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function setBulkTrackableLogs(string $referenceCode, array $logs, array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->post('/geocaches/' . $referenceCode . '/bulktrackablelogs' . $query, $headers, $logs);
     }
@@ -431,7 +431,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function getGeotour(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->get('/geotours/' . $referenceCode . $query, $headers);
     }
@@ -445,7 +445,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function getGeotours(array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->get('/geotours' . $query, $headers);
     }
@@ -459,7 +459,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function getGeocachesGeotour(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->get('/geotours/' . $referenceCode . '/geocaches' . $query, $headers);
     }
@@ -494,7 +494,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function getList(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->get('/lists/' . $referenceCode . $query, $headers);
     }
@@ -508,7 +508,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function updateList(string $referenceCode, array $list, array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->put('/lists/' . $referenceCode . $query, $headers, $list);
     }
@@ -536,7 +536,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function getGeocacheList(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->get('/lists/' . $referenceCode . '/geocaches' . $query, $headers);
     }
@@ -550,7 +550,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function setGeocacheList(string $referenceCode, array $geocache, array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->post('/lists/' . $referenceCode . '/geocaches' . $query, $headers, $geocache);
     }
@@ -564,7 +564,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function setList(array $list, array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->post('/lists' . $query, $headers, $list);
     }
@@ -611,7 +611,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function getLogdraft(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->get('/logdrafts/' . $referenceCode . $query, $headers);
     }
@@ -625,7 +625,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function updateLogdraft(string $referenceCode, array $logDraft, array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->put('/logdrafts/' . $referenceCode . $query, $headers, $logDraft);
     }
@@ -639,7 +639,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function getLogdrafts(array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->get('/logdrafts' . $query, $headers);
     }
@@ -653,7 +653,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function setLogdraft(array $logDraft, array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->post('/logdrafts' . $query, $headers, $logDraft);
     }
@@ -678,7 +678,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function setLogdraftImage(string $referenceCode, array $postImage, array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->post('/logdrafts/' . $referenceCode . '/images' . $query, $headers, $postImage);
     }
@@ -736,7 +736,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function getTrackableLogImages(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->get('/trackablelogs/' . $referenceCode . '/images' . $query, $headers);
     }
@@ -750,7 +750,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function setTrackableLogImages(string $referenceCode, array $imageToUpload, array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->post('/trackablelogs/' . $referenceCode . '/images' . $query, $headers, $imageToUpload);
     }
@@ -775,7 +775,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function setTrackableLog(array $trackableLog, array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->post('/trackablelogs' . $query, $headers, $trackableLog);
     }
@@ -789,7 +789,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function getTrackable(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->get('/trackables/' . $referenceCode . $query, $headers);
     }
@@ -803,7 +803,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function getUserTrackables(array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->get('/trackables' . $query, $headers);
     }
@@ -817,7 +817,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function getTrackableJourneys(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->get('/trackables/' . $referenceCode . '/journeys' . $query, $headers);
     }
@@ -831,7 +831,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function getGeocoinTypes(array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->get('/trackables/geocointypes' . $query, $headers);
     }
@@ -845,7 +845,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function getTrackableImages(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->get('/trackables/' . $referenceCode . '/images' . $query, $headers);
     }
@@ -859,7 +859,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function getTrackableLogs(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->get('/trackables/' . $referenceCode . '/trackablelogs' . $query, $headers);
     }
@@ -884,7 +884,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function getUser(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->get('/users/' . $referenceCode . $query, $headers);
     }
@@ -898,7 +898,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function getOptedOutUsers(array $query, array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->get('/optedoutusers' . $query, $headers);
     }
@@ -912,7 +912,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function getUserImages(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->get('/users/' . $referenceCode . '/images' . $query, $headers);
     }
@@ -926,7 +926,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function getUserSouvenirs(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->get('/users/' . $referenceCode . '/souvenirs' . $query, $headers);
     }
@@ -940,7 +940,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function getUsers(array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->get('/users' . $query, $headers);
     }
@@ -954,7 +954,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function getUserLists(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->get('/users/' . $referenceCode . '/lists' . $query, $headers);
     }
@@ -968,7 +968,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function getUserGeocacheLogs(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->get('/users/' . $referenceCode . '/geocachelogs' . $query, $headers);
     }
@@ -982,7 +982,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function getUserWaypoints(array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->get('/userwaypoints' . $query, $headers);
     }
@@ -1007,7 +1007,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function getGeocacheUserWaypoints(string $referenceCode, array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->get('/geocaches/' . $referenceCode . '/userwaypoints' . $query, $headers);
     }
@@ -1054,7 +1054,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function updateUserWaypoint(string $referenceCode, array $query, array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->put('/userwaypoints/' . $referenceCode . $query, $headers);
     }
@@ -1068,7 +1068,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function getReferenceCodeFromId(array $query, array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->get('/utilities/referencecode' . $query, $headers);
     }
@@ -1191,7 +1191,7 @@ final class GeocachingSdk implements GeocachingSdkInterface
     public function getWherigoCartridge(string $guid, array $query = [], array $headers = []): ResponseInterface
     {
         if (!empty($query)) {
-            $query = '?'. http_build_query($query);
+            $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->get('/wherigo/' . $guid . '/cartridge' . $query, $headers);
     }
