@@ -32,16 +32,32 @@ final class EnumTest extends TestCase
         $this->assertEquals(4,   TrackableLogType::WRITE_NOTE->id());
     }
 
-    public function testEnumTraitSuccessFul()
+    public function testEnumTraitFromIdSuccessFul()
     {
         $this->assertSame(Attribute::DOGS, Attribute::fromId(1));
     }
 
-    public function testEnumTraitFail()
+    public function testEnumTraitFromIdFail()
     {
         $this->expectException(\ValueError::class);
         $this->expectExceptionMessage('Invalid Enum Id, given: -1');
 
         Attribute::fromId(-1);
+    }
+
+    public function testgetListSuccessFul()
+    {
+        $list = AdditionalWaypointVisibilityType::getList();
+
+        $this->assertIsArray($list);
+        $this->assertCount(3, $list);
+    }
+
+    public function testgetListIdSuccessFul()
+    {
+        $list = AdditionalWaypointType::getListId();
+
+        $this->assertIsArray($list);
+        $this->assertCount(6, $list);
     }
 }
