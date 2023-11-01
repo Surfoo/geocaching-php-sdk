@@ -47,6 +47,17 @@ final class GeocachingSdk implements GeocachingSdkInterface
     }
 
     /**
+     * swagger: GET /v{api-version}/adventures/anon/{adventureId}
+     *
+     * @see https://api.groundspeak.com/documentation#get-adventure-start
+     * @see https://api.groundspeak.com/api-docs/index#!/Adventures/Adventures_GetStartLocation
+     */
+    public function getStartLocationAdventure(string $adventureId, array $headers = []): ResponseInterface
+    {
+        return $this->getHttpClient()->get('/adventures/anon/' . $adventureId, $headers);
+    }
+
+    /**
      * swagger: GET /v{api-version}/adventures/search
      *
      * @see https://api.groundspeak.com/documentation#adventures-search

@@ -20,6 +20,11 @@ interface GeocachingSdkInterface
     public function getAdventure(string $adventureId, array $headers = []): ResponseInterface;
 
     /**
+     * @see https://api.groundspeak.com/api-docs/index#!/Adventures/Adventures_GetStartLocation
+     */
+    public function getStartLocationAdventure(string $adventureId, array $headers = []): ResponseInterface;
+
+    /**
      * @see https://api.groundspeak.com/api-docs/index#!/Adventures/Adventures_Search
      */
     public function searchAdventures(array $query = [], array $headers = []): ResponseInterface;
