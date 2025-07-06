@@ -72,6 +72,17 @@ final class GeocachingSdk implements GeocachingSdkInterface
     }
 
     /**
+     * swagger: POST /v{api-version}/adventures/stages/search
+     *
+     * @see https://api.groundspeak.com/documentation#stages-search
+     * @see https://api.groundspeak.com/api-docs/index#!/Adventures/Adventures_SearchStages
+     */
+    public function searchAdventuresStages(array $stageSearchModel, array $headers = []): ResponseInterface
+    {
+        return $this->getHttpClient()->post('/adventures/stages/search', $headers, $stageSearchModel);
+    }
+
+    /**
      * swagger: GET /v{api-version}/friendrequests
      *
      * @see https://api.groundspeak.com/documentation#get-friendrequests
@@ -692,6 +703,17 @@ final class GeocachingSdk implements GeocachingSdkInterface
             $query = '?' . http_build_query($query);
         }
         return $this->getHttpClient()->post('/logdrafts/' . $referenceCode . '/images' . $query, $headers, $postImage);
+    }
+
+    /**
+     * swagger: DELETE /v{api-version}/trackablelogs/{referenceCode}
+     *
+     * @see https://api.groundspeak.com/documentation#delete-logdraft-image
+     * @see https://api.groundspeak.com/api-docs/index#!/LogDrafts/LogDrafts_DeleteImage
+     */
+    public function deleteImageFromLogdraft(string $referenceCode, string $guid, array $headers = []): ResponseInterface
+    {
+        return $this->getHttpClient()->delete('/logdrafts/' . $referenceCode . '/' . $guid, $headers);
     }
 
     /**
