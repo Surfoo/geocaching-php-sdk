@@ -30,6 +30,11 @@ interface GeocachingSdkInterface
     public function searchAdventures(array $query = [], array $headers = []): ResponseInterface;
 
     /**
+     * @see https://api.groundspeak.com/api-docs/index#!/Adventures/Adventures_SearchStages
+     */
+    public function searchAdventuresStages(array $stageSearchModel, array $headers = []): ResponseInterface;
+
+    /**
      * @see https://api.groundspeak.com/documentation#get-friendrequests
      */
     public function getFriendRequests(array $query = [], array $headers = []): ResponseInterface;
@@ -267,6 +272,11 @@ interface GeocachingSdkInterface
      * @see https://api.groundspeak.com/documentation#create-logdraft-image
      */
     public function setLogdraftImage(string $referenceCode, array $postImage, array $query = [], array $headers = []): ResponseInterface;
+
+    /**
+     * @see https://api.groundspeak.com/documentation#delete-logdraft-image
+     */
+    public function deleteImageFromLogdraft(string $referenceCode, string $guid, array $headers = []): ResponseInterface;
 
     /**
      * @see https://api.groundspeak.com/documentation#delete-trackablelog
