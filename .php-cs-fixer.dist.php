@@ -48,4 +48,5 @@ return $config->setRules([
     ])
     ->setFinder($finder)
     ->setUsingCache(true)
+    ->setParallelConfig(PhpCsFixer\Runner\Parallel\ParallelConfigFactory::detect())
 ;
