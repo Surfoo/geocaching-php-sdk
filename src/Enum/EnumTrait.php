@@ -31,6 +31,6 @@ trait EnumTrait
      */
     public static function getListId(): array
     {
-        return array_map(fn(self $enum) => $enum->id(), self::cases());
+        return array_map(fn (self $enum) => $enum->id(), self::cases());
     }
 }
