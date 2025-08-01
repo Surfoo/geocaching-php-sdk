@@ -5,7 +5,6 @@ namespace Geocaching\Enum;
 enum GeocacheStatus: string
 {
     use EnumTrait;
-
     case UNPUBLISHED = 'Unpublished';
     case ACTIVE      = 'Active';
     case DISABLED    = 'Disabled';

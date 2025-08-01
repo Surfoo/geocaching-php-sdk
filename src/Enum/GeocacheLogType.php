@@ -5,7 +5,6 @@ namespace Geocaching\Enum;
 enum GeocacheLogType: string
 {
     use EnumTrait;
-
     case FOUND_IT                      = 'Found It';
     case DID_NOT_FIND_IT               = 'Didn\'t find it';
     case WRITE_NOTE                    = 'Write note';

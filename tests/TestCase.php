@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Geocaching\Client\Tests;
+namespace Tests;
 
 use Geocaching\ClientBuilder;
 use Geocaching\Enum\Environment;

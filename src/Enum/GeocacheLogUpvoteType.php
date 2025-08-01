@@ -5,7 +5,6 @@ namespace Geocaching\Enum;
 enum GeocacheLogUpvoteType: string
 {
     use EnumTrait;
-
     case GREAT_STORY = 'GreatStory';
     case HELPFUL     = 'Helpful';
 
