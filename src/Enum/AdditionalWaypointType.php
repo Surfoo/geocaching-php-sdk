@@ -5,7 +5,6 @@ namespace Geocaching\Enum;
 enum AdditionalWaypointType: string
 {
     use EnumTrait;
-
     case PARKING_AREA    = 'Parking Area';
     case VIRTUAL_STAGE   = 'Virtual Stage';
     case PHYSICAL_STAGE  = 'Physical Stage';

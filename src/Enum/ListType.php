@@ -5,7 +5,6 @@ namespace Geocaching\Enum;
 enum ListType: string
 {
     use EnumTrait;
-
     case POCKET_QUERY = 'Pocket Query (pq)';
     case BOOKMARK     = 'Bookmark (bm)';
     case IGNORE       = 'Ignore (il)';

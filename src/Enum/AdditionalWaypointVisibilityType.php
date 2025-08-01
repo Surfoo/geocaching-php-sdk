@@ -5,7 +5,6 @@ namespace Geocaching\Enum;
 enum AdditionalWaypointVisibilityType: string
 {
     use EnumTrait;
-
     case VISIBLE          = 'Visible';
     case HIDE_COORDINATES = 'Hide Coordinates';
     case HIDDEN           = 'Hidden';

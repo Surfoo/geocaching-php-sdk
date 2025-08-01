@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Geocaching\Utils;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 final class UtilsTest extends TestCase
 {
@@ -18,9 +19,7 @@ final class UtilsTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider providerDecimalToDegreeDecimal
-     */
+    #[DataProvider('providerDecimalToDegreeDecimal')]
     public function testDecimalToDegreeDecimal(float $latitude, float $longitude, string $expected)
     {
         $result = Utils::decimalToDegreeDecimal($latitude, $longitude);
@@ -40,9 +39,7 @@ final class UtilsTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider providerReferenceCode
-     */
+    #[DataProvider('providerReferenceCode')]
     public function testReferenceCodeToIdSuccessful(string $referenceCode, int $expected): void
     {
         $result = Utils::referenceCodeToId($referenceCode);
@@ -59,9 +56,7 @@ final class UtilsTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider providerReferenceCodeFail
-     */
+    #[DataProvider('providerReferenceCodeFail')]
     public function testReferenceCodeToIdFail(string $referenceCode, string $expected)
     {
         $this->expectException(Geocaching\Exception\UtilsException::class);
@@ -83,9 +78,7 @@ final class UtilsTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider providerId
-     */
+    #[DataProvider('providerId')]
     public function testIdToReferenceCodeSucessful(string $number, string $prefix, string $expected): void
     {
         $result = Utils::idToReferenceCode($number, $prefix);
@@ -102,9 +95,7 @@ final class UtilsTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider providerGeocodes
-     */
+    #[DataProvider('providerGeocodes')]
     public function testGeocodes(string $geocode, bool $expected): void
     {
         $result = Utils::isGeocode($geocode);
@@ -130,9 +121,7 @@ final class UtilsTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider providerReferenceCodes
-     */
+    #[DataProvider('providerReferenceCodes')]
     public function testReferenceCodes(string $geocode, string $prefix, bool $expected): void
     {
         $result = Utils::isReferenceCode($geocode, $prefix);
