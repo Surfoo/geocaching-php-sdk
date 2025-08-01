@@ -5,7 +5,6 @@ namespace Geocaching\Enum;
 enum GeocacheSize: string
 {
     use EnumTrait;
-
     case UNKNOWN = 'Unknown';
     case MICRO   = 'Micro';
     case REGULAR = 'Regular';

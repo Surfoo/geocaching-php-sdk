@@ -5,7 +5,6 @@ namespace Geocaching\Enum;
 enum GeocacheType: string
 {
     use EnumTrait;
-
     case TRADITIONAL                 = 'Traditional';
     case MULTI_CACHE                 = 'Multi-Cache';
     case VIRTUAL                     = 'Virtual';

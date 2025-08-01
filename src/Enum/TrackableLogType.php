@@ -5,7 +5,6 @@ namespace Geocaching\Enum;
 enum TrackableLogType: string
 {
     use EnumTrait;
-
     case WRITE_NOTE         = 'Write Note';
     case RETRIEVE_IT        = 'Retrieve It from a Cache';
     case DROPPED_OFF        = 'Dropped Off';
