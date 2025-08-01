@@ -4,7 +4,7 @@ on:
   pull_request:
   push:
     branches:
-      - "master"
+      - "*"
 
 env:
   COMPOSER_ROOT_VERSION: "1.99.99"
@@ -17,9 +17,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php-version: [ '8.1', '8.2', '8.3']
+        php-version: [ '8.1', '8.2', '8.3', '8.4']
     steps:
-      - uses: "actions/checkout@v2"
+      - uses: "actions/checkout@v4"
       - uses: "shivammathur/setup-php@v2"
         with:
           php-version: "${{ matrix.php-version }}"
@@ -51,9 +51,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php-version: [ '8.1', '8.2', '8.3' ]
+        php-version: [ '8.1', '8.2', '8.3', '8.4' ]
     steps:
-      - uses: "actions/checkout@v2"
+      - uses: "actions/checkout@v4"
       - uses: "shivammathur/setup-php@v2"
         with:
           php-version: "${{ matrix.php-version }}"
@@ -62,8 +62,8 @@ jobs:
           tools: "composer"
       - name: "Prepare for tests"
         run: "mkdir -p build/logs"
-      - uses: "ramsey/composer-install@v2"
+      - uses: "ramsey/composer-install@v3"
       - name: "Run unit tests"
         run: "./vendor/bin/phpunit --colors=always --coverage-clover build/logs/clover.xml --coverage-text"
       - name: "Publish coverage report to Codecov"
-        uses: "codecov/codecov-action@v2"
+        uses: "codecov/codecov-action@v5"
