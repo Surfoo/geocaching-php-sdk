@@ -5,46 +5,50 @@ declare(strict_types=1);
 use PHPUnit\Framework\TestCase;
 use Geocaching\GeocachingSdk;
 use Geocaching\Options;
-use Geocaching\ClientBuilder;
+use Geocaching\Enum\Environment;
 
 class GeocachingSdkIntegrationRealTest extends TestCase
 {
-    public function testInstrumentationOfGeocachingSdk()
+    public function testSdkIntegrationWithRealClientBuilder()
     {
-        $clientBuilder = new ClientBuilder();
-        $options = $this->getMockBuilder(Options::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-        $options->method('getClientBuilder')->willReturn($clientBuilder);
+        $options = new Options([
+            'environment' => Environment::PRODUCTION,
+            'access_token' => 'test-token'
+        ]);
+        
         $sdk = new GeocachingSdk($options);
 
-        // Appel explicite d'une méthode native (hors proxy)
+        // Test that we get the expected HTTP client interface
         $httpClient = $sdk->getHttpClient();
         $this->assertInstanceOf(\Http\Client\Common\HttpMethodsClientInterface::class, $httpClient);
+        
+        // Test that some key methods exist and are callable
+        $this->assertTrue(method_exists($sdk, 'getGeocache'));
+        $this->assertTrue(method_exists($sdk, 'ping'));
+        $this->assertTrue(method_exists($sdk, 'getGeotours')); // New method
     }
-    public function testAllFacadeMethodsAreCalled()
-    {
-        // On crée un ClientBuilder qui retourne de vrais clients (signatures compatibles)
-        $clientBuilder = new ClientBuilder();
-        $options = $this->getMockBuilder(Options::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-        $options->method('getClientBuilder')->willReturn($clientBuilder);
-        $sdk = new GeocachingSdk($options);
 
-        // Appel de tous les accesseurs (façade)
-        $this->assertInstanceOf(\Geocaching\Client\AdventureClient::class, $sdk->adventureClient());
-        $this->assertInstanceOf(\Geocaching\Client\FriendClient::class, $sdk->friendClient());
-        $this->assertInstanceOf(\Geocaching\Client\LogClient::class, $sdk->logClient());
-        $this->assertInstanceOf(\Geocaching\Client\GeocacheClient::class, $sdk->geocacheClient());
-        $this->assertInstanceOf(\Geocaching\Client\TrackableClient::class, $sdk->trackableClient());
-        $this->assertInstanceOf(\Geocaching\Client\UserClient::class, $sdk->userClient());
-        $this->assertInstanceOf(\Geocaching\Client\ListClient::class, $sdk->listClient());
-        $this->assertInstanceOf(\Geocaching\Client\LogdraftClient::class, $sdk->logdraftClient());
-        $this->assertInstanceOf(\Geocaching\Client\ReferenceDataClient::class, $sdk->referenceDataClient());
-        $this->assertInstanceOf(\Geocaching\Client\UserWaypointClient::class, $sdk->userWaypointClient());
-        $this->assertInstanceOf(\Geocaching\Client\StatusClient::class, $sdk->statusClient());
-        $this->assertInstanceOf(\Geocaching\Client\WherigoClient::class, $sdk->wherigoClient());
-        $this->assertInstanceOf(\Http\Client\Common\HttpMethodsClientInterface::class, $sdk->getHttpClient());
+    public function testMethodParametersAndReturnTypes()
+    {
+        $options = new Options([
+            'environment' => Environment::PRODUCTION,
+            'access_token' => 'test-token'
+        ]);
+        
+        $sdk = new GeocachingSdk($options);
+        $reflection = new ReflectionClass($sdk);
+
+        // Test specific method signatures
+        $getGeocacheMethod = $reflection->getMethod('getGeocache');
+        $parameters = $getGeocacheMethod->getParameters();
+        
+        $this->assertCount(3, $parameters); // referenceCode, query, headers
+        $this->assertEquals('referenceCode', $parameters[0]->getName());
+        $this->assertEquals('query', $parameters[1]->getName());
+        $this->assertEquals('headers', $parameters[2]->getName());
+        
+        // Check return type
+        $returnType = $getGeocacheMethod->getReturnType();
+        $this->assertEquals('Psr\Http\Message\ResponseInterface', $returnType->getName());
     }
 }
