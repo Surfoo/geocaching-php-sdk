@@ -34,18 +34,4 @@ interface ClientBuilderInterface
      * @param string $baseUri The base URI without version
      */
     public function setBaseUri(string $baseUri): void;
-    // Client factory methods for dependency injection
-    public function getAdventureClient(): \Geocaching\Client\AdventureClient;
-    public function getFriendClient(): \Geocaching\Client\FriendClient;
-    public function getLogClient(): \Geocaching\Client\LogClient;
-    public function getGeocacheClient(): \Geocaching\Client\GeocacheClient;
-    public function getTrackableClient(): \Geocaching\Client\TrackableClient;
-    public function getUserClient(): \Geocaching\Client\UserClient;
-    public function getListClient(): \Geocaching\Client\ListClient;
-    public function getLogdraftClient(): \Geocaching\Client\LogdraftClient;
-    public function getReferenceDataClient(): \Geocaching\Client\ReferenceDataClient;
-    public function getUserWaypointClient(): \Geocaching\Client\UserWaypointClient;
-    public function getStatusClient(): \Geocaching\Client\StatusClient;
-    public function getWherigoClient(): \Geocaching\Client\WherigoClient;
-    public function getStatisticsClient(): \Geocaching\Client\StatisticsClient;
 }

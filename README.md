@@ -4,17 +4,19 @@
 [![Total Downloads](https://poser.pugx.org/surfoo/geocaching-php-sdk/downloads.svg)](https://packagist.org/packages/surfoo/geocaching-php-sdk)
 [![Latest Unstable Version](https://poser.pugx.org/surfoo/geocaching-php-sdk/v/unstable.svg)](https://packagist.org/packages/surfoo/geocaching-php-sdk)
 
-The documentation about the API is available here: 
-  - https://api.groundspeak.com/documentation
-  - https://api.groundspeak.com/api-docs/index
+The documentation about the API is available here:
+
+- https://api.groundspeak.com/documentation
+- https://api.groundspeak.com/api-docs/index
 
 You can follow changes about the documentation and the API here:
-  - https://github.com/Surfoo/groundspeak-api-monitoring
+
+- https://github.com/Surfoo/groundspeak-api-monitoring
 
 ## Requirements
 
- - PHP >= 8.1
- - [composer](https://getcomposer.org/doc/00-intro.md#system-requirements).
+- PHP >= 8.1
+- [composer](https://getcomposer.org/doc/00-intro.md#system-requirements).
 
 ## Composer
 
@@ -33,9 +35,10 @@ You can find an example of implementation (with OAuth 2) in this repository: htt
 ## Usage Guide
 
 See [`USAGE.md`](./USAGE.md) for detailed usage instructions, including:
-- How to use the new modular client structure (recommended)
-- How to use legacy method calls (backward compatibility)
-- Examples for common API calls
+
+- Basic usage examples
+- Complete API method reference
+- HTTP logging configuration
 
 ## HTTP Request/Response Logging
 
@@ -74,31 +77,31 @@ $options->enableHttpLogging(
 $sdk = new GeocachingSdk($options);
 
 // All API calls will now be logged
-$response = $sdk->status()->ping();
+$response = $sdk->ping();
 ```
 
 ### Configuration Options
 
 #### Simple Logging (enableHttpLogging)
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `$output` | `string` | `'php://stdout'` | Output destination (console, file path, etc.) |
-| `$level` | `string` | `LogLevel::INFO` | Base log level for successful requests |
-| `$logBodies` | `bool` | `false` | Whether to include request/response bodies |
-| `$maskTokens` | `bool` | `true` | Automatically mask sensitive authentication data |
-| `$maxBodyLength` | `int` | `1000` | Maximum body length before truncation |
-| `$logFormat` | `string\|null` | `null` | Custom log format (null for default) |
+| Parameter        | Type           | Default          | Description                                      |
+| ---------------- | -------------- | ---------------- | ------------------------------------------------ |
+| `$output`        | `string`       | `'php://stdout'` | Output destination (console, file path, etc.)    |
+| `$level`         | `string`       | `LogLevel::INFO` | Base log level for successful requests           |
+| `$logBodies`     | `bool`         | `false`          | Whether to include request/response bodies       |
+| `$maskTokens`    | `bool`         | `true`           | Automatically mask sensitive authentication data |
+| `$maxBodyLength` | `int`          | `1000`           | Maximum body length before truncation            |
+| `$logFormat`     | `string\|null` | `null`           | Custom log format (null for default)             |
 
 #### Advanced Logging (enableHttpLoggingWithLogger)
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `$logger` | `LoggerInterface` | *required* | Custom PSR-3 compatible logger |
-| `$level` | `string` | `LogLevel::INFO` | Base log level for successful requests |
-| `$logBodies` | `bool` | `false` | Whether to include request/response bodies |
-| `$maskTokens` | `bool` | `true` | Automatically mask sensitive authentication data |
-| `$maxBodyLength` | `int` | `1000` | Maximum body length before truncation |
+| Parameter        | Type              | Default          | Description                                      |
+| ---------------- | ----------------- | ---------------- | ------------------------------------------------ |
+| `$logger`        | `LoggerInterface` | _required_       | Custom PSR-3 compatible logger                   |
+| `$level`         | `string`          | `LogLevel::INFO` | Base log level for successful requests           |
+| `$logBodies`     | `bool`            | `false`          | Whether to include request/response bodies       |
+| `$maskTokens`    | `bool`            | `true`           | Automatically mask sensitive authentication data |
+| `$maxBodyLength` | `int`             | `1000`           | Maximum body length before truncation            |
 
 ### Log Output Example
 
@@ -135,7 +138,7 @@ $options->enableHttpLoggingWithLogger(
     $customLogger,
     LogLevel::DEBUG,
     true,  // Log bodies
-    true,  // Mask tokens  
+    true,  // Mask tokens
     2000   // Max body length
 );
 ```
