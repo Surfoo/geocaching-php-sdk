@@ -78,6 +78,22 @@ $sdk = new GeocachingSdk($options);
 
 // All API calls will now be logged
 $response = $sdk->ping();
+
+// Optional: Enable automatic token refresh
+use League\OAuth2\Client\Provider\Geocaching;
+
+$oauthProvider = new Geocaching([
+    'clientId' => 'your_client_id',
+    'clientSecret' => 'your_client_secret', 
+    'redirectUri' => 'https://your-app.com/callback',
+    'environment' => 'production',
+]);
+
+$options->enableTokenRefresh([
+    'user_id' => 'user_123',
+    'storage' => $tokenStorage, // Your TokenStorageInterface implementation
+    'oauth_provider' => $oauthProvider,
+]);
 ```
 
 ### Configuration Options
