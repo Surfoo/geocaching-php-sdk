@@ -7,6 +7,9 @@ namespace Geocaching;
 use Geocaching\Enum\BaseUri;
 use Geocaching\Enum\Environment;
 use Geocaching\Plugin\GeocachingHttpLoggerPlugin;
+use Geocaching\Plugin\TokenRefreshPlugin;
+use Geocaching\Token\TokenStorageInterface;
+use League\OAuth2\Client\Provider\Geocaching;
 use Http\Client\Common\Plugin\AuthenticationPlugin;
 use Http\Client\Common\Plugin\BaseUriPlugin;
 use Http\Discovery\Psr17FactoryDiscovery;
@@ -184,5 +187,155 @@ class Options
         $logger->pushHandler($handler);
         
         return $logger;
+    }
+
+    /**
+     * Enable automatic token refresh when access tokens expire.
+     *
+     * This adds a TokenRefreshPlugin that will automatically refresh expired access tokens
+     * using the provided OAuth provider and storage implementation.
+     *
+     * @param array $config Configuration array with the following keys:
+     *                      - user_id: User identifier for token storage
+     *                      - storage: TokenStorageInterface implementation  
+     *                      - oauth_provider: Geocaching OAuth provider instance
+     *                      - logger: PSR-3 logger for token refresh events (optional)
+     *                      - max_retry_attempts: Maximum retry attempts (optional, default: 3)
+     * @return void
+     * @throws \InvalidArgumentException If required configuration is missing
+     */
+    public function enableTokenRefresh(array $config): void
+    {
+        $this->validateTokenRefreshConfig($config);
+
+        $plugin = new TokenRefreshPlugin(
+            userId: $config['user_id'],
+            storage: $config['storage'],
+            oauthProvider: $config['oauth_provider'],
+            logger: $config['logger'] ?? new \Psr\Log\NullLogger(),
+            maxRetryAttempts: $config['max_retry_attempts'] ?? 3
+        );
+
+        $this->getClientBuilder()->addPlugin($plugin);
+    }
+
+    /**
+     * Enable automatic token refresh with OAuth provider auto-creation.
+     *
+     * This is a convenience method that creates the OAuth provider for you.
+     * Use enableTokenRefresh() if you want more control over the provider configuration.
+     *
+     * @param array $config Configuration array with the following keys:
+     *                      - user_id: User identifier for token storage
+     *                      - storage: TokenStorageInterface implementation  
+     *                      - client_id: OAuth client ID
+     *                      - client_secret: OAuth client secret
+     *                      - redirect_uri: OAuth redirect URI
+     *                      - environment: OAuth environment ('production', 'staging')
+     *                      - logger: PSR-3 logger for token refresh events (optional)
+     *                      - max_retry_attempts: Maximum retry attempts (optional, default: 3)
+     * @return void
+     * @throws \InvalidArgumentException If required configuration is missing
+     */
+    public function enableTokenRefreshWithCredentials(array $config): void
+    {
+        $this->validateTokenRefreshCredentialsConfig($config);
+
+        // Create OAuth provider
+        $oauthProvider = new Geocaching([
+            'clientId' => $config['client_id'],
+            'clientSecret' => $config['client_secret'],
+            'redirectUri' => $config['redirect_uri'],
+            'environment' => $config['environment'] ?? 'production',
+        ]);
+
+        // Use the main method with the created provider
+        $this->enableTokenRefresh([
+            'user_id' => $config['user_id'],
+            'storage' => $config['storage'],
+            'oauth_provider' => $oauthProvider,
+            'logger' => $config['logger'] ?? new \Psr\Log\NullLogger(),
+            'max_retry_attempts' => $config['max_retry_attempts'] ?? 3
+        ]);
+    }
+
+    /**
+     * Validate token refresh configuration.
+     *
+     * @param array $config
+     * @return void
+     * @throws \InvalidArgumentException
+     */
+    private function validateTokenRefreshConfig(array $config): void
+    {
+        $required = ['user_id', 'storage', 'oauth_provider'];
+        
+        foreach ($required as $key) {
+            if (!isset($config[$key])) {
+                throw new \InvalidArgumentException("Token refresh config missing required key: {$key}");
+            }
+        }
+
+        if (!$config['storage'] instanceof TokenStorageInterface) {
+            throw new \InvalidArgumentException('Token storage must implement TokenStorageInterface');
+        }
+
+        if (!$config['oauth_provider'] instanceof Geocaching) {
+            throw new \InvalidArgumentException('OAuth provider must be an instance of League\OAuth2\Client\Provider\Geocaching');
+        }
+
+        if (empty($config['user_id']) || !is_string($config['user_id'])) {
+            throw new \InvalidArgumentException('user_id must be a non-empty string');
+        }
+
+        if (isset($config['max_retry_attempts']) && (!is_int($config['max_retry_attempts']) || $config['max_retry_attempts'] < 1)) {
+            throw new \InvalidArgumentException('max_retry_attempts must be a positive integer if provided');
+        }
+    }
+
+    /**
+     * Validate token refresh configuration with credentials.
+     *
+     * @param array $config
+     * @return void
+     * @throws \InvalidArgumentException
+     */
+    private function validateTokenRefreshCredentialsConfig(array $config): void
+    {
+        $required = ['user_id', 'storage', 'client_id', 'client_secret', 'redirect_uri'];
+        
+        foreach ($required as $key) {
+            if (!isset($config[$key])) {
+                throw new \InvalidArgumentException("Token refresh config missing required key: {$key}");
+            }
+        }
+
+        if (!$config['storage'] instanceof TokenStorageInterface) {
+            throw new \InvalidArgumentException('Token storage must implement TokenStorageInterface');
+        }
+
+        if (empty($config['user_id']) || !is_string($config['user_id'])) {
+            throw new \InvalidArgumentException('user_id must be a non-empty string');
+        }
+
+        if (empty($config['client_id']) || !is_string($config['client_id'])) {
+            throw new \InvalidArgumentException('client_id must be a non-empty string');
+        }
+
+        if (empty($config['client_secret']) || !is_string($config['client_secret'])) {
+            throw new \InvalidArgumentException('client_secret must be a non-empty string');
+        }
+
+        if (empty($config['redirect_uri']) || !is_string($config['redirect_uri'])) {
+            throw new \InvalidArgumentException('redirect_uri must be a non-empty string');
+        }
+
+        if (isset($config['environment']) && !in_array($config['environment'], ['production', 'staging', 'dev'])) {
+            throw new \InvalidArgumentException('environment must be one of: production, staging, dev');
+        }
+
+        if (isset($config['max_retry_attempts']) && (!is_int($config['max_retry_attempts']) || $config['max_retry_attempts'] < 1)) {
+            throw new \InvalidArgumentException('max_retry_attempts must be a positive integer if provided');
+        }
     }
 }
