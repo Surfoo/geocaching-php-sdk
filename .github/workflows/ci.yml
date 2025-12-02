@@ -17,16 +17,16 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php-version: [ '8.1', '8.2', '8.3', '8.4']
+        php-version: [ '8.2', '8.3', '8.4', '8.5']
     steps:
-      - uses: "actions/checkout@v4"
+      - uses: "actions/checkout@v6"
       - uses: "shivammathur/setup-php@v2"
         with:
           php-version: "${{ matrix.php-version }}"
           coverage: "none"
           ini-values: "memory_limit=-1, zend.assertions=1, error_reporting=-1, display_errors=On"
           tools: "composer:v2"
-      - uses: "ramsey/composer-install@v2"
+      - uses: "ramsey/composer-install@v3"
       - name: "Lint the PHP source code"
         run: "./vendor/bin/parallel-lint src tests"
 
@@ -34,14 +34,14 @@ jobs:
     name: "Coding Standards"
     runs-on: "ubuntu-latest"
     steps:
-      - uses: "actions/checkout@v2"
+      - uses: "actions/checkout@v6"
       - uses: "shivammathur/setup-php@v2"
         with:
           php-version: "latest"
           coverage: "none"
           ini-values: "memory_limit=-1"
           tools: "composer:v2"
-      - uses: "ramsey/composer-install@v2"
+      - uses: "ramsey/composer-install@v3"
       - name: "Check coding standards"
         run: "./vendor/bin/phpcs src --standard=psr2 --exclude=Generic.Files.LineLength -sp --colors"
 
@@ -51,9 +51,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php-version: [ '8.1', '8.2', '8.3', '8.4' ]
+        php-version: [ '8.2', '8.3', '8.4', '8.5' ]
     steps:
-      - uses: "actions/checkout@v4"
+      - uses: "actions/checkout@v6"
       - uses: "shivammathur/setup-php@v2"
         with:
           php-version: "${{ matrix.php-version }}"
