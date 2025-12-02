@@ -12,8 +12,6 @@ declare(strict_types=1);
 
 namespace Geocaching;
 
-use Http\Discovery\Psr18ClientDiscovery;
-use Http\Client\Common\PluginClientFactory;
 use Http\Client\Common\HttpMethodsClientInterface;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -26,13 +24,13 @@ use Psr\Http\Message\ResponseInterface;
  */
 class GeocachingSdk
 {
-    private ClientBuilder $clientBuilder;
-    private HttpMethodsClientInterface $httpClient;
+    private readonly ClientBuilder $clientBuilder;
+    private readonly HttpMethodsClientInterface $httpClient;
 
     public function __construct(Options $options)
     {
         $this->clientBuilder = $options->getClientBuilder();
-        $this->httpClient = $this->clientBuilder->getHttpClient();
+        $this->httpClient    = $this->clientBuilder->getHttpClient();
     }
 
     /**
@@ -356,7 +354,7 @@ class GeocachingSdk
         return $this->httpClient->get('/friends' . $queryString, $headers);
     }
 
-    /** 
+    /**
      * Get friends geocache logs by geocache.
      * GET /v1/friends/geocaches/{referenceCode}/geocachelogs
      */
@@ -531,7 +529,7 @@ class GeocachingSdk
     public function getZippedPocketQuery(string $referenceCode, string $dirname, array $headers = []): ResponseInterface
     {
         $fullAbsolutePath = sprintf('%s/%s.zip', $dirname, $referenceCode);
-        $headers = array_merge($headers, ['sink' => $fullAbsolutePath]);
+        $headers          = array_merge($headers, ['sink' => $fullAbsolutePath]);
         return $this->httpClient->get('/lists/' . $referenceCode . '/geocaches/zipped', $headers);
     }
 
@@ -975,7 +973,7 @@ class GeocachingSdk
     public function ping(): ResponseInterface
     {
         // Status endpoint needs special handling - using absolute URL to bypass auth
-        $baseUri = $this->clientBuilder->getBaseUri();
+        $baseUri      = $this->clientBuilder->getBaseUri();
         $statusClient = $this->createStatusHttpClient();
         return $statusClient->get($baseUri . '/status/ping');
     }
@@ -994,10 +992,9 @@ class GeocachingSdk
      */
     private function createStatusHttpClient(): HttpMethodsClientInterface
     {
-        $rawHttpClient = \Http\Discovery\Psr18ClientDiscovery::find();
-        $reflection = new \ReflectionClass($this->clientBuilder);
+        $rawHttpClient   = \Http\Discovery\Psr18ClientDiscovery::find();
+        $reflection      = new \ReflectionClass($this->clientBuilder);
         $pluginsProperty = $reflection->getProperty('plugins');
-        $pluginsProperty->setAccessible(true);
         $allPlugins = $pluginsProperty->getValue($this->clientBuilder);
         
         $statusPlugins = [];
@@ -1011,9 +1008,7 @@ class GeocachingSdk
         $pluginClient = (new \Http\Client\Common\PluginClientFactory())->createClient($rawHttpClient, $statusPlugins);
         
         $requestFactory = $reflection->getProperty('requestFactory');
-        $requestFactory->setAccessible(true);
         $streamFactory = $reflection->getProperty('streamFactory');
-        $streamFactory->setAccessible(true);
         
         return new \Http\Client\Common\HttpMethodsClient(
             $pluginClient,

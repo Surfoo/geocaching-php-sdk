@@ -4,10 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [3.21.0] - 2023-11-02
+## [4.0.0] - 2025-12
 ### Added
-    - New API method added:
-        - getStartLocationAdventure
+    - Full HTTP observability tools: structured logging with token masking, per-status log levels, and custom logger support.
+    - Reliability features: retry strategies (exponential and fixed), circuit breaker, and a combined reliability plugin.
+    - New documentation set under `docs/` with getting started, authentication, configuration, reliability, and domain-by-domain usage examples.
+
+### Changed
+    - Raised minimum supported PHP version to 8.2.
 
 ## [3.20.0] - 2023-04-27
 ### Added
