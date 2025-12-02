@@ -15,7 +15,7 @@ You can follow changes about the documentation and the API here:
 
 ## Requirements
 
-- PHP >= 8.1
+- PHP >= 8.2
 - [composer](https://getcomposer.org/doc/00-intro.md#system-requirements).
 
 ## Composer
@@ -32,13 +32,9 @@ First, you must have your API key from Groundspeak, but access to the API are no
 
 You can find an example of implementation (with OAuth 2) in this repository: https://github.com/Surfoo/geocaching-api-demo
 
-## Usage Guide
+## Documentation
 
-See [`USAGE.md`](./USAGE.md) for detailed usage instructions, including:
-
-- Basic usage examples
-- Complete API method reference
-- HTTP logging configuration
+Start with [`docs/README.md`](./docs/README.md) for getting started, authentication, configuration, reliability patterns, and domain-by-domain API examples.
 
 ## HTTP Request/Response Logging
 

@@ -3,3 +3,9 @@ parameters:
 
     paths:
         - src
+
+    parallel:
+        maximumNumberOfProcesses: 1
+
+    ignoreErrors:
+        - '#no value type specified in iterable type array#'

@@ -1,4 +1,4 @@
-PHP project (>=8.1) with Symfony.
+PHP project (>=8.2) with Symfony.
 
 This project is a PHP library for using the Geocaching API.
 - Official API Swagger: https://api.groundspeak.com/api-docs/v1/swagger

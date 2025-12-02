@@ -17,7 +17,7 @@ use Psr\Log\LogLevel;
  * This plugin logs all HTTP exchanges with configurable detail levels,
  * automatic token masking, and request/response correlation.
  */
-final class GeocachingHttpLoggerPlugin implements Plugin
+final readonly class GeocachingHttpLoggerPlugin implements Plugin
 {
     public function __construct(
         private LoggerInterface $logger,
@@ -148,7 +148,7 @@ final class GeocachingHttpLoggerPlugin implements Plugin
         $sensitiveHeaders = ['authorization'];
         
         foreach ($headers as $name => $values) {
-            if (in_array(strtolower($name), $sensitiveHeaders, true)) {
+            if (in_array(strtolower((string) $name), $sensitiveHeaders, true)) {
                 $maskedHeaders[$name] = ['***'];
             } else {
                 $maskedHeaders[$name] = $values;
@@ -172,7 +172,7 @@ final class GeocachingHttpLoggerPlugin implements Plugin
         
         $filtered = [];
         foreach ($headers as $name => $values) {
-            if (in_array(strtolower($name), $interestingHeaders, true)) {
+            if (in_array(strtolower((string) $name), $interestingHeaders, true)) {
                 $filtered[$name] = $values;
             }
         }
