@@ -56,14 +56,5 @@
             "php-http/discovery": true
         },
         "sort-packages": true
-    },
-    "repositories": [
-        {
-            "type": "path",
-            "url": "../oauth2-geocaching",
-            "options": {
-                "symlink": true
-            }
-        }
-    ]
+    }
 }
