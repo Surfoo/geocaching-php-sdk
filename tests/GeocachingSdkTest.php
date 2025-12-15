@@ -37,7 +37,6 @@ class GeocachingSdkTest extends TestCase
         $methods = [
             // Adventures API
             'getAdventure',
-            'getStartLocationAdventure', 
             'searchAdventures',
             'searchAdventuresStages',
             
