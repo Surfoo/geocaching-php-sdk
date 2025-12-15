@@ -36,7 +36,7 @@ class GeocachingHttpLoggerPluginTest extends TestCase
 
     public function testMaskSensitiveDataNoMaskingWhenDisabled(): void
     {
-        $logger = $this->createMock(LoggerInterface::class);
+        $logger = $this->createStub(LoggerInterface::class);
         $plugin = new GeocachingHttpLoggerPlugin($logger, LogLevel::INFO, false, false);
         $ref = new \ReflectionClass($plugin);
         $method = $ref->getMethod('maskSensitiveData');
@@ -49,7 +49,7 @@ class GeocachingHttpLoggerPluginTest extends TestCase
 
     public function testMaskHeadersNoMaskingWhenDisabled(): void
     {
-        $logger = $this->createMock(LoggerInterface::class);
+        $logger = $this->createStub(LoggerInterface::class);
         $plugin = new GeocachingHttpLoggerPlugin($logger, LogLevel::INFO, false, false);
         $ref = new \ReflectionClass($plugin);
         $method = $ref->getMethod('maskHeaders');
@@ -64,7 +64,7 @@ class GeocachingHttpLoggerPluginTest extends TestCase
 
     public function testFilterResponseHeadersReturnsEmptyIfNoInterestingHeaders(): void
     {
-        $logger = $this->createMock(LoggerInterface::class);
+        $logger = $this->createStub(LoggerInterface::class);
         $plugin = new GeocachingHttpLoggerPlugin($logger);
         $ref = new \ReflectionClass($plugin);
         $method = $ref->getMethod('filterResponseHeaders');
@@ -79,7 +79,7 @@ class GeocachingHttpLoggerPluginTest extends TestCase
 
     public function testTruncateBodyNoTruncationIfShort(): void
     {
-        $logger = $this->createMock(LoggerInterface::class);
+        $logger = $this->createStub(LoggerInterface::class);
         $plugin = new GeocachingHttpLoggerPlugin($logger, LogLevel::INFO, true, true, 100);
         $ref = new \ReflectionClass($plugin);
         $method = $ref->getMethod('truncateBody');
@@ -91,7 +91,7 @@ class GeocachingHttpLoggerPluginTest extends TestCase
 
     public function testGetLogLevelForStatusAllBranches(): void
     {
-        $logger = $this->createMock(LoggerInterface::class);
+        $logger = $this->createStub(LoggerInterface::class);
         $plugin = new GeocachingHttpLoggerPlugin($logger, LogLevel::INFO);
         $ref = new \ReflectionClass($plugin);
         $method = $ref->getMethod('getLogLevelForStatus');
@@ -104,7 +104,7 @@ class GeocachingHttpLoggerPluginTest extends TestCase
 
     public function testConstructSetsPropertiesLegacy(): void
     {
-        $logger = $this->createMock(LoggerInterface::class);
+        $logger = $this->createStub(LoggerInterface::class);
         $plugin = new GeocachingHttpLoggerPlugin($logger, LogLevel::DEBUG, true, false, 123);
         $ref = new \ReflectionClass($plugin);
         $this->assertSame($logger, $ref->getProperty('logger')->getValue($plugin));
@@ -116,7 +116,7 @@ class GeocachingHttpLoggerPluginTest extends TestCase
 
     public function testMaskSensitiveDataMasksTokensLegacy(): void
     {
-        $logger = $this->createMock(LoggerInterface::class);
+        $logger = $this->createStub(LoggerInterface::class);
         $plugin = new GeocachingHttpLoggerPlugin($logger);
         $ref = new \ReflectionClass($plugin);
         $method = $ref->getMethod('maskSensitiveData');
@@ -263,7 +263,7 @@ class GeocachingHttpLoggerPluginTest extends TestCase
         $plugin = new GeocachingHttpLoggerPlugin($logger, LogLevel::INFO, true);
         $bodyContent = '{"foo":"bar"}';
         $body = $this->createMockStream($bodyContent);
-        $response = $this->createMock(ResponseInterface::class);
+        $response = $this->createStub(ResponseInterface::class);
         $response->method('getStatusCode')->willReturn(200);
         $response->method('getReasonPhrase')->willReturn('OK');
         $response->method('getHeaders')->willReturn(['Content-Type' => ['application/json']]);
@@ -290,9 +290,9 @@ class GeocachingHttpLoggerPluginTest extends TestCase
 
     private function createMockRequest(string $method, string $uri, array $headers = [], ?StreamInterface $body = null): RequestInterface
     {
-        $request = $this->createMock(RequestInterface::class);
+        $request = $this->createStub(RequestInterface::class);
         $request->method('getMethod')->willReturn($method);
-        $uriMock = $this->createMock(UriInterface::class);
+        $uriMock = $this->createStub(UriInterface::class);
         $uriMock->method('__toString')->willReturn($uri);
         $request->method('getUri')->willReturn($uriMock);
         $request->method('getHeaders')->willReturn($headers);
@@ -305,7 +305,7 @@ class GeocachingHttpLoggerPluginTest extends TestCase
 
     private function createMockResponse(int $statusCode, string $reasonPhrase, array $headers = []): ResponseInterface
     {
-        $response = $this->createMock(ResponseInterface::class);
+        $response = $this->createStub(ResponseInterface::class);
         $response->method('getStatusCode')->willReturn($statusCode);
         $response->method('getReasonPhrase')->willReturn($reasonPhrase);
         $response->method('getHeaders')->willReturn($headers);
@@ -315,10 +315,9 @@ class GeocachingHttpLoggerPluginTest extends TestCase
 
     private function createMockStream(string $content): StreamInterface
     {
-        $stream = $this->createMock(StreamInterface::class);
+        $stream = $this->createStub(StreamInterface::class);
         $stream->method('getContents')->willReturn($content);
         $stream->method('getSize')->willReturn(strlen($content));
-        $stream->expects($this->any())->method('rewind');
         return $stream;
     }
 }

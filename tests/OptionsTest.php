@@ -48,12 +48,10 @@ class OptionsTest extends TestCase
         // Vérifie que le plugin ajouté utilise un logger avec Level::Info
         $reflection = new \ReflectionClass($clientBuilder);
         $pluginsProperty = $reflection->getProperty('plugins');
-        $pluginsProperty->setAccessible(true);
         $plugins = $pluginsProperty->getValue($clientBuilder);
         $loggerPlugin = end($plugins);
         $reflectionPlugin = new \ReflectionClass($loggerPlugin);
         $loggerProperty = $reflectionPlugin->getProperty('logger');
-        $loggerProperty->setAccessible(true);
         $logger = $loggerProperty->getValue($loggerPlugin);
         $handlers = $logger->getHandlers();
         $handler = $handlers[0];
@@ -67,7 +65,7 @@ class OptionsTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->logger = $this->createMock(LoggerInterface::class);
+        $this->logger = $this->createStub(LoggerInterface::class);
         $this->clientBuilder = new ClientBuilder(new Client());
         $this->options = new Options([
             'access_token' => 'test-token',
@@ -112,8 +110,8 @@ class OptionsTest extends TestCase
 
     public function testMultipleLoggingPluginsCanBeAdded(): void
     {
-        $logger1 = $this->createMock(LoggerInterface::class);
-        $logger2 = $this->createMock(LoggerInterface::class);
+        $logger1 = $this->createStub(LoggerInterface::class);
+        $logger2 = $this->createStub(LoggerInterface::class);
         $initialCount = $this->getPluginCount();
         $this->options->enableHttpLoggingWithLogger($logger1);
         $this->options->enableHttpLoggingWithLogger($logger2);
@@ -150,32 +148,23 @@ class OptionsTest extends TestCase
     {
         $reflection = new \ReflectionClass($this->clientBuilder);
         $pluginsProperty = $reflection->getProperty('plugins');
-        $pluginsProperty->setAccessible(true);
         return $pluginsProperty->getValue($this->clientBuilder);
     }
 
     public function testCreateConfiguredLoggerReturnsLoggerInstance(): void
     {
-        $options = $this->getMockBuilder(Options::class)
-            ->disableOriginalConstructor()
-            ->onlyMethods([])
-            ->getMock();
+        $options = $this->createStub(Options::class);
         $reflection = new \ReflectionClass($options);
         $method = $reflection->getMethod('createConfiguredLogger');
-        $method->setAccessible(true);
         $logger = $method->invoke($options, 'php://memory', 'info');
         $this->assertInstanceOf(Logger::class, $logger);
     }
 
     public function testCreateConfiguredLoggerSetsLevelAndFormat(): void
     {
-        $options = $this->getMockBuilder(Options::class)
-            ->disableOriginalConstructor()
-            ->onlyMethods([])
-            ->getMock();
+        $options = $this->createStub(Options::class);
         $reflection = new \ReflectionClass($options);
         $method = $reflection->getMethod('createConfiguredLogger');
-        $method->setAccessible(true);
         $customFormat = '[%level_name%] %message%';
         $logger = $method->invoke($options, 'php://memory', 'error', $customFormat);
         $handlers = $logger->getHandlers();
@@ -187,19 +176,14 @@ class OptionsTest extends TestCase
         $this->assertInstanceOf(LineFormatter::class, $formatter);
         $reflectionFormatter = new \ReflectionClass($formatter);
         $formatProperty = $reflectionFormatter->getProperty('format');
-        $formatProperty->setAccessible(true);
         $this->assertSame($customFormat, $formatProperty->getValue($formatter));
     }
 
     public function testDefaultFormatAndLevelAreUsedWhenNotProvided(): void
     {
-        $options = $this->getMockBuilder(Options::class)
-            ->disableOriginalConstructor()
-            ->onlyMethods([])
-            ->getMock();
+        $options = $this->createStub(Options::class);
         $reflection = new \ReflectionClass($options);
         $method = $reflection->getMethod('createConfiguredLogger');
-        $method->setAccessible(true);
         $logger = $method->invoke($options, 'php://memory', 'unknownlevel');
         $handlers = $logger->getHandlers();
         $handler = $handlers[0];
@@ -207,7 +191,6 @@ class OptionsTest extends TestCase
         $formatter = $handler->getFormatter();
         $reflectionFormatter = new \ReflectionClass($formatter);
         $formatProperty = $reflectionFormatter->getProperty('format');
-        $formatProperty->setAccessible(true);
         $this->assertSame("[%datetime%] %channel%.%level_name%: %message% %context%\n", $formatProperty->getValue($formatter));
     }
 
@@ -223,13 +206,9 @@ class OptionsTest extends TestCase
             'alert' => Level::Alert,
             'emergency' => Level::Emergency,
         ];
-        $options = $this->getMockBuilder(Options::class)
-            ->disableOriginalConstructor()
-            ->onlyMethods([])
-            ->getMock();
+        $options = $this->createStub(Options::class);
         $reflection = new \ReflectionClass($options);
         $method = $reflection->getMethod('createConfiguredLogger');
-        $method->setAccessible(true);
         foreach ($levels as $levelStr => $expectedLevel) {
             $logger = $method->invoke($options, 'php://memory', $levelStr);
             $handlers = $logger->getHandlers();
@@ -240,19 +219,14 @@ class OptionsTest extends TestCase
 
     public function testLogFormatNullUsesDefault(): void
     {
-        $options = $this->getMockBuilder(Options::class)
-            ->disableOriginalConstructor()
-            ->onlyMethods([])
-            ->getMock();
+        $options = $this->createStub(Options::class);
         $reflection = new \ReflectionClass($options);
         $method = $reflection->getMethod('createConfiguredLogger');
-        $method->setAccessible(true);
         $logger = $method->invoke($options, 'php://memory', 'info', null);
         $handlers = $logger->getHandlers();
         $formatter = $handlers[0]->getFormatter();
         $reflectionFormatter = new \ReflectionClass($formatter);
         $formatProperty = $reflectionFormatter->getProperty('format');
-        $formatProperty->setAccessible(true);
         $this->assertSame("[%datetime%] %channel%.%level_name%: %message% %context%\n", $formatProperty->getValue($formatter));
     }
 }
