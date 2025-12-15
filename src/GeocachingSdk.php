@@ -71,15 +71,6 @@ class GeocachingSdk
     }
 
     /**
-     * Get adventure start location (anonymous endpoint).
-     * GET /v1/adventures/anon/{adventureId}
-     */
-    public function getStartLocationAdventure(string $adventureId, array $headers = []): ResponseInterface
-    {
-        return $this->httpClient->get('/adventures/anon/' . $adventureId, $headers);
-    }
-
-    /**
      * Search adventures.
      * GET /v1/adventures/search
      */
