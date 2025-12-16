@@ -8,6 +8,7 @@ use Geocaching\Enum\BaseUri;
 use Geocaching\Enum\Environment;
 use Geocaching\Plugin\CircuitBreakerPlugin;
 use Geocaching\Plugin\GeocachingHttpLoggerPlugin;
+use Geocaching\Plugin\StorageAwareAuthenticationPlugin;
 use Geocaching\Plugin\ReliabilityPlugin;
 use Geocaching\Plugin\RetryPlugin;
 use Geocaching\Reliability\CircuitBreaker;
@@ -58,7 +59,7 @@ class Options
         $this->getClientBuilder()->setBaseUri($baseUri->value);
         
         $this->getClientBuilder()->addPlugin(new BaseUriPlugin($this->getUri()));
-        $this->getClientBuilder()->addPlugin(new AuthenticationPlugin(new Bearer($this->getAccessToken())));
+        $this->addAuthenticationPlugin();
     }
 
     private function configureOptions(OptionsResolver $resolver): void
@@ -68,6 +69,8 @@ class Options
             [
                 'client_builder' => new ClientBuilder(),
                 'uri_factory'    => Psr17FactoryDiscovery::findUriFactory(),
+                'token_storage'  => null,
+                'reference_code' => null,
             ]
         );
 
@@ -76,6 +79,8 @@ class Options
         $resolver->setAllowedTypes('client_builder', ClientBuilder::class);
         $resolver->setAllowedTypes('uri_factory', UriFactoryInterface::class);
         $resolver->setAllowedTypes('uri', 'string');
+        $resolver->setAllowedTypes('token_storage', [TokenStorageInterface::class, 'null']);
+        $resolver->setAllowedTypes('reference_code', ['string', 'null']);
     }
 
     public function getClientBuilder(): ClientBuilder
@@ -96,6 +101,31 @@ class Options
     public function getAccessToken(): string
     {
         return $this->options['access_token'];
+    }
+
+    /**
+     * Register an authentication plugin that always uses the freshest token.
+     *
+     * If a TokenStorage is provided, we pull the current token from storage so
+     * retries after refresh use the updated access token. Otherwise we fall
+     * back to a static Bearer token.
+     */
+    private function addAuthenticationPlugin(): void
+    {
+        $storage       = $this->options['token_storage'];
+        $referenceCode = $this->options['reference_code'];
+
+        if ($storage && $referenceCode) {
+            $plugin = new StorageAwareAuthenticationPlugin(
+                $storage,
+                $referenceCode,
+                $this->getAccessToken()
+            );
+        } else {
+            $plugin = new AuthenticationPlugin(new Bearer($this->getAccessToken()));
+        }
+
+        $this->getClientBuilder()->addPlugin($plugin);
     }
     
     /**
