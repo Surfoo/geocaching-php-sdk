@@ -23,7 +23,6 @@ class OptionsCreateConfiguredLoggerEdgeCasesTest extends TestCase
         $clientBuilder = $options->getClientBuilder();
         $reflection    = new ReflectionClass($clientBuilder);
         $property      = $reflection->getProperty('plugins');
-        $property->setAccessible(true);
         $initialCount = count($property->getValue($clientBuilder));
 
         $options->enableHttpLoggingWithLogger($logger, logBodies: true);

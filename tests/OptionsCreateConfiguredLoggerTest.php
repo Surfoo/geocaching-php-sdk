@@ -18,7 +18,6 @@ class OptionsCreateConfiguredLoggerTest extends TestCase
         $clientBuilder = $options->getClientBuilder();
         $reflection    = new ReflectionClass($clientBuilder);
         $property      = $reflection->getProperty('plugins');
-        $property->setAccessible(true);
 
         $initialPlugins = $property->getValue($clientBuilder);
         $options->enableHttpLogging(output: 'php://memory', logBodies: false);
