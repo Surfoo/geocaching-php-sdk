@@ -7,4 +7,4 @@ This folder collects the SDK documentation with examples for the Groundspeak Geo
 - [Authentication & Tokens](./authentication.md) — work with access tokens, wire OAuth, and enable automatic refresh.
 - [Configuration & HTTP Clients](./configuration.md) — understand runtime options, environments, and how to plug in custom PSR clients.
 - [Reliability & Observability](./reliability.md) — enable structured logging, retries, and circuit breaking for resilient calls.
-- [API Usage by Domain](./api-usage.md) — call the main API areas (geocaches, users, adventures, trackables, lists, status) with documented examples.
+- [API Usage by Domain](./api-usage.md) — call all API areas (geocaches, geocache logs, log drafts, users, friends, adventures, lists, trackables, user waypoints, wherigo, geotours, HQ promotions, reference data) with documented examples.

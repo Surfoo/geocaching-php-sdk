@@ -76,19 +76,29 @@ $sdk = new GeocachingSdk($options);
 $response = $sdk->ping();
 
 // Optional: Enable automatic token refresh
-use League\OAuth2\Client\Provider\Geocaching;
+use League\OAuth2\Client\Provider\Geocaching as OAuthProvider;
 
-$oauthProvider = new Geocaching([
-    'clientId' => 'your_client_id',
-    'clientSecret' => 'your_client_secret', 
-    'redirectUri' => 'https://your-app.com/callback',
-    'environment' => 'production',
+$oauthProvider = new OAuthProvider([
+    'clientId'     => 'your_client_id',
+    'clientSecret' => 'your_client_secret',
+    'redirectUri'  => 'https://your-app.com/callback',
+    'environment'  => 'production',
 ]);
 
 $options->enableTokenRefresh([
-    'user_id' => 'user_123',
-    'storage' => $tokenStorage, // Your TokenStorageInterface implementation
+    'reference_code' => 'PR12345',           // User reference code
+    'storage'        => $tokenStorage,        // TokenStorageInterface implementation
     'oauth_provider' => $oauthProvider,
+]);
+
+// Or let the SDK create the OAuth provider automatically:
+$options->enableTokenRefreshWithCredentials([
+    'reference_code' => 'PR12345',
+    'storage'        => $tokenStorage,
+    'client_id'      => 'your_client_id',
+    'client_secret'  => 'your_client_secret',
+    'redirect_uri'   => 'https://your-app.com/callback',
+    'environment'    => 'production',
 ]);
 ```
 
