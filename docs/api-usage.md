@@ -278,8 +278,8 @@ $sdk->getGeotourGeocaches('GT123ABC', ['take' => 50]);
 ## HQ Promotions
 
 ```php
-// Get promotion metadata (banners, events, etc.)
-$sdk->getHQPromotionsMetadata();
+// Get HQ promotions (banners, events, etc.)
+$sdk->getHQPromotions();
 ```
 
 ## Reference Data & Statistics

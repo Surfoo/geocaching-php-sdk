@@ -158,8 +158,8 @@ class GeocachingSdkTest extends TestCase
             'getGeotour',
             'getGeotourGeocaches',
             
-            // HQ Promotions API (New)
-            'getHQPromotionsMetadata',
+            // HQ Promotions API
+            'getHQPromotions',
         ];
 
         foreach ($methods as $method) {
