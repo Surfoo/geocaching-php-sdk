@@ -40,7 +40,6 @@ class GeocachingHttpLoggerPluginTest extends TestCase
         $plugin = new GeocachingHttpLoggerPlugin($logger, LogLevel::INFO, false, false);
         $ref = new \ReflectionClass($plugin);
         $method = $ref->getMethod('maskSensitiveData');
-        $method->setAccessible(true);
         $uri = 'https://api/?access_token=abc123&token=def456&key=ghi789';
         $masked = $method->invoke($plugin, $uri);
         $this->assertSame($uri, $masked);
@@ -53,7 +52,6 @@ class GeocachingHttpLoggerPluginTest extends TestCase
         $plugin = new GeocachingHttpLoggerPlugin($logger, LogLevel::INFO, false, false);
         $ref = new \ReflectionClass($plugin);
         $method = $ref->getMethod('maskHeaders');
-        $method->setAccessible(true);
         $headers = [
             'Authorization' => ['Bearer secret-token'],
             'X-API-Key' => ['api-key-123']
@@ -68,7 +66,6 @@ class GeocachingHttpLoggerPluginTest extends TestCase
         $plugin = new GeocachingHttpLoggerPlugin($logger);
         $ref = new \ReflectionClass($plugin);
         $method = $ref->getMethod('filterResponseHeaders');
-        $method->setAccessible(true);
         $headers = [
             'X-Not-Interesting' => ['foo'],
             'Another' => ['bar']
@@ -83,7 +80,6 @@ class GeocachingHttpLoggerPluginTest extends TestCase
         $plugin = new GeocachingHttpLoggerPlugin($logger, LogLevel::INFO, true, true, 100);
         $ref = new \ReflectionClass($plugin);
         $method = $ref->getMethod('truncateBody');
-        $method->setAccessible(true);
         $body = 'short';
         $result = $method->invoke($plugin, $body);
         $this->assertSame('short', $result);
@@ -95,7 +91,6 @@ class GeocachingHttpLoggerPluginTest extends TestCase
         $plugin = new GeocachingHttpLoggerPlugin($logger, LogLevel::INFO);
         $ref = new \ReflectionClass($plugin);
         $method = $ref->getMethod('getLogLevelForStatus');
-        $method->setAccessible(true);
         $this->assertSame(LogLevel::ERROR, $method->invoke($plugin, 500));
         $this->assertSame(LogLevel::WARNING, $method->invoke($plugin, 404));
         $this->assertSame(LogLevel::INFO, $method->invoke($plugin, 301));
@@ -120,7 +115,6 @@ class GeocachingHttpLoggerPluginTest extends TestCase
         $plugin = new GeocachingHttpLoggerPlugin($logger);
         $ref = new \ReflectionClass($plugin);
         $method = $ref->getMethod('maskSensitiveData');
-        $method->setAccessible(true);
         $uri = 'https://api/?access_token=abc123&token=def456&key=ghi789';
         $masked = $method->invoke($plugin, $uri);
         $this->assertStringNotContainsString('abc123', $masked);
