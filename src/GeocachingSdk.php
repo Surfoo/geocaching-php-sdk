@@ -1061,10 +1061,10 @@ class GeocachingSdk
     // ==========================================
 
     /**
-     * Get HQ promotions metadata.
+     * Get HQ promotions.
      * GET /v1/HQPromotions/metadata
      */
-    public function getHQPromotionsMetadata(array $query = [], array $headers = []): ResponseInterface
+    public function getHQPromotions(array $query = [], array $headers = []): ResponseInterface
     {
         $queryString = $this->buildQueryString($query);
         return $this->httpClient->get('/HQPromotions/metadata' . $queryString, $headers);
