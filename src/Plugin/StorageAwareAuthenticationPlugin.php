@@ -15,7 +15,7 @@ use Psr\Http\Message\RequestInterface;
  *
  * Falls back to the initially configured access token when storage is empty.
  */
-final class StorageAwareAuthenticationPlugin implements Plugin
+final readonly class StorageAwareAuthenticationPlugin implements Plugin
 {
     public function __construct(
         private TokenStorageInterface $storage,
