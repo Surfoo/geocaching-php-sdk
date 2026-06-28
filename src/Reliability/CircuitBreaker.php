@@ -23,6 +23,7 @@ class CircuitBreaker
 
     private string $state                       = self::STATE_CLOSED;
     private int $failureCount                   = 0;
+    private int $successCount                   = 0;
     private ?DateTimeImmutable $lastFailureTime = null;
     private ?DateTimeImmutable $nextRetryTime   = null;
 
@@ -94,6 +95,7 @@ class CircuitBreaker
     {
         $this->state           = self::STATE_CLOSED;
         $this->failureCount    = 0;
+        $this->successCount    = 0;
         $this->lastFailureTime = null;
         $this->nextRetryTime   = null;
     }
@@ -130,13 +132,10 @@ class CircuitBreaker
     private function onSuccess(): void
     {
         if ($this->state === self::STATE_HALF_OPEN) {
-            // Check if we've had enough successes to close the circuit
-            static $successCount = 0;
-            $successCount++;
-            
-            if ($successCount >= $this->successThreshold) {
+            $this->successCount++;
+
+            if ($this->successCount >= $this->successThreshold) {
                 $this->reset();
-                $successCount = 0;
             }
         } else {
             // Reset failure count on success in normal operation

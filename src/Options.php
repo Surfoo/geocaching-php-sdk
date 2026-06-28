@@ -172,9 +172,16 @@ class Options
         bool $maskTokens = true,
         int $maxBodyLength = 1000
     ): void {
+        $validLevels = [
+            LogLevel::DEBUG, LogLevel::INFO, LogLevel::NOTICE,
+            LogLevel::WARNING, LogLevel::ERROR, LogLevel::CRITICAL,
+            LogLevel::ALERT, LogLevel::EMERGENCY,
+        ];
+        $normalizedLevel = in_array(strtolower($level), $validLevels, true) ? strtolower($level) : LogLevel::INFO;
+
         $loggingPlugin = new GeocachingHttpLoggerPlugin(
             $logger,
-            $level,
+            $normalizedLevel,
             $logBodies,
             $maskTokens,
             $maxBodyLength

@@ -119,11 +119,24 @@ The sections below describe what 4.0 adds. Nothing else you already use has been
 
 ### Automatic token refresh
 
-Pass a `TokenStorageInterface` and a `reference_code` (the user's Geocaching reference code, e.g. `'PR12345'`) to `Options` to enable automatic access-token refresh on `401` responses. The SDK will refresh, store the new token, and retry the request transparently.
+Token refresh has two independent layers:
+
+**Layer 1 — storage-aware authentication** (`token_storage` + `reference_code` in `Options`):
+Reads the freshest access token from storage on every request so that a token refreshed elsewhere (e.g. another process) is always used. Pass these options to enable it:
 
 ```php
-use Geocaching\Options;
-use Geocaching\Enum\Environment;
+$options = new Options([
+    'environment'    => Environment::PRODUCTION,
+    'access_token'   => $storedAccessToken,
+    'token_storage'  => new MyTokenStorage(), // implements TokenStorageInterface
+    'reference_code' => 'PR12345',
+]);
+```
+
+**Layer 2 — automatic 401 refresh** (`enableTokenRefresh()`):
+Intercepts `401` responses, refreshes the token via OAuth, stores it, and retries the original request. Requires an OAuth provider instance:
+
+```php
 use League\OAuth2\Client\Provider\Geocaching as OAuthProvider;
 
 $provider = new OAuthProvider([
@@ -133,17 +146,26 @@ $provider = new OAuthProvider([
     'environment'  => 'production',
 ]);
 
-$options = new Options([
-    'environment'    => Environment::PRODUCTION,
-    'access_token'   => $storedAccessToken,
-    'token_storage'  => new MyTokenStorage(), // implements TokenStorageInterface
+$options->enableTokenRefresh([
+    'reference_code'  => 'PR12345',
+    'storage'         => new MyTokenStorage(),
+    'oauth_provider'  => $provider,
+]);
+
+// Or with credentials (creates the provider for you):
+$options->enableTokenRefreshWithCredentials([
     'reference_code' => 'PR12345',
+    'storage'        => new MyTokenStorage(),
+    'client_id'      => 'your-client-id',
+    'client_secret'  => 'your-client-secret',
+    'redirect_uri'   => 'https://example.com/callback',
+    'environment'    => 'production',
 ]);
 ```
 
 `TokenStorageInterface` and `TokenSet` come from `surfoo/oauth2-geocaching ^3.0`. See that package's `UPGRADE-3.0.md` for implementation details.
 
-When `token_storage` and `reference_code` are omitted, the SDK behaves exactly as in 3.x with a static bearer token.
+When neither option is configured, the SDK behaves exactly as in 3.x with a static bearer token.
 
 ### HTTP request/response logging
 
@@ -163,45 +185,51 @@ Each request gets a unique correlation ID so requests and responses can be match
 
 ### Reliability plugins
 
-#### Retry
+#### Retry with exponential back-off
 
 ```php
-use Geocaching\Reliability\ExponentialBackoffStrategy;
-use Geocaching\Reliability\FixedDelayStrategy;
+$options->configureRetry([
+    'max_attempts'  => 3,
+    'base_delay_ms' => 100,   // 100ms, 200ms, 400ms, …
+    'multiplier'    => 2.0,
+    'max_delay_ms'  => 30000,
+]);
+```
 
-// Exponential back-off: 100ms, 200ms, 400ms, …
-$options->enableRetry(
-    maxRetries: 3,
-    strategy: new ExponentialBackoffStrategy(initialDelayMs: 100)
-);
+#### Retry with fixed delay
 
-// Fixed delay
-$options->enableRetry(
-    maxRetries: 3,
-    strategy: new FixedDelayStrategy(delayMs: 500)
-);
+```php
+$options->configureFixedRetry([
+    'max_attempts' => 3,
+    'delay_ms'     => 500,
+]);
 ```
 
 #### Circuit breaker
 
 ```php
-$options->enableCircuitBreaker(
-    failureThreshold: 5,   // open after this many consecutive failures
-    resetTimeout: 60       // seconds before attempting to close again
-);
+$options->enableCircuitBreaker([
+    'failure_threshold' => 5,   // open after this many consecutive failures
+    'recovery_timeout'  => 60,  // seconds before transitioning to half-open
+    'success_threshold' => 2,   // successes in half-open to close again
+]);
 ```
 
 #### Combined reliability plugin
 
-`ReliabilityPlugin` bundles retry and circuit breaker together:
+`enableReliability()` bundles retry and circuit breaker into a single plugin:
 
 ```php
-$options->enableReliability(
-    maxRetries: 3,
-    strategy: new ExponentialBackoffStrategy(100),
-    failureThreshold: 5,
-    resetTimeout: 60
-);
+$options->enableReliability([
+    'circuit_breaker' => [
+        'failure_threshold' => 5,
+        'recovery_timeout'  => 60,
+    ],
+    'retry' => [
+        'max_attempts'  => 3,
+        'base_delay_ms' => 100,
+    ],
+]);
 ```
 
 ### New enum: `Attribute`
