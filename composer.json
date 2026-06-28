@@ -30,7 +30,7 @@
         "psr/http-client": "^1.0",
         "psr/http-client-implementation": "*",
         "psr/http-factory": "^1.0",
-        "surfoo/oauth2-geocaching": "dev-feat-v3"
+        "surfoo/oauth2-geocaching": "^3.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.0",
