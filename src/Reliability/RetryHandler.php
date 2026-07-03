@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Geocaching\Reliability;
 
+use Geocaching\Exception\RateLimitExceededException;
+use Http\Client\Exception\HttpException;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 
@@ -47,10 +49,11 @@ class RetryHandler
                         'attempt'         => $attempt,
                         'exception_class' => $e::class,
                     ]);
-                    throw $e;
+
+                    throw $this->toFinalException($e);
                 }
 
-                $delay = $this->strategy->getDelay($attempt);
+                $delay = $this->strategy->getDelay($attempt, $e);
                 
                 $this->logger->warning("Retry attempt failed, will retry", [
                     'exception'       => $e->getMessage(),
@@ -74,5 +77,26 @@ class RetryHandler
     public function getStrategy(): RetryStrategy
     {
         return $this->strategy;
+    }
+
+    /**
+     * Convert a final (non-retryable or exhausted) 429 failure into a
+     * RateLimitExceededException carrying the x-rate-limit-reset value.
+     */
+    private function toFinalException(\Throwable $e): \Throwable
+    {
+        if (!$e instanceof HttpException || $e->getResponse()->getStatusCode() !== 429) {
+            return $e;
+        }
+
+        $retryAfterSeconds = RateLimitInfo::getResetSeconds($e->getResponse());
+
+        return new RateLimitExceededException(
+            'Geocaching API rate limit exceeded',
+            $e->getRequest(),
+            $e->getResponse(),
+            $retryAfterSeconds,
+            $e
+        );
     }
 }

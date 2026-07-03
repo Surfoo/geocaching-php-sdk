@@ -470,7 +470,8 @@ class Options
             delayMs: $config['delay_ms'] ?? 1000,
             maxAttempts: $config['max_attempts'] ?? 3,
             retryableExceptions: $config['retryable_exceptions'] ?? null,
-            retryableStatusCodes: $config['retryable_status_codes'] ?? null
+            retryableStatusCodes: $config['retryable_status_codes'] ?? null,
+            maxDelayMs: $config['max_delay_ms'] ?? 30000
         );
 
         $this->options['retry_strategy'] = $strategy;

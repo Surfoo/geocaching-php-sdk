@@ -232,6 +232,25 @@ $options->enableReliability([
 ]);
 ```
 
+#### Rate limiting (HTTP 429)
+
+The Geocaching API enforces per-user, per-consumer-key and per-IP rate limits. When a limit is hit, it returns `429 Too Many Requests` with an `x-rate-limit-reset` header giving the number of seconds until the limit resets.
+
+`429` is in the default `retryable_status_codes` for both `configureRetry()` and `configureFixedRetry()`, and when the response carries `x-rate-limit-reset`, that value is used as the retry delay instead of the configured back-off (still capped by `max_delay_ms`).
+
+If retries are exhausted (or no retry plugin is configured) on a 429, a `Geocaching\Exception\RateLimitExceededException` is thrown instead of the raw HTTP exception, exposing `getRetryAfterSeconds()` and `getResponse()`:
+
+```php
+use Geocaching\Exception\RateLimitExceededException;
+
+try {
+    $client->geocaches()->search(/* ... */);
+} catch (RateLimitExceededException $e) {
+    $waitSeconds = $e->getRetryAfterSeconds(); // int|null
+    // wait/queue and retry
+}
+```
+
 ### New enum: `Attribute`
 
 `Geocaching\Enum\Attribute` covers all 65 geocache attributes (dogs, wheelchair accessible, night cache, etc.) with `id()` returning the Groundspeak attribute ID.

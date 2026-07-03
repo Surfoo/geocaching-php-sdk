@@ -13,6 +13,8 @@ use Psr\Http\Message\ResponseInterface;
  */
 class FixedDelayStrategy implements RetryStrategy
 {
+    use RateLimitAwareDelay;
+
     /** @var string[] Exception classes that should trigger a retry */
     private readonly array $retryableExceptions;
 
@@ -23,7 +25,8 @@ class FixedDelayStrategy implements RetryStrategy
         private readonly int $delayMs = 1000,
         private readonly int $maxAttempts = 3,
         ?array $retryableExceptions = null,
-        ?array $retryableStatusCodes = null
+        ?array $retryableStatusCodes = null,
+        private readonly int $maxDelayMs = 30000
     ) {
         $this->retryableExceptions = $retryableExceptions ?? [
             NetworkException::class,
@@ -40,9 +43,15 @@ class FixedDelayStrategy implements RetryStrategy
         ];
     }
 
-    public function getDelay(int $attempt): int
+    public function getDelay(int $attempt, ?\Throwable $exception = null): int
     {
-        return $attempt > 1 ? $this->delayMs : 0;
+        if ($attempt <= 1) {
+            return 0;
+        }
+
+        $rateLimitDelay = $this->getRateLimitDelayMs($exception, $this->maxDelayMs);
+
+        return $rateLimitDelay ?? $this->delayMs;
     }
 
     public function shouldRetry(\Throwable $exception, int $attempt): bool

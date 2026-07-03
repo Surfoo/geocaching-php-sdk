@@ -13,6 +13,8 @@ use Psr\Http\Message\ResponseInterface;
  */
 class ExponentialBackoffStrategy implements RetryStrategy
 {
+    use RateLimitAwareDelay;
+
     /** @var string[] Exception classes that should trigger a retry */
     private readonly array $retryableExceptions;
 
@@ -42,10 +44,16 @@ class ExponentialBackoffStrategy implements RetryStrategy
         ];
     }
 
-    public function getDelay(int $attempt): int
+    public function getDelay(int $attempt, ?\Throwable $exception = null): int
     {
         if ($attempt <= 1) {
             return 0;
+        }
+
+        $rateLimitDelay = $this->getRateLimitDelayMs($exception, $this->maxDelayMs);
+
+        if ($rateLimitDelay !== null) {
+            return $rateLimitDelay;
         }
 
         $delay = $this->baseDelayMs * $this->multiplier ** ($attempt - 2);
