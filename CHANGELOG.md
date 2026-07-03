@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.1.0] - 2026-07-03
+### Added
+    - HTTP 429 rate-limit handling: retry strategies now honor the `x-rate-limit-reset` response header (capped by `max_delay_ms`) instead of relying solely on generic backoff.
+    - `RateLimitExceededException`, thrown once retries are exhausted on a 429, exposing `getRetryAfterSeconds()` and `getResponse()`.
+
 ## [4.0.0] - 2026-06-28
 ### Added
     - Full HTTP observability tools: structured logging with token masking, per-status log levels, and custom logger support.
