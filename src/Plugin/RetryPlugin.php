@@ -28,7 +28,7 @@ class RetryPlugin implements Plugin
 
     public function handleRequest(RequestInterface $request, callable $next, callable $first): Promise
     {
-        return $this->retryHandler->execute(fn() => $next($request));
+        return $this->retryHandler->executeRequest($request, $next);
     }
 
     /**

@@ -26,8 +26,6 @@ class RateLimitExceededException extends HttpException
 
     /**
      * Returns the response.
-     *
-     * @return ResponseInterface
      */
     public function getResponse(): ResponseInterface
     {

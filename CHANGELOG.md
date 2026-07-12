@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.1.1] - 2026-07-13
+### Fixed
+    - Retry and circuit breaker plugins now detect failures correctly: they previously assumed the HTTP client throws synchronously on error, but a spec-compliant PSR-18 client returns 4xx/5xx responses without throwing, and `ErrorPlugin` (when used) only surfaces failures as a rejected Promise. Both `RetryHandler` and `CircuitBreaker` now inspect the actual resolved outcome (status code or exception) of each attempt, so `configureRetry()`/`configureFixedRetry()`/`enableReliability()` retry on 429/5xx responses as documented.
+
 ## [4.1.0] - 2026-07-03
 ### Added
     - HTTP 429 rate-limit handling: retry strategies now honor the `x-rate-limit-reset` response header (capped by `max_delay_ms`) instead of relying solely on generic backoff.

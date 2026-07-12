@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace Geocaching\Plugin;
 
+use Geocaching\Exception\CircuitBreakerOpenException;
 use Geocaching\Reliability\CircuitBreaker;
 use Geocaching\Reliability\RetryHandler;
 use Geocaching\Reliability\RetryStrategy;
 use Http\Client\Common\Plugin;
 use Http\Promise\Promise;
 use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\ResponseInterface;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 
@@ -34,10 +36,25 @@ class ReliabilityPlugin implements Plugin
 
     public function handleRequest(RequestInterface $request, callable $next, callable $first): Promise
     {
-        // First layer: Circuit Breaker protection
-        return $this->circuitBreaker->call(fn() =>
-            // Second layer: Retry logic
-            $this->retryHandler->execute(fn() => $next($request)));
+        if (!$this->circuitBreaker->canExecute()) {
+            throw new CircuitBreakerOpenException(
+                "Circuit breaker is open. Next retry at: " .
+                $this->circuitBreaker->getNextRetryTime()?->format('Y-m-d H:i:s')
+            );
+        }
+
+        return $this->retryHandler->executeRequest($request, $next)->then(
+            function (ResponseInterface $response) {
+                $this->circuitBreaker->recordSuccess();
+
+                return $response;
+            },
+            function (\Throwable $exception) {
+                $this->circuitBreaker->recordFailure();
+
+                throw $exception;
+            }
+        );
     }
 
     /**

@@ -65,6 +65,22 @@ class CircuitBreaker
     }
 
     /**
+     * Record a successful call, e.g. after resolving a Promise as fulfilled.
+     */
+    public function recordSuccess(): void
+    {
+        $this->onSuccess();
+    }
+
+    /**
+     * Record a failed call, e.g. after resolving a Promise as rejected.
+     */
+    public function recordFailure(): void
+    {
+        $this->onFailure();
+    }
+
+    /**
      * Get current circuit breaker state
      */
     public function getState(): string

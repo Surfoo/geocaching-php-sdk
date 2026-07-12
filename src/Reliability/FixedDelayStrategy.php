@@ -6,7 +6,6 @@ namespace Geocaching\Reliability;
 
 use Http\Client\Exception\HttpException;
 use Http\Client\Exception\NetworkException;
-use Psr\Http\Message\ResponseInterface;
 
 /**
  * Fixed delay retry strategy
@@ -79,5 +78,10 @@ class FixedDelayStrategy implements RetryStrategy
     public function getMaxAttempts(): int
     {
         return $this->maxAttempts;
+    }
+
+    public function isRetryableStatusCode(int $statusCode): bool
+    {
+        return in_array($statusCode, $this->retryableStatusCodes, true);
     }
 }

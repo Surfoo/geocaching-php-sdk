@@ -986,7 +986,7 @@ class GeocachingSdk
         $rawHttpClient   = \Http\Discovery\Psr18ClientDiscovery::find();
         $reflection      = new \ReflectionClass($this->clientBuilder);
         $pluginsProperty = $reflection->getProperty('plugins');
-        $allPlugins = $pluginsProperty->getValue($this->clientBuilder);
+        $allPlugins      = $pluginsProperty->getValue($this->clientBuilder);
         
         $statusPlugins = [];
         foreach ($allPlugins as $plugin) {
@@ -999,7 +999,7 @@ class GeocachingSdk
         $pluginClient = (new \Http\Client\Common\PluginClientFactory())->createClient($rawHttpClient, $statusPlugins);
         
         $requestFactory = $reflection->getProperty('requestFactory');
-        $streamFactory = $reflection->getProperty('streamFactory');
+        $streamFactory  = $reflection->getProperty('streamFactory');
         
         return new \Http\Client\Common\HttpMethodsClient(
             $pluginClient,

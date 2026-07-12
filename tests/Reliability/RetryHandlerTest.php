@@ -9,7 +9,11 @@ use Geocaching\Reliability\ExponentialBackoffStrategy;
 use Geocaching\Reliability\RetryHandler;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
+use Http\Client\Common\Exception\ClientErrorException;
 use Http\Client\Exception\HttpException;
+use Http\Client\Promise\HttpFulfilledPromise;
+use Http\Client\Promise\HttpRejectedPromise;
+use Http\Promise\Promise;
 use PHPUnit\Framework\TestCase;
 
 class RetryHandlerTest extends TestCase
@@ -70,6 +74,84 @@ class RetryHandlerTest extends TestCase
         });
 
         $this->assertSame('ok', $result);
+        $this->assertSame(2, $attempts);
+    }
+
+    public function testExecuteRequestRetriesOnPlainRetryableStatusResponseWithoutAnyException(): void
+    {
+        // A spec-compliant PSR-18 client never throws for a 4xx/5xx response;
+        // $next() just returns a fulfilled Promise carrying the response.
+        $strategy = new ExponentialBackoffStrategy(baseDelayMs: 1, maxDelayMs: 1, maxAttempts: 3);
+        $handler  = new RetryHandler($strategy);
+        $request  = new Request('GET', '/geocaches');
+
+        $responses = [
+            new Response(429, ['x-rate-limit-reset' => '0']),
+            new Response(200, [], 'ok'),
+        ];
+        $calls = 0;
+
+        $next = function (Request $req) use (&$responses, &$calls): HttpFulfilledPromise {
+            $calls++;
+
+            return new HttpFulfilledPromise(array_shift($responses));
+        };
+
+        $promise = $handler->executeRequest($request, $next);
+
+        $this->assertSame(200, $promise->wait()->getStatusCode());
+        $this->assertSame(2, $calls);
+    }
+
+    public function testExecuteRequestThrowsRateLimitExceededExceptionOnExhaustionWithoutAnyException(): void
+    {
+        $strategy = new ExponentialBackoffStrategy(baseDelayMs: 1, maxDelayMs: 1, maxAttempts: 2);
+        $handler  = new RetryHandler($strategy);
+        $request  = new Request('GET', '/geocaches');
+
+        $next = fn (Request $req): HttpFulfilledPromise => new HttpFulfilledPromise(
+            new Response(429, ['x-rate-limit-reset' => '4'])
+        );
+
+        $promise = $handler->executeRequest($request, $next);
+
+        $this->assertSame(Promise::REJECTED, $promise->getState());
+
+        try {
+            $promise->wait();
+            $this->fail('Expected RateLimitExceededException');
+        } catch (RateLimitExceededException $e) {
+            $this->assertSame(4, $e->getRetryAfterSeconds());
+        }
+    }
+
+    public function testExecuteRequestRetriesWhenFailureArrivesAsRejectedPromise(): void
+    {
+        // Mirrors what ErrorPlugin actually does: the exception is caught
+        // inside HttpFulfilledPromise::then() and surfaces as a rejected
+        // Promise, not a synchronous throw.
+        $strategy = new ExponentialBackoffStrategy(baseDelayMs: 1, maxDelayMs: 1, maxAttempts: 3);
+        $handler  = new RetryHandler($strategy);
+        $request  = new Request('GET', '/geocaches');
+
+        $attempts = 0;
+
+        $next = function (Request $req) use (&$attempts): Promise {
+            $attempts++;
+
+            if ($attempts < 2) {
+                $response  = new Response(429, ['x-rate-limit-reset' => '0']);
+                $exception = new ClientErrorException('Too Many Requests', $req, $response);
+
+                return new HttpRejectedPromise($exception);
+            }
+
+            return new HttpFulfilledPromise(new Response(200, [], 'ok'));
+        };
+
+        $promise = $handler->executeRequest($request, $next);
+
+        $this->assertSame(200, $promise->wait()->getStatusCode());
         $this->assertSame(2, $attempts);
     }
 

@@ -42,6 +42,6 @@ class CircuitBreakerPlugin implements Plugin
         }
 
         // Execute request with circuit breaker protection
-        return $this->circuitBreaker->call(fn() => $next($request));
+        return $this->circuitBreaker->call(fn () => $next($request));
     }
 }
