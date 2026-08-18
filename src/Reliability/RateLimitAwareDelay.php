@@ -12,7 +12,7 @@ use Http\Client\Exception\HttpException;
  */
 trait RateLimitAwareDelay
 {
-    private function getRateLimitDelayMs(?\Throwable $exception, int $maxDelayMs): ?int
+    protected function getRateLimitDelayMs(?\Throwable $exception, int $maxDelayMs): ?int
     {
         if (!$exception instanceof HttpException) {
             return null;
