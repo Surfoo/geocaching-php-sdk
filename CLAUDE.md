@@ -24,7 +24,7 @@ This project is a PHP library for using the Geocaching API.
 - PHPUnit 12 with PHP 8 attributes (#[DataProvider])
 - Unit tests in tests/
 - Test command: composer run phpunit
-- Currently 77 tests, 189 assertions
+- Currently 234 tests, 902 assertions
 
 ## Common Issues Fixed
 - Query string concatenation: use ternary operator to avoid "Array to string conversion"
@@ -35,6 +35,12 @@ This project is a PHP library for using the Geocaching API.
 All clients follow official Swagger patterns:
 - /geocaches, /users, /adventures, /lists, /logs, /trackables, etc.
 - Adventure anon endpoints: /adventures/anon/ (not /adventures/)
+
+## Code Review / Audit Rules
+- Before flagging a "hand-rolled stdlib" or "unnecessary wrapper" finding, grep for actual call sites first. A one-line wrapper reused across many callers (e.g. `Enum/EnumTrait.php`'s `getList()`/`getListId()`, used by 11 enums) is DRY, not over-engineering — don't suggest removing it.
+- `RetryStrategy` implementations share eligibility logic in `Reliability/AbstractRetryStrategy.php` (retryable exceptions/status codes, `shouldRetry()`, `getMaxAttempts()`, `isRetryableStatusCode()`). Only `getDelay()` differs per strategy (`FixedDelayStrategy`, `ExponentialBackoffStrategy`). Add new strategies by extending this base class, not by copy-pasting.
+- Don't flag public interfaces (e.g. `ClientBuilderInterface`) as yagni just because this repo has one implementation — this is a library, and external consumers may type-hint or mock against public interfaces even with no in-repo evidence.
+- A method used only via a trait (e.g. `RateLimitAwareDelay::getRateLimitDelayMs()`) must be `protected`, not `private`, if any class using the trait is subclassed — PHP traits don't relax visibility across the class hierarchy the way you'd expect.
 
 
 <!-- rtk-instructions v2 -->
