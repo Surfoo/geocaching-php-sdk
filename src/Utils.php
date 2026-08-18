@@ -84,10 +84,10 @@ class Utils
     /**
      * Convert a numeric id to a reference Code.
      */
-    public static function idToReferenceCode(string $number, string $prefix): string
+    public static function idToReferenceCode(int|string $number, string $prefix): string
     {
         if ($number <= self::CACHE_CODE_BASE16_MAX) {
-            $result = \strtoupper(\base_convert($number, 10, 16));
+            $result = \strtoupper(\base_convert((string) $number, 10, 16));
         } else {
             $result = self::base31Encode((int) $number + self::CACHE_CODE_BASE31_MAGIC_NUMBER);
         }

@@ -75,11 +75,12 @@ final class UtilsTest extends TestCase
             ['1220432', 'PR', 'PR1QQQP'],
             ['6121162', 'GC', 'GC728BR'],
             ['1585032', 'GC', 'GC25050'],
+            [1585032, 'GC', 'GC25050'],
         ];
     }
 
     #[DataProvider('providerId')]
-    public function testIdToReferenceCodeSucessful(string $number, string $prefix, string $expected): void
+    public function testIdToReferenceCodeSucessful(int|string $number, string $prefix, string $expected): void
     {
         $result = Utils::idToReferenceCode($number, $prefix);
 
